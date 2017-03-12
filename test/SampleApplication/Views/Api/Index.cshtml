@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Api Actions";
+}
+
+<h2>Api Actions</h2>
+
+<div class="well">
+    <h2>Create a new business for this API Key</h2>
+    <form data-bind="submit: create">
+        <div class="form-group">
+            <label class="control-label">Business Name</label>
+            <input class="form-control" name="businessName" data-bind="value:businessName" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Business ABN</label>
+            <input class="form-control" name="abn" data-bind="value:abn" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Contact Name</label>
+            <input class="form-control" name="contactName" data-bind="value:contactName" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Contact Email</label>
+            <input class="form-control" name="contactEmail" data-bind="value:contactEmail" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Standard Hours Per Day</label>
+            <input class="form-control" name="standardHoursPerDay" data-bind="value:standardHoursPerDay" />
+        </div>
+            <div class="form-actions">
+                <input type="submit" class="btn btn-primary" value="Create" />
+            </div>
+    </form>
+</div>
+
+<div data-bind="visible:HasBusinesses">
+    <h2>Businesses Associated with this API Key <small >(click a business to view additional actions)</small></h2>
+    <ul data-bind="foreach: businesses" style="list-style: none">
+        <li style="cursor: pointer" class="well well-small" data-bind="click:loadDetails">
+            <h3 data-bind="text:name" style="font-weight: bold"></h3>
+            <div data-bind="visible: showDetails">
+                <h4>Employees</h4>
+                <ul data-bind="foreach: employees">
+                    <li data-bind="text: name"></li>
+                </ul>
+                <h4>Pay Categories</h4>
+                <ul data-bind="foreach: payCategories">
+                    <li data-bind="text:name"></li>
+                </ul>
+                
+                <h4>Leave Categories</h4>
+                <ul data-bind="foreach: leaveCategories">
+                    <li data-bind="text:name"></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+@section scripts
+{
+    <script src="~/lib/knockout/dist/knockout.js"></script>
+    <script type="text/javascript">
+        var kp = kp || {};
+        kp.api = kp.api || {};
+        
+        (function (kp, ko) {
+            kp.createBusinessUrl = '@Url.Action("CreateBusiness")';
+            kp.loadBusinessesUrl = '@Url.Action("LoadBusinesses")';
+            kp.loadBusinessDetailsUrl = '@Url.Action("LoadBusinessDetails")';
+            kp.api.viewModel = function () {
+                var model = {};
+                model.businessName = ko.observable('');
+                model.abn = ko.observable('');
+                model.standardHoursPerDay = ko.observable(8);
+                model.contactName = ko.observable();
+                model.contactEmail = ko.observable();
+
+                model.businesses = ko.observableArray([]);
+
+                model.HasBusinesses = ko.computed(function () {
+                    return model.businesses().length > 0;
+                });
+                
+                model.create = function() {
+                    $.post(
+                        kp.createBusinessUrl,
+                        {
+                            businessName: model.businessName(),
+                            abn: model.abn(),
+                            standardHoursPerDay: model.standardHoursPerDay(),
+                            contactName: model.contactName(),
+                            contactEmail: model.contactEmail()
+                        },
+                        function(response) {
+                            model.loadBusinesses();
+                        },
+                        'json'
+                    );
+                };
+
+                model.loadBusinesses = function() {
+                    $.get(kp.loadBusinessesUrl, function (response) {
+                        var businesses = response.map(function (item) {
+                            item.showDetails = ko.observable(false);
+                            item.detailsLoaded = ko.observable(false);
+                            item.payCategories = ko.observableArray([]);
+                            item.leaveCategories = ko.observableArray([]);
+                            item.employees = ko.observableArray([]);
+                            
+                            item.loadDetails = function () {
+                                if (item.detailsLoaded()) {
+                                    item.showDetails(!item.showDetails());
+                                    return;
+                                }
+                                $.get(kp.loadBusinessDetailsUrl + '/' + item.id, function (details) {
+                                    item.payCategories(details.payCategories);
+                                    item.leaveCategories(details.leaveCategories);
+                                    item.employees($.map(details.employees, function(emp) {
+                                        emp.name = ko.computed(function() {
+                                            return emp.firstName + ' ' + emp.surname;
+                                        });
+
+                                        return emp;
+                                    }));
+                                    item.detailsLoaded(true);
+                                    item.showDetails(true);
+                                });
+                            };
+                            return item;
+                        });
+                        model.businesses(businesses);
+                    }, 'json');
+                };
+
+                model.loadBusinesses();
+                return model;
+            };
+
+            var viewModel = kp.api.viewModel();
+            ko.applyBindings(viewModel);
+        }(kp, ko));
+    </script>
+}

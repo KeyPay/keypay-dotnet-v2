@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using (Html.BeginForm("SetApiKey", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Connect to the KeyPay API</legend>
+    </fieldset>
+    <div class="form-group">
+        <label class="control-label" for="ApiKey">API Key</label>
+        <input class="form-control" type="text" name="apikey" />
+    </div>
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" value="Connect" />
+    </div>
+}
