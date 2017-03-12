@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93365E33-3B92-4EA6-AB42-FFECBC504138}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KeyPay</RootNamespace>
+    <AssemblyName>KeyPay</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiFunctions\BaseFunction.cs" />
+    <Compile Include="ApiFunctions\CustomSerializer.cs" />
+    <Compile Include="ApiFunctions\V2\ABAFunction.cs" />
+    <Compile Include="ApiFunctions\V2\BusinessFunction.cs" />
+    <Compile Include="ApiFunctions\V2\DeductionCategoryFunction.cs" />
+    <Compile Include="ApiFunctions\V2\DocumentFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EarningsLineFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EmployeeDocumentFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EmployeeFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EmployeeGroupFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EmployeePayRunFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EmployingEntityFunction.cs" />
+    <Compile Include="ApiFunctions\V2\OpeningBalancesFunction.cs" />
+    <Compile Include="ApiFunctions\V2\LeaveAllowanceFunction.cs" />
+    <Compile Include="ApiFunctions\V2\LeaveBalanceFunction.cs" />
+    <Compile Include="ApiFunctions\V2\LeaveCategoryFunction.cs" />
+    <Compile Include="ApiFunctions\V2\LeaveAccruedFunction.cs" />
+    <Compile Include="ApiFunctions\V2\LocationFunction.cs" />
+    <Compile Include="ApiFunctions\V2\NotesFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayCategoryFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PaygAdjustmentsFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PaymentSummaryFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRateTemplateFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRunDeductionFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRunDetailsFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRunFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRunTotalFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayScheduleFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PaySlipFunction.cs" />
+    <Compile Include="ApiFunctions\V2\ReportFunction.cs" />
+    <Compile Include="ApiFunctions\V2\SuperAdjustmentsFunction.cs" />
+    <Compile Include="ApiFunctions\V2\TimesheetFunction.cs" />
+    <Compile Include="ApiFunctions\V2\UserFunction.cs" />
+    <Compile Include="ApiFunctions\V2\WorkTypeFunction.cs" />
+    <Compile Include="Auth\ApiKeyAuthenticationDetails.cs" />
+    <Compile Include="Auth\AuthenticationDetails.cs" />
+    <Compile Include="DomainModels\V2\Business\ABAModel.cs" />
+    <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
+    <Compile Include="DomainModels\V2\PayRun\EarningsLineRequest.cs" />
+    <Compile Include="DomainModels\V2\Employee\EmployeeNoteModel.cs" />
+    <Compile Include="DomainModels\V2\Employee\OpeningBalancesDeductionLine.cs" />
+    <Compile Include="DomainModels\V2\Employee\OpeningBalancesEarningsLine.cs" />
+    <Compile Include="DomainModels\V2\Employee\OpeningBalancesLeaveBalance.cs" />
+    <Compile Include="DomainModels\V2\PayRun\LeaveAccrual.cs" />
+    <Compile Include="DomainModels\V2\Business\PayRateTemplatePayCategoryModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunEarningsLineModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\DeductionModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PaygAdjustmentModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunTotalModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipBankPaymentModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipDeductionModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipEarningsLineModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipExpenseModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipLeaveModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipPaygAdjustmentModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipSuperAdjustmentModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipSuperPaymentModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipYearToDateEarningsBreakdownModel.cs" />
+    <Compile Include="DomainModels\V2\Report\ActivityReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Report\BirthdayReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Business\BusinessModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\DeductionCategoryGridModel.cs" />
+    <Compile Include="DomainModels\V2\Business\DeductionCategoryModel.cs" />
+    <Compile Include="DomainModels\V2\Report\DeductionsReportDeductionAmountModel.cs" />
+    <Compile Include="DomainModels\V2\Report\DeductionsReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\DeductionsResponse.cs" />
+    <Compile Include="DomainModels\V2\Report\DetailedActivityReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\DocumentFile.cs" />
+    <Compile Include="DomainModels\V2\Business\DocumentModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\EarningsLineResponse.cs" />
+    <Compile Include="DomainModels\V2\Business\EmployeeAgreement.cs" />
+    <Compile Include="DomainModels\V2\Report\EmployeeDetailsReportField.cs" />
+    <Compile Include="DomainModels\V2\Employee\EmployeeDocumentModel.cs" />
+    <Compile Include="DomainModels\V2\Business\EmployeeGroupModel.cs" />
+    <Compile Include="DomainModels\V2\Employee\EmployeeModel.cs" />
+    <Compile Include="DomainModels\V2\Business\EmployingEntityModel.cs" />
+    <Compile Include="DomainModels\V2\FileUploadModel.cs" />
+    <Compile Include="DomainModels\V2\Employee\OpeningBalancesModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\LeaveAccrualResponse.cs" />
+    <Compile Include="DomainModels\V2\Employee\LeaveAllowanceModel.cs" />
+    <Compile Include="DomainModels\V2\Employee\LeaveBalanceModel.cs" />
+    <Compile Include="DomainModels\V2\Report\LeaveBalancesReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\LeaveCategoryGridModel.cs" />
+    <Compile Include="DomainModels\V2\Business\LeaveCategoryModel.cs" />
+    <Compile Include="DomainModels\V2\Report\LeaveHistoryReportDetailModel.cs" />
+    <Compile Include="DomainModels\V2\Report\LeaveHistoryReportGroupModel.cs" />
+    <Compile Include="DomainModels\V2\Report\LeaveLiabilityReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\LocationEditModel.cs" />
+    <Compile Include="DomainModels\V2\Business\LocationModel.cs" />
+    <Compile Include="DomainModels\V2\Report\MLCSuperReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Report\PayCategoriesReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Business\PayCategoryModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PaygAdjustmentResponse.cs" />
+    <Compile Include="DomainModels\V2\Report\PaygPaymentSummaryModel.cs" />
+    <Compile Include="DomainModels\V2\Report\PaygReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Report\PaymentHistoryReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Business\PayRateTemplateModel.cs" />
+    <Compile Include="DomainModels\V2\Report\PayrollExemptReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Custom\PayrollExport.cs" />
+    <Compile Include="DomainModels\V2\Report\PayrollTaxReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunGrandTotalModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunGridModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunPayCategorySelectModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunTotalGridModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunTotalResponse.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunTotalSummaryModel.cs" />
+    <Compile Include="DomainModels\V2\Business\PayScheduleModel.cs" />
+    <Compile Include="DomainModels\V2\PaySlip\PaySlipModel.cs" />
+    <Compile Include="DomainModels\V2\Report\RosterLiveLeaveAccruals.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SalarySacrificeCategoryGridModel.cs" />
+    <Compile Include="DomainModels\V2\SingleSignOnModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SubmitDeductionModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SubmitDeductionsRequest.cs" />
+    <Compile Include="DomainModels\V2\Employee\SubmitEmployeeLeaveAllowancesRequest.cs" />
+    <Compile Include="DomainModels\V2\Business\SubmitTimesheetRequest.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SuperAccrualExportModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SuperAdjustmentModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SuperAdjustmentResponse.cs" />
+    <Compile Include="DomainModels\V2\Report\SuperContributionsReportExportModel.cs" />
+    <Compile Include="DomainModels\V2\Custom\TimesheetArray.cs" />
+    <Compile Include="DomainModels\V2\Business\TimesheetBreakModel.cs" />
+    <Compile Include="DomainModels\V2\Business\TimesheetModel.cs" />
+    <Compile Include="DomainModels\V2\Custom\TimesheetPayReturnArray.cs" />
+    <Compile Include="DomainModels\V2\UserModel.cs" />
+    <Compile Include="DomainModels\V2\Report\WorkersCompReportGridModel.cs" />
+    <Compile Include="DomainModels\V2\Business\WorkTypeModel.cs" />
+    <Compile Include="Enums\LeaveReportDisplayEnum.cs" />
+    <Compile Include="Exceptions\KeyPayHttpException.cs" />
+    <Compile Include="Exceptions\TokenExpiredException.cs" />
+    <Compile Include="ApiRequestExecutor.cs" />
+    <Compile Include="KeyPayApiV2Client.cs" />
+    <Compile Include="Auth\OAuth2AuthorizationRequestHeaderAuthenticator.cs" />
+    <Compile Include="Auth\OAuthAuthenticationDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

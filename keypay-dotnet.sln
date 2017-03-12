@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keypay-dotnet", "src\keypay-dotnet\keypay-dotnet.csproj", "{93365E33-3B92-4EA6-AB42-FFECBC504138}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93365E33-3B92-4EA6-AB42-FFECBC504138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93365E33-3B92-4EA6-AB42-FFECBC504138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93365E33-3B92-4EA6-AB42-FFECBC504138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93365E33-3B92-4EA6-AB42-FFECBC504138}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
