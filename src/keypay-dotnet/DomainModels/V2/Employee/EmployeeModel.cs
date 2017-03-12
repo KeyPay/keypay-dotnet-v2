@@ -42,6 +42,7 @@ namespace KeyPay.DomainModels.V2.Employee
         public bool HELPDebt { get; set; }
         public bool AFSDebt { get; set; }
         public bool IsExemptFromFloodLevy { get; set; }
+        public string HasApprovedWorkingHolidayVisa { get; set; }
         public bool HasWithholdingVariation { get; set; }
         public decimal? TaxVariation { get; set; }
         public DateTime? DateTaxFileDeclarationSigned { get; set; }

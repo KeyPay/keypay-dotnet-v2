@@ -8,5 +8,6 @@
         public string UnitType { get; set; }
         public decimal HoursPerYear { get; set; }
         public bool AutomaticallyAccrues { get; set; }
+        public decimal LeaveLoading { get; set; }
     }
 }

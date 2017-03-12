@@ -1,6 +1,6 @@
 namespace KeyPay.DomainModels.V2.PayRun
 {
-    public class LeaveAccrual
+    public class LeaveAccrualModel
     {
         public string LeaveCategoryName { get; set; }
         public string LeaveCategoryId { get; set; }

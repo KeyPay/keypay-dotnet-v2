@@ -10,6 +10,10 @@ namespace KeyPay.DomainModels.V2.PayRun
         public decimal SFSSAmount { get; set; }
         public decimal HelpAmount { get; set; }
         public decimal SuperContribution { get; set; }
-        public decimal SalarySacrificedAmounts { get; set; }
+        public decimal PreTaxDeductionAmount { get; set; }
+        public decimal PostTaxDeductionAmount { get; set; }
+        public decimal EmployerContribution { get; set; }
+        public decimal EmployeeExpensesTotal { get; set; }
+        public decimal EmployerLiabilitiesTotal { get; set; }
     }
 }

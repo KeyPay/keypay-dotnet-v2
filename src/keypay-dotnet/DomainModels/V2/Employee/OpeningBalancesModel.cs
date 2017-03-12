@@ -11,8 +11,11 @@ namespace KeyPay.DomainModels.V2.Employee
         public decimal? SfssAmount { get; set; }
         public decimal? HelpAmount { get; set; }
         public decimal? SuperContribution { get; set; }
-        public List<OpeningBalancesLeaveBalance> LeaveBalances { get; set; }
-        public List<OpeningBalancesEarningsLine> EarningsLines { get; set; }
-        public List<OpeningBalancesDeductionLine> Deductions { get; set; }
+        public decimal? EmployerContribution { get; set; }
+        public List<OpeningBalancesLeaveBalanceModel> LeaveBalances { get; set; }
+        public List<OpeningBalancesEarningsModel> EarningsLines { get; set; }
+        public List<OpeningBalancesDeductionModel> Deductions { get; set; }
+        public List<OpeningBalancesLiabilityModel> EmployerLiabilities { get; set; }
+        public int? FinancialYearStartingYear { get; set; }
     }
 }

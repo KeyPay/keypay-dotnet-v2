@@ -1,4 +1,6 @@
-﻿namespace KeyPay.DomainModels.V2.Business
+﻿using System.Collections.Generic;
+
+namespace KeyPay.DomainModels.V2.Business
 {
     public class LocationModel
     {
@@ -12,5 +14,6 @@
         public bool IsGlobal { get; set; }
         public bool IsRollupReportingLocation { get; set; }
         public string GeneralLedgerMappingCode { get; set; }
+        public IList<int> DefaultShiftConditionIds { get; set; }
     }
 }

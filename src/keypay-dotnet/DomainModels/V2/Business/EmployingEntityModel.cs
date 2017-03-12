@@ -4,7 +4,7 @@ namespace KeyPay.DomainModels.V2.Business
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ABN { get; set; }        
+        public string ABN { get; set; }
         public string ContactName { get; set; }
         public string SignatoryName { get; set; }
         public string ContactEmailAddress { get; set; }

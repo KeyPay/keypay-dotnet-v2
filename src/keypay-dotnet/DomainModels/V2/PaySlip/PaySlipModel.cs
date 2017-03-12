@@ -18,6 +18,7 @@ namespace KeyPay.DomainModels.V2.PaySlip
         public string EmployeePostalSuburbName { get; set; }
         public string EmployeePostalSuburbPostcode { get; set; }
         public string EmployeePostalSuburbState { get; set; }
+        public bool IsPublished { get; set; }
 
         public List<PaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public List<PaySlipLeaveModel> AccruedLeave { get; set; }

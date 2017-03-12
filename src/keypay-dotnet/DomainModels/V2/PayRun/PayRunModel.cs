@@ -18,5 +18,8 @@ namespace KeyPay.DomainModels.V2.PayRun
         /// AllOutstanding
         /// </summary>
         public string TimesheetImportOption { get; set; }
+        public bool PaySlipsPublished { get; set; }
+        public string Notation { get; set; }
+        public string ExternalId { get; set; }
     }
 }

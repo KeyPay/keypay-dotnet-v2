@@ -6,10 +6,10 @@ namespace KeyPay.DomainModels.V2.PayRun
     {
         public EarningsLineResponse()
         {
-            EarningsLines = new Dictionary<string, List<PayRunEarningsLineModel>>();
+            EarningsLines = new Dictionary<string, List<EarningsLineModel>>();
         }
 
         public int PayRunId { get; set; }
-        public Dictionary<string, List<PayRunEarningsLineModel>> EarningsLines { get; set; }       
+        public Dictionary<string, List<EarningsLineModel>> EarningsLines { get; set; }       
     }
 }

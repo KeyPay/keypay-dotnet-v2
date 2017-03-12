@@ -11,5 +11,6 @@ namespace KeyPay.DomainModels.V2.PaySlip
         public string Notes { get; set; }
         public decimal GrossEarnings { get; set; }
         public decimal TaxableEarnings { get; set; }
+        public string LocationName { get; set; }
     }
 }

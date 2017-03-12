@@ -1,4 +1,6 @@
-﻿namespace KeyPay.DomainModels.V2.Business
+﻿using KeyPay.Enums;
+
+namespace KeyPay.DomainModels.V2.Business
 {
     public class PayScheduleModel
     {
@@ -10,6 +12,6 @@
         public string ExternalId { get; set; }
         public string Source { get; set; }
         public int? AbaDetailsId { get; set; }
-        public string EmployeeSelectionStrategy { get; set; }
+        public PayRunEmployeeSelectionStrategy EmployeeSelectionStrategy { get; set; }
     }
 }

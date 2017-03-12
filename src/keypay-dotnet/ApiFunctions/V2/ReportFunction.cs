@@ -52,7 +52,7 @@ namespace KeyPay.ApiFunctions.V2
 
         public List<LeaveBalancesReportExportModel> LeaveBalances(int businessId, int locationId = 0, int leaveTypeId = 0, bool useDefaultLocation = false, int? employingEntityId = 0)
         {
-            var groupBy = useDefaultLocation ? LeaveReportDisplayEnum.DefaultLocation : LeaveReportDisplayEnum.AccrualLocation;
+            var groupBy = useDefaultLocation ? LeaveReportDisplay.DefaultLocation : LeaveReportDisplay.AccrualLocation;
             return ApiRequest<List<LeaveBalancesReportExportModel>>(string.Format("/business/{0}/report/leavebalances?locationId={1}&leaveTypeId={2}&groupBy={3}&employingEntityId={4}", businessId, locationId, leaveTypeId, groupBy, employingEntityId));
         }
 

@@ -9,9 +9,9 @@ namespace KeyPay.ApiFunctions.V2
         {
         }
 
-        public PayRunTotalSummaryModel Get(int businessId, int payRunId)
+        public PayRunDetailsModel Get(int businessId, int payRunId)
         {
-            return ApiRequest<PayRunTotalSummaryModel>("/business/" + businessId + "/payrun/" + payRunId + "/details");
+            return ApiRequest<PayRunDetailsModel>("/business/" + businessId + "/payrun/" + payRunId + "/details");
         }
     }
 }
