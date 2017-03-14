@@ -191,6 +191,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="keypay-dotnet.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
