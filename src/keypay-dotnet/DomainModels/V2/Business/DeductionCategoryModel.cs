@@ -12,6 +12,6 @@ namespace KeyPay.DomainModels.V2.Business
         public SGCCalculationImpact SGCCalculationImpact { get; set; }
         public string PaymentSummaryClassification { get; set; }
         public string ExpenseGeneralLedgerMappingCode { get; set; }
-        public string LiabilityGeneralLedgerMappingCode { get; set; }        
+        public string LiabilityGeneralLedgerMappingCode { get; set; }
     }
 }

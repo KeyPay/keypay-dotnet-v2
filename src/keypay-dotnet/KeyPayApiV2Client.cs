@@ -20,6 +20,7 @@ namespace KeyPay
             User = new UserFunction(api);
             PayRateTemplates = new PayRateTemplateFunction(api);
             DeductionCategory = new DeductionCategoryFunction(api);
+            ExpenseCategory = new ExpenseCategoryFunction(api);
             WorkType = new WorkTypeFunction(api);
             Document = new DocumentFunction(api);
             EmployeeGroup = new EmployeeGroupFunction(api);
@@ -40,6 +41,7 @@ namespace KeyPay
         public TimesheetFunction Timesheet { get; }
         public PayRateTemplateFunction PayRateTemplates { get; }
         public DeductionCategoryFunction DeductionCategory { get; }
+        public ExpenseCategoryFunction ExpenseCategory { get; }
         public EmployeeGroupFunction EmployeeGroup { get; }
         public DocumentFunction Document { get; }
         public EmployingEntityFunction EmployingEntity { get; }
