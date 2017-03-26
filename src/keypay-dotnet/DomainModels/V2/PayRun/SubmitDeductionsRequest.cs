@@ -1,18 +1,14 @@
 using System.Collections.Generic;
+using KeyPay.Enums;
 
 namespace KeyPay.DomainModels.V2.PayRun
 {
     public class SubmitDeductionsRequest 
     {
-        public SubmitDeductionsRequest()
-        {
-            EmployeeIdType = "standard";
-            DeductionCategoryIdType = "standard";
-        }
         public int PayRunId { get; set; }
         public bool ReplaceExisting { get; set; }
-        public string EmployeeIdType { get; set; }
-        public string DeductionCategoryIdType { get; set; }
+        public IdType EmployeeIdType { get; set; }
+        public IdType DeductionCategoryIdType { get; set; }
         public bool SuppressCalculations { get; set; }
         public Dictionary<string, List<SubmitDeductionModel>> Deductions { get; set; }
     }
