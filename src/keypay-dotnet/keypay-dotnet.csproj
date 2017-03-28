@@ -71,6 +71,7 @@
     <Compile Include="ApiFunctions\V2\PaygAdjustmentsFunction.cs" />
     <Compile Include="ApiFunctions\V2\PaymentSummaryFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRateTemplateFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRunExpenseFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRunDeductionFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRunDetailsFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRunFunction.cs" />
@@ -98,10 +99,13 @@
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLeaveBalanceModel.cs" />
     <Compile Include="DomainModels\V2\Business\PayRateTemplatePayCategoryModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\DeductionModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\ExpenseModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\ExpensesResponse.cs" />
     <Compile Include="DomainModels\V2\PayRun\LeaveAccrualModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\PaygAdjustmentModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\PayRunTotalDetailsModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\PayRunTotalModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\SubmitExpensesRequest.cs" />
     <Compile Include="DomainModels\V2\PaySlip\PaySlipBankPaymentModel.cs" />
     <Compile Include="DomainModels\V2\PaySlip\PaySlipDeductionModel.cs" />
     <Compile Include="DomainModels\V2\PaySlip\PaySlipEarningsLineModel.cs" />
