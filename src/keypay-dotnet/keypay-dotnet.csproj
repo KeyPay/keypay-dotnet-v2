@@ -137,6 +137,7 @@
     <Compile Include="DomainModels\V2\PayRun\LeaveAccrualResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\LeaveAllowanceModel.cs" />
     <Compile Include="DomainModels\V2\Employee\LeaveBalanceModel.cs" />
+    <Compile Include="DomainModels\V2\Report\GrossToNetReportExportModel.cs" />
     <Compile Include="DomainModels\V2\Report\LeaveBalancesReportExportModel.cs" />
     <Compile Include="DomainModels\V2\Business\LeaveCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Report\LeaveHistoryReportDetailModel.cs" />
