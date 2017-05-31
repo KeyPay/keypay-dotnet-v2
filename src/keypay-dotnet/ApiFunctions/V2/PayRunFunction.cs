@@ -15,6 +15,7 @@ namespace KeyPay.ApiFunctions.V2
             EarningsLines = new EarningsLineFunction(api);
             Details = new PayRunDetailsFunction(api);
             Deductions = new PayRunDeductionFunction(api);
+            Expenses = new PayRunExpenseFunction(api);
             PaygAdjustments = new PaygAdjustmentsFunction(api);
             SuperAdjustments = new SuperAdjustmentsFunction(api);
         }
@@ -25,6 +26,7 @@ namespace KeyPay.ApiFunctions.V2
         public EarningsLineFunction EarningsLines { get; set; }
         public PayRunDetailsFunction Details { get; set; }
         public PayRunDeductionFunction Deductions { get; set; }
+        public PayRunExpenseFunction Expenses { get; set; }
         public PaygAdjustmentsFunction PaygAdjustments { get; set; }
         public SuperAdjustmentsFunction SuperAdjustments { get; set; }
 

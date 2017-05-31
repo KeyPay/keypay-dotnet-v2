@@ -151,5 +151,20 @@ namespace KeyPay.ApiFunctions.V2
             var url = string.Format("/business/{0}/report/leaveliability?locationId={1}&asAtDate={2:yyyy-MM-dd}&leaveTypeId={3}&includeApprovedLeave={4}", businessId, locationId, asAtDate, leaveTypeId, includeApprovedLeave);
             return ApiRequest<List<LeaveLiabilityReportExportModel>>(url);
         }
+
+        public List<GrossToNetReportExportModel> GrossToNet(int businessId, DateTime fromDate, DateTime toDate, int payScheduleId = 0, int locationId = 0, int[] payCategoryIds = null, int employeeId = 0, int? employingEntityId = null)
+        {
+            var employingEntityFilter = employingEntityId.HasValue ? "&employingEntityId=" + employingEntityId.Value : "";
+            var payCategoryFilter = new StringBuilder();
+            if (payCategoryIds != null)
+            {
+                foreach (var payCategoryId in payCategoryIds)
+                {
+                    payCategoryFilter.Append($"&payCategoryIds={payCategoryId}");
+                }
+            }
+            var url = string.Format("/business/{0}/report/grosstonet?fromDate={1:yyyy-MM-dd}&toDate={2:yyyy-MM-dd}&payScheduleId={3}&locationId={4}&employeeId={5}{6}{7}", businessId, fromDate, toDate, payScheduleId, locationId, employeeId, employingEntityFilter, payCategoryFilter);
+            return ApiJsonRequest<List<GrossToNetReportExportModel>>(url);
+        }
     }
 }
