@@ -38,5 +38,10 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiRequest<SingleSignOnModel>(string.Format("/business/{0}/singlesignon", id), Method.POST);
         }
+
+        public EntitlementsModel Entitlements(int id)
+        {
+            return ApiRequest<EntitlementsModel>(string.Format("/business/{0}/entitlements", id));
+        }
     }
 }
