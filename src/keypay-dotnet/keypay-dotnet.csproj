@@ -87,6 +87,8 @@
     <Compile Include="Auth\AuthenticationDetails.cs" />
     <Compile Include="DomainModels\V2\Business\ABAModel.cs" />
     <Compile Include="DomainModels\V2\Business\EmployeeFilterModel.cs" />
+    <Compile Include="DomainModels\V2\Business\EntitlementFeatureModel.cs" />
+    <Compile Include="DomainModels\V2\Business\EntitlementsModel.cs" />
     <Compile Include="DomainModels\V2\Business\ExpenseCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceTaxCodeModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />

@@ -23,5 +23,7 @@ namespace KeyPay.DomainModels.V2.Business
         public string Suburb { get; set; }
         public string PostCode { get; set; }
         public string State { get; set; }
+        public string WhiteLabelName { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }
