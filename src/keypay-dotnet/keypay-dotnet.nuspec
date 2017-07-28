@@ -11,7 +11,7 @@
     <iconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .NET library for the KeyPay API</description>
-    <releaseNotes>Added fields on BusinessModel. Added Business Entitlements endpoint. Update SubmitDeductionModel.</releaseNotes>
+    <releaseNotes>Changed boolean fields in EmployeeModel so that it can deal with incomplete employees</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>keypay yourpayroll api payroll</tags>
     <dependencies>

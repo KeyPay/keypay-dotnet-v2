@@ -35,15 +35,15 @@ namespace KeyPay.DomainModels.V2.Employee
         public string EmployingEntityABN { get; set; }
         public string EmploymentType { get; set; }
         public string PreviousSurname { get; set; }
-        public bool AustralianResident { get; set; }
-        public bool ClaimTaxFreeThreshold { get; set; }
-        public bool SeniorsTaxOffset { get; set; }
-        public bool OtherTaxOffset { get; set; }
-        public bool HELPDebt { get; set; }
-        public bool AFSDebt { get; set; }
-        public bool IsExemptFromFloodLevy { get; set; }
+        public bool? AustralianResident { get; set; }
+        public bool? ClaimTaxFreeThreshold { get; set; }
+        public bool? SeniorsTaxOffset { get; set; }
+        public bool? OtherTaxOffset { get; set; }
+        public bool? HELPDebt { get; set; }
+        public bool? AFSDebt { get; set; }
+        public bool? IsExemptFromFloodLevy { get; set; }
         public string HasApprovedWorkingHolidayVisa { get; set; }
-        public bool HasWithholdingVariation { get; set; }
+        public bool? HasWithholdingVariation { get; set; }
         public decimal? TaxVariation { get; set; }
         public DateTime? DateTaxFileDeclarationSigned { get; set; }
         public DateTime? DateTaxFileDeclarationReported { get; set; }
@@ -55,13 +55,13 @@ namespace KeyPay.DomainModels.V2.Employee
         public decimal? Rate { get; set; }
         public string RateUnit { get; set; }
         public decimal? HoursPerWeek { get; set; }
-        public bool AutomaticallyPayEmployee { get; set; }
+        public bool? AutomaticallyPayEmployee { get; set; }
         public string LeaveTemplate { get; set; }
         public string PayRateTemplate { get; set; }
         public string PayConditionRuleSet { get; set; }
         public string EmploymentAgreement { get; set; }
         public string IsEnabledForTimesheets { get; set; }
-        public bool IsExemptFromPayrollTax { get; set; }
+        public bool? IsExemptFromPayrollTax { get; set; }
         public string Locations { get; set; }
         public string WorkTypes { get; set; }
         public string EmergencyContact1_Name { get; set; }
