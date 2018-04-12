@@ -89,14 +89,17 @@ namespace KeyPay.DomainModels.V2.Employee
         public string BankAccount3_AccountName { get; set; }
         public decimal? BankAccount3_AllocatedPercentage { get; set; }
         public decimal? BankAccount3_FixedAmount { get; set; }
+        public string SuperFund1_ProductCode { get; set; }
         public string SuperFund1_FundName { get; set; }
         public string SuperFund1_MemberNumber { get; set; }
         public decimal? SuperFund1_AllocatedPercentage { get; set; }
         public decimal? SuperFund1_FixedAmount { get; set; }
+        public string SuperFund2_ProductCode { get; set; }
         public string SuperFund2_FundName { get; set; }
         public string SuperFund2_MemberNumber { get; set; }
         public decimal? SuperFund2_AllocatedPercentage { get; set; }
         public decimal? SuperFund2_FixedAmount { get; set; }
+        public string SuperFund3_ProductCode { get; set; }
         public string SuperFund3_FundName { get; set; }
         public string SuperFund3_MemberNumber { get; set; }
         public decimal? SuperFund3_AllocatedPercentage { get; set; }
