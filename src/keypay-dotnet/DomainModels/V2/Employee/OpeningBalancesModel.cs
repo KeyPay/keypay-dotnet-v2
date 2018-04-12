@@ -16,6 +16,8 @@ namespace KeyPay.DomainModels.V2.Employee
         public List<OpeningBalancesEarningsModel> EarningsLines { get; set; }
         public List<OpeningBalancesDeductionModel> Deductions { get; set; }
         public List<OpeningBalancesLiabilityModel> EmployerLiabilities { get; set; }
+        public OpeningBalancesEtpModel EtpTypeR { get; set; }
+        public OpeningBalancesEtpModel EtpTypeO { get; set; }
         public int? FinancialYearStartingYear { get; set; }
     }
 }

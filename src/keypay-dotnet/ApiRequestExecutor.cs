@@ -69,7 +69,7 @@ namespace KeyPay
                 throw resp.ErrorException;
             if (resp.StatusCode == HttpStatusCode.Unauthorized)
                 throw new TokenExpiredException(resp.StatusDescription);
-            if (resp.StatusCode == HttpStatusCode.InternalServerError || resp.StatusCode == HttpStatusCode.BadRequest)
+            if (resp.StatusCode >= HttpStatusCode.BadRequest && resp.StatusCode <= HttpStatusCode.InternalServerError)
                 throw new KeyPayHttpException(resp.StatusCode, resp.StatusDescription, requestMethod, requestResource, resp.Content);
         }
 

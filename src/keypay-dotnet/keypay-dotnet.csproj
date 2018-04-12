@@ -57,6 +57,7 @@
     <Compile Include="ApiFunctions\V2\EmployeeDocumentFunction.cs" />
     <Compile Include="ApiFunctions\V2\EmployeeFunction.cs" />
     <Compile Include="ApiFunctions\V2\EmployeeGroupFunction.cs" />
+    <Compile Include="ApiFunctions\V2\EmployeeLeaveAllowanceFunction.cs" />
     <Compile Include="ApiFunctions\V2\EmployeePayRunFunction.cs" />
     <Compile Include="ApiFunctions\V2\EmployingEntityFunction.cs" />
     <Compile Include="ApiFunctions\V2\ExpenseCategoryFunction.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="DomainModels\V2\Business\ExpenseCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceTaxCodeModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
+    <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineRequest.cs" />

@@ -10,14 +10,14 @@ namespace KeyPay.ApiFunctions.V2
         {
         }
 
-        public Dictionary<string, List<LeaveAllowanceModel>> List(int businessId, int employeeId)
+        public Dictionary<string, List<LeaveAllowanceModel>> List(int businessId)
         {
-            return ApiRequest<Dictionary<string, List<LeaveAllowanceModel>>>("/business/" + businessId + "/employee/" + employeeId + "/leaveallowances");
+            return ApiRequest<Dictionary<string, List<LeaveAllowanceModel>>>("/business/" + businessId + "/leaveallowances");
         }
 
-        public void Update(int businessId,int employeeId,  SubmitEmployeeLeaveAllowancesRequest leaveAllowances)
+        public void Update(int businessId, SubmitEmployeeLeaveAllowancesRequest leaveAllowances)
         {
-            ApiRequest<object, SubmitEmployeeLeaveAllowancesRequest>("/business/" + businessId + "/employee/" + employeeId + "/leaveallowances", leaveAllowances, Method.POST);
+            ApiRequest<object, SubmitEmployeeLeaveAllowancesRequest>("/business/" + businessId + "/leaveallowances", leaveAllowances, Method.PUT);
         }
     }
 }

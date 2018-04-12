@@ -8,7 +8,7 @@ namespace KeyPay.ApiFunctions.V2
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api)
         {
-            LeaveAllowance = new LeaveAllowanceFunction(api);
+            LeaveAllowance = new EmployeeLeaveAllowanceFunction(api);
             OpeningBalances = new OpeningBalancesFunction(api);
             Notes = new NotesFunction(api);
             LeaveBalances = new LeaveBalanceFunction(api);
@@ -16,7 +16,7 @@ namespace KeyPay.ApiFunctions.V2
             PayRuns = new EmployeePayRunFunction(api);
         }
 
-        public LeaveAllowanceFunction LeaveAllowance { get; set; }
+        public EmployeeLeaveAllowanceFunction LeaveAllowance { get; set; }
         public LeaveBalanceFunction LeaveBalances { get; set; }
         public OpeningBalancesFunction OpeningBalances { get; set; }
         public NotesFunction Notes { get; set; }
@@ -43,7 +43,7 @@ namespace KeyPay.ApiFunctions.V2
 
         public EmployeeModel Update(int businessId, EmployeeModel model)
         {
-            return ApiRequest<EmployeeModel, EmployeeModel>("/business/" + businessId + "/employee/" + model.Id, model, Method.PUT);
+            return ApiRequest<EmployeeModel, EmployeeModel>("/business/" + businessId + "/employee/unstructured/" + model.Id, model, Method.PUT);
         }
 
         public EmployeeModel GetByExternalReferenceId(int businessId, string externalReferenceId, string source)
@@ -56,13 +56,17 @@ namespace KeyPay.ApiFunctions.V2
             return ApiRequest<EmployeeModel>(string.Format("/business/{0}/employee/unstructured/?externalId={1}", businessId, externalId));
         }
 
-        public IList<EmployeeModel> Query(int businessId, string oDataFilterExpression, int? payScheduleId = null, int page = 1)
+        public IList<EmployeeModel> Query(int businessId, string oDataFilterExpression, int? payScheduleId = null, int? locationId = null, int page = 1, int pageSize = 100)
         {
             var payScheduleFilter = payScheduleId.HasValue 
-                ? string.Format("payScheduleId={0}&", payScheduleId.Value) 
+                ? $"&payScheduleId={payScheduleId.Value}"
                 : "";
-            var oDataFilter = string.IsNullOrEmpty(oDataFilterExpression) ? string.Empty : string.Format("&$filter={0}", oDataFilterExpression);
-            return ApiRequest<List<EmployeeModel>>(string.Format("/business/{0}/employee/unstructured/?{3}$skip={2}", businessId, oDataFilter, page * 100, payScheduleFilter));
+            var locationFilter= locationId.HasValue 
+                ? $"&locationId={locationId.Value}"
+                : "";
+            var oDataFilter = string.IsNullOrEmpty(oDataFilterExpression) ? string.Empty : $"&$filter={oDataFilterExpression}";
+            return ApiRequest<List<EmployeeModel>>(
+                $"/business/{businessId}/employee/unstructured/?$skip={page-1*pageSize}&top={pageSize}{payScheduleFilter}{locationFilter}{oDataFilter}");
         }
     }
 }
