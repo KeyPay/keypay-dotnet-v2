@@ -11,12 +11,12 @@
     <iconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .NET library for the KeyPay API</description>
-    <releaseNotes>Allow promo code to be specified when adding a business</releaseNotes>
+    <releaseNotes>Update versions of dependencies. Allow promo code to be specified when adding a business</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>keypay yourpayroll api payroll</tags>
     <dependencies>
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="RestSharp" version="105.2.3" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
+        <dependency id="RestSharp" version="106.2.1" />
     </dependencies>
   </metadata>
 </package>
