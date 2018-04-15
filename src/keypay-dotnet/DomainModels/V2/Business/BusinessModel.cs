@@ -14,7 +14,6 @@ namespace KeyPay.DomainModels.V2.Business
         public string ContactFaxNumber { get; set; }
         public string ExternalId { get; set; }
         public decimal StandardHoursPerDay { get; set; }
-        public bool IntegratedTimesheetsEnabled { get; set; }
         public string JournalService { get; set; }
         public DayOfWeek EndOfWeek { get; set; }
         public int? InitialFinancialYearStart { get; set; }
@@ -25,5 +24,6 @@ namespace KeyPay.DomainModels.V2.Business
         public string State { get; set; }
         public string WhiteLabelName { get; set; }
         public DateTime DateCreated { get; set; }
+        public string PromoCode { get; set; }
     }
 }

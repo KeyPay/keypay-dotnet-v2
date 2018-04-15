@@ -11,7 +11,7 @@
     <iconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .NET library for the KeyPay API</description>
-    <releaseNotes>Better error handling, additional endpoints for leave allowances and fix issue with OData queries for employee data</releaseNotes>
+    <releaseNotes>Allow promo code to be specified when adding a business</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>keypay yourpayroll api payroll</tags>
     <dependencies>
