@@ -10,9 +10,11 @@ namespace KeyPay.ApiFunctions.V2
         public BusinessFunction(ApiRequestExecutor api) : base(api)
         {
             ABA = new ABAFunction(api);
+            JournalAccounts = new JournalAccountsFunction(api);
         }
 
         public ABAFunction ABA { get; set; }
+        public JournalAccountsFunction JournalAccounts { get; set; }
 
         public BusinessModel Create(BusinessModel model)
         {

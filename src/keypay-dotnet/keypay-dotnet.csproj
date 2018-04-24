@@ -65,6 +65,7 @@
     <Compile Include="ApiFunctions\V2\EmployeePayRunFunction.cs" />
     <Compile Include="ApiFunctions\V2\EmployingEntityFunction.cs" />
     <Compile Include="ApiFunctions\V2\ExpenseCategoryFunction.cs" />
+    <Compile Include="ApiFunctions\V2\JournalAccountsFunction.cs" />
     <Compile Include="ApiFunctions\V2\OpeningBalancesFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveAllowanceFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveBalanceFunction.cs" />
@@ -95,6 +96,8 @@
     <Compile Include="DomainModels\V2\Business\EntitlementFeatureModel.cs" />
     <Compile Include="DomainModels\V2\Business\EntitlementsModel.cs" />
     <Compile Include="DomainModels\V2\Business\ExpenseCategoryModel.cs" />
+    <Compile Include="DomainModels\V2\Business\JournalAccountBulkCreateModel.cs" />
+    <Compile Include="DomainModels\V2\Business\JournalAccountModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceTaxCodeModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
@@ -187,6 +190,7 @@
     <Compile Include="DomainModels\V2\Report\WorkersCompReportGridModel.cs" />
     <Compile Include="DomainModels\V2\Business\WorkTypeModel.cs" />
     <Compile Include="Enums\EmploymentType.cs" />
+    <Compile Include="Enums\ExternalAccountType.cs" />
     <Compile Include="Enums\FilterCombinationStrategy.cs" />
     <Compile Include="Enums\FilterOperator.cs" />
     <Compile Include="Enums\FilterType.cs" />
