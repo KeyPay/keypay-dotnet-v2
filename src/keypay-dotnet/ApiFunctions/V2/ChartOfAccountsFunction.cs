@@ -28,5 +28,10 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiRequest<ChartOfAccountsLocationGroupModel, ChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{chartOfAccounts.LocationId}", chartOfAccounts, Method.POST);
         }
+
+        public void DeleteLocation(int businessId, int locationId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.DELETE);
+        }
     }
 }
