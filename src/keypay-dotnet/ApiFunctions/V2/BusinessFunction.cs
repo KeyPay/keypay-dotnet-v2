@@ -11,10 +11,14 @@ namespace KeyPay.ApiFunctions.V2
         {
             ABA = new ABAFunction(api);
             JournalAccounts = new JournalAccountsFunction(api);
+            JournalServices = new JournalServicesFunction(api);
+            ChartOfAccounts = new ChartOfAccountsFunction(api);
         }
 
         public ABAFunction ABA { get; set; }
         public JournalAccountsFunction JournalAccounts { get; set; }
+        public JournalServicesFunction JournalServices { get; set; }
+        public ChartOfAccountsFunction ChartOfAccounts { get; set; }
 
         public BusinessModel Create(BusinessModel model)
         {

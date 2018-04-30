@@ -55,6 +55,7 @@
     <Compile Include="ApiFunctions\CustomSerializer.cs" />
     <Compile Include="ApiFunctions\V2\ABAFunction.cs" />
     <Compile Include="ApiFunctions\V2\BusinessFunction.cs" />
+    <Compile Include="ApiFunctions\V2\ChartOfAccountsFunction.cs" />
     <Compile Include="ApiFunctions\V2\DeductionCategoryFunction.cs" />
     <Compile Include="ApiFunctions\V2\DocumentFunction.cs" />
     <Compile Include="ApiFunctions\V2\EarningsLineFunction.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="ApiFunctions\V2\EmployingEntityFunction.cs" />
     <Compile Include="ApiFunctions\V2\ExpenseCategoryFunction.cs" />
     <Compile Include="ApiFunctions\V2\JournalAccountsFunction.cs" />
+    <Compile Include="ApiFunctions\V2\JournalServicesFunction.cs" />
     <Compile Include="ApiFunctions\V2\OpeningBalancesFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveAllowanceFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveBalanceFunction.cs" />
@@ -92,12 +94,15 @@
     <Compile Include="Auth\ApiKeyAuthenticationDetails.cs" />
     <Compile Include="Auth\AuthenticationDetails.cs" />
     <Compile Include="DomainModels\V2\Business\ABAModel.cs" />
+    <Compile Include="DomainModels\V2\Business\ChartOfAccountsLocationGroupModel.cs" />
+    <Compile Include="DomainModels\V2\Business\ChartOfAccountsModel.cs" />
     <Compile Include="DomainModels\V2\Business\EmployeeFilterModel.cs" />
     <Compile Include="DomainModels\V2\Business\EntitlementFeatureModel.cs" />
     <Compile Include="DomainModels\V2\Business\EntitlementsModel.cs" />
     <Compile Include="DomainModels\V2\Business\ExpenseCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalAccountBulkCreateModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalAccountModel.cs" />
+    <Compile Include="DomainModels\V2\Business\JournalServiceProviderModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceTaxCodeModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
