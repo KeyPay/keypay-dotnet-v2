@@ -22,5 +22,9 @@ namespace KeyPay.DomainModels.V2.Business
         public string ExternalId { get; set; }
         public int? AttachmentId { get; set; }
         public IList<string> ShiftConditionIds { get; set; }
+        public string WorkType { get; set; }
+        public string FullyQualifiedLocationName { get; set; }
+        public string Classification { get; set; }
+        public List<string> ShiftConditions { get; set; }
     }
 }

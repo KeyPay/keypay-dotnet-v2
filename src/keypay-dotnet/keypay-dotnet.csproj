@@ -87,6 +87,7 @@
     <Compile Include="ApiFunctions\V2\PayScheduleFunction.cs" />
     <Compile Include="ApiFunctions\V2\PaySlipFunction.cs" />
     <Compile Include="ApiFunctions\V2\ReportFunction.cs" />
+    <Compile Include="ApiFunctions\V2\RosterShiftFunction.cs" />
     <Compile Include="ApiFunctions\V2\SuperAdjustmentsFunction.cs" />
     <Compile Include="ApiFunctions\V2\TimesheetFunction.cs" />
     <Compile Include="ApiFunctions\V2\UserFunction.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsLocationGroupModel.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsModel.cs" />
     <Compile Include="DomainModels\V2\Business\EmployeeFilterModel.cs" />
+    <Compile Include="DomainModels\V2\Business\EmployeeRosterShiftModel.cs" />
     <Compile Include="DomainModels\V2\Business\EntitlementFeatureModel.cs" />
     <Compile Include="DomainModels\V2\Business\EntitlementsModel.cs" />
     <Compile Include="DomainModels\V2\Business\ExpenseCategoryModel.cs" />
@@ -104,6 +106,10 @@
     <Compile Include="DomainModels\V2\Business\JournalAccountModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceProviderModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceTaxCodeModel.cs" />
+    <Compile Include="DomainModels\V2\Business\RosterShiftFilterModel.cs" />
+    <Compile Include="DomainModels\V2\Business\RosterShiftGenerateTimesheetModel.cs" />
+    <Compile Include="DomainModels\V2\Business\RosterShiftMatchingResultModel.cs" />
+    <Compile Include="DomainModels\V2\Business\RosterShiftStubTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
@@ -205,6 +211,7 @@
     <Compile Include="Enums\LeaveReportDisplay.cs" />
     <Compile Include="Enums\PayRunEmployeeSelectionStrategy.cs" />
     <Compile Include="Enums\RateUnit.cs" />
+    <Compile Include="Enums\RosterShiftStatus.cs" />
     <Compile Include="Enums\SGCCalculationImpact.cs" />
     <Compile Include="Enums\WorkTypeMappingType.cs" />
     <Compile Include="Exceptions\KeyPayHttpException.cs" />
