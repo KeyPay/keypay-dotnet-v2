@@ -102,6 +102,7 @@
     <Compile Include="DomainModels\V2\Business\EntitlementFeatureModel.cs" />
     <Compile Include="DomainModels\V2\Business\EntitlementsModel.cs" />
     <Compile Include="DomainModels\V2\Business\ExpenseCategoryModel.cs" />
+    <Compile Include="DomainModels\V2\Business\IndividualTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalAccountBulkCreateModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalAccountModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceProviderModel.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="DomainModels\V2\Business\RosterShiftGenerateTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftMatchingResultModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftStubTimesheetModel.cs" />
+    <Compile Include="DomainModels\V2\Business\TimesheetShiftConditionModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
