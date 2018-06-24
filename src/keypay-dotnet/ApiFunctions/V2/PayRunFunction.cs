@@ -84,5 +84,10 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiJsonRequest(string.Format("/business/{0}/payrun/{1}/file/aba/{2}", businessId, payRunId, abaId));
         }
+
+        public string RemoveEmployee(int businessId, int payRunId, int employeeId)
+        {
+            return ApiJsonRequest(string.Format("/business/{0}/payrun/{1}/employee/{2}", businessId, payRunId, employeeId), Method.DELETE);
+        }
     }
 }
