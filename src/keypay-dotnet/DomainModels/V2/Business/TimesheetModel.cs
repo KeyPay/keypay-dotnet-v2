@@ -26,5 +26,6 @@ namespace KeyPay.DomainModels.V2.Business
         public string FullyQualifiedLocationName { get; set; }
         public string Classification { get; set; }
         public List<string> ShiftConditions { get; set; }
+        public string HiddenComments { get; set; }
     }
 }
