@@ -83,6 +83,7 @@
     <Compile Include="ApiFunctions\V2\PayRunDeductionFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRunDetailsFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRunFunction.cs" />
+    <Compile Include="ApiFunctions\V2\PayRunPaymentsFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayRunTotalFunction.cs" />
     <Compile Include="ApiFunctions\V2\PayScheduleFunction.cs" />
     <Compile Include="ApiFunctions\V2\PaySlipFunction.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\PayRunBankPaymentModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineRequest.cs" />
     <Compile Include="DomainModels\V2\Employee\EmployeeNoteModel.cs" />

@@ -18,6 +18,7 @@ namespace KeyPay.ApiFunctions.V2
             Expenses = new PayRunExpenseFunction(api);
             PaygAdjustments = new PaygAdjustmentsFunction(api);
             SuperAdjustments = new SuperAdjustmentsFunction(api);
+            Payments = new PayRunPaymentsFunction(api);
         }
 
         public PayRunTotalFunction Totals { get; set; }
@@ -29,6 +30,7 @@ namespace KeyPay.ApiFunctions.V2
         public PayRunExpenseFunction Expenses { get; set; }
         public PaygAdjustmentsFunction PaygAdjustments { get; set; }
         public SuperAdjustmentsFunction SuperAdjustments { get; set; }
+        public PayRunPaymentsFunction Payments { get; set; }
 
         public IList<PayRunModel> List(int businessId)
         {
@@ -49,7 +51,7 @@ namespace KeyPay.ApiFunctions.V2
         {
             ApiRequest("/business/" + businessId + "/payrun/" + payRunId + "/finalise",
                            new {payRunId, datePaid }, Method.POST);
-            
+
         }
 
         public void Unlock(int businessId, int payRunId, string comments)
