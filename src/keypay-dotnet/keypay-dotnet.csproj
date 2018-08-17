@@ -54,6 +54,7 @@
     <Compile Include="ApiFunctions\BaseFunction.cs" />
     <Compile Include="ApiFunctions\CustomSerializer.cs" />
     <Compile Include="ApiFunctions\V2\ABAFunction.cs" />
+    <Compile Include="ApiFunctions\V2\BusinessAccessFunction.cs" />
     <Compile Include="ApiFunctions\V2\BusinessFunction.cs" />
     <Compile Include="ApiFunctions\V2\ChartOfAccountsFunction.cs" />
     <Compile Include="ApiFunctions\V2\DeductionCategoryFunction.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Auth\ApiKeyAuthenticationDetails.cs" />
     <Compile Include="Auth\AuthenticationDetails.cs" />
     <Compile Include="DomainModels\V2\Business\ABAModel.cs" />
+    <Compile Include="DomainModels\V2\Business\BusinessAccessModel.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsLocationGroupModel.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsModel.cs" />
     <Compile Include="DomainModels\V2\Business\EmployeeFilterModel.cs" />
@@ -213,10 +215,15 @@
     <Compile Include="Enums\LeaveAllowanceUnit.cs" />
     <Compile Include="Enums\LeaveCategoryType.cs" />
     <Compile Include="Enums\LeaveReportDisplay.cs" />
+    <Compile Include="Enums\LocationRestrictionFilterTypeEnum.cs" />
     <Compile Include="Enums\PayRunEmployeeSelectionStrategy.cs" />
     <Compile Include="Enums\RateUnit.cs" />
+    <Compile Include="Enums\RelatedUserType.cs" />
+    <Compile Include="Enums\ReportAccessType.cs" />
+    <Compile Include="Enums\ReportEnum.cs" />
     <Compile Include="Enums\RosterShiftStatus.cs" />
     <Compile Include="Enums\SGCCalculationImpact.cs" />
+    <Compile Include="Enums\UserPermission.cs" />
     <Compile Include="Enums\WorkTypeMappingType.cs" />
     <Compile Include="Exceptions\KeyPayHttpException.cs" />
     <Compile Include="Exceptions\TokenExpiredException.cs" />
