@@ -72,7 +72,7 @@ namespace KeyPay.ApiFunctions.V2
 
         public ManagerLeaveEstimateModel Estimate(int businessId, int employeeId, DateTime fromDate, DateTime toDate, int leaveCategoryId)
         {
-            return ApiRequest<ManagerLeaveEstimateModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/balances?fromDate={fromDate.ToString("yyyy-MM-dd")}&toDate={toDate.ToString("yyyy-MM-dd")}&leaveCategoryId={leaveCategoryId}");
+            return ApiRequest<ManagerLeaveEstimateModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/estimate?fromDate={fromDate.ToString("yyyy-MM-dd")}&toDate={toDate.ToString("yyyy-MM-dd")}&leaveCategoryId={leaveCategoryId}");
         }
     }
 }

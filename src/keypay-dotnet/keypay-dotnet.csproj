@@ -69,6 +69,7 @@
     <Compile Include="ApiFunctions\V2\ExpenseCategoryFunction.cs" />
     <Compile Include="ApiFunctions\V2\JournalAccountsFunction.cs" />
     <Compile Include="ApiFunctions\V2\JournalServicesFunction.cs" />
+    <Compile Include="ApiFunctions\V2\LeaveRequestFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerLeaveRequestsFunction.cs" />
     <Compile Include="ApiFunctions\V2\OpeningBalancesFunction.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="DomainModels\V2\Business\RosterShiftStubTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Business\TimesheetShiftConditionModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
+    <Compile Include="DomainModels\V2\Employee\LeaveRequestResponseModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />

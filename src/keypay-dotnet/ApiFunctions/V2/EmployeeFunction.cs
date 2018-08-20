@@ -14,10 +14,12 @@ namespace KeyPay.ApiFunctions.V2
             LeaveBalances = new LeaveBalanceFunction(api);
             Documents = new EmployeeDocumentFunction(api);
             PayRuns = new EmployeePayRunFunction(api);
+            LeaveRequests = new LeaveRequestFunction(api);
         }
 
         public EmployeeLeaveAllowanceFunction LeaveAllowance { get; set; }
         public LeaveBalanceFunction LeaveBalances { get; set; }
+        public LeaveRequestFunction LeaveRequests { get; set; }
         public OpeningBalancesFunction OpeningBalances { get; set; }
         public NotesFunction Notes { get; set; }
         public EmployeeDocumentFunction Documents { get; set; }
@@ -58,10 +60,10 @@ namespace KeyPay.ApiFunctions.V2
 
         public IList<EmployeeModel> Query(int businessId, string oDataFilterExpression, int? payScheduleId = null, int? locationId = null, int page = 1, int pageSize = 100)
         {
-            var payScheduleFilter = payScheduleId.HasValue 
+            var payScheduleFilter = payScheduleId.HasValue
                 ? $"&payScheduleId={payScheduleId.Value}"
                 : "";
-            var locationFilter= locationId.HasValue 
+            var locationFilter= locationId.HasValue
                 ? $"&locationId={locationId.Value}"
                 : "";
             var oDataFilter = string.IsNullOrEmpty(oDataFilterExpression) ? string.Empty : $"&$filter={oDataFilterExpression}";
