@@ -27,6 +27,7 @@ namespace KeyPay
             EmployingEntity = new EmployingEntityFunction(api);
             PaymentSummary = new PaymentSummaryFunction(api);
             RosterShift = new RosterShiftFunction(api);
+            Manager = new ManagerFunction(api);
         }
 
         public UserFunction User { get; }
@@ -48,5 +49,6 @@ namespace KeyPay
         public EmployingEntityFunction EmployingEntity { get; }
         public PaymentSummaryFunction PaymentSummary { get; }
         public RosterShiftFunction RosterShift { get; }
+        public ManagerFunction Manager { get; }
     }
 }
