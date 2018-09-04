@@ -15,6 +15,7 @@ namespace KeyPay.ApiFunctions.V2
             Documents = new EmployeeDocumentFunction(api);
             PayRuns = new EmployeePayRunFunction(api);
             LeaveRequests = new LeaveRequestFunction(api);
+            StandardHours = new StandardHoursFunction(api);
         }
 
         public EmployeeLeaveAllowanceFunction LeaveAllowance { get; set; }
@@ -24,6 +25,7 @@ namespace KeyPay.ApiFunctions.V2
         public NotesFunction Notes { get; set; }
         public EmployeeDocumentFunction Documents { get; set; }
         public EmployeePayRunFunction PayRuns { get; set; }
+        public StandardHoursFunction StandardHours { get; set; }
 
         public IList<EmployeeModel> List(int businessId, int? skip = null)
         {

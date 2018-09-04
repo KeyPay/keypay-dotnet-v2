@@ -93,6 +93,7 @@
     <Compile Include="ApiFunctions\V2\PaySlipFunction.cs" />
     <Compile Include="ApiFunctions\V2\ReportFunction.cs" />
     <Compile Include="ApiFunctions\V2\RosterShiftFunction.cs" />
+    <Compile Include="ApiFunctions\V2\StandardHoursFunction.cs" />
     <Compile Include="ApiFunctions\V2\SuperAdjustmentsFunction.cs" />
     <Compile Include="ApiFunctions\V2\TimesheetFunction.cs" />
     <Compile Include="ApiFunctions\V2\UserFunction.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="DomainModels\V2\Employee\LeaveRequestResponseModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
+    <Compile Include="DomainModels\V2\Employee\StandardHoursModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
     <Compile Include="DomainModels\V2\Manager\LeaveEstimateModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveEstimateModel.cs" />
