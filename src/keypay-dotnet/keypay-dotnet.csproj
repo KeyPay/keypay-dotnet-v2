@@ -125,7 +125,9 @@
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
     <Compile Include="DomainModels\V2\Employee\StandardHoursModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerLeaveCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Manager\LeaveEstimateModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerLeaveEmployeeModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveEstimateModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveRequestFilterModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveRequestModel.cs" />

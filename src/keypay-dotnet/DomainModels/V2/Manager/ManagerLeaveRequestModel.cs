@@ -6,6 +6,7 @@ namespace KeyPay.DomainModels.V2.Manager
     {
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
+        public bool Progress { get; set; }
         public int LeaveCategoryId { get; set; }
         public bool IsApproved { get; set; }
         public bool IsDeclined { get; set; }
