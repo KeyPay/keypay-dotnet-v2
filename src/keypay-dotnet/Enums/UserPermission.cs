@@ -39,6 +39,8 @@ namespace KeyPay.Enums
         [Description("Manage Employee Qualifications")]
         ManageEmployeeQualifications = 1 << 15, // 32768
         [Description("Initiate Self Setup")]
-        InitiateEmployeeSelfSetup = 1 << 16 // 65536
+        InitiateEmployeeSelfSetup = 1 << 16, // 65536
+        [Description("Add Employee From Kiosk")]
+        AddEmployeeFromKiosk = 1 << 17 // 131072
     }
 }

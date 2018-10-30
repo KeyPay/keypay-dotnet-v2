@@ -28,6 +28,8 @@ namespace KeyPay
             PaymentSummary = new PaymentSummaryFunction(api);
             RosterShift = new RosterShiftFunction(api);
             Manager = new ManagerFunction(api);
+            Kiosk = new KioskFunction(api);
+            TimeAndAttendance = new TimeAndAttendanceFunction(api);
         }
 
         public UserFunction User { get; }
@@ -50,5 +52,7 @@ namespace KeyPay
         public PaymentSummaryFunction PaymentSummary { get; }
         public RosterShiftFunction RosterShift { get; }
         public ManagerFunction Manager { get; }
+        public KioskFunction Kiosk { get; }
+        public TimeAndAttendanceFunction TimeAndAttendance { get; set; }
     }
 }

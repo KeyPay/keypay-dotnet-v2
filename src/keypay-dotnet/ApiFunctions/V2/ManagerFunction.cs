@@ -9,10 +9,14 @@ namespace KeyPay.ApiFunctions.V2
         public ManagerFunction(ApiRequestExecutor api) : base(api)
         {
             LeaveRequests = new ManagerLeaveRequestsFunction(api);
+            Kiosk = new ManagerKioskFunction(api);
+            TimeAndAttendance = new ManagerTimeAndAttendanceFunction(api);
             Timesheets = new ManagerTimesheetFunction(api);
         }
 
         public ManagerLeaveRequestsFunction LeaveRequests { get; set; }
+        public ManagerKioskFunction Kiosk { get; set; }
+        public ManagerTimeAndAttendanceFunction TimeAndAttendance { get; set; }
         public ManagerTimesheetFunction Timesheets { get; set; }
 
         public List<ManagerLeaveEmployeeModel> Employees(int businessId)

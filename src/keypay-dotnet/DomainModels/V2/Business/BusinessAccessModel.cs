@@ -11,6 +11,7 @@ namespace KeyPay.DomainModels.V2.Business
         public IList<EmployeeGroupAccessModel> EmployeeGroups { get; set; }
         public IList<LocationAccessModel> LocationAccess { get; set; }
         public ReportAccessModel Reports { get; set; }
+        public KioskAccessModel KioskAccess { get; set; }
     }
 
     public class CreateBusinessAccessModel : BusinessAccessModel
@@ -35,6 +36,13 @@ namespace KeyPay.DomainModels.V2.Business
     {
         public ReportAccessType AccessType { get; set; }
         public ReportEnum SpecificReports { get; set; }
+    }
+    
+    public class KioskAccessModel
+    {
+        public List<int> Kiosks { get; set; }
+        public KioskAccessType AccessType { get; set; }
+        public UserPermission Permissions { get; set; }
     }
 
 }
