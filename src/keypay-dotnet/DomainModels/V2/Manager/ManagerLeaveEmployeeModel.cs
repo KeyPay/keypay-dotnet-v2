@@ -13,4 +13,10 @@
         public string CanApprove { get; set; }
     }
 
+    public class ManagerTimesheetEmployeeModel : ManagerEmployeeModel
+    {
+        public string CanApprove { get; set; }
+        public string CanCreate { get; set; }
+    }
+
 }

@@ -25,5 +25,8 @@ namespace KeyPay.DomainModels.V2.Business
         public string WhiteLabelName { get; set; }
         public DateTime DateCreated { get; set; }
         public string PromoCode { get; set; }
+        public string ManagementSoftwareId { get; set; }
+        public string SbrSoftwareProvider { get; set; }
+        public string SbrSoftwareId { get; set; }
     }
 }

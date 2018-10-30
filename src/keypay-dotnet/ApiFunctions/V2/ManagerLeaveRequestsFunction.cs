@@ -43,6 +43,16 @@ namespace KeyPay.ApiFunctions.V2
             return ApiRequest<ManagerLeaveRequestModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}");
         }
 
+        public ManagerLeaveRequestModel Create(int businessId, int employeeId, ManagerLeaveApplicationModel leaveApplicationModel)
+        {
+            return ApiRequest<ManagerLeaveRequestModel, ManagerLeaveApplicationModel>($"/business/{businessId}/manager/{employeeId}/leaverequest", leaveApplicationModel, Method.POST);
+        }
+
+        public ManagerLeaveRequestModel Update(int businessId, int employeeId, int leaveRequestId, ManagerLeaveApplicationModel leaveApplicationModel)
+        {
+            return ApiRequest<ManagerLeaveRequestModel, ManagerLeaveApplicationModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}", leaveApplicationModel, Method.POST);
+        }
+
         public ManagerLeaveRequestModel Approve(int businessId, int employeeId, int leaveRequestId)
         {
             return ApiRequest<ManagerLeaveRequestModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.POST);

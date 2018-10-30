@@ -72,6 +72,7 @@
     <Compile Include="ApiFunctions\V2\LeaveRequestFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerLeaveRequestsFunction.cs" />
+    <Compile Include="ApiFunctions\V2\ManagerTimesheetFunction.cs" />
     <Compile Include="ApiFunctions\V2\OpeningBalancesFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveAllowanceFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveBalanceFunction.cs" />
@@ -125,12 +126,18 @@
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
     <Compile Include="DomainModels\V2\Employee\StandardHoursModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerLeaveApplicationModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Manager\LeaveEstimateModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveEmployeeModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveEstimateModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveRequestFilterModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveRequestModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerTimesheetModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerTimesheetReferenceDataModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerTimesheetRequestFilterModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerTimesheetSubmitModel.cs" />
+    <Compile Include="DomainModels\V2\PagedResultModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\PayRunBankPaymentModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineRequest.cs" />
@@ -238,6 +245,7 @@
     <Compile Include="Enums\ReportEnum.cs" />
     <Compile Include="Enums\RosterShiftStatus.cs" />
     <Compile Include="Enums\SGCCalculationImpact.cs" />
+    <Compile Include="Enums\TimesheetLineStatus.cs" />
     <Compile Include="Enums\UserPermission.cs" />
     <Compile Include="Enums\WorkTypeMappingType.cs" />
     <Compile Include="Exceptions\KeyPayHttpException.cs" />
