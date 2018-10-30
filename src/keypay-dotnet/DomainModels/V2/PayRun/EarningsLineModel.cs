@@ -18,5 +18,7 @@ namespace KeyPay.DomainModels.V2.PayRun
         public decimal Help { get; set; }
         public decimal Payg { get; set; }
         public decimal LumpSumNumberOfPayPeriods { get; set; }
+        public int? TimesheetLineId { get; set; }
+        public string TimesheetLineExternalId { get; set; }
     }
 }

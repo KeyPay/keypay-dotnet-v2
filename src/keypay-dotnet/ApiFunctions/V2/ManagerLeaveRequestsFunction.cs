@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using KeyPay.DomainModels.V2;
+using KeyPay.DomainModels.V2.Business;
 using KeyPay.DomainModels.V2.Employee;
 using KeyPay.DomainModels.V2.Manager;
 using RestSharp;
@@ -47,9 +48,12 @@ namespace KeyPay.ApiFunctions.V2
             return ApiRequest<ManagerLeaveRequestModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.POST);
         }
 
-        public ManagerLeaveRequestModel Decline(int businessId, int employeeId, int leaveRequestId)
+        public ManagerLeaveRequestModel Decline(int businessId, int employeeId, int leaveRequestId, string reason)
         {
-            return ApiRequest<ManagerLeaveRequestModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}/decline", Method.POST);
+            var queryString = reason != null
+                ? $"?reason={reason}"
+                : "";
+            return ApiRequest<ManagerLeaveRequestModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}/decline{queryString}", Method.POST);
         }
 
         public ManagerLeaveRequestModel Cancel(int businessId, int employeeId, int leaveRequestId)
@@ -74,5 +78,27 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiRequest<ManagerLeaveEstimateModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/estimate?fromDate={fromDate.ToString("yyyy-MM-dd")}&toDate={toDate.ToString("yyyy-MM-dd")}&leaveCategoryId={leaveCategoryId}");
         }
+
+        public List<ManagerLeaveCategoryModel> Categories(int businessId)
+        {
+            return ApiRequest<List<ManagerLeaveCategoryModel>>($"/business/{businessId}/manager/leaverequest/categories");
+        }
+
+        public List<ManagerLeaveEmployeeModel> Employees(int businessId)
+        {
+            return ApiRequest<List<ManagerLeaveEmployeeModel>>($"/business/{businessId}/manager/leaverequest/employees");
+        }
+
+        public List<LocationModel> Locations(int businessId)
+        {
+            return ApiRequest<List<LocationModel>>($"/business/{businessId}/manager/leaverequest/locations");
+        }
+
+        public List<ManagerLeaveCategoryModel> Categories(int businessId, int employeeId)
+        {
+            return ApiRequest<List<ManagerLeaveCategoryModel>>($"/business/{businessId}/manager/{employeeId}/leaverequest/categories");
+        }
+
+
     }
 }
