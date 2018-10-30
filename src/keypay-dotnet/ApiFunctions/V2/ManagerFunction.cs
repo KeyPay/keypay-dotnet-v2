@@ -14,6 +14,8 @@ namespace KeyPay.ApiFunctions.V2
         }
 
         public ManagerLeaveRequestsFunction LeaveRequests { get; set; }
+        public ManagerKioskFunction Kiosk { get; set; }
+        public ManagerTimeAndAttendanceFunction TimeAndAttendance { get; set; }
 
         public List<ManagerLeaveEmployeeModel> Employees(int businessId)
         {
@@ -24,7 +26,5 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiRequest<List<LocationModel>>($"/business/{businessId}/manager/locations");
         }
-        public ManagerKioskFunction Kiosk { get; set; }
-        public ManagerTimeAndAttendanceFunction TimeAndAttendance { get; set; }
     }
 }
