@@ -101,6 +101,7 @@
     <Compile Include="Auth\ApiKeyAuthenticationDetails.cs" />
     <Compile Include="Auth\AuthenticationDetails.cs" />
     <Compile Include="DomainModels\V2\Business\ABAModel.cs" />
+    <Compile Include="DomainModels\V2\Business\AutoPayConfigurationModel.cs" />
     <Compile Include="DomainModels\V2\Business\BusinessAccessModel.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsLocationGroupModel.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsModel.cs" />
@@ -114,6 +115,9 @@
     <Compile Include="DomainModels\V2\Business\JournalAccountModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceProviderModel.cs" />
     <Compile Include="DomainModels\V2\Business\JournalServiceTaxCodeModel.cs" />
+    <Compile Include="DomainModels\V2\Business\PayRunWarningModel.cs" />
+    <Compile Include="DomainModels\V2\Business\PayScheduleMetaDataModel.cs" />
+    <Compile Include="DomainModels\V2\Business\ReportPackModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftFilterModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftGenerateTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftMatchingResultModel.cs" />
@@ -229,13 +233,16 @@
     <Compile Include="Enums\LeaveRequestGroupBy.cs" />
     <Compile Include="Enums\LeaveRequestStatus.cs" />
     <Compile Include="Enums\LocationRestrictionFilterTypeEnum.cs" />
+    <Compile Include="Enums\PayCycleFrequencyEnum.cs" />
     <Compile Include="Enums\PayRunEmployeeSelectionStrategy.cs" />
+    <Compile Include="Enums\PublishPaySlipsPreference.cs" />
     <Compile Include="Enums\RateUnit.cs" />
     <Compile Include="Enums\RelatedUserType.cs" />
     <Compile Include="Enums\ReportAccessType.cs" />
     <Compile Include="Enums\ReportEnum.cs" />
     <Compile Include="Enums\RosterShiftStatus.cs" />
     <Compile Include="Enums\SGCCalculationImpact.cs" />
+    <Compile Include="Enums\TimesheetImportOption.cs" />
     <Compile Include="Enums\UserPermission.cs" />
     <Compile Include="Enums\WorkTypeMappingType.cs" />
     <Compile Include="Exceptions\KeyPayHttpException.cs" />
