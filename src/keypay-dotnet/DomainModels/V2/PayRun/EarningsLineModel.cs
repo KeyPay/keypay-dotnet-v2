@@ -7,6 +7,7 @@ namespace KeyPay.DomainModels.V2.PayRun
         public string LocationName { get; set; }
         public string EmployeeId { get; set; }
         public string EmployeeName { get; set; }
+        public string EmployeeExternalId { get; set; }
         public string PayCategoryId { get; set; }
         public string PayCategoryName { get; set; }
         public decimal Units { get; set; }
@@ -18,5 +19,7 @@ namespace KeyPay.DomainModels.V2.PayRun
         public decimal Help { get; set; }
         public decimal Payg { get; set; }
         public decimal LumpSumNumberOfPayPeriods { get; set; }
+        public int? TimesheetLineId { get; set; }
+        public string TimesheetLineExternalId { get; set; }
     }
 }
