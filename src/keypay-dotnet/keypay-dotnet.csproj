@@ -129,6 +129,8 @@
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveEstimateModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveRequestFilterModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveRequestModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\AsyncPayRunModel.cs" />
+    <Compile Include="DomainModels\V2\PayRun\CreatePayRunStatus.cs" />
     <Compile Include="DomainModels\V2\PayRun\PayRunBankPaymentModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\EarningsLineRequest.cs" />
@@ -229,6 +231,7 @@
     <Compile Include="Enums\LeaveRequestGroupBy.cs" />
     <Compile Include="Enums\LeaveRequestStatus.cs" />
     <Compile Include="Enums\LocationRestrictionFilterTypeEnum.cs" />
+    <Compile Include="Enums\LongRunningJobStatus.cs" />
     <Compile Include="Enums\PayRunEmployeeSelectionStrategy.cs" />
     <Compile Include="Enums\RateUnit.cs" />
     <Compile Include="Enums\RelatedUserType.cs" />
