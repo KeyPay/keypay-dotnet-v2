@@ -72,5 +72,10 @@ namespace KeyPay.ApiFunctions.V2
             return ApiRequest<List<EmployeeModel>>(
                 $"/business/{businessId}/employee/unstructured/?$skip={page-1*pageSize}&top={pageSize}{payScheduleFilter}{locationFilter}{oDataFilter}");
         }
+
+        public void Delete(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.DELETE);
+        }
     }
 }
