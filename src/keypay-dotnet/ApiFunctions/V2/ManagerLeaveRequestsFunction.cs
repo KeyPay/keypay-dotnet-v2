@@ -60,10 +60,7 @@ namespace KeyPay.ApiFunctions.V2
 
         public ManagerLeaveRequestModel Decline(int businessId, int employeeId, int leaveRequestId, string reason)
         {
-            var queryString = reason != null
-                ? $"?reason={reason}"
-                : "";
-            return ApiRequest<ManagerLeaveRequestModel>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}/decline{queryString}", Method.POST);
+            return ApiRequest<ManagerLeaveRequestModel, DeclineReason>($"/business/{businessId}/manager/{employeeId}/leaverequest/{leaveRequestId}/decline", new DeclineReason { Reason = reason }, Method.POST);
         }
 
         public ManagerLeaveRequestModel Cancel(int businessId, int employeeId, int leaveRequestId)

@@ -26,7 +26,13 @@ namespace KeyPay.DomainModels.V2.Manager
         public string StatusUpdateNotes { get; set; }
         public bool CanCancel { get; set; }
         public bool CanModify { get; set; }
+        public DateTime? TerminationDate { get; set; }
         public bool RequireNotesForLeaveRequests { get; set; }
         public AttachmentModel Attachment { get; set; }
+    }
+
+    public class DeclineReason
+    {
+        public string Reason { get; set; }
     }
 }

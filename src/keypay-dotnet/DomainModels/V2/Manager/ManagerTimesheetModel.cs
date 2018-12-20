@@ -39,7 +39,9 @@ namespace KeyPay.DomainModels.V2.Manager
         public string PayScheduleName { get; set; }
         public List<ManagerEmployeeGroup> EmployeeGroups { get; set; }
         public AttachmentModel Attachment { get; set; }
+        public DateTime? TerminationDate { get; set; }
         public bool CanEdit { get; set; }
+        public bool CanDelete { get; set; }
         public bool CanViewCosts { get; set; }
         public decimal? Cost { get; set; }
     }

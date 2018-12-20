@@ -9,8 +9,8 @@ namespace KeyPay.DomainModels.V2.Manager
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
-        public DateTime? StartTime { get; set; }
-        public DateTime? EndTime { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
         public decimal? Units { get; set; }
         public int? LocationId { get; set; }
         public int? WorkTypeId { get; set; }
@@ -21,7 +21,6 @@ namespace KeyPay.DomainModels.V2.Manager
         public IList<int> ShiftConditionIds { get; set; }
         public DateTime? SubmittedStart { get; set; }
         public DateTime? SubmittedEnd { get; set; }
-        public TimesheetLineStatus? Status { get; set; }
         public decimal? Rate { get; set; }
         public string Comments { get; set; }
         public string HiddenComments { get; set; }

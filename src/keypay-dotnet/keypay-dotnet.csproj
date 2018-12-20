@@ -73,6 +73,7 @@
     <Compile Include="ApiFunctions\V2\LeaveRequestFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerKioskFunction.cs" />
+    <Compile Include="ApiFunctions\V2\ManagerExpenseFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerLeaveRequestsFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerTimeAndAttendanceFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerTimesheetFunction.cs" />
@@ -130,10 +131,17 @@
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
     <Compile Include="DomainModels\V2\Employee\StandardHoursModel.cs" />
+    <Compile Include="DomainModels\V2\JournalServiceTaxCode.cs" />
     <Compile Include="DomainModels\V2\KeyValuePairViewModelBase.cs" />
     <Compile Include="DomainModels\V2\Location\LocationSelectModel.cs" />
     <Compile Include="DomainModels\V2\Location\LocationShiftConditionsModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ExpenseReferenceData.cs" />
+    <Compile Include="DomainModels\V2\Manager\ExpenseCategoryResponseModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ExpenseRequestEditModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerExpenseRequestEditModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerExpenseRequestFilterModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerExpenseRequestModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveApplicationModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerLeaveCategoryModel.cs" />
     <Compile Include="DomainModels\V2\Manager\LeaveEstimateModel.cs" />
@@ -251,6 +259,7 @@
     <Compile Include="DomainModels\V2\WhiteLabelBrandingModel.cs" />
     <Compile Include="DomainModels\V2\WorkType\ClassificationLookupModel.cs" />
     <Compile Include="DomainModels\V2\WorkType\WorkTypeSelectModel.cs" />
+    <Compile Include="Enums\EmployeeExpenseRequestStatus.cs" />
     <Compile Include="Enums\EmploymentType.cs" />
     <Compile Include="Enums\ExternalAccountType.cs" />
     <Compile Include="Enums\FilterCombinationStrategy.cs" />

@@ -12,12 +12,14 @@ namespace KeyPay.ApiFunctions.V2
             Kiosk = new ManagerKioskFunction(api);
             TimeAndAttendance = new ManagerTimeAndAttendanceFunction(api);
             Timesheets = new ManagerTimesheetFunction(api);
+            Expenses = new ManagerExpenseFunction(api);
         }
 
         public ManagerLeaveRequestsFunction LeaveRequests { get; set; }
         public ManagerKioskFunction Kiosk { get; set; }
         public ManagerTimeAndAttendanceFunction TimeAndAttendance { get; set; }
         public ManagerTimesheetFunction Timesheets { get; set; }
+        public ManagerExpenseFunction Expenses { get; set; }
 
         public List<ManagerLeaveEmployeeModel> Employees(int businessId)
         {
