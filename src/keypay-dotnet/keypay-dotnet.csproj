@@ -136,6 +136,7 @@
     <Compile Include="DomainModels\V2\Location\LocationSelectModel.cs" />
     <Compile Include="DomainModels\V2\Location\LocationShiftConditionsModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerTimesheetBreakModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseReferenceData.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseCategoryResponseModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseRequestEditModel.cs" />

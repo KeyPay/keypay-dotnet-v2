@@ -36,6 +36,7 @@ namespace KeyPay.DomainModels.V2.Business
     {
         public ReportAccessType AccessType { get; set; }
         public ReportEnum SpecificReports { get; set; }
+        public bool NoReportingRestriction { get; set; }
     }
     
     public class KioskAccessModel

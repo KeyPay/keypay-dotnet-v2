@@ -19,7 +19,7 @@ namespace KeyPay.DomainModels.V2.Manager
         public int? LocationId { get; set; }
         public string FullyQualifiedLocationName { get; set; }
         public string Comments { get; set; }
-        public List<TimesheetBreakModel> Breaks { get; set; }
+        public List<ManagerTimesheetBreakModel> Breaks { get; set; }
         public TimesheetLineStatus Status { get; set; }
         public decimal? Rate { get; set; }
         public int? LeaveCategoryId { get; set; }
@@ -43,6 +43,7 @@ namespace KeyPay.DomainModels.V2.Manager
         public bool CanEdit { get; set; }
         public bool CanDelete { get; set; }
         public bool CanViewCosts { get; set; }
+        public string CostFormatted { get; set; }
         public decimal? Cost { get; set; }
     }
 

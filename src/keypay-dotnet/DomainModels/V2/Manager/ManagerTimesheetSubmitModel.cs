@@ -24,7 +24,7 @@ namespace KeyPay.DomainModels.V2.Manager
         public decimal? Rate { get; set; }
         public string Comments { get; set; }
         public string HiddenComments { get; set; }
-        public IList<TimesheetBreakModel> Breaks { get; set; }
+        public IList<ManagerTimesheetBreakModel> Breaks { get; set; }
         public AttachmentModel Attachment { get; set; }
         public string Source { get; set; }
     }
