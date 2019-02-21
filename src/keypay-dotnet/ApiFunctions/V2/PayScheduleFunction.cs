@@ -12,27 +12,32 @@ namespace KeyPay.ApiFunctions.V2
 
         public IList<PayScheduleModel> List(int businessId)
         {
-            return ApiRequest<List<PayScheduleModel>>("/business/" + businessId + "/payschedule");
+            return ApiRequest<List<PayScheduleModel>>($"/business/{businessId}/payschedule");
         }
 
         public PayScheduleModel GetById(int businessId, int payScehduleId)
         {
-            return ApiRequest<PayScheduleModel>("/business/" + businessId + "/payschedule/" + payScehduleId );
+            return ApiRequest<PayScheduleModel>($"/business/{businessId}/payschedule/{payScehduleId}");
         }
 
         public PayScheduleModel Create(int businessId, PayScheduleModel model)
         {
-            return ApiRequest<PayScheduleModel, PayScheduleModel>("/business/" + businessId + "/payschedule", model, Method.POST);
+            return ApiRequest<PayScheduleModel, PayScheduleModel>($"/business/{businessId}/payschedule", model, Method.POST);
         }
 
         public PayScheduleModel Update(int businessId, PayScheduleModel model)
         {
-            return ApiRequest<PayScheduleModel, PayScheduleModel>("/business/" + businessId + "/payschedule/" + model.Id, model, Method.PUT);
+            return ApiRequest<PayScheduleModel, PayScheduleModel>($"/business/{businessId}/payschedule/{model.Id}", model, Method.PUT);
+        }
+
+        public PayScheduleMetaDataModel MetaData(int businessId)
+        {
+            return ApiRequest<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata");
         }
 
         public void Delete(int businessId, int payCategoryId)
         {
-            ApiRequest("/business/" + businessId + "/payschedule/" + payCategoryId, Method.DELETE);
+            ApiRequest($"/business/{businessId}/payschedule/{payCategoryId}", Method.DELETE);
         }
     }
 }
