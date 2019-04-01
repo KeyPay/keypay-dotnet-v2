@@ -18,6 +18,9 @@ namespace KeyPay.DomainModels.V2.Business
         public string Source { get; set; }
         public string GeneralLedgerMappingCode { get; set; }
         public string PaymentSummaryClassification { get; set; }
-
+        public string SuperExpenseMappingCode { get; set; }
+        public string SuperLiabilityMappingCode { get; set; }
+        public bool IsSystemPayCategory { get; set; }
+        public int? NumberOfDecimalPlaces { get; set; }
     }
 }

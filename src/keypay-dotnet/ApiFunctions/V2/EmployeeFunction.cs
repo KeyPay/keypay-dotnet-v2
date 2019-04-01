@@ -29,7 +29,7 @@ namespace KeyPay.ApiFunctions.V2
 
         public IList<EmployeeModel> List(int businessId, int? skip = null)
         {
-            var url = string.Format("/business/{0}/employee", businessId);
+            var url = $"/business/{businessId}/employee";
             if (skip.HasValue)
                 url += "?$skip=" + skip.Value;
             return ApiRequest<List<EmployeeModel>>(url);
@@ -37,27 +37,27 @@ namespace KeyPay.ApiFunctions.V2
 
         public EmployeeModel Get(int businessId, int employeeId)
         {
-            return ApiRequest<EmployeeModel>("/business/" + businessId + "/employee/" + employeeId);
+            return ApiRequest<EmployeeModel>($"/business/{businessId}/employee/{employeeId}");
         }
 
         public CreateEmployeeResponse Create(int businessId, EmployeeModel model)
         {
-            return ApiRequest<CreateEmployeeResponse, EmployeeModel>("/business/" + businessId + "/employee/unstructured", model, Method.POST);
+            return ApiRequest<CreateEmployeeResponse, EmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.POST);
         }
 
         public EmployeeModel Update(int businessId, EmployeeModel model)
         {
-            return ApiRequest<EmployeeModel, EmployeeModel>("/business/" + businessId + "/employee/unstructured/" + model.Id, model, Method.PUT);
+            return ApiRequest<EmployeeModel, EmployeeModel>($"/business/{businessId}/employee/unstructured/{model.Id}", model, Method.PUT);
         }
 
         public EmployeeModel GetByExternalReferenceId(int businessId, string externalReferenceId, string source)
         {
-            return ApiRequest<EmployeeModel>(string.Format("/business/{0}/employee/unstructured/?externalreferenceid={1}&source={2}", businessId, externalReferenceId, source));
+            return ApiRequest<EmployeeModel>($"/business/{businessId}/employee/unstructured/externalreference/{externalReferenceId}/{source}");
         }
 
         public EmployeeModel GetByExternalId(int businessId, string externalId)
         {
-            return ApiRequest<EmployeeModel>(string.Format("/business/{0}/employee/unstructured/?externalId={1}", businessId, externalId));
+            return ApiRequest<EmployeeModel>($"/business/{businessId}/employee/unstructured/externalId/{externalId}");
         }
 
         public IList<EmployeeModel> Query(int businessId, string oDataFilterExpression, int? payScheduleId = null, int? locationId = null, int page = 1, int pageSize = 100)
@@ -71,6 +71,11 @@ namespace KeyPay.ApiFunctions.V2
             var oDataFilter = string.IsNullOrEmpty(oDataFilterExpression) ? string.Empty : $"&$filter={oDataFilterExpression}";
             return ApiRequest<List<EmployeeModel>>(
                 $"/business/{businessId}/employee/unstructured/?$skip={page-1*pageSize}&top={pageSize}{payScheduleFilter}{locationFilter}{oDataFilter}");
+        }
+
+        public void Delete(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.DELETE);
         }
     }
 }
