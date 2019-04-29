@@ -48,9 +48,9 @@ namespace KeyPay.ApiFunctions.V2
             return ApiRequest<List<ManagerEmployeeGroup>>($"/business/{businessId}/manager/expense/employeegroups");
         }
         
-        public List<JournalServiceTaxCode> TaxCodes(int businessId)
+        public List<ExpenseTaxCode> TaxCodes(int businessId)
         {
-            return ApiRequest<List<JournalServiceTaxCode>>($"/business/{businessId}/manager/expense/taxcodes");
+            return ApiRequest<List<ExpenseTaxCode>>($"/business/{businessId}/manager/expense/taxcodes");
         }
 
         public List<ExpenseReferenceData> Reference(int businessId, int employeeId)
@@ -80,7 +80,7 @@ namespace KeyPay.ApiFunctions.V2
 
         public ManagerExpenseRequestModel Decline(int businessId, int employeeId, int expenseRequestId, string reason)
         {
-            return ApiRequest<ManagerExpenseRequestModel, string>($"/business/{businessId}/manager/{employeeId}/expense/{expenseRequestId}/decline", reason, Method.POST);
+            return ApiRequest<ManagerExpenseRequestModel, DeclineReason>($"/business/{businessId}/manager/{employeeId}/expense/{expenseRequestId}/decline", new DeclineReason { Reason = reason }, Method.POST);
         }
 
         public void Delete(int businessId, int employeeId, int expenseRequestId)

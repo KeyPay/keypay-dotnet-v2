@@ -135,11 +135,11 @@
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesEtpModel.cs" />
     <Compile Include="DomainModels\V2\Employee\OpeningBalancesLiabilityModel.cs" />
     <Compile Include="DomainModels\V2\Employee\StandardHoursModel.cs" />
-    <Compile Include="DomainModels\V2\JournalServiceTaxCode.cs" />
     <Compile Include="DomainModels\V2\KeyValuePairViewModelBase.cs" />
     <Compile Include="DomainModels\V2\Location\LocationSelectModel.cs" />
     <Compile Include="DomainModels\V2\Location\LocationShiftConditionsModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ExpenseTaxCode.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerTimesheetBreakModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseReferenceData.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseCategoryResponseModel.cs" />
