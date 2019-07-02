@@ -35,5 +35,10 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiRequest<RosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={kioskId}&dateUtc={dateUtc.ToString("O")}");
         }
+
+        public void Create(int businessId, RosterShiftEditModel model, bool publish)
+        {
+            ApiRequest($"/business/{businessId}/rostershift/create?publish={publish}", model, Method.POST); 
+        }
     }
 }

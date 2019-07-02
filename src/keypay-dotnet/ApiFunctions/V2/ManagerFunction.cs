@@ -13,6 +13,7 @@ namespace KeyPay.ApiFunctions.V2
             TimeAndAttendance = new ManagerTimeAndAttendanceFunction(api);
             Timesheets = new ManagerTimesheetFunction(api);
             Expenses = new ManagerExpenseFunction(api);
+            RosterShifts = new ManagerRosterShiftFunction(api);
         }
 
         public ManagerLeaveRequestsFunction LeaveRequests { get; set; }
@@ -20,6 +21,7 @@ namespace KeyPay.ApiFunctions.V2
         public ManagerTimeAndAttendanceFunction TimeAndAttendance { get; set; }
         public ManagerTimesheetFunction Timesheets { get; set; }
         public ManagerExpenseFunction Expenses { get; set; }
+        public ManagerRosterShiftFunction RosterShifts { get; set; }
 
         public List<ManagerLeaveEmployeeModel> Employees(int businessId)
         {

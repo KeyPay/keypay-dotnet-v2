@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -71,6 +73,7 @@
     <Compile Include="ApiFunctions\V2\JournalServicesFunction.cs" />
     <Compile Include="ApiFunctions\V2\KioskFunction.cs" />
     <Compile Include="ApiFunctions\V2\LeaveRequestFunction.cs" />
+    <Compile Include="ApiFunctions\V2\ManagerRosterFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerKioskFunction.cs" />
     <Compile Include="ApiFunctions\V2\ManagerExpenseFunction.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="ApiFunctions\V2\SuperAdjustmentsFunction.cs" />
     <Compile Include="ApiFunctions\V2\TimeAndAttendanceFunction.cs" />
     <Compile Include="ApiFunctions\V2\TimesheetFunction.cs" />
+    <Compile Include="ApiFunctions\V2\UnavailabilityFunction.cs" />
     <Compile Include="ApiFunctions\V2\UserFunction.cs" />
     <Compile Include="ApiFunctions\V2\WorkTypeFunction.cs" />
     <Compile Include="Auth\ApiKeyAuthenticationDetails.cs" />
@@ -124,11 +128,14 @@
     <Compile Include="DomainModels\V2\Business\PayRunWarningModel.cs" />
     <Compile Include="DomainModels\V2\Business\PayScheduleMetaDataModel.cs" />
     <Compile Include="DomainModels\V2\Business\ReportPackModel.cs" />
+    <Compile Include="DomainModels\V2\Business\RosterShiftEditModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftFilterModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftGenerateTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftMatchingResultModel.cs" />
     <Compile Include="DomainModels\V2\Business\RosterShiftStubTimesheetModel.cs" />
     <Compile Include="DomainModels\V2\Business\TimesheetShiftConditionModel.cs" />
+    <Compile Include="DomainModels\V2\Business\UnavailabilityFilterModel.cs" />
+    <Compile Include="DomainModels\V2\UnavailabilityModel.cs" />
     <Compile Include="DomainModels\V2\Employee\CreateEmployeeResponse.cs" />
     <Compile Include="DomainModels\V2\Employee\EmployeeViewModel.cs" />
     <Compile Include="DomainModels\V2\Employee\LeaveRequestResponseModel.cs" />
@@ -140,6 +147,9 @@
     <Compile Include="DomainModels\V2\Location\LocationShiftConditionsModel.cs" />
     <Compile Include="DomainModels\V2\Manager\AttachmentModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseTaxCode.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerRosterDataModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerRosterShiftFilterModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerRosterShiftModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerTimesheetBreakModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseReferenceData.cs" />
     <Compile Include="DomainModels\V2\Manager\ExpenseCategoryResponseModel.cs" />
@@ -158,6 +168,7 @@
     <Compile Include="DomainModels\V2\Manager\ManagerTimesheetReferenceDataModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerTimesheetRequestFilterModel.cs" />
     <Compile Include="DomainModels\V2\Manager\ManagerTimesheetSubmitModel.cs" />
+    <Compile Include="DomainModels\V2\Manager\ManagerUnavailabilityModel.cs" />
     <Compile Include="DomainModels\V2\PagedResultModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\AsyncPayRunModel.cs" />
     <Compile Include="DomainModels\V2\PayRun\CreatePayRunStatus.cs" />

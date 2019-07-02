@@ -30,6 +30,7 @@ namespace KeyPay
             Manager = new ManagerFunction(api);
             Kiosk = new KioskFunction(api);
             TimeAndAttendance = new TimeAndAttendanceFunction(api);
+            Unavailability  = new UnavailabilityFunction(api);
         }
 
         public UserFunction User { get; }
@@ -54,5 +55,6 @@ namespace KeyPay
         public ManagerFunction Manager { get; }
         public KioskFunction Kiosk { get; }
         public TimeAndAttendanceFunction TimeAndAttendance { get; set; }
+        public UnavailabilityFunction Unavailability { get; set; }
     }
 }
