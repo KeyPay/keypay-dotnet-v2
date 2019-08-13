@@ -13,7 +13,7 @@ namespace KeyPay.ApiFunctions.V2
         {
         }
 
-        public List<ManagerExpenseRequestModel> List(int businessId, ManagerExpenseRequestFilterModel filter)
+        public PagedResultModel<ManagerExpenseRequestModel> List(int businessId, ManagerExpenseRequestFilterModel filter)
         {
             var queryString = new StringBuilder("?");
             if (filter.Status.HasValue) queryString.Append($"Status={filter.Status.ToString()}&");
@@ -25,7 +25,7 @@ namespace KeyPay.ApiFunctions.V2
             queryString.Append($"CurrentPage={filter.CurrentPage}&");
             if (filter.PageSize.HasValue) queryString.Append($"EmployeeId={filter.PageSize}&");
 
-            return ApiRequest<List<ManagerExpenseRequestModel>>($"/business/{businessId}/manager/expense{queryString}");
+            return ApiRequest<PagedResultModel<ManagerExpenseRequestModel>>($"/business/{businessId}/manager/expense{queryString}");
         }
 
         public List<ExpenseCategoryResponseModel> Categories(int businessId)
