@@ -57,6 +57,7 @@
     <Compile Include="ApiFunctions\CustomSerializer.cs" />
     <Compile Include="ApiFunctions\V2\ABAFunction.cs" />
     <Compile Include="ApiFunctions\V2\BusinessAccessFunction.cs" />
+    <Compile Include="ApiFunctions\V2\BusinessActionItems.cs" />
     <Compile Include="ApiFunctions\V2\BusinessFunction.cs" />
     <Compile Include="ApiFunctions\V2\ChartOfAccountsFunction.cs" />
     <Compile Include="ApiFunctions\V2\DeductionCategoryFunction.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="DomainModels\V2\Business\ABAModel.cs" />
     <Compile Include="DomainModels\V2\Business\AutoPayConfigurationModel.cs" />
     <Compile Include="DomainModels\V2\Business\BusinessAccessModel.cs" />
+    <Compile Include="DomainModels\V2\Business\BusinessAction.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsLocationGroupModel.cs" />
     <Compile Include="DomainModels\V2\Business\ChartOfAccountsModel.cs" />
     <Compile Include="DomainModels\V2\Business\EmployeeFilterModel.cs" />

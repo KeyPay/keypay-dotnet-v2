@@ -14,6 +14,7 @@ namespace KeyPay.ApiFunctions.V2
             JournalServices = new JournalServicesFunction(api);
             ChartOfAccounts = new ChartOfAccountsFunction(api);
             Access = new BusinessAccessFunction(api);
+            ActionItems = new BusinessActionItems(api);
         }
 
         public ABAFunction ABA { get; set; }
@@ -21,6 +22,7 @@ namespace KeyPay.ApiFunctions.V2
         public JournalServicesFunction JournalServices { get; set; }
         public ChartOfAccountsFunction ChartOfAccounts { get; set; }
         public BusinessAccessFunction Access { get; set; }
+        public BusinessActionItems ActionItems { get; set; }
 
         public BusinessModel Create(BusinessModel model)
         {
