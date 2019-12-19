@@ -22,7 +22,6 @@ Install-Package KeyPay
 
 ### More Help?
 There is a Sample Application that demonstrates a few core concepts of working with the KeyPay Client. 
-Please check out our [Developer Forum](https://developers.yourpayroll.com.au) if you need more assistance integrating with KeyPay.
-
+Please check out our [online documentation](http://api.keypay.com.au/) as a reference, or contact our [Support](https://keypay.com.au/contact)
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
