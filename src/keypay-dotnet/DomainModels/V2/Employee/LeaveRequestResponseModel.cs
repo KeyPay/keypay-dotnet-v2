@@ -2,24 +2,48 @@
 
 namespace KeyPay.DomainModels.V2.Employee
 {
-    public class LeaveRequestResponseModel : BaseLeaveRequestResponseModel
+    public class UnitlessLeaveRequestResponseModel : BaseLeaveRequestResponseModel
     {
         public int Id { get; set; }
-        public decimal TotalHours { get; set; }
-        public decimal HoursApplied { get; set; }
         public string Employee { get; set; }
         public string LeaveCategory { get; set; }
         public string Status { get; set; }
         public int? AttachmentId { get; set; }
     }
 
-    public class CreateLeaveRequestModel : BaseLeaveRequestResponseModel
+    public class LeaveRequestResponseModel : UnitlessLeaveRequestResponseModel
+    {
+        public decimal TotalHours { get; set; }
+        public decimal HoursApplied { get; set; }
+    }
+
+    public class LeaveRequestUnitResponseModel : UnitlessLeaveRequestResponseModel
+    {
+        public decimal TotalUnits { get; set; }
+        public decimal UnitsApplied { get; set; }
+    }
+
+    public class CreateUnitlessLeaveRequestModel : BaseLeaveRequestResponseModel
     {
         public bool AutomaticallyApprove { get; set; }
+    }
+
+    public class CreateLeaveRequestModel : CreateUnitlessLeaveRequestModel
+    {
         public decimal Hours { get; set; }
     }
 
+    public class CreateLeaveRequestUnitModel : CreateUnitlessLeaveRequestModel
+    {
+        public decimal Units { get; set; }
+    }
+
     public class UpdateLeaveRequestModel : CreateLeaveRequestModel
+    {
+        public int Id { get; set; }
+    }
+
+    public class UpdateLeaveRequestUnitModel : CreateLeaveRequestUnitModel
     {
         public int Id { get; set; }
     }

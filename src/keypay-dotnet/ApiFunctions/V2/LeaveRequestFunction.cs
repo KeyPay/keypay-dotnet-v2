@@ -53,5 +53,48 @@ namespace KeyPay.ApiFunctions.V2
         {
             return ApiRequest<LeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={fromDate.ToString("yyyy-MM-dd")}&toDate={toDate.ToString("yyyy-MM-dd")}&leaveCategoryId={leaveCategoryId}");
         }
+
+        // Unit base leave request functions follow
+        public List<LeaveRequestUnitResponseModel> ListUnit(int businessId, int employeeId)
+        {
+            return ApiRequest<List<LeaveRequestUnitResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest");
+        }
+
+        public LeaveRequestUnitResponseModel GetUnit(int businessId, int employeeId, int leaveRequestId)
+        {
+            return ApiRequest<LeaveRequestUnitResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}");
+        }
+
+        public LeaveRequestUnitResponseModel CreateUnit(int businessId, int employeeId, CreateLeaveRequestUnitModel leaveRequest)
+        {
+            return ApiRequest<LeaveRequestUnitResponseModel, CreateLeaveRequestUnitModel>($"/business/{businessId}/employee/{employeeId}/leaverequest", leaveRequest, Method.POST);
+        }
+
+        public LeaveRequestUnitResponseModel UpdateUnit(int businessId, int employeeId, UpdateLeaveRequestUnitModel leaveRequest)
+        {
+            ApiRequest<LeaveRequestUnitResponseModel, UpdateLeaveRequestUnitModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequest.Id}", leaveRequest, Method.PUT);
+            return GetUnit(businessId, employeeId, leaveRequest.Id);
+        }
+
+        public LeaveRequestUnitResponseModel CancelUnit(int businessId, int employeeId, int leaveRequestId)
+        {
+            return ApiRequest<LeaveRequestUnitResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.DELETE);
+        }
+
+        public LeaveRequestUnitResponseModel ApproveUnit(int businessId, int employeeId, int leaveRequestId)
+        {
+            return ApiRequest<LeaveRequestUnitResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.POST);
+        }
+
+        public LeaveRequestUnitResponseModel DeclineUnit(int businessId, int employeeId, int leaveRequestId, string reason = null)
+        {
+            return ApiRequest<LeaveRequestUnitResponseModel, string>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/decline", reason, Method.POST);
+        }
+
+        public LeaveEstimateUnitModel EstimateUnit(int businessId, int employeeId, DateTime fromDate, DateTime toDate, int? leaveCategoryId)
+        {
+            return ApiRequest<LeaveEstimateUnitModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={fromDate.ToString("yyyy-MM-dd")}&toDate={toDate.ToString("yyyy-MM-dd")}&leaveCategoryId={leaveCategoryId}");
+        }
+
     }
 }
