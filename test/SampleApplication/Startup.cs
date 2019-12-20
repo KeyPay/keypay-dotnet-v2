@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -28,6 +29,10 @@ namespace SampleApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            var manager = new ApplicationPartManager();
+            manager.ApplicationParts.Add(new AssemblyPart(typeof(Startup).Assembly));
+
+            services.AddSingleton(manager);
             services.AddMvc();
             // Adds a default in-memory implementation of IDistributedCache.
             services.AddDistributedMemoryCache();
