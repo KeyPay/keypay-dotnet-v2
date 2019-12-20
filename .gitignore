@@ -252,3 +252,6 @@ paket-files/
 *.sln.iml
 /test/SampleApplication/wwwroot/lib
 /test/SampleApplication/wwwroot/lib
+
+# nuget exe for building the nuget package
+nuget.exe

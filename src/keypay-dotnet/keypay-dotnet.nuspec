@@ -11,7 +11,10 @@
     <iconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .NET library for the KeyPay API</description>
-    <releaseNotes>Fix to Manager function to list expenses.</releaseNotes>
+    <releaseNotes>Added functionality for
+        * business notifications
+        * unit-based leave requests
+        * unit-based leave categories</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>keypay yourpayroll api payroll</tags>
     <dependencies>
