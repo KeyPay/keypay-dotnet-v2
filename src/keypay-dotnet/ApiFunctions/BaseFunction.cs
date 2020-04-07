@@ -29,16 +29,28 @@ namespace KeyPay.ApiFunctions
 
         protected TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method = Method.GET) where TResult : new()
         {
-            var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
-            req.AddBody(input);
+            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            AddParameters(req, method, input);
             var result = Api.Execute<TResult>(req);
             return result;
         }
 
+        private static void AddParameters<TInput>(RestRequest req, Method method, TInput data) 
+        {
+            if (method == Method.GET)
+            {
+                req.AddObject(data);
+            }
+            else
+            {
+                req.AddJsonBody(data);
+            }
+        }
+
         protected void ApiRequest(string url, object input, Method method = Method.GET)
         {
-            var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
-            req.AddBody(input);
+            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            AddParameters(req, method, input);
             Api.Execute(req);
         }
         
