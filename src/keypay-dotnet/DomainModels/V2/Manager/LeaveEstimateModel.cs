@@ -11,7 +11,6 @@ namespace KeyPay.DomainModels.V2.Manager
 
     public class LeaveEstimateModel : UnitlessLeaveEstimateModel
     {
-        public decimal? Hours { get; set; }
     }
 
     public class LeaveEstimateUnitModel : UnitlessLeaveEstimateModel
