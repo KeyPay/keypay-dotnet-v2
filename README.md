@@ -1,2 +1,2 @@
 # keypay-dotnet
-.NET client for the KeyPay API
+.NET client V2 for the KeyPay API
