@@ -5,8 +5,8 @@
     <RootNamespace>KeyPayV2</RootNamespace>
     <AssemblyName>KeyPayV2</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.0.137</AssemblyVersion>
-    <FileVersion>2.0.0.137</FileVersion>
+    <AssemblyVersion>2.0.0.138</AssemblyVersion>
+    <FileVersion>2.0.0.138</FileVersion>
     <PackageLicenseUrl>http://opensource.org/licenses/mit-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
     <PackageIconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</PackageIconUrl>
@@ -17,7 +17,7 @@
     This release: Final changes ready for beta/field testing</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.0.137</Version>
+    <Version>2.0.0.138</Version>
   </PropertyGroup>
 
   <ItemGroup>
