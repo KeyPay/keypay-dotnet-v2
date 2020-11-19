@@ -5,8 +5,8 @@
     <RootNamespace>KeyPayV2</RootNamespace>
     <AssemblyName>KeyPayV2</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.0.143</AssemblyVersion>
-    <FileVersion>2.0.0.143</FileVersion>
+    <AssemblyVersion>2.0.0.144</AssemblyVersion>
+    <FileVersion>2.0.0.144</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
     <PackageIconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</PackageIconUrl>
@@ -17,7 +17,7 @@
     This release: Try crlf false set to false</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.0.143</Version>
+    <Version>2.0.0.144</Version>
   </PropertyGroup>
 
   <ItemGroup>
