@@ -5,20 +5,24 @@
     <RootNamespace>KeyPayV2</RootNamespace>
     <AssemblyName>KeyPayV2</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.0.144</AssemblyVersion>
-    <FileVersion>2.0.0.144</FileVersion>
+    <AssemblyVersion>2.0.0.145</AssemblyVersion>
+    <FileVersion>2.0.0.145</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
-    <PackageIconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</PackageIconUrl>
+    <PackageIcon>keypay.png</PackageIcon>
     <RepositoryUrl>https://github.com/keypay/keypay-dotnet</RepositoryUrl>
     <PackageTags>keypay yourpayroll api payroll</PackageTags>
-    <PackageReleaseNotes>This is a major version bump. This new version of the client is automatically generated from our source APIs meaning that it can always be kept up to date.
+    <PackageReleaseNotes>Not currently supported. Do not use until officially released.
+    This is a major version bump. This new version of the client is automatically generated from our source APIs meaning that it can always be kept up to date.
     This new version also provides proper support for multiple regions.
-    This release: Try crlf false set to false</PackageReleaseNotes>
+    This release: Set icon according to new schema</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.0.144</Version>
+    <Version>2.0.0.145</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="keypay.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
