@@ -5,8 +5,8 @@
     <RootNamespace>KeyPayV2</RootNamespace>
     <AssemblyName>KeyPayV2</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.0.139</AssemblyVersion>
-    <FileVersion>2.0.0.139</FileVersion>
+    <AssemblyVersion>2.0.0.140</AssemblyVersion>
+    <FileVersion>2.0.0.140</FileVersion>
     <PackageLicenseUrl>http://opensource.org/licenses/mit-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
     <PackageIconUrl>http://keypay.com.au/wp-content/uploads/2016/07/home-banner-icon.svg</PackageIconUrl>
@@ -14,10 +14,10 @@
     <PackageTags>keypay yourpayroll api payroll</PackageTags>
     <PackageReleaseNotes>This is a major version bump. This new version of the client is automatically generated from our source APIs meaning that it can always be kept up to date.
     This new version also provides proper support for multiple regions.
-    This release: Final changes ready for beta/field testing</PackageReleaseNotes>
+    This release: Remove branching on keypay-dev</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.0.139</Version>
+    <Version>2.0.0.140</Version>
   </PropertyGroup>
 
   <ItemGroup>
