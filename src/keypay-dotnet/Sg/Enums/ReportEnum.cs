@@ -53,6 +53,15 @@ namespace KeyPayV2.Sg.Enums
         WithholdingReport,
         EsctRateReport,
         JobKeeperEligibilityReport,
-        EarningsCertificate
+        EarningsCertificate,
+        Ir8AReport,
+        ExcessCpfContributionsReport,
+        BenefitsInKindReport,
+        ShareOptionsReport,
+        Cp39Report,
+        EAFormReport,
+        PCB2FormReport,
+        IrasReport,
+        IrasLodgementReport
     }
 }

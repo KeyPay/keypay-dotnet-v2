@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Reporting
 {
@@ -10,6 +11,8 @@ namespace KeyPayV2.Uk.Models.Reporting
     {
         public string HmrcAdjustmentType { get; set; }
         public int? AdditionalData { get; set; }
+        public string TaxCode { get; set; }
+        public string TaxRate { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
@@ -27,8 +30,6 @@ namespace KeyPayV2.Uk.Models.Reporting
         public string AmountType { get; set; }
         public string Paid { get; set; }
         public string PreservedEarnings { get; set; }
-        public string TaxCode { get; set; }
-        public string TaxRate { get; set; }
         public decimal? Units { get; set; }
         public string Rate { get; set; }
         public string Total { get; set; }

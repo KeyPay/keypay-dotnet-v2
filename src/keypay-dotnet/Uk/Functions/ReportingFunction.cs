@@ -94,19 +94,35 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Employer Payment Summary XML
+        /// Employer Payment Summary XML By Id
         /// </summary>
-        public byte[] EmployerPaymentSummaryXml(int businessId, int id)
+        public byte[] EmployerPaymentSummaryXmlById(int businessId, int id)
         {
             return ApiByteArrayRequest($"/business/{businessId}/report/eps/{id}/xml");
         }
 
         /// <summary>
+        /// Employer Payment Summary XML Without Submission
+        /// </summary>
+        public EpsResponseXmlModel EmployerPaymentSummaryXmlWithoutSubmission(int businessId, EmployerPaymentSummaryRequest epsModel)
+        {
+            return ApiRequest<EpsResponseXmlModel,EmployerPaymentSummaryRequest>($"/business/{businessId}/report/eps/epsxml", epsModel, Method.POST);
+        }
+
+        /// <summary>
         /// Submit Full Payment Summary submission
         /// </summary>
-        public UkLodgePayRunSubmissionResult SubmitFullPaymentSummarySubmission(int businessId, UkFPSRequestApiModel fpsModel)
+        public UkLodgePayRunSubmissionResult SubmitFullPaymentSummarySubmission(int businessId, UkFpsRequestApiModel fpsModel)
         {
-            return ApiRequest<UkLodgePayRunSubmissionResult,UkFPSRequestApiModel>($"/business/{businessId}/report/fps", fpsModel, Method.POST);
+            return ApiRequest<UkLodgePayRunSubmissionResult,UkFpsRequestApiModel>($"/business/{businessId}/report/fps", fpsModel, Method.POST);
+        }
+
+        /// <summary>
+        /// Full Payment Summary XML Without Submission
+        /// </summary>
+        public FpsResponseXmlModel FullPaymentSummaryXmlWithoutSubmission(int businessId, UkFpsXmlApiModel fpsModel)
+        {
+            return ApiRequest<FpsResponseXmlModel,UkFpsXmlApiModel>($"/business/{businessId}/report/fps/fpsxml", fpsModel, Method.POST);
         }
 
         /// <summary>
@@ -158,7 +174,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<LeaveHistoryReportGroupModel> LeaveHistoryReport(int businessId, LeaveHistoryReportQueryModel request)
         {
-            return ApiRequest<List<LeaveHistoryReportGroupModel>>($"/business/{businessId}/report/leavehistory?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}&employeeId={request.EmployeeId}&leaveCategoryId={request.LeaveCategoryId}");
+            return ApiRequest<List<LeaveHistoryReportGroupModel>>($"/business/{businessId}/report/leavehistory?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}&employeeId={request.EmployeeId}&leaveCategoryId={request.LeaveCategoryId}&employingEntityId={request.EmployingEntityId}");
         }
 
         /// <summary>
@@ -170,6 +186,58 @@ namespace KeyPayV2.Uk.Functions
         public List<LeaveLiabilityExportModel> LeaveLiabilityReport(int businessId, LeaveLiabilityReportQueryModel request)
         {
             return ApiRequest<List<LeaveLiabilityExportModel>>($"/business/{businessId}/report/leaveliability?locationId={request.LocationId}&leaveTypeId={request.LeaveTypeId}&includeApprovedLeave={request.IncludeApprovedLeave}&asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employingEntityId={request.EmployingEntityId}");
+        }
+
+        /// <summary>
+        /// Get P32 Report
+        /// </summary>
+        /// <remarks>
+        /// Gets P32 Report for the financial year
+        /// </remarks>
+        public UkP32ReportModel GetP32Report(int businessId, GetP32ReportQueryModel request)
+        {
+            return ApiRequest<UkP32ReportModel>($"/business/{businessId}/report/p32?financialYearEnding={request.FinancialYearEnding}");
+        }
+
+        /// <summary>
+        /// Get Apprenticeship Levy Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets Apprenticeship Levy Summary Report for the financial year
+        /// </remarks>
+        public UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId, GetApprenticeshipLevySummaryReportQueryModel request)
+        {
+            return ApiRequest<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy?financialYearEnding={request.FinancialYearEnding}");
+        }
+
+        /// <summary>
+        /// Get CIS Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets CIS Deductions Summary Report for the financial year
+        /// </remarks>
+        public UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId, GetCisDeductionsSummaryReportQueryModel request)
+        {
+            return ApiRequest<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary?financialYearEnding={request.FinancialYearEnding}");
+        }
+
+        /// <summary>
+        /// Get NI Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets NI Deductions Summary Report for the financial year
+        /// </remarks>
+        public UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId, GetNiDeductionsSummaryReportQueryModel request)
+        {
+            return ApiRequest<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary?financialYearEnding={request.FinancialYearEnding}");
+        }
+
+        /// <summary>
+        /// Load P60 Data
+        /// </summary>
+        public UkP60SummaryForEmployeeDto LoadP60Data(int businessId, int employeeId, LoadP60DataQueryModel request)
+        {
+            return ApiRequest<UkP60SummaryForEmployeeDto>($"/business/{businessId}/report/p60/{employeeId}?locationId={request.LocationId}&startDate={request.StartDate.ToString("yyyy-MM-ddTHH:mm:ss")}&endDate={request.EndDate.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -211,13 +279,24 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Generates a pension contributions report.
         /// </remarks>
-        public List<PensionContributionDataModel> PensionContributionsReport(int businessId, PensionContributionsReportQueryModel request)
+        public List<PensionContributionDataApiModel> PensionContributionsReport(int businessId, PensionContributionsReportQueryModel request)
         {
-            return ApiRequest<List<PensionContributionDataModel>>($"/business/{businessId}/report/pensioncontributions?employeeId={request.EmployeeId}&payRunId={request.PayRunId}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}");
+            return ApiRequest<List<PensionContributionDataApiModel>>($"/business/{businessId}/report/pensioncontributions?employeeId={request.EmployeeId}&payRunId={request.PayRunId}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}");
         }
 
         /// <summary>
-        /// Timesheet report
+        /// Roster vs Timesheet Comparison Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a roster vs timesheet comparison report.
+        /// </remarks>
+        public List<UkRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId, RosterVsTimesheetComparisonReportQueryModel request)
+        {
+            return ApiRequest<List<UkRosterTimesheetComparisonReportExportModel>>($"/business/{businessId}/report/rostertimesheetcomparison?employeeId={request.EmployeeId}&includeCosts={request.IncludeCosts}&timesheetStatuses={request.TimesheetStatuses}&workTypeId={request.WorkTypeId}&rosterLocationId={request.RosterLocationId}&timesheetLocationId={request.TimesheetLocationId}&rosterStatuses={request.RosterStatuses}&payScheduleId={request.PayScheduleId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}");
+        }
+
+        /// <summary>
+        /// Timesheet Report
         /// </summary>
         /// <remarks>
         /// Generates a timesheet report.

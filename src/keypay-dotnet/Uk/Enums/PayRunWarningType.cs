@@ -42,6 +42,23 @@ namespace KeyPayV2.Uk.Enums
         UkStudentLoanUpdate,
         PensionProviderDoesNotAllowOverseasAddress,
         MissingLeaveYearEntitlement,
-        LeaveRequestUnitTypeMismatch
+        LeaveRequestUnitTypeMismatch,
+        ExpiredNric,
+        ExcessOvertime,
+        ForeignEmployee,
+        ExcessDeductions,
+        TerminatedForeignEmployee,
+        StatutoryPaymentApplied,
+        StatutoryPaymentAppliedPrevious,
+        NationalInsuranceValidations,
+        MixedOffsets,
+        PendingSapPayment,
+        ScheduledUpdateApplied,
+        PensionSettingsUpdated,
+        TaxReliefThresholdExceeded,
+        UkNotNoticeUpdate,
+        EarningsAutomaticallyAdjusted,
+        EarningsRequireAdjustment,
+        UkTaxCodeP9Update
     }
 }

@@ -5,7 +5,7 @@ namespace KeyPayV2.Sg.Enums
 {
     public enum KiwiSaverEnrollmentStatusEnum
     {
-        Enroll,
+        Enrol,
         OptIn,
         ContributionHoliday,
         OptOut,

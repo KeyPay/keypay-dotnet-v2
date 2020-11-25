@@ -53,6 +53,12 @@ namespace KeyPayV2.Sg.Enums
         NationalInsuranceValidations,
         MixedOffsets,
         PendingSapPayment,
-        ScheduledUpdateApplied
+        ScheduledUpdateApplied,
+        PensionSettingsUpdated,
+        TaxReliefThresholdExceeded,
+        UkNotNoticeUpdate,
+        EarningsAutomaticallyAdjusted,
+        EarningsRequireAdjustment,
+        UkTaxCodeP9Update
     }
 }

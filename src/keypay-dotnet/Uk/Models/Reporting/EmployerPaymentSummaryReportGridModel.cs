@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Reporting
 {
@@ -15,6 +16,8 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal NicCompensationOnSmp { get; set; }
         public decimal SppRecovered { get; set; }
         public decimal NicCompensationOnSpp { get; set; }
+        public decimal SpbpRecovered { get; set; }
+        public decimal NicCompensationOnSpbp { get; set; }
         public decimal SapRecovered { get; set; }
         public decimal NicCompensationOnSap { get; set; }
         public decimal ShppRecovered { get; set; }

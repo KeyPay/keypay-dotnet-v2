@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Employee
 {
@@ -18,12 +19,15 @@ namespace KeyPayV2.Nz.Models.Employee
         public string BankAccount2_BankCode { get; set; }
         public string BankAccount3_BankCode { get; set; }
         public int? KiwiSaver_EmployeeContribution { get; set; }
-        public int? KiwiSaver_EmployerContribution { get; set; }
+        public decimal? KiwiSaver_EmployerContribution { get; set; }
         public DateTime? KiwiSaver_OptOutDate { get; set; }
+        public string KiwiSaver_LateOptOutReason { get; set; }
+        public string KiwiSaver_LateOptOutReasonOtherExplanation { get; set; }
         public DateTime? KiwiSaver_SavingsSuspensionFromDate { get; set; }
         public DateTime? KiwiSaver_SavingsSuspensionToDate { get; set; }
         public string KiwiSaver_EnrollmentStatus { get; set; }
         public string KiwiSaver_IneligibilityReason { get; set; }
+        public bool? KiwiSaver_PreviouslyReported { get; set; }
         public string TaxCodeDeclaration_IrdNumber { get; set; }
         public bool? TaxCodeDeclaration_NewZealandResident { get; set; }
         public string TaxCodeDeclaration_SpecialTaxCode { get; set; }
@@ -36,6 +40,7 @@ namespace KeyPayV2.Nz.Models.Employee
         public decimal? TaxCodeDeclaration_SpecialTaxCodeRate { get; set; }
         public int? TaxCodeDeclaration_IncomeBand { get; set; }
         public bool? TaxCodeDeclaration_IsNonDisclosed { get; set; }
+        public bool? TaxCodeDeclaration_RegisteredForGST { get; set; }
         public decimal? TaxCodeDeclaration_ElectedExtraPayRate { get; set; }
         public decimal? TaxCodeDeclaration_EsctRate { get; set; }
         public decimal? TaxCodeDeclaration_StudentLoanRate { get; set; }
@@ -44,6 +49,8 @@ namespace KeyPayV2.Nz.Models.Employee
         public string EmployingEntityNZBN { get; set; }
         public bool? TaxCodeDeclaration_IrregularEmployment { get; set; }
         public string EmployingEntityId { get; set; }
+        public bool? PostalAddressIsOverseas { get; set; }
+        public bool? ResidentialAddressIsOverseas { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }
@@ -57,12 +64,10 @@ namespace KeyPayV2.Nz.Models.Employee
         public string ResidentialAddressLine2 { get; set; }
         public string ResidentialPostCode { get; set; }
         public string ResidentialCountry { get; set; }
-        public bool? ResidentialAddressIsOverseas { get; set; }
         public string PostalStreetAddress { get; set; }
         public string PostalAddressLine2 { get; set; }
         public string PostalPostCode { get; set; }
         public string PostalCountry { get; set; }
-        public bool? PostalAddressIsOverseas { get; set; }
         public string EmailAddress { get; set; }
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }

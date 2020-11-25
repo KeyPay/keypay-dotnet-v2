@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Employee
 {
@@ -20,8 +21,7 @@ namespace KeyPayV2.Au.Models.Employee
         public bool? ClaimTaxFreeThreshold { get; set; }
         public bool? SeniorsTaxOffset { get; set; }
         public bool? OtherTaxOffset { get; set; }
-        public bool? HelpDebt { get; set; }
-        public bool? AfsDebt { get; set; }
+        public bool? StslDebt { get; set; }
         public bool? IsExemptFromFloodLevy { get; set; }
         public bool? HasApprovedWorkingHolidayVisa { get; set; }
         public bool? HasWithholdingVariation { get; set; }
@@ -55,6 +55,9 @@ namespace KeyPayV2.Au.Models.Employee
         public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
         public string MedicareLevyExemption { get; set; }
         public bool? CloselyHeldEmployee { get; set; }
+        public decimal? HoursPerDay { get; set; }
+        public bool? PostalAddressIsOverseas { get; set; }
+        public bool? ResidentialAddressIsOverseas { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }
@@ -68,12 +71,10 @@ namespace KeyPayV2.Au.Models.Employee
         public string ResidentialAddressLine2 { get; set; }
         public string ResidentialPostCode { get; set; }
         public string ResidentialCountry { get; set; }
-        public bool? ResidentialAddressIsOverseas { get; set; }
         public string PostalStreetAddress { get; set; }
         public string PostalAddressLine2 { get; set; }
         public string PostalPostCode { get; set; }
         public string PostalCountry { get; set; }
-        public bool? PostalAddressIsOverseas { get; set; }
         public string EmailAddress { get; set; }
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }

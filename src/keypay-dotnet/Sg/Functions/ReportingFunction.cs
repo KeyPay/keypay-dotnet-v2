@@ -169,7 +169,7 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// roster vs timesheet comparison report
+        /// Roster vs Timesheet Comparison Report
         /// </summary>
         /// <remarks>
         /// Generates a roster vs timesheet comparison report.
@@ -180,7 +180,7 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Timesheet report
+        /// Timesheet Report
         /// </summary>
         /// <remarks>
         /// Generates a timesheet report.

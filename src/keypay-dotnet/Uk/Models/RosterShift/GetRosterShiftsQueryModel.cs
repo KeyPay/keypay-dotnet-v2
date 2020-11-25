@@ -21,5 +21,7 @@ namespace KeyPayV2.Uk.Models.RosterShift
         public bool UnassignedShiftsOnly { get; set; }
         public bool SelectAllRoles { get; set; }
         public bool ExcludeShiftsOverlappingFromDate { get; set; }
+        public int? PageSize { get; set; }
+        public int? PageNum { get; set; }
     }
 }

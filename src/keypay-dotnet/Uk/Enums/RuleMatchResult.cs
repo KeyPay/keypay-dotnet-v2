@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk.Enums
         NoMatch,
         Match,
         DisabledForRuleSet,
-        DisabledForEmployee
+        DisabledForEmployee,
+        ExcludedCustomRule
     }
 }

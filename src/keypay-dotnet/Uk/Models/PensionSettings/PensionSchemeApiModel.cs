@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.PensionSettings
 {
@@ -11,9 +12,7 @@ namespace KeyPayV2.Uk.Models.PensionSettings
         public int Id { get; set; }
         public string Name { get; set; }
         public string ProviderName { get; set; }
-        public string ProviderId { get; set; }
         public string EmployerNumber { get; set; }
-        public string ContactInformation { get; set; }
         public string AdminTitle { get; set; }
         public string AdminFirstName { get; set; }
         public string AdminSurname { get; set; }

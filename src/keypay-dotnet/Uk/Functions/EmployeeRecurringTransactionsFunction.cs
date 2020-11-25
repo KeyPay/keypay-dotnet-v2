@@ -37,6 +37,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get Employee Deduction by External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring deduction with the specified external reference ID.
+        /// </remarks>
+        public EmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
+        {
+            return ApiRequest<EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}");
+        }
+
+        /// <summary>
         /// Get Employee Deduction by ID
         /// </summary>
         /// <remarks>
@@ -180,6 +191,50 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Create Or Update Employee HMRC Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a recurring HMRC adjustment for an employee
+        /// </remarks>
+        public EmployeeRecurringHmrcAdjustmentModel CreateOrUpdateEmployeeHmrcAdjustment(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel,EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Get Employee HMRC adjustment by External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring HMRC adjustment with the specified external reference ID.
+        /// </remarks>
+        public EmployeeRecurringHmrcAdjustmentModel GetEmployeeHmrcAdjustmentByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
+        {
+            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{externalReferenceId}");
+        }
+
+        /// <summary>
+        /// Get Hmrc Adjustment By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets a HMRC adjustment by a specific ID
+        /// </remarks>
+        public EmployeeRecurringHmrcAdjustmentModel GetHmrcAdjustmentById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}");
+        }
+
+        /// <summary>
+        /// Delete Employee Hmrc Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee HMRC adjustment with the specified ID.
+        /// </remarks>
+        public void DeleteEmployeeHmrcAdjustment(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.DELETE);
+        }
+
+        /// <summary>
         /// List Employee Super Adjustments
         /// </summary>
         /// <remarks>
@@ -287,6 +342,17 @@ namespace KeyPayV2.Uk.Functions
         public void DeleteEmployeeTaxAdjustment(int businessId, int employeeId, int id)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// List Employee Deductions By External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions that have a matching external reference ID
+        /// </remarks>
+        public List<EmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
+        {
+            return ApiRequest<List<EmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
         }
     }
 }

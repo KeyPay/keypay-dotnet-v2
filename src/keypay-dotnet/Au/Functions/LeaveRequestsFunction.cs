@@ -27,6 +27,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Leave Request
+        /// </summary>
+        /// <remarks>
+        /// Updates the leave request with the specified ID.
+        /// </remarks>
+        public void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.PUT);
+        }
+
+        /// <summary>
         /// Create Leave Request
         /// </summary>
         /// <remarks>

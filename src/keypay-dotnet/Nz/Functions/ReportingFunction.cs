@@ -125,6 +125,17 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Leave Liability Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a leave liability report.
+        /// </remarks>
+        public List<LeaveLiabilityExportModel> LeaveLiabilityReport(int businessId, LeaveLiabilityReportQueryModel request)
+        {
+            return ApiRequest<List<LeaveLiabilityExportModel>>($"/business/{businessId}/report/leaveliability?locationId={request.LocationId}&leaveTypeId={request.LeaveTypeId}&includeApprovedLeave={request.IncludeApprovedLeave}&asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employingEntityId={request.EmployingEntityId}");
+        }
+
+        /// <summary>
         /// Ordinary Time Earnings Report
         /// </summary>
         /// <remarks>
@@ -180,7 +191,18 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Timesheet report
+        /// Roster vs Timesheet Comparison Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a roster vs timesheet comparison report.
+        /// </remarks>
+        public List<NzRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId, RosterVsTimesheetComparisonReportQueryModel request)
+        {
+            return ApiRequest<List<NzRosterTimesheetComparisonReportExportModel>>($"/business/{businessId}/report/rostertimesheetcomparison?employmentTypeId={request.EmploymentTypeId}&employeeId={request.EmployeeId}&includeCosts={request.IncludeCosts}&timesheetStatuses={request.TimesheetStatuses}&workTypeId={request.WorkTypeId}&rosterLocationId={request.RosterLocationId}&timesheetLocationId={request.TimesheetLocationId}&rosterStatuses={request.RosterStatuses}&payScheduleId={request.PayScheduleId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}");
+        }
+
+        /// <summary>
+        /// Timesheet Report
         /// </summary>
         /// <remarks>
         /// Generates a timesheet report.

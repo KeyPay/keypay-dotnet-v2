@@ -14,6 +14,11 @@ namespace KeyPayV2.Sg.Enums
         FamilyTaxCreditOverpayment,
         Donation,
         Contribution,
-        LifeInsurancePremium
+        LifeInsurancePremium,
+        MyCp38Deduction,
+        MyZakatPaidViaSalaryDeduction,
+        MyReliefClaimTp1,
+        MyZakatReliefClaimTp1,
+        MyLevyRelease
     }
 }

@@ -10,6 +10,7 @@ namespace KeyPayV2.Nz.Enums
         HoursPerHourWorked,
         HoursPerPayRun,
         StandardDays,
-        StandardWeeks
+        StandardWeeks,
+        DayPerCalendarDay
     }
 }

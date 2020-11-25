@@ -69,5 +69,38 @@ namespace KeyPayV2.Au.Functions
         {
             return ApiRequest<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch?term={request.Term}");
         }
+
+        /// <summary>
+        /// Create ESS Self Managed Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Creates a new self managed super fund for the business.
+        /// </remarks>
+        public void CreateEssSelfManagedSuperFund(int employeeId, SelfManagedSuperFundModel fund)
+        {
+            ApiRequest($"/ess/{employeeId}/selfmanagedsuperfund", fund, Method.POST);
+        }
+
+        /// <summary>
+        /// Get ESS Self Managed Super Fund by id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Self Managed Super Fund by the specified id.
+        /// </remarks>
+        public SelfManagedSuperFundModel GetEssSelfManagedSuperFundById(int employeeId, int id)
+        {
+            return ApiRequest<SelfManagedSuperFundModel>($"/ess/{employeeId}/selfmanagedsuperfund/{id}");
+        }
+
+        /// <summary>
+        /// Update ESS Self Managed Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Updates .
+        /// </remarks>
+        public void UpdateEssSelfManagedSuperFund(int employeeId, int id, SelfManagedSuperFundModel fund)
+        {
+            ApiRequest($"/ess/{employeeId}/selfmanagedsuperfund/{id}", fund, Method.PUT);
+        }
     }
 }

@@ -123,5 +123,60 @@ namespace KeyPayV2.Uk.Functions
         {
             return ApiRequest<List<string>>($"/business/{businessId}/accounts/types");
         }
+
+        /// <summary>
+        /// Get Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the default chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsModel GetChartOfAccounts(int businessId)
+        {
+            return ApiRequest<UkChartOfAccountsModel>($"/business/{businessId}/chartofaccounts");
+        }
+
+        /// <summary>
+        /// Update Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the default chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsModel UpdateChartOfAccounts(int businessId, UkChartOfAccountsGroupModel chartOfAccounts)
+        {
+            return ApiRequest<UkChartOfAccountsModel,UkChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.POST);
+        }
+
+        /// <summary>
+        /// Get Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the location specific chart of accounts configuration for a given location.
+        /// </remarks>
+        public UkChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
+        {
+            return ApiRequest<UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}");
+        }
+
+        /// <summary>
+        /// Update Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts)
+        {
+            return ApiRequest<UkChartOfAccountsLocationGroupModel,UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.POST);
+        }
+
+        /// <summary>
+        /// Delete Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.DELETE);
+        }
     }
 }

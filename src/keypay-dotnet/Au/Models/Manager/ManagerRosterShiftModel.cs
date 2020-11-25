@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Manager
 {
     public class ManagerRosterShiftModel
     {
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
+        public string EmployeePhoneNumber { get; set; }
         public decimal? Cost { get; set; }
+        public string CostFormatted { get; set; }
+        public IList<String> Warnings { get; set; }
+        public bool IsLeaveBasedRosterShift { get; set; }
+        public ManagerCurrentRosterShift CurrentShift { get; set; }
         public int Id { get; set; }
         public string Token { get; set; }
         public IList<QualificationModel> Qualifications { get; set; }
@@ -23,6 +27,7 @@ namespace KeyPayV2.Au.Models.Manager
         public string ClassificationName { get; set; }
         public int? WorkTypeId { get; set; }
         public string WorkTypeName { get; set; }
+        public RosterShiftRole Role { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string Notes { get; set; }

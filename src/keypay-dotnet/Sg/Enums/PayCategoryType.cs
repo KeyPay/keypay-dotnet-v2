@@ -31,6 +31,7 @@ namespace KeyPayV2.Sg.Enums
         RelevantDailyPay,
         TerminationRelevantDailyPay,
         TerminationPublicHolidayPay,
+        GST,
         KeepingInTouchDay,
         LumpSumGratuity,
         LumpSumNoticePay,
@@ -50,6 +51,20 @@ namespace KeyPayV2.Sg.Enums
         JobKeeperStart,
         JobKeeperFinish,
         JobKeeperTopUp,
-        RestDay
+        RestDay,
+        EtpTypeSTaxable,
+        EtpTypeSTaxFree,
+        EtpTypePTaxable,
+        EtpTypePTaxFree,
+        EtpSuperableTypePTaxable,
+        EtpSuperableTypePTaxFree,
+        EtpTypePUnusedLeavePayment,
+        JobKeeperTier,
+        JobKeeperCancelTier,
+        TerminationPayment,
+        FlexibleDrawdownPayment,
+        FlexibleDrawdownPaymentNonTaxable,
+        PayrollHistory,
+        PreviousYearEarnings
     }
 }

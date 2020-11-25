@@ -89,6 +89,13 @@ namespace KeyPayV2.Nz.Enums
         UserAccountLocked,
         MaliciousFileNotificationEmployee,
         SuperFundRefundNotification,
-        SuperBatchCancelledNotification
+        SuperBatchCancelledNotification,
+        JobKeeperEmployeeNomination,
+        HmrcPaymentReminder,
+        IrasFormAvailable,
+        HmrcPaymentReminderSendFailure,
+        SyncCancelledSuperBatchesFromBeam,
+        EAFormIncomeTaxAvailable,
+        PCB2FormAvailable
     }
 }

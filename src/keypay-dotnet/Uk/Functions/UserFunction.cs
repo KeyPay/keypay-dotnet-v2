@@ -31,9 +31,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new user.
         /// </remarks>
-        public void CreateNewUser(NewUserModel model)
+        public NewUserCreatedModel CreateNewUser(NewUserModel model)
         {
-            ApiRequest($"/user", model, Method.POST);
+            return ApiRequest<NewUserCreatedModel,NewUserModel>($"/user", model, Method.POST);
         }
     }
 }

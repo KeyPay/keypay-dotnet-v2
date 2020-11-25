@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Employee
 {
@@ -17,6 +18,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal StCalculation { get; set; }
         public decimal UelCalculation { get; set; }
         public decimal UelPlusCalculation { get; set; }
-        public decimal DirectorsNi { get; set; }
+        public bool DirectorsNi { get; set; }
+        public decimal UstCalculation { get; set; }
     }
 }

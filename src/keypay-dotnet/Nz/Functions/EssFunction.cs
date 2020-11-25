@@ -20,9 +20,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Lists all of the bank accounts for this employee.
         /// </remarks>
-        public List<NzBankAccountModel> ListBankAccounts(int employeeId)
+        public List<NzEssBankAccountModel> ListBankAccounts(int employeeId)
         {
-            return ApiRequest<List<NzBankAccountModel>>($"/ess/{employeeId}/bankaccounts");
+            return ApiRequest<List<NzEssBankAccountModel>>($"/ess/{employeeId}/bankaccounts");
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Creates a new bank account for the employee.
         /// </remarks>
-        public SaveBankAccountResponseModel CreateBankAccount(int employeeId, NzBankAccountModel model)
+        public SaveBankAccountResponseModel CreateBankAccount(int employeeId, NzEssBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,NzBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.POST);
+            return ApiRequest<SaveBankAccountResponseModel,NzEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.POST);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Gets the bank account for this employee with the specified ID.
         /// </remarks>
-        public NzBankAccountModel GetBankAccountById(int employeeId, int bankAccountId)
+        public NzEssBankAccountModel GetBankAccountById(int employeeId, int bankAccountId)
         {
-            return ApiRequest<NzBankAccountModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}");
+            return ApiRequest<NzEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}");
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the employee's bank account with the specified ID.
         /// </remarks>
-        public SaveBankAccountResponseModel UpdateBankAccount(int employeeId, int id, NzBankAccountModel model)
+        public SaveBankAccountResponseModel UpdateBankAccount(int employeeId, int id, NzEssBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,NzBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.PUT);
+            return ApiRequest<SaveBankAccountResponseModel,NzEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.PUT);
         }
 
         /// <summary>
@@ -78,28 +78,6 @@ namespace KeyPayV2.Nz.Functions
         public DashboardModel GetDashboard(int employeeId)
         {
             return ApiRequest<DashboardModel>($"/ess/{employeeId}/dashboard");
-        }
-
-        /// <summary>
-        /// Get Details
-        /// </summary>
-        /// <remarks>
-        /// Gets ESS details for the specified employee.
-        /// </remarks>
-        public EssEmployeeDetailsModel GetDetails(int employeeId)
-        {
-            return ApiRequest<EssEmployeeDetailsModel>($"/ess/{employeeId}/details");
-        }
-
-        /// <summary>
-        /// Save Details
-        /// </summary>
-        /// <remarks>
-        /// Saves any employee details that the employee is allowed to set.
-        /// </remarks>
-        public void SaveDetails(int employeeId, EmployeePartialEditModel model)
-        {
-            ApiRequest($"/ess/{employeeId}/details", model, Method.POST);
         }
 
         /// <summary>
@@ -144,6 +122,28 @@ namespace KeyPayV2.Nz.Functions
         public void DownloadDocument(int employeeId, string documentId)
         {
             ApiRequest($"/ess/{employeeId}/document/download/{documentId}");
+        }
+
+        /// <summary>
+        /// Get IRAS forms
+        /// </summary>
+        /// <remarks>
+        /// List all the employee's IRAS forms.
+        /// </remarks>
+        public List<IrasPaymentSummaryModel> GetIrasForms(int employeeId)
+        {
+            return ApiRequest<List<IrasPaymentSummaryModel>>($"/ess/{employeeId}/document/irasforms");
+        }
+
+        /// <summary>
+        /// Get Iras Form PDF
+        /// </summary>
+        /// <remarks>
+        /// Gets the PDF for the IRAS form with the specified ID and type.
+        /// </remarks>
+        public void GetIrasFormPdf(int employeeId, int documentId, string formType)
+        {
+            ApiRequest($"/ess/{employeeId}/document/irasforms/{formType}/{documentId}");
         }
 
         /// <summary>
@@ -235,14 +235,14 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Save Emergency Contacts
+        /// Update Emergency Contacts
         /// </summary>
         /// <remarks>
         /// Saves the employee's emergency contact details.
         /// </remarks>
-        public void SaveEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model)
+        public EmployeeEmergencyContactsEditModel UpdateEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model)
         {
-            ApiRequest($"/ess/{employeeId}/emergencycontacts", model, Method.POST);
+            return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.PUT);
         }
 
         /// <summary>
@@ -467,6 +467,11 @@ namespace KeyPayV2.Nz.Functions
             return ApiRequest<List<EssLeaveCategoryModel>>($"/ess/{employeeId}/leave/leavecategories");
         }
 
+        public void EssLookup_Addresses(int employeeId, int suburbId)
+        {
+            ApiRequest($"/ess/{employeeId}/lookup/addresses/{suburbId}");
+        }
+
         /// <summary>
         /// Get KiwiSaver Enrollment Options
         /// </summary>
@@ -501,12 +506,34 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get Business Titles
+        /// Get Suburb
         /// </summary>
         /// <remarks>
-        /// Gets all the titles for the business.
+        /// Gets the suburb for the criteria passed in
         /// </remarks>
-        public List<TitleViewModel> GetBusinessTitles(int employeeId)
+        public void GetSuburb(int employeeId, GetSuburbQueryModel request)
+        {
+            ApiRequest($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}");
+        }
+
+        /// <summary>
+        /// Search Suburbs
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of suburbs that match the search term.
+        /// </remarks>
+        public void SearchSuburbs(int employeeId, SearchSuburbsQueryModel request)
+        {
+            ApiRequest($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}");
+        }
+
+        /// <summary>
+        /// Get Titles
+        /// </summary>
+        /// <remarks>
+        /// Gets list of valid personl titles
+        /// </remarks>
+        public List<TitleViewModel> GetTitles(int employeeId)
         {
             return ApiRequest<List<TitleViewModel>>($"/ess/{employeeId}/lookup/title");
         }
@@ -520,6 +547,28 @@ namespace KeyPayV2.Nz.Functions
         public List<WorkTypeModel> GetWorkTypes(int employeeId)
         {
             return ApiRequest<List<WorkTypeModel>>($"/ess/{employeeId}/lookup/worktype");
+        }
+
+        /// <summary>
+        /// Get Personal Details
+        /// </summary>
+        /// <remarks>
+        /// Gets Personal details for the specified employee.
+        /// </remarks>
+        public NzEssEmployeeDetailsViewModel GetPersonalDetails(int employeeId)
+        {
+            return ApiRequest<NzEssEmployeeDetailsViewModel>($"/ess/{employeeId}/personaldetails");
+        }
+
+        /// <summary>
+        /// Update Personal Details
+        /// </summary>
+        /// <remarks>
+        /// Updates the personal details for the specified employee
+        /// </remarks>
+        public NzEssEmployeeDetailsViewModel UpdatePersonalDetails(int employeeId, NzEssEmployeeDetailsEditModel model)
+        {
+            return ApiRequest<NzEssEmployeeDetailsViewModel,NzEssEmployeeDetailsEditModel>($"/ess/{employeeId}/personaldetails", model, Method.PUT);
         }
 
         /// <summary>
@@ -836,6 +885,11 @@ namespace KeyPayV2.Nz.Functions
             return ApiRequest<SuperFundModel>($"/ess/{employeeId}/superfunds/{superFundId}");
         }
 
+        public List<SuperProductEditModel> EssSuperFund_ProductSearch(int employeeId, EssSuperFund_ProductSearchQueryModel request)
+        {
+            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}");
+        }
+
         /// <summary>
         /// Clock Out Employee
         /// </summary>
@@ -966,7 +1020,7 @@ namespace KeyPayV2.Nz.Functions
         /// If no ID is specified, create a new timesheet for the employee. 
         /// Otherwise, update the timesheet with the specified ID.
         /// </remarks>
-        public void SubmitOrUpdateTimesheet(int employeeId, TimesheetLineViewModel timesheet)
+        public void SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet)
         {
             ApiRequest($"/ess/{employeeId}/timesheet", timesheet, Method.POST);
         }
@@ -977,7 +1031,7 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Edits the timesheet with the specified ID.
         /// </remarks>
-        public void EditTimesheet(int employeeId, int timesheetId, TimesheetLineViewModel timesheet)
+        public void EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet)
         {
             ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.POST);
         }

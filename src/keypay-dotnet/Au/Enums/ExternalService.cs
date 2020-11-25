@@ -47,6 +47,13 @@ namespace KeyPayV2.Au.Enums
         Beam,
         PayRunAutomation,
         BureauDashboard,
-        Wiise
+        Wiise,
+        QBOMigrationTool,
+        AbridgedFileImport,
+        QBOForcedMigration,
+        HmrcDpsUpdate,
+        HmrcDpsStudentLoan,
+        HmrcDpsPostGradLoan,
+        Sage50EmployeeImport
     }
 }

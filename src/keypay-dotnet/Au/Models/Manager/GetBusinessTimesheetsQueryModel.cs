@@ -10,7 +10,7 @@ namespace KeyPayV2.Au.Models.Manager
     {
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
-        public TimesheetLineStatusType? Status { get; set; }
+        public TimesheetLineFilterStatus? Status { get; set; }
         public int? EmployeeId { get; set; }
         public int? EmployeeGroupId { get; set; }
         public int? LocationId { get; set; }

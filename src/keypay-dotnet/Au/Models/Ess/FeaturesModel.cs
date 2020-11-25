@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Ess
 {
@@ -38,5 +39,6 @@ namespace KeyPayV2.Au.Models.Ess
         public bool EnableWorkZoneClockOn { get; set; }
         public bool HasLeavingEmployeeForm { get; set; }
         public bool ShiftBidding { get; set; }
+        public bool AllowToSelectHigherClassification { get; set; }
     }
 }

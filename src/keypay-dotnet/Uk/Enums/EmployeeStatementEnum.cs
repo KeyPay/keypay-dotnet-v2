@@ -6,7 +6,7 @@ namespace KeyPayV2.Uk.Enums
     public enum EmployeeStatementEnum
     {
         Current,
-        CurrentAfterStartOfFinanicalYear,
+        CurrentAfterStartOfFinancialYear,
         HasAnotherJob
     }
 }

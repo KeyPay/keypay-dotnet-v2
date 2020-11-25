@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Reporting
 {
@@ -15,5 +16,6 @@ namespace KeyPayV2.Uk.Models.Reporting
         public bool IsFinalEpsForTaxYear { get; set; }
         public bool PayeSchemeCeased { get; set; }
         public DateTime? PayeSchemeCeasedDate { get; set; }
+        public bool IsAutomaticSubmission { get; set; }
     }
 }

@@ -12,6 +12,11 @@ namespace KeyPayV2.Uk.Enums
         Lloyds,
         NatWest,
         Sage,
-        ClydesdaleBank
+        ClydesdaleBank,
+        MetroBank,
+        BarclaysPaymentFile,
+        CooperativePaymentFile,
+        NatWestBankLine,
+        SantanderBulkBankLine
     }
 }

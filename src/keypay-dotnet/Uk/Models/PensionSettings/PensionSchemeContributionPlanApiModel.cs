@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.PensionSettings
 {
@@ -28,8 +29,6 @@ namespace KeyPayV2.Uk.Models.PensionSettings
         public DefaultLELOffsetEnum? LowerDefaultEarningsDisregardType { get; set; }
         public decimal? UpperEarningsCap { get; set; }
         public DefaultUETOffsetEnum? UpperDefaultEarningsCapType { get; set; }
-        public List<Int32> SalarySacrificePayCategoryIds { get; set; }
-        public List<Int32> EmployeeContributionPayCategoryIds { get; set; }
-        public List<Int32> EmployerContributionPayCategoryIds { get; set; }
+        public string CollectionSourceId { get; set; }
     }
 }

@@ -87,6 +87,24 @@ namespace KeyPayV2.Uk.Functions
             return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45");
         }
 
+        public P45ViewModel UkHmrcForms_P45Download(int businessId, int employeeId)
+        {
+            return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download");
+        }
+
+        /// <summary>
+        /// Get P60 model for employee
+        /// </summary>
+        public P60ViewModel GetP60ModelForEmployee(int businessId, int employeeId, int financialYearEnding)
+        {
+            return ApiRequest<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60/{financialYearEnding}");
+        }
+
+        public P60ViewModel UkHmrcForms_P60DownloadController(int businessId, int employeeId, int financialYearEnding)
+        {
+            return ApiRequest<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60download/{financialYearEnding}");
+        }
+
         /// <summary>
         /// Notify employee by email of P60
         /// </summary>
@@ -292,6 +310,157 @@ namespace KeyPayV2.Uk.Functions
         public StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model)
         {
             return ApiRequest<StandardHoursModel,StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Create Statutory Adoption Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Adoption Leave period for an employee
+        /// </remarks>
+        public UkSapDataApiResponseModel CreateStatutoryAdoptionLeavePeriodData(int businessId, int employeeId, UkSapDataApiModel sap)
+        {
+            return ApiRequest<UkSapDataApiResponseModel,UkSapDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sap", sap, Method.POST);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Adoption Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Adoption Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public UkSapCalcApiModel CalculateStatutoryAdoptionLeavePeriodData(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSapCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sapcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Get Statutory Maternity Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Maternity Leave period data for a specific employee
+        /// </remarks>
+        public UkSmpDataApiModel GetStatutoryMaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Create Statutory Maternity Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Maternity Leave period for an employee
+        /// </remarks>
+        public UkSmpDataApiResponseModel CreateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, UkSmpDataApiModel smp)
+        {
+            return ApiRequest<UkSmpDataApiResponseModel,UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp", smp, Method.POST);
+        }
+
+        /// <summary>
+        /// Delete Statutory Maternity Leave Data
+        /// </summary>
+        public void DeleteStatutoryMaternityLeaveData(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Maternity Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Maternity Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public UkSmpCalcApiModel CalculateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, CalculateStatutoryMaternityLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Get Statutory Parental Bereavement Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Parental Bereavement Leave period data for a specific employee
+        /// </remarks>
+        public UkSpbpDataApiModel GetStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, GetStatutoryParentalBereavementLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Create Statutory Parental Bereavement Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Parental Bereavement Leave period for an employee
+        /// </remarks>
+        public UkSpbpDataApiResponseModel CreateStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, UkSpbpDataApiModel spbp)
+        {
+            return ApiRequest<UkSpbpDataApiResponseModel,UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp", spbp, Method.POST);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Parental Bereavement Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Parental Bereavement Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public UkSpbpCalcApiModel CalculateStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, CalculateStatutoryParentalBereavementLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSpbpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Get Statutory Paternity Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Paternity Leave period data for a specific employee
+        /// </remarks>
+        public UkSppDataApiModel GetStatutoryPaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryPaternityLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Create Statutory Paternity Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Paternity Leave period for an employee
+        /// </remarks>
+        public UkSppDataApiResponseModel CreateStatutoryPaternityLeavePeriodData(int businessId, int employeeId, UkSppDataApiModel spp)
+        {
+            return ApiRequest<UkSppDataApiResponseModel,UkSppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spp", spp, Method.POST);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Paternity Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Paternity Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public UkSppCalcApiModel CalculateStatutoryPaternityLeavePeriodData(int businessId, int employeeId, CalculateStatutoryPaternityLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSppCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Get Statutory Sick Pay By Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Sick Pay records for the employee between the specified dates
+        /// </remarks>
+        public List<UkSspApiModel> GetStatutorySickPayByEmployee(int businessId, int employeeId, GetStatutorySickPayByEmployeeQueryModel request)
+        {
+            return ApiRequest<List<UkSspApiModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
+        /// Create Statutory Sick Pay
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Sick Pay leave period for an employee
+        /// </remarks>
+        public UkSspApiModel CreateStatutorySickPay(int businessId, int employeeId, UkSspApiModel ssp)
+        {
+            return ApiRequest<UkSspApiModel,UkSspApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp", ssp, Method.POST);
         }
 
         /// <summary>

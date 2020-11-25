@@ -54,6 +54,8 @@ namespace KeyPayV2.Sg.Enums
         CpfEmployerLiability,
         CpfEmployeeLiability,
         SdlEmployerExpense,
-        SdlEmployerLiability
+        SdlEmployerLiability,
+        EmploymentAllowanceEmployersNI,
+        EmploymentAllowanceNICPayable
     }
 }

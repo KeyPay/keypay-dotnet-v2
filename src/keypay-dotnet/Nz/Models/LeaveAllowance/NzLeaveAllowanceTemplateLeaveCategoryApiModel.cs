@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.LeaveAllowance
 {
@@ -10,12 +11,12 @@ namespace KeyPayV2.Nz.Models.LeaveAllowance
     {
         public int? AccrualRuleLeaveYearOffsetAmount { get; set; }
         public int LeaveCategoryId { get; set; }
+        public string LeaveCategoryName { get; set; }
         public decimal? Units { get; set; }
         public LeaveAllowanceUnitEnum? UnitType { get; set; }
         public bool CanApplyForLeave { get; set; }
         public decimal? ContingentPeriod { get; set; }
         public decimal? EntitlementPeriod { get; set; }
-        public int LeaveAccrualRuleId { get; set; }
         public LeaveAccrualType LeaveAccrualRuleAccrualType { get; set; }
         public LeaveAccrualCapType LeaveAccrualRuleCapType { get; set; }
         public decimal LeaveAccrualRuleUnitCap { get; set; }

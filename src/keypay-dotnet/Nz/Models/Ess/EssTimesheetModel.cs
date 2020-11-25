@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Ess
 {
@@ -11,6 +12,7 @@ namespace KeyPayV2.Nz.Models.Ess
         public bool CanDelete { get; set; }
         public bool CanEdit { get; set; }
         public int StatusId { get; set; }
+        public Attachment Attachment { get; set; }
         public string EmployeeName { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
@@ -42,7 +44,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public decimal? Cost { get; set; }
         public ShiftCostingData CostingData { get; set; }
         public bool Discard { get; set; }
-        public AttachmentModel Attachment { get; set; }
         public IList<Int32> ShiftConditionIds { get; set; }
         public bool IsOverlapping { get; set; }
         public bool OverdrawsLeave { get; set; }

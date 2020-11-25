@@ -90,6 +90,12 @@ namespace KeyPayV2.Sg.Enums
         MaliciousFileNotificationEmployee,
         SuperFundRefundNotification,
         SuperBatchCancelledNotification,
-        JobKeeperEmployeeNomination
+        JobKeeperEmployeeNomination,
+        HmrcPaymentReminder,
+        IrasFormAvailable,
+        HmrcPaymentReminderSendFailure,
+        SyncCancelledSuperBatchesFromBeam,
+        EAFormIncomeTaxAvailable,
+        PCB2FormAvailable
     }
 }

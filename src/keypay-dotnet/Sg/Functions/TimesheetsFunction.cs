@@ -66,7 +66,7 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
         /// for the specified employees within the specified time period
-        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// (StartTime - EndTime) will be replaced with the timesheets specified. Any timesheets already included in pay runs will not be replaced.
         /// </remarks>
         public void UpdateReplaceTimesheets(int businessId, SubmitTimesheetsRequest request)
         {

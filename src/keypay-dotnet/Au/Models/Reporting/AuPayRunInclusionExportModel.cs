@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Reporting
 {
@@ -10,6 +11,8 @@ namespace KeyPayV2.Au.Models.Reporting
     {
         public string SuperContributionType { get; set; }
         public string SuperRate { get; set; }
+        public string TaxCode { get; set; }
+        public string TaxRate { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
@@ -27,8 +30,6 @@ namespace KeyPayV2.Au.Models.Reporting
         public string AmountType { get; set; }
         public string Paid { get; set; }
         public string PreservedEarnings { get; set; }
-        public string TaxCode { get; set; }
-        public string TaxRate { get; set; }
         public decimal? Units { get; set; }
         public string Rate { get; set; }
         public string Total { get; set; }

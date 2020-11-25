@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
 using KeyPayV2.Sg.Enums;
+using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.PayRun
 {
@@ -15,6 +16,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public decimal? Rate { get; set; }
         public decimal Earnings { get; set; }
         public decimal LumpSumNumberOfPayPeriods { get; set; }
+        public LumpSumCalculationMethod? LumpSumCalculationMethod { get; set; }
         public int? TimesheetLineId { get; set; }
         public string TimesheetLineExternalId { get; set; }
         public int Id { get; set; }

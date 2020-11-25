@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.PayRun
 {
@@ -15,6 +16,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public string PaymentReference { get; set; }
         public string Note { get; set; }
         public string PayToBankAccountBSB { get; set; }
+        public string PayToBankAccountSwift { get; set; }
         public string PayToBankAccountNumber { get; set; }
         public string PayToSuperFundName { get; set; }
         public string PayToSuperFundMemberNumber { get; set; }

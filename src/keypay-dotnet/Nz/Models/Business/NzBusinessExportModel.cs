@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Business
 {
@@ -36,6 +37,6 @@ namespace KeyPayV2.Nz.Models.Business
         public DateTime DateCreated { get; set; }
         public LeaveAccrualStartDateType LeaveAccrualStartDateType { get; set; }
         public DateTime? LeaveYearStart { get; set; }
-        public DateTime? AutoEnrolmentStagingDate { get; set; }
+        public ExternalService? Source { get; set; }
     }
 }

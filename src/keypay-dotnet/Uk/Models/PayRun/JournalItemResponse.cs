@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.PayRun
 {
@@ -19,6 +20,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public string AccountName { get; set; }
         public string Details { get; set; }
         public string Location { get; set; }
+        public string LocationExternalReferenceId { get; set; }
         public bool IsCredit { get; set; }
         public bool IsDebit { get; set; }
     }

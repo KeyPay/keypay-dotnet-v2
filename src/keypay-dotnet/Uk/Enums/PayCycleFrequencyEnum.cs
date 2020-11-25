@@ -14,6 +14,7 @@ namespace KeyPayV2.Uk.Enums
         FourWeekly,
         Quarterly,
         Annually,
-        HistoricGrossEarnings
+        HistoricGrossEarnings,
+        HalfMonthly
     }
 }

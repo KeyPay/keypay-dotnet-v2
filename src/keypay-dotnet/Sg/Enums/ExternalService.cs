@@ -50,6 +50,10 @@ namespace KeyPayV2.Sg.Enums
         Wiise,
         QBOMigrationTool,
         AbridgedFileImport,
-        QBOForcedMigration
+        QBOForcedMigration,
+        HmrcDpsUpdate,
+        HmrcDpsStudentLoan,
+        HmrcDpsPostGradLoan,
+        Sage50EmployeeImport
     }
 }

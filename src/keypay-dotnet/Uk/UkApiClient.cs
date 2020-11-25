@@ -18,6 +18,7 @@ namespace KeyPayV2.Uk
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
+            EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
@@ -25,6 +26,7 @@ namespace KeyPayV2.Uk
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
+            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             Invoices = new InvoicesFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
@@ -62,6 +64,7 @@ namespace KeyPayV2.Uk
         public EmployeeDocumentFunction EmployeeDocument { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
+        public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
         public AuthenticationFunction Authentication { get; }
@@ -69,6 +72,7 @@ namespace KeyPayV2.Uk
         public EmploymentAgreementFunction EmploymentAgreement { get; }
         public EmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public EmployeeGroupsFunction EmployeeGroups { get; }
+        public EmployeeOnboardingFunction EmployeeOnboarding { get; }
         public EmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public InvoicesFunction Invoices { get; }
         public TimeAndAttendanceFunction TimeAndAttendance { get; }

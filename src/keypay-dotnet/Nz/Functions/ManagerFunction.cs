@@ -236,6 +236,39 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Create Unavailability
+        /// </summary>
+        /// <remarks>
+        /// Create an unavailability for an employee.
+        /// </remarks>
+        public ManagerUnavailabilityModel CreateUnavailability(int businessId, int employeeId, UnavailabilityEditModel model)
+        {
+            return ApiRequest<ManagerUnavailabilityModel,UnavailabilityEditModel>($"/business/{businessId}/manager/{employeeId}/rostershift/unavailability", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Update Unavailability
+        /// </summary>
+        /// <remarks>
+        /// Updates the unavailability with the specified ID.
+        /// </remarks>
+        public ManagerUnavailabilityModel UpdateUnavailability(int businessId, int employeeId, int unavailabilityId, UnavailabilityEditModel model)
+        {
+            return ApiRequest<ManagerUnavailabilityModel,UnavailabilityEditModel>($"/business/{businessId}/manager/{employeeId}/rostershift/unavailability/{unavailabilityId}", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Delete Unavailability
+        /// </summary>
+        /// <remarks>
+        /// Deletes the unavailability with the specified ID.
+        /// </remarks>
+        public void DeleteUnavailability(int businessId, int employeeId, int unavailabilityId)
+        {
+            ApiRequest($"/business/{businessId}/manager/{employeeId}/rostershift/unavailability/{unavailabilityId}", Method.DELETE);
+        }
+
+        /// <summary>
         /// Get timesheet
         /// </summary>
         /// <remarks>
@@ -344,6 +377,21 @@ namespace KeyPayV2.Nz.Functions
         public List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<LocationModel>>($"/business/{businessId}/manager/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}");
+        }
+
+        /// <summary>
+        /// Initiate Employee Self Service Onboarding
+        /// </summary>
+        /// <remarks>
+        /// Initiate the Self Service Onboarding process for an Employee.
+        /// If the employee has an existing employee record, the id should be specified. If the Email and Mobile provided
+        /// are not the same as those on the employee record, they will be updated.
+        /// If the employee does not yet have an employee record do not specify an id, one will be created with the
+        /// details provided.
+        /// </remarks>
+        public void InitiateEmployeeSelfServiceOnboarding(int businessId, NzInitiateEmployeeOnboardingApiModel model)
+        {
+            ApiRequest($"/business/{businessId}/manager/employeeonboarding/initiateselfservice", model, Method.POST);
         }
 
         /// <summary>
@@ -605,7 +653,7 @@ namespace KeyPayV2.Nz.Functions
         /// Add an Employee
         /// </summary>
         /// <remarks>
-        /// Quickly add an employee with minimal details and kiosk enabled. If the employee already exists, the kiosk will be enabled for that employee.
+        /// Quickly add an employee with minimal details and kiosk enabled.
         /// </remarks>
         public void AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model)
         {
@@ -767,7 +815,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<RosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<RosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}&shiftStatuses={request.ShiftStatuses}&selectedLocations={request.SelectedLocations}&selectedEmployees={request.SelectedEmployees}&selectedRoles={request.SelectedRoles}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}");
+            return ApiRequest<List<RosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}&shiftStatuses={request.ShiftStatuses}&selectedLocations={request.SelectedLocations}&selectedEmployees={request.SelectedEmployees}&selectedRoles={request.SelectedRoles}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}");
         }
 
         /// <summary>
@@ -810,6 +858,17 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Get Roster Shift by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for a roster shift with the specified ID.
+        /// </remarks>
+        public ManagerRosterShiftModel GetRosterShiftById(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request)
+        {
+            return ApiRequest<ManagerRosterShiftModel>($"/business/{businessId}/manager/rostershift/{rosterShiftId}?includeCosts={request.IncludeCosts}");
+        }
+
+        /// <summary>
         /// Stub Shift Timesheets
         /// </summary>
         /// <remarks>
@@ -821,15 +880,56 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Roster Shift Metadata
+        /// List Roster Employees
         /// </summary>
         /// <remarks>
-        /// For the single data selected returns data about all published rostered shifts, published unassigned shifts,
+        /// Lists all of the employees this manager has roster permissions on.
+        /// </remarks>
+        public List<ManagerRosterEmployeeModel> ListRosterEmployees(int businessId)
+        {
+            return ApiRequest<List<ManagerRosterEmployeeModel>>($"/business/{businessId}/manager/rostershift/employees");
+        }
+
+        /// <summary>
+        /// List Roster Locations
+        /// </summary>
+        /// <remarks>
+        /// Lists all locations of employees this manager has roster permissions on.
+        /// </remarks>
+        public List<LocationModel> ListRosterLocations(int businessId)
+        {
+            return ApiRequest<List<LocationModel>>($"/business/{businessId}/manager/rostershift/locations");
+        }
+
+        /// <summary>
+        /// Manage Roster Data
+        /// </summary>
+        /// <remarks>
+        /// For the single date selected returns data about all published rostered shifts, published unassigned shifts,
         /// employee unavailablity, and leave requests.
         /// </remarks>
-        public ManagerRosterDataModel RosterShiftMetadata(int businessId, RosterShiftMetadataQueryModel request)
+        public ManagerRosterDataModel ManageRosterData(int businessId, ManageRosterDataQueryModel request)
         {
             return ApiRequest<ManagerRosterDataModel>($"/business/{businessId}/manager/rostershift/manage?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}&employeeId={request.EmployeeId}&locationId={request.LocationId}&roleId={request.RoleId}&includeCosts={request.IncludeCosts}&includeSubLocations={request.IncludeSubLocations}");
+        }
+
+        /// <summary>
+        /// List Manager Roster Employees
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the employees this manager has manage roster permissions on.
+        /// </remarks>
+        public List<ManagerRosterEmployeeModel> ListManagerRosterEmployees(int businessId)
+        {
+            return ApiRequest<List<ManagerRosterEmployeeModel>>($"/business/{businessId}/manager/rostershift/manageemployees");
+        }
+
+        /// <summary>
+        /// Get the list of roles available
+        /// </summary>
+        public List<RosterShiftRole> GetTheListOfRolesAvailable(int businessId)
+        {
+            return ApiRequest<List<RosterShiftRole>>($"/business/{businessId}/manager/rostershift/roles");
         }
 
         /// <summary>

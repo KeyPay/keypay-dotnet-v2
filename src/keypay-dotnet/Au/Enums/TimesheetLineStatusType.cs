@@ -9,7 +9,6 @@ namespace KeyPayV2.Au.Enums
         Submitted,
         Approved,
         Rejected,
-        Processed,
-        AnyExceptRejected
+        Processed
     }
 }

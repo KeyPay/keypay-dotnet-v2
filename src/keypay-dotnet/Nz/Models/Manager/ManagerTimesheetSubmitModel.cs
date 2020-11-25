@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Manager
 {
@@ -26,7 +27,7 @@ namespace KeyPayV2.Nz.Models.Manager
         public string Comments { get; set; }
         public string HiddenComments { get; set; }
         public IList<TimesheetBreakSubmitModel> Breaks { get; set; }
-        public AttachmentModel Attachment { get; set; }
+        public Attachment Attachment { get; set; }
         public ExternalService? Source { get; set; }
     }
 }

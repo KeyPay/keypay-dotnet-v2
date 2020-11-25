@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.EmployeeRecurringTransactions
 {
@@ -23,6 +24,8 @@ namespace KeyPayV2.Nz.Models.EmployeeRecurringTransactions
         public int? AdditionalData { get; set; }
         public int? Priority { get; set; }
         public StudentLoanDeductionOption? StudentLoanDeductionOption { get; set; }
+        public int? TieredDeductionSettingsId { get; set; }
+        public bool Deleted { get; set; }
         public int? Id { get; set; }
         public int EmployeeId { get; set; }
         public decimal Amount { get; set; }

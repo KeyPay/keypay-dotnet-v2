@@ -22,6 +22,9 @@ namespace KeyPayV2.Sg.Enums
         ViewEmployeeQualifications,
         ManageEmployeeQualifications,
         InitiateEmployeeSelfSetup,
-        AddEmployeeFromKiosk
+        AddEmployeeFromKiosk,
+        ViewEmployeeDetails,
+        EditBasicEmployeeDetails,
+        EditAllEmployeeDetails
     }
 }

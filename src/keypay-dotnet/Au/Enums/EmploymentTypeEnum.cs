@@ -11,6 +11,7 @@ namespace KeyPayV2.Au.Enums
         LabourHire,
         SuperannuationIncomeStream,
         Casual,
-        NotApplicable
+        NotApplicable,
+        IndependentContractor
     }
 }

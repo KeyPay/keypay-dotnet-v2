@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.PayCategory
 {
@@ -10,7 +11,9 @@ namespace KeyPayV2.Nz.Models.PayCategory
     {
         public bool IsKiwiSaverExempt { get; set; }
         public bool ExcludeFromAverageEarnings { get; set; }
+        public bool ExcludeFromOrdinaryEarnings { get; set; }
         public bool IsAccLevyExempt { get; set; }
+        public bool IsGstExempt { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
@@ -24,6 +27,8 @@ namespace KeyPayV2.Nz.Models.PayCategory
         public string GeneralLedgerMappingCode { get; set; }
         public bool IsSystemPayCategory { get; set; }
         public int? NumberOfDecimalPlaces { get; set; }
+        public MidpointRounding? RoundingMethod { get; set; }
         public PayCategoryType PayCategoryType { get; set; }
+        public bool HideUnitsOnPaySlip { get; set; }
     }
 }

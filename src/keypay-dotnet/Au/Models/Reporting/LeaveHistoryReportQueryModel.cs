@@ -14,5 +14,6 @@ namespace KeyPayV2.Au.Models.Reporting
         public int LocationId { get; set; }
         public IList<String> EmployeeId { get; set; }
         public int LeaveCategoryId { get; set; }
+        public int EmployingEntityId { get; set; }
     }
 }

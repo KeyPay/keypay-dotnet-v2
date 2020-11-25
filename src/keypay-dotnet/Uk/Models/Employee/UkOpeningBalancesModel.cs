@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Employee
 {
     public class UkOpeningBalancesModel
     {
+        public List<UkInitialDeductionModel> Deductions { get; set; }
         public decimal? PayeWithholdingAmount { get; set; }
         public OpeningNationalInsuranceModel NationalInsurance { get; set; }
         public OpeningPensionsModel Pension { get; set; }
@@ -18,7 +20,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal? GrossEarnings { get; set; }
         public IList<InitialLeaveBalanceModel> LeaveBalances { get; set; }
         public IList<InitialEarningsModel> EarningsLines { get; set; }
-        public List<InitialDeductionModel> Deductions { get; set; }
         public List<InitialEmployerLiabilityModel> EmployerLiabilities { get; set; }
         public int? FinancialYearStartingYear { get; set; }
         public string LocationName { get; set; }

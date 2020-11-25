@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Manager
 {
@@ -15,6 +16,7 @@ namespace KeyPayV2.Au.Models.Manager
         public bool CanApprove { get; set; }
         public decimal? AccruedBalance { get; set; }
         public bool ExceedsBalance { get; set; }
+        public bool IsLeaveBasedRosterShift { get; set; }
         public int LeaveCategoryId { get; set; }
         public bool IsApproved { get; set; }
         public bool IsDeclined { get; set; }
@@ -27,6 +29,7 @@ namespace KeyPayV2.Au.Models.Manager
         public string LeaveCategoryName { get; set; }
         public decimal HoursPerDay { get; set; }
         public decimal TotalHours { get; set; }
+        public decimal TotalUnits { get; set; }
         public string Notes { get; set; }
         public decimal TotalDays { get; set; }
         public string Amount { get; set; }

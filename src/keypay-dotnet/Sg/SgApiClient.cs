@@ -15,11 +15,16 @@ namespace KeyPayV2.Sg
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
+            EmployeeBenefitsInKind = new EmployeeBenefitsInKindFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
+            EmployeeGainsOrProfitsEmployeeSharePlan = new EmployeeGainsOrProfitsEmployeeSharePlanFunction(Api);
+            EmployeeIncomeFromOverseasSubjectToTaxRemission = new EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction(Api);
+            EmployeeIncomeTaxBorneByEmployer = new EmployeeIncomeTaxBorneByEmployerFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             Location = new LocationFunction(Api);
+            EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
@@ -62,11 +67,16 @@ namespace KeyPayV2.Sg
         public EmployeeFunction Employee { get; }
         public EmployeeAccessFunction EmployeeAccess { get; }
         public EmployeeBankAccountFunction EmployeeBankAccount { get; }
+        public EmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
         public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public EmployeeDocumentFunction EmployeeDocument { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
+        public EmployeeGainsOrProfitsEmployeeSharePlanFunction EmployeeGainsOrProfitsEmployeeSharePlan { get; }
+        public EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }
+        public EmployeeIncomeTaxBorneByEmployerFunction EmployeeIncomeTaxBorneByEmployer { get; }
         public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public LocationFunction Location { get; }
+        public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
         public AuthenticationFunction Authentication { get; }

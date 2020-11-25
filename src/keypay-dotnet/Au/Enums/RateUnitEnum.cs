@@ -8,6 +8,7 @@ namespace KeyPayV2.Au.Enums
         Hourly,
         Annually,
         Fixed,
-        Daily
+        Daily,
+        Monthly
     }
 }

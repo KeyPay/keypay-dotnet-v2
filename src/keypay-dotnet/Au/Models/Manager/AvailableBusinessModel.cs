@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Manager
 {
     public class AvailableBusinessModel
     {
-        public string Region { get; set; }
         public WhiteLabelBrandingModel Branding { get; set; }
-        public DayOfWeek EndOfWeek { get; set; }
         public DateTime TimesheetEntryPeriodEnd { get; set; }
         public bool IsPayrollAdmin { get; set; }
         public bool CanApproveLeaveRequests { get; set; }
@@ -25,11 +24,14 @@ namespace KeyPayV2.Au.Models.Manager
         public bool CanCreateTimesheets { get; set; }
         public bool CanCreateAndApproveTimesheets { get; set; }
         public bool NoTimesheetPermissions { get; set; }
+        public bool CanViewRosterShifts { get; set; }
+        public bool CanManageRosterShifts { get; set; }
         public IList<TimeAndAttendanceKioskModel> Kiosks { get; set; }
         public IList<LocationPermissionModel> LocationPermissions { get; set; }
         public IList<EmployeeGroupPermissionModel> EmployeeGroupPermissions { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Region { get; set; }
         public string Abn { get; set; }
         public string RegistrationNumber { get; set; }
         public string LegalName { get; set; }
@@ -40,6 +42,7 @@ namespace KeyPayV2.Au.Models.Manager
         public string ExternalId { get; set; }
         public decimal StandardHoursPerDay { get; set; }
         public string JournalService { get; set; }
+        public DayOfWeek EndOfWeek { get; set; }
         public int? InitialFinancialYearStart { get; set; }
         public bool? ManagersCanEditRosterBudgets { get; set; }
         public decimal? BudgetWarningPercent { get; set; }

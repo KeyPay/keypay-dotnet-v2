@@ -21,6 +21,7 @@ namespace KeyPayV2.Au
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
+            EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
@@ -28,6 +29,7 @@ namespace KeyPayV2.Au
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
+            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
             Invoices = new InvoicesFunction(Api);
@@ -69,6 +71,7 @@ namespace KeyPayV2.Au
         public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
         public LocationFunction Location { get; }
+        public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
         public AuthenticationFunction Authentication { get; }
@@ -76,6 +79,7 @@ namespace KeyPayV2.Au
         public EmploymentAgreementFunction EmploymentAgreement { get; }
         public EmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public EmployeeGroupsFunction EmployeeGroups { get; }
+        public EmployeeOnboardingFunction EmployeeOnboarding { get; }
         public EmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public EmployingEntitiesFunction EmployingEntities { get; }
         public InvoicesFunction Invoices { get; }

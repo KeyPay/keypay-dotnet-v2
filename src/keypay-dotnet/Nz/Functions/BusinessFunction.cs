@@ -61,12 +61,13 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Update Business Access
+        /// Update details of an associated user
         /// </summary>
         /// <remarks>
-        /// Updates a user's access to this business.
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
         /// </remarks>
-        public void UpdateBusinessAccess(int businessId, AccessModel viewModel, UpdateBusinessAccessQueryModel request)
+        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
         {
             ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.PUT);
         }
@@ -102,6 +103,28 @@ namespace KeyPayV2.Nz.Functions
         public BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request)
         {
             return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}");
+        }
+
+        /// <summary>
+        /// List Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// </remarks>
+        public List<BusinessAction> ListBusinessNotifications(int businessId)
+        {
+            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications");
+        }
+
+        /// <summary>
+        /// Dismiss Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Dismisses a business notification, so that it won't be shown again.
+        /// </remarks>
+        public void DismissBusinessNotifications(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.DELETE);
         }
 
         /// <summary>
@@ -193,6 +216,28 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Get Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public NzEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
+        {
+            return ApiRequest<NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings");
+        }
+
+        /// <summary>
+        /// Update Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public NzEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, NzEmployeePortalSettingsModel model)
+        {
+            return ApiRequest<NzEmployeePortalSettingsModel,NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.POST);
+        }
+
+        /// <summary>
         /// List Entitlements
         /// </summary>
         /// <remarks>
@@ -201,6 +246,17 @@ namespace KeyPayV2.Nz.Functions
         public EntitlementsModel ListEntitlements(int businessId)
         {
             return ApiRequest<EntitlementsModel>($"/business/{businessId}/entitlements");
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business. This is the tax year that
+        /// </remarks>
+        public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.POST);
         }
 
         /// <summary>

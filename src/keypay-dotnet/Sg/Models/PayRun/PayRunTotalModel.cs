@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
 using KeyPayV2.Sg.Enums;
+using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.PayRun
 {
@@ -30,6 +31,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public decimal KiwiSaverEmployerContribution { get; set; }
         public decimal EsctContribution { get; set; }
         public decimal StudentLoanAmount { get; set; }
+        public decimal PostGradLoanAmount { get; set; }
         public decimal StudentLoanAdditionalMandatoryAmount { get; set; }
         public decimal StudentLoanAdditionalVoluntaryAmount { get; set; }
         public decimal AccLevyAmount { get; set; }

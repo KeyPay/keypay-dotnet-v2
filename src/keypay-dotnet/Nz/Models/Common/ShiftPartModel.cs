@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Common
 {
@@ -23,5 +24,7 @@ namespace KeyPayV2.Nz.Models.Common
         public NominalWorkType WorkType { get; set; }
         public NominalClassification Classification { get; set; }
         public NominalLeaveCategory LeaveCategory { get; set; }
+        public NominalLocation Location { get; set; }
+        public bool IsAllowanceOrUnitBased { get; set; }
     }
 }

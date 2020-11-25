@@ -24,7 +24,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<RosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<RosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}&shiftStatuses={request.ShiftStatuses}&selectedLocations={request.SelectedLocations}&selectedEmployees={request.SelectedEmployees}&selectedRoles={request.SelectedRoles}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}");
+            return ApiRequest<List<RosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}&shiftStatuses={request.ShiftStatuses}&selectedLocations={request.SelectedLocations}&selectedEmployees={request.SelectedEmployees}&selectedRoles={request.SelectedRoles}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}");
         }
 
         /// <summary>
@@ -75,14 +75,6 @@ namespace KeyPayV2.Au.Functions
         public void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model)
         {
             ApiRequest($"/business/{businessId}/rostershift/{rosterShiftId}/stub", model, Method.POST);
-        }
-
-        /// <summary>
-        /// Creates a basic shift stub for testing purposes only
-        /// </summary>
-        public void CreatesABasicShiftStubForTestingPurposesOnly(int businessId, RosterShiftEditModel shiftModel, CreatesABasicShiftStubForTestingPurposesOnlyQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/rostershift/create?publish={request.Publish}", shiftModel, Method.POST);
         }
     }
 }

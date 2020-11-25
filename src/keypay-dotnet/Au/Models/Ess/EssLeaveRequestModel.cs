@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Ess
 {
@@ -20,6 +21,7 @@ namespace KeyPayV2.Au.Models.Ess
         public string LeaveCategoryName { get; set; }
         public decimal HoursPerDay { get; set; }
         public decimal TotalHours { get; set; }
+        public decimal TotalUnits { get; set; }
         public string Notes { get; set; }
         public decimal TotalDays { get; set; }
         public string Amount { get; set; }

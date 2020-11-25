@@ -252,7 +252,7 @@ namespace KeyPayV2.Au.Functions
         /// Add an Employee
         /// </summary>
         /// <remarks>
-        /// Quickly add an employee with minimal details and kiosk enabled. If the employee already exists, the kiosk will be enabled for that employee.
+        /// Quickly add an employee with minimal details and kiosk enabled.
         /// </remarks>
         public void AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model)
         {

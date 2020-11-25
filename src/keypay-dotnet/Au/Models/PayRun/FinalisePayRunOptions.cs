@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.PayRun
 {
@@ -18,5 +19,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public bool LodgePayRunInTestMode { get; set; }
         public bool SubmitToPensionSync { get; set; }
         public bool LodgeFinalPayRun { get; set; }
+        public HmrcFpsLateSubmissionReason? RelodgeHmrcLateSubmissionReason { get; set; }
+        public bool RelodgeSelectedEmployeesOnly { get; set; }
     }
 }

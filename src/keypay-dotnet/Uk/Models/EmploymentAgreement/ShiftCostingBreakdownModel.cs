@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.EmploymentAgreement
 {
@@ -18,5 +19,7 @@ namespace KeyPayV2.Uk.Models.EmploymentAgreement
         public string Type { get; set; }
         public int? LiabilityCategoryId { get; set; }
         public string LiabilityCategoryName { get; set; }
+        public int? LocationId { get; set; }
+        public string LocationName { get; set; }
     }
 }

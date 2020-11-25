@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
+using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Reporting
 {
     public class NzPayRunInclusionExportModel
     {
         public int? AdditionalData { get; set; }
+        public string TaxCode { get; set; }
+        public string TaxRate { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
@@ -26,8 +29,6 @@ namespace KeyPayV2.Nz.Models.Reporting
         public string AmountType { get; set; }
         public string Paid { get; set; }
         public string PreservedEarnings { get; set; }
-        public string TaxCode { get; set; }
-        public string TaxRate { get; set; }
         public decimal? Units { get; set; }
         public string Rate { get; set; }
         public string Total { get; set; }

@@ -37,6 +37,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Business Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Business invoice with the specified ID.
+        /// </remarks>
+        public byte[] GetBusinessInvoicePdfById(int businessId, int id)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/Invoice/{id}/pdf");
+        }
+
+        /// <summary>
         /// Get Reseller Invoices
         /// </summary>
         /// <remarks>
@@ -78,6 +89,28 @@ namespace KeyPayV2.Au.Functions
         public InvoiceModel GetWhiteLabelInvoiceById(int whiteLabelId, int id)
         {
             return ApiRequest<InvoiceModel>($"/whitelabel/{whiteLabelId}/Invoice/{id}");
+        }
+
+        /// <summary>
+        /// Get White Label Invoice Excel By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the White Label invoice Excel with the specified ID.
+        /// </remarks>
+        public byte[] GetWhiteLabelInvoiceExcelById(int whiteLabelId, int id)
+        {
+            return ApiByteArrayRequest($"/whitelabel/{whiteLabelId}/Invoice/{id}/excel");
+        }
+
+        /// <summary>
+        /// Get White Label Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the White Label invoice PDF with the specified ID.
+        /// </remarks>
+        public byte[] GetWhiteLabelInvoicePdfById(int whiteLabelId, int id)
+        {
+            return ApiByteArrayRequest($"/whitelabel/{whiteLabelId}/Invoice/{id}/pdf");
         }
     }
 }

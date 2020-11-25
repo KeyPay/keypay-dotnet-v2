@@ -27,6 +27,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Update Business Details
+        /// </summary>
+        /// <remarks>
+        /// Update some standard business details
+        /// </remarks>
+        public UkBusinessExportModel UpdateBusinessDetails(EditBusinessDetailsApiModel model)
+        {
+            return ApiRequest<UkBusinessExportModel,EditBusinessDetailsApiModel>($"/business", model, Method.PUT);
+        }
+
+        /// <summary>
         /// Create New Business
         /// </summary>
         /// <remarks>
@@ -61,12 +72,13 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Update Business Access
+        /// Update details of an associated user
         /// </summary>
         /// <remarks>
-        /// Updates a user's access to this business.
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
         /// </remarks>
-        public void UpdateBusinessAccess(int businessId, AccessModel viewModel, UpdateBusinessAccessQueryModel request)
+        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
         {
             ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.PUT);
         }
@@ -102,6 +114,28 @@ namespace KeyPayV2.Uk.Functions
         public BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request)
         {
             return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}");
+        }
+
+        /// <summary>
+        /// List Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// </remarks>
+        public List<BusinessAction> ListBusinessNotifications(int businessId)
+        {
+            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications");
+        }
+
+        /// <summary>
+        /// Dismiss Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Dismisses a business notification, so that it won't be shown again.
+        /// </remarks>
+        public void DismissBusinessNotifications(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.DELETE);
         }
 
         /// <summary>
@@ -179,61 +213,6 @@ namespace KeyPayV2.Uk.Functions
         public void DeleteBacsSettingsRecord(int businessId, int id)
         {
             ApiRequest($"/business/{businessId}/bacs/{id}", Method.DELETE);
-        }
-
-        /// <summary>
-        /// Get Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the default chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsModel GetChartOfAccounts(int businessId)
-        {
-            return ApiRequest<UkChartOfAccountsModel>($"/business/{businessId}/chartofaccounts");
-        }
-
-        /// <summary>
-        /// Update Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the default chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsModel UpdateChartOfAccounts(int businessId, UkChartOfAccountsGroupModel chartOfAccounts)
-        {
-            return ApiRequest<UkChartOfAccountsModel,UkChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.POST);
-        }
-
-        /// <summary>
-        /// Get Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the location specific chart of accounts configuration for a given location.
-        /// </remarks>
-        public UkChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
-        {
-            return ApiRequest<UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}");
-        }
-
-        /// <summary>
-        /// Update Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts)
-        {
-            return ApiRequest<UkChartOfAccountsLocationGroupModel,UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.POST);
-        }
-
-        /// <summary>
-        /// Delete Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
-        {
-            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.DELETE);
         }
 
         /// <summary>
@@ -315,6 +294,28 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public EmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
+        {
+            return ApiRequest<EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings");
+        }
+
+        /// <summary>
+        /// Update Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public EmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, EmployeePortalSettingsModel model)
+        {
+            return ApiRequest<EmployeePortalSettingsModel,EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.POST);
+        }
+
+        /// <summary>
         /// List Entitlements
         /// </summary>
         /// <remarks>
@@ -331,9 +332,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the HMRC Settings for the business.
         /// </remarks>
-        public HmrcSettingsModel GetHmrcSettings(int businessId)
+        public HmrcSettingsResponseModel GetHmrcSettings(int businessId)
         {
-            return ApiRequest<HmrcSettingsModel>($"/business/{businessId}/hmrcsettings");
+            return ApiRequest<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings");
         }
 
         /// <summary>
@@ -342,9 +343,25 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the HMRC Settings for the business.
         /// </remarks>
-        public HmrcSettingsModel UpdateHmrcSettings(int businessId, HmrcSettingsModel model)
+        public HmrcSettingsRequestModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model)
         {
-            return ApiRequest<HmrcSettingsModel,HmrcSettingsModel>($"/business/{businessId}/hmrcsettings", model, Method.PUT);
+            return ApiRequest<HmrcSettingsRequestModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.PUT);
+        }
+
+        public HmrcSettingsRequestModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId)
+        {
+            return ApiRequest<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business. This is the tax year that
+        /// </remarks>
+        public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.POST);
         }
 
         /// <summary>
@@ -423,6 +440,17 @@ namespace KeyPayV2.Uk.Functions
         public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
         {
             ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.POST);
+        }
+
+        /// <summary>
+        /// Get All Statutory Maternity Leave Data
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the SMP data for a business
+        /// </remarks>
+        public List<UkSmpApiRowModel> GetAllStatutoryMaternityLeaveData(int businessId)
+        {
+            return ApiRequest<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay");
         }
 
         /// <summary>

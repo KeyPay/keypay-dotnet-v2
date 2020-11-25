@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Employee
 {
@@ -15,7 +16,9 @@ namespace KeyPayV2.Uk.Models.Employee
         public string TaxCalculationMethod { get; set; }
         public string StudentLoanType { get; set; }
         public bool HasPostGradLoan { get; set; }
+        public int PglCodingNoticeSequenceNumber { get; set; }
         public bool HasStudentLoan { get; set; }
+        public int SlCodingNoticeSequenceNumber { get; set; }
         public string NationalInsuranceCalculationMethod { get; set; }
         public string NationalInsuranceCategory { get; set; }
         public string PreviousEmployerOfficeNumber { get; set; }
@@ -28,6 +31,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public string PreviousEmployerTaxPeriodFrequency { get; set; }
         public int? PreviousEmployerTaxPeriodNumber { get; set; }
         public string PreviousEmployerTaxCode { get; set; }
+        public int P6CodingNoticeSequenceNumber { get; set; }
         public DateTime? AppointmentStartDate { get; set; }
         public DateTime? AppointmentEndDate { get; set; }
         public string EmployeeStarterType { get; set; }
@@ -50,6 +54,14 @@ namespace KeyPayV2.Uk.Models.Employee
         public string BankAccount3_RollNumber { get; set; }
         public string IsExemptFromMinimumWage { get; set; }
         public string IsApprentice { get; set; }
+        public bool? IsSecondedEmployee { get; set; }
+        public SecondmentType? SecondmentType { get; set; }
+        public bool? EuropeanEconomicAreaCitizen { get; set; }
+        public bool? OccupationalPension { get; set; }
+        public bool? PostalAddressIsOverseas { get; set; }
+        public bool? ResidentialAddressIsOverseas { get; set; }
+        public PostponementOptionEnum? PostponementOption { get; set; }
+        public DateTime? DeferralDate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }
@@ -63,12 +75,10 @@ namespace KeyPayV2.Uk.Models.Employee
         public string ResidentialAddressLine2 { get; set; }
         public string ResidentialPostCode { get; set; }
         public string ResidentialCountry { get; set; }
-        public bool? ResidentialAddressIsOverseas { get; set; }
         public string PostalStreetAddress { get; set; }
         public string PostalAddressLine2 { get; set; }
         public string PostalPostCode { get; set; }
         public string PostalCountry { get; set; }
-        public bool? PostalAddressIsOverseas { get; set; }
         public string EmailAddress { get; set; }
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }

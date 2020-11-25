@@ -87,9 +87,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets all the deductions for a pay run.
         /// </remarks>
-        public PayRunDeductionResponse ListDeductions(int businessId, int payRunId)
+        public UkPayRunDeductionResponse ListDeductions(int businessId, int payRunId)
         {
-            return ApiRequest<PayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions");
+            return ApiRequest<UkPayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions");
         }
 
         /// <summary>
@@ -120,9 +120,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets all the deductions for a specific employee in a pay run.
         /// </remarks>
-        public PayRunDeductionResponse GetDeductionsByEmployeeId(int businessId, int employeeId, int payRunId)
+        public UkPayRunDeductionResponse GetDeductionsByEmployeeId(int businessId, int employeeId, int payRunId)
         {
-            return ApiRequest<PayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions/{employeeId}");
+            return ApiRequest<UkPayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions/{employeeId}");
         }
 
         /// <summary>
@@ -167,6 +167,17 @@ namespace KeyPayV2.Uk.Functions
         public UkPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId)
         {
             return ApiRequest<UkPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}");
+        }
+
+        /// <summary>
+        /// Include Employee
+        /// </summary>
+        /// <remarks>
+        /// Includes an employee in a pay run.
+        /// </remarks>
+        public PayRunTotalModel IncludeEmployee(int businessId, int employeeId, int payRunId)
+        {
+            return ApiRequest<PayRunTotalModel>($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.POST);
         }
 
         /// <summary>
@@ -266,6 +277,14 @@ namespace KeyPayV2.Uk.Functions
         public PayRunEmployerLiabilityResponse GetEmployerLiabilitiesByEmployeeId(int businessId, int employeeId, int payRunId)
         {
             return ApiRequest<PayRunEmployerLiabilityResponse>($"/business/{businessId}/payrun/{payRunId}/employerliabilities/{employeeId}");
+        }
+
+        /// <summary>
+        /// Exclude employee from pay run
+        /// </summary>
+        public void ExcludeEmployeeFromPayRun(int businessId, int employeeId, int payRunId)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/exclude/{employeeId}", Method.POST);
         }
 
         /// <summary>
@@ -530,6 +549,54 @@ namespace KeyPayV2.Uk.Functions
         public void SetUiUnlockEnabled(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request)
         {
             ApiRequest($"/business/{businessId}/payrun/{payRunId}/setuiunlockstate", request, Method.POST);
+        }
+
+        /// <summary>
+        /// Get statutory adoption pay calculation for pay run
+        /// </summary>
+        public UkSapApiCalculationResultViewModel GetStatutoryAdoptionPayCalculationForPayRun(int businessId, int employeeId, int payRunId)
+        {
+            return ApiRequest<UkSapApiCalculationResultViewModel>($"/business/{businessId}/payrun/{payRunId}/statutorypay/sap/employee/{employeeId}");
+        }
+
+        /// <summary>
+        /// Apply statutory adoption payments to pay run
+        /// </summary>
+        public void ApplyStatutoryAdoptionPaymentsToPayRun(int businessId, int employeeId, int payRunId, UkApplySapPaymentsApiModel model)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/statutorypay/sap/employee/{employeeId}", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Add Statutory Maternity Pay
+        /// </summary>
+        public UkSmpApiResponseModel AddStatutoryMaternityPay(int businessId, int employeeId, int payRunId, UkSmpApiRequestModel model)
+        {
+            return ApiRequest<UkSmpApiResponseModel,UkSmpApiRequestModel>($"/business/{businessId}/payrun/{payRunId}/statutorypay/smp/employee/{employeeId}", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Get Statutory Sick Pay By Id
+        /// </summary>
+        public UkSspApiModel GetStatutorySickPayById(int businessId, int payRunId, int sspId)
+        {
+            return ApiRequest<UkSspApiModel>($"/business/{businessId}/payrun/{payRunId}/statutorypay/ssp/{sspId}");
+        }
+
+        /// <summary>
+        /// Get Statutory Sick Pay By Employee Id
+        /// </summary>
+        public List<UkSspApiModel> GetStatutorySickPayByEmployeeId(int businessId, int employeeId, int payRunId)
+        {
+            return ApiRequest<List<UkSspApiModel>>($"/business/{businessId}/payrun/{payRunId}/statutorypay/ssp/employee/{employeeId}");
+        }
+
+        /// <summary>
+        /// Add Statutory Sick Pay
+        /// </summary>
+        public UkSspApiResponseModel AddStatutorySickPay(int businessId, int employeeId, int payRunId, UkSspApiModel model)
+        {
+            return ApiRequest<UkSspApiResponseModel,UkSspApiModel>($"/business/{businessId}/payrun/{payRunId}/statutorypay/ssp/employee/{employeeId}", model, Method.POST);
         }
 
         /// <summary>

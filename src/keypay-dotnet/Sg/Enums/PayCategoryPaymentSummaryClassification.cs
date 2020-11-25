@@ -26,6 +26,26 @@ namespace KeyPayV2.Sg.Enums
         AllowanceEntertainment,
         GrossCommission,
         Pension,
-        NotReportable
+        NotReportable,
+        MyGrossSalary,
+        MyFees,
+        MyGrossTips,
+        MyIncomeTaxBorneByEmployer,
+        MyEsosBenefit,
+        MyGratuity,
+        MyBenefitsInKind,
+        MyValueOfLivingAccommodations,
+        MyRefundProvidentPensionFund,
+        MyCompensationForLossOfEmployment,
+        MyPension,
+        MyAnnuities,
+        MyCp38Deduction,
+        MyZakatPaidViaSalaryDeduction,
+        MyReliefClaimTp1,
+        MyZakatReliefClaimTp1,
+        MyTaxExemptAllowances,
+        MyArrearsIncomeA,
+        MyArrearsIncomeB,
+        None
     }
 }

@@ -87,9 +87,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets all the deductions for a pay run.
         /// </remarks>
-        public PayRunDeductionResponse ListDeductions(int businessId, int payRunId)
+        public SgPayRunDeductionResponse ListDeductions(int businessId, int payRunId)
         {
-            return ApiRequest<PayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions");
+            return ApiRequest<SgPayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions");
         }
 
         /// <summary>
@@ -120,9 +120,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets all the deductions for a specific employee in a pay run.
         /// </remarks>
-        public PayRunDeductionResponse GetDeductionsByEmployeeId(int businessId, int employeeId, int payRunId)
+        public SgPayRunDeductionResponse GetDeductionsByEmployeeId(int businessId, int employeeId, int payRunId)
         {
-            return ApiRequest<PayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions/{employeeId}");
+            return ApiRequest<SgPayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions/{employeeId}");
         }
 
         /// <summary>
@@ -167,6 +167,17 @@ namespace KeyPayV2.Sg.Functions
         public SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId)
         {
             return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}");
+        }
+
+        /// <summary>
+        /// Include Employee
+        /// </summary>
+        /// <remarks>
+        /// Includes an employee in a pay run.
+        /// </remarks>
+        public PayRunTotalModel IncludeEmployee(int businessId, int employeeId, int payRunId)
+        {
+            return ApiRequest<PayRunTotalModel>($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.POST);
         }
 
         /// <summary>

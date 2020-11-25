@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Common
 {
@@ -31,5 +32,6 @@ namespace KeyPayV2.Uk.Models.Common
         public string Classification { get; set; }
         public List<TimesheetShiftConditionModel> ShiftConditions { get; set; }
         public string HiddenComments { get; set; }
+        public Attachment Attachment { get; set; }
     }
 }

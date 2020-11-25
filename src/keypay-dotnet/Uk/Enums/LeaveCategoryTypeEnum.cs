@@ -8,6 +8,10 @@ namespace KeyPayV2.Uk.Enums
         Standard,
         LongServiceLeave,
         StatutorySickLeave,
-        StatutoryMaternityLeave
+        StatutoryMaternityLeave,
+        PersonalCarersLeave,
+        StatutoryAdoptionLeave,
+        StatutoryPaternityLeave,
+        StatutoryParentalBereavementLeave
     }
 }

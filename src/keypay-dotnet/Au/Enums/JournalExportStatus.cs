@@ -18,6 +18,7 @@ namespace KeyPayV2.Au.Enums
         FailureVendorMessage,
         FailureIntercompanyLoanAccountsNotConfigured,
         FailureGSTSetup,
-        FailureKnownError
+        FailureKnownError,
+        ResultUnknown
     }
 }

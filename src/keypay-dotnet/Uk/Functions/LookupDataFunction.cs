@@ -26,6 +26,14 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// List countries
+        /// </summary>
+        public List<NameIdPair> ListCountries()
+        {
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/countries");
+        }
+
+        /// <summary>
         /// List Employee Group Permission Types
         /// </summary>
         /// <remarks>
@@ -34,6 +42,14 @@ namespace KeyPayV2.Uk.Functions
         public List<NameIdPair> ListEmployeeGroupPermissionTypes()
         {
             return ApiRequest<List<NameIdPair>>($"/lookupdata/employeegrouppermissions");
+        }
+
+        /// <summary>
+        /// List gender options
+        /// </summary>
+        public List<string> ListGenderOptions()
+        {
+            return ApiRequest<List<string>>($"/lookupdata/genders");
         }
 
         /// <summary>

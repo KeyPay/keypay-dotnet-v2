@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Manager
 {
@@ -16,5 +17,7 @@ namespace KeyPayV2.Au.Models.Manager
         public bool CanApproveExpenses { get; set; }
         public bool CanViewExpenses { get; set; }
         public bool CanViewShiftCosts { get; set; }
+        public bool CanViewRosters { get; set; }
+        public bool CanManageRosters { get; set; }
     }
 }

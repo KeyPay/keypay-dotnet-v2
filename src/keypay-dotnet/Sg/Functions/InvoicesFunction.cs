@@ -92,6 +92,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Get White Label Invoice Excel By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the White Label invoice Excel with the specified ID.
+        /// </remarks>
+        public byte[] GetWhiteLabelInvoiceExcelById(int whiteLabelId, int id)
+        {
+            return ApiByteArrayRequest($"/whitelabel/{whiteLabelId}/Invoice/{id}/excel");
+        }
+
+        /// <summary>
         /// Get White Label Invoice PDF By ID
         /// </summary>
         /// <remarks>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.PayRun
 {
@@ -20,6 +21,13 @@ namespace KeyPayV2.Uk.Models.PayRun
         public decimal EmployerPensionYTD { get; set; }
         public string Crn { get; set; }
         public decimal PayeYTD { get; set; }
+        public decimal EmployeeNationalInsuranceContribution { get; set; }
+        public decimal EmployerNationalInsuranceContribution { get; set; }
+        public decimal EmployeePensionContribution { get; set; }
+        public decimal EmployerPensionContribution { get; set; }
+        public string TaxCode { get; set; }
+        public decimal PostGradLoanComponentAmount { get; set; }
+        public decimal StudentLoanComponentAmount { get; set; }
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }

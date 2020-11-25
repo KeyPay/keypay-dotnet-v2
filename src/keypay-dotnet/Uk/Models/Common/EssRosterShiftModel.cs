@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Common
 {
@@ -20,6 +21,7 @@ namespace KeyPayV2.Uk.Models.Common
         public string ClassificationName { get; set; }
         public int? WorkTypeId { get; set; }
         public string WorkTypeName { get; set; }
+        public RosterShiftRole Role { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string Notes { get; set; }

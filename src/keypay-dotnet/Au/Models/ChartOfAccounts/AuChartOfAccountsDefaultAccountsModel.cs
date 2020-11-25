@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
+using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.ChartOfAccounts
 {
@@ -28,5 +29,9 @@ namespace KeyPayV2.Au.Models.ChartOfAccounts
         public int? EmployerLiabilityExpenseAccountId { get; set; }
         public int? EmployerLiabilityLiabilityAccountId { get; set; }
         public int? DefaultLiabilityAccountId { get; set; }
+        public int? StudentLoanLiabilityAccountId { get; set; }
+        public int? PostgraduateStudentLoanLiabilityAccountId { get; set; }
+        public int? EmployerNationalInsuranceLiabilityAccountId { get; set; }
+        public int? EmployeeNationalInsuranceLiabilityAccountId { get; set; }
     }
 }

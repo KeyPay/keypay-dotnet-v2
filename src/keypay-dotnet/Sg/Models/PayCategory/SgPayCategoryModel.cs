@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
 using KeyPayV2.Sg.Enums;
+using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.PayCategory
 {
@@ -23,6 +24,7 @@ namespace KeyPayV2.Sg.Models.PayCategory
         public string GeneralLedgerMappingCode { get; set; }
         public bool IsSystemPayCategory { get; set; }
         public int? NumberOfDecimalPlaces { get; set; }
+        public MidpointRounding? RoundingMethod { get; set; }
         public PayCategoryType PayCategoryType { get; set; }
         public bool HideUnitsOnPaySlip { get; set; }
     }
