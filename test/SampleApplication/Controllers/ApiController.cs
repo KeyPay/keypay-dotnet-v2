@@ -1,10 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using KeyPay;
-using KeyPay.Auth;
-using KeyPay.DomainModels.V2.Business;
+using KeyPayV2;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using SampleApplication.Models;
+using KeyPayV2.Uk;
+using KeyPayV2.Common.Auth;
+using KeyPayV2.Uk.Models.Business;
+using KeyPayV2.Uk.Models.PayCategory;
 
 namespace SampleApplication.Controllers
 {
@@ -29,23 +34,22 @@ namespace SampleApplication.Controllers
         public IActionResult CreateBusiness(CreateBusinessRequest request)
         {
             var api = CreateApiClient();
-            var business = api.Business.Create(new BusinessModel()
+            var business = api.Business.CreateNewBusiness(new UkBusinessExportModel()
             {
-                ABN = request.ABN,
                 StandardHoursPerDay = request.StandardHoursPerDay,
                 Name = request.BusinessName,
                 ContactName = request.ContactName,
-                ContactEmailAddress = request.ContactEmail
-            });
+                ContactEmailAddress = request.ContactEmail,
+                Chrn = request.Chrn
+            }, request);
 
             return Json(business);
-
         }
 
         public IActionResult LoadBusinesses()
         {
             var api = CreateApiClient();
-            var business = api.Business.List();
+            var business = api.Business.ListBusinesses();
 
             return Json(business);
         }
@@ -53,16 +57,17 @@ namespace SampleApplication.Controllers
         public IActionResult LoadBusinessDetails(int id)
         {
             var api = CreateApiClient();
-            var payCategories = api.PayCategory.List(id);
-            var leaveCategories = api.LeaveCategory.List(id);
-            var employees = api.Employee.List(id);
 
+            var payCategories = api.PayCategory.ListPayCategories(id);
+            var leaveCategories = api.LeaveCategories.ListLeaveCategories(id);
+            var employees = api.Employee.ListBasicDetailsForEmployees(id);
+            
             return Json(new { payCategories, leaveCategories, employees });
         }
 
-        private KeyPayApiV2Client CreateApiClient()
+        private UkApiClient CreateApiClient()
         {
-            var api = new KeyPayApiV2Client(baseUrl, new ApiKeyAuthenticationDetails(HttpContext.Session.GetString("apikey")));
+            var api = new UkApiClient(baseUrl, new ApiKeyAuthenticationDetails(HttpContext.Session.GetString("apikey")));
             return api;
         }
     }

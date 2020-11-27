@@ -12,8 +12,8 @@
             <input class="form-control" name="businessName" data-bind="value:businessName" />
         </div>
         <div class="form-group">
-            <label class="control-label">Business ABN</label>
-            <input class="form-control" name="abn" data-bind="value:abn" />
+            <label class="control-label">Business CHRN (CRN)</label>
+            <input class="form-control" name="chrn" data-bind="value:chrn" />
         </div>
         <div class="form-group">
             <label class="control-label">Contact Name</label>
@@ -71,7 +71,7 @@
             kp.api.viewModel = function () {
                 var model = {};
                 model.businessName = ko.observable('');
-                model.abn = ko.observable('');
+                model.chrn = ko.observable('');
                 model.standardHoursPerDay = ko.observable(8);
                 model.contactName = ko.observable();
                 model.contactEmail = ko.observable();
@@ -87,7 +87,7 @@
                         kp.createBusinessUrl,
                         {
                             businessName: model.businessName(),
-                            abn: model.abn(),
+                            chrn: model.chrn(),
                             standardHoursPerDay: model.standardHoursPerDay(),
                             contactName: model.contactName(),
                             contactEmail: model.contactEmail()
