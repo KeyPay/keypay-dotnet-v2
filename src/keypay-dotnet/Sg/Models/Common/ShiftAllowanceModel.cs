@@ -16,5 +16,6 @@ namespace KeyPayV2.Sg.Models.Common
         public decimal RateMultiplier { get; set; }
         public ShiftAllowanceOption Option { get; set; }
         public ShiftAllowanceType Type { get; set; }
+        public NominalClassification Classification { get; set; }
     }
 }
