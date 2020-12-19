@@ -58,8 +58,8 @@ namespace KeyPayV2.Sg.Enums
         ExcessCpfContributionsReport,
         ShareOptionsReport,
         IrasLodgementReport,
-        KiwiSaverEmploymentDetailsReport,
         RosterTimesheetComparisonReport,
+        KiwiSaverEmploymentDetailsReport,
         Cp39Report,
         EAFormReport,
         PCB2FormReport

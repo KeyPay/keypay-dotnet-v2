@@ -54,6 +54,7 @@ namespace KeyPayV2.Uk.Enums
         HmrcDpsUpdate,
         HmrcDpsStudentLoan,
         HmrcDpsPostGradLoan,
-        Sage50EmployeeImport
+        Sage50EmployeeImport,
+        FPSFileImport
     }
 }

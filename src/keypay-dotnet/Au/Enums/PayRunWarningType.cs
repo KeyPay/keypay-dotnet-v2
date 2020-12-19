@@ -59,6 +59,7 @@ namespace KeyPayV2.Au.Enums
         UkNotNoticeUpdate,
         EarningsAutomaticallyAdjusted,
         EarningsRequireAdjustment,
-        UkTaxCodeP9Update
+        UkTaxCodeP9Update,
+        HrdfEmployeeWarning
     }
 }

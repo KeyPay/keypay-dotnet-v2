@@ -30,7 +30,6 @@ namespace KeyPayV2.Sg.Enums
         MyGrossSalary,
         MyFees,
         MyGrossTips,
-        MyIncomeTaxBorneByEmployer,
         MyEsosBenefit,
         MyGratuity,
         MyBenefitsInKind,

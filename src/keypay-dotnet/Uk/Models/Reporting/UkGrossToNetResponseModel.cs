@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal Paye { get; set; }
         public decimal NetEarnings { get; set; }
         public decimal TaxableEarnings { get; set; }
+        public decimal NIableEarnings { get; set; }
         public decimal StudentLoan { get; set; }
         public decimal PostGradLoan { get; set; }
         public decimal EmployerPensionContribution { get; set; }

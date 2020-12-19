@@ -10,6 +10,7 @@ namespace KeyPayV2.Uk
         {
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
+            BenefitCategory = new BenefitCategoryFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
@@ -56,6 +57,7 @@ namespace KeyPayV2.Uk
 
         public BusinessFunction Business { get; }
         public ChartOfAccountsFunction ChartOfAccounts { get; }
+        public BenefitCategoryFunction BenefitCategory { get; }
         public DeductionCategoriesFunction DeductionCategories { get; }
         public EmployeeFunction Employee { get; }
         public EmployeeAccessFunction EmployeeAccess { get; }

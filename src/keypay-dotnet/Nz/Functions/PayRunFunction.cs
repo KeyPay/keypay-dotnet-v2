@@ -401,6 +401,17 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Net to Gross
+        /// </summary>
+        /// <remarks>
+        /// Calculates net to gross for a given pay run.
+        /// </remarks>
+        public NetToGrossModel NetToGross(int businessId, NetToGrossRequest netToGrossRequest, string payRunId)
+        {
+            return ApiRequest<NetToGrossModel,NetToGrossRequest>($"/business/{businessId}/payrun/{payRunId}/nettogross", netToGrossRequest, Method.POST);
+        }
+
+        /// <summary>
         /// Set Pay Run Notation
         /// </summary>
         /// <remarks>

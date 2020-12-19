@@ -5,6 +5,7 @@ namespace KeyPayV2.Au.Enums
 {
     public enum UserPermission
     {
+        ApproveTimesheets,
         ApproveLeaveRequests,
         CreateLeaveRequests,
         ViewLeaveRequests,
@@ -17,7 +18,6 @@ namespace KeyPayV2.Au.Enums
         ViewEmployeeQualifications,
         ManageRosters,
         ViewRosters,
-        ApproveTimesheets,
         CreateTimesheets,
         ViewShiftCosts,
         CreateTasks,
