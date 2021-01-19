@@ -59,6 +59,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Create benefit categories
+        /// </summary>
+        /// <remarks>
+        /// Creates multiple new benefit categories
+        /// </remarks>
+        public CreateMultipleBenefitCategoriesResult CreateBenefitCategories(int businessId, UkBenefitCategoryEditModel[] model)
+        {
+            return ApiRequest<CreateMultipleBenefitCategoriesResult,UkBenefitCategoryEditModel[]>($"/business/{businessId}/benefitcategory/multiple", model, Method.POST);
+        }
+
+        /// <summary>
         /// Set registered from tax year
         /// </summary>
         /// <remarks>

@@ -505,9 +505,9 @@ namespace KeyPayV2.Uk.Functions
         /// This data can be filtered much more efficiently though so if you only need the basic employee details, this endpoint is preferred.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public EmployeeDetailsModel ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null)
+        public List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<EmployeeDetailsModel>>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>

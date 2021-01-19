@@ -7,8 +7,9 @@ using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.LeaveCategories
 {
-    public class LeaveCategoryModel
+    public class UkLeaveCategoryModel
     {
+        public bool PayoutNegativeBalance { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public LeaveAllowanceUnitEnum UnitType { get; set; }

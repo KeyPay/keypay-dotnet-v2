@@ -42,9 +42,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// White Label Active Employees Report
         /// </remarks>
-        public List<AuActiveEmployeesModel> ActiveEmployeesReport(int whitelabelId, ActiveEmployeesReportQueryModel request)
+        public List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request)
         {
-            return ApiRequest<List<AuActiveEmployeesModel>>($"/whitelabel/{whitelabelId}/reports/activeemployees?emailAddresses={request.EmailAddresses}&includeInactiveBusinesses={request.IncludeInactiveBusinesses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}");
+            return ApiRequest<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?emailAddresses={request.EmailAddresses}&includeInactiveBusinesses={request.IncludeInactiveBusinesses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}");
         }
 
         /// <summary>

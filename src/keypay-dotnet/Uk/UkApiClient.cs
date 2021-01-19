@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk
     {
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails) : base(baseUrl, authenticationDetails)
         {
+            Other = new OtherFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             BenefitCategory = new BenefitCategoryFunction(Api);
@@ -38,7 +39,6 @@ namespace KeyPayV2.Uk
             PayCategory = new PayCategoryFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
-            Other = new OtherFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PensionSettings = new PensionSettingsFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
@@ -55,6 +55,7 @@ namespace KeyPayV2.Uk
             WhiteLabel = new WhiteLabelFunction(Api);
         }
 
+        public OtherFunction Other { get; }
         public BusinessFunction Business { get; }
         public ChartOfAccountsFunction ChartOfAccounts { get; }
         public BenefitCategoryFunction BenefitCategory { get; }
@@ -85,7 +86,6 @@ namespace KeyPayV2.Uk
         public PayCategoryFunction PayCategory { get; }
         public PaymentSummaryFunction PaymentSummary { get; }
         public PayRateTemplateFunction PayRateTemplate { get; }
-        public OtherFunction Other { get; }
         public PayScheduleFunction PaySchedule { get; }
         public PensionSettingsFunction PensionSettings { get; }
         public PublicHolidayFunction PublicHoliday { get; }

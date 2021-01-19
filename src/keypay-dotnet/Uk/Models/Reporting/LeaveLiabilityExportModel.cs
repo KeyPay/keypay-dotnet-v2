@@ -15,6 +15,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public string ExternalId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? LastPaidDate { get; set; }
+        public DateTime? LastPayPeriodEnding { get; set; }
         public decimal CalculatedWeeks { get; set; }
         public string Location { get; set; }
         public string LeaveCategoryName { get; set; }

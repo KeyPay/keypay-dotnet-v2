@@ -14,6 +14,16 @@ namespace KeyPayV2.Uk.Functions
     {
         public OtherFunction(ApiRequestExecutor api) : base(api) {}
 
+        public void BulkActionHmrc_HmrcSettings(int businessId, BulkActionRequest model)
+        {
+            ApiRequest($"/admin/business/{businessId}/bulkaction/hmrc", model, Method.POST);
+        }
+
+        public void BulkActionHmrc_Metadata(int businessId, BulkActionMetadataRequest model)
+        {
+            ApiRequest($"/admin/business/{businessId}/bulkaction/hmrc/metadata", model, Method.POST);
+        }
+
         public UkPayRunDetailsModel UkPayRunDetails_Get(int businessId, int payRunId)
         {
             return ApiRequest<UkPayRunDetailsModel>($"/business/{businessId}/payrun/{payRunId}/details");

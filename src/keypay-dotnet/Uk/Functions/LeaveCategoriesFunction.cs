@@ -21,9 +21,9 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<LeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<UkLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<LeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<UkLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new leave category for the business.
         /// </remarks>
-        public LeaveCategoryModel CreateLeaveCategory(int businessId, LeaveCategoryModel leaveCategory)
+        public UkLeaveCategoryModel CreateLeaveCategory(int businessId, UkLeaveCategoryModel leaveCategory)
         {
-            return ApiRequest<LeaveCategoryModel,LeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST);
+            return ApiRequest<UkLeaveCategoryModel,UkLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the leave category with the specified ID.
         /// </remarks>
-        public LeaveCategoryModel GetLeaveCategoryById(int businessId, int id)
+        public UkLeaveCategoryModel GetLeaveCategoryById(int businessId, int id)
         {
-            return ApiRequest<LeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}");
+            return ApiRequest<UkLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}");
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the leave category with the specified ID.
         /// </remarks>
-        public LeaveCategoryModel UpdateLeaveCategory(int businessId, int id, LeaveCategoryModel leaveCategory)
+        public UkLeaveCategoryModel UpdateLeaveCategory(int businessId, int id, UkLeaveCategoryModel leaveCategory)
         {
-            return ApiRequest<LeaveCategoryModel,LeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT);
+            return ApiRequest<UkLeaveCategoryModel,UkLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT);
         }
 
         /// <summary>

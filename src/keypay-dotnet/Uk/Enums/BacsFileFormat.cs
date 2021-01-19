@@ -17,6 +17,8 @@ namespace KeyPayV2.Uk.Enums
         BarclaysPaymentFile,
         CooperativePaymentFile,
         NatWestBankLine,
-        SantanderBulkBankLine
+        SantanderBulkBankLine,
+        LloydsMultipleBacs,
+        LloydsFasterPayment
     }
 }

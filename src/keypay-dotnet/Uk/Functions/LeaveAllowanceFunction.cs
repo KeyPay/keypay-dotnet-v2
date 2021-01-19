@@ -31,9 +31,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Sets the leave allowances for the specified employees (dictionary keyed by employee ID).
         /// </remarks>
-        public LeaveAllowanceApiModel SetLeaveAllowances(int businessId, LeaveAllowancesRequest request)
+        public List<LeaveAllowanceApiModel> SetLeaveAllowances(int businessId, LeaveAllowancesRequest request)
         {
-            return ApiRequest<LeaveAllowanceApiModel,LeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.PUT);
+            return ApiRequest<List<LeaveAllowanceApiModel>,LeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.PUT);
         }
 
         /// <summary>
