@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Sg.Models.Common;
-using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
+using KeyPayV2.Uk.Models.Common;
+using KeyPayV2.Uk.Enums;
+using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
-namespace KeyPayV2.Sg.Models.PayRun
+namespace KeyPayV2.Uk.Models.Other
 {
     public class TerminateEmployeeRequest
     {

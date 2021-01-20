@@ -14,12 +14,11 @@ namespace KeyPayV2.Nz.Models.Reporting
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string KiwiSaverEnrollmentStatus { get; set; }
-        public string KiwiSaverIneligibilityReason { get; set; }
         public decimal EmployeeContributionPercent { get; set; }
         public decimal EmployerContributionPercent { get; set; }
-        public string OptOutDate { get; set; }
-        public string ContributionHolidayFromDate { get; set; }
-        public string ContributionHolidayToDate { get; set; }
+        public DateTime? OptOutDate { get; set; }
+        public DateTime? ContributionHolidayFromDate { get; set; }
+        public DateTime? ContributionHolidayToDate { get; set; }
         public decimal KiwiSaverEmployeeContributionAmount { get; set; }
         public decimal KiwiSaverEmployerContributionAmount { get; set; }
         public decimal EsctContributionAmount { get; set; }

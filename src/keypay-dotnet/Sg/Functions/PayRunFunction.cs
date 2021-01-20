@@ -555,17 +555,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Terminate Employee in Pay Run
-        /// </summary>
-        /// <remarks>
-        /// Terminates an employee in the specified pay run.
-        /// </remarks>
-        public void TerminateEmployeeInPayRun(int businessId, int payRunId, TerminateEmployeeRequest request)
-        {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/terminate", request, Method.POST);
-        }
-
-        /// <summary>
         /// List Pay Run Totals
         /// </summary>
         /// <remarks>
