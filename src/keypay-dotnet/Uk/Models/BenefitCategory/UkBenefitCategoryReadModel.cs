@@ -10,6 +10,7 @@ namespace KeyPayV2.Uk.Models.BenefitCategory
     public class UkBenefitCategoryReadModel
     {
         public int Id { get; set; }
+        public IList<UkEmployeeBenefitCategoryModel> LinkedEmployees { get; set; }
         public string Name { get; set; }
         public int? Year { get; set; }
         public bool CarryBenefitForward { get; set; }

@@ -55,6 +55,8 @@ namespace KeyPayV2.Au.Enums
         HmrcDpsStudentLoan,
         HmrcDpsPostGradLoan,
         Sage50EmployeeImport,
-        FPSFileImport
+        FPSFileImport,
+        OAuth,
+        FreshBooks
     }
 }
