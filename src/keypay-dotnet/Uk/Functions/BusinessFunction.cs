@@ -199,9 +199,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the BACS settings record with the specified ID of the Bacs record.
         /// </remarks>
-        public EditBusinessBacs UpdateBacsSettingsRecord(int businessId, int id, UkBacsApiModel model)
+        public UkBacsApiModel UpdateBacsSettingsRecord(int businessId, int id, UkBacsApiModel model)
         {
-            return ApiRequest<EditBusinessBacs,UkBacsApiModel>($"/business/{businessId}/bacs/{id}", model, Method.PUT);
+            return ApiRequest<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs/{id}", model, Method.PUT);
         }
 
         /// <summary>
