@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
-using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Reporting
 {
@@ -47,6 +48,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal PensionablePay { get; set; }
         public string HomePhone { get; set; }
         public string NationalInsuranceNumber { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public NationalInsuranceType NationalInsuranceCategory { get; set; }
     }
 }

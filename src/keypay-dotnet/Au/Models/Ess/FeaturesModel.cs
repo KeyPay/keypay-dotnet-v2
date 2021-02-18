@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Ess
 {
@@ -25,6 +26,7 @@ namespace KeyPayV2.Au.Models.Ess
         public bool AllowEmployeeExpensesSelfService { get; set; }
         public bool AllowEmployeeOverrideTaxCodes { get; set; }
         public bool AllowEmployeesToEditKioskTimesheets { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ESSTimesheetSetting EssTimesheetSetting { get; set; }
         public bool EmployeeMustAcceptShifts { get; set; }
         public bool AllowEmployeeTimesheetsWithoutStartStopTimes { get; set; }

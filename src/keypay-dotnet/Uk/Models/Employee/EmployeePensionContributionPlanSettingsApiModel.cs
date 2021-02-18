@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
-using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Employee
 {
     public class EmployeePensionContributionPlanSettingsApiModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public PensionAssessmentStatusEnum? AssessmentStatus { get; set; }
         public DateTime? AssessmentDate { get; set; }
         public bool? OptIn { get; set; }
@@ -22,8 +24,10 @@ namespace KeyPayV2.Uk.Models.Employee
         public DateTime? AutoEnrolOptOutDate { get; set; }
         public string AutoEnrolOptOutReference { get; set; }
         public bool ProcessOptOutRefunds { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PensionAssessmentOptionEnum? PensionAssessmentOption { get; set; }
         public bool Enrolled { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PostponementOptionEnum? PostponementOption { get; set; }
         public DateTime? DeferralDate { get; set; }
     }

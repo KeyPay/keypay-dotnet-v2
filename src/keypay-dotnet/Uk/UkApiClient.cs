@@ -6,7 +6,7 @@ namespace KeyPayV2.Uk
 {
     public class UkApiClient : BaseApiClient
     {
-        public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails) : base(baseUrl, authenticationDetails)
+        public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Other = new OtherFunction(Api);
             Business = new BusinessFunction(Api);

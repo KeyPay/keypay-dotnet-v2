@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
-using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Reporting
 {
@@ -24,6 +25,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal NicCompensationOnShpp { get; set; }
         public DateTime DateSubmitted { get; set; }
         public DateTime? DateResponseReceived { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public EpsSubmissionStatusEnum? Status { get; set; }
         public bool CanSubmitEps { get; set; }
         public List<String> Errors { get; set; }

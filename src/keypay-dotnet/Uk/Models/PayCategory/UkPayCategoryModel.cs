@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
-using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.PayCategory
 {
@@ -12,10 +13,12 @@ namespace KeyPayV2.Uk.Models.PayCategory
         public bool IsNationalInsuranceExempt { get; set; }
         public bool IsEmployeePensionable { get; set; }
         public bool IsEmployerPensionable { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public MinimumWageCalculationImpact MinimumWageCalculationImpact { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public RateUnitEnum RateUnit { get; set; }
         public bool AccruesLeave { get; set; }
         public decimal RateLoadingPercent { get; set; }
@@ -26,8 +29,11 @@ namespace KeyPayV2.Uk.Models.PayCategory
         public string GeneralLedgerMappingCode { get; set; }
         public bool IsSystemPayCategory { get; set; }
         public int? NumberOfDecimalPlaces { get; set; }
-        public MidpointRounding? RoundingMethod { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public KeyPayV2.Uk.Enums.MidpointRounding? RoundingMethod { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PayCategoryType PayCategoryType { get; set; }
         public bool HideUnitsOnPaySlip { get; set; }
+        public bool IsPrimary { get; set; }
     }
 }

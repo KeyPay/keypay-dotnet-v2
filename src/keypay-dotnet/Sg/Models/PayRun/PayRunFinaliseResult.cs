@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.PayRun
 {
@@ -14,6 +15,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public IList<Int32> RemovedEmployees { get; set; }
         public PaySlipNotificationResponse Notifications { get; set; }
         public bool PaySlipsPublished { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PublishPaySlipsPreference PublishPreference { get; set; }
         public DateTime? DatePaid { get; set; }
         public bool ExportJournalsPreference { get; set; }

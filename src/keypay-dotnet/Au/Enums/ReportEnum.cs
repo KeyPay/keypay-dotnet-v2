@@ -62,6 +62,7 @@ namespace KeyPayV2.Au.Enums
         EAFormReport,
         PCB2FormReport,
         IrasReport,
-        IrasLodgementReport
+        IrasLodgementReport,
+        PayRunExportReport
     }
 }

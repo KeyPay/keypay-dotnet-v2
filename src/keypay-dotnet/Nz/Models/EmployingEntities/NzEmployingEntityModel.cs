@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
-using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.EmployingEntities
 {
@@ -14,6 +15,7 @@ namespace KeyPayV2.Nz.Models.EmployingEntities
         public string Region { get; set; }
         public bool CharitableOrganisation { get; set; }
         public string AddressLine3 { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public FbtExemptOrganisationTypeEnum? OrganisationType { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }

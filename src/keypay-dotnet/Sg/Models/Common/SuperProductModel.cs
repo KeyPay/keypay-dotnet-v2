@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.Common
 {
@@ -19,6 +20,7 @@ namespace KeyPayV2.Sg.Models.Common
         public string AccountNumber { get; set; }
         public string Bsb { get; set; }
         public string AccountName { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
         public string ElectronicServiceAddress { get; set; }
         public string Email { get; set; }

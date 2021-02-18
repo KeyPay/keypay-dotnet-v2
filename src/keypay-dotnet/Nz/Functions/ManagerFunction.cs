@@ -87,9 +87,9 @@ namespace KeyPayV2.Nz.Functions
         /// Uploads an attachment to the expense request with the specified ID.
         /// The request should be a MIME multipart file upload request.
         /// </remarks>
-        public void UploadAttachmentToExpenseRequest(int businessId, int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request)
+        public void UploadAttachmentToExpenseRequest(int businessId, int employeeId, FileUploadModel file, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.PUT);
+            ApiRequest($"/business/{businessId}/manager/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", file, Method.PUT);
         }
 
         /// <summary>

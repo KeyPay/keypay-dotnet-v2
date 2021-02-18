@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
-using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.PaymentSummary
 {
@@ -12,7 +13,9 @@ namespace KeyPayV2.Nz.Models.PaymentSummary
         public int EmployeeId { get; set; }
         public int? EmployingEntityId { get; set; }
         public DateTime DateGenerated { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PaygPaymentSummaryTypeEnum PaymentSummaryType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PaygPaymentSummaryStatus Status { get; set; }
         public string EtpCode { get; set; }
         public bool IsAmended { get; set; }

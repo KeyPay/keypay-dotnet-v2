@@ -15,19 +15,29 @@ namespace KeyPayV2.Common
         public IAuthenticator Authenticator { get; set; }
 
         private readonly string baseUrl;
+        private readonly string userAgent;
 
-        public ApiRequestExecutor(string baseUrl)
+        public Action<IRestResponse> ResponseCallback { get; set; }
+
+        static ApiRequestExecutor()
+        {
+            SetSSL();
+        }
+
+        public ApiRequestExecutor(string baseUrl, string userAgent = null)
         {
             this.baseUrl = baseUrl;
+            this.userAgent = userAgent;
         }
 
         public T Execute<T>(RestRequest request) where T : new()
         {
             var client = GetClient(request);
             var response = client.Execute(request);
+            ResponseCallback?.Invoke(response);
             if (response.ErrorException != null)
                 throw response.ErrorException;
-            if ((int) response.StatusCode >= 400)
+            if ((int)response.StatusCode >= 400)
             {
                 throw new KeyPayHttpException(response.StatusCode, response.StatusDescription, request.Method, request.Resource, response.Content);
             }
@@ -51,20 +61,21 @@ namespace KeyPayV2.Common
 
         private RestClient GetClient(RestRequest request)
         {
-            SetSSL();
             var client = new RestClient
             {
                 BaseUrl = new Uri(baseUrl),
                 Authenticator = Authenticator,
                 Timeout = 600000 // 10 min timeout for long EI queries
             };
+            client.UserAgent = userAgent ?? client.UserAgent;
 
             request.OnBeforeDeserialization = resp => HandleResponse(resp, request.Method, request.Resource);
             return client;
         }
 
-        private static void HandleResponse(IRestResponse resp, Method requestMethod, string requestResource)
+        private void HandleResponse(IRestResponse resp, Method requestMethod, string requestResource)
         {
+            ResponseCallback?.Invoke(resp);
             if (resp.ErrorException != null)
                 throw resp.ErrorException;
             if (resp.StatusCode == HttpStatusCode.Unauthorized)
@@ -81,7 +92,7 @@ namespace KeyPayV2.Common
             return true;
         }
 
-        private void SetSSL()
+        private static void SetSSL()
         {
             ServicePointManager.ServerCertificateValidationCallback =
                 ((sender, certificate, chain, sslPolicyErrors) => true);

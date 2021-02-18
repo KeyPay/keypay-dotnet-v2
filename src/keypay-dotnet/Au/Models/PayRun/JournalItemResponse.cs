@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.PayRun
 {
@@ -14,6 +15,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public decimal Amount { get; set; }
         public decimal AmountUnrounded { get; set; }
         public string Reference { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public JournalItemType JournalItemType { get; set; }
         public string TaxCode { get; set; }
         public string AccountCode { get; set; }

@@ -6,7 +6,7 @@ namespace KeyPayV2.Sg
 {
     public class SgApiClient : BaseApiClient
     {
-        public SgApiClient(string baseUrl, AuthenticationDetails authenticationDetails) : base(baseUrl, authenticationDetails)
+        public SgApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Other = new OtherFunction(Api);
             Business = new BusinessFunction(Api);

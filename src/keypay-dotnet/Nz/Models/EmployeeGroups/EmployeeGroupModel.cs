@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
-using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.EmployeeGroups
 {
@@ -11,6 +12,7 @@ namespace KeyPayV2.Nz.Models.EmployeeGroups
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public FilterCombinationStrategyEnum FilterCombinationStrategy { get; set; }
         public IList<EmployeeFilterModel> Filters { get; set; }
     }

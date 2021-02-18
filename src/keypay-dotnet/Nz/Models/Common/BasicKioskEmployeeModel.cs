@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
-using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.Common
 {
@@ -16,6 +17,7 @@ namespace KeyPayV2.Nz.Models.Common
         public bool HasEmail { get; set; }
         public string ProfileImageUrl { get; set; }
         public string MobileNumber { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public TimeAttendanceStatus Status { get; set; }
         public bool LongShift { get; set; }
         public DateTime? ClockOnTimeUtc { get; set; }

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.Ess
 {
@@ -30,12 +31,14 @@ namespace KeyPayV2.Sg.Models.Ess
         public DateTime? SubmittedStart { get; set; }
         public DateTime? SubmittedEnd { get; set; }
         public decimal? Units { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public TimesheetLineStatusType Status { get; set; }
         public string PaySlipUrl { get; set; }
         public IList<TimesheetBreakViewModel> Breaks { get; set; }
         public string Comments { get; set; }
         public decimal? Rate { get; set; }
         public string ExternalReferenceId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
         public int? PayCategoryId { get; set; }
         public int? LeaveCategoryId { get; set; }

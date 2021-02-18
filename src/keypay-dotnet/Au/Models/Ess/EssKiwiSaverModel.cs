@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Ess
 {
     public class EssKiwiSaverModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public KiwiSaverEnrollmentStatusEnum KiwiSaverEnrollmentStatus { get; set; }
         public string KiwiSaverEnrollmentStatusDescription { get; set; }
         public string KiwiSaverIneligibilityReason { get; set; }

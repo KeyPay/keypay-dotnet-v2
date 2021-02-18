@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.PaySchedule
 {
@@ -16,7 +17,9 @@ namespace KeyPayV2.Au.Models.PaySchedule
         public string PaygReference { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PayCycleFrequencyEnum Frequency { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PayRunEmployeeSelectionStrategy? EmployeeSelectionStrategy { get; set; }
         public DateTime? LastDatePaid { get; set; }
         public DateTime? LastPayRun { get; set; }

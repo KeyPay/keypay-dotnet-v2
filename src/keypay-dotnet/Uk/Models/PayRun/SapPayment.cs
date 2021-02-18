@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
-using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.PayRun
 {
@@ -17,7 +18,9 @@ namespace KeyPayV2.Uk.Models.PayRun
         public bool OffsetSap { get; set; }
         public decimal? Amount { get; set; }
         public int? PayRunId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public DoNotPaySapReasonEnum? DoNotPayReason { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public StatutoryAdoptionPaymentStatus? Status { get; set; }
         public string StatusDescription { get; set; }
         public int DaysPaid { get; set; }

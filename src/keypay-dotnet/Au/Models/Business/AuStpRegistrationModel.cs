@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Business
 {
@@ -20,12 +21,14 @@ namespace KeyPayV2.Au.Models.Business
         public string Suburb { get; set; }
         public string PostCode { get; set; }
         public string State { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public AtoSupplierRole LodgementRole { get; set; }
         public string TaxAgentNumber { get; set; }
         public string IntermediaryAbn { get; set; }
         public string IntermediaryContactName { get; set; }
         public string IntermediaryContactEmail { get; set; }
         public string IntermediaryContactPhone { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public AtoIntegrationOption AtoIntegrationOption { get; set; }
         public string SbrSoftwareId { get; set; }
         public bool SbrEnabled { get; set; }

@@ -19,7 +19,11 @@ namespace KeyPayV2.Common
                 settings.Converters.Add(new StringEnumConverter());
                 return settings;
             };
-            Api = new ApiRequestExecutor(baseUrl) {Authenticator = authenticationDetails.Authenticator};
+        }
+
+        protected BaseApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null)
+        {
+            Api = new ApiRequestExecutor(baseUrl, userAgent) { Authenticator = authenticationDetails.Authenticator };
         }
 
         /// <summary>
@@ -29,7 +33,7 @@ namespace KeyPayV2.Common
         /// <param name="method">HTTP Method</param>
         public void ApiRequest(string url, Method method = Method.GET)
         {
-            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            var req = new RestRequest(url, method) { JsonSerializer = new CustomSerializer() };
             Api.Execute(req);
         }
 
@@ -42,7 +46,7 @@ namespace KeyPayV2.Common
         /// <returns>TResult</returns>
         public TResult ApiRequest<TResult>(string url, Method method = Method.GET) where TResult : new()
         {
-            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            var req = new RestRequest(url, method) { JsonSerializer = new CustomSerializer() };
             var result = Api.Execute<TResult>(req);
             return result;
         }
@@ -58,7 +62,7 @@ namespace KeyPayV2.Common
         /// <returns>TResult</returns>
         public TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method = Method.GET) where TResult : new()
         {
-            var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
+            var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer() };
             req.AddJsonBody(input);
             var result = Api.Execute<TResult>(req);
             return result;
@@ -73,11 +77,11 @@ namespace KeyPayV2.Common
         /// <returns>byte[]</returns>
         public byte[] ApiFileRequest(string url, Method method = Method.GET)
         {
-            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            var req = new RestRequest(url, method) { JsonSerializer = new CustomSerializer() };
             var result = Api.DownloadFile(req);
             return result;
         }
-        
+
         /// <summary>
         /// Make an API Request to an endpoint that is not listed
         /// and returns a file
@@ -89,7 +93,7 @@ namespace KeyPayV2.Common
         /// <returns>byte[]</returns>
         public byte[] ApiFileRequest<TInput>(string url, TInput input, Method method = Method.GET)
         {
-            var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
+            var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer() };
             req.AddJsonBody(input);
             var result = Api.DownloadFile(req);
             return result;

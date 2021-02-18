@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.EmployeeRecurringTransactions
 {
@@ -11,8 +12,10 @@ namespace KeyPayV2.Au.Models.EmployeeRecurringTransactions
     {
         public string EmployerLiabilityCategoryName { get; set; }
         public int EmployerLiabilityCategoryId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public EmployerRecurringLiabilityTypeEnum LiabilityType { get; set; }
         public string ExternalReferenceId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
         public int? Id { get; set; }
         public int EmployeeId { get; set; }

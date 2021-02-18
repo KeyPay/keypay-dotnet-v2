@@ -6,7 +6,7 @@ namespace KeyPayV2.Au
 {
     public class AuApiClient : BaseApiClient
     {
-        public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails) : base(baseUrl, authenticationDetails)
+        public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Business = new BusinessFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);

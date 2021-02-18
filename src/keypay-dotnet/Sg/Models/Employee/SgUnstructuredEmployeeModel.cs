@@ -2,20 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.Employee
 {
     public class SgUnstructuredEmployeeModel
     {
         public decimal? HoursPerDay { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public AddressTypeEnum ResidentialAddressType { get; set; }
         public string ResidentialSuburb { get; set; }
         public string ResidentialState { get; set; }
         public string ResidentialBlockNumber { get; set; }
         public string ResidentialUnitNumber { get; set; }
         public string ResidentialLevelNumber { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public AddressTypeEnum? PostalAddressType { get; set; }
         public string PostalSuburb { get; set; }
         public string PostalState { get; set; }
@@ -47,6 +50,7 @@ namespace KeyPayV2.Sg.Models.Employee
         public string PostalStreetName { get; set; }
         public string PostalAddressLine3 { get; set; }
         public string TieredLeaveTemplate { get; set; }
+        public string TerminationReason { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }
@@ -112,8 +116,10 @@ namespace KeyPayV2.Sg.Models.Employee
         public decimal? BankAccount3_AllocatedPercentage { get; set; }
         public decimal? BankAccount3_FixedAmount { get; set; }
         public string RosteringNotificationChoices { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public LeaveAccrualStartDateType? LeaveAccrualStartDateType { get; set; }
         public DateTime? LeaveYearStart { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
     }

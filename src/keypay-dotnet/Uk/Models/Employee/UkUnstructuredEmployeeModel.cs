@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
-using MidpointRounding = KeyPayV2.Uk.Enums.MidpointRounding;
 
 namespace KeyPayV2.Uk.Models.Employee
 {
@@ -55,11 +56,13 @@ namespace KeyPayV2.Uk.Models.Employee
         public string IsExemptFromMinimumWage { get; set; }
         public string IsApprentice { get; set; }
         public bool? IsSecondedEmployee { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public SecondmentType? SecondmentType { get; set; }
         public bool? EuropeanEconomicAreaCitizen { get; set; }
         public bool? OccupationalPension { get; set; }
         public bool? PostalAddressIsOverseas { get; set; }
         public bool? ResidentialAddressIsOverseas { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PostponementOptionEnum? PostponementOption { get; set; }
         public DateTime? DeferralDate { get; set; }
         public int Id { get; set; }
@@ -127,8 +130,10 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal? BankAccount3_AllocatedPercentage { get; set; }
         public decimal? BankAccount3_FixedAmount { get; set; }
         public string RosteringNotificationChoices { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public LeaveAccrualStartDateType? LeaveAccrualStartDateType { get; set; }
         public DateTime? LeaveYearStart { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
     }

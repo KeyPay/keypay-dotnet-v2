@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.EmployeeGainsOrProfitsEmployeeSharePlan
 {
@@ -11,9 +12,11 @@ namespace KeyPayV2.Sg.Models.EmployeeGainsOrProfitsEmployeeSharePlan
     {
         public int Id { get; set; }
         public int BasisPeriod { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public SchemeType SchemeType { get; set; }
         public string CompanyName { get; set; }
         public string Uen { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PlanType PlanType { get; set; }
         public DateTime? IncorporationDate { get; set; }
         public DateTime? GrantDate { get; set; }

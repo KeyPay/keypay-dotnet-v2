@@ -39,7 +39,7 @@ namespace KeyPayV2.Common.Auth
         /// The token type.
         /// </param>
         public OAuth2AuthorizationRequestHeaderAuthenticator(string accessToken, string tokenType)
-            : base(accessToken)
+            : base(accessToken, tokenType)
         {
             // Conatenate during constructor so that it is only done once. can improve performance.
             authorizationValue = tokenType + " " + accessToken;

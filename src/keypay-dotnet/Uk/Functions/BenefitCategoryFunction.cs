@@ -64,20 +64,31 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates multiple new benefit categories
         /// </remarks>
-        public CreateMultipleBenefitCategoriesResult CreateBenefitCategories(int businessId, UkBenefitCategoryEditModel[] model)
+        public CreateMultipleBenefitCategoriesResult CreateBenefitCategories(int businessId, List<UkBenefitCategoryEditModel> model)
         {
-            return ApiRequest<CreateMultipleBenefitCategoriesResult,UkBenefitCategoryEditModel[]>($"/business/{businessId}/benefitcategory/multiple", model, Method.POST);
+            return ApiRequest<CreateMultipleBenefitCategoriesResult,List<UkBenefitCategoryEditModel>>($"/business/{businessId}/benefitcategory/multiple", model, Method.POST);
         }
 
         /// <summary>
-        /// Set registered from tax year
+        /// Gets current benefit category processing options
         /// </summary>
         /// <remarks>
-        /// Sets the business as having registered with HMRC from the given tax year
+        /// Gets p11d and/or payrolling of benefits active or inactive and registered from tax year
         /// </remarks>
-        public void SetRegisteredFromTaxYear(int businessId, int fromYear)
+        public UkBenefitCategoriesProcessingOptions GetsCurrentBenefitCategoryProcessingOptions(int businessId)
         {
-            ApiRequest($"/business/{businessId}/benefitcategory/registeredfromtaxyear/{fromYear}", Method.POST);
+            return ApiRequest<UkBenefitCategoriesProcessingOptions>($"/business/{businessId}/benefitcategory/processingoptions");
+        }
+
+        /// <summary>
+        /// Sets benefit category processing options
+        /// </summary>
+        /// <remarks>
+        /// Sets p11d and/or payrolling of benefits active or inactive and the business as having registered with HMRC from the given tax year
+        /// </remarks>
+        public void SetsBenefitCategoryProcessingOptions(int businessId, UkBenefitCategoriesProcessingOptionsModel model)
+        {
+            ApiRequest($"/business/{businessId}/benefitcategory/processingoptions", model, Method.PUT);
         }
 
         /// <summary>

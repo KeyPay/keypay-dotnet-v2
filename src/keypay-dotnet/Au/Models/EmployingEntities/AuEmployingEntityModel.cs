@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.EmployingEntities
 {
@@ -15,6 +16,7 @@ namespace KeyPayV2.Au.Models.EmployingEntities
         public string BranchCode { get; set; }
         public bool IsExemptFromFringeBenefitsTax { get; set; }
         public bool HasSeparateEntertainmentFringeBenefitsCap { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public FbtExemptOrganisationTypeEnum? FbtExemptOrganisationType { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }

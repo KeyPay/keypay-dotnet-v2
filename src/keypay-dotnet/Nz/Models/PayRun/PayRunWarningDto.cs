@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
-using MidpointRounding = KeyPayV2.Nz.Enums.MidpointRounding;
 
 namespace KeyPayV2.Nz.Models.PayRun
 {
     public class PayRunWarningDto
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public PayRunWarningType WarningType { get; set; }
         public int EmployeeId { get; set; }
         public string Warning { get; set; }

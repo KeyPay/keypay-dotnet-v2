@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
-using MidpointRounding = KeyPayV2.Sg.Enums.MidpointRounding;
 
 namespace KeyPayV2.Sg.Models.PaySchedule
 {
@@ -17,10 +18,12 @@ namespace KeyPayV2.Sg.Models.PaySchedule
         public DateTime? ScheduledEndDate { get; set; }
         public DateTime NextScheduledCreationDateTimeUtc { get; set; }
         public bool Finalise { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public TimesheetImportOption TimesheetImportOption { get; set; }
         public bool ExportJournals { get; set; }
         public bool SubmitToPensionSync { get; set; }
         public bool LodgePayRun { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PublishPaySlipsPreference PublishPaySlips { get; set; }
         public int PublishPaySlipsHour { get; set; }
         public bool SuppressNotifications { get; set; }

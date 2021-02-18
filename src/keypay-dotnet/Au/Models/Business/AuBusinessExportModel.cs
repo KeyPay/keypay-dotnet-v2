@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Business
 {
@@ -26,10 +27,12 @@ namespace KeyPayV2.Au.Models.Business
         public string ExternalId { get; set; }
         public decimal StandardHoursPerDay { get; set; }
         public string JournalService { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public DayOfWeek EndOfWeek { get; set; }
         public int? InitialFinancialYearStart { get; set; }
         public bool? ManagersCanEditRosterBudgets { get; set; }
         public decimal? BudgetWarningPercent { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public BudgetEntryMethodEnum BudgetEntryMethod { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -37,8 +40,10 @@ namespace KeyPayV2.Au.Models.Business
         public string WhiteLabelName { get; set; }
         public string PromoCode { get; set; }
         public DateTime DateCreated { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public LeaveAccrualStartDateType LeaveAccrualStartDateType { get; set; }
         public DateTime? LeaveYearStart { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService? Source { get; set; }
     }
 }

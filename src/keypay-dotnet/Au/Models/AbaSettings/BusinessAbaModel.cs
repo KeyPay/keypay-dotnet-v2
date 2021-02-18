@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.AbaSettings
 {
@@ -20,7 +21,9 @@ namespace KeyPayV2.Au.Models.AbaSettings
         public bool IncludeSelfBalancingTransaction { get; set; }
         public bool MergeMultipleAccountPayments { get; set; }
         public string BalanceLodgementReference { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PaymentFilePaymentAdditionalContent? PaymentAdditionalContent { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public PaymentFileBalanceAdditionalContent? BalanceAdditionalContent { get; set; }
     }
 }

@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
-using MidpointRounding = KeyPayV2.Au.Enums.MidpointRounding;
 
 namespace KeyPayV2.Au.Models.Business
 {
     public class BusinessAccessModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public RelatedUserType AccessType { get; set; }
         public IList<EmployeeGroupAccessModel> EmployeeGroups { get; set; }
         public IList<LocationAccessModel> LocationAccess { get; set; }
