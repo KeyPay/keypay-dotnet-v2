@@ -60,6 +60,7 @@ namespace KeyPayV2.Uk.Enums
         EarningsAutomaticallyAdjusted,
         EarningsRequireAdjustment,
         UkTaxCodeP9Update,
-        HrdfEmployeeWarning
+        HrdfEmployeeWarning,
+        NewPayrolledBenefits
     }
 }

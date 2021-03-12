@@ -18,12 +18,16 @@ namespace KeyPayV2.Uk.Models.PayRun
         public string EmployeePostalAddressCounty { get; set; }
         public decimal EmployeeNationalInsuranceYTD { get; set; }
         public decimal EmployerNationalInsuranceYTD { get; set; }
+        public decimal EmployerClass1ANationalInsuranceContributionYTD { get; set; }
+        public decimal EmployerNationalInsuranceContributionIncludingClass1AYTD { get; set; }
         public decimal EmployeePensionYTD { get; set; }
         public decimal EmployerPensionYTD { get; set; }
         public string Crn { get; set; }
         public decimal PayeYTD { get; set; }
         public decimal EmployeeNationalInsuranceContribution { get; set; }
         public decimal EmployerNationalInsuranceContribution { get; set; }
+        public decimal EmployerClass1ANationalInsuranceContribution { get; set; }
+        public decimal EmployerNationalInsuranceContributionIncludingClass1A { get; set; }
         public decimal EmployeePensionContribution { get; set; }
         public decimal EmployerPensionContribution { get; set; }
         public string TaxCode { get; set; }

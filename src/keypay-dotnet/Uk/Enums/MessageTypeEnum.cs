@@ -96,6 +96,7 @@ namespace KeyPayV2.Uk.Enums
         HmrcPaymentReminderSendFailure,
         SyncCancelledSuperBatchesFromBeam,
         EAFormIncomeTaxAvailable,
-        PCB2FormAvailable
+        PCB2FormAvailable,
+        JobMakerEmployeeNomination
     }
 }

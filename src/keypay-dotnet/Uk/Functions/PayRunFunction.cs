@@ -82,6 +82,28 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// List Benefits
+        /// </summary>
+        /// <remarks>
+        /// Lists all the benefits assigned to employees in the pay run.
+        /// </remarks>
+        public UkPayRunTotalBenefitResponse ListBenefits(int businessId, int payRunId)
+        {
+            return ApiRequest<UkPayRunTotalBenefitResponse>($"/business/{businessId}/payrun/{payRunId}/benefits");
+        }
+
+        /// <summary>
+        /// Get Benefits
+        /// </summary>
+        /// <remarks>
+        /// Gets all the benefits assigned to a particular employee in the pay run.
+        /// </remarks>
+        public UkPayRunTotalBenefitResponse GetBenefits(int businessId, int employeeId, int payRunId)
+        {
+            return ApiRequest<UkPayRunTotalBenefitResponse>($"/business/{businessId}/payrun/{payRunId}/benefits/{employeeId}");
+        }
+
+        /// <summary>
         /// List Deductions
         /// </summary>
         /// <remarks>

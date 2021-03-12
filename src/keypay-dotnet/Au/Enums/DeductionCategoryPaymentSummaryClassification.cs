@@ -22,6 +22,8 @@ namespace KeyPayV2.Au.Enums
         MyLevyRelease,
         MyGrossSalaryWagesOrLeavePay,
         MyFeesCommissionsOrBonuses,
-        MyGrossTipsOrOtherAllowances
+        MyGrossTipsOrOtherAllowances,
+        ChildSupportDeduction,
+        ChildSupportGarnishee
     }
 }

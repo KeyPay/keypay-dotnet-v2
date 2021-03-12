@@ -65,6 +65,12 @@ namespace KeyPayV2.Uk.Enums
         FlexibleDrawdownPayment,
         FlexibleDrawdownPaymentNonTaxable,
         PayrollHistory,
-        PreviousYearEarnings
+        PreviousYearEarnings,
+        JobMakerNomination,
+        JobMakerRenomination,
+        JobMakerPeriod,
+        JobMakerCancelNomination,
+        JobMakerCancelRenomination,
+        JobMakerCancelPeriod
     }
 }

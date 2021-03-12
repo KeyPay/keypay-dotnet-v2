@@ -17,6 +17,10 @@ namespace KeyPayV2.Uk.Models.PayRun
         public decimal EmployerNationalInsuranceContribution { get; set; }
         public decimal EmployeePensionableEarnings { get; set; }
         public decimal EmployerPensionableEarnings { get; set; }
+        public decimal? TerminationPaymentNIExempt { get; set; }
+        public decimal? TerminationPaymentEmployerNI { get; set; }
+        public decimal? NicClass1A { get; set; }
+        public bool? EnrolledInPensionScheme { get; set; }
         public int Id { get; set; }
         public decimal TotalHours { get; set; }
         public decimal GrossEarnings { get; set; }

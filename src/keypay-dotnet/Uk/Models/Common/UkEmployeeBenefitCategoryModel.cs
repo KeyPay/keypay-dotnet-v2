@@ -17,8 +17,11 @@ namespace KeyPayV2.Uk.Models.Common
         public int StartFromPeriod { get; set; }
         public decimal AmountPayrolledToDate { get; set; }
         public decimal AmountToBePayrolledPerPeriod { get; set; }
+        public decimal? AmountPayrolledToDateInPayRuns { get; set; }
+        public bool HasLinkedPayRuns { get; set; }
         public int Id { get; set; }
         public string BenefitCategoryName { get; set; }
         public int Year { get; set; }
+        public String[] CalculationLogs { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace KeyPayV2.Uk.Models.PayCategory
         public bool IsEmployerPensionable { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public MinimumWageCalculationImpact MinimumWageCalculationImpact { get; set; }
+        public bool IsClass1ANIable { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }

@@ -12,6 +12,7 @@ namespace KeyPayV2.Au.Models.PayCategory
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public PayCategoryPaymentSummaryClassification? PaymentSummaryClassification { get; set; }
+        public string AllowanceDescription { get; set; }
         public decimal DefaultSuperRate { get; set; }
         public string SuperExpenseMappingCode { get; set; }
         public string SuperLiabilityMappingCode { get; set; }

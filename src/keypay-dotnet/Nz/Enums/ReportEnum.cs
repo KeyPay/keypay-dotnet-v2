@@ -43,6 +43,7 @@ namespace KeyPayV2.Nz.Enums
         LeaveHistoryReport,
         UnpaidEmployeesReport,
         JobKeeperEligibilityReport,
+        JobMakerEligibilityReport,
         TimesheetReport,
         AttendanceReport,
         LiveView,

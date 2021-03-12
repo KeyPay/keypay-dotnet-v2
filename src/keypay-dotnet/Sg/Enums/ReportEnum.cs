@@ -63,6 +63,7 @@ namespace KeyPayV2.Sg.Enums
         PCB2FormReport,
         IrasReport,
         IrasLodgementReport,
-        PayRunExportReport
+        PayRunExportReport,
+        JobMakerEligibilityReport
     }
 }

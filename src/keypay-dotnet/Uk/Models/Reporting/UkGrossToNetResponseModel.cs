@@ -15,6 +15,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal StudentLoan { get; set; }
         public decimal PostGradLoan { get; set; }
         public decimal EmployerPensionContribution { get; set; }
+        public decimal EmployerNicClass1A { get; set; }
         public decimal EmployeePensionContribution { get; set; }
         public decimal EmployerNic { get; set; }
         public decimal EmployeeNic { get; set; }

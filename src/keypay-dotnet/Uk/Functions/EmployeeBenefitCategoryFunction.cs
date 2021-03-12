@@ -15,6 +15,17 @@ namespace KeyPayV2.Uk.Functions
         public EmployeeBenefitCategoryFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
+        /// List employee benefits
+        /// </summary>
+        /// <remarks>
+        /// Lists all the benefits that are assigned to an employee
+        /// </remarks>
+        public UkEmployeeBenefitCategories ListEmployeeBenefits(int businessId, int employeeId)
+        {
+            return ApiRequest<UkEmployeeBenefitCategories>($"/business/{businessId}/employee/{employeeId}/benefit");
+        }
+
+        /// <summary>
         /// Create employee benefit
         /// </summary>
         /// <remarks>

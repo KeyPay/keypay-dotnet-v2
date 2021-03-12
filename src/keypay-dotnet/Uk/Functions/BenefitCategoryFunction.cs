@@ -70,23 +70,23 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Gets current benefit category processing options
+        /// Get processing options
         /// </summary>
         /// <remarks>
         /// Gets p11d and/or payrolling of benefits active or inactive and registered from tax year
         /// </remarks>
-        public UkBenefitCategoriesProcessingOptions GetsCurrentBenefitCategoryProcessingOptions(int businessId)
+        public UkBenefitCategoriesProcessingOptions GetProcessingOptions(int businessId)
         {
             return ApiRequest<UkBenefitCategoriesProcessingOptions>($"/business/{businessId}/benefitcategory/processingoptions");
         }
 
         /// <summary>
-        /// Sets benefit category processing options
+        /// Set processing options
         /// </summary>
         /// <remarks>
         /// Sets p11d and/or payrolling of benefits active or inactive and the business as having registered with HMRC from the given tax year
         /// </remarks>
-        public void SetsBenefitCategoryProcessingOptions(int businessId, UkBenefitCategoriesProcessingOptionsModel model)
+        public void SetProcessingOptions(int businessId, UkBenefitCategoriesProcessingOptionsModel model)
         {
             ApiRequest($"/business/{businessId}/benefitcategory/processingoptions", model, Method.PUT);
         }
