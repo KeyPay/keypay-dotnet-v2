@@ -61,6 +61,7 @@ namespace KeyPayV2.Au.Enums
         EarningsRequireAdjustment,
         UkTaxCodeP9Update,
         HrdfEmployeeWarning,
-        NewPayrolledBenefits
+        NewPayrolledBenefits,
+        SubmitTerminatedEmployeeToHmrc
     }
 }

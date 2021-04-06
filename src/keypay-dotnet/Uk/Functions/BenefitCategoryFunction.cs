@@ -86,7 +86,7 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Sets p11d and/or payrolling of benefits active or inactive and the business as having registered with HMRC from the given tax year
         /// </remarks>
-        public void SetProcessingOptions(int businessId, UkBenefitCategoriesProcessingOptionsModel model)
+        public void SetProcessingOptions(int businessId, SaveBenefitCategoriesProcessingOptionsModel model)
         {
             ApiRequest($"/business/{businessId}/benefitcategory/processingoptions", model, Method.PUT);
         }

@@ -16,5 +16,7 @@ namespace KeyPayV2.Uk.Models.EmployeeBenefitCategory
         public decimal AmountPayrolledToDate { get; set; }
         public decimal AmountToBePayrolledPerPeriod { get; set; }
         public int Year { get; set; }
+        public UkEmployeeBenefitProRataCalculationModel ProRataCalculation { get; set; }
+        public UkEmployeeBenefitCategoryExtCarEditModel Car { get; set; }
     }
 }

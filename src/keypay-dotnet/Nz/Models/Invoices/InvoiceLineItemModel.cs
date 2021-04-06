@@ -16,5 +16,6 @@ namespace KeyPayV2.Nz.Models.Invoices
         public decimal Quantity { get; set; }
         public decimal TotalIncludingGst { get; set; }
         public List<InvoiceLineItemDetailModel> Details { get; set; }
+        public string WhiteLabelName { get; set; }
     }
 }

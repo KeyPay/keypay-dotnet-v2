@@ -31,9 +31,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new unavailability for the employee.
         /// </remarks>
-        public UnavailabilityModel CreateUnavailability(int businessId, UnavailabilityModel unavailabilityModel)
+        public UnavailabilityModel CreateUnavailability(int businessId, UnavailabilitySaveModel unavailabilitySaveModel)
         {
-            return ApiRequest<UnavailabilityModel,UnavailabilityModel>($"/business/{businessId}/unavailability", unavailabilityModel, Method.POST);
+            return ApiRequest<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability", unavailabilitySaveModel, Method.POST);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the unavailability with the specified ID.
         /// </remarks>
-        public void UpdateUnavailability(int businessId, int id, UnavailabilityModel unavailabilityModel)
+        public void UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel)
         {
-            ApiRequest($"/business/{businessId}/unavailability/{id}", unavailabilityModel, Method.PUT);
+            ApiRequest($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.PUT);
         }
 
         /// <summary>

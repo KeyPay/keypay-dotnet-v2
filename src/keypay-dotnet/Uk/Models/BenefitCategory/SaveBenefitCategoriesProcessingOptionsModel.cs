@@ -6,7 +6,7 @@ using KeyPayV2.Uk.Enums;
 
 namespace KeyPayV2.Uk.Models.BenefitCategory
 {
-    public class UkBenefitCategoriesProcessingOptionsModel
+    public class SaveBenefitCategoriesProcessingOptionsModel
     {
         public int? RegisteredFromTaxYear { get; set; }
         public bool? IsP11DBenefitsEnabled { get; set; }

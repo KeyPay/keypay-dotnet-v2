@@ -24,5 +24,6 @@ namespace KeyPayV2.Nz.Models.PaySchedule
         public bool EqualMonthlyPayments { get; set; }
         public List<Int32> IgnoredPayRunWarnings { get; set; }
         public AutoPayConfigurationModel AutoPayConfiguration { get; set; }
+        public PayRunFinaliseDefaultSettingsModel DefaultFinaliseSettings { get; set; }
     }
 }

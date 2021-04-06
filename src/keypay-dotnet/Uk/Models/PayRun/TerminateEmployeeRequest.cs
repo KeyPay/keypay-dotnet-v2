@@ -10,5 +10,6 @@ namespace KeyPayV2.Uk.Models.PayRun
     {
         public int EmployeeId { get; set; }
         public string TerminationReason { get; set; }
+        public DateTime? TerminationDate { get; set; }
     }
 }

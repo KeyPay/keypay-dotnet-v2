@@ -26,17 +26,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Create employee benefit
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee benefit
-        /// </remarks>
-        public UkEmployeeBenefitCategoryModel CreateEmployeeBenefit(int businessId, int employeeId, UkEmployeeBenefitCategoryEditModel model)
-        {
-            return ApiRequest<UkEmployeeBenefitCategoryModel,UkEmployeeBenefitCategoryEditModel>($"/business/{businessId}/employee/{employeeId}/benefit", model, Method.PUT);
-        }
-
-        /// <summary>
         /// Update employee benefit
         /// </summary>
         /// <remarks>
@@ -44,7 +33,29 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEmployeeBenefitCategoryModel UpdateEmployeeBenefit(int businessId, int employeeId, UkEmployeeBenefitCategoryModel model)
         {
-            return ApiRequest<UkEmployeeBenefitCategoryModel,UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit", model, Method.POST);
+            return ApiRequest<UkEmployeeBenefitCategoryModel,UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Create employee benefit
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee benefit
+        /// </remarks>
+        public UkEmployeeBenefitCategoryModel CreateEmployeeBenefit(int businessId, int employeeId, UkEmployeeBenefitCategoryEditModel model)
+        {
+            return ApiRequest<UkEmployeeBenefitCategoryModel,UkEmployeeBenefitCategoryEditModel>($"/business/{businessId}/employee/{employeeId}/benefit", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Get employee benefit
+        /// </summary>
+        /// <remarks>
+        /// Get the benefit assigned to an employee for a particular benefit category
+        /// </remarks>
+        public UkEmployeeBenefitCategoryModel GetEmployeeBenefit(int businessId, int employeeId, int benefitCategoryId)
+        {
+            return ApiRequest<UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit/{benefitCategoryId}");
         }
     }
 }

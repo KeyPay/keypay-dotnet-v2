@@ -24,5 +24,23 @@ namespace KeyPayV2.Nz.Models.PayRun
         [JsonConverter(typeof(StringEnumConverter))]
         public HmrcFpsLateSubmissionReason? RelodgeHmrcLateSubmissionReason { get; set; }
         public bool RelodgeSelectedEmployeesOnly { get; set; }
+        public bool FinaliseAsAdmin { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayRunFinaliseActionPreference PublishPaySlipsPreference { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayRunFinaliseActionPreference ExportJournalsPreference { get; set; }
+        public DateTime? ExportJournalsDateTime { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayRunFinaliseActionPreference LodgePayRunPreference { get; set; }
+        public DateTime? LodgePayRunDateTime { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayRunFinaliseActionPreference RunReportPacksPreference { get; set; }
+        public DateTime? RunReportPacksDateTime { get; set; }
+        public List<Int32> ReportPacksToRun { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayRunFinaliseActionPreference SubmitToPensionSyncPreference { get; set; }
+        public DateTime? SubmitToPensionSyncDateTime { get; set; }
+        public bool SaveChangesToDefaultSettings { get; set; }
+        public bool FromPayRunAutomation { get; set; }
     }
 }

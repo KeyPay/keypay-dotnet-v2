@@ -15,5 +15,6 @@ namespace KeyPayV2.Uk.Models.BenefitCategory
         public string NiTreatment { get; set; }
         public decimal? AmountForegone { get; set; }
         public bool PayrollingBenefit { get; set; }
+        public UkBenefitCategoryExtCarEditModel Car { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace KeyPayV2.Uk.Models.Employee
     public class PreviousEmployerEditModel
     {
         public int FinancialYearStarting { get; set; }
-        public decimal TaxablePay { get; set; }
-        public decimal TaxWithheld { get; set; }
+        public decimal? TaxablePay { get; set; }
+        public decimal? TaxWithheld { get; set; }
         public DateTime? LeavingDate { get; set; }
         public string OfficeNumber { get; set; }
         public string ReferenceNumber { get; set; }
