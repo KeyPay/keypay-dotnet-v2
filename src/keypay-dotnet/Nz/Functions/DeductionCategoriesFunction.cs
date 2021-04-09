@@ -21,9 +21,20 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the deduction categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<DeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<NzDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<DeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<NzDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}");
+        }
+
+        /// <summary>
+        /// Create Deduction Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a deduction category for the business.
+        /// </remarks>
+        public NzDeductionCategoryModel CreateDeductionCategory(int businessId, NzDeductionCategoryModel deductionCategory)
+        {
+            return ApiRequest<NzDeductionCategoryModel,NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.POST);
         }
 
         /// <summary>
@@ -32,9 +43,20 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Gets the deduction category with the specified ID.
         /// </remarks>
-        public DeductionCategoryModel GetDeductionCategoryById(int businessId, int id)
+        public NzDeductionCategoryModel GetDeductionCategoryById(int businessId, int id)
         {
-            return ApiRequest<DeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}");
+            return ApiRequest<NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}");
+        }
+
+        /// <summary>
+        /// Update Deduction Category
+        /// </summary>
+        /// <remarks>
+        /// Updates the deduction category with the specified ID.
+        /// </remarks>
+        public NzDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, NzDeductionCategoryModel deductionCategory)
+        {
+            return ApiRequest<NzDeductionCategoryModel,NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.PUT);
         }
 
         /// <summary>

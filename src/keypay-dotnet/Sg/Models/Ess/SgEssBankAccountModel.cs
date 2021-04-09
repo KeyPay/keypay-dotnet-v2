@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Sg.Models.Common;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
 
 namespace KeyPayV2.Sg.Models.Ess
@@ -24,9 +22,6 @@ namespace KeyPayV2.Sg.Models.Ess
         public bool AllocateBalance { get; set; }
         public bool IsEmployeeEditable { get; set; }
         public bool CanBeDeleted { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public BankAccountTypeEnum AccountType { get; set; }
         public string ExternalReferenceId { get; set; }
-        public string RollNumber { get; set; }
     }
 }

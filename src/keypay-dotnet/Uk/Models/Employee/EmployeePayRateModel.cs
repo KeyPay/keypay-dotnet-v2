@@ -15,7 +15,5 @@ namespace KeyPayV2.Uk.Models.Employee
         public string RateUnit { get; set; }
         public decimal Rate { get; set; }
         public decimal CalculatedRate { get; set; }
-        public bool HasSuperRateOverride { get; set; }
-        public decimal? SuperRate { get; set; }
     }
 }

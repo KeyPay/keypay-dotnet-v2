@@ -32,9 +32,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new kiosk for the business.
         /// </remarks>
-        public void CreateKiosk(int businessId, TimeAndAttendanceKioskModel kiosk)
+        public TimeAndAttendanceKioskModel CreateKiosk(int businessId, TimeAndAttendanceKioskModel kiosk)
         {
-            ApiRequest($"/business/{businessId}/kiosk", kiosk, Method.POST);
+            return ApiRequest<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk", kiosk, Method.POST);
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the kiosk with the specified ID.
         /// </remarks>
-        public void UpdateKiosk(int businessId, int id, TimeAndAttendanceKioskModel kiosk)
+        public TimeAndAttendanceKioskModel UpdateKiosk(int businessId, int id, TimeAndAttendanceKioskModel kiosk)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{id}", kiosk, Method.PUT);
+            return ApiRequest<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", kiosk, Method.PUT);
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Clocks in / out an employee for a complete shift.
         /// </remarks>
-        public void AddCompleteShiftForEmployee(int businessId, int kioskId, AddShiftModel request)
+        public void AddCompleteShiftForEmployee(int businessId, int kioskId, AuAddShiftModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/addshift", request, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/addshift", model, Method.POST);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// If the specified employee has kiosk access, returns details about the employee and their current shift.
         /// </remarks>
-        public void CheckEmployee(int businessId, CheckKioskEmployeeIdModel model, string kioskId)
+        public void CheckEmployee(int businessId, BasicKioskEmployeeModel model, string kioskId)
         {
             ApiRequest($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.POST);
         }
@@ -109,9 +109,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Verifies the employee's kiosk PIN. Returns error code 400 if the PIN is incorrect.
         /// </remarks>
-        public void VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId)
+        public KioskEmployeeModel VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.POST);
+            return ApiRequest<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.POST);
         }
 
         /// <summary>
@@ -132,9 +132,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Clocks in an employee for a new shift.
         /// </remarks>
-        public void ClockInEmployee(int businessId, int kioskId, ClockOnModel request)
+        public void ClockInEmployee(int businessId, int kioskId, AuClockOnModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/clockon", request, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/clockon", model, Method.POST);
         }
 
         /// <summary>
@@ -177,9 +177,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets relevant lookup data for an employee in relation to a kiosk.
         /// </remarks>
-        public TimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId)
+        public AuTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId)
         {
-            return ApiRequest<TimeAndAttendanceLookupDataModel>($"/business/{businessId}/kiosk/{kioskId}/lookupdata/{employeeId}");
+            return ApiRequest<AuTimeAndAttendanceLookupDataModel>($"/business/{businessId}/kiosk/{kioskId}/lookupdata/{employeeId}");
         }
 
         /// <summary>
@@ -254,9 +254,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Quickly add an employee with minimal details and kiosk enabled.
         /// </remarks>
-        public void AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model)
+        public BasicKioskEmployeeModel AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/staff", model, Method.POST);
+            return ApiRequest<BasicKioskEmployeeModel,KioskCreateEmployeeModel>($"/business/{businessId}/kiosk/{kioskId}/staff", model, Method.POST);
         }
 
         /// <summary>
@@ -287,9 +287,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets shifts based on certain optional criteria.
         /// </remarks>
-        public List<TimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model)
+        public List<AuTimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model)
         {
-            return ApiRequest<List<TimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/kiosk/shifts", model, Method.POST);
+            return ApiRequest<List<AuTimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/kiosk/shifts", model, Method.POST);
         }
     }
 }

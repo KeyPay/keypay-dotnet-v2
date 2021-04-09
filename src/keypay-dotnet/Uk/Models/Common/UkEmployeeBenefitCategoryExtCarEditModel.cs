@@ -8,8 +8,8 @@ namespace KeyPayV2.Uk.Models.Common
 {
     public class UkEmployeeBenefitCategoryExtCarEditModel
     {
-        public decimal? OpRAAmountForegone { get; set; }
-        public DateTime? AvailableFromDate { get; set; }
+        public decimal? OpraAmountForegone { get; set; }
+        public DateTime AvailableFromDate { get; set; }
         public DateTime? AvailableToDate { get; set; }
         public int? NumberOfDaysUnavailable { get; set; }
         public decimal Accessories { get; set; }
@@ -17,7 +17,7 @@ namespace KeyPayV2.Uk.Models.Common
         public decimal AmountPaidByEmployeeForPrivateUse { get; set; }
         public bool IsShared { get; set; }
         public decimal? SharedPercentage { get; set; }
-        public bool EmployeeProvidesFuelForPrivateUse { get; set; }
+        public bool EmployerProvidesFuelForPrivateUse { get; set; }
         public UkEmployeeBenefitCategoryExtFuelEditModel Fuel { get; set; }
     }
 }

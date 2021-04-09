@@ -59,6 +59,17 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Employee Audit Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an Employee Audit Report.
+        /// </remarks>
+        public List<EmployeeDetailsAuditReportApiModel> EmployeeAuditReport(int businessId, EmployeeAuditReportQueryModel request)
+        {
+            return ApiRequest<List<EmployeeDetailsAuditReportApiModel>>($"/business/{businessId}/report/employeeaudit?employeeId={request.EmployeeId}&section={request.Section}&payScheduleId={request.PayScheduleId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}");
+        }
+
+        /// <summary>
         /// Employee Details Report
         /// </summary>
         /// <remarks>

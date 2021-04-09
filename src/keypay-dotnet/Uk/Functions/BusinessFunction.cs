@@ -139,28 +139,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Get ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO details for the business.
-        /// </remarks>
-        public BusinessAtoSupplierModel GetAtoDetails(int businessId)
-        {
-            return ApiRequest<BusinessAtoSupplierModel>($"/business/{businessId}/ato");
-        }
-
-        /// <summary>
-        /// Set ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Sets the ATO details for the business.
-        /// </remarks>
-        public void SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
-        {
-            ApiRequest($"/business/{businessId}/ato", model, Method.POST);
-        }
-
-        /// <summary>
         /// List BACS Settings
         /// </summary>
         /// <remarks>
@@ -341,11 +319,39 @@ namespace KeyPayV2.Uk.Functions
         /// Update HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Gets the HMRC Settings for the business.
+        /// Updates the HMRC Settings for the business.
         /// </remarks>
-        public HmrcSettingsRequestModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model)
+        public HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model)
         {
-            return ApiRequest<HmrcSettingsRequestModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.PUT);
+            return ApiRequest<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Get Employment Allowance Settings
+        /// </summary>
+        /// <remarks>
+        /// Get employment allowance settings for the business.
+        /// </remarks>
+        public UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId, GetEmploymentAllowanceSettingsQueryModel request)
+        {
+            return ApiRequest<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}");
+        }
+
+        /// <summary>
+        /// Update Employment Allowance Settings
+        /// </summary>
+        /// <remarks>
+        /// Update employment allowance settings for the business.
+        /// A new effective date can be set each tax year, otherwise the effective date reverts to the start of the tax year.
+        /// State aid sectors:
+        /// - Agriculture
+        /// - FisheriesAndAquaculture
+        /// - RoadTransport
+        /// - Industrial
+        /// </remarks>
+        public UkEmploymentAllowanceModel UpdateEmploymentAllowanceSettings(int businessId, UkEmploymentAllowanceModel model)
+        {
+            return ApiRequest<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.PUT);
         }
 
         public HmrcSettingsRequestModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId)
@@ -382,9 +388,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a business location.
         /// </remarks>
-        public void CreateLocation(int businessId, UkLocationModel location)
+        public UkLocationModel CreateLocation(int businessId, UkLocationModel location)
         {
-            ApiRequest($"/business/{businessId}/location", location, Method.POST);
+            return ApiRequest<UkLocationModel,UkLocationModel>($"/business/{businessId}/location", location, Method.POST);
         }
 
         /// <summary>

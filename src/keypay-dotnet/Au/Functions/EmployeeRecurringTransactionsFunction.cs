@@ -20,9 +20,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Lists all the recurring employee deductions for the employee
         /// </remarks>
-        public List<EmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId)
+        public List<AuEmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction");
+            return ApiRequest<List<AuEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction");
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new recurring deduction for the employee.
         /// </remarks>
-        public EmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, EmployeeRecurringDeductionModel model)
+        public AuEmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, AuEmployeeRecurringDeductionModel model)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel,EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST);
+            return ApiRequest<AuEmployeeRecurringDeductionModel,AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the employee's recurring deduction with the specified external reference ID.
         /// </remarks>
-        public EmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
+        public AuEmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}");
+            return ApiRequest<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}");
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the employee's recurring deduction with the specified ID.
         /// </remarks>
-        public EmployeeRecurringDeductionModel GetEmployeeDeductionById(int businessId, int employeeId, int id)
+        public AuEmployeeRecurringDeductionModel GetEmployeeDeductionById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}");
+            return ApiRequest<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}");
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the employee's recurring deduction with the specified ID.
         /// </remarks>
-        public EmployeeRecurringDeductionModel UpdateEmployeeDeduction(int businessId, int employeeId, int id, EmployeeRecurringDeductionModel model)
+        public AuEmployeeRecurringDeductionModel UpdateEmployeeDeduction(int businessId, int employeeId, int id, AuEmployeeRecurringDeductionModel model)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel,EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT);
+            return ApiRequest<AuEmployeeRecurringDeductionModel,AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT);
         }
 
         /// <summary>
@@ -306,9 +306,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Lists all the recurring employee deductions that have a matching external reference ID
         /// </remarks>
-        public List<EmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
+        public List<AuEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
         {
-            return ApiRequest<List<EmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
+            return ApiRequest<List<AuEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
         }
     }
 }

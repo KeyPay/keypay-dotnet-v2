@@ -11,6 +11,8 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
     public class ShiftCostingsRequestShiftModel
     {
         public string State { get; set; }
+        public string ClassificationId { get; set; }
+        public string Classification { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? StartTime { get; set; }
@@ -19,12 +21,11 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
         public string WorkTypeId { get; set; }
         public string LocationId { get; set; }
         public string Comments { get; set; }
-        public IList<TimesheetBreakModel> Breaks { get; set; }
+        public IList<TimesheetBreakModelv3> Breaks { get; set; }
         public string Status { get; set; }
         public decimal? Rate { get; set; }
         public string LeaveCategoryId { get; set; }
         public string PayCategoryId { get; set; }
-        public string ClassificationId { get; set; }
         public string ExternalId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
@@ -32,9 +33,9 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
         public IList<String> ShiftConditionIds { get; set; }
         public string WorkType { get; set; }
         public string FullyQualifiedLocationName { get; set; }
-        public string Classification { get; set; }
-        public List<TimesheetShiftConditionModel> ShiftConditions { get; set; }
+        public List<TimesheetShiftConditionModelv3> ShiftConditions { get; set; }
         public string HiddenComments { get; set; }
+        public Attachment Attachment { get; set; }
         public string SubmittedByUser { get; set; }
     }
 }

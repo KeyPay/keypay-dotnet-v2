@@ -21,9 +21,9 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the pay schedules for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null)
+        public List<UkPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<PayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<UkPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new pay schedule for the business.
         /// </remarks>
-        public PayScheduleModel CreatePaySchedule(int businessId, PayScheduleModel paySchedule)
+        public UkPayScheduleModel CreatePaySchedule(int businessId, UkPayScheduleModel paySchedule)
         {
-            return ApiRequest<PayScheduleModel,PayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.POST);
+            return ApiRequest<UkPayScheduleModel,UkPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.POST);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the pay schedule with the specified ID.
         /// </remarks>
-        public PayScheduleModel GetPayScheduleById(int businessId, int id)
+        public UkPayScheduleModel GetPayScheduleById(int businessId, int id)
         {
-            return ApiRequest<PayScheduleModel>($"/business/{businessId}/payschedule/{id}");
+            return ApiRequest<UkPayScheduleModel>($"/business/{businessId}/payschedule/{id}");
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the pay schedule with the specified ID.
         /// </remarks>
-        public PayScheduleModel UpdatePaySchedule(int businessId, int id, PayScheduleModel paySchedule)
+        public UkPayScheduleModel UpdatePaySchedule(int businessId, int id, UkPayScheduleModel paySchedule)
         {
-            return ApiRequest<PayScheduleModel,PayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.PUT);
+            return ApiRequest<UkPayScheduleModel,UkPayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.PUT);
         }
 
         /// <summary>

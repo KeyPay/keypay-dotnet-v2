@@ -31,9 +31,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the journal details for this pay run.
         /// </remarks>
-        public List<JournalItemResponse> GetJournalDetails(int businessId, int payRunId)
+        public List<UkJournalItemResponse> GetJournalDetails(int businessId, int payRunId)
         {
-            return ApiRequest<List<JournalItemResponse>>($"/business/{businessId}/journal/{payRunId}");
+            return ApiRequest<List<UkJournalItemResponse>>($"/business/{businessId}/journal/{payRunId}");
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Adds earnings lines to the specified pay run.
         /// </remarks>
-        public void CreateEarningsLines(int businessId, int payRunId, SubmitPayRunEarningsLineRequest request)
+        public void CreateEarningsLines(int businessId, int payRunId, UkSubmitPayRunEarningsLineRequest request)
         {
             ApiRequest($"/business/{businessId}/payrun/{payRunId}/earningslines", request, Method.POST);
         }
@@ -469,9 +469,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a note for an employee record in a pay run.
         /// </remarks>
-        public void CreateNoteForEmployee(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model)
+        public PayRunTotalNotationModel CreateNoteForEmployee(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/notation/{employeeId}", model, Method.POST);
+            return ApiRequest<PayRunTotalNotationModel,PayRunTotalNotationModel>($"/business/{businessId}/payrun/{payRunId}/notation/{employeeId}", model, Method.POST);
         }
 
         /// <summary>
@@ -535,9 +535,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the payments associated with a pay run.
         /// </remarks>
-        public UkBankPaymentModel GetPayRunPayments(int businessId, int payRunId)
+        public List<UkBankPaymentModel> GetPayRunPayments(int businessId, int payRunId)
         {
-            return ApiRequest<UkBankPaymentModel>($"/business/{businessId}/payrun/{payRunId}/payments");
+            return ApiRequest<List<UkBankPaymentModel>>($"/business/{businessId}/payrun/{payRunId}/payments");
         }
 
         /// <summary>
@@ -630,50 +630,6 @@ namespace KeyPayV2.Uk.Functions
         public UkSspApiResponseModel AddStatutorySickPay(int businessId, int employeeId, int payRunId, UkSspApiModel model)
         {
             return ApiRequest<UkSspApiResponseModel,UkSspApiModel>($"/business/{businessId}/payrun/{payRunId}/statutorypay/ssp/employee/{employeeId}", model, Method.POST);
-        }
-
-        /// <summary>
-        /// List Super Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the super adjustments for a pay run.
-        /// </remarks>
-        public PayRunSuperAdjustmentResponse ListSuperAdjustments(int businessId, int payRunId)
-        {
-            return ApiRequest<PayRunSuperAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/superadjustments");
-        }
-
-        /// <summary>
-        /// Create Super Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Adds super adjustments to the specified pay run.
-        /// </remarks>
-        public void CreateSuperAdjustments(int businessId, int payRunId, SubmitPayRunSuperAdjustmentRequest request)
-        {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/superadjustments", request, Method.POST);
-        }
-
-        /// <summary>
-        /// Delete Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Deletes the super adjustment with the specified ID from the pay run.
-        /// </remarks>
-        public void DeleteSuperAdjustment(int businessId, int payRunId, DeleteSuperAdjustmentQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/superadjustments?id={request.Id}", Method.DELETE);
-        }
-
-        /// <summary>
-        /// Get Super Adjustments by Employee ID
-        /// </summary>
-        /// <remarks>
-        /// Gets all super adjustments for a specific employee in a pay run.
-        /// </remarks>
-        public PayRunSuperAdjustmentResponse GetSuperAdjustmentsByEmployeeId(int businessId, int employeeId, int payRunId)
-        {
-            return ApiRequest<PayRunSuperAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/superadjustments/{employeeId}");
         }
 
         /// <summary>

@@ -15,10 +15,11 @@ namespace KeyPayV2.Au.Models.PaySchedule
         public string PaygAccountNumber { get; set; }
         public string PaygAccountName { get; set; }
         public string PaygReference { get; set; }
+        public AuAutoPayConfigurationModel AutoPayConfiguration { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AuPayCycleFrequencyEnum Frequency { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PayCycleFrequencyEnum Frequency { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PayRunEmployeeSelectionStrategy? EmployeeSelectionStrategy { get; set; }
         public DateTime? LastDatePaid { get; set; }
@@ -28,7 +29,6 @@ namespace KeyPayV2.Au.Models.PaySchedule
         public List<Int32> Locations { get; set; }
         public bool EqualMonthlyPayments { get; set; }
         public List<Int32> IgnoredPayRunWarnings { get; set; }
-        public AutoPayConfigurationModel AutoPayConfiguration { get; set; }
         public PayRunFinaliseDefaultSettingsModel DefaultFinaliseSettings { get; set; }
     }
 }

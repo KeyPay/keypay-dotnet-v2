@@ -97,6 +97,7 @@ namespace KeyPayV2.Uk.Enums
         SyncCancelledSuperBatchesFromBeam,
         EAFormIncomeTaxAvailable,
         PCB2FormAvailable,
-        JobMakerEmployeeNomination
+        JobMakerEmployeeNomination,
+        EarningsCertificateAvailable
     }
 }

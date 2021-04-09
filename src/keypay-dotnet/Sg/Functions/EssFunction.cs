@@ -75,9 +75,31 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets a set of useful information that the employee may need for self service tasks.
         /// </remarks>
-        public DashboardModel GetDashboard(int employeeId)
+        public SgDashboardModel GetDashboard(int employeeId)
         {
-            return ApiRequest<DashboardModel>($"/ess/{employeeId}/dashboard");
+            return ApiRequest<SgDashboardModel>($"/ess/{employeeId}/dashboard");
+        }
+
+        /// <summary>
+        /// Get Details
+        /// </summary>
+        /// <remarks>
+        /// Gets ESS details for the specified employee.
+        /// </remarks>
+        public EssEmployeeDetailsModel GetDetails(int employeeId)
+        {
+            return ApiRequest<EssEmployeeDetailsModel>($"/ess/{employeeId}/details");
+        }
+
+        /// <summary>
+        /// Save Details
+        /// </summary>
+        /// <remarks>
+        /// Saves any employee details that the employee is allowed to set.
+        /// </remarks>
+        public SgUnstructuredEmployeeModel SaveDetails(int employeeId, EmployeePartialEditModel model)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel,EmployeePartialEditModel>($"/ess/{employeeId}/details", model, Method.POST);
         }
 
         /// <summary>
@@ -147,61 +169,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Leaving employee form PDF
-        /// </summary>
-        /// <remarks>
-        /// Gets the PDF for the leaving employee form
-        /// </remarks>
-        public void GetLeavingEmployeeFormPdf(int employeeId)
-        {
-            ApiRequest($"/ess/{employeeId}/document/LeavingEmployeeForm");
-        }
-
-        /// <summary>
-        /// Get P60 certificate PDF
-        /// </summary>
-        /// <remarks>
-        /// Gets the PDF for the P60 certificate with the specified ID.
-        /// </remarks>
-        public void GetP60CertificatePdf(int employeeId, int documentId)
-        {
-            ApiRequest($"/ess/{employeeId}/document/P60/{documentId}");
-        }
-
-        /// <summary>
-        /// Get P60 certificates
-        /// </summary>
-        /// <remarks>
-        /// List all the employee's P60 certificates.
-        /// </remarks>
-        public List<EssP60Model> GetP60Certificates(int employeeId)
-        {
-            return ApiRequest<List<EssP60Model>>($"/ess/{employeeId}/document/p60s");
-        }
-
-        /// <summary>
-        /// Get Payment Summaries
-        /// </summary>
-        /// <remarks>
-        /// List all the employee's payment summaries.
-        /// </remarks>
-        public List<EssPaymentSummaryModel> GetPaymentSummaries(int employeeId)
-        {
-            return ApiRequest<List<EssPaymentSummaryModel>>($"/ess/{employeeId}/document/paymentsummaries");
-        }
-
-        /// <summary>
-        /// Get Payment Summary PDF
-        /// </summary>
-        /// <remarks>
-        /// Gets the PDF for the payment summary with the specified ID.
-        /// </remarks>
-        public void GetPaymentSummaryPdf(int employeeId, int documentId)
-        {
-            ApiRequest($"/ess/{employeeId}/document/paymentsummary/{documentId}");
-        }
-
-        /// <summary>
         /// List Pay Slips
         /// </summary>
         /// <remarks>
@@ -243,6 +210,17 @@ namespace KeyPayV2.Sg.Functions
         public EmployeeEmergencyContactsEditModel UpdateEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model)
         {
             return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Save Emergency Contacts
+        /// </summary>
+        /// <remarks>
+        /// Saves the employee's emergency contact details.
+        /// </remarks>
+        public EmployeeEmergencyContactsEditModel SaveEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model)
+        {
+            return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.POST);
         }
 
         /// <summary>
@@ -346,17 +324,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get KiwiSaver options for employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the KiwiSaver options for this employee
-        /// </remarks>
-        public EssKiwiSaverModel GetKiwisaverOptionsForEmployee(int employeeId)
-        {
-            return ApiRequest<EssKiwiSaverModel>($"/ess/{employeeId}/kiwisaver");
-        }
-
-        /// <summary>
         /// List Leave Requests
         /// </summary>
         /// <remarks>
@@ -364,7 +331,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssLeaveRequestModel> ListLeaveRequests(int employeeId, ListLeaveRequestsQueryModel request)
         {
-            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?showOtherEmployees={request.ShowOtherEmployees}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}");
+            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?showOtherEmployees={request.ShowOtherEmployees}&approvedOnly={request.ApprovedOnly}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}");
         }
 
         /// <summary>
@@ -467,20 +434,9 @@ namespace KeyPayV2.Sg.Functions
             return ApiRequest<List<EssLeaveCategoryModel>>($"/ess/{employeeId}/leave/leavecategories");
         }
 
-        public void EssLookup_Addresses(int employeeId, int suburbId)
+        public void SgEssLookup_Addresses(int employeeId, int suburbId)
         {
             ApiRequest($"/ess/{employeeId}/lookup/addresses/{suburbId}");
-        }
-
-        /// <summary>
-        /// Get KiwiSaver Enrollment Options
-        /// </summary>
-        /// <remarks>
-        /// Gets all available kiwi saver enrollment options
-        /// </remarks>
-        public List<KiwiSaverEnrollmentOptions> GetKiwisaverEnrollmentOptions(int employeeId)
-        {
-            return ApiRequest<List<KiwiSaverEnrollmentOptions>>($"/ess/{employeeId}/lookup/enrollmentoptions");
         }
 
         /// <summary>
@@ -500,9 +456,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets all the shift conditions for the employee.
         /// </remarks>
-        public List<WorkTypeModel> GetShiftConditions(int employeeId)
+        public List<SgWorkTypeModel> GetShiftConditions(int employeeId)
         {
-            return ApiRequest<List<WorkTypeModel>>($"/ess/{employeeId}/lookup/shiftcondition");
+            return ApiRequest<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/shiftcondition");
         }
 
         /// <summary>
@@ -511,9 +467,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the suburb for the criteria passed in
         /// </remarks>
-        public void GetSuburb(int employeeId, GetSuburbQueryModel request)
+        public SuburbResult GetSuburb(int employeeId, GetSuburbQueryModel request)
         {
-            ApiRequest($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}");
+            return ApiRequest<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}");
         }
 
         /// <summary>
@@ -522,16 +478,16 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets a list of suburbs that match the search term.
         /// </remarks>
-        public void SearchSuburbs(int employeeId, SearchSuburbsQueryModel request)
+        public PagedResultModel<SuburbModel> SearchSuburbs(int employeeId, SearchSuburbsQueryModel request)
         {
-            ApiRequest($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}");
+            return ApiRequest<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}");
         }
 
         /// <summary>
         /// Get Titles
         /// </summary>
         /// <remarks>
-        /// Gets list of valid personl titles
+        /// Gets list of valid personal titles
         /// </remarks>
         public List<TitleViewModel> GetTitles(int employeeId)
         {
@@ -544,9 +500,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets all the work types for the employee.
         /// </remarks>
-        public List<WorkTypeModel> GetWorkTypes(int employeeId)
+        public List<SgWorkTypeModel> GetWorkTypes(int employeeId)
         {
-            return ApiRequest<List<WorkTypeModel>>($"/ess/{employeeId}/lookup/worktype");
+            return ApiRequest<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/worktype");
         }
 
         /// <summary>
@@ -605,6 +561,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Get public holidays
+        /// </summary>
+        /// <remarks>
+        /// Lists relevant public holiday for an employee
+        /// </remarks>
+        public List<PublicHolidayModel> GetPublicHolidays(int employeeId, GetPublicHolidaysQueryModel request)
+        {
+            return ApiRequest<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
         /// Get Satisfaction Survey Results
         /// </summary>
         /// <remarks>
@@ -621,9 +588,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Submit a satisfaction survey for this employee.
         /// </remarks>
-        public void SubmitSatisfactionSurvey(int employeeId, EssSatisfactionSurvey survey)
+        public EmployeeSatisfactionValue SubmitSatisfactionSurvey(int employeeId, EssSatisfactionSurvey survey)
         {
-            ApiRequest($"/ess/{employeeId}/satisfaction", survey, Method.POST);
+            return ApiRequest<EmployeeSatisfactionValue,EssSatisfactionSurvey>($"/ess/{employeeId}/satisfaction", survey, Method.POST);
         }
 
         /// <summary>
@@ -632,9 +599,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets details as to which ESS features are enabled for the business.
         /// </remarks>
-        public FeaturesModel GetEnabledFeatures(int employeeId)
+        public SgFeaturesModel GetEnabledFeatures(int employeeId)
         {
-            return ApiRequest<FeaturesModel>($"/ess/{employeeId}/security/features");
+            return ApiRequest<SgFeaturesModel>($"/ess/{employeeId}/security/features");
         }
 
         /// <summary>
@@ -643,9 +610,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the employee's roster shifts within the date range.
         /// </remarks>
-        public List<EssRosterShiftModel> ListRosterShifts(int employeeId, ListRosterShiftsQueryModel request)
+        public List<SgEssRosterShiftModel> ListRosterShifts(int employeeId, ListRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<EssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -654,9 +621,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the roster shift with the specified ID (as long as it is assigned to this employee).
         /// </remarks>
-        public EssRosterShiftModel GetRosterShiftById(int employeeId, int shiftId)
+        public SgEssRosterShiftModel GetRosterShiftById(int employeeId, int shiftId)
         {
-            return ApiRequest<EssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}");
+            return ApiRequest<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}");
         }
 
         /// <summary>
@@ -665,9 +632,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accepts the roster shift with the specified ID.
         /// </remarks>
-        public void AcceptRosterShift(int employeeId, int shiftId)
+        public SgAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int shiftId)
         {
-            ApiRequest($"/ess/{employeeId}/shift/{shiftId}/accept", Method.POST);
+            return ApiRequest<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.POST);
         }
 
         /// <summary>
@@ -676,9 +643,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Declines the roster shift with the specified ID.
         /// </remarks>
-        public void DeclineRosterShift(int employeeId, int shiftId, EssDeclineRosterShiftModel model)
+        public EssRosterShiftCountModel DeclineRosterShift(int employeeId, int shiftId, EssDeclineRosterShiftModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.POST);
+            return ApiRequest<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.POST);
         }
 
         /// <summary>
@@ -687,9 +654,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accept a shift swap
         /// </remarks>
-        public void AcceptShiftSwap(int employeeId, int shiftId)
+        public SgEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int shiftId)
         {
-            ApiRequest($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.POST);
         }
 
         /// <summary>
@@ -698,9 +665,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Cancel a shift swap
         /// </remarks>
-        public void CancelShiftSwap(int employeeId, int shiftId)
+        public SgEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int shiftId)
         {
-            ApiRequest($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.POST);
         }
 
         /// <summary>
@@ -709,9 +676,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// List the employees that are eligible for a shift swap
         /// </remarks>
-        public void EmployeesEligibleForShiftSwap(int employeeId, int shiftId)
+        public List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int shiftId)
         {
-            ApiRequest($"/ess/{employeeId}/shift/{shiftId}/swap/candidates");
+            return ApiRequest<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates");
         }
 
         /// <summary>
@@ -720,9 +687,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Decline a shift swap
         /// </remarks>
-        public void DeclineShiftSwap(int employeeId, int shiftId)
+        public SgEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int shiftId)
         {
-            ApiRequest($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.POST);
         }
 
         /// <summary>
@@ -731,9 +698,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accepts a number of roster shifts by ID.
         /// </remarks>
-        public void BulkAcceptRosterShifts(int employeeId, EssBulkAcceptRosterShiftsModel model)
+        public SgAcceptRosterShiftsResponseModel BulkAcceptRosterShifts(int employeeId, EssBulkAcceptRosterShiftsModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/accept", model, Method.POST);
+            return ApiRequest<SgAcceptRosterShiftsResponseModel,EssBulkAcceptRosterShiftsModel>($"/ess/{employeeId}/shift/accept", model, Method.POST);
         }
 
         /// <summary>
@@ -742,9 +709,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Declines a number of roster shifts by ID.
         /// </remarks>
-        public void BulkDeclineRosterShifts(int employeeId, EssBulkDeclineRosterShiftsModel model)
+        public EssRosterShiftCountModel BulkDeclineRosterShifts(int employeeId, EssBulkDeclineRosterShiftsModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/decline", model, Method.POST);
+            return ApiRequest<EssRosterShiftCountModel,EssBulkDeclineRosterShiftsModel>($"/ess/{employeeId}/shift/decline", model, Method.POST);
         }
 
         /// <summary>
@@ -756,9 +723,9 @@ namespace KeyPayV2.Sg.Functions
         /// Otherwise, the Shift result will be null.
         /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public RosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
+        public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
         {
-            return ApiRequest<RosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -770,9 +737,9 @@ namespace KeyPayV2.Sg.Functions
         /// Otherwise, the Shift result will be null.
         /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public RosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
+        public SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
         {
-            return ApiRequest<RosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -781,9 +748,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Finds any of the employee's roster shifts that are nearby to the specified local time.
         /// </remarks>
-        public List<EssRosterShiftModel> FindNearbyRosterShifts(int employeeId, FindNearbyRosterShiftsQueryModel request)
+        public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int employeeId, FindNearbyRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<EssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -792,9 +759,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accepts a number of roster shift swaps by shift ID.
         /// </remarks>
-        public void BulkAcceptRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
+        public SgEssBulkRosterShiftActionResponse BulkAcceptRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/swap/accept", model, Method.POST);
+            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/accept", model, Method.POST);
         }
 
         /// <summary>
@@ -803,9 +770,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Cancels a number of roster shift swaps by shift ID.
         /// </remarks>
-        public void BulkCancelRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
+        public SgEssBulkRosterShiftActionResponse BulkCancelRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/swap/cancel", model, Method.POST);
+            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/cancel", model, Method.POST);
         }
 
         /// <summary>
@@ -814,9 +781,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Declines a number of roster shift swaps by shift ID.
         /// </remarks>
-        public void BulkDeclineRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
+        public SgEssBulkRosterShiftActionResponse BulkDeclineRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/swap/decline", model, Method.POST);
+            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/decline", model, Method.POST);
         }
 
         /// <summary>
@@ -825,69 +792,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Propose a shift swap
         /// </remarks>
-        public void ProposeShiftSwap(int employeeId, SwapShiftModel model)
+        public SgEssRosterShiftActionResponse ProposeShiftSwap(int employeeId, SwapShiftModel model)
         {
-            ApiRequest($"/ess/{employeeId}/shift/swap/propose", model, Method.POST);
-        }
-
-        /// <summary>
-        /// List Super Funds
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the super funds for this employee.
-        /// </remarks>
-        public List<SuperFundModel> ListSuperFunds(int employeeId)
-        {
-            return ApiRequest<List<SuperFundModel>>($"/ess/{employeeId}/superfunds");
-        }
-
-        /// <summary>
-        /// Create Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Creates a new super fund for the employee.
-        /// </remarks>
-        public SaveSuperFundResponseModel CreateSuperFund(int employeeId, SaveSuperFundModel model)
-        {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds", model, Method.POST);
-        }
-
-        /// <summary>
-        /// Update Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's super fund with the specified ID.
-        /// </remarks>
-        public SaveSuperFundResponseModel UpdateSuperFund(int employeeId, int id, SaveSuperFundModel model)
-        {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds/{id}", model, Method.PUT);
-        }
-
-        /// <summary>
-        /// Delete Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's super fund with the specified ID.
-        /// </remarks>
-        public SaveSuperFundResponseModel DeleteSuperFund(int employeeId, int superfundId)
-        {
-            return ApiRequest<SaveSuperFundResponseModel>($"/ess/{employeeId}/superfunds/{superfundId}", Method.DELETE);
-        }
-
-        /// <summary>
-        /// Get Super Fund by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the super fund for this employee with the specified ID.
-        /// </remarks>
-        public SuperFundModel GetSuperFundById(int employeeId, int superFundId)
-        {
-            return ApiRequest<SuperFundModel>($"/ess/{employeeId}/superfunds/{superFundId}");
-        }
-
-        public List<SuperProductEditModel> EssSuperFund_ProductSearch(int employeeId, EssSuperFund_ProductSearchQueryModel request)
-        {
-            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}");
+            return ApiRequest<SgEssRosterShiftActionResponse,SwapShiftModel>($"/ess/{employeeId}/shift/swap/propose", model, Method.POST);
         }
 
         /// <summary>
@@ -908,9 +815,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Clocks in an employee for a new shift.
         /// </remarks>
-        public void ClockInEmployee(int employeeId, ClockOnModel request)
+        public KioskEmployeeModel ClockInEmployee(int employeeId, SgClockOnModel model)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/clockon", request, Method.POST);
+            return ApiRequest<KioskEmployeeModel,SgClockOnModel>($"/ess/{employeeId}/timeandattendance/clockon", model, Method.POST);
         }
 
         /// <summary>
@@ -942,9 +849,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets relevant lookup data for the employee in relation to a kiosk.
         /// </remarks>
-        public TimeAndAttendanceLookupDataModel GetLookupData(int employeeId)
+        public SgTimeAndAttendanceLookupDataModel GetLookupData(int employeeId)
         {
-            return ApiRequest<TimeAndAttendanceLookupDataModel>($"/ess/{employeeId}/timeandattendance/lookupdata");
+            return ApiRequest<SgTimeAndAttendanceLookupDataModel>($"/ess/{employeeId}/timeandattendance/lookupdata");
         }
 
         /// <summary>
@@ -986,9 +893,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets shifts based on certain optional criteria.
         /// </remarks>
-        public List<TimeAndAttendanceShiftModel> Shifts(int employeeId, GetShiftsModel model)
+        public List<SgTimeAndAttendanceShiftModel> Shifts(int employeeId, GetShiftsModel model)
         {
-            return ApiRequest<List<TimeAndAttendanceShiftModel>,GetShiftsModel>($"/ess/{employeeId}/timeandattendance/shifts", model, Method.POST);
+            return ApiRequest<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/ess/{employeeId}/timeandattendance/shifts", model, Method.POST);
         }
 
         /// <summary>
@@ -1045,6 +952,17 @@ namespace KeyPayV2.Sg.Functions
         public void DeleteTimesheet(int employeeId, int timesheetId)
         {
             ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Get Timesheet Creation Data
+        /// </summary>
+        /// <remarks>
+        /// Lists relevant timesheet, leave and shift data for an employee, to allow for intuitive timesheet creation.
+        /// </remarks>
+        public SgEssTimesheetDataModel GetTimesheetCreationData(int employeeId, GetTimesheetCreationDataQueryModel request)
+        {
+            return ApiRequest<SgEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>

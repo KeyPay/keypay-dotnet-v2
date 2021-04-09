@@ -20,9 +20,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Lists all the recurring employee deductions for the employee
         /// </remarks>
-        public List<EmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId)
+        public List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction");
+            return ApiRequest<List<NzEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction");
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Creates a new recurring deduction for the employee.
         /// </remarks>
-        public EmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, EmployeeRecurringDeductionModel model)
+        public NzEmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, NzEmployeeRecurringDeductionModel model)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel,EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST);
+            return ApiRequest<NzEmployeeRecurringDeductionModel,NzEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Gets the employee's recurring deduction with the specified external reference ID.
         /// </remarks>
-        public EmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
+        public NzEmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}");
+            return ApiRequest<NzEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}");
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Gets the employee's recurring deduction with the specified ID.
         /// </remarks>
-        public EmployeeRecurringDeductionModel GetEmployeeDeductionById(int businessId, int employeeId, int id)
+        public NzEmployeeRecurringDeductionModel GetEmployeeDeductionById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}");
+            return ApiRequest<NzEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}");
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the employee's recurring deduction with the specified ID.
         /// </remarks>
-        public EmployeeRecurringDeductionModel UpdateEmployeeDeduction(int businessId, int employeeId, int id, EmployeeRecurringDeductionModel model)
+        public NzEmployeeRecurringDeductionModel UpdateEmployeeDeduction(int businessId, int employeeId, int id, NzEmployeeRecurringDeductionModel model)
         {
-            return ApiRequest<EmployeeRecurringDeductionModel,EmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT);
+            return ApiRequest<NzEmployeeRecurringDeductionModel,NzEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT);
         }
 
         /// <summary>
@@ -191,61 +191,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// List Employee Super Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee super adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringSuperAdjustmentModel> ListEmployeeSuperAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment");
-        }
-
-        /// <summary>
-        /// Create Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring super adjustment for the employee.
-        /// </remarks>
-        public EmployeeRecurringSuperAdjustmentModel CreateEmployeeSuperAdjustment(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment", model, Method.POST);
-        }
-
-        /// <summary>
-        /// Get Employee Super Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring super adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringSuperAdjustmentModel GetEmployeeSuperAdjustmentById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}");
-        }
-
-        /// <summary>
-        /// Update Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring super adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringSuperAdjustmentModel UpdateEmployeeSuperAdjustment(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", model, Method.PUT);
-        }
-
-        /// <summary>
-        /// Delete Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee recurring super adjustment with the specified ID.
-        /// </remarks>
-        public void DeleteEmployeeSuperAdjustment(int businessId, int employeeId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.DELETE);
-        }
-
-        /// <summary>
         /// List Employee Tax Adjustments
         /// </summary>
         /// <remarks>
@@ -306,9 +251,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Lists all the recurring employee deductions that have a matching external reference ID
         /// </remarks>
-        public List<EmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
+        public List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
         {
-            return ApiRequest<List<EmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
+            return ApiRequest<List<NzEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
         }
     }
 }

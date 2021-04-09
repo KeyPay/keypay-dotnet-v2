@@ -21,9 +21,9 @@ namespace KeyPayV2.Nz.Functions
         /// Retrieves all timesheets for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<TimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
+        public List<NzTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<TimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<NzTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Create an individual timesheet line
         /// </remarks>
-        public void CreateTimesheetLine(int businessId, IndividualTimesheetLineModel request)
+        public NzIndividualTimesheetLineModel CreateTimesheetLine(int businessId, NzIndividualTimesheetLineModel request)
         {
-            ApiRequest($"/business/{businessId}/timesheet", request, Method.POST);
+            return ApiRequest<NzIndividualTimesheetLineModel,NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet", request, Method.POST);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Update an individual timesheet line
         /// </remarks>
-        public void UpdateTimesheetLine(int businessId, int timesheetLineId, IndividualTimesheetLineModel request)
+        public NzIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.PUT);
+            return ApiRequest<NzIndividualTimesheetLineModel,NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.PUT);
         }
 
         /// <summary>
@@ -66,11 +66,11 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
         /// for the specified employees within the specified time period
-        /// (StartTime - EndTime) will be replaced with the timesheets specified. Any timesheets already included in pay runs will not be replaced.
+        /// (StartTime - EndTime) will be replaced with the timesheets specified.
         /// </remarks>
-        public void UpdateReplaceTimesheets(int businessId, SubmitTimesheetsRequest request)
+        public NzSubmitTimesheetsRequest UpdateReplaceTimesheets(int businessId, NzSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.PUT);
+            return ApiRequest<NzSubmitTimesheetsRequest,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.PUT);
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Adds timesheets for the specified business. This will not replace any existing timesheets.
         /// </remarks>
-        public void BulkInsertTimesheets(int businessId, SubmitTimesheetsRequest request)
+        public NzSubmitTimesheetsRequest BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.POST);
+            return ApiRequest<NzSubmitTimesheetsRequest,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.POST);
         }
     }
 }

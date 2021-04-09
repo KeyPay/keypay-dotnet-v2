@@ -128,28 +128,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO details for the business.
-        /// </remarks>
-        public BusinessAtoSupplierModel GetAtoDetails(int businessId)
-        {
-            return ApiRequest<BusinessAtoSupplierModel>($"/business/{businessId}/ato");
-        }
-
-        /// <summary>
-        /// Set ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Sets the ATO details for the business.
-        /// </remarks>
-        public void SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
-        {
-            ApiRequest($"/business/{businessId}/ato", model, Method.POST);
-        }
-
-        /// <summary>
         /// List Business Document Details
         /// </summary>
         /// <remarks>

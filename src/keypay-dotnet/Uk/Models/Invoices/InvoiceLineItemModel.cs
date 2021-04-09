@@ -9,6 +9,7 @@ namespace KeyPayV2.Uk.Models.Invoices
     public class InvoiceLineItemModel
     {
         public string Abn { get; set; }
+        public string BusinessNumber { get; set; }
         public int? BusinessId { get; set; }
         public string BillingPlan { get; set; }
         public string Description { get; set; }

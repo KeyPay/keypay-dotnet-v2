@@ -25,5 +25,6 @@ namespace KeyPayV2.Nz.Models.Common
         public DateTime? RecordedTimeUtc { get; set; }
         public int? CurrentShiftId { get; set; }
         public IList<Int32> EmployeeGroupIds { get; set; }
+        public DateTime? EmployeeStartDate { get; set; }
     }
 }

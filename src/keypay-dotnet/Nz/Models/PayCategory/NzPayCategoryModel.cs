@@ -15,6 +15,8 @@ namespace KeyPayV2.Nz.Models.PayCategory
         public bool ExcludeFromOrdinaryEarnings { get; set; }
         public bool IsAccLevyExempt { get; set; }
         public bool IsGstExempt { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public NzPayCategoryType PayCategoryType { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
@@ -31,8 +33,6 @@ namespace KeyPayV2.Nz.Models.PayCategory
         public int? NumberOfDecimalPlaces { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public KeyPayV2.Nz.Enums.MidpointRounding? RoundingMethod { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PayCategoryType PayCategoryType { get; set; }
         public bool HideUnitsOnPaySlip { get; set; }
         public bool IsPrimary { get; set; }
     }

@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.PayRun
     {
         public IList<ApiPaySlipPaygAdjustmentModel> PayeAdjustments { get; set; }
         public IList<UkApiPaySlipBankPaymentModel> BankPayments { get; set; }
+        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public decimal PayeWithholdingAmount { get; set; }
         public string EmployeePostalAddressCity { get; set; }
         public string EmployeePostalAddressPostcode { get; set; }
@@ -33,6 +34,8 @@ namespace KeyPayV2.Uk.Models.PayRun
         public string TaxCode { get; set; }
         public decimal PostGradLoanComponentAmount { get; set; }
         public decimal StudentLoanComponentAmount { get; set; }
+        public decimal PostGradLoanYTD { get; set; }
+        public decimal StudentLoanYTD { get; set; }
         public decimal ThisEmploymentYtdPay { get; set; }
         public decimal ThisEmploymentYtdPayrolledBenefits { get; set; }
         public decimal ThisEmploymentYtdTaxDeducted { get; set; }
@@ -40,7 +43,6 @@ namespace KeyPayV2.Uk.Models.PayRun
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }
-        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public IList<ApiPaySlipDeductionModel> Deductions { get; set; }
         public IList<ApiYearToDateEarningsBreakdownModel> GrossYTDDetails { get; set; }
         public IList<ApiEmployeeExpenseGridModel> EmployeeExpenses { get; set; }

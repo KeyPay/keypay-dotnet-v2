@@ -7,7 +7,6 @@ namespace KeyPayV2.Nz.Enums
     {
         Electronic,
         ManualDeposit,
-        CashOrCheque,
-        Bpay
+        CashOrCheque
     }
 }

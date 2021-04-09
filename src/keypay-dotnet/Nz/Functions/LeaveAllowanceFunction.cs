@@ -102,5 +102,16 @@ namespace KeyPayV2.Nz.Functions
         {
             ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.DELETE);
         }
+
+        /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.POST);
+        }
     }
 }

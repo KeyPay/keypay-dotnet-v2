@@ -9,6 +9,7 @@ namespace KeyPayV2.Uk.Models.Ess
     public class ListLeaveRequestsQueryModel
     {
         public bool ShowOtherEmployees { get; set; }
+        public bool ApprovedOnly { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
     }

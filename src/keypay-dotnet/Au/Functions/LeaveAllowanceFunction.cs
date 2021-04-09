@@ -65,9 +65,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new leave allowance template for the business.
         /// </remarks>
-        public void CreateLeaveAllowanceTemplate(int businessId, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate)
+        public AuLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate)
         {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.POST);
+            return ApiRequest<AuLeaveAllowanceTemplateModel,AuLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.POST);
         }
 
         /// <summary>
@@ -87,9 +87,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the leave allowance template with the specified ID.
         /// </remarks>
-        public void UpdateLeaveAllowanceTemplate(int businessId, int id, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate)
+        public AuLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate)
         {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.PUT);
+            return ApiRequest<AuLeaveAllowanceTemplateModel,AuLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.PUT);
         }
 
         /// <summary>
@@ -101,6 +101,17 @@ namespace KeyPayV2.Au.Functions
         public void DeleteLeaveAllowanceTemplate(int businessId, int id)
         {
             ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.POST);
         }
     }
 }

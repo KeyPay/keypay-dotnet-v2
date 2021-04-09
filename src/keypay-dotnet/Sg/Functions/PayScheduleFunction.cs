@@ -21,9 +21,9 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the pay schedules for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null)
+        public List<SgPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<PayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<SgPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new pay schedule for the business.
         /// </remarks>
-        public PayScheduleModel CreatePaySchedule(int businessId, PayScheduleModel paySchedule)
+        public SgPayScheduleModel CreatePaySchedule(int businessId, SgPayScheduleModel paySchedule)
         {
-            return ApiRequest<PayScheduleModel,PayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.POST);
+            return ApiRequest<SgPayScheduleModel,SgPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.POST);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the pay schedule with the specified ID.
         /// </remarks>
-        public PayScheduleModel GetPayScheduleById(int businessId, int id)
+        public SgPayScheduleModel GetPayScheduleById(int businessId, int id)
         {
-            return ApiRequest<PayScheduleModel>($"/business/{businessId}/payschedule/{id}");
+            return ApiRequest<SgPayScheduleModel>($"/business/{businessId}/payschedule/{id}");
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the pay schedule with the specified ID.
         /// </remarks>
-        public void UpdatePaySchedule(int businessId, int id, PayScheduleModel paySchedule)
+        public SgPayScheduleModel UpdatePaySchedule(int businessId, int id, SgPayScheduleModel paySchedule)
         {
-            ApiRequest($"/business/{businessId}/payschedule/{id}", paySchedule, Method.PUT);
+            return ApiRequest<SgPayScheduleModel,SgPayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.PUT);
         }
 
         /// <summary>

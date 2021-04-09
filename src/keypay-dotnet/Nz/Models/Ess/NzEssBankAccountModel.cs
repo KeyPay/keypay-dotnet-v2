@@ -10,6 +10,8 @@ namespace KeyPayV2.Nz.Models.Ess
 {
     public class NzEssBankAccountModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BankAccountTypeEnum AccountType { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public string Bsb { get; set; }
@@ -20,9 +22,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public bool AllocateBalance { get; set; }
         public bool IsEmployeeEditable { get; set; }
         public bool CanBeDeleted { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public BankAccountTypeEnum AccountType { get; set; }
         public string ExternalReferenceId { get; set; }
-        public string RollNumber { get; set; }
     }
 }

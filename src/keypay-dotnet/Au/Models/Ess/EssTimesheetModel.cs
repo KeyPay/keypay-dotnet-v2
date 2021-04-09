@@ -14,6 +14,9 @@ namespace KeyPayV2.Au.Models.Ess
         public bool CanEdit { get; set; }
         public int StatusId { get; set; }
         public Attachment Attachment { get; set; }
+        public int WorkDurationInMinutes { get; set; }
+        public int BreaksDurationInMinutes { get; set; }
+        public int TotalDurationInMinutes { get; set; }
         public string EmployeeName { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
@@ -52,9 +55,6 @@ namespace KeyPayV2.Au.Models.Ess
         public bool OverdrawsLeave { get; set; }
         public string ReviewedBy { get; set; }
         public TimeSpan? DurationOverride { get; set; }
-        public decimal WorkDurationInMinutes { get; set; }
-        public decimal BreaksDurationInMinutes { get; set; }
-        public decimal TotalDurationInMinutes { get; set; }
         public string HiddenComments { get; set; }
         public bool ReadOnly { get; set; }
         public bool IgnoreRounding { get; set; }

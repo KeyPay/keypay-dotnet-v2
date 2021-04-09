@@ -31,9 +31,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Adds a new public holiday.
         /// </remarks>
-        public void AddAPublicHoliday(int businessId, PublicHolidayModel publicHoliday)
+        public PublicHolidayModel AddAPublicHoliday(int businessId, PublicHolidayModel publicHoliday)
         {
-            ApiRequest($"/business/{businessId}/publicholiday", publicHoliday, Method.POST);
+            return ApiRequest<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday", publicHoliday, Method.POST);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the public holiday with the specific ID.
         /// </remarks>
-        public void UpdatePublicHoliday(int businessId, int id, PublicHolidayModel publicHoliday)
+        public PublicHolidayModel UpdatePublicHoliday(int businessId, int id, PublicHolidayModel publicHoliday)
         {
-            ApiRequest($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.PUT);
+            return ApiRequest<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.PUT);
         }
 
         /// <summary>

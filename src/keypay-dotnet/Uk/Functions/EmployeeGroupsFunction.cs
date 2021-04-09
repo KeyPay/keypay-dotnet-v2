@@ -21,9 +21,9 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the employee groups for the business.
         /// This operation supports OData queries.
         /// </remarks>
-        public List<EmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
+        public List<UkEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<EmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<UkEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new employee group for the business.
         /// </remarks>
-        public void CreateEmployeeGroup(int businessId, EmployeeGroupModel employeeGroup)
+        public UkEmployeeGroupModel CreateEmployeeGroup(int businessId, UkEmployeeGroupModel employeeGroup)
         {
-            ApiRequest($"/business/{businessId}/employeegroup", employeeGroup, Method.POST);
+            return ApiRequest<UkEmployeeGroupModel,UkEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.POST);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the employee group with the specified ID.
         /// </remarks>
-        public DetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
+        public UkDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
         {
-            return ApiRequest<DetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}");
+            return ApiRequest<UkDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}");
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the specified employee group.
         /// </remarks>
-        public void UpdateEmployeeGroup(int businessId, int id, EmployeeGroupModel employeeGroup)
+        public UkEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, UkEmployeeGroupModel employeeGroup)
         {
-            ApiRequest($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT);
+            return ApiRequest<UkEmployeeGroupModel,UkEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT);
         }
 
         /// <summary>

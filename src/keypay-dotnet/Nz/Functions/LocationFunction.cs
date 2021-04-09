@@ -44,9 +44,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Creates a business location.
         /// </remarks>
-        public void CreateLocation(int businessId, NzLocationModel location)
+        public NzLocationModel CreateLocation(int businessId, NzLocationModel location)
         {
-            ApiRequest($"/business/{businessId}/location", location, Method.POST);
+            return ApiRequest<NzLocationModel,NzLocationModel>($"/business/{businessId}/location", location, Method.POST);
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk.Enums
         None,
         Plan1,
         Plan2,
-        PostGrad
+        PostGrad,
+        Plan4
     }
 }

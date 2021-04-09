@@ -31,9 +31,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the journal details for this pay run.
         /// </remarks>
-        public List<JournalItemResponse> GetJournalDetails(int businessId, int payRunId)
+        public List<AuJournalItemResponse> GetJournalDetails(int businessId, int payRunId)
         {
-            return ApiRequest<List<JournalItemResponse>>($"/business/{businessId}/journal/{payRunId}");
+            return ApiRequest<List<AuJournalItemResponse>>($"/business/{businessId}/journal/{payRunId}");
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Adds earnings lines to the specified pay run.
         /// </remarks>
-        public void CreateEarningsLines(int businessId, int payRunId, SubmitPayRunEarningsLineRequest request)
+        public void CreateEarningsLines(int businessId, int payRunId, AuSubmitPayRunEarningsLineRequest request)
         {
             ApiRequest($"/business/{businessId}/payrun/{payRunId}/earningslines", request, Method.POST);
         }
@@ -285,9 +285,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets an ABA file associated with a pay run.
         /// </remarks>
-        public void GetAbaFile(int businessId, int payRunId, int abaId)
+        public byte[] GetAbaFile(int businessId, int payRunId, int abaId)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/file/aba/{abaId}");
+            return ApiByteArrayRequest($"/business/{businessId}/payrun/{payRunId}/file/aba/{abaId}");
         }
 
         /// <summary>
@@ -395,9 +395,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a note for an employee record in a pay run.
         /// </remarks>
-        public void CreateNoteForEmployee(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model)
+        public PayRunTotalNotationModel CreateNoteForEmployee(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/notation/{employeeId}", model, Method.POST);
+            return ApiRequest<PayRunTotalNotationModel,PayRunTotalNotationModel>($"/business/{businessId}/payrun/{payRunId}/notation/{employeeId}", model, Method.POST);
         }
 
         /// <summary>
@@ -461,9 +461,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the payments associated with a pay run.
         /// </remarks>
-        public AuBankPaymentModel GetPayRunPayments(int businessId, int payRunId)
+        public List<AuBankPaymentModel> GetPayRunPayments(int businessId, int payRunId)
         {
-            return ApiRequest<AuBankPaymentModel>($"/business/{businessId}/payrun/{payRunId}/payments");
+            return ApiRequest<List<AuBankPaymentModel>>($"/business/{businessId}/payrun/{payRunId}/payments");
         }
 
         /// <summary>

@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk.Models.PayCategory
         public bool IsEmployerPensionable { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public MinimumWageCalculationImpact MinimumWageCalculationImpact { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public UkPayCategoryType PayCategoryType { get; set; }
         public bool IsClass1ANIable { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
@@ -32,8 +34,6 @@ namespace KeyPayV2.Uk.Models.PayCategory
         public int? NumberOfDecimalPlaces { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public KeyPayV2.Uk.Enums.MidpointRounding? RoundingMethod { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PayCategoryType PayCategoryType { get; set; }
         public bool HideUnitsOnPaySlip { get; set; }
         public bool IsPrimary { get; set; }
     }

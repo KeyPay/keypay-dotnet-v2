@@ -10,23 +10,20 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
 {
     public class UkLeaveCategoryModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public UkLeaveAllowanceUnitType UnitType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveCategoryTypeEnum LeaveCategoryType { get; set; }
         public bool PayoutNegativeBalance { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LeaveAllowanceUnitEnum UnitType { get; set; }
         public decimal Units { get; set; }
         public bool AutomaticallyAccrues { get; set; }
         public bool IsPrivate { get; set; }
         public bool ExcludeFromTerminationPayout { get; set; }
         public string ExternalId { get; set; }
         public string Source { get; set; }
-        public decimal LeaveLoading { get; set; }
-        public decimal? ContingentPeriod { get; set; }
-        public decimal? EntitlementPeriod { get; set; }
         public bool IsBalanceUntracked { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LeaveCategoryTypeEnum LeaveCategoryType { get; set; }
         public bool DeductFromPrimaryPayCategory { get; set; }
         public int? DeductFromPayCategoryId { get; set; }
         public int? TransferToPayCategoryId { get; set; }

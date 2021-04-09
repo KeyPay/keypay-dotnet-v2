@@ -24,8 +24,6 @@ namespace KeyPayV2.Nz.Models.Manager
         public string EmployeeName { get; set; }
         public int? LocationId { get; set; }
         public string LocationName { get; set; }
-        public int? ClassificationId { get; set; }
-        public string ClassificationName { get; set; }
         public int? WorkTypeId { get; set; }
         public string WorkTypeName { get; set; }
         public RosterShiftRole Role { get; set; }

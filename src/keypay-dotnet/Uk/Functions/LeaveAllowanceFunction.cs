@@ -54,9 +54,9 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the leave allowance templates for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<LeaveAllowanceTemplateApiModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
+        public List<UkLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<LeaveAllowanceTemplateApiModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<UkLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new leave allowance template for the business.
         /// </remarks>
-        public void CreateLeaveAllowanceTemplate(int businessId, LeaveAllowanceTemplateApiModel leaveAllowanceTemplate)
+        public UkLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate)
         {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.POST);
+            return ApiRequest<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.POST);
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the details for the leave allowance template with the specified ID.
         /// </remarks>
-        public LeaveAllowanceTemplateApiModel GetLeaveAllowanceTemplateById(int businessId, int id)
+        public UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id)
         {
-            return ApiRequest<LeaveAllowanceTemplateApiModel>($"/business/{businessId}/leaveallowancetemplate/{id}");
+            return ApiRequest<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}");
         }
 
         /// <summary>
@@ -87,9 +87,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the leave allowance template with the specified ID.
         /// </remarks>
-        public void UpdateLeaveAllowanceTemplate(int businessId, int id, LeaveAllowanceTemplateApiModel leaveAllowanceTemplate)
+        public UkLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate)
         {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.PUT);
+            return ApiRequest<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.PUT);
         }
 
         /// <summary>
@@ -101,6 +101,17 @@ namespace KeyPayV2.Uk.Functions
         public void DeleteLeaveAllowanceTemplate(int businessId, int id)
         {
             ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.POST);
         }
     }
 }

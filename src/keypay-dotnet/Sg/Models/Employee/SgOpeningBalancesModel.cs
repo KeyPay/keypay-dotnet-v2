@@ -14,11 +14,11 @@ namespace KeyPayV2.Sg.Models.Employee
         public OpeningBalanceCpfModel Cpf { get; set; }
         public OpeningBalancesLumpSumModel LumpSum { get; set; }
         public int? NumMonths { get; set; }
+        public IList<SgInitialEarningsModel> EarningsLines { get; set; }
         public int? EmployeeId { get; set; }
         public decimal? TotalHours { get; set; }
         public decimal? GrossEarnings { get; set; }
         public IList<InitialLeaveBalanceModel> LeaveBalances { get; set; }
-        public IList<InitialEarningsModel> EarningsLines { get; set; }
         public List<InitialEmployerLiabilityModel> EmployerLiabilities { get; set; }
         public int? FinancialYearStartingYear { get; set; }
         public string LocationName { get; set; }

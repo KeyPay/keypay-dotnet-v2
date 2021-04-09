@@ -14,15 +14,18 @@ namespace KeyPayV2.Uk.Models.Common
         public bool CarryBenefitForward { get; set; }
         public decimal AmountForegone { get; set; }
         public decimal AmountMadeGood { get; set; }
+        public decimal CashEquivalent { get; set; }
         public int StartFromPeriod { get; set; }
         public decimal AmountPayrolledToDate { get; set; }
         public decimal AmountToBePayrolledPerPeriod { get; set; }
         public decimal? AmountPayrolledToDateInPayRuns { get; set; }
+        public decimal? AdditionalAmountPayrolledToDateInPayRuns { get; set; }
         public bool HasLinkedPayRuns { get; set; }
         public int Id { get; set; }
         public string BenefitCategoryName { get; set; }
+        public string BenefitCategoryType { get; set; }
         public int Year { get; set; }
-        public String[] CalculationLogs { get; set; }
+        public IList<String> CalculationLogs { get; set; }
         public UkEmployeeBenefitProRataCalculationModel ProRataCalculation { get; set; }
         public UkEmployeeBenefitCategoryExtCarEditModel Car { get; set; }
     }

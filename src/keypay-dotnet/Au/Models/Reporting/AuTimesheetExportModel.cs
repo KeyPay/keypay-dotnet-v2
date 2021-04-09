@@ -10,6 +10,7 @@ namespace KeyPayV2.Au.Models.Reporting
     {
         public decimal? Super { get; set; }
         public decimal? Payg { get; set; }
+        public string Classification { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
@@ -33,7 +34,6 @@ namespace KeyPayV2.Au.Models.Reporting
         public string UnitType { get; set; }
         public string WorkType { get; set; }
         public string ShiftConditions { get; set; }
-        public string Classification { get; set; }
         public int NumberOfBreaks { get; set; }
         public TimeSpan BreakDuration { get; set; }
         public string Comments { get; set; }

@@ -20,6 +20,7 @@ namespace KeyPayV2.Uk.Enums
         SantanderBulkBankLine,
         LloydsMultipleBacs,
         LloydsFasterPayment,
-        OpenBanking
+        OpenBanking,
+        LloydsNonStandardBacsFormat
     }
 }

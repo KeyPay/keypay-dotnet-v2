@@ -19,7 +19,8 @@ namespace KeyPayV2.Uk.Models.DeductionCategories
         public DeductionCategoryPreTaxNationalInsuranceImpact NationalInsuranceImpact { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Source { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ExternalService Source { get; set; }
         public string ExternalId { get; set; }
         public bool IsSystem { get; set; }
     }

@@ -13,7 +13,6 @@ namespace KeyPayV2.Nz.Models.PayRun
         public bool IsFixed { get; set; }
         public bool IsTaxExempt { get; set; }
         public decimal Rate { get; set; }
-        public decimal SuperContribution { get; set; }
         public string Notes { get; set; }
         public decimal GrossEarnings { get; set; }
         public decimal TaxableEarnings { get; set; }

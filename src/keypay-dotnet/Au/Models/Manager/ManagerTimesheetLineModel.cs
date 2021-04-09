@@ -29,8 +29,6 @@ namespace KeyPayV2.Au.Models.Manager
         public int EmployeeId { get; set; }
         public int? LocationId { get; set; }
         public int? WorkTypeId { get; set; }
-        public int? ClassificationId { get; set; }
-        public string ClassificationName { get; set; }
         public string WorkTypeName { get; set; }
         public string LocationName { get; set; }
         public string UnitType { get; set; }
@@ -44,7 +42,7 @@ namespace KeyPayV2.Au.Models.Manager
         [JsonConverter(typeof(StringEnumConverter))]
         public TimesheetLineStatusType Status { get; set; }
         public string PaySlipUrl { get; set; }
-        public IList<TimesheetBreakViewModel> Breaks { get; set; }
+        public IList<TimesheetBreakManagerModel> Breaks { get; set; }
         public string Comments { get; set; }
         public decimal? Rate { get; set; }
         public string ExternalReferenceId { get; set; }
@@ -55,7 +53,6 @@ namespace KeyPayV2.Au.Models.Manager
         public int? LeaveRequestId { get; set; }
         public bool IsLocked { get; set; }
         public decimal? Cost { get; set; }
-        public ShiftCostingData CostingData { get; set; }
         public bool Discard { get; set; }
         public AttachmentModel Attachment { get; set; }
         public bool IsOverlapping { get; set; }

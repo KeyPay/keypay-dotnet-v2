@@ -33,17 +33,6 @@ namespace KeyPayV2.Sg.Enums
         PreTaxDeductionAsset,
         InterCompanyLoanCredit,
         InterCompanyLoanDebit,
-        EmployerPensionLiability,
-        EmployerPensionExpense,
-        EmployeePensionLiability,
-        EmployeePensionExpense,
-        EmployerNationalInsuranceLiability,
-        EmployeeNationalInsuranceLiability,
-        NationalInsuranceLiability,
-        NationalInsuranceExpense,
-        KiwiSaverEmployerExpense,
-        KiwiSaverEmployerLiability,
-        KiwiSaverEmployeeLiability,
         LeaveAccrualLiability,
         LeaveAccrualExpense,
         LeaveTakenLiability,
@@ -54,8 +43,6 @@ namespace KeyPayV2.Sg.Enums
         CpfEmployerLiability,
         CpfEmployeeLiability,
         SdlEmployerExpense,
-        SdlEmployerLiability,
-        EmploymentAllowanceEmployersNI,
-        EmploymentAllowanceNICPayable
+        SdlEmployerLiability
     }
 }

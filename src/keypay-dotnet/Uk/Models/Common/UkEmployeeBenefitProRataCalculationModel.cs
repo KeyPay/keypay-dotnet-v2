@@ -8,10 +8,10 @@ namespace KeyPayV2.Uk.Models.Common
 {
     public class UkEmployeeBenefitProRataCalculationModel
     {
-        public decimal FullYearAmount { get; set; }
+        public decimal? FullYearAmount { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public bool UseCalculatedValue { get; set; }
+        public DateTime? EndDate { get; set; }
+        public bool? UseCalculatedValue { get; set; }
         public bool ProRataInFirstPayRun { get; set; }
     }
 }

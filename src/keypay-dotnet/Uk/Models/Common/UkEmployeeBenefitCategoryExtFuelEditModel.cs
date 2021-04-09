@@ -8,11 +8,11 @@ namespace KeyPayV2.Uk.Models.Common
 {
     public class UkEmployeeBenefitCategoryExtFuelEditModel
     {
-        public decimal? OpRAAmountForegone { get; set; }
+        public decimal? OpraAmountForegone { get; set; }
         public DateTime? AvailableFromDate { get; set; }
         public DateTime? AvailableToDate { get; set; }
         public bool? Reinstated { get; set; }
-        public decimal AmountForegone { get; set; }
+        public decimal CashEquivalent { get; set; }
         public int StartFromPeriod { get; set; }
         public decimal AmountPayrolledToDate { get; set; }
         public decimal AmountToBePayrolledPerPeriod { get; set; }

@@ -144,9 +144,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sets the ATO details for the business.
         /// </remarks>
-        public void SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
+        public BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
         {
-            ApiRequest($"/business/{businessId}/ato", model, Method.POST);
+            return ApiRequest<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.POST);
         }
 
         /// <summary>

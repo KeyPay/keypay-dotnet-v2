@@ -34,6 +34,7 @@ namespace KeyPayV2.Uk.Models.Business
         public bool AlreadyReportedApprenticeshipLevy { get; set; }
         public decimal? PreviouslyReportedApprenticeshipLevyAllowance { get; set; }
         public decimal? PreviouslyReportedApprenticeshipLevyAmount { get; set; }
+        public bool IsIR35 { get; set; }
         public bool? SecondedEmployeesEnabled { get; set; }
         public bool? OccupationalPensionsEnabled { get; set; }
         public bool? IncludeEmploymentAllowanceInJournals { get; set; }

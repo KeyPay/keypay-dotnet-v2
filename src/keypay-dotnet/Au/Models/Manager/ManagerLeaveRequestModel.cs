@@ -18,7 +18,10 @@ namespace KeyPayV2.Au.Models.Manager
         public decimal? AccruedBalance { get; set; }
         public bool ExceedsBalance { get; set; }
         public bool IsLeaveBasedRosterShift { get; set; }
+        public decimal TotalHours { get; set; }
         public int LeaveCategoryId { get; set; }
+        public int? WorkTypeId { get; set; }
+        public string WorkTypeName { get; set; }
         public bool IsApproved { get; set; }
         public bool IsDeclined { get; set; }
         public bool IsCancelled { get; set; }
@@ -29,7 +32,6 @@ namespace KeyPayV2.Au.Models.Manager
         public DateTime RequestedDate { get; set; }
         public string LeaveCategoryName { get; set; }
         public decimal HoursPerDay { get; set; }
-        public decimal TotalHours { get; set; }
         public decimal TotalUnits { get; set; }
         public string Notes { get; set; }
         public decimal TotalDays { get; set; }

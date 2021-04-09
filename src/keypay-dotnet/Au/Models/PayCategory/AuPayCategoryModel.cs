@@ -17,6 +17,8 @@ namespace KeyPayV2.Au.Models.PayCategory
         public string SuperExpenseMappingCode { get; set; }
         public string SuperLiabilityMappingCode { get; set; }
         public bool IsPayrollTaxExempt { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AuPayCategoryType PayCategoryType { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
@@ -33,8 +35,6 @@ namespace KeyPayV2.Au.Models.PayCategory
         public int? NumberOfDecimalPlaces { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public KeyPayV2.Au.Enums.MidpointRounding? RoundingMethod { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PayCategoryType PayCategoryType { get; set; }
         public bool HideUnitsOnPaySlip { get; set; }
         public bool IsPrimary { get; set; }
     }

@@ -9,9 +9,11 @@ namespace KeyPayV2.Uk.Models.EmployeeBenefitCategory
     public class UkEmployeeBenefitCategoryEditModel
     {
         public int? BenefitCategoryId { get; set; }
+        public int EmployeeId { get; set; }
         public bool CarryBenefitForward { get; set; }
         public decimal AmountForegone { get; set; }
         public decimal AmountMadeGood { get; set; }
+        public decimal CashEquivalent { get; set; }
         public int StartFromPeriod { get; set; }
         public decimal AmountPayrolledToDate { get; set; }
         public decimal AmountToBePayrolledPerPeriod { get; set; }

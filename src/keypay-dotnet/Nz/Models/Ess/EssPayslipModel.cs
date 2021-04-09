@@ -17,5 +17,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public decimal NetPay { get; set; }
         public string PayerName { get; set; }
         public string PayerAbn { get; set; }
+        public string PayerBusinessNumber { get; set; }
     }
 }

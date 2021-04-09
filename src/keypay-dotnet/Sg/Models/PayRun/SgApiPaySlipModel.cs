@@ -34,7 +34,6 @@ namespace KeyPayV2.Sg.Models.PayRun
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }
-        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public IList<ApiPaySlipDeductionModel> Deductions { get; set; }
         public IList<ApiYearToDateEarningsBreakdownModel> GrossYTDDetails { get; set; }
         public IList<ApiEmployeeExpenseGridModel> EmployeeExpenses { get; set; }

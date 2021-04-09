@@ -44,9 +44,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a business location.
         /// </remarks>
-        public void CreateLocation(int businessId, AuLocationModel location)
+        public AuLocationModel CreateLocation(int businessId, AuLocationModel location)
         {
-            ApiRequest($"/business/{businessId}/location", location, Method.POST);
+            return ApiRequest<AuLocationModel,AuLocationModel>($"/business/{businessId}/location", location, Method.POST);
         }
 
         /// <summary>

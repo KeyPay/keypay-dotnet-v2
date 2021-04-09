@@ -24,6 +24,7 @@ namespace KeyPayV2.Sg.Enums
         MyFeesCommissionsOrBonuses,
         MyGrossTipsOrOtherAllowances,
         ChildSupportDeduction,
-        ChildSupportGarnishee
+        ChildSupportGarnishee,
+        PayrollGiving
     }
 }

@@ -43,6 +43,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public bool IsApprentice { get; set; }
+        public bool? IsIR35Contractor { get; set; }
         public bool? IsSecondedEmployee { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public SecondmentType? SecondmentType { get; set; }

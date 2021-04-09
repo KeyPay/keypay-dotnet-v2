@@ -32,9 +32,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates an employee expense category for the business.
         /// </remarks>
-        public void CreateEmployeeExpenseCategory(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory)
+        public EmployeeExpenseCategoryModel CreateEmployeeExpenseCategory(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory)
         {
-            ApiRequest($"/business/{businessId}/employeeexpensecategory", employeeExpenseCategory, Method.POST);
+            return ApiRequest<EmployeeExpenseCategoryModel,EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory", employeeExpenseCategory, Method.POST);
         }
 
         /// <summary>

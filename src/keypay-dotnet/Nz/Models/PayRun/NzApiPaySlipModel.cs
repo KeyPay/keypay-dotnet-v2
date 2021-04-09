@@ -13,6 +13,7 @@ namespace KeyPayV2.Nz.Models.PayRun
         public IList<ApiPaySlipPaygAdjustmentModel> PayeAdjustments { get; set; }
         public IList<ApiPaySlipKiwiSaverPaymentModel> KiwiSaverPayments { get; set; }
         public IList<NzApiPaySlipBankPaymentModel> BankPayments { get; set; }
+        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public decimal PayeWithholdingAmount { get; set; }
         public decimal KiwiSaverEmployeeContributionYtd { get; set; }
         public decimal KiwiSaverEmployerContributionYtd { get; set; }
@@ -25,7 +26,6 @@ namespace KeyPayV2.Nz.Models.PayRun
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }
-        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public IList<ApiPaySlipDeductionModel> Deductions { get; set; }
         public IList<ApiYearToDateEarningsBreakdownModel> GrossYTDDetails { get; set; }
         public IList<ApiEmployeeExpenseGridModel> EmployeeExpenses { get; set; }

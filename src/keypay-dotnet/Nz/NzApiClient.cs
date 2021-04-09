@@ -24,8 +24,6 @@ namespace KeyPayV2.Nz
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
-            EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
-            EmploymentAgreement = new EmploymentAgreementFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
@@ -38,7 +36,6 @@ namespace KeyPayV2.Nz
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
-            PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             Other = new OtherFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
@@ -72,8 +69,6 @@ namespace KeyPayV2.Nz
         public PayRunFunction PayRun { get; }
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
         public AuthenticationFunction Authentication { get; }
-        public EmployeeSuperFundFunction EmployeeSuperFund { get; }
-        public EmploymentAgreementFunction EmploymentAgreement { get; }
         public EmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public EmployeeGroupsFunction EmployeeGroups { get; }
         public EmployeeOnboardingFunction EmployeeOnboarding { get; }
@@ -86,7 +81,6 @@ namespace KeyPayV2.Nz
         public LookupDataFunction LookupData { get; }
         public ManagerFunction Manager { get; }
         public PayCategoryFunction PayCategory { get; }
-        public PaymentSummaryFunction PaymentSummary { get; }
         public PayRateTemplateFunction PayRateTemplate { get; }
         public OtherFunction Other { get; }
         public PayScheduleFunction PaySchedule { get; }

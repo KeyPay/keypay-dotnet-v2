@@ -87,9 +87,9 @@ namespace KeyPayV2.Sg.Functions
         /// Uploads an attachment to the expense request with the specified ID.
         /// The request should be a MIME multipart file upload request.
         /// </remarks>
-        public void UploadAttachmentToExpenseRequest(int businessId, int employeeId, FileUploadModel file, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request)
+        public AttachmentModel UploadAttachmentToExpenseRequest(int businessId, int employeeId, FileUploadModel file, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", file, Method.PUT);
+            return ApiFileRequest<AttachmentModel>($"/business/{businessId}/manager/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", file, Method.PUT);
         }
 
         /// <summary>
@@ -329,9 +329,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the Work Types, Shift Conditions, Locations and Classifications for this Employee.
         /// </remarks>
-        public TimesheetReferenceData GetTimesheetReferenceData(int businessId, int employeeId)
+        public SgTimesheetReferenceData GetTimesheetReferenceData(int businessId, int employeeId)
         {
-            return ApiRequest<TimesheetReferenceData>($"/business/{businessId}/manager/{employeeId}/timesheet/reference");
+            return ApiRequest<SgTimesheetReferenceData>($"/business/{businessId}/manager/{employeeId}/timesheet/reference");
         }
 
         /// <summary>
@@ -488,9 +488,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Changes the kiosk PIN for an employee, given their old PIN.
         /// </remarks>
-        public void ChangePin(int businessId, int kioskId, ChangeKioskPinModel model)
+        public KioskEmployeeModel ChangePin(int businessId, int kioskId, ChangeKioskPinModel model)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/changepin", model, Method.POST);
+            return ApiRequest<KioskEmployeeModel,ChangeKioskPinModel>($"/business/{businessId}/manager/kiosk/{kioskId}/changepin", model, Method.POST);
         }
 
         /// <summary>
@@ -499,9 +499,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// If the specified employee has kiosk access, returns details about the employee and their current shift.
         /// </remarks>
-        public void CheckEmployee(int businessId, CheckKioskEmployeeIdModel model, string kioskId)
+        public BasicKioskEmployeeModel CheckEmployee(int businessId, int kioskId, CheckKioskEmployeeIdModel model)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/checkid", model, Method.POST);
+            return ApiRequest<BasicKioskEmployeeModel,CheckKioskEmployeeIdModel>($"/business/{businessId}/manager/kiosk/{kioskId}/checkid", model, Method.POST);
         }
 
         /// <summary>
@@ -510,9 +510,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Verifies the employee's kiosk PIN. Returns error code 400 if the PIN is incorrect.
         /// </remarks>
-        public void VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId)
+        public KioskEmployeeModel VerifyKioskPin(int businessId, int kioskId, CheckKioskPinModel model)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/checkpin", model, Method.POST);
+            return ApiRequest<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/manager/kiosk/{kioskId}/checkpin", model, Method.POST);
         }
 
         /// <summary>
@@ -522,9 +522,9 @@ namespace KeyPayV2.Sg.Functions
         /// Clocks out an employee from their existing shift.
         /// If they are on a break, it will be ended automatically.
         /// </remarks>
-        public void ClockOutEmployee(int businessId, int kioskId, ClockOffModel request)
+        public KioskEmployeeModel ClockOutEmployee(int businessId, int kioskId, ClockOffModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/clockoff", request, Method.POST);
+            return ApiRequest<KioskEmployeeModel,ClockOffModel>($"/business/{businessId}/manager/kiosk/{kioskId}/clockoff", request, Method.POST);
         }
 
         /// <summary>
@@ -533,9 +533,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Clocks in an employee for a new shift.
         /// </remarks>
-        public void ClockInEmployee(int businessId, int kioskId, ClockOnModel request)
+        public KioskEmployeeModel ClockInEmployee(int businessId, int kioskId, ClockOnModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/clockon", request, Method.POST);
+            return ApiRequest<KioskEmployeeModel,ClockOnModel>($"/business/{businessId}/manager/kiosk/{kioskId}/clockon", request, Method.POST);
         }
 
         /// <summary>
@@ -545,9 +545,9 @@ namespace KeyPayV2.Sg.Functions
         /// Discards the current shift for an employee.
         /// If they are on a break, it will be ended automatically.
         /// </remarks>
-        public void DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request)
+        public KioskEmployeeModel DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/discard", request, Method.POST);
+            return ApiRequest<KioskEmployeeModel,ClockOffModel>($"/business/{businessId}/manager/kiosk/{kioskId}/discard", request, Method.POST);
         }
 
         /// <summary>
@@ -567,9 +567,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Ends the employee's current break.
         /// </remarks>
-        public void EndBreak(int businessId, int kioskId, EndBreakModel request)
+        public KioskEmployeeModel EndBreak(int businessId, int kioskId, EndBreakModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/endbreak", request, Method.POST);
+            return ApiRequest<KioskEmployeeModel,EndBreakModel>($"/business/{businessId}/manager/kiosk/{kioskId}/endbreak", request, Method.POST);
         }
 
         /// <summary>
@@ -578,9 +578,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets relevant lookup data for an employee in relation to a kiosk.
         /// </remarks>
-        public TimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId)
+        public SgTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId)
         {
-            return ApiRequest<TimeAndAttendanceLookupDataModel>($"/business/{businessId}/manager/kiosk/{kioskId}/lookupdata/{employeeId}");
+            return ApiRequest<SgTimeAndAttendanceLookupDataModel>($"/business/{businessId}/manager/kiosk/{kioskId}/lookupdata/{employeeId}");
         }
 
         /// <summary>
@@ -589,9 +589,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets all the notes for a specific shift.
         /// </remarks>
-        public void GetShiftNotes(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request)
+        public List<ShiftNoteViewModel> GetShiftNotes(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}");
+            return ApiRequest<List<ShiftNoteViewModel>>($"/business/{businessId}/manager/kiosk/{kioskId}/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}");
         }
 
         /// <summary>
@@ -600,9 +600,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Adds a note to an existing shift.
         /// </remarks>
-        public void AddNoteToShift(int businessId, int kioskId, int shiftId, AddNoteModel model)
+        public ShiftNoteViewModel AddNoteToShift(int businessId, int kioskId, int shiftId, AddNoteModel model)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/shift/{shiftId}/notes", model, Method.POST);
+            return ApiRequest<ShiftNoteViewModel,AddNoteModel>($"/business/{businessId}/manager/kiosk/{kioskId}/shift/{shiftId}/notes", model, Method.POST);
         }
 
         /// <summary>
@@ -653,7 +653,7 @@ namespace KeyPayV2.Sg.Functions
         /// Add an Employee
         /// </summary>
         /// <remarks>
-        /// Quickly add an employee with minimal details and kiosk enabled.
+        /// Quickly add an employee with minimal details and kiosk enabled. If the employee already exists, the kiosk will be enabled for that employee.
         /// </remarks>
         public void AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model)
         {
@@ -666,9 +666,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Starts a break for an employee who is clocked on for a shift.
         /// </remarks>
-        public void StartBreak(int businessId, int kioskId, StartBreakModel request)
+        public KioskEmployeeModel StartBreak(int businessId, int kioskId, StartBreakModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/startbreak", request, Method.POST);
+            return ApiRequest<KioskEmployeeModel,StartBreakModel>($"/business/{businessId}/manager/kiosk/{kioskId}/startbreak", request, Method.POST);
         }
 
         /// <summary>
@@ -677,9 +677,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets shifts based on certain optional criteria.
         /// </remarks>
-        public List<TimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model)
+        public List<SgTimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model)
         {
-            return ApiRequest<List<TimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/manager/kiosk/shifts", model, Method.POST);
+            return ApiRequest<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/manager/kiosk/shifts", model, Method.POST);
         }
 
         /// <summary>
@@ -813,9 +813,9 @@ namespace KeyPayV2.Sg.Functions
         /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
         /// or specify SelectAllRoles = true.
         /// </remarks>
-        public List<RosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
+        public List<SgRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<RosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}&shiftStatuses={request.ShiftStatuses}&selectedLocations={request.SelectedLocations}&selectedEmployees={request.SelectedEmployees}&selectedRoles={request.SelectedRoles}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}");
+            return ApiRequest<List<SgRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}&shiftStatuses={request.ShiftStatuses}&selectedLocations={request.SelectedLocations}&selectedEmployees={request.SelectedEmployees}&selectedRoles={request.SelectedRoles}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}");
         }
 
         /// <summary>
@@ -827,9 +827,9 @@ namespace KeyPayV2.Sg.Functions
         /// Otherwise, the Shift result will be null.
         /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public RosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
+        public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
         {
-            return ApiRequest<RosterShiftMatchingResultModel>($"/business/{businessId}/manager/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/business/{businessId}/manager/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -841,9 +841,9 @@ namespace KeyPayV2.Sg.Functions
         /// Otherwise, the Shift result will be null.
         /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public RosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
+        public SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
         {
-            return ApiRequest<RosterShiftMatchingResultModel>($"/business/{businessId}/manager/rostershift/{employeeId}/matchingclockon?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/business/{businessId}/manager/rostershift/{employeeId}/matchingclockon?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -852,9 +852,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Finds any of the employee's roster shifts that are nearby to the specified local time.
         /// </remarks>
-        public List<EssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
+        public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<EssRosterShiftModel>>($"/business/{businessId}/manager/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/business/{businessId}/manager/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}");
         }
 
         /// <summary>
@@ -908,9 +908,9 @@ namespace KeyPayV2.Sg.Functions
         /// For the single date selected returns data about all published rostered shifts, published unassigned shifts,
         /// employee unavailablity, and leave requests.
         /// </remarks>
-        public ManagerRosterDataModel ManageRosterData(int businessId, ManageRosterDataQueryModel request)
+        public SgManagerRosterDataModel ManageRosterData(int businessId, ManageRosterDataQueryModel request)
         {
-            return ApiRequest<ManagerRosterDataModel>($"/business/{businessId}/manager/rostershift/manage?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}&employeeId={request.EmployeeId}&locationId={request.LocationId}&roleId={request.RoleId}&includeCosts={request.IncludeCosts}&includeSubLocations={request.IncludeSubLocations}");
+            return ApiRequest<SgManagerRosterDataModel>($"/business/{businessId}/manager/rostershift/manage?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}&employeeId={request.EmployeeId}&locationId={request.LocationId}&roleId={request.RoleId}&includeCosts={request.IncludeCosts}&includeSubLocations={request.IncludeSubLocations}");
         }
 
         /// <summary>
@@ -971,9 +971,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Create an individual timesheet line
         /// </remarks>
-        public void CreateTimesheetLine(int businessId, IndividualTimesheetLineModel request)
+        public IndividualTimesheetLineModel CreateTimesheetLine(int businessId, IndividualTimesheetLineModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/timesheet", request, Method.POST);
+            return ApiRequest<IndividualTimesheetLineModel,IndividualTimesheetLineModel>($"/business/{businessId}/manager/timesheet", request, Method.POST);
         }
 
         /// <summary>
@@ -982,9 +982,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Update an individual timesheet line
         /// </remarks>
-        public void UpdateTimesheetLine(int businessId, int timesheetLineId, IndividualTimesheetLineModel request)
+        public IndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, IndividualTimesheetLineModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/timesheet/{timesheetLineId}", request, Method.PUT);
+            return ApiRequest<IndividualTimesheetLineModel,IndividualTimesheetLineModel>($"/business/{businessId}/manager/timesheet/{timesheetLineId}", request, Method.PUT);
         }
 
         /// <summary>
@@ -1021,14 +1021,14 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Businesses
+        /// List Businesses
         /// </summary>
         /// <remarks>
         /// Returns all the businesses the user can access.
         /// </remarks>
-        public List<AvailableBusinessModel> GetBusinesses()
+        public List<SgAvailableBusinessModel> ListBusinesses()
         {
-            return ApiRequest<List<AvailableBusinessModel>>($"/manager/security/businesses");
+            return ApiRequest<List<SgAvailableBusinessModel>>($"/manager/security/businesses");
         }
     }
 }

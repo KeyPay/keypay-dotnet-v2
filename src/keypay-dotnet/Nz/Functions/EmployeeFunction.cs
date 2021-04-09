@@ -142,9 +142,9 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the shift conditions for this employee.
         /// This operation supports OData queries.
         /// </remarks>
-        public List<WorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        public List<NzWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<WorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -170,26 +170,15 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Sync Employee to QBO
-        /// </summary>
-        /// <remarks>
-        /// Syncs an employee record to QBO.
-        /// </remarks>
-        public void SyncEmployeeToQbo(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.POST);
-        }
-
-        /// <summary>
         /// Get Employee Work Types
         /// </summary>
         /// <remarks>
         /// Lists all the work types for the employee.
         /// This operation supports OData queries.
         /// </remarks>
-        public List<WorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        public List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<WorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -257,7 +246,11 @@ namespace KeyPayV2.Nz.Functions
         /// Create or Update Employee
         /// </summary>
         /// <remarks>
-        /// If the employee with the specified ID already exists, update it. Otherwise, create a new employee.
+        /// If the employee with the specified ID already exists, update it. Otherwise, create a new employee.<br /><p>
+        /// An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields; firstName, surname, startDate, employmentType,
+        /// taxCodeDeclaration_IrdNumber, taxCodeDeclaration_EsctRate, kiwiSaver_EnrollmentStatus.<br />
+        /// For an employee record to be considered 'Complete' the following groups of data are required:
+        ///   <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax Code Declaration (Tax Code and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Kiwi Saver Contribution Plan</li></list></p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, NzUnstructuredEmployeeModel model)
         {

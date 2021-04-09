@@ -13,11 +13,11 @@ namespace KeyPayV2.Nz.Models.Employee
         public decimal? AccLevyAmount { get; set; }
         public decimal? StudentLoanAmount { get; set; }
         public OpeningKiwiSaverModel KiwiSaver { get; set; }
+        public IList<NzInitialEarningsModel> EarningsLines { get; set; }
         public int? EmployeeId { get; set; }
         public decimal? TotalHours { get; set; }
         public decimal? GrossEarnings { get; set; }
         public IList<InitialLeaveBalanceModel> LeaveBalances { get; set; }
-        public IList<InitialEarningsModel> EarningsLines { get; set; }
         public List<InitialEmployerLiabilityModel> EmployerLiabilities { get; set; }
         public int? FinancialYearStartingYear { get; set; }
         public string LocationName { get; set; }

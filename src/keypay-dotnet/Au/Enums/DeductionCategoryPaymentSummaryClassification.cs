@@ -7,23 +7,6 @@ namespace KeyPayV2.Au.Enums
     {
         Default,
         UnionOrProfessionalAssociationFees,
-        WorkplaceGiving,
-        StudentLoanMandatory,
-        StudentLoanVoluntary,
-        ChildSupport,
-        FamilyTaxCreditOverpayment,
-        Donation,
-        Contribution,
-        LifeInsurancePremium,
-        MyCp38Deduction,
-        MyZakatPaidViaSalaryDeduction,
-        MyReliefClaimTp1,
-        MyZakatReliefClaimTp1,
-        MyLevyRelease,
-        MyGrossSalaryWagesOrLeavePay,
-        MyFeesCommissionsOrBonuses,
-        MyGrossTipsOrOtherAllowances,
-        ChildSupportDeduction,
-        ChildSupportGarnishee
+        WorkplaceGiving
     }
 }

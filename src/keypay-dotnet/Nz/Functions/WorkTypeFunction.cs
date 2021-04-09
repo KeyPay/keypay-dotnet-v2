@@ -20,9 +20,9 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the work types for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<WorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null)
+        public List<NzWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<WorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Creates a new work type for the business.
         /// </remarks>
-        public void CreateWorkType(int businessId, WorkTypeModel workType)
+        public NzWorkTypeModel CreateWorkType(int businessId, NzWorkTypeModel workType)
         {
-            ApiRequest($"/business/{businessId}/worktype", workType, Method.POST);
+            return ApiRequest<NzWorkTypeModel,NzWorkTypeModel>($"/business/{businessId}/worktype", workType, Method.POST);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Gets the work type with the specified ID.
         /// </remarks>
-        public WorkTypeModel GetWorkTypeById(int businessId, int id)
+        public NzWorkTypeModel GetWorkTypeById(int businessId, int id)
         {
-            return ApiRequest<WorkTypeModel>($"/business/{businessId}/worktype/{id}");
+            return ApiRequest<NzWorkTypeModel>($"/business/{businessId}/worktype/{id}");
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the work type with the specified ID.
         /// </remarks>
-        public void UpdateWorkType(int businessId, int id, WorkTypeModel workType)
+        public NzWorkTypeModel UpdateWorkType(int businessId, int id, NzWorkTypeModel workType)
         {
-            ApiRequest($"/business/{businessId}/worktype/{id}", workType, Method.PUT);
+            return ApiRequest<NzWorkTypeModel,NzWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.PUT);
         }
 
         /// <summary>

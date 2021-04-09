@@ -14,6 +14,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public IList<ApiPaySlipSuperAdjustmentModel> SuperAdjustments { get; set; }
         public IList<ApiPaySlipSuperPaymentModel> SuperPayments { get; set; }
         public IList<AuApiPaySlipBankPaymentModel> BankPayments { get; set; }
+        public IList<AuApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public decimal PaygWithholdingAmount { get; set; }
         public decimal SfssAmount { get; set; }
         public decimal HelpAmount { get; set; }
@@ -29,7 +30,6 @@ namespace KeyPayV2.Au.Models.PayRun
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }
-        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
         public IList<ApiPaySlipDeductionModel> Deductions { get; set; }
         public IList<ApiYearToDateEarningsBreakdownModel> GrossYTDDetails { get; set; }
         public IList<ApiEmployeeExpenseGridModel> EmployeeExpenses { get; set; }

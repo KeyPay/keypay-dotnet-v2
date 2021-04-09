@@ -32,7 +32,6 @@ namespace KeyPayV2.Nz.Models.Reporting
         public string UnitType { get; set; }
         public string WorkType { get; set; }
         public string ShiftConditions { get; set; }
-        public string Classification { get; set; }
         public int NumberOfBreaks { get; set; }
         public TimeSpan BreakDuration { get; set; }
         public string Comments { get; set; }
