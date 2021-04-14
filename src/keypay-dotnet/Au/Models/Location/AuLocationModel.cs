@@ -8,7 +8,6 @@ namespace KeyPayV2.Au.Models.Location
 {
     public class AuLocationModel
     {
-        public string State { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
@@ -19,5 +18,6 @@ namespace KeyPayV2.Au.Models.Location
         public bool IsRollupReportingLocation { get; set; }
         public string GeneralLedgerMappingCode { get; set; }
         public IList<Int32> DefaultShiftConditionIds { get; set; }
+        public string State { get; set; }
     }
 }

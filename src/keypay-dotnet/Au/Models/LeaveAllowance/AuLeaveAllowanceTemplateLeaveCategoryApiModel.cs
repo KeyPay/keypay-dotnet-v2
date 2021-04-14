@@ -15,6 +15,7 @@ namespace KeyPayV2.Au.Models.LeaveAllowance
         public decimal? EntitlementPeriod { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveAllowanceUnitEnum? UnitType { get; set; }
+        public int? AccrualRuleLeaveYearOffsetAmount { get; set; }
         public int LeaveCategoryId { get; set; }
         public string LeaveCategoryName { get; set; }
         public decimal? Units { get; set; }

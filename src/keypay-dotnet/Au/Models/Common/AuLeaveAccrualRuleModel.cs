@@ -8,8 +8,9 @@ using KeyPayV2.Au.Enums;
 
 namespace KeyPayV2.Au.Models.Common
 {
-    public class LeaveAccrualRuleModel
+    public class AuLeaveAccrualRuleModel
     {
+        public int? LeaveYearOffsetAmount { get; set; }
         public int Id { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveAccrualCapType CapType { get; set; }

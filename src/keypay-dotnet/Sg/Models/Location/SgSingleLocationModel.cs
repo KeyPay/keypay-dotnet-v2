@@ -9,7 +9,6 @@ namespace KeyPayV2.Sg.Models.Location
     public class SgSingleLocationModel
     {
         public List<SgLocationModel> NestedLocations { get; set; }
-        public string State { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
@@ -20,5 +19,6 @@ namespace KeyPayV2.Sg.Models.Location
         public bool IsRollupReportingLocation { get; set; }
         public string GeneralLedgerMappingCode { get; set; }
         public IList<Int32> DefaultShiftConditionIds { get; set; }
+        public string State { get; set; }
     }
 }

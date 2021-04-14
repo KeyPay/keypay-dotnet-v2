@@ -17,6 +17,7 @@ namespace KeyPayV2.Au.Models.LeaveCategories
         public LeaveAllowanceUnitEnum UnitType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AuLeaveCategoryTypeEnum LeaveCategoryType { get; set; }
+        public AuLeaveAccrualRuleModel LeaveAccrualRule { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Units { get; set; }
@@ -31,7 +32,6 @@ namespace KeyPayV2.Au.Models.LeaveCategories
         public int? TransferToPayCategoryId { get; set; }
         public bool HideAccrualsOnPayslip { get; set; }
         public bool UseDeductFromPayCategoryRate { get; set; }
-        public LeaveAccrualRuleModel LeaveAccrualRule { get; set; }
         public bool IsNamePrivate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveUnitTypeEnum LeaveUnitType { get; set; }

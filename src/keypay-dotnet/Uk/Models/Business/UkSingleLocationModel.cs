@@ -19,5 +19,6 @@ namespace KeyPayV2.Uk.Models.Business
         public bool IsRollupReportingLocation { get; set; }
         public string GeneralLedgerMappingCode { get; set; }
         public IList<Int32> DefaultShiftConditionIds { get; set; }
+        public string State { get; set; }
     }
 }
