@@ -252,6 +252,14 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// List P60 Data
+        /// </summary>
+        public ListP60sResult ListP60Data(int businessId, ListP60DataQueryModel request)
+        {
+            return ApiRequest<ListP60sResult>($"/business/{businessId}/report/p60/list?financialYearEnding={request.FinancialYearEnding}&locationId={request.LocationId}");
+        }
+
+        /// <summary>
         /// Pay Categories Report
         /// </summary>
         /// <remarks>

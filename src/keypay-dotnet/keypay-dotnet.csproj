@@ -5,8 +5,8 @@
     <RootNamespace>KeyPayV2</RootNamespace>
     <AssemblyName>KeyPayV2</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.1.168</AssemblyVersion>
-    <FileVersion>2.0.1.168</FileVersion>
+    <AssemblyVersion>2.0.1.173</AssemblyVersion>
+    <FileVersion>2.0.1.173</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
@@ -15,10 +15,10 @@
     <PackageReleaseNotes>Currently in beta and not supported. Use at your own risk.
 This is a major version bump. This new version of the client is automatically generated from our source APIs meaning that it can always be kept up to date.
 This new version also provides proper support for multiple regions.
-This release: Job  build 164 JSON updates</PackageReleaseNotes>
+This release: Job  build 168 JSON updates</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.1.168</Version>
+    <Version>2.0.1.173</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>
