@@ -68,9 +68,9 @@ namespace KeyPayV2.Sg.Functions
         /// for the specified employees within the specified time period
         /// (StartTime - EndTime) will be replaced with the timesheets specified.
         /// </remarks>
-        public SgSubmitTimesheetsRequest UpdateReplaceTimesheets(int businessId, SgSubmitTimesheetsRequest request)
+        public void UpdateReplaceTimesheets(int businessId, SgSubmitTimesheetsRequest request)
         {
-            return ApiRequest<SgSubmitTimesheetsRequest,SgSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.PUT);
+            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.PUT);
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Adds timesheets for the specified business. This will not replace any existing timesheets.
         /// </remarks>
-        public SgSubmitTimesheetsRequest BulkInsertTimesheets(int businessId, SgSubmitTimesheetsRequest request)
+        public void BulkInsertTimesheets(int businessId, SgSubmitTimesheetsRequest request)
         {
-            return ApiRequest<SgSubmitTimesheetsRequest,SgSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.POST);
+            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.POST);
         }
     }
 }
