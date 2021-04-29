@@ -26,6 +26,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Update Benefit Category
+        /// </summary>
+        /// <remarks>
+        /// Updates a benefit category
+        /// </remarks>
+        public UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model)
+        {
+            return ApiRequest<UkUpdateBenefitCategoryResult,UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory", model, Method.PUT);
+        }
+
+        /// <summary>
         /// Create benefit category
         /// </summary>
         /// <remarks>

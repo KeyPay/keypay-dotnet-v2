@@ -10,5 +10,6 @@ namespace KeyPayV2.Uk.Models.Reporting
     {
         public int PayRunId { get; set; }
         public bool LodgeFinalPayRun { get; set; }
+        public int TaxYear { get; set; }
     }
 }

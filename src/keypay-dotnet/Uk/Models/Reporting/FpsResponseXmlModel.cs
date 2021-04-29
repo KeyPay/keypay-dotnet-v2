@@ -9,5 +9,6 @@ namespace KeyPayV2.Uk.Models.Reporting
     public class FpsResponseXmlModel
     {
         public string Xml { get; set; }
+        public UkLodgePayRunSubmissionResult Result { get; set; }
     }
 }
