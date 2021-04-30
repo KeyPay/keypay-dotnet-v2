@@ -6,6 +6,7 @@ using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
 using KeyPayV2.Sg.Enums;
 using KeyPayV2.Sg.Models.Common;
+using KeyPayV2.Sg.Models.EmployeeBankAccount;
 
 namespace KeyPayV2.Sg.Functions
 {
@@ -19,9 +20,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Lists all of the bank accounts for this employee.
         /// </remarks>
-        public List<BankAccountModel> ListBankAccounts(int businessId, int employeeId)
+        public List<SgBankAccountModel> ListBankAccounts(int businessId, int employeeId)
         {
-            return ApiRequest<List<BankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount");
+            return ApiRequest<List<SgBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount");
         }
 
         /// <summary>
@@ -30,9 +31,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new bank account for the employee.
         /// </remarks>
-        public SaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, BankAccountModel model)
+        public SaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, SgBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,BankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.POST);
+            return ApiRequest<SaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.POST);
         }
 
         /// <summary>
@@ -41,9 +42,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the bank account for this employee with the specified ID.
         /// </remarks>
-        public BankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId)
+        public SgBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId)
         {
-            return ApiRequest<BankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}");
+            return ApiRequest<SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}");
         }
 
         /// <summary>
@@ -63,9 +64,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the employee's bank account with the specified ID.
         /// </remarks>
-        public SaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, BankAccountModel model)
+        public SaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, SgBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,BankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.PUT);
+            return ApiRequest<SaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.PUT);
         }
     }
 }

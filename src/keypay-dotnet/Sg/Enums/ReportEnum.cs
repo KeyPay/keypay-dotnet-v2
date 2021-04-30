@@ -64,6 +64,7 @@ namespace KeyPayV2.Sg.Enums
         IrasReport,
         IrasLodgementReport,
         PayRunExportReport,
-        JobMakerEligibilityReport
+        JobMakerEligibilityReport,
+        EpfBorangAKwsp6
     }
 }

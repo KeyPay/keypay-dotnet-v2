@@ -58,6 +58,7 @@ namespace KeyPayV2.Uk.Enums
         FPSFileImporter,
         OAuth,
         FreshBooks,
-        StarFileImporter
+        StarFileImporter,
+        ActiveCampaign
     }
 }
