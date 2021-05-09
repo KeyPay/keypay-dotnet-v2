@@ -47,6 +47,7 @@ namespace KeyPayV2.Sg
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
+            TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             Webhook = new WebhookFunction(Api);
@@ -96,6 +97,7 @@ namespace KeyPayV2.Sg
         public QualificationsFunction Qualifications { get; }
         public ReportingFunction Reporting { get; }
         public RosterShiftFunction RosterShift { get; }
+        public TieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public TimesheetsFunction Timesheets { get; }
         public UnavailabilityFunction Unavailability { get; }
         public WebhookFunction Webhook { get; }

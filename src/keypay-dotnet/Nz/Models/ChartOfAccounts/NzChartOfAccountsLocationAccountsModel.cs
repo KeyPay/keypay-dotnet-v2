@@ -13,6 +13,7 @@ namespace KeyPayV2.Nz.Models.ChartOfAccounts
         public int? KiwiSaverEmployerExpenseAccountId { get; set; }
         public int? KiwiSaverEmployerLiabilityAccountId { get; set; }
         public int? KiwiSaverEmployeeLiabilityAccountId { get; set; }
+        public int? StudentLoanLiabilityAccountId { get; set; }
         public int? PaymentAccountId { get; set; }
         public int? DefaultExpenseAccountId { get; set; }
         public int? EmployeeExpenseAccountId { get; set; }
