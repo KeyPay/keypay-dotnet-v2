@@ -4,11 +4,11 @@ using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
 
-namespace KeyPayV2.Uk.Models.Common
+namespace KeyPayV2.Uk.Models.EmployeeBankAccount
 {
-    public class SaveBankAccountResponseModel
+    public class UkSaveBankAccountResponseModel
     {
         public string ValidationWarning { get; set; }
-        public BankAccountModel Result { get; set; }
+        public UkBankAccountModel Result { get; set; }
     }
 }

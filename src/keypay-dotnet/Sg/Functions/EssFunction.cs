@@ -31,9 +31,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new bank account for the employee.
         /// </remarks>
-        public SaveBankAccountResponseModel CreateBankAccount(int employeeId, SgEssBankAccountModel model)
+        public SgEssSaveBankAccountResponseModel CreateBankAccount(int employeeId, SgEssBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.POST);
+            return ApiRequest<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.POST);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Deletes the employee's bank account with the specified ID.
         /// </remarks>
-        public SaveBankAccountResponseModel DeleteBankAccount(int employeeId, int bankAccountId)
+        public SgEssSaveBankAccountResponseModel DeleteBankAccount(int employeeId, int bankAccountId)
         {
-            return ApiRequest<SaveBankAccountResponseModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.DELETE);
+            return ApiRequest<SgEssSaveBankAccountResponseModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.DELETE);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the employee's bank account with the specified ID.
         /// </remarks>
-        public SaveBankAccountResponseModel UpdateBankAccount(int employeeId, int id, SgEssBankAccountModel model)
+        public SgEssSaveBankAccountResponseModel UpdateBankAccount(int employeeId, int id, SgEssBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.PUT);
+            return ApiRequest<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.PUT);
         }
 
         /// <summary>

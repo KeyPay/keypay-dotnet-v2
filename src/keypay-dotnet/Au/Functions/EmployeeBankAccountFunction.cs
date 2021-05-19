@@ -31,9 +31,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new bank account for the employee.
         /// </remarks>
-        public SaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, AuBankAccountModel model)
+        public AuSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, AuBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.POST);
+            return ApiRequest<AuSaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.POST);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Deletes the employee's bank account with the specified ID.
         /// </remarks>
-        public SaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId)
+        public AuSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId)
         {
-            return ApiRequest<SaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.DELETE);
+            return ApiRequest<AuSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.DELETE);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the employee's bank account with the specified ID.
         /// </remarks>
-        public SaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, AuBankAccountModel model)
+        public AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, AuBankAccountModel model)
         {
-            return ApiRequest<SaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.PUT);
+            return ApiRequest<AuSaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.PUT);
         }
     }
 }

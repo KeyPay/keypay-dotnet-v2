@@ -19,7 +19,6 @@ namespace KeyPayV2.Nz.Enums
         MyZakatPaidViaSalaryDeduction,
         MyReliefClaimTp1,
         MyZakatReliefClaimTp1,
-        MyLevyRelease,
         MyGrossSalaryWagesOrLeavePay,
         MyFeesCommissionsOrBonuses,
         MyGrossTipsOrOtherAllowances,

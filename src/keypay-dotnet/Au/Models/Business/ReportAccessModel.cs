@@ -12,8 +12,7 @@ namespace KeyPayV2.Au.Models.Business
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public ReportAccessType AccessType { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ReportEnum SpecificReports { get; set; }
+        public string SpecificReports { get; set; }
         public bool NoReportingRestriction { get; set; }
     }
 }
