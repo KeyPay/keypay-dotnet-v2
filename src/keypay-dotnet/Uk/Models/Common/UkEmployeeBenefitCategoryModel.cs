@@ -31,5 +31,6 @@ namespace KeyPayV2.Uk.Models.Common
         public IList<String> CalculationLogs { get; set; }
         public UkEmployeeBenefitProRataCalculationModel ProRataCalculation { get; set; }
         public UkEmployeeBenefitCategoryExtCarEditModel Car { get; set; }
+        public UkEmployeeBenefitCategoryExtVanEditModel Van { get; set; }
     }
 }

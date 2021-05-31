@@ -20,5 +20,6 @@ namespace KeyPayV2.Uk.Models.EmployeeBenefitCategory
         public int Year { get; set; }
         public UkEmployeeBenefitProRataCalculationModel ProRataCalculation { get; set; }
         public UkEmployeeBenefitCategoryExtCarEditModel Car { get; set; }
+        public UkEmployeeBenefitCategoryExtVanEditModel Van { get; set; }
     }
 }

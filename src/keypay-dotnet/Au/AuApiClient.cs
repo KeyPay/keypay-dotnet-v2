@@ -26,6 +26,7 @@ namespace KeyPayV2.Au
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
+            EmploymentAgreement = new EmploymentAgreementFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
@@ -75,6 +76,7 @@ namespace KeyPayV2.Au
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
         public AuthenticationFunction Authentication { get; }
         public EmployeeSuperFundFunction EmployeeSuperFund { get; }
+        public EmploymentAgreementFunction EmploymentAgreement { get; }
         public EmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public EmployeeGroupsFunction EmployeeGroups { get; }
         public EmployeeOnboardingFunction EmployeeOnboarding { get; }

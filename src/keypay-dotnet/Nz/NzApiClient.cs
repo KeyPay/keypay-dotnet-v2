@@ -24,6 +24,7 @@ namespace KeyPayV2.Nz
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
+            EmploymentAgreement = new EmploymentAgreementFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
@@ -69,6 +70,7 @@ namespace KeyPayV2.Nz
         public PayRunFunction PayRun { get; }
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
         public AuthenticationFunction Authentication { get; }
+        public EmploymentAgreementFunction EmploymentAgreement { get; }
         public EmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public EmployeeGroupsFunction EmployeeGroups { get; }
         public EmployeeOnboardingFunction EmployeeOnboarding { get; }

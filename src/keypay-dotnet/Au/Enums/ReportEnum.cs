@@ -66,6 +66,10 @@ namespace KeyPayV2.Au.Enums
         PayRunExportReport,
         JobMakerEligibilityReport,
         EpfKwsp6BorangA,
-        EpfKwsp3Registration
+        EpfKwsp3Registration,
+        MyBenefitsInKindReport,
+        EmployeeBenefitsReport,
+        BenefitsNiReport,
+        SocsoForm2
     }
 }

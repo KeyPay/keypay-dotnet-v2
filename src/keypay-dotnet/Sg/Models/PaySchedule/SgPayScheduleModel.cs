@@ -25,5 +25,6 @@ namespace KeyPayV2.Sg.Models.PaySchedule
         public bool EqualMonthlyPayments { get; set; }
         public List<Int32> IgnoredPayRunWarnings { get; set; }
         public PayRunFinaliseDefaultSettingsModel DefaultFinaliseSettings { get; set; }
+        public PayScheduleApprovalSettingsModel PayScheduleApprovalSettings { get; set; }
     }
 }

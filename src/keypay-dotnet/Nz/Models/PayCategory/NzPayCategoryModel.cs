@@ -14,6 +14,7 @@ namespace KeyPayV2.Nz.Models.PayCategory
         public bool ExcludeFromAverageEarnings { get; set; }
         public bool ExcludeFromOrdinaryEarnings { get; set; }
         public bool IsAccLevyExempt { get; set; }
+        public bool IsParentalLeave { get; set; }
         public bool IsGstExempt { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public NzPayCategoryType PayCategoryType { get; set; }
