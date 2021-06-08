@@ -70,6 +70,9 @@ namespace KeyPayV2.Nz.Enums
         MyBenefitsInKindReport,
         EmployeeBenefitsReport,
         BenefitsNiReport,
-        SocsoForm2
+        SocsoForm2,
+        SocsoFormSip2a,
+        SocsoForm8a,
+        PcbWithholdingReport
     }
 }

@@ -200,6 +200,30 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Submit Exb Submission
+        /// </summary>
+        public LodgeExbApiResult SubmitExbSubmission(int businessId, ExbRequestApiModel exbModel)
+        {
+            return ApiRequest<LodgeExbApiResult,ExbRequestApiModel>($"/business/{businessId}/report/p11d", exbModel, Method.POST);
+        }
+
+        /// <summary>
+        /// Publish P11d
+        /// </summary>
+        public P11dPublishApiResponseModel PublishP11d(int businessId, PublishP11dRequestModel publishP11dRequestModel)
+        {
+            return ApiRequest<P11dPublishApiResponseModel,PublishP11dRequestModel>($"/business/{businessId}/report/p11d/publish", publishP11dRequestModel, Method.POST);
+        }
+
+        /// <summary>
+        /// Exb Xml Without Submission
+        /// </summary>
+        public ExbResponseXmlModel ExbXmlWithoutSubmission(int businessId, ExbXmlApiModel exbModel)
+        {
+            return ApiRequest<ExbResponseXmlModel,ExbXmlApiModel>($"/business/{businessId}/report/p11d/xml", exbModel, Method.POST);
+        }
+
+        /// <summary>
         /// Get P32 Report
         /// </summary>
         /// <remarks>

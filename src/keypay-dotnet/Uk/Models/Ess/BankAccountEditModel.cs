@@ -27,5 +27,7 @@ namespace KeyPayV2.Uk.Models.Ess
         public string RollNumber { get; set; }
         public string BankSwift { get; set; }
         public string BranchCode { get; set; }
+        public string MyBankCode { get; set; }
+        public string MyOtherBankName { get; set; }
     }
 }

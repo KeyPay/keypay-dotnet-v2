@@ -98,6 +98,7 @@ namespace KeyPayV2.Uk.Enums
         EAFormIncomeTaxAvailable,
         PCB2FormAvailable,
         JobMakerEmployeeNomination,
-        EarningsCertificateAvailable
+        EarningsCertificateAvailable,
+        P11dAvailable
     }
 }
