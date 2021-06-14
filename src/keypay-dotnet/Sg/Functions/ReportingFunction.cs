@@ -95,6 +95,17 @@ namespace KeyPayV2.Sg.Functions
         /// Employee Details Report
         /// </summary>
         /// <remarks>
+        /// Generates an employee details report.
+        /// </remarks>
+        public List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportRequestModel model)
+        {
+            return ApiRequest<List<dynamic>,EmployeeDetailsReportRequestModel>($"/business/{businessId}/report/employeedetails", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Employee Details Report
+        /// </summary>
+        /// <remarks>
         /// Gets the fields for the Employee Details Report.
         /// </remarks>
         public List<EmployeeDetailsReportField> EmployeeDetailsReport(int businessId)
