@@ -15,6 +15,9 @@ namespace KeyPayV2.Uk.Models.Employee
         public string PublishAll { get; set; }
         public string UnpublishAll { get; set; }
         public string NotifyAll { get; set; }
+        public string Submit { get; set; }
+        public string HaveAllEmployeeP11dsBeenPublished { get; set; }
+        public string HaveEmployeeP11dsBeenSubmitted { get; set; }
         public string DownloadAll { get; set; }
         public string DownloadFile { get; set; }
     }

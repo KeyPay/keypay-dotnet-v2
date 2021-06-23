@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk.Models.Reporting
 {
     public class UkNIDeductionsSummaryReportModel
     {
+        public UkNIDeductionsSummaryReportPeriod NiDeductionsOpeningBalances { get; set; }
         public IList<UkNIDeductionsSummaryReportPeriod> NiReportMonths { get; set; }
         public IList<UkNIDeductionsSummaryReportPeriod> NiReportQuarters { get; set; }
         public UkNIDeductionsSummaryReportPeriod NiReportTotals { get; set; }

@@ -16,6 +16,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal NetCISDeductions { get; set; }
         public decimal TotalPAYE { get; set; }
         public decimal EmployerNationalInsurance { get; set; }
+        public decimal NiClass1A { get; set; }
         public decimal EmployeeNationalInsurance { get; set; }
         public decimal NationalInsuranceDeductions { get; set; }
         public decimal EmploymentAllowanceUsed { get; set; }
@@ -27,5 +28,6 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal HmrcPayment { get; set; }
         public decimal TotalDue { get; set; }
         public decimal Balance { get; set; }
+        public decimal? RemainingEmploymentAllowance { get; set; }
     }
 }

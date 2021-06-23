@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk.Models.Reporting
 {
     public class UkApprenticeshipLevySummaryReportModel
     {
+        public UkApprenticeshipLevySummaryReportPeriod AppLevyOpeningBalances { get; set; }
         public IList<UkApprenticeshipLevySummaryReportPeriod> AppLevyReportMonths { get; set; }
         public IList<UkApprenticeshipLevySummaryReportPeriod> AppLevyReportQuarters { get; set; }
         public UkApprenticeshipLevySummaryReportPeriod AppLevyReportTotals { get; set; }

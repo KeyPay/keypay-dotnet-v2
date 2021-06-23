@@ -246,6 +246,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Update P32 Report
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Report for the financial year
+        /// </remarks>
+        public UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request)
+        {
+            return ApiRequest<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32?financialYearEnding={request.FinancialYearEnding}", p32Requests, Method.PUT);
+        }
+
+        /// <summary>
         /// Get Apprenticeship Levy Summary Report
         /// </summary>
         /// <remarks>
@@ -276,6 +287,28 @@ namespace KeyPayV2.Uk.Functions
         public UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId, GetNiDeductionsSummaryReportQueryModel request)
         {
             return ApiRequest<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary?financialYearEnding={request.FinancialYearEnding}");
+        }
+
+        /// <summary>
+        /// Get P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
+        /// </remarks>
+        public UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId)
+        {
+            return ApiRequest<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments");
+        }
+
+        /// <summary>
+        /// Update P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Opening Balances Adjustments for the business' initial tax year using this software.
+        /// </remarks>
+        public UkP32ReportAdjustmentsModel UpdateP32OpeningBalancesAdjustments(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel)
+        {
+            return ApiRequest<UkP32ReportAdjustmentsModel,UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", p32AdjustmentRequestModel, Method.PUT);
         }
 
         /// <summary>

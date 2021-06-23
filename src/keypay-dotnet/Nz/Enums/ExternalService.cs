@@ -59,6 +59,7 @@ namespace KeyPayV2.Nz.Enums
         OAuth,
         FreshBooks,
         StarFileImporter,
-        ActiveCampaign
+        ActiveCampaign,
+        SummaryAndDetailsExport
     }
 }

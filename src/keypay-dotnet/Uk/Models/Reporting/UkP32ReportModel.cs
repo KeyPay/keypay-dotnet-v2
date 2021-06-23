@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk.Models.Reporting
 {
     public class UkP32ReportModel
     {
+        public UkP32ReportPeriod P32OpeningBalances { get; set; }
         public IList<UkP32ReportPeriod> P32ReportMonths { get; set; }
         public IList<UkP32ReportPeriod> P32ReportQuarters { get; set; }
         public UkP32ReportPeriod P32ReportTotals { get; set; }
