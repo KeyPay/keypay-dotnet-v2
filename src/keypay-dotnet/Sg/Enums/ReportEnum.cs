@@ -75,6 +75,7 @@ namespace KeyPayV2.Sg.Enums
         SocsoForm8a,
         PcbWithholdingReport,
         SocsoForm3,
-        IrbFormCp22
+        IrbFormCp22,
+        IrbFormCp22a
     }
 }

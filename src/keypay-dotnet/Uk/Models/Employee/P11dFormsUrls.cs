@@ -20,5 +20,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public string HaveEmployeeP11dsBeenSubmitted { get; set; }
         public string DownloadAll { get; set; }
         public string DownloadFile { get; set; }
+        public string DownloadSubmission { get; set; }
     }
 }

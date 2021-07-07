@@ -40,6 +40,7 @@ namespace KeyPayV2.Uk
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PensionSettings = new PensionSettingsFunction(Api);
+            PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
@@ -85,6 +86,7 @@ namespace KeyPayV2.Uk
         public PayRateTemplateFunction PayRateTemplate { get; }
         public PayScheduleFunction PaySchedule { get; }
         public PensionSettingsFunction PensionSettings { get; }
+        public PublicHolidayFunction PublicHoliday { get; }
         public QualificationsFunction Qualifications { get; }
         public ReportingFunction Reporting { get; }
         public RosterShiftFunction RosterShift { get; }
