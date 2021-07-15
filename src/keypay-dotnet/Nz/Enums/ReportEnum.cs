@@ -76,6 +76,11 @@ namespace KeyPayV2.Nz.Enums
         PcbWithholdingReport,
         SocsoForm3,
         IrbFormCp22,
-        IrbFormCp22a
+        IrbFormCp22a,
+        CompanyCarsReport,
+        P11D,
+        P11Db,
+        EmployeeCarsReport,
+        P46Car
     }
 }

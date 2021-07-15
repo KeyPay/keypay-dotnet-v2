@@ -21,6 +21,7 @@ namespace KeyPayV2.Uk.Enums
         LloydsMultipleBacs,
         LloydsFasterPayment,
         OpenBanking,
-        LloydsNonStandardBacsFormat
+        LloydsNonStandardBacsFormat,
+        Telleroo
     }
 }

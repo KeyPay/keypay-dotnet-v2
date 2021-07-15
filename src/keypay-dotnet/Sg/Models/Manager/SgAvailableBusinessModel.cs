@@ -28,6 +28,8 @@ namespace KeyPayV2.Sg.Models.Manager
         public bool NoTimesheetPermissions { get; set; }
         public bool CanViewRosterShifts { get; set; }
         public bool CanManageRosterShifts { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BillingStatusEnum? BillingStatus { get; set; }
         public IList<LocationPermissionModel> LocationPermissions { get; set; }
         public IList<EmployeeGroupPermissionModel> EmployeeGroupPermissions { get; set; }
         public int Id { get; set; }

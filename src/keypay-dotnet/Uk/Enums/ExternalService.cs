@@ -60,6 +60,7 @@ namespace KeyPayV2.Uk.Enums
         FreshBooks,
         StarFileImporter,
         ActiveCampaign,
-        SummaryAndDetailsExport
+        SummaryAndDetailsExport,
+        Telleroo
     }
 }

@@ -304,6 +304,39 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// List billing plans
+        /// </summary>
+        /// <remarks>
+        /// Lists all the billing plans available for the current business.
+        /// </remarks>
+        public List<AuBillingPlanResponseModel> ListBillingPlans(int businessId)
+        {
+            return ApiRequest<List<AuBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans");
+        }
+
+        /// <summary>
+        /// Get the current billing plan for a business
+        /// </summary>
+        /// <remarks>
+        /// Get the current billing plan for the business.
+        /// </remarks>
+        public AuBillingPlanResponseModel GetTheCurrentBillingPlanForABusiness(int businessId)
+        {
+            return ApiRequest<AuBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan");
+        }
+
+        /// <summary>
+        /// Set billing plan
+        /// </summary>
+        /// <remarks>
+        /// Sets the current billing plan for a business
+        /// </remarks>
+        public void SetBillingPlan(int businessId, SetBillingPlanRequestModel model)
+        {
+            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.POST);
+        }
+
+        /// <summary>
         /// Get Business Details by External ID
         /// </summary>
         /// <remarks>

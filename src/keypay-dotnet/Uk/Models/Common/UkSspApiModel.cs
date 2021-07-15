@@ -23,5 +23,7 @@ namespace KeyPayV2.Uk.Models.Common
         public DateTime EndDate { get; set; }
         public string Notes { get; set; }
         public string Status { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BasicPayAdjustmentTypeEnum BasicPayAdjustmentType { get; set; }
     }
 }

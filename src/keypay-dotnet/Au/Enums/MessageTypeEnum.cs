@@ -99,6 +99,8 @@ namespace KeyPayV2.Au.Enums
         PCB2FormAvailable,
         JobMakerEmployeeNomination,
         EarningsCertificateAvailable,
-        P11dAvailable
+        P11dAvailable,
+        PayRunApprovalNotification,
+        PayRunApprovalReminder
     }
 }

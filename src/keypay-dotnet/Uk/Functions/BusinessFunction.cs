@@ -460,6 +460,39 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// List billing plans
+        /// </summary>
+        /// <remarks>
+        /// Lists all the billing plans for the business.
+        /// </remarks>
+        public List<UkBillingPlanResponseModel> ListBillingPlans(int businessId)
+        {
+            return ApiRequest<List<UkBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans");
+        }
+
+        /// <summary>
+        /// Get the current billing plan for a business
+        /// </summary>
+        /// <remarks>
+        /// Get the current billing plan for the business.
+        /// </remarks>
+        public UkBillingPlanResponseModel GetTheCurrentBillingPlanForABusiness(int businessId)
+        {
+            return ApiRequest<UkBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan");
+        }
+
+        /// <summary>
+        /// Set billing plan
+        /// </summary>
+        /// <remarks>
+        /// Sets the current billing plan for a business
+        /// </remarks>
+        public void SetBillingPlan(int businessId, SetBillingPlanRequestModel model)
+        {
+            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.POST);
+        }
+
+        /// <summary>
         /// Get Business Details by External ID
         /// </summary>
         /// <remarks>

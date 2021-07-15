@@ -312,6 +312,14 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get P46(Car) reports
+        /// </summary>
+        public UkGetP46CarResponseModel GetP46CarReports(int businessId, GetP46CarReportsQueryModel request)
+        {
+            return ApiRequest<UkGetP46CarResponseModel>($"/business/{businessId}/report/p46car?reportDate={request.ReportDate.ToString("yyyy-MM-ddTHH:mm:ss")}");
+        }
+
+        /// <summary>
         /// Load P60 Data
         /// </summary>
         public UkP60SummaryForEmployeeDto LoadP60Data(int businessId, int employeeId, LoadP60DataQueryModel request)
