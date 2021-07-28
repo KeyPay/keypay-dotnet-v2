@@ -32,6 +32,17 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new business.
         /// </remarks>
+        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model)
+        {
+            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
         public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request)
         {
             return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.POST);
@@ -136,6 +147,17 @@ namespace KeyPayV2.Sg.Functions
         public List<DocumentModel> ListBusinessDocumentDetails(int businessId)
         {
             return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document");
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file)
+        {
+            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.POST);
         }
 
         /// <summary>

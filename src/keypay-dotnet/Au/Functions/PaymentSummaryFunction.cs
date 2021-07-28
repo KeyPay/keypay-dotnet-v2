@@ -32,6 +32,17 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
         /// </remarks>
+        public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding)
+        {
+            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.PUT);
+        }
+
+        /// <summary>
+        /// Generate Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
+        /// </remarks>
         public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request)
         {
             return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.PUT);
@@ -43,9 +54,31 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Publish payment summaries for the specified financial year.
         /// </remarks>
+        public void PublishPaymentSummaries(int businessId, int financialYearEnding)
+        {
+            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.POST);
+        }
+
+        /// <summary>
+        /// Publish Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Publish payment summaries for the specified financial year.
+        /// </remarks>
         public void PublishPaymentSummaries(int businessId, int financialYearEnding, PublishPaymentSummariesQueryModel request)
         {
             ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.POST);
+        }
+
+        /// <summary>
+        /// Unpublish Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Unpublish payment summaries for the specified financial year.
+        /// </remarks>
+        public void UnpublishPaymentSummaries(int businessId, int financialYearEnding)
+        {
+            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.DELETE);
         }
 
         /// <summary>

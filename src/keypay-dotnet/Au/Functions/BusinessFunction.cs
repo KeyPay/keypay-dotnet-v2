@@ -32,6 +32,17 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new business.
         /// </remarks>
+        public AuBusinessExportModel CreateNewBusiness(AuBusinessExportModel model)
+        {
+            return ApiRequest<AuBusinessExportModel,AuBusinessExportModel>($"/business", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
         public AuBusinessExportModel CreateNewBusiness(AuBusinessExportModel model, CreateNewBusinessQueryModel request)
         {
             return ApiRequest<AuBusinessExportModel,AuBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.POST);
@@ -158,6 +169,17 @@ namespace KeyPayV2.Au.Functions
         public List<DocumentModel> ListBusinessDocumentDetails(int businessId)
         {
             return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document");
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file)
+        {
+            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.POST);
         }
 
         /// <summary>
@@ -304,7 +326,7 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// List billing plans
+        /// List Billing Plans
         /// </summary>
         /// <remarks>
         /// Lists all the billing plans available for the current business.
@@ -315,23 +337,23 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get the current billing plan for a business
+        /// Get Business Billing PLan
         /// </summary>
         /// <remarks>
         /// Get the current billing plan for the business.
         /// </remarks>
-        public AuBillingPlanResponseModel GetTheCurrentBillingPlanForABusiness(int businessId)
+        public AuBillingPlanResponseModel GetBusinessBillingPlan(int businessId)
         {
             return ApiRequest<AuBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan");
         }
 
         /// <summary>
-        /// Set billing plan
+        /// Set Business Billing Plan
         /// </summary>
         /// <remarks>
         /// Sets the current billing plan for a business
         /// </remarks>
-        public void SetBillingPlan(int businessId, SetBillingPlanRequestModel model)
+        public void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model)
         {
             ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.POST);
         }

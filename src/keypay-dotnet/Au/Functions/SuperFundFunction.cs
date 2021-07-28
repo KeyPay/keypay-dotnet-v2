@@ -60,6 +60,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// List Electronic Service Addresses
+        /// </summary>
+        /// <remarks>
+        /// Electronic Service Addresses for Self Managed Super Funds
+        /// </remarks>
+        public List<AuSmsfElectronicServiceAddressModel> ListElectronicServiceAddresses(int businessId)
+        {
+            return ApiRequest<List<AuSmsfElectronicServiceAddressModel>>($"/business/{businessId}/superfund/electronicserviceaddress");
+        }
+
+        /// <summary>
         /// Search Super Funds
         /// </summary>
         /// <remarks>

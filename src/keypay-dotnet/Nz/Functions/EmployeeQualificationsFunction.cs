@@ -75,6 +75,17 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Uploads an employee qualification document. Note: the request should be a MIME multipart file upload request.
         /// </remarks>
+        public List<EmployeeQualificationDocumentModel> CreateEmployeeQualificationDocument(int businessId, int employeeId, FileUploadModel file, int qualificationId)
+        {
+            return ApiRequest<List<EmployeeQualificationDocumentModel>,FileUploadModel>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document", file, Method.POST);
+        }
+
+        /// <summary>
+        /// Create Employee Qualification Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads an employee qualification document. Note: the request should be a MIME multipart file upload request.
+        /// </remarks>
         public List<EmployeeQualificationDocumentModel> CreateEmployeeQualificationDocument(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request)
         {
             return ApiFileRequest<List<EmployeeQualificationDocumentModel>>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document?visible={request.Visible}", file);

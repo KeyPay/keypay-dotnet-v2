@@ -42,6 +42,17 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Uploads new document(s) for this employee. The request should be a MIME multipart file upload request.
         /// </remarks>
+        public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.POST);
+        }
+
+        /// <summary>
+        /// Create Employee Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for this employee. The request should be a MIME multipart file upload request.
+        /// </remarks>
         public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request)
         {
             return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", Method.POST);

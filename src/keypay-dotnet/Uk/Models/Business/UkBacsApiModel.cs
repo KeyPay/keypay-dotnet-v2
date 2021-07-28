@@ -22,5 +22,10 @@ namespace KeyPayV2.Uk.Models.Business
         public PaymentFilePaymentAdditionalContent PaymentAdditionalContent { get; set; }
         public bool ExcludeFooter { get; set; }
         public bool MergeMultipleAccountPayments { get; set; }
+        public bool PayHmrc { get; set; }
+        public int? PaymentDate { get; set; }
+        public string HmrcSortCode { get; set; }
+        public string HmrcAccountNumber { get; set; }
+        public string HmrcAccountName { get; set; }
     }
 }
