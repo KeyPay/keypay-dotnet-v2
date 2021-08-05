@@ -34,6 +34,7 @@ namespace KeyPayV2.Uk.Models.PensionSettings
         public decimal? UpperEarningsCap { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DefaultUETOffsetEnum? UpperDefaultEarningsCapType { get; set; }
+        public List<PensionSchemeContributionPlanPostponementRuleApiModel> PensionSchemeContributionPlanPostponementRules { get; set; }
         public string CollectionSourceId { get; set; }
     }
 }

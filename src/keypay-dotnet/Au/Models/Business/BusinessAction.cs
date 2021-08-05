@@ -11,5 +11,6 @@ namespace KeyPayV2.Au.Models.Business
         public DateTime Date { get; set; }
         public string Title { get; set; }
         public int Id { get; set; }
+        public bool HighPriority { get; set; }
     }
 }

@@ -246,15 +246,40 @@ namespace KeyPayV2.Sg.Functions
         /// Create or Update Employee
         /// </summary>
         /// <remarks>
-        /// If the employee with the specified ID already exists, update it. Otherwise, create a new employee.<br /><p>
-        /// An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        /// firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
-        /// For an employee record to be considered 'Complete' the following groups of data are required:
-        ///   <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
+        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
+        ///             </p>
+        /// <p>
+        ///             NOTE: the MatchType parameter currently has no effect
+        ///             </p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model)
         {
             return ApiRequest<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
+        ///             </p>
+        /// <p>
+        ///             NOTE: the MatchType parameter currently has no effect
+        ///             </p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
+        /// </remarks>
+        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
+        {
+            return ApiRequest<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.POST);
         }
 
         /// <summary>

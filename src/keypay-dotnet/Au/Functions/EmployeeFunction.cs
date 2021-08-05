@@ -257,14 +257,46 @@ namespace KeyPayV2.Au.Functions
         /// Create or Update Employee
         /// </summary>
         /// <remarks>
-        /// If the employee with the specified ID already exists, update it. Otherwise, create a new employee.<br /><p>
-        /// An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields; firstName, surname, startDate, employmentType and taxFileNumber.<br />
-        /// For an employee record to be considered 'Complete' the following groups of data are required:
-        ///   <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax File Declaration (TFN and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Super Fund/s (at least one)</li></list></p>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
+        ///                     then based on first name + surname + date of birth 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields; firstName, surname, startDate, employmentType and taxFileNumber.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax File Declaration (TFN and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Super Fund/s (at least one)</li></list></p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, AuUnstructuredEmployeeModel model)
         {
             return ApiRequest<EmployeeUpdateResponseModel,AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
+        ///                     then based on first name + surname + date of birth 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields; firstName, surname, startDate, employmentType and taxFileNumber.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax File Declaration (TFN and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Super Fund/s (at least one)</li></list></p>
+        /// </remarks>
+        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, AuUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
+        {
+            return ApiRequest<EmployeeUpdateResponseModel,AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.POST);
         }
 
         /// <summary>

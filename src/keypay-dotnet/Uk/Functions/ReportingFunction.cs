@@ -279,6 +279,14 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get Hmrc Payment File
+        /// </summary>
+        public byte[] GetHmrcPaymentFile(int businessId, GetHmrcPaymentFileQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p32/hmrcpaymentfile?dateInPayPeriod={request.DateInPayPeriod.ToString("yyyy-MM-ddTHH:mm:ss")}&paymentPeriod={request.PaymentPeriod}");
+        }
+
+        /// <summary>
         /// Get NI Deductions Summary Report
         /// </summary>
         /// <remarks>

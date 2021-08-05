@@ -81,6 +81,7 @@ namespace KeyPayV2.Uk.Enums
         P11D,
         P11Db,
         EmployeeCarsReport,
-        P46Car
+        P46Car,
+        IrbFormCp8d
     }
 }

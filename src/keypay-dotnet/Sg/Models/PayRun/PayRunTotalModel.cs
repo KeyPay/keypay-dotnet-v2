@@ -49,5 +49,6 @@ namespace KeyPayV2.Sg.Models.PayRun
         public decimal? TerminationPaymentEmployerNI { get; set; }
         public decimal? NicClass1A { get; set; }
         public bool? EnrolledInPensionScheme { get; set; }
+        public DateTime? DeferralDate { get; set; }
     }
 }

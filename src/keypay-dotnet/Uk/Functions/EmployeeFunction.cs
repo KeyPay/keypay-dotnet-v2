@@ -551,16 +551,50 @@ namespace KeyPayV2.Uk.Functions
         /// Create or Update Employee
         /// </summary>
         /// <remarks>
-        /// If the employee with the specified ID already exists, update it. Otherwise, create a new employee.<br /><p>
-        /// An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        /// firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
-        /// TaxCode and TaxCalculationMethod.<br />
-        /// For an employee record to be considered 'Complete' the following groups of data are required:
-        ///   <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
+        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
+        ///             TaxCode and TaxCalculationMethod.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model)
         {
             return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
+        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
+        ///             TaxCode and TaxCalculationMethod.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// </remarks>
+        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
+        {
+            return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.POST);
         }
 
         /// <summary>

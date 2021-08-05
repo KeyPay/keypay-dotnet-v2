@@ -21,6 +21,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public decimal? TerminationPaymentEmployerNI { get; set; }
         public decimal? NicClass1A { get; set; }
         public bool? EnrolledInPensionScheme { get; set; }
+        public DateTime? DeferralDate { get; set; }
         public int Id { get; set; }
         public decimal TotalHours { get; set; }
         public decimal GrossEarnings { get; set; }
