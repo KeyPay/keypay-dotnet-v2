@@ -21,5 +21,7 @@ namespace KeyPayV2.Sg.Models.WhiteLabel
         public int NumberOfEmployeesPaid { get; set; }
         public int NumberOfPayRuns { get; set; }
         public DateTime? DateLastPayRunFinalised { get; set; }
+        public DateTime? DateLastBillableActivity { get; set; }
+        public int ActiveEmps { get; set; }
     }
 }

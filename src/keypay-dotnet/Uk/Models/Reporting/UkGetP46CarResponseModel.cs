@@ -8,7 +8,6 @@ namespace KeyPayV2.Uk.Models.Reporting
 {
     public class UkGetP46CarResponseModel
     {
-        public DateTime QuarterEndDate { get; set; }
         public IEnumerable<UkP46CarModel> P46Cars { get; set; }
     }
 }

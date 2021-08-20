@@ -62,6 +62,9 @@ namespace KeyPayV2.Sg.Enums
         UkTaxCodeP9Update,
         HrdfEmployeeWarning,
         NewPayrolledBenefits,
-        SubmitTerminatedEmployeeToHmrc
+        SubmitTerminatedEmployeeToHmrc,
+        SuperReconciliationPreviousPayRun,
+        SuperReconciliationThisPayRun,
+        MoreThan28DaysWithoutTfnQuoted
     }
 }

@@ -328,6 +328,14 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Ignore P46(Car) detail
+        /// </summary>
+        public UkP46CarModel IgnoreP46CarDetail(int businessId, UkIgnoreP46CarModel model)
+        {
+            return ApiRequest<UkP46CarModel,UkIgnoreP46CarModel>($"/business/{businessId}/report/p46car/ignore", model, Method.POST);
+        }
+
+        /// <summary>
         /// Load P60 Data
         /// </summary>
         public UkP60SummaryForEmployeeDto LoadP60Data(int businessId, int employeeId, LoadP60DataQueryModel request)

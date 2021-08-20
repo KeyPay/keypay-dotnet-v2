@@ -17,6 +17,8 @@ namespace KeyPayV2.Au.Models.PayCategory
         public string SuperExpenseMappingCode { get; set; }
         public string SuperLiabilityMappingCode { get; set; }
         public bool IsPayrollTaxExempt { get; set; }
+        public string AwardName { get; set; }
+        public int? AwardId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AuPayCategoryType PayCategoryType { get; set; }
         public int Id { get; set; }
