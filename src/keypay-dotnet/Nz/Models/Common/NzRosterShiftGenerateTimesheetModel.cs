@@ -30,5 +30,6 @@ namespace KeyPayV2.Nz.Models.Common
         public RosterShiftSwapModel PendingSwap { get; set; }
         public DateTime? DatePublished { get; set; }
         public bool Biddable { get; set; }
+        public DateTime? ShiftSwapCutoffTime { get; set; }
     }
 }

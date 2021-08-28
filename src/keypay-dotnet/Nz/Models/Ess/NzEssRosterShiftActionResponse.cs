@@ -11,5 +11,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public NzEssRosterShiftModel Shift { get; set; }
         public int PendingShiftCount { get; set; }
         public int ProposedSwapCount { get; set; }
+        public int NotAcceptedShiftsCount { get; set; }
     }
 }

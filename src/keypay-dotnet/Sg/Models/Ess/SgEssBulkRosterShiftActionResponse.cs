@@ -11,5 +11,6 @@ namespace KeyPayV2.Sg.Models.Ess
         public IList<SgEssRosterShiftModel> Shifts { get; set; }
         public int PendingShiftCount { get; set; }
         public int ProposedSwapCount { get; set; }
+        public int NotAcceptedShiftsCount { get; set; }
     }
 }

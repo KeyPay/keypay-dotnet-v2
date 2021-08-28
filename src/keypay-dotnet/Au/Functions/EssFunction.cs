@@ -609,6 +609,51 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// List Self Managed Super Funds
+        /// </summary>
+        /// <remarks>
+        /// Lists all the self managed super funds for the employee.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<SelfManagedSuperFundModel>>($"/ess/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}");
+        }
+
+        /// <summary>
+        /// Create ESS Self Managed Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Creates a new self managed super fund for the employee.
+        /// </remarks>
+        public void CreateEssSelfManagedSuperFund(int employeeId, SelfManagedSuperFundModel fund)
+        {
+            ApiRequest($"/ess/{employeeId}/selfmanagedsuperfund", fund, Method.POST);
+        }
+
+        /// <summary>
+        /// Get ESS Self Managed Super Fund by id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Self Managed Super Fund by the specified id.
+        /// </remarks>
+        public SelfManagedSuperFundModel GetEssSelfManagedSuperFundById(int employeeId, int id)
+        {
+            return ApiRequest<SelfManagedSuperFundModel>($"/ess/{employeeId}/selfmanagedsuperfund/{id}");
+        }
+
+        /// <summary>
+        /// Update ESS Self Managed Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Updates .
+        /// </remarks>
+        public void UpdateEssSelfManagedSuperFund(int employeeId, int id, SelfManagedSuperFundModel fund)
+        {
+            ApiRequest($"/ess/{employeeId}/selfmanagedsuperfund/{id}", fund, Method.PUT);
+        }
+
+        /// <summary>
         /// List Roster Shifts
         /// </summary>
         /// <remarks>

@@ -24,6 +24,7 @@ namespace KeyPayV2.Au
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
+            EmployeeSelfManagedSuperFund = new EmployeeSelfManagedSuperFundFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
@@ -74,6 +75,7 @@ namespace KeyPayV2.Au
         public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
         public EmployeeQualificationsFunction EmployeeQualifications { get; }
+        public EmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         public AuthenticationFunction Authentication { get; }
         public EmployeeSuperFundFunction EmployeeSuperFund { get; }
         public EmploymentAgreementFunction EmploymentAgreement { get; }

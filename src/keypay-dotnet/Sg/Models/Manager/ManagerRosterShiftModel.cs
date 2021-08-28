@@ -33,5 +33,6 @@ namespace KeyPayV2.Sg.Models.Manager
         public RosterShiftSwapModel PendingSwap { get; set; }
         public DateTime? DatePublished { get; set; }
         public bool Biddable { get; set; }
+        public DateTime? ShiftSwapCutoffTime { get; set; }
     }
 }

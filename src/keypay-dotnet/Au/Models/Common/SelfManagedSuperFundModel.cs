@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
 using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Au.Models.SuperFund
+namespace KeyPayV2.Au.Models.Common
 {
     public class SelfManagedSuperFundModel
     {
@@ -16,5 +16,6 @@ namespace KeyPayV2.Au.Models.SuperFund
         public string Bsb { get; set; }
         public string ElectronicServiceAddress { get; set; }
         public string Email { get; set; }
+        public int? EmployeeId { get; set; }
     }
 }

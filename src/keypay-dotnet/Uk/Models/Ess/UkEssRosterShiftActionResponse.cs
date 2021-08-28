@@ -11,5 +11,6 @@ namespace KeyPayV2.Uk.Models.Ess
         public UkEssRosterShiftModel Shift { get; set; }
         public int PendingShiftCount { get; set; }
         public int ProposedSwapCount { get; set; }
+        public int NotAcceptedShiftsCount { get; set; }
     }
 }

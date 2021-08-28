@@ -56,6 +56,8 @@ namespace KeyPayV2.Au.Models.Common
         public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
         public string MedicareLevyExemption { get; set; }
         public bool? CloselyHeldEmployee { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public CloselyHeldReportingEnum? CloselyHeldReporting { get; set; }
         public decimal? HoursPerDay { get; set; }
         public bool? PostalAddressIsOverseas { get; set; }
         public bool? ResidentialAddressIsOverseas { get; set; }

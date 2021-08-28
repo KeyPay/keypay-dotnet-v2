@@ -34,5 +34,6 @@ namespace KeyPayV2.Au.Models.Ess
         public string GoogleMapsApiKey { get; set; }
         public DateTime? StartDate { get; set; }
         public StandardHoursModel StandardHours { get; set; }
+        public int NotAcceptedShiftsCount { get; set; }
     }
 }
