@@ -511,6 +511,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Pay Run Summary
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay run summary information with the specified ID.
+        /// </remarks>
+        public PayRunSummaryModel GetPayRunSummary(int businessId, int payRunId)
+        {
+            return ApiRequest<PayRunSummaryModel>($"/business/{businessId}/payrun/{payRunId}/summary");
+        }
+
+        /// <summary>
         /// List Super Adjustments
         /// </summary>
         /// <remarks>
@@ -618,6 +629,18 @@ namespace KeyPayV2.Au.Functions
         public PayRunJobStatusModel GetCreationStatus(int businessId, Guid jobId)
         {
             return ApiRequest<PayRunJobStatusModel>($"/business/{businessId}/payrun/creationstatus/{jobId}");
+        }
+
+        /// <summary>
+        /// List Pay Runs Summaries
+        /// </summary>
+        /// <remarks>
+        /// Get a list of pay run summaries associated with the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<PayRunModel> ListPayRunsSummaries(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<PayRunModel>>($"/business/{businessId}/payrun/summary{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
     }
 }

@@ -21,9 +21,11 @@ namespace KeyPayV2.Uk.Models.Common
         public decimal? AmountPayrolledToDateInPayRuns { get; set; }
         public bool HasLinkedPayRuns { get; set; }
         public bool HasFinalisedPayRuns { get; set; }
+        public bool HasBeenSubmitted { get; set; }
         public decimal? AdditionalAmountPayrolledToDateInPayRuns { get; set; }
         public bool AdditionalHasLinkedPayRuns { get; set; }
         public bool AdditionalHasFinalisedPayRuns { get; set; }
+        public DateTime DateCreatedUtc { get; set; }
         public int Id { get; set; }
         public string BenefitCategoryName { get; set; }
         public string BenefitCategoryType { get; set; }

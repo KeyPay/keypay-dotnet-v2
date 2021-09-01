@@ -11,5 +11,6 @@ namespace KeyPayV2.Au.Models.PayRun
         public int PayRunId { get; set; }
         public string Status { get; set; }
         public string ExternalId { get; set; }
+        public string AdditionalInfo { get; set; }
     }
 }

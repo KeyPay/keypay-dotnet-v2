@@ -8,6 +8,6 @@ namespace KeyPayV2.Uk.Enums
         Unknown,
         P11d,
         P11db,
-        P46
+        P46Car
     }
 }

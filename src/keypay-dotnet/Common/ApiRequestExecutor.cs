@@ -19,11 +19,6 @@ namespace KeyPayV2.Common
 
         public Action<IRestResponse> ResponseCallback { get; set; }
 
-        static ApiRequestExecutor()
-        {
-            SetSSL();
-        }
-
         public ApiRequestExecutor(string baseUrl, string userAgent = null)
         {
             this.baseUrl = baseUrl;
@@ -83,27 +78,5 @@ namespace KeyPayV2.Common
             if (resp.StatusCode >= HttpStatusCode.BadRequest && resp.StatusCode <= HttpStatusCode.InternalServerError)
                 throw new KeyPayHttpException(resp.StatusCode, resp.StatusDescription, requestMethod, requestResource, resp.Content);
         }
-
-        //Trust all certificates
-        // callback used to validate the certificate in an SSL conversation
-        private static bool ValidateRemoteCertificate(object sender, X509Certificate cert, X509Chain chain,
-            SslPolicyErrors policyErrors)
-        {
-            return true;
-        }
-
-        private static void SetSSL()
-        {
-            ServicePointManager.ServerCertificateValidationCallback =
-                ((sender, certificate, chain, sslPolicyErrors) => true);
-
-            // trust sender
-            ServicePointManager.ServerCertificateValidationCallback
-                = ((sender, cert, chain, errors) => true);
-
-            // validate cert by calling a function
-            ServicePointManager.ServerCertificateValidationCallback += ValidateRemoteCertificate;
-        }
-
     }
 }
