@@ -716,9 +716,9 @@ namespace KeyPayV2.Uk.Functions
         /// Get a list of pay run summaries associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayRunModel> ListPayRunsSummaries(int businessId, ODataQuery oDataQuery = null)
+        public List<PayRunSummaryModel> ListPayRunsSummaries(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<PayRunModel>>($"/business/{businessId}/payrun/summary{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<PayRunSummaryModel>>($"/business/{businessId}/payrun/summary{ODataQuery.ToQueryString(oDataQuery, "?")}");
         }
     }
 }

@@ -54,6 +54,8 @@ namespace KeyPayV2.Nz.Models.Common
         public bool? ResidentialAddressIsOverseas { get; set; }
         public string EmploymentType { get; set; }
         public string TerminationReason { get; set; }
+        public string LeaveWithoutPayAweAdjustmentType { get; set; }
+        public DateTime? AdjustedLeaveEntitlementDate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }
