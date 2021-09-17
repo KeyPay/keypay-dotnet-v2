@@ -59,6 +59,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Document Acknowledgements Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a document acknowledgements report.
+        /// </remarks>
+        public List<DocumentAcknowledgementsReportExportModel> DocumentAcknowledgementsReport(int businessId, DocumentAcknowledgementsReportQueryModel request)
+        {
+            return ApiRequest<List<DocumentAcknowledgementsReportExportModel>>($"/business/{businessId}/report/documentAcknowledgements?documentId={request.DocumentId}&employeeIds={request.EmployeeIds}&documentStatus={request.DocumentStatus}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}");
+        }
+
+        /// <summary>
         /// Employee Audit Report
         /// </summary>
         /// <remarks>

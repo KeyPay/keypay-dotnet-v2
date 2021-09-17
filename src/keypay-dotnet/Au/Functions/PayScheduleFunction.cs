@@ -71,6 +71,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Next Pay Date
+        /// </summary>
+        /// <remarks>
+        /// Gets the list of all applicable reference data for Pay Schedules for this business.
+        /// </remarks>
+        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId, GetNextPayDateQueryModel request)
+        {
+            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate?useInitialPayRunCreationDateTime={request.UseInitialPayRunCreationDateTime}");
+        }
+
+        /// <summary>
         /// Get Pay Schedule Metadata
         /// </summary>
         /// <remarks>
