@@ -40,5 +40,6 @@ namespace KeyPayV2.Sg.Models.PayRun
         [JsonConverter(typeof(StringEnumConverter))]
         public PayRunFinaliseActionPreference SubmitToPensionSync { get; set; }
         public DateTime? SubmitToPensionSyncScheduledDateTimeUtc { get; set; }
+        public bool IsFirstFinalisation { get; set; }
     }
 }

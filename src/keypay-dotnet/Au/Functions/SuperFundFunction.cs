@@ -52,7 +52,7 @@ namespace KeyPayV2.Au.Functions
         /// Update Self Managed Super Fund
         /// </summary>
         /// <remarks>
-        /// Updates .
+        /// Updates the Self Managed Super Fund by the specified ID
         /// </remarks>
         public void UpdateSelfManagedSuperFund(int businessId, int id, SelfManagedSuperFundModel fund)
         {
@@ -74,11 +74,11 @@ namespace KeyPayV2.Au.Functions
         /// Search Super Funds
         /// </summary>
         /// <remarks>
-        /// Search for super funds based on a string.
+        /// Search for super funds based on a string, search by defaults to All
         /// </remarks>
         public List<SuperProductEditModel> SearchSuperFunds(int businessId, SearchSuperFundsQueryModel request)
         {
-            return ApiRequest<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch?term={request.Term}");
+            return ApiRequest<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch?term={request.Term}&searchBy={request.SearchBy}");
         }
     }
 }

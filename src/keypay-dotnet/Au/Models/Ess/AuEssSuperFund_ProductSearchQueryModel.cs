@@ -9,5 +9,6 @@ namespace KeyPayV2.Au.Models.Ess
     public class AuEssSuperFund_ProductSearchQueryModel
     {
         public string Term { get; set; }
+        public SuperFundSearchBy SearchBy { get; set; }
     }
 }

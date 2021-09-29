@@ -17,11 +17,11 @@ namespace KeyPayV2.Au.Models.Common
         public string BusinessName { get; set; }
         public string DisplayName { get; set; }
         public string ProductName { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ExternalService Source { get; set; }
         public string AccountNumber { get; set; }
         public string Bsb { get; set; }
         public string AccountName { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ExternalService Source { get; set; }
         public string ElectronicServiceAddress { get; set; }
         public string Email { get; set; }
         public string ExternalReferenceId { get; set; }

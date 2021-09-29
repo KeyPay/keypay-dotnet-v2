@@ -19,6 +19,7 @@ namespace KeyPayV2.Uk
             EmployeeBenefitCategory = new EmployeeBenefitCategoryFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
+            EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
@@ -65,6 +66,7 @@ namespace KeyPayV2.Uk
         public EmployeeBenefitCategoryFunction EmployeeBenefitCategory { get; }
         public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public EmployeeDocumentFunction EmployeeDocument { get; }
+        public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
         public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }

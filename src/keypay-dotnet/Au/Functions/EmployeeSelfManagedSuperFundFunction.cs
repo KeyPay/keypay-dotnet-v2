@@ -51,7 +51,7 @@ namespace KeyPayV2.Au.Functions
         /// Update Employee Self Managed Super Fund
         /// </summary>
         /// <remarks>
-        /// Updates .
+        /// Updates the Self Managed Super Fund with the specified ID.
         /// </remarks>
         public void UpdateEmployeeSelfManagedSuperFund(int businessId, int employeeId, int id, SelfManagedSuperFundModel fund)
         {

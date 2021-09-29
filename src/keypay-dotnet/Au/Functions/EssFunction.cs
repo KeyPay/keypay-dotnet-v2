@@ -646,7 +646,7 @@ namespace KeyPayV2.Au.Functions
         /// Update ESS Self Managed Super Fund
         /// </summary>
         /// <remarks>
-        /// Updates .
+        /// Updates an employee self managed super fund.
         /// </remarks>
         public void UpdateEssSelfManagedSuperFund(int employeeId, int id, SelfManagedSuperFundModel fund)
         {
@@ -903,7 +903,7 @@ namespace KeyPayV2.Au.Functions
 
         public List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId, AuEssSuperFund_ProductSearchQueryModel request)
         {
-            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}");
+            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}&searchBy={request.SearchBy}");
         }
 
         /// <summary>

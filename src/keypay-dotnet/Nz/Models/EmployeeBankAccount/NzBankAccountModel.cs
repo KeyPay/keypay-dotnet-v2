@@ -13,6 +13,8 @@ namespace KeyPayV2.Nz.Models.EmployeeBankAccount
         public string FullAccountNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public BankAccountTypeEnum AccountType { get; set; }
+        public string AccountCode { get; set; }
+        public string AccountParticulars { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public string Bsb { get; set; }

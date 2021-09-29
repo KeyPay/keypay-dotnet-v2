@@ -17,8 +17,14 @@ namespace KeyPayV2.Nz.Models.Common
         public string PostalState { get; set; }
         public string PreviousSurname { get; set; }
         public string BankAccount1_BankCode { get; set; }
+        public string BankAccount1_AccountParticulars { get; set; }
+        public string BankAccount1_AccountCode { get; set; }
         public string BankAccount2_BankCode { get; set; }
+        public string BankAccount2_AccountParticulars { get; set; }
+        public string BankAccount2_AccountCode { get; set; }
         public string BankAccount3_BankCode { get; set; }
+        public string BankAccount3_AccountParticulars { get; set; }
+        public string BankAccount3_AccountCode { get; set; }
         public int? KiwiSaver_EmployeeContribution { get; set; }
         public decimal? KiwiSaver_EmployerContribution { get; set; }
         public DateTime? KiwiSaver_OptOutDate { get; set; }

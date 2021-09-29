@@ -103,12 +103,12 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Employee Details Report
+        /// Employee Details Report Fields
         /// </summary>
         /// <remarks>
         /// Gets the fields for the Employee Details Report.
         /// </remarks>
-        public List<EmployeeDetailsReportField> EmployeeDetailsReport(int businessId)
+        public List<EmployeeDetailsReportField> EmployeeDetailsReportFields(int businessId)
         {
             return ApiRequest<List<EmployeeDetailsReportField>>($"/business/{businessId}/report/employeedetails/fields");
         }

@@ -101,6 +101,7 @@ namespace KeyPayV2.Nz.Enums
         EarningsCertificateAvailable,
         P11dAvailable,
         PayRunApprovalNotification,
-        PayRunApprovalReminder
+        PayRunApprovalReminder,
+        PayRunStatusChanged
     }
 }

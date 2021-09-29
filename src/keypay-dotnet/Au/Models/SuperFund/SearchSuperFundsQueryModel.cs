@@ -9,5 +9,6 @@ namespace KeyPayV2.Au.Models.SuperFund
     public class SearchSuperFundsQueryModel
     {
         public string Term { get; set; }
+        public SuperFundSearchBy SearchBy { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace KeyPayV2.Nz.Models.Common
         public string LeaveCategoryName { get; set; }
         public decimal? Units { get; set; }
         public string UnitType { get; set; }
+        public string LeaveUnitType { get; set; }
         public decimal HoursPerYear { get; set; }
         public bool AutomaticallyAccrues { get; set; }
         public bool CanApplyForLeave { get; set; }

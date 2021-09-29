@@ -61,6 +61,8 @@ namespace KeyPayV2.Uk.Enums
         StarFileImporter,
         ActiveCampaign,
         SummaryAndDetailsExport,
-        Telleroo
+        Telleroo,
+        EmployeeAdvancedHoursUpload,
+        BusinessCentral
     }
 }

@@ -18,6 +18,7 @@ namespace KeyPayV2.Sg
             EmployeeBenefitsInKind = new EmployeeBenefitsInKindFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
+            EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeGainsOrProfitsEmployeeSharePlan = new EmployeeGainsOrProfitsEmployeeSharePlanFunction(Api);
             EmployeeIncomeFromOverseasSubjectToTaxRemission = new EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction(Api);
@@ -69,6 +70,7 @@ namespace KeyPayV2.Sg
         public EmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
         public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public EmployeeDocumentFunction EmployeeDocument { get; }
+        public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public EmployeeGainsOrProfitsEmployeeSharePlanFunction EmployeeGainsOrProfitsEmployeeSharePlan { get; }
         public EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }

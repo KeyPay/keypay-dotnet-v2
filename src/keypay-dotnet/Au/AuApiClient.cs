@@ -17,6 +17,7 @@ namespace KeyPayV2.Au
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
+            EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
@@ -68,6 +69,7 @@ namespace KeyPayV2.Au
         public EmployeeBankAccountFunction EmployeeBankAccount { get; }
         public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public EmployeeDocumentFunction EmployeeDocument { get; }
+        public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
