@@ -10,10 +10,10 @@ namespace KeyPayV2.Sg.Models.EmployeeRecurringTransactions
 {
     public class SgEmployeeRecurringDeductionModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public SgEmployeeRecurringDeductionPaidToEnum PaidTo { get; set; }
         public string Name { get; set; }
         public int DeductionCategoryId { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public EmployeeRecurringDeductionPaidToEnum PaidTo { get; set; }
         public int PaidToAccountId { get; set; }
         public string ExternalReferenceId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

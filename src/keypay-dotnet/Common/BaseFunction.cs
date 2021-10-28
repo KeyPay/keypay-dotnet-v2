@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using KeyPayV2.Common.Models;
 using Newtonsoft.Json;
 using RestSharp;
@@ -88,6 +89,10 @@ namespace KeyPayV2.Common
             var response = Api.Execute(req);
             var result = JsonConvert.DeserializeObject<T>(response);
             return result;
+        }
+        protected string ConvertEnumerableToQueryString(string parameterName, IEnumerable<string> listOfStrings)
+        {
+            return listOfStrings != null && listOfStrings.Count() > 0 ? $"&{parameterName}=" + string.Join($"&{parameterName}=", listOfStrings): "";
         }
     }
 }

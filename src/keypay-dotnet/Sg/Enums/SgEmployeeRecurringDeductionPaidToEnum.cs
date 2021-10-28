@@ -3,13 +3,10 @@ using System.Collections.Generic;
 
 namespace KeyPayV2.Sg.Enums
 {
-    public enum EmployeeRecurringDeductionPaidToEnum
+    public enum SgEmployeeRecurringDeductionPaidToEnum
     {
         Manual,
         BankAccount,
-        SuperFund,
-        Bpay,
-        PensionScheme,
-        TaxOffice
+        CPFB
     }
 }

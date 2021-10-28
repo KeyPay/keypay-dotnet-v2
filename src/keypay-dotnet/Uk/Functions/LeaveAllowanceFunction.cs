@@ -15,6 +15,17 @@ namespace KeyPayV2.Uk.Functions
         public LeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
+        /// Get Leave Allowance Template for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the current leave allowance template for the specified employee
+        /// </remarks>
+        public UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate");
+        }
+
+        /// <summary>
         /// Get Leave Allowances for All Employees
         /// </summary>
         /// <remarks>

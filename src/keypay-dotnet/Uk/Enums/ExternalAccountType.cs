@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Enums
         Equity,
         Income,
         Unknown,
-        NotAllowed
+        NotAllowed,
+        CostOfGoodsSold
     }
 }

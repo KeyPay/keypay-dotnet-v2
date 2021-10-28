@@ -15,6 +15,7 @@ namespace KeyPayV2.Nz.Models.PayRun
         public string PaymentReference { get; set; }
         public string Note { get; set; }
         public string PayToBankAccountBSB { get; set; }
+        public string PayToBankAccountBankCode { get; set; }
         public string PayToBankAccountNumber { get; set; }
         public string PayTo { get; set; }
         public int? AdditionalData { get; set; }

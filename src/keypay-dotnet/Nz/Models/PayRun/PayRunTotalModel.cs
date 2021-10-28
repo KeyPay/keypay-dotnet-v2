@@ -50,5 +50,16 @@ namespace KeyPayV2.Nz.Models.PayRun
         public decimal? NicClass1A { get; set; }
         public bool? EnrolledInPensionScheme { get; set; }
         public DateTime? DeferralDate { get; set; }
+        public decimal BikTaxableAmount { get; set; }
+        public decimal BikTaxExemptAmount { get; set; }
+        public decimal Cp38Amount { get; set; }
+        public decimal PcbBorneByEmployerAmount { get; set; }
+        public decimal EpfEmployerAmount { get; set; }
+        public decimal EpfEmployeeAmount { get; set; }
+        public decimal EisEmployerAmount { get; set; }
+        public decimal EisEmployeeAmount { get; set; }
+        public decimal SocsoEmployerAmount { get; set; }
+        public decimal SocsoEmployeeAmount { get; set; }
+        public decimal HrdfAmount { get; set; }
     }
 }

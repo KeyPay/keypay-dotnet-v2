@@ -15,6 +15,17 @@ namespace KeyPayV2.Nz.Functions
         public LeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
+        /// Get Leave Allowance Template for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the current leave allowance template for the specified employee
+        /// </remarks>
+        public NzLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<NzLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate");
+        }
+
+        /// <summary>
         /// Get Leave Allowances for All Employees
         /// </summary>
         /// <remarks>

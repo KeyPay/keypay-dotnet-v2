@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Uk.Models.Common;
-using KeyPayV2.Uk.Enums;
+using KeyPayV2.Nz.Models.Common;
+using KeyPayV2.Nz.Enums;
 
-namespace KeyPayV2.Uk.Models.WhiteLabel
+namespace KeyPayV2.Nz.Models.Common
 {
-    public class SignupModel
+    public class CommonActiveEmployeesModel
     {
         public int BusinessId { get; set; }
         public string BusinessName { get; set; }
@@ -16,8 +16,12 @@ namespace KeyPayV2.Uk.Models.WhiteLabel
         public string ExternalId { get; set; }
         public string EmailAddresses { get; set; }
         public string UserIds { get; set; }
-        public int NumberOfCompleteEmployees { get; set; }
         public int NumberOfIncompleteEmployees { get; set; }
+        public int NumberOfCompleteEmployees { get; set; }
+        public int NumberOfEmployeesPaid { get; set; }
+        public int NumberOfPayRuns { get; set; }
         public DateTime? DateLastPayRunFinalised { get; set; }
+        public DateTime? DateLastBillableActivity { get; set; }
+        public int ActiveEmps { get; set; }
     }
 }

@@ -15,14 +15,58 @@ namespace KeyPayV2.Nz.Functions
         public InvoicesFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
+        /// Get Brand Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Brand.
+        /// </remarks>
+        public List<InvoiceModel> GetBrandInvoices(int brandId, GetBrandInvoicesQueryModel request)
+        {
+            return ApiRequest<List<InvoiceModel>>($"/brand/{brandId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}");
+        }
+
+        /// <summary>
+        /// Get Brand Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice with the specified ID.
+        /// </remarks>
+        public InvoiceModel GetBrandInvoiceById(int id, int brandId)
+        {
+            return ApiRequest<InvoiceModel>($"/brand/{brandId}/Invoice/{id}");
+        }
+
+        /// <summary>
+        /// Get Brand Invoice Excel By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice Excel with the specified ID.
+        /// </remarks>
+        public byte[] GetBrandInvoiceExcelById(int id, int brandId)
+        {
+            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/excel");
+        }
+
+        /// <summary>
+        /// Get Brand Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice PDF with the specified ID.
+        /// </remarks>
+        public byte[] GetBrandInvoicePdfById(int id, int brandId)
+        {
+            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/pdf");
+        }
+
+        /// <summary>
         /// Get Business Invoices
         /// </summary>
         /// <remarks>
         /// Get invoices for the specified Business.
         /// </remarks>
-        public List<InvoiceModel> GetBusinessInvoices(int businessId)
+        public List<InvoiceModel> GetBusinessInvoices(int businessId, GetBusinessInvoicesQueryModel request)
         {
-            return ApiRequest<List<InvoiceModel>>($"/business/{businessId}/Invoice");
+            return ApiRequest<List<InvoiceModel>>($"/business/{businessId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}");
         }
 
         /// <summary>
@@ -53,9 +97,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Get invoices for the specified Reseller.
         /// </remarks>
-        public List<InvoiceModel> GetResellerInvoices(int? resellerId)
+        public List<InvoiceModel> GetResellerInvoices(int? resellerId, GetResellerInvoicesQueryModel request)
         {
-            return ApiRequest<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice");
+            return ApiRequest<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}");
         }
 
         /// <summary>
@@ -70,47 +114,25 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get White Label Invoices
+        /// Get Reseller Invoice Excel By ID
         /// </summary>
         /// <remarks>
-        /// Get invoices for the specified White Label.
+        /// Gets the Reseller invoice Excel with the specified ID.
         /// </remarks>
-        public List<InvoiceModel> GetWhiteLabelInvoices(int whiteLabelId)
+        public byte[] GetResellerInvoiceExcelById(int resellerId, int id)
         {
-            return ApiRequest<List<InvoiceModel>>($"/whitelabel/{whiteLabelId}/Invoice");
+            return ApiByteArrayRequest($"/reseller/{resellerId}/Invoice/{id}/excel");
         }
 
         /// <summary>
-        /// Get White Label Invoice By ID
+        /// Get Reseller Invoice PDF By ID
         /// </summary>
         /// <remarks>
-        /// Gets the White lanel invoice with the specified ID.
+        /// Gets the Reseller invoice PDF with the specified ID.
         /// </remarks>
-        public InvoiceModel GetWhiteLabelInvoiceById(int whiteLabelId, int id)
+        public byte[] GetResellerInvoicePdfById(int resellerId, int id)
         {
-            return ApiRequest<InvoiceModel>($"/whitelabel/{whiteLabelId}/Invoice/{id}");
-        }
-
-        /// <summary>
-        /// Get White Label Invoice Excel By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the White Label invoice Excel with the specified ID.
-        /// </remarks>
-        public byte[] GetWhiteLabelInvoiceExcelById(int whiteLabelId, int id)
-        {
-            return ApiByteArrayRequest($"/whitelabel/{whiteLabelId}/Invoice/{id}/excel");
-        }
-
-        /// <summary>
-        /// Get White Label Invoice PDF By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the White Label invoice PDF with the specified ID.
-        /// </remarks>
-        public byte[] GetWhiteLabelInvoicePdfById(int whiteLabelId, int id)
-        {
-            return ApiByteArrayRequest($"/whitelabel/{whiteLabelId}/Invoice/{id}/pdf");
+            return ApiByteArrayRequest($"/reseller/{resellerId}/Invoice/{id}/pdf");
         }
     }
 }

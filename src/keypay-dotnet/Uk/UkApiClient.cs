@@ -9,6 +9,8 @@ namespace KeyPayV2.Uk
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Other = new OtherFunction(Api);
+            Brand = new BrandFunction(Api);
+            Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             BenefitCategory = new BenefitCategoryFunction(Api);
@@ -21,6 +23,7 @@ namespace KeyPayV2.Uk
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
+            LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
@@ -31,9 +34,7 @@ namespace KeyPayV2.Uk
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
-            Invoices = new InvoicesFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
-            LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
@@ -56,6 +57,8 @@ namespace KeyPayV2.Uk
         }
 
         public OtherFunction Other { get; }
+        public BrandFunction Brand { get; }
+        public InvoicesFunction Invoices { get; }
         public BusinessFunction Business { get; }
         public ChartOfAccountsFunction ChartOfAccounts { get; }
         public BenefitCategoryFunction BenefitCategory { get; }
@@ -68,6 +71,7 @@ namespace KeyPayV2.Uk
         public EmployeeDocumentFunction EmployeeDocument { get; }
         public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
+        public LeaveAllowanceFunction LeaveAllowance { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
         public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
@@ -78,9 +82,7 @@ namespace KeyPayV2.Uk
         public EmployeeGroupsFunction EmployeeGroups { get; }
         public EmployeeOnboardingFunction EmployeeOnboarding { get; }
         public EmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
-        public InvoicesFunction Invoices { get; }
         public TimeAndAttendanceFunction TimeAndAttendance { get; }
-        public LeaveAllowanceFunction LeaveAllowance { get; }
         public LeaveCategoriesFunction LeaveCategories { get; }
         public LookupDataFunction LookupData { get; }
         public ManagerFunction Manager { get; }

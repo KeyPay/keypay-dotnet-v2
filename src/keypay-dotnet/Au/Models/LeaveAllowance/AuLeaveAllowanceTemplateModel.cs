@@ -12,6 +12,8 @@ namespace KeyPayV2.Au.Models.LeaveAllowance
     {
         public int? LeaveLoadingCalculatedFromPayCategoryId { get; set; }
         public IList<AuLeaveAllowanceTemplateLeaveCategoryApiModel> LeaveCategories { get; set; }
+        public int? AwardId { get; set; }
+        public string AwardName { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string ExternalId { get; set; }

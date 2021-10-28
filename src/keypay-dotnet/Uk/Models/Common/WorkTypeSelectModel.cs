@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Models.Common
         public bool IsUnitBased { get; set; }
         public bool IsLeaveType { get; set; }
         public string UnitType { get; set; }
+        public int? BusinessAwardPackageId { get; set; }
         public int Id { get; set; }
         public string Description { get; set; }
     }

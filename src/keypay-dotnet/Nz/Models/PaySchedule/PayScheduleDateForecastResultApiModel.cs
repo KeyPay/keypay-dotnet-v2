@@ -8,7 +8,7 @@ namespace KeyPayV2.Nz.Models.PaySchedule
 {
     public class PayScheduleDateForecastResultApiModel
     {
-        public DateTime NextScheduledPayRunDate { get; set; }
+        public int PayScheduleId { get; set; }
         public DateTime NextScheduledFromDate { get; set; }
         public DateTime NextScheduledToDate { get; set; }
         public DateTime NextScheduledPaidDate { get; set; }

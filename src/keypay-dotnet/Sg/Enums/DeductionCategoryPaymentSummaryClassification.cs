@@ -24,6 +24,8 @@ namespace KeyPayV2.Sg.Enums
         MyGrossTipsOrOtherAllowances,
         ChildSupportDeduction,
         ChildSupportGarnishee,
-        PayrollGiving
+        PayrollGiving,
+        SalarySacrificeOtherEmployeeBenefits,
+        SalarySacrificeSuperannuation
     }
 }

@@ -9,7 +9,7 @@ namespace KeyPayV2.Uk.Models.BenefitCategory
     public class SaveBenefitCategoriesProcessingOptionsModel
     {
         public int? RegisteredFromTaxYear { get; set; }
-        public bool? IsP11DBenefitsEnabled { get; set; }
+        public bool? IsP11dBenefitsEnabled { get; set; }
         public bool? IsPayrollingBenefitsEnabled { get; set; }
     }
 }

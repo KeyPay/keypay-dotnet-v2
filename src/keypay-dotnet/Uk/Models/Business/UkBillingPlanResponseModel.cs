@@ -17,6 +17,8 @@ namespace KeyPayV2.Uk.Models.Business
         [JsonConverter(typeof(StringEnumConverter))]
         public FunctionToggle FunctionIR35Contractors { get; set; }
         public decimal PricePerP11D { get; set; }
+        public bool FunctionEnableCis { get; set; }
+        public decimal PricePerCisSubContractor { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

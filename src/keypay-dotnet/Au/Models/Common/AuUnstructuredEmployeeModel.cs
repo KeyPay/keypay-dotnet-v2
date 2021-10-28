@@ -25,6 +25,7 @@ namespace KeyPayV2.Au.Models.Common
         public bool? StslDebt { get; set; }
         public bool? IsExemptFromFloodLevy { get; set; }
         public bool? HasApprovedWorkingHolidayVisa { get; set; }
+        public bool? IsSeasonalWorker { get; set; }
         public bool? HasWithholdingVariation { get; set; }
         public decimal? TaxVariation { get; set; }
         public DateTime? DateTaxFileDeclarationSigned { get; set; }

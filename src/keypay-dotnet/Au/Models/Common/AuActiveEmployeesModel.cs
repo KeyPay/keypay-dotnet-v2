@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Nz.Models.Common;
-using KeyPayV2.Nz.Enums;
+using KeyPayV2.Au.Models.Common;
+using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Nz.Models.WhiteLabel
+namespace KeyPayV2.Au.Models.Common
 {
-    public class CommonActiveEmployeesModel
+    public class AuActiveEmployeesModel
     {
+        public string Abn { get; set; }
+        public bool IsStpEnabled { get; set; }
         public int BusinessId { get; set; }
         public string BusinessName { get; set; }
         public DateTime DateCreated { get; set; }

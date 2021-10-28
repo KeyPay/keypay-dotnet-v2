@@ -63,6 +63,8 @@ namespace KeyPayV2.Uk.Enums
         SummaryAndDetailsExport,
         Telleroo,
         EmployeeAdvancedHoursUpload,
-        BusinessCentral
+        BusinessCentral,
+        Paytron,
+        Zoho
     }
 }

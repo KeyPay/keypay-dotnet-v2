@@ -18,7 +18,8 @@ namespace KeyPayV2.Sg.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller)
+        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
+        /// If using the employee single sign on end point, do not include the businessId in the model.
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model)
         {
@@ -29,7 +30,8 @@ namespace KeyPayV2.Sg.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller)
+        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
+        /// If using the employee single sign on end point, do not include the businessId in the model.
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(int businessId, SingleSignOnRequestModel model)
         {
@@ -40,7 +42,8 @@ namespace KeyPayV2.Sg.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller)
+        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
+        /// If using the employee single sign on end point, do not include the businessId in the model.
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model)
         {

@@ -8,6 +8,8 @@ namespace KeyPayV2.Au
     {
         public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
+            Brand = new BrandFunction(Api);
+            Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
@@ -20,6 +22,7 @@ namespace KeyPayV2.Au
             EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
+            LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
@@ -34,9 +37,7 @@ namespace KeyPayV2.Au
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
-            Invoices = new InvoicesFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
-            LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
@@ -60,6 +61,8 @@ namespace KeyPayV2.Au
             WhiteLabel = new WhiteLabelFunction(Api);
         }
 
+        public BrandFunction Brand { get; }
+        public InvoicesFunction Invoices { get; }
         public BusinessFunction Business { get; }
         public AbaSettingsFunction AbaSettings { get; }
         public ChartOfAccountsFunction ChartOfAccounts { get; }
@@ -72,6 +75,7 @@ namespace KeyPayV2.Au
         public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
+        public LeaveAllowanceFunction LeaveAllowance { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
         public LocationFunction Location { get; }
         public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
@@ -86,9 +90,7 @@ namespace KeyPayV2.Au
         public EmployeeOnboardingFunction EmployeeOnboarding { get; }
         public EmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public EmployingEntitiesFunction EmployingEntities { get; }
-        public InvoicesFunction Invoices { get; }
         public TimeAndAttendanceFunction TimeAndAttendance { get; }
-        public LeaveAllowanceFunction LeaveAllowance { get; }
         public LeaveCategoriesFunction LeaveCategories { get; }
         public LookupDataFunction LookupData { get; }
         public ManagerFunction Manager { get; }

@@ -7,6 +7,10 @@ namespace KeyPayV2.Au.Enums
     {
         Default,
         UnionOrProfessionalAssociationFees,
-        WorkplaceGiving
+        WorkplaceGiving,
+        SalarySacrificeOtherEmployeeBenefits,
+        SalarySacrificeSuperannuation,
+        ChildSupportDeduction,
+        ChildSupportGarnishee
     }
 }

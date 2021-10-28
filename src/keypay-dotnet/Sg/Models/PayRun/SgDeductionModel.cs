@@ -16,6 +16,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public string Note { get; set; }
         public string PayToBankAccountBSB { get; set; }
         public string PayToBankAccountSwift { get; set; }
+        public string PayToBankAccountBankCode { get; set; }
         public string PayToBankAccountNumber { get; set; }
         public string PayTo { get; set; }
         public int? AdditionalData { get; set; }

@@ -9,6 +9,8 @@ namespace KeyPayV2.Sg
         public SgApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Other = new OtherFunction(Api);
+            Brand = new BrandFunction(Api);
+            Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
@@ -24,6 +26,7 @@ namespace KeyPayV2.Sg
             EmployeeIncomeFromOverseasSubjectToTaxRemission = new EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction(Api);
             EmployeeIncomeTaxBorneByEmployer = new EmployeeIncomeTaxBorneByEmployerFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
+            LeaveAllowance = new LeaveAllowanceFunction(Api);
             Location = new LocationFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
@@ -35,9 +38,7 @@ namespace KeyPayV2.Sg
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
-            Invoices = new InvoicesFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
-            LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             LookupData = new LookupDataFunction(Api);
@@ -61,6 +62,8 @@ namespace KeyPayV2.Sg
         }
 
         public OtherFunction Other { get; }
+        public BrandFunction Brand { get; }
+        public InvoicesFunction Invoices { get; }
         public BusinessFunction Business { get; }
         public ChartOfAccountsFunction ChartOfAccounts { get; }
         public DeductionCategoriesFunction DeductionCategories { get; }
@@ -76,6 +79,7 @@ namespace KeyPayV2.Sg
         public EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }
         public EmployeeIncomeTaxBorneByEmployerFunction EmployeeIncomeTaxBorneByEmployer { get; }
         public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
+        public LeaveAllowanceFunction LeaveAllowance { get; }
         public LocationFunction Location { get; }
         public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
@@ -87,9 +91,7 @@ namespace KeyPayV2.Sg
         public EmployeeOnboardingFunction EmployeeOnboarding { get; }
         public EmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public EmployingEntitiesFunction EmployingEntities { get; }
-        public InvoicesFunction Invoices { get; }
         public TimeAndAttendanceFunction TimeAndAttendance { get; }
-        public LeaveAllowanceFunction LeaveAllowance { get; }
         public LeaveCategoriesFunction LeaveCategories { get; }
         public LeaveRequestsFunction LeaveRequests { get; }
         public LookupDataFunction LookupData { get; }

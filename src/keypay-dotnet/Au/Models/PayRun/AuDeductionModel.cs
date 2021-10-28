@@ -15,6 +15,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public string PaymentReference { get; set; }
         public string Note { get; set; }
         public string PayToBankAccountBSB { get; set; }
+        public string PayToBankAccountBankCode { get; set; }
         public string PayToBankAccountNumber { get; set; }
         public string PayToSuperFundName { get; set; }
         public string PayToSuperFundMemberNumber { get; set; }

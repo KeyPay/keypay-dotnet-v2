@@ -74,11 +74,11 @@ namespace KeyPayV2.Nz.Functions
         /// Get Next Pay Date
         /// </summary>
         /// <remarks>
-        /// Gets the list of all applicable reference data for Pay Schedules for this business.
+        /// Gets the next pay dates for the pay schedule with the specified ID.
         /// </remarks>
-        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId, GetNextPayDateQueryModel request)
+        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId)
         {
-            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate?useInitialPayRunCreationDateTime={request.UseInitialPayRunCreationDateTime}");
+            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate");
         }
 
         /// <summary>
@@ -90,6 +90,17 @@ namespace KeyPayV2.Nz.Functions
         public PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId)
         {
             return ApiRequest<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata");
+        }
+
+        /// <summary>
+        /// List Next Pay Dates
+        /// </summary>
+        /// <remarks>
+        /// Gets the list of all next pay dates for each pay schedule.
+        /// </remarks>
+        public List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId)
+        {
+            return ApiRequest<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates");
         }
     }
 }
