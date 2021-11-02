@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -26,6 +28,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get Shift Costings for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the shift costings for the specified employee.
+        /// </remarks>
+        public Task<ShiftCostingsResponseModel> GetShiftCostingsForEmployeeAsync(int businessId, int employeeId, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftcosting", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Shift Periods for Employee
         /// </summary>
         /// <remarks>
@@ -34,6 +47,17 @@ namespace KeyPayV2.Uk.Functions
         public List<ShiftPeriodModel> GetShiftPeriodsForEmployee(int businessId, int employeeId, GetShiftPeriodsModel model)
         {
             return ApiRequest<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Get Shift Periods for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the shift periods for the specified employee.
+        /// </remarks>
+        public Task<List<ShiftPeriodModel>> GetShiftPeriodsForEmployeeAsync(int businessId, int employeeId, GetShiftPeriodsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.POST, cancellationToken);
         }
     }
 }

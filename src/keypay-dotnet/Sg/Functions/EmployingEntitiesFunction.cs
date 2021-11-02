@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -23,7 +25,19 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<SgEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employing Entities
+        /// </summary>
+        /// <remarks>
+        /// Lists all the employing entities for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<SgEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -38,6 +52,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Create Employing Entity
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employing entity for the business.
+        /// </remarks>
+        public Task<SgEmployingEntityModel> CreateEmployingEntityAsync(int businessId, SgEmployingEntityModel employingEntity, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEmployingEntityModel,SgEmployingEntityModel>($"/business/{businessId}/employingentity", employingEntity, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employing Entity By ID
         /// </summary>
         /// <remarks>
@@ -45,7 +70,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEmployingEntityModel GetEmployingEntityById(int businessId, int id)
         {
-            return ApiRequest<SgEmployingEntityModel>($"/business/{businessId}/employingentity/{id}");
+            return ApiRequest<SgEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employing Entity By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employing entity with the specified ID.
+        /// </remarks>
+        public Task<SgEmployingEntityModel> GetEmployingEntityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -60,6 +96,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Update Employing Entity
+        /// </summary>
+        /// <remarks>
+        /// Updates the employing entity with the specified ID.
+        /// </remarks>
+        public Task<SgEmployingEntityModel> UpdateEmployingEntityAsync(int businessId, int id, SgEmployingEntityModel employingEntity, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEmployingEntityModel,SgEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", employingEntity, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employing Entity
         /// </summary>
         /// <remarks>
@@ -68,6 +115,17 @@ namespace KeyPayV2.Sg.Functions
         public void DeleteEmployingEntity(int businessId, int id)
         {
             ApiRequest($"/business/{businessId}/employingentity/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employing entity with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployingEntityAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employingentity/{id}", Method.DELETE, cancellationToken);
         }
     }
 }

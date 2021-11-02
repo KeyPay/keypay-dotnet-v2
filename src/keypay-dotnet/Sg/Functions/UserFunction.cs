@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -22,7 +24,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public UserModel GetUserDetails()
         {
-            return ApiRequest<UserModel>($"/user");
+            return ApiRequest<UserModel>($"/user", Method.GET);
+        }
+
+        /// <summary>
+        /// Get User Details
+        /// </summary>
+        /// <remarks>
+        /// Gets details about the user.
+        /// </remarks>
+        public Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UserModel>($"/user", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -34,6 +47,17 @@ namespace KeyPayV2.Sg.Functions
         public NewUserCreatedModel CreateNewUser(NewUserModel model)
         {
             return ApiRequest<NewUserCreatedModel,NewUserModel>($"/user", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create New User
+        /// </summary>
+        /// <remarks>
+        /// Creates a new user.
+        /// </remarks>
+        public Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.POST, cancellationToken);
         }
     }
 }

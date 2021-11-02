@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -22,7 +24,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgIncomeTaxBorneByEmployerModel> GetIncomeTaxBorneByEmployer(int businessId, int employeeId)
         {
-            return ApiRequest<List<SgIncomeTaxBorneByEmployerModel>>($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer");
+            return ApiRequest<List<SgIncomeTaxBorneByEmployerModel>>($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer", Method.GET);
+        }
+
+        /// <summary>
+        /// Get income tax borne by employer
+        /// </summary>
+        /// <remarks>
+        /// Gets the income tax borne by employer for the specified employee
+        /// </remarks>
+        public Task<List<SgIncomeTaxBorneByEmployerModel>> GetIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgIncomeTaxBorneByEmployerModel>>($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -37,6 +50,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Create income tax borne by employer
+        /// </summary>
+        /// <remarks>
+        /// Creates a new income tax borne by employer
+        /// </remarks>
+        public Task CreateIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, SgIncomeTaxBorneByEmployerModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get income tax borne by employer
         /// </summary>
         /// <remarks>
@@ -44,7 +68,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgIncomeTaxBorneByEmployerModel GetIncomeTaxBorneByEmployer(int businessId, int employeeId, int id)
         {
-            return ApiRequest<SgIncomeTaxBorneByEmployerModel>($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer/{id}");
+            return ApiRequest<SgIncomeTaxBorneByEmployerModel>($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get income tax borne by employer
+        /// </summary>
+        /// <remarks>
+        /// Gets a specific income tax borne by employer for the specified employee
+        /// </remarks>
+        public Task<SgIncomeTaxBorneByEmployerModel> GetIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgIncomeTaxBorneByEmployerModel>($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -59,6 +94,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Update an existing income tax borne by employer
+        /// </summary>
+        /// <remarks>
+        /// Update an existing income tax borne by employer
+        /// </remarks>
+        public Task UpdateAnExistingIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, int id, SgIncomeTaxBorneByEmployerModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer/{id}", request, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete income tax borne by employer
         /// </summary>
         /// <remarks>
@@ -67,6 +113,17 @@ namespace KeyPayV2.Sg.Functions
         public void DeleteIncomeTaxBorneByEmployer(int businessId, int employeeId, int id)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete income tax borne by employer
+        /// </summary>
+        /// <remarks>
+        /// Deletes the income tax borne by employer with the specified ID.
+        /// </remarks>
+        public Task DeleteIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/incometaxbornebyemployer/{id}", Method.DELETE, cancellationToken);
         }
     }
 }

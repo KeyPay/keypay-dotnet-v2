@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -22,7 +24,18 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEmployeeBenefitCategories ListEmployeeBenefits(int businessId, int employeeId)
         {
-            return ApiRequest<UkEmployeeBenefitCategories>($"/business/{businessId}/employee/{employeeId}/benefit");
+            return ApiRequest<UkEmployeeBenefitCategories>($"/business/{businessId}/employee/{employeeId}/benefit", Method.GET);
+        }
+
+        /// <summary>
+        /// List employee benefits
+        /// </summary>
+        /// <remarks>
+        /// Lists all the benefits that are assigned to an employee
+        /// </remarks>
+        public Task<UkEmployeeBenefitCategories> ListEmployeeBenefitsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmployeeBenefitCategories>($"/business/{businessId}/employee/{employeeId}/benefit", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -37,6 +50,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Update employee benefit
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing employee benefit
+        /// </remarks>
+        public Task<UkEmployeeBenefitCategoryModel> UpdateEmployeeBenefitAsync(int businessId, int employeeId, UkEmployeeBenefitCategoryModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmployeeBenefitCategoryModel,UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Create employee benefit
         /// </summary>
         /// <remarks>
@@ -48,6 +72,17 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Create employee benefit
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee benefit
+        /// </remarks>
+        public Task<UkEmployeeBenefitCategoryModel> CreateEmployeeBenefitAsync(int businessId, int employeeId, UkEmployeeBenefitCategoryEditModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmployeeBenefitCategoryModel,UkEmployeeBenefitCategoryEditModel>($"/business/{businessId}/employee/{employeeId}/benefit", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get employee benefit
         /// </summary>
         /// <remarks>
@@ -55,7 +90,18 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEmployeeBenefitCategoryModel GetEmployeeBenefit(int businessId, int employeeId, int benefitCategoryId)
         {
-            return ApiRequest<UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit/{benefitCategoryId}");
+            return ApiRequest<UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit/{benefitCategoryId}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get employee benefit
+        /// </summary>
+        /// <remarks>
+        /// Get the benefit assigned to an employee for a particular benefit category
+        /// </remarks>
+        public Task<UkEmployeeBenefitCategoryModel> GetEmployeeBenefitAsync(int businessId, int employeeId, int benefitCategoryId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmployeeBenefitCategoryModel>($"/business/{businessId}/employee/{employeeId}/benefit/{benefitCategoryId}", Method.GET, cancellationToken);
         }
     }
 }

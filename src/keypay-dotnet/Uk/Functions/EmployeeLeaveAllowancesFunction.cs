@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
-using KeyPayV2.Sg.Enums;
-using KeyPayV2.Sg.Models.Common;
+using KeyPayV2.Uk.Enums;
+using KeyPayV2.Uk.Models.Common;
+using KeyPayV2.Uk.Models.EmployeeLeaveAllowances;
 
-namespace KeyPayV2.Sg.Functions
+namespace KeyPayV2.Uk.Functions
 {
     public class EmployeeLeaveAllowancesFunction : BaseFunction
     {
@@ -21,9 +22,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the leave allowances for the specified employee
         /// </remarks>
-        public List<SgLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId)
+        public List<UkLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId)
         {
-            return ApiRequest<List<SgLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.GET);
+            return ApiRequest<List<UkLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.GET);
         }
 
         /// <summary>
@@ -32,9 +33,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the leave allowances for the specified employee
         /// </remarks>
-        public Task<List<SgLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<List<UkLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Sets the leave allowances for the specified employee
         /// </remarks>
-        public void SetLeaveAllowances(int businessId, int employeeId, IList<SgLeaveAllowanceModel> leaveAllowances)
+        public void SetLeaveAllowances(int businessId, int employeeId, IList<UkLeaveAllowanceModel> leaveAllowances)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.PUT);
         }
@@ -54,7 +55,7 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Sets the leave allowances for the specified employee
         /// </remarks>
-        public Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<SgLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default)
+        public Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<UkLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.PUT, cancellationToken);
         }

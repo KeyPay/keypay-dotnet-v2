@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -23,7 +25,19 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employee Groups
+        /// </summary>
+        /// <remarks>
+        /// Lists all the employee groups for the business.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -38,6 +52,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Create Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee group for the business.
+        /// </remarks>
+        public Task<SgEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Group by ID
         /// </summary>
         /// <remarks>
@@ -45,7 +70,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
         {
-            return ApiRequest<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}");
+            return ApiRequest<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Group by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee group with the specified ID.
+        /// </remarks>
+        public Task<SgDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -60,6 +96,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Update Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Updates the specified employee group.
+        /// </remarks>
+        public Task<SgEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Group
         /// </summary>
         /// <remarks>
@@ -68,6 +115,17 @@ namespace KeyPayV2.Sg.Functions
         public void DeleteEmployeeGroup(int businessId, int id)
         {
             ApiRequest($"/business/{businessId}/employeegroup/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee group with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employeegroup/{id}", Method.DELETE, cancellationToken);
         }
     }
 }

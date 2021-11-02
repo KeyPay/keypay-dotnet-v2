@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -22,7 +24,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlans(int businessId, int employeeId)
         {
-            return ApiRequest<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan");
+            return ApiRequest<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Gains or profits employee share plans
+        /// </summary>
+        /// <remarks>
+        /// Gets the gains or profits employee share plans for the specified employee
+        /// </remarks>
+        public Task<List<SgGainsOrProfitsEmployeeSharePlanModel>> GetGainsOrProfitsEmployeeSharePlansAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -37,6 +50,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Create Gains or profits employee share plan
+        /// </summary>
+        /// <remarks>
+        /// Creates a new gains or profits employee share plan
+        /// </remarks>
+        public Task CreateGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Gains or profits employee share plan
         /// </summary>
         /// <remarks>
@@ -44,7 +68,18 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgGainsOrProfitsEmployeeSharePlanModel GetGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id)
         {
-            return ApiRequest<SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}");
+            return ApiRequest<SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Gains or profits employee share plan
+        /// </summary>
+        /// <remarks>
+        /// Gets a specific gains or profits employee share plan for the specified employee
+        /// </remarks>
+        public Task<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -59,6 +94,17 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Update an existing Gains or profits employee share plan
+        /// </summary>
+        /// <remarks>
+        /// Update an existing gains or profits employee share plan.
+        /// </remarks>
+        public Task UpdateAnExistingGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", request, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Gains or profits employee share plan
         /// </summary>
         /// <remarks>
@@ -67,6 +113,17 @@ namespace KeyPayV2.Sg.Functions
         public void DeleteGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete Gains or profits employee share plan
+        /// </summary>
+        /// <remarks>
+        /// Deletes the Gains or profits employee share plan with the specified ID.
+        /// </remarks>
+        public Task DeleteGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", Method.DELETE, cancellationToken);
         }
     }
 }

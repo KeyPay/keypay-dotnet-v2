@@ -13,6 +13,8 @@ namespace KeyPayV2.Nz.Models.LeaveAllowance
         public int? AccrualRuleLeaveYearOffsetAmount { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public NzLeaveAllowanceUnitType? UnitType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveUnitTypeEnum? LeaveUnitType { get; set; }
         public int LeaveCategoryId { get; set; }
         public string LeaveCategoryName { get; set; }
         public decimal? Units { get; set; }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using KeyPayV2.Common.Models;
 using Newtonsoft.Json;
 using RestSharp;
@@ -15,43 +17,76 @@ namespace KeyPayV2.Common
             Api = api;
         }
 
-        protected void ApiRequest(string url, Method method = Method.GET)
+        protected void ApiRequest(string url, Method method)
         {
             var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
             Api.Execute(req);
         }
 
-        protected T ApiRequest<T>(string url, Method method = Method.GET) where T : new()
+        protected Task ApiRequestAsync(string url, Method method, CancellationToken cancellationToken)
+        {
+            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            return Api.ExecuteAsync(req, cancellationToken);
+        }
+
+        protected T ApiRequest<T>(string url, Method method) where T : new()
         {
             var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
             var result = Api.Execute<T>(req);
             return result;
         }
+        
+        protected Task<T> ApiRequestAsync<T>(string url, Method method, CancellationToken cancellationToken) where T : new()
+        {
+            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            return Api.ExecuteAsync<T>(req, cancellationToken);
+        }
 
-        protected TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method = Method.GET) where TResult : new()
+        protected TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method) where TResult : new()
         {
             var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
             req.AddJsonBody(input);
             var result = Api.Execute<TResult>(req);
             return result;
         }
+        
+        protected Task<TResult> ApiRequestAsync<TResult, TInput>(string url, TInput input, Method method, CancellationToken cancellationToken) where TResult : new()
+        {
+            var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
+            req.AddJsonBody(input);
+            return Api.ExecuteAsync<TResult>(req, cancellationToken);
+        }
 
-        protected void ApiRequest(string url, object input, Method method = Method.GET)
+        protected void ApiRequest(string url, object input, Method method)
         {
             var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
             req.AddJsonBody(input);
             Api.Execute(req);
         }
+        
+        protected Task ApiRequestAsync(string url, object input, Method method, CancellationToken cancellationToken)
+        {
+            var req = new RestRequest(url, method) {RequestFormat = DataFormat.Json, JsonSerializer = new CustomSerializer()};
+            req.AddJsonBody(input);
+            return Api.ExecuteAsync(req, cancellationToken);
+        }
 
-        protected T ApiFileRequest<T>(string url, FileUploadModel file, Method method = Method.POST) where T : new()
+        protected T ApiFileRequest<T>(string url, FileUploadModel file, Method method) where T : new()
         {
             var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
             req.AddFile(file.FileName, file.File, file.FileName);
             var result = Api.Execute<T>(req);
             return result;
         }
+        
+        protected Task<T> ApiFileRequestAsync<T>(string url, FileUploadModel file, Method method, CancellationToken cancellationToken) where T : new()
+        {
+            var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
+            req.AddFile(file.FileName, file.File, file.FileName);
+            return Api.ExecuteAsync<T>(req, cancellationToken);
+        }
 
-        protected T ApiFileRequest<T>(string url, List<FileUploadModel> files, Method method = Method.POST) where T : new()
+        protected T ApiFileRequest<T>(string url, List<FileUploadModel> files, Method method) where T : new()
         {
             var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
             foreach (var file in files)
@@ -62,28 +97,39 @@ namespace KeyPayV2.Common
             return result;
         }
 
-        protected T ApiByteArrayRequest<T>(string url, Method method = Method.GET) where T : new()
+        protected T ApiByteArrayRequest<T>(string url, Method method) where T : new()
         {
             var req = new RestRequest(url, method);
             var response = Api.Execute(req);
             var result = JsonConvert.DeserializeObject<T>(response);
             return result;
         }
-        protected byte[] ApiByteArrayRequest(string url, Method method = Method.GET)
+        protected async Task<T> ApiByteArrayRequestAsync<T>(string url, Method method, CancellationToken cancellationToken) where T : new()
+        {
+            var req = new RestRequest(url, method);
+            var response = await Api.ExecuteAsync(req, cancellationToken).ConfigureAwait(false);
+            return JsonConvert.DeserializeObject<T>(response);
+        }
+        protected byte[] ApiByteArrayRequest(string url, Method method)
         {
             var req = new RestRequest(url, method);
             var result = Api.DownloadFile(req);
             return result;
         }
+        protected Task<byte[]> ApiByteArrayRequestAsync(string url, Method method, CancellationToken cancellationToken)
+        {
+            var req = new RestRequest(url, method);
+            return Api.DownloadFileAsync(req, cancellationToken);
+        }
 
-        protected string ApiJsonRequest(string url, Method method = Method.GET)
+        protected string ApiJsonRequest(string url, Method method)
         {
             var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
             var result = Api.Execute(req);
             return result;
         }
 
-        protected T ApiJsonRequest<T>(string url, Method method = Method.GET)
+        protected T ApiJsonRequest<T>(string url, Method method)
         {
             var req = new RestRequest(url, method) {JsonSerializer = new CustomSerializer()};
             var response = Api.Execute(req);

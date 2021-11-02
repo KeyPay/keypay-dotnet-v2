@@ -5,26 +5,26 @@ namespace KeyPayV2.Uk.Enums
 {
     public enum UserPermission
     {
+        ApproveTimesheets,
         ApproveLeaveRequests,
+        CreateTimesheets,
         CreateLeaveRequests,
         ViewLeaveRequests,
-        ApproveExpenses,
-        CreateExpenses,
-        ViewExpenses,
-        ManageEmployeeDocuments,
-        ViewEmployeeDocuments,
-        ManageEmployeeQualifications,
-        ViewEmployeeQualifications,
-        ApproveTimesheets,
-        CreateTimesheets,
+        ManageRosters,
+        ViewRosters,
         ViewShiftCosts,
+        ViewExpenses,
+        CreateExpenses,
+        ApproveExpenses,
         CreateTasks,
-        ViewEmployeeDetails,
-        EditBasicEmployeeDetails,
-        EditAllEmployeeDetails,
+        ViewEmployeeDocuments,
+        ManageEmployeeDocuments,
+        ViewEmployeeQualifications,
+        ManageEmployeeQualifications,
         InitiateEmployeeSelfSetup,
         AddEmployeeFromKiosk,
-        ManageRosters,
-        ViewRosters
+        ViewEmployeeDetails,
+        EditBasicEmployeeDetails,
+        EditAllEmployeeDetails
     }
 }

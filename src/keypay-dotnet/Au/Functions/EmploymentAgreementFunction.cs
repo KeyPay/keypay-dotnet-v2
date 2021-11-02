@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -26,6 +28,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Shift Costings for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the shift costings for the specified employee.
+        /// </remarks>
+        public Task<ShiftCostingsResponseModel> GetShiftCostingsForEmployeeAsync(int businessId, int employeeId, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftcosting", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Shift Periods for Employee
         /// </summary>
         /// <remarks>
@@ -37,6 +50,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Shift Periods for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the shift periods for the specified employee.
+        /// </remarks>
+        public Task<List<ShiftPeriodModel>> GetShiftPeriodsForEmployeeAsync(int businessId, int employeeId, GetShiftPeriodsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employment Agreements
         /// </summary>
         /// <remarks>
@@ -45,7 +69,19 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employment Agreements
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the employment agreements for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -56,7 +92,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmploymentAgreementModel GetEmploymentAgreementById(int businessId, int id)
         {
-            return ApiRequest<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}");
+            return ApiRequest<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employment Agreement by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employment agreement with the specified ID.
+        /// </remarks>
+        public Task<EmploymentAgreementModel> GetEmploymentAgreementByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -68,6 +115,17 @@ namespace KeyPayV2.Au.Functions
         public ShiftCostingsResponseModel EvaluateShiftCostings(int businessId, int id, ShiftCostingsRequestModel model)
         {
             return ApiRequest<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employmentagreement/{id}/shiftcosting", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Evaluate Shift Costings
+        /// </summary>
+        /// <remarks>
+        /// Evaluates shift costings for the employment agreement with the specified ID.
+        /// </remarks>
+        public Task<ShiftCostingsResponseModel> EvaluateShiftCostingsAsync(int businessId, int id, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employmentagreement/{id}/shiftcosting", model, Method.POST, cancellationToken);
         }
 
         /// <summary>
@@ -83,6 +141,18 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Bulk Evaluate Shift Costings
+        /// </summary>
+        /// <remarks>
+        /// Bulk Evaluates shift costings for the employment agreement with the specified ID.
+        /// Limited to 100 entries per request
+        /// </remarks>
+        public Task<List<ShiftCostingsResponseModel>> BulkEvaluateShiftCostingsAsync(int businessId, int id, List<ShiftCostingsRequestModel> requests, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<ShiftCostingsResponseModel>,List<ShiftCostingsRequestModel>>($"/business/{businessId}/employmentagreement/{id}/shiftcosting/bulk", requests, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Shift Periods
         /// </summary>
         /// <remarks>
@@ -91,6 +161,17 @@ namespace KeyPayV2.Au.Functions
         public List<ShiftPeriodModel> GetShiftPeriods(int businessId, int id, GetShiftPeriodsModel model)
         {
             return ApiRequest<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employmentagreement/{id}/shiftperiods", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Get Shift Periods
+        /// </summary>
+        /// <remarks>
+        /// Gets all the shift periods for the employment agreement with the specified ID.
+        /// </remarks>
+        public Task<List<ShiftPeriodModel>> GetShiftPeriodsAsync(int businessId, int id, GetShiftPeriodsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employmentagreement/{id}/shiftperiods", model, Method.POST, cancellationToken);
         }
     }
 }

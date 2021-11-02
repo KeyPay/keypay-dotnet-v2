@@ -9,6 +9,5 @@ namespace KeyPayV2.Uk.Models.Employee
     public class GetStatutoryMaternityLeavePeriodDataQueryModel
     {
         public DateTime PeriodStart { get; set; }
-        public DateTime PeriodEnd { get; set; }
     }
 }

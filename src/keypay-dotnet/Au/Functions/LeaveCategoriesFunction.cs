@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -23,7 +25,19 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// List Leave Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the leave categories for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<AuLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -38,6 +52,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create Leave Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new leave category for the business.
+        /// </remarks>
+        public Task<AuLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Leave Category by ID
         /// </summary>
         /// <remarks>
@@ -45,7 +70,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuLeaveCategoryModel GetLeaveCategoryById(int businessId, int id)
         {
-            return ApiRequest<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}");
+            return ApiRequest<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Leave Category by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the leave category with the specified ID.
+        /// </remarks>
+        public Task<AuLeaveCategoryModel> GetLeaveCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -60,6 +96,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Leave Category
+        /// </summary>
+        /// <remarks>
+        /// Updates the leave category with the specified ID.
+        /// </remarks>
+        public Task<AuLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Leave Category
         /// </summary>
         /// <remarks>
@@ -68,6 +115,17 @@ namespace KeyPayV2.Au.Functions
         public void DeleteLeaveCategory(int businessId, int id)
         {
             ApiRequest($"/business/{businessId}/leavecategory/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete Leave Category
+        /// </summary>
+        /// <remarks>
+        /// Deletes the leave category with the specified ID.
+        /// </remarks>
+        public Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.DELETE, cancellationToken);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace KeyPayV2.Uk.Models.LeaveAllowance
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public UkLeaveAllowanceUnitType? UnitType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveUnitTypeEnum? LeaveUnitType { get; set; }
         public int LeaveCategoryId { get; set; }
         public string LeaveCategoryName { get; set; }
         public decimal? Units { get; set; }

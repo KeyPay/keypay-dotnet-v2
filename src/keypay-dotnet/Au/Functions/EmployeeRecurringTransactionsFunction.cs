@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -22,7 +24,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuEmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId)
         {
-            return ApiRequest<List<AuEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction");
+            return ApiRequest<List<AuEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employee Deductions
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions for the employee
+        /// </remarks>
+        public Task<List<AuEmployeeRecurringDeductionModel>> ListEmployeeDeductionsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -37,6 +50,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create Employee Deduction
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring deduction for the employee.
+        /// </remarks>
+        public Task<AuEmployeeRecurringDeductionModel> CreateEmployeeDeductionAsync(int businessId, int employeeId, AuEmployeeRecurringDeductionModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEmployeeRecurringDeductionModel,AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Deduction by External Reference Id
         /// </summary>
         /// <remarks>
@@ -44,7 +68,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuEmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
         {
-            return ApiRequest<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}");
+            return ApiRequest<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Deduction by External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring deduction with the specified external reference ID.
+        /// </remarks>
+        public Task<AuEmployeeRecurringDeductionModel> GetEmployeeDeductionByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -55,7 +90,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuEmployeeRecurringDeductionModel GetEmployeeDeductionById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}");
+            return ApiRequest<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Deduction by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring deduction with the specified ID.
+        /// </remarks>
+        public Task<AuEmployeeRecurringDeductionModel> GetEmployeeDeductionByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -70,6 +116,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Employee Deduction
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring deduction with the specified ID.
+        /// </remarks>
+        public Task<AuEmployeeRecurringDeductionModel> UpdateEmployeeDeductionAsync(int businessId, int employeeId, int id, AuEmployeeRecurringDeductionModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEmployeeRecurringDeductionModel,AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Deduction
         /// </summary>
         /// <remarks>
@@ -81,6 +138,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employee Deduction
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee recurring deduction with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeDeductionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employer liabilities
         /// </summary>
         /// <remarks>
@@ -88,7 +156,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployerRecurringLiabilityModel> ListEmployerLiabilities(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability");
+            return ApiRequest<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employer liabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employer liabilities for the employee
+        /// </remarks>
+        public Task<List<EmployerRecurringLiabilityModel>> ListEmployerLiabilitiesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -103,6 +182,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring employer liability for the employee.
+        /// </remarks>
+        public Task<EmployerRecurringLiabilityModel> CreateEmployerLiabilityAsync(int businessId, int employeeId, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employer liability by ID
         /// </summary>
         /// <remarks>
@@ -110,7 +200,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmployerRecurringLiabilityModel GetEmployerLiabilityById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}");
+            return ApiRequest<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employer liability by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring employer liabilities with the specified ID.
+        /// </remarks>
+        public Task<EmployerRecurringLiabilityModel> GetEmployerLiabilityByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -125,6 +226,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring employer liability with the specified ID.
+        /// </remarks>
+        public Task<EmployerRecurringLiabilityModel> UpdateEmployerLiabilityAsync(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employer liability
         /// </summary>
         /// <remarks>
@@ -136,6 +248,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Deletes the recurring employer liability with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployerLiabilityAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employee Expenses
         /// </summary>
         /// <remarks>
@@ -143,7 +266,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense");
+            return ApiRequest<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employee Expenses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee expenses for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -158,6 +292,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create Employee Expense
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring expense for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringExpenseModel> CreateEmployeeExpenseAsync(int businessId, int employeeId, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Expense by ID
         /// </summary>
         /// <remarks>
@@ -165,7 +310,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmployeeRecurringExpenseModel GetEmployeeExpenseById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}");
+            return ApiRequest<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Expense by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring expense with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringExpenseModel> GetEmployeeExpenseByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -180,6 +336,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Employee Expense
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring expense with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Expense
         /// </summary>
         /// <remarks>
@@ -191,6 +358,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employee Expense
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee recurring expense with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeExpenseAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employee Super Adjustments
         /// </summary>
         /// <remarks>
@@ -198,7 +376,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployeeRecurringSuperAdjustmentModel> ListEmployeeSuperAdjustments(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment");
+            return ApiRequest<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employee Super Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee super adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringSuperAdjustmentModel>> ListEmployeeSuperAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -213,6 +402,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring super adjustment for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringSuperAdjustmentModel> CreateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Super Adjustment by ID
         /// </summary>
         /// <remarks>
@@ -220,7 +420,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmployeeRecurringSuperAdjustmentModel GetEmployeeSuperAdjustmentById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}");
+            return ApiRequest<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Super Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringSuperAdjustmentModel> GetEmployeeSuperAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -235,6 +446,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringSuperAdjustmentModel> UpdateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Super Adjustment
         /// </summary>
         /// <remarks>
@@ -246,6 +468,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee recurring super adjustment with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employee Tax Adjustments
         /// </summary>
         /// <remarks>
@@ -253,7 +486,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment");
+            return ApiRequest<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employee Tax Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee tax adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -268,6 +512,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring tax adjustment for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxAdjustmentModel> CreateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Tax Adjustment by ID
         /// </summary>
         /// <remarks>
@@ -275,7 +530,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmployeeRecurringTaxAdjustmentModel GetEmployeeTaxAdjustmentById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}");
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Tax Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxAdjustmentModel> GetEmployeeTaxAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -290,6 +556,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Tax Adjustment
         /// </summary>
         /// <remarks>
@@ -301,6 +578,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employee Deductions By External Reference Id
         /// </summary>
         /// <remarks>
@@ -309,6 +597,17 @@ namespace KeyPayV2.Au.Functions
         public List<AuEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
         {
             return ApiRequest<List<AuEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
+        }
+
+        /// <summary>
+        /// List Employee Deductions By External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions that have a matching external reference ID
+        /// </remarks>
+        public Task<List<AuEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST, cancellationToken);
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RestSharp;
 using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
@@ -26,6 +28,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee basic details by ID
         /// </summary>
         /// <remarks>
@@ -33,7 +46,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId)
         {
-            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details");
+            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee basic details by ID
+        /// </summary>
+        /// <remarks>
+        /// returns the basic employee details for the specified employee
+        /// </remarks>
+        public Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +68,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void GetEmployeeProfileImage(int businessId, int employeeId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/image");
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/image", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Returns the file content for the employee's current profile image.
+        /// </remarks>
+        public Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -59,6 +94,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Set Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ProfileImageMetadata>($"/business/{businessId}/employee/{employeeId}/image", Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Profile Image
         /// </summary>
         /// <remarks>
@@ -70,6 +116,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Delete Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Delete's the employee's profile image.
+        /// </remarks>
+        public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Leave Balances
         /// </summary>
         /// <remarks>
@@ -77,7 +134,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request)
         {
-            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}");
+            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets leave balances for this employee.
+        /// </remarks>
+        public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -88,7 +156,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes");
+            return ApiRequest<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets the notes for the specified employee.
+        /// </remarks>
+        public Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -103,6 +182,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Set Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Sets the notes for the specified employee.
+        /// </remarks>
+        public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Opening Balances
         /// </summary>
         /// <remarks>
@@ -110,7 +200,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId)
         {
-            return ApiRequest<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances");
+            return ApiRequest<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Opening Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets the opening balances for this employee.
+        /// </remarks>
+        public Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -125,6 +226,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Set Opening Balances
+        /// </summary>
+        /// <remarks>
+        /// Sets the opening balances for this employee.
+        /// </remarks>
+        public Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Pay Rates
         /// </summary>
         /// <remarks>
@@ -132,7 +244,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId)
         {
-            return ApiRequest<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate");
+            return ApiRequest<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -144,7 +267,19 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Shift Conditions
+        /// </summary>
+        /// <remarks>
+        /// Lists all the shift conditions for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -155,7 +290,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
         {
-            return ApiRequest<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours");
+            return ApiRequest<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.GET);
+        }
+
+        /// <summary>
+        /// Get standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the standard hours for this employee.
+        /// </remarks>
+        public Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -170,6 +316,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Set standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Sets the standard hours for this employee.
+        /// </remarks>
+        public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<StandardHoursModel,StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Sync Employee to QBO
         /// </summary>
         /// <remarks>
@@ -181,6 +338,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Sync Employee to QBO
+        /// </summary>
+        /// <remarks>
+        /// Syncs an employee record to QBO.
+        /// </remarks>
+        public Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Work Types
         /// </summary>
         /// <remarks>
@@ -189,7 +357,19 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<AuWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -204,6 +384,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Activate Employee
+        /// </summary>
+        /// <remarks>
+        /// Activates the employee with the specified ID.
+        /// </remarks>
+        public Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/activate/{employeeId}", Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// List basic details for employees
         /// </summary>
         /// <remarks>
@@ -213,7 +404,20 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<EmployeeDetailsModel>>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}");
+            return ApiRequest<List<EmployeeDetailsModel>>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+        }
+
+        /// <summary>
+        /// List basic details for employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns a list of employees. The details are a subset of the 'unstructured' employee endpoint.
+        /// This data can be filtered much more efficiently though so if you only need the basic employee details, this endpoint is preferred.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeDetailsModel>>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -228,6 +432,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Grant Kiosk Access
+        /// </summary>
+        /// <remarks>
+        /// Grants kiosk access to the specified employee.
+        /// </remarks>
+        public Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/grantkioskaccess/{employeeId}", Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Revoke Kiosk Access
         /// </summary>
         /// <remarks>
@@ -236,6 +451,17 @@ namespace KeyPayV2.Au.Functions
         public void RevokeKioskAccess(int businessId, int employeeId)
         {
             ApiRequest($"/business/{businessId}/employee/revokekioskaccess/{employeeId}", Method.POST);
+        }
+
+        /// <summary>
+        /// Revoke Kiosk Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes kiosk access from the specified employee.
+        /// </remarks>
+        public Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/revokekioskaccess/{employeeId}", Method.POST, cancellationToken);
         }
 
         /// <summary>
@@ -250,7 +476,22 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}");
+            return ApiRequest<List<AuUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<AuUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -294,9 +535,55 @@ namespace KeyPayV2.Au.Functions
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax File Declaration (TFN and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Super Fund/s (at least one)</li></list></p>
         /// </remarks>
+        public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, AuUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeUpdateResponseModel,AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
+        ///                     then based on first name + surname + date of birth 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields; firstName, surname, startDate, employmentType and taxFileNumber.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax File Declaration (TFN and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Super Fund/s (at least one)</li></list></p>
+        /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, AuUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
             return ApiRequest<EmployeeUpdateResponseModel,AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
+        ///                     then based on first name + surname + date of birth 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields; firstName, surname, startDate, employmentType and taxFileNumber.<br />
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>Tax File Declaration (TFN and Employment Type)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Super Fund/s (at least one)</li></list></p>
+        /// </remarks>
+        public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, AuUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeUpdateResponseModel,AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.POST, cancellationToken);
         }
 
         /// <summary>
@@ -307,7 +594,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId)
         {
-            return ApiRequest<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}");
+            return ApiRequest<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified ID.
+        /// </remarks>
+        public Task<AuUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -322,6 +620,17 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Employee
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee with the specified ID.
+        /// </remarks>
+        public Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, AuUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeUpdateResponseModel,AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee By External ID
         /// </summary>
         /// <remarks>
@@ -329,7 +638,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId)
         {
-            return ApiRequest<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}");
+            return ApiRequest<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public Task<AuUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -340,7 +660,18 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source)
         {
-            return ApiRequest<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}");
+            return ApiRequest<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee By External Reference ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external reference ID.
+        /// </remarks>
+        public Task<AuUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.GET, cancellationToken);
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Net;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
 using KeyPayV2.Common.Exceptions;
 using Newtonsoft.Json;
 using RestSharp;
@@ -39,6 +39,21 @@ namespace KeyPayV2.Common
             var result = JsonConvert.DeserializeObject<T>(response.Content);
             return result;
         }
+        
+        public async Task<T> ExecuteAsync<T>(RestRequest request, CancellationToken cancellationToken = default) where T : new()
+        {
+            var client = GetClient(request);
+            var response = await client.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+            ResponseCallback?.Invoke(response);
+            if (response.ErrorException != null)
+                throw response.ErrorException;
+            if ((int)response.StatusCode >= 400)
+            {
+                throw new KeyPayHttpException(response.StatusCode, response.StatusDescription, request.Method, request.Resource, response.Content);
+            }
+            var result = JsonConvert.DeserializeObject<T>(response.Content);
+            return result;
+        }
 
         public string Execute(RestRequest request)
         {
@@ -47,11 +62,27 @@ namespace KeyPayV2.Common
             HandleResponse(response, request.Method, request.Resource);
             return response.Content;
         }
+
+        public async Task<string> ExecuteAsync(RestRequest request, CancellationToken cancellationToken = default)
+        {
+            var client = GetClient(request);
+            var response = await client.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+            HandleResponse(response, request.Method, request.Resource);
+            return response.Content;
+        }
+        
         public byte[] DownloadFile(RestRequest request)
         {
             var client = GetClient(request);
             var response = client.DownloadData(request);
             return response;
+        }
+        
+        public async Task<byte[]> DownloadFileAsync(RestRequest request, CancellationToken cancellationToken = default)
+        {
+            var client = GetClient(request);
+            var response = await client.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
+            return response.RawBytes;
         }
 
         private RestClient GetClient(RestRequest request)
