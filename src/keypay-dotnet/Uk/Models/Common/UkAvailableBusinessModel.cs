@@ -1,16 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Nz.Models.Common;
+using KeyPayV2.Uk.Models.Common;
+using KeyPayV2.Uk.Models.Manager;
+using KeyPayV2.Uk.Models.Manager;
+using KeyPayV2.Uk.Models.Manager;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.Nz.Enums;
+using KeyPayV2.Uk.Enums;
 
-namespace KeyPayV2.Nz.Models.Manager
+namespace KeyPayV2.Uk.Models.Common
 {
-    public class NzAvailableBusinessModel
+    public class UkAvailableBusinessModel
     {
-        public IList<NzTimeAndAttendanceKioskModel> Kiosks { get; set; }
+        public string County { get; set; }
+        public IList<UkTimeAndAttendanceKioskModel> Kiosks { get; set; }
         public string BusinessNumber { get; set; }
         public WhiteLabelBrandingModel Branding { get; set; }
         public DateTime TimesheetEntryPeriodEnd { get; set; }

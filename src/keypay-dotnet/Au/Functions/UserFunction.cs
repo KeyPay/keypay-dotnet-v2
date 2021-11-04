@@ -59,5 +59,27 @@ namespace KeyPayV2.Au.Functions
         {
             return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.POST, cancellationToken);
         }
+
+        /// <summary>
+        /// List Related Businesses And Employees
+        /// </summary>
+        /// <remarks>
+        /// List account information with businesses and employees linked to user.
+        /// </remarks>
+        public AuUserAccountMetadata ListRelatedBusinessesAndEmployees()
+        {
+            return ApiRequest<AuUserAccountMetadata>($"/user/account/metadata", Method.GET);
+        }
+
+        /// <summary>
+        /// List Related Businesses And Employees
+        /// </summary>
+        /// <remarks>
+        /// List account information with businesses and employees linked to user.
+        /// </remarks>
+        public Task<AuUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuUserAccountMetadata>($"/user/account/metadata", Method.GET, cancellationToken);
+        }
     }
 }
