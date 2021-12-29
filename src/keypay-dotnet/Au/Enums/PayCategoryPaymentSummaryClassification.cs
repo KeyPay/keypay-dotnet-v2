@@ -45,6 +45,25 @@ namespace KeyPayV2.Au.Enums
         MyTaxExemptAllowances,
         MyArrearsIncomeA,
         MyArrearsIncomeB,
-        None
+        None,
+        LeaveCashOutOfLeaveInService,
+        LeaveUnusedLeaveOnTermination,
+        LeavePaidParentalLeave,
+        LeaveWorkersCompensation,
+        LeaveAncillaryAndDefenceLeave,
+        LeaveOtherPaidLeave,
+        Overtime,
+        AllowanceTool,
+        AllowanceTasks,
+        AllowanceQualificationsCertificates,
+        EtpLifeBenefitCodeR,
+        EtpLifeBenefitCodeO,
+        EtpMultiplePaymentsCodeS,
+        EtpMultiplePaymentsCodeP,
+        EtpDeathBenefitCodeD,
+        EtpDeathBenefitCodeN,
+        EtpDeathBenefitCodeB,
+        EtpDeathBenefitCodeT,
+        ReturnToWorkPayment
     }
 }

@@ -5,8 +5,8 @@ namespace KeyPayV2.Au.Enums
 {
     public enum LumpSumCalculationMethod
     {
-        NotApplicable,
         A,
-        B2
+        B2,
+        NotApplicable
     }
 }

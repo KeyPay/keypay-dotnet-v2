@@ -16,9 +16,9 @@ namespace KeyPayV2.Sg
             DeductionCategories = new DeductionCategoriesFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
+            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeBenefitsInKind = new EmployeeBenefitsInKindFunction(Api);
-            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
@@ -69,9 +69,9 @@ namespace KeyPayV2.Sg
         public DeductionCategoriesFunction DeductionCategories { get; }
         public EmployeeFunction Employee { get; }
         public EmployeeAccessFunction EmployeeAccess { get; }
+        public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public EmployeeBankAccountFunction EmployeeBankAccount { get; }
         public EmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
-        public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public EmployeeDocumentFunction EmployeeDocument { get; }
         public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
         public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }

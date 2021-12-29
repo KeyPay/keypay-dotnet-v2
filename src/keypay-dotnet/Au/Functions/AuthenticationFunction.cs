@@ -20,8 +20,7 @@ namespace KeyPayV2.Au.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
-        /// If using the employee single sign on end point, do not include the businessId in the model.
+        /// Request for SSO URL that provides authenticated access to KeyPay. See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model)
         {
@@ -32,8 +31,7 @@ namespace KeyPayV2.Au.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
-        /// If using the employee single sign on end point, do not include the businessId in the model.
+        /// Request for SSO URL that provides authenticated access to KeyPay. See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
         public Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, int employeeId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
@@ -44,8 +42,7 @@ namespace KeyPayV2.Au.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
-        /// If using the employee single sign on end point, do not include the businessId in the model.
+        /// Request for SSO URL that provides authenticated access to KeyPay. See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(int businessId, SingleSignOnRequestModel model)
         {
@@ -56,8 +53,7 @@ namespace KeyPayV2.Au.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
-        /// If using the employee single sign on end point, do not include the businessId in the model.
+        /// Request for SSO URL that provides authenticated access to KeyPay. See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
         public Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
@@ -68,8 +64,7 @@ namespace KeyPayV2.Au.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
-        /// If using the employee single sign on end point, do not include the businessId in the model.
+        /// Request for SSO URL that provides authenticated access to KeyPay. See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model)
         {
@@ -80,8 +75,7 @@ namespace KeyPayV2.Au.Functions
         /// Single Sign On
         /// </summary>
         /// <remarks>
-        /// Can either be called via /api/v2/singlesignon or /api/v2/business/singlesignon (which goes to the business controller).
-        /// If using the employee single sign on end point, do not include the businessId in the model.
+        /// Request for SSO URL that provides authenticated access to KeyPay. See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
         public Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {

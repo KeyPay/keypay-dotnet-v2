@@ -54,5 +54,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public int NotNoticeSequenceNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeTypeEnum? EmployeeType { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

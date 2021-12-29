@@ -18,6 +18,8 @@ namespace KeyPayV2.Au.Models.EmployingEntities
         public bool HasSeparateEntertainmentFringeBenefitsCap { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public FbtExemptOrganisationTypeEnum? FbtExemptOrganisationType { get; set; }
+        public bool? IsForeignEntity { get; set; }
+        public string ForeignEntityCountry { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string ContactName { get; set; }

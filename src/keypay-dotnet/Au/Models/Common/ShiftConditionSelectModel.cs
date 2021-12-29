@@ -9,6 +9,7 @@ namespace KeyPayV2.Au.Models.Common
     public class ShiftConditionSelectModel
     {
         public string ShortCode { get; set; }
+        public int? BusinessAwardPackageId { get; set; }
         public int Id { get; set; }
         public string Description { get; set; }
     }

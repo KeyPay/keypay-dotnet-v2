@@ -18,6 +18,7 @@ namespace KeyPayV2.Uk.Models.EmployeeRecurringTransactions
         public NationalInsuranceType? NationalInsuranceType { get; set; }
         public string ExternalId { get; set; }
         public bool Deleted { get; set; }
+        public bool IsFromNIBackCalculation { get; set; }
         public bool ApplyTaxRelief { get; set; }
         public int? Id { get; set; }
         public int EmployeeId { get; set; }

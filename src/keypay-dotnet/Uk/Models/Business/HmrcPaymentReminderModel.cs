@@ -8,7 +8,7 @@ using KeyPayV2.Uk.Enums;
 
 namespace KeyPayV2.Uk.Models.Business
 {
-    public class HmrcPaymentReminder
+    public class HmrcPaymentReminderModel
     {
         public bool? Enabled { get; set; }
         public string Recipients { get; set; }

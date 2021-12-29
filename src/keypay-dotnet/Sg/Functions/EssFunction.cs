@@ -130,7 +130,7 @@ namespace KeyPayV2.Sg.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public SgDashboardModel GetDashboard(int employeeId)
         {
@@ -141,7 +141,7 @@ namespace KeyPayV2.Sg.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public Task<SgDashboardModel> GetDashboardAsync(int employeeId, CancellationToken cancellationToken = default)
         {

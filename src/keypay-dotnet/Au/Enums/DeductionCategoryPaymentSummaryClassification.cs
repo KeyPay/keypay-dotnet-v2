@@ -8,9 +8,9 @@ namespace KeyPayV2.Au.Enums
         Default,
         UnionOrProfessionalAssociationFees,
         WorkplaceGiving,
-        SalarySacrificeOtherEmployeeBenefits,
-        SalarySacrificeSuperannuation,
         ChildSupportDeduction,
-        ChildSupportGarnishee
+        ChildSupportGarnishee,
+        SalarySacrificeOtherEmployeeBenefits,
+        SalarySacrificeSuperannuation
     }
 }

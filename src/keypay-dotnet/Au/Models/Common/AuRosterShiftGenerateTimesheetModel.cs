@@ -13,6 +13,7 @@ namespace KeyPayV2.Au.Models.Common
         public string Description { get; set; }
         public bool IsDifferent { get; set; }
         public string FullyQualifiedLocationName { get; set; }
+        public List<String> Warnings { get; set; }
         public int Id { get; set; }
         public string Token { get; set; }
         public IList<QualificationModel> Qualifications { get; set; }

@@ -536,9 +536,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new payment file record for the business.
         /// </remarks>
-        public void CreateNewPaymentFileRecord(int businessId, SgGiroBankModel bankDetails)
+        public void CreateNewPaymentFileRecord(int businessId, SgGiroBankModel model)
         {
-            ApiRequest($"/business/{businessId}/paymentfiles", bankDetails, Method.POST);
+            ApiRequest($"/business/{businessId}/paymentfiles", model, Method.POST);
         }
 
         /// <summary>
@@ -547,9 +547,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new payment file record for the business.
         /// </remarks>
-        public Task CreateNewPaymentFileRecordAsync(int businessId, SgGiroBankModel bankDetails, CancellationToken cancellationToken = default)
+        public Task CreateNewPaymentFileRecordAsync(int businessId, SgGiroBankModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles", bankDetails, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentfiles", model, Method.POST, cancellationToken);
         }
 
         /// <summary>
@@ -580,9 +580,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the payment file record with the specified ID.
         /// </remarks>
-        public void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel bankDetails)
+        public void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel model)
         {
-            ApiRequest($"/business/{businessId}/paymentfiles/{id}", bankDetails, Method.PUT);
+            ApiRequest($"/business/{businessId}/paymentfiles/{id}", model, Method.PUT);
         }
 
         /// <summary>
@@ -591,9 +591,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the payment file record with the specified ID.
         /// </remarks>
-        public Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel bankDetails, CancellationToken cancellationToken = default)
+        public Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", bankDetails, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", model, Method.PUT, cancellationToken);
         }
 
         /// <summary>

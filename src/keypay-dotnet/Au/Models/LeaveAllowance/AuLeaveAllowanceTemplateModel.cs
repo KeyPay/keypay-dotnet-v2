@@ -19,5 +19,8 @@ namespace KeyPayV2.Au.Models.LeaveAllowance
         public string ExternalId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
+        public DateTime? LeaveYearStart { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveAccrualStartDateType? LeaveAccrualStartDateType { get; set; }
     }
 }

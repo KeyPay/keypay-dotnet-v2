@@ -10,12 +10,12 @@ namespace KeyPayV2.Nz.Enums
         ExtraPay,
         RedundancyPayRetirementAllowance,
         HolidayPay,
-        TerminationHolidayPay,
         AccLevy,
         AverageEarnings,
+        TerminationHolidayPay,
         TerminationAverageEarnings,
-        RelevantDailyPay,
         TerminationRelevantDailyPay,
+        RelevantDailyPay,
         TerminationPublicHolidayPay,
         GST
     }

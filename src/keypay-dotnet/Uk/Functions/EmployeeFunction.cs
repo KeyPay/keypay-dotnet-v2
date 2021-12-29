@@ -147,6 +147,22 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Download Employee P11D form
+        /// </summary>
+        public byte[] DownloadEmployeeP11dForm(int businessId, int employeeId, int taxYear)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p11ddownload/{taxYear}", Method.GET);
+        }
+
+        /// <summary>
+        /// Download Employee P11D form
+        /// </summary>
+        public Task<byte[]> DownloadEmployeeP11dFormAsync(int businessId, int employeeId, int taxYear, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p11ddownload/{taxYear}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
         /// Get P45 model for employee
         /// </summary>
         public P45ViewModel GetP45ModelForEmployee(int businessId, int employeeId)
@@ -162,14 +178,24 @@ namespace KeyPayV2.Uk.Functions
             return ApiRequestAsync<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45", Method.GET, cancellationToken);
         }
 
-        public P45ViewModel UkHmrcForms_P45Download(int businessId, int employeeId)
+        public P45DataResponse UkHmrcForms_P45Data(int businessId, int employeeId)
         {
-            return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.GET);
+            return ApiRequest<P45DataResponse>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45data", Method.GET);
         }
 
-        public Task<P45ViewModel> UkHmrcForms_P45DownloadAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<P45DataResponse> UkHmrcForms_P45DataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.GET, cancellationToken);
+            return ApiRequestAsync<P45DataResponse>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45data", Method.GET, cancellationToken);
+        }
+
+        public byte[] UkHmrcForms_P45Download(int businessId, int employeeId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.GET);
+        }
+
+        public Task<byte[]> UkHmrcForms_P45DownloadAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -300,6 +326,70 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get National Insurance Back Calculation of employee
+        /// </summary>
+        public UkNationalInsuranceBackCalculationModel GetNationalInsuranceBackCalculationOfEmployee(int businessId, int employeeId, GetNationalInsuranceBackCalculationOfEmployeeQueryModel request)
+        {
+            return ApiRequest<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation?includeComplete={request.IncludeComplete}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get National Insurance Back Calculation of employee
+        /// </summary>
+        public Task<UkNationalInsuranceBackCalculationModel> GetNationalInsuranceBackCalculationOfEmployeeAsync(int businessId, int employeeId, GetNationalInsuranceBackCalculationOfEmployeeQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation?includeComplete={request.IncludeComplete}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Apply National Insurance Back Calculation
+        /// </summary>
+        public void ApplyNationalInsuranceBackCalculation(int businessId, int employeeId, UkApplyNationalInsuranceBackCalculationRequestModel request)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation", request, Method.POST);
+        }
+
+        /// <summary>
+        /// Apply National Insurance Back Calculation
+        /// </summary>
+        public Task ApplyNationalInsuranceBackCalculationAsync(int businessId, int employeeId, UkApplyNationalInsuranceBackCalculationRequestModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation", request, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete National Insurance Back Calculation
+        /// </summary>
+        public void DeleteNationalInsuranceBackCalculation(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete National Insurance Back Calculation
+        /// </summary>
+        public Task DeleteNationalInsuranceBackCalculationAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
+        /// Back calculate National Insurance
+        /// </summary>
+        public UkNationalInsuranceBackCalculationModel BackCalculateNationalInsurance(int businessId, int employeeId, BackCalculateNationalInsuranceQueryModel request)
+        {
+            return ApiRequest<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation/calculation?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&newCategory={request.NewCategory}", Method.GET);
+        }
+
+        /// <summary>
+        /// Back calculate National Insurance
+        /// </summary>
+        public Task<UkNationalInsuranceBackCalculationModel> BackCalculateNationalInsuranceAsync(int businessId, int employeeId, BackCalculateNationalInsuranceQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation/calculation?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&newCategory={request.NewCategory}", Method.GET, cancellationToken);
         }
 
         /// <summary>
@@ -978,6 +1068,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkSspApiModel> CreateStatutorySickPayAsync(int businessId, int employeeId, UkSspApiModel ssp, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkSspApiModel,UkSspApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp", ssp, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Statutory Sick Pay By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Sick Pay record for the employee for the given ID.
+        /// </remarks>
+        public UkSspApiModel GetStatutorySickPayById(int businessId, int employeeId, int periodOfLeaveId)
+        {
+            return ApiRequest<UkSspApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Statutory Sick Pay By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Sick Pay record for the employee for the given ID.
+        /// </remarks>
+        public Task<UkSspApiModel> GetStatutorySickPayByIdAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSspApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", Method.GET, cancellationToken);
         }
 
         /// <summary>

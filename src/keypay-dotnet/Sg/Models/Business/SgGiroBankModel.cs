@@ -24,5 +24,6 @@ namespace KeyPayV2.Sg.Models.Business
         public string PaymentCode { get; set; }
         public string CustomerReference { get; set; }
         public string AlternateCustomerReference { get; set; }
+        public int? ValueDateDaysBeforeDatePaid { get; set; }
     }
 }

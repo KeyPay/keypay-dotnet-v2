@@ -9,6 +9,7 @@ namespace KeyPayV2.Au.Models.Location
     public class AuSingleLocationModel
     {
         public List<AuLocationModel> NestedLocations { get; set; }
+        public string Country { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }

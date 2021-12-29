@@ -17,6 +17,116 @@ namespace KeyPayV2.Sg.Functions
         public EmployeeRecurringTransactionsFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
+        /// List Employee Additional Earnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all the additional earnings for the employee
+        /// </remarks>
+        public List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId)
+        {
+            return ApiRequest<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.GET);
+        }
+
+        /// <summary>
+        /// List Employee Additional Earnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all the additional earnings for the employee
+        /// </remarks>
+        public Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Creates a new additional earning for the employee.
+        /// </remarks>
+        public AdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, AdditionalEarningsInputModel model)
+        {
+            return ApiRequest<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Creates a new additional earning for the employee.
+        /// </remarks>
+        public Task<AdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Additional Earning by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's additional earning with the specified ID.
+        /// </remarks>
+        public AdditionalEarningsModel GetEmployeeAdditionalEarningById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<AdditionalEarningsModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Employee Additional Earning by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's additional earning with the specified ID.
+        /// </remarks>
+        public Task<AdditionalEarningsModel> GetEmployeeAdditionalEarningByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AdditionalEarningsModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's additional earning with the specified ID.
+        /// </remarks>
+        public AdditionalEarningsModel UpdateEmployeeAdditionalEarning(int businessId, int employeeId, int id, AdditionalEarningsInputModel model)
+        {
+            return ApiRequest<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Update Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's additional earning with the specified ID.
+        /// </remarks>
+        public Task<AdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, int id, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's additional earning with the specified ID.
+        /// </remarks>
+        public void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's additional earning with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// List Employee Deductions
         /// </summary>
         /// <remarks>

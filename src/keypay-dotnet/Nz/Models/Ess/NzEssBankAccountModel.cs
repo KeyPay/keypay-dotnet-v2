@@ -12,6 +12,8 @@ namespace KeyPayV2.Nz.Models.Ess
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public BankAccountTypeEnum AccountType { get; set; }
+        public string AccountParticulars { get; set; }
+        public string AccountCode { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public string Bsb { get; set; }

@@ -130,7 +130,7 @@ namespace KeyPayV2.Uk.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public UkDashboardModel GetDashboard(int employeeId)
         {
@@ -141,7 +141,7 @@ namespace KeyPayV2.Uk.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public Task<UkDashboardModel> GetDashboardAsync(int employeeId, CancellationToken cancellationToken = default)
         {
@@ -300,6 +300,50 @@ namespace KeyPayV2.Uk.Functions
         public Task<byte[]> GetLeavingEmployeeFormPdfAsync(int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiByteArrayRequestAsync($"/ess/{employeeId}/document/LeavingEmployeeForm", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P11D form PDF
+        /// </summary>
+        /// <remarks>
+        /// Gets the PDF for the P11D form for the specified tax year ending
+        /// </remarks>
+        public byte[] GetP11dFormPdf(int employeeId, int taxYear)
+        {
+            return ApiByteArrayRequest($"/ess/{employeeId}/document/p11d/{taxYear}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get P11D form PDF
+        /// </summary>
+        /// <remarks>
+        /// Gets the PDF for the P11D form for the specified tax year ending
+        /// </remarks>
+        public Task<byte[]> GetP11dFormPdfAsync(int employeeId, int taxYear, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/ess/{employeeId}/document/p11d/{taxYear}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// List P11D forms
+        /// </summary>
+        /// <remarks>
+        /// Lists all the employee's P11D forms.
+        /// </remarks>
+        public List<EssP11DModel> ListP11dForms(int employeeId)
+        {
+            return ApiRequest<List<EssP11DModel>>($"/ess/{employeeId}/document/p11ds", Method.GET);
+        }
+
+        /// <summary>
+        /// List P11D forms
+        /// </summary>
+        /// <remarks>
+        /// Lists all the employee's P11D forms.
+        /// </remarks>
+        public Task<List<EssP11DModel>> ListP11dFormsAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EssP11DModel>>($"/ess/{employeeId}/document/p11ds", Method.GET, cancellationToken);
         }
 
         /// <summary>

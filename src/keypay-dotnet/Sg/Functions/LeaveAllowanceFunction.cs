@@ -39,6 +39,28 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Assign Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Assigns employee to existing leave allowance template
+        /// </remarks>
+        public void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.POST);
+        }
+
+        /// <summary>
+        /// Assign Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Assigns employee to existing leave allowance template
+        /// </remarks>
+        public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Leave Allowances for All Employees
         /// </summary>
         /// <remarks>

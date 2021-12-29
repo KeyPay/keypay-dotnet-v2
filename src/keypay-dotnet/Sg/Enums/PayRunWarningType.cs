@@ -65,6 +65,7 @@ namespace KeyPayV2.Sg.Enums
         SubmitTerminatedEmployeeToHmrc,
         SuperReconciliationPreviousPayRun,
         SuperReconciliationThisPayRun,
-        MoreThan28DaysWithoutTfnQuoted
+        MoreThan28DaysWithoutTfnQuoted,
+        BackCalculationsApplied
     }
 }

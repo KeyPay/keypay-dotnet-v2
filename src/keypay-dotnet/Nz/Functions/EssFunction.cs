@@ -130,7 +130,7 @@ namespace KeyPayV2.Nz.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public NzDashboardModel GetDashboard(int employeeId)
         {
@@ -141,7 +141,7 @@ namespace KeyPayV2.Nz.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public Task<NzDashboardModel> GetDashboardAsync(int employeeId, CancellationToken cancellationToken = default)
         {

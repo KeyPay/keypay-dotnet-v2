@@ -8,6 +8,9 @@ namespace KeyPayV2.Au.Enums
         Manual,
         BankAccount,
         SuperFund,
-        Bpay
+        Bpay,
+        PensionScheme,
+        TaxOffice,
+        CPFB
     }
 }

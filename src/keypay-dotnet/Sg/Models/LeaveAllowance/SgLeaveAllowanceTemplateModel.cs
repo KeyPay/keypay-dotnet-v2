@@ -15,6 +15,9 @@ namespace KeyPayV2.Sg.Models.LeaveAllowance
         public string ExternalId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
+        public DateTime? LeaveYearStart { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveAccrualStartDateType? LeaveAccrualStartDateType { get; set; }
         public IList<SgLeaveAllowanceTemplateLeaveCategoryApiModel> LeaveCategories { get; set; }
     }
 }

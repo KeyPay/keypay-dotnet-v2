@@ -16,6 +16,8 @@ namespace KeyPayV2.Au.Models.Business
         public string ManagementSoftwareId { get; set; }
         public string SbrSoftwareProvider { get; set; }
         public string SbrSoftwareId { get; set; }
+        public bool? IsForeignEntity { get; set; }
+        public string ForeignEntityCountry { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Region { get; set; }

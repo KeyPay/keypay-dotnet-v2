@@ -6,7 +6,7 @@ namespace KeyPayV2.Sg.Enums
     public enum TaxBorneByEmployerType
     {
         Fully,
-        Partially,
-        FixedAmount
+        FixedAmount,
+        Partially
     }
 }

@@ -5,9 +5,9 @@ namespace KeyPayV2.Nz.Enums
 {
     public enum LeaveRequestStatus
     {
-        Pending,
         Approved,
-        Cancelled,
-        Rejected
+        Pending,
+        Rejected,
+        Cancelled
     }
 }

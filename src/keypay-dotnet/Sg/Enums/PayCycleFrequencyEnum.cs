@@ -8,13 +8,9 @@ namespace KeyPayV2.Sg.Enums
         Weekly,
         Fortnightly,
         Monthly,
-        AdHoc,
-        Initial,
-        PreviousEmployer,
         FourWeekly,
         Quarterly,
         Annually,
-        HistoricGrossEarnings,
         HalfMonthly
     }
 }

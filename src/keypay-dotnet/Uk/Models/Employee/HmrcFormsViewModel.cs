@@ -17,5 +17,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public AutoEnrolmentNoticeViewModel AutoEnrolmentData { get; set; }
         public P60ViewModel P60 { get; set; }
         public P11dFormsUrls Urls { get; set; }
+        public NationalInsuranceBackCalculationViewModel NationalInsuranceBackCalculation { get; set; }
+        public bool HasNationalInsuranceBackCalculation { get; set; }
     }
 }

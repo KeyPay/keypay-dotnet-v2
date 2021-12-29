@@ -7,6 +7,10 @@ namespace KeyPayV2.Uk.Enums
     {
         Manual,
         BankAccount,
-        PensionScheme
+        SuperFund,
+        Bpay,
+        PensionScheme,
+        TaxOffice,
+        CPFB
     }
 }

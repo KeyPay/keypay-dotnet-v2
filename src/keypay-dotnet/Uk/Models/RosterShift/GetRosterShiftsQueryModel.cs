@@ -23,5 +23,6 @@ namespace KeyPayV2.Uk.Models.RosterShift
         public bool ExcludeShiftsOverlappingFromDate { get; set; }
         public int? PageSize { get; set; }
         public int? PageNum { get; set; }
+        public bool IncludeWarnings { get; set; }
     }
 }

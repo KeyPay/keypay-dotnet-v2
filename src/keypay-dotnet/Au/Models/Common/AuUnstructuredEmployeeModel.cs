@@ -25,6 +25,7 @@ namespace KeyPayV2.Au.Models.Common
         public bool? StslDebt { get; set; }
         public bool? IsExemptFromFloodLevy { get; set; }
         public bool? HasApprovedWorkingHolidayVisa { get; set; }
+        public string WorkingHolidayVisaCountry { get; set; }
         public bool? IsSeasonalWorker { get; set; }
         public bool? HasWithholdingVariation { get; set; }
         public decimal? TaxVariation { get; set; }
@@ -59,6 +60,8 @@ namespace KeyPayV2.Au.Models.Common
         public bool? CloselyHeldEmployee { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public CloselyHeldReportingEnum? CloselyHeldReporting { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public StpIncomeTypeEnum? SingleTouchPayroll { get; set; }
         public decimal? HoursPerDay { get; set; }
         public bool? PostalAddressIsOverseas { get; set; }
         public bool? ResidentialAddressIsOverseas { get; set; }

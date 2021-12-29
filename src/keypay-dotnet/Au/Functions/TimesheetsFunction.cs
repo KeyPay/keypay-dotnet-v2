@@ -139,6 +139,8 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Adds timesheets for the specified business. This will not replace any existing timesheets.
+        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
+        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
         /// </remarks>
         public void BulkInsertTimesheets(int businessId, AuSubmitTimesheetsRequest request)
         {
@@ -150,6 +152,8 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Adds timesheets for the specified business. This will not replace any existing timesheets.
+        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
+        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
         /// </remarks>
         public Task BulkInsertTimesheetsAsync(int businessId, AuSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {

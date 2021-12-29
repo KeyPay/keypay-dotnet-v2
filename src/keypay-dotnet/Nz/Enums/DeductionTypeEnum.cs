@@ -8,7 +8,9 @@ namespace KeyPayV2.Nz.Enums
         NotSet,
         Fixed,
         PercentageGross,
+        PercentageOTE,
         PercentageStudentLoan,
-        PercentageNet
+        PercentageNet,
+        Tiered
     }
 }

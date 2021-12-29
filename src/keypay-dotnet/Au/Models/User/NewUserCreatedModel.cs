@@ -12,5 +12,7 @@ namespace KeyPayV2.Au.Models.User
         public string DisplayName { get; set; }
         public string TimeZone { get; set; }
         public string ApiKey { get; set; }
+        public string Email { get; set; }
+        public bool EmailConfirmed { get; set; }
     }
 }

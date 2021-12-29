@@ -102,6 +102,7 @@ namespace KeyPayV2.Sg.Enums
         P11dAvailable,
         PayRunApprovalNotification,
         PayRunApprovalReminder,
-        PayRunStatusChanged
+        PayRunStatusChanged,
+        CreditCardExpiringReminder
     }
 }

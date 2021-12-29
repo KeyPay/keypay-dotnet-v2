@@ -8,6 +8,7 @@ namespace KeyPayV2.Au.Models.Location
 {
     public class AuLocationModel
     {
+        public string Country { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }

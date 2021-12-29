@@ -747,31 +747,31 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Initiate Employee Self Service Onboarding
+        /// Initiate Employee Self Setup
         /// </summary>
         /// <remarks>
-        /// Initiate the Self Service Onboarding process for an Employee.
+        /// Initiate the Self Setup process for an Employee.
         /// If the employee has an existing employee record, the id should be specified. If the Email and Mobile provided
         /// are not the same as those on the employee record, they will be updated.
         /// If the employee does not yet have an employee record do not specify an id, one will be created with the
         /// details provided.
         /// </remarks>
-        public void InitiateEmployeeSelfServiceOnboarding(int businessId, AuInitiateEmployeeOnboardingApiModel model)
+        public void InitiateEmployeeSelfSetup(int businessId, AuInitiateEmployeeOnboardingApiModel model)
         {
             ApiRequest($"/business/{businessId}/manager/employeeonboarding/initiateselfservice", model, Method.POST);
         }
 
         /// <summary>
-        /// Initiate Employee Self Service Onboarding
+        /// Initiate Employee Self Setup
         /// </summary>
         /// <remarks>
-        /// Initiate the Self Service Onboarding process for an Employee.
+        /// Initiate the Self Setup process for an Employee.
         /// If the employee has an existing employee record, the id should be specified. If the Email and Mobile provided
         /// are not the same as those on the employee record, they will be updated.
         /// If the employee does not yet have an employee record do not specify an id, one will be created with the
         /// details provided.
         /// </remarks>
-        public Task InitiateEmployeeSelfServiceOnboardingAsync(int businessId, AuInitiateEmployeeOnboardingApiModel model, CancellationToken cancellationToken = default)
+        public Task InitiateEmployeeSelfSetupAsync(int businessId, AuInitiateEmployeeOnboardingApiModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/manager/employeeonboarding/initiateselfservice", model, Method.POST, cancellationToken);
         }
@@ -1608,7 +1608,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}", Method.GET);
+            return ApiRequest<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}&includeWarnings={request.IncludeWarnings}", Method.GET);
         }
 
         /// <summary>
@@ -1621,7 +1621,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}&includeWarnings={request.IncludeWarnings}", Method.GET, cancellationToken);
         }
 
         /// <summary>

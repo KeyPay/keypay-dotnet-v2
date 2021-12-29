@@ -7,8 +7,6 @@ namespace KeyPayV2.Au.Enums
     {
         Weekly,
         Fortnightly,
-        Monthly,
-        AdHoc,
-        Initial
+        Monthly
     }
 }

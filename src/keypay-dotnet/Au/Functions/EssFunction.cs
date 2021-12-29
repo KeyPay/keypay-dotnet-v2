@@ -130,7 +130,7 @@ namespace KeyPayV2.Au.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public AuDashboardModel GetDashboard(int employeeId)
         {
@@ -141,7 +141,7 @@ namespace KeyPayV2.Au.Functions
         /// Get Dashboard
         /// </summary>
         /// <remarks>
-        /// Gets a set of useful information that the employee may need for self service tasks.
+        /// Gets a set of useful information that the employee may need for self setup tasks.
         /// </remarks>
         public Task<AuDashboardModel> GetDashboardAsync(int employeeId, CancellationToken cancellationToken = default)
         {
