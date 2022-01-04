@@ -1139,6 +1139,140 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Qualifications for Employee
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the qualification details for a single employee.
+        /// </remarks>
+        public List<EmployeeQualificationModel> GetQualificationsForEmployee(int employeeId)
+        {
+            return ApiRequest<List<EmployeeQualificationModel>>($"/ess/{employeeId}/qualification", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Qualifications for Employee
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the qualification details for a single employee.
+        /// </remarks>
+        public Task<List<EmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeQualificationModel>>($"/ess/{employeeId}/qualification", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Add/Update Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Adds or updates a qualification for an employee.
+        /// </remarks>
+        public void AddUpdateEmployeeQualification(int employeeId, EmployeeQualificationModel qualification)
+        {
+            ApiRequest($"/ess/{employeeId}/qualification", qualification, Method.POST);
+        }
+
+        /// <summary>
+        /// Add/Update Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Adds or updates a qualification for an employee.
+        /// </remarks>
+        public Task AddUpdateEmployeeQualificationAsync(int employeeId, EmployeeQualificationModel qualification, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/qualification", qualification, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
+        /// </remarks>
+        public void DeleteEmployeeQualification(int employeeId, DeleteEmployeeQualificationQueryModel request)
+        {
+            ApiRequest($"/ess/{employeeId}/qualification?id={request.Id}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
+        /// </remarks>
+        public Task DeleteEmployeeQualificationAsync(int employeeId, DeleteEmployeeQualificationQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/qualification?id={request.Id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Qualification Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the qualification with a specific ID.
+        /// </remarks>
+        public EmployeeQualificationModel GetQualificationDetails(int employeeId, int id)
+        {
+            return ApiRequest<EmployeeQualificationModel>($"/ess/{employeeId}/qualification/{id}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Qualification Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the qualification with a specific ID.
+        /// </remarks>
+        public Task<EmployeeQualificationModel> GetQualificationDetailsAsync(int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeQualificationModel>($"/ess/{employeeId}/qualification/{id}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Upload attachment to qualification
+        /// </summary>
+        /// <remarks>
+        /// Uploads an attachment to the qualification with the specified ID.
+        /// The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public void UploadAttachmentToQualification(int employeeId, int qualificationId, UploadAttachmentToQualificationQueryModel request)
+        {
+            ApiRequest($"/ess/{employeeId}/qualification/{qualificationId}/attachment?fileName={request.FileName}", Method.PUT);
+        }
+
+        /// <summary>
+        /// Upload attachment to qualification
+        /// </summary>
+        /// <remarks>
+        /// Uploads an attachment to the qualification with the specified ID.
+        /// The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task UploadAttachmentToQualificationAsync(int employeeId, int qualificationId, UploadAttachmentToQualificationQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/qualification/{qualificationId}/attachment?fileName={request.FileName}", Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete attachment from qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes the attachment on the qualification with the specified ID.
+        /// </remarks>
+        public void DeleteAttachmentFromQualification(int employeeId, int qualificationId, int documentId)
+        {
+            ApiRequest($"/ess/{employeeId}/qualification/{qualificationId}/attachment/{documentId}", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Delete attachment from qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes the attachment on the qualification with the specified ID.
+        /// </remarks>
+        public Task DeleteAttachmentFromQualificationAsync(int employeeId, int qualificationId, int documentId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/qualification/{qualificationId}/attachment/{documentId}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Satisfaction Survey Results
         /// </summary>
         /// <remarks>

@@ -613,6 +613,8 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Updates the employee with the specified ID.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
         /// </remarks>
         public EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, AuUnstructuredEmployeeModel model)
         {
@@ -624,6 +626,8 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Updates the employee with the specified ID.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, AuUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {

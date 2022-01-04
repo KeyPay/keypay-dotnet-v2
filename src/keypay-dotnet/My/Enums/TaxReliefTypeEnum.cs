@@ -33,6 +33,9 @@ namespace KeyPayV2.My.Enums
         MedicalTreatmentOneMotherOnly,
         MedicalTreatmentOneFatherOnly,
         EducationFeesCourses,
-        LifestyleExpensesB
+        LifestyleExpensesB,
+        VaccinationExpenses,
+        LifestyleNotForBusinessUse,
+        ElectricVehicleExpenditure
     }
 }

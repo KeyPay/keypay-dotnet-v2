@@ -59,6 +59,7 @@ namespace KeyPayV2.My.Models.Common
         public string WorkerStatus { get; set; }
         public string MaritalStatus { get; set; }
         public string PassportIssuingCountry { get; set; }
+        public string TieredLeaveTemplate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

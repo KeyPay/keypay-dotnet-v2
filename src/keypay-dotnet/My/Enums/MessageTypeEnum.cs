@@ -103,6 +103,9 @@ namespace KeyPayV2.My.Enums
         PayRunApprovalNotification,
         PayRunApprovalReminder,
         PayRunStatusChanged,
+        QualificationUpdatedNotification,
+        QualificationExpiringNotification,
+        QualificationExpiredNotification,
         CreditCardExpiringReminder
     }
 }

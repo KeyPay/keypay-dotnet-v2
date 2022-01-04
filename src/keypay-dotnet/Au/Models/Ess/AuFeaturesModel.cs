@@ -24,6 +24,7 @@ namespace KeyPayV2.Au.Models.Ess
         public bool AllowEmployeesToUploadProfilePicture { get; set; }
         public bool AllowEmployeeRosteringSelfService { get; set; }
         public bool AllowEmployeeExpensesSelfService { get; set; }
+        public bool AllowEmployeeQualificationsSelfService { get; set; }
         public bool AllowEmployeeOverrideTaxCodes { get; set; }
         public bool AllowEmployeesToEditKioskTimesheets { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
