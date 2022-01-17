@@ -27,6 +27,7 @@ namespace KeyPayV2.Sg
             EmployeeIncomeTaxBorneByEmployer = new EmployeeIncomeTaxBorneByEmployerFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
+            LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
@@ -40,7 +41,6 @@ namespace KeyPayV2.Sg
             EmployingEntities = new EmployingEntitiesFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
-            LeaveRequests = new LeaveRequestsFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
@@ -80,6 +80,7 @@ namespace KeyPayV2.Sg
         public EmployeeIncomeTaxBorneByEmployerFunction EmployeeIncomeTaxBorneByEmployer { get; }
         public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public LeaveAllowanceFunction LeaveAllowance { get; }
+        public LeaveRequestsFunction LeaveRequests { get; }
         public LocationFunction Location { get; }
         public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public PayRunFunction PayRun { get; }
@@ -93,7 +94,6 @@ namespace KeyPayV2.Sg
         public EmployingEntitiesFunction EmployingEntities { get; }
         public TimeAndAttendanceFunction TimeAndAttendance { get; }
         public LeaveCategoriesFunction LeaveCategories { get; }
-        public LeaveRequestsFunction LeaveRequests { get; }
         public LookupDataFunction LookupData { get; }
         public ManagerFunction Manager { get; }
         public PayCategoryFunction PayCategory { get; }

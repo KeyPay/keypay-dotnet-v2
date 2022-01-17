@@ -84,5 +84,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public TerminationReasonEnum TerminationReason { get; set; }
         public string TerminationDescription { get; set; }
         public IList<NumericSelectListItem> TerminationReasons { get; set; }
+        public bool HasSoleUser { get; set; }
     }
 }
