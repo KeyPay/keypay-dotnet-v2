@@ -66,6 +66,8 @@ namespace KeyPayV2.Nz.Enums
         SuperReconciliationPreviousPayRun,
         SuperReconciliationThisPayRun,
         MoreThan28DaysWithoutTfnQuoted,
-        BackCalculationsApplied
+        BackCalculationsApplied,
+        LeaveAccrualReconciliationPreviousPayRun,
+        LeaveAccrualReconciliationThisPayRun
     }
 }
