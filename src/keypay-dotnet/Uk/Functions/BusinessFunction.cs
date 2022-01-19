@@ -46,9 +46,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Update some standard business details
         /// </remarks>
-        public UkBusinessExportModel UpdateBusinessDetails(EditBusinessDetailsApiModel model)
+        public UkBusinessExportModel UpdateBusinessDetails(UkEditBusinessDetailsApiModel model)
         {
-            return ApiRequest<UkBusinessExportModel,EditBusinessDetailsApiModel>($"/business", model, Method.PUT);
+            return ApiRequest<UkBusinessExportModel,UkEditBusinessDetailsApiModel>($"/business", model, Method.PUT);
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Update some standard business details
         /// </remarks>
-        public Task<UkBusinessExportModel> UpdateBusinessDetailsAsync(EditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
+        public Task<UkBusinessExportModel> UpdateBusinessDetailsAsync(UkEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBusinessExportModel,EditBusinessDetailsApiModel>($"/business", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UkBusinessExportModel,UkEditBusinessDetailsApiModel>($"/business", model, Method.PUT, cancellationToken);
         }
 
         /// <summary>
@@ -882,6 +882,56 @@ namespace KeyPayV2.Uk.Functions
         public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public UkEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
+        {
+            return ApiRequest<UkEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.GET);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public Task<UkEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Creates the payslip configuration for the specified business ID.
+        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
+        /// An example of what you would populate the EmailBodyMessage field with would be:
+        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
+        /// </remarks>
+        public void CreatePayslipConfiguration(int businessId, UkEditBusinessPaySlipApiModel model)
+        {
+            ApiRequest($"/business/{businessId}/payslip", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Creates the payslip configuration for the specified business ID.
+        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
+        /// An example of what you would populate the EmailBodyMessage field with would be:
+        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
+        /// </remarks>
+        public Task CreatePayslipConfigurationAsync(int businessId, UkEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.POST, cancellationToken);
         }
 
         /// <summary>

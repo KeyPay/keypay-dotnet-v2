@@ -67,6 +67,7 @@ namespace KeyPayV2.Nz.Enums
         Paytron,
         Zoho,
         FlatFileEmployeeImporter,
-        Twinfield
+        Twinfield,
+        SageAccounting
     }
 }
