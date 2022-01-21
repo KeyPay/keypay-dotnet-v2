@@ -619,6 +619,56 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public SgEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
+        {
+            return ApiRequest<SgEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.GET);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public Task<SgEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Creates the payslip configuration for the specified business ID.
+        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
+        /// An example of what you would populate the EmailBodyMessage field with would be:
+        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
+        /// </remarks>
+        public void CreatePayslipConfiguration(int businessId, SgEditBusinessPaySlipApiModel model)
+        {
+            ApiRequest($"/business/{businessId}/payslip", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Create payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Creates the payslip configuration for the specified business ID.
+        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
+        /// An example of what you would populate the EmailBodyMessage field with would be:
+        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
+        /// </remarks>
+        public Task CreatePayslipConfigurationAsync(int businessId, SgEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Rounding Rules
         /// </summary>
         /// <remarks>
