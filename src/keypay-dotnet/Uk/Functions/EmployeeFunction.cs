@@ -1149,6 +1149,22 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get Year to date
+        /// </summary>
+        public YearToDateModel GetYearToDate(int businessId, int employeeId, GetYearToDateQueryModel request)
+        {
+            return ApiRequest<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+        }
+
+        /// <summary>
+        /// Get Year to date
+        /// </summary>
+        public Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, GetYearToDateQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
         /// Activate Employee
         /// </summary>
         /// <remarks>

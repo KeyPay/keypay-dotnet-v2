@@ -74,6 +74,7 @@ namespace KeyPayV2.Sg.Enums
         JobMakerCancelPeriod,
         NormalTerminationLeaveLoading,
         PublicHolidayWorked,
-        PublicHolidayNotWorked
+        PublicHolidayNotWorked,
+        UnusedLeavePaymentNormalTermination
     }
 }
