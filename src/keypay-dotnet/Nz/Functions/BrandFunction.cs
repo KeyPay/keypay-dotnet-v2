@@ -39,6 +39,30 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Cancel Business
+        /// </summary>
+        /// <remarks>
+        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
+        /// This endpoint is for brand users only.
+        /// </remarks>
+        public void CancelBusiness(int businessId, string brandId)
+        {
+            ApiRequest($"/brand/{brandId}/business/{businessId}/cancel", Method.DELETE);
+        }
+
+        /// <summary>
+        /// Cancel Business
+        /// </summary>
+        /// <remarks>
+        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
+        /// This endpoint is for brand users only.
+        /// </remarks>
+        public Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/brand/{brandId}/business/{businessId}/cancel", Method.DELETE, cancellationToken);
+        }
+
+        /// <summary>
         /// Active Employees Report
         /// </summary>
         /// <remarks>
