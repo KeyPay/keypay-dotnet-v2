@@ -46,6 +46,7 @@ namespace KeyPayV2.My
             Reporting = new ReportingFunction(Api);
             Other = new OtherFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
+            TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             Webhook = new WebhookFunction(Api);
@@ -94,6 +95,7 @@ namespace KeyPayV2.My
         public ReportingFunction Reporting { get; }
         public OtherFunction Other { get; }
         public RosterShiftFunction RosterShift { get; }
+        public TieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public TimesheetsFunction Timesheets { get; }
         public UnavailabilityFunction Unavailability { get; }
         public WebhookFunction Webhook { get; }

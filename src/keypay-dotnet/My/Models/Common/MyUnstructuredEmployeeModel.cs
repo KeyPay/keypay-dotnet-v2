@@ -56,6 +56,7 @@ namespace KeyPayV2.My.Models.Common
         public bool PcbTaxBorne { get; set; }
         public string DependentChildren { get; set; }
         public string EpfContributionType { get; set; }
+        public string EpfRate { get; set; }
         public string WorkerStatus { get; set; }
         public string MaritalStatus { get; set; }
         public string PassportIssuingCountry { get; set; }
