@@ -47,6 +47,7 @@ namespace KeyPayV2.Uk
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
+            Subcontractor = new SubcontractorFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             Webhook = new WebhookFunction(Api);
@@ -96,6 +97,7 @@ namespace KeyPayV2.Uk
         public QualificationsFunction Qualifications { get; }
         public ReportingFunction Reporting { get; }
         public RosterShiftFunction RosterShift { get; }
+        public SubcontractorFunction Subcontractor { get; }
         public TimesheetsFunction Timesheets { get; }
         public UnavailabilityFunction Unavailability { get; }
         public WebhookFunction Webhook { get; }
