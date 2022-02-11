@@ -37,5 +37,27 @@ namespace KeyPayV2.Uk.Functions
         {
             return ApiRequestAsync<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", model, Method.POST, cancellationToken);
         }
+
+        /// <summary>
+        /// Save subcontractor payment details
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates payment details for a subcontractor
+        /// </remarks>
+        public UkSubcontractorPaymentDetailsModel SaveSubcontractorPaymentDetails(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model)
+        {
+            return ApiRequest<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.POST);
+        }
+
+        /// <summary>
+        /// Save subcontractor payment details
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates payment details for a subcontractor
+        /// </remarks>
+        public Task<UkSubcontractorPaymentDetailsModel> SaveSubcontractorPaymentDetailsAsync(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.POST, cancellationToken);
+        }
     }
 }

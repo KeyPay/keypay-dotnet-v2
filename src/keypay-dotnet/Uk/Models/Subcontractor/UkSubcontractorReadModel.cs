@@ -10,6 +10,7 @@ namespace KeyPayV2.Uk.Models.Subcontractor
 {
     public class UkSubcontractorReadModel
     {
+        public int EmployeeId { get; set; }
         public string TradingName { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public SubcontractorBusinessType BusinessType { get; set; }
