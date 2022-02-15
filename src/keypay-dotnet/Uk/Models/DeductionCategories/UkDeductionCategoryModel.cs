@@ -17,6 +17,8 @@ namespace KeyPayV2.Uk.Models.DeductionCategories
         public DeductionCategoryPreTaxPensionImpact PensionableEarningsImpact { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DeductionCategoryPreTaxNationalInsuranceImpact NationalInsuranceImpact { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DeductionCategoryCisType CisType { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

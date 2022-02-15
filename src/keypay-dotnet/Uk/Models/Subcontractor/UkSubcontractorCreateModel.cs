@@ -28,7 +28,7 @@ namespace KeyPayV2.Uk.Models.Subcontractor
         public string NationalInsuranceNumber { get; set; }
         public string CompanyRegistrationNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public TaxStatusType? TaxStatus { get; set; }
+        public SubcontractorTaxStatus? TaxStatus { get; set; }
         public DateTime? DateMatched { get; set; }
         public string VerificationNumber { get; set; }
         public bool? IsContractAgreed { get; set; }

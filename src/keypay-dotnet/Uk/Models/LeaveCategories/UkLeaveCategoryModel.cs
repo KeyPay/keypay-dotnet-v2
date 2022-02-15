@@ -16,6 +16,7 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
         public LeaveCategoryTypeEnum LeaveCategoryType { get; set; }
         public bool PayoutNegativeBalance { get; set; }
         public LeaveAccrualRuleModel LeaveAccrualRule { get; set; }
+        public bool IncludeIn52WeekAverageCalculation { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Units { get; set; }

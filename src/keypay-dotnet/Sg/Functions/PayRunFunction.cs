@@ -151,6 +151,28 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Bulk Apply Leave Requests
+        /// </summary>
+        /// <remarks>
+        /// Bulk apply leave requests
+        /// </remarks>
+        public ApplyLeaveRequestResult BulkApplyLeaveRequests(int businessId, int payRunId, BulkApplyLeaveRequestModel bulkApplyLeaveRequestModel)
+        {
+            return ApiRequest<ApplyLeaveRequestResult,BulkApplyLeaveRequestModel>($"/business/{businessId}/payrun/{payRunId}/bulkapplyleaverequests", bulkApplyLeaveRequestModel, Method.POST);
+        }
+
+        /// <summary>
+        /// Bulk Apply Leave Requests
+        /// </summary>
+        /// <remarks>
+        /// Bulk apply leave requests
+        /// </remarks>
+        public Task<ApplyLeaveRequestResult> BulkApplyLeaveRequestsAsync(int businessId, int payRunId, BulkApplyLeaveRequestModel bulkApplyLeaveRequestModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ApplyLeaveRequestResult,BulkApplyLeaveRequestModel>($"/business/{businessId}/payrun/{payRunId}/bulkapplyleaverequests", bulkApplyLeaveRequestModel, Method.POST, cancellationToken);
+        }
+
+        /// <summary>
         /// List Deductions
         /// </summary>
         /// <remarks>

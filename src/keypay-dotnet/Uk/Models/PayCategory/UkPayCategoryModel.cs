@@ -20,6 +20,10 @@ namespace KeyPayV2.Uk.Models.PayCategory
         public bool IsClass1ANIable { get; set; }
         public bool Is52WeekAverageEnabled { get; set; }
         public bool IsNetPayment { get; set; }
+        public bool CisCategory { get; set; }
+        public bool ApplyCisDeduction { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayCategoryCisType CisType { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }

@@ -25,6 +25,7 @@ namespace KeyPayV2.Au.Enums
         EtpTypePTaxFree,
         EtpSuperableTypePTaxable,
         EtpSuperableTypePTaxFree,
-        EtpTypePUnusedLeavePayment
+        EtpTypePUnusedLeavePayment,
+        NormalTerminationLeaveLoading
     }
 }

@@ -18,5 +18,7 @@ namespace KeyPayV2.Uk.Models.Subcontractor
         public string AccountNumber { get; set; }
         public string RollNumber { get; set; }
         public DateTime? LastPaymentDate { get; set; }
+        public int PayScheduleId { get; set; }
+        public int PayCategoryId { get; set; }
     }
 }
