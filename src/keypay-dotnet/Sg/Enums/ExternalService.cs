@@ -65,6 +65,7 @@ namespace KeyPayV2.Sg.Enums
         EmployeeAdvancedHoursUpload,
         BusinessCentral,
         Paytron,
+        AccessFinancials,
         Zoho,
         FlatFileEmployeeImporter,
         Twinfield,

@@ -20,7 +20,7 @@ namespace KeyPayV2.Au.Functions
         /// Get Brand Invoices
         /// </summary>
         /// <remarks>
-        /// Get all invoices for the specified Brand.
+        /// Get invoices for the specified Brand.
         /// </remarks>
         public List<InvoiceModel> GetBrandInvoices(int brandId, GetBrandInvoicesQueryModel request)
         {
@@ -31,7 +31,7 @@ namespace KeyPayV2.Au.Functions
         /// Get Brand Invoices
         /// </summary>
         /// <remarks>
-        /// Get all invoices for the specified Brand.
+        /// Get invoices for the specified Brand.
         /// </remarks>
         public Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, GetBrandInvoicesQueryModel request, CancellationToken cancellationToken = default)
         {

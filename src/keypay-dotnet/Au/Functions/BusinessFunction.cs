@@ -20,7 +20,7 @@ namespace KeyPayV2.Au.Functions
         /// List Businesses
         /// </summary>
         /// <remarks>
-        /// Lists all of the businesses associated with the current user.
+        /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public List<AuBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
@@ -32,7 +32,7 @@ namespace KeyPayV2.Au.Functions
         /// List Businesses
         /// </summary>
         /// <remarks>
-        /// Lists all of the businesses associated with the current user.
+        /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public Task<List<AuBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)

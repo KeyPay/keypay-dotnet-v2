@@ -42,7 +42,7 @@ namespace KeyPayV2.Au.Functions
         /// Cancel Business
         /// </summary>
         /// <remarks>
-        /// Delete all pay runs and employees. Disassociates those users who have access to other businesses or brands. Deactivates users only associated with this business.
+        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
         /// This endpoint is for brand users only.
         /// </remarks>
         public void CancelBusiness(int businessId, string brandId)
@@ -54,7 +54,7 @@ namespace KeyPayV2.Au.Functions
         /// Cancel Business
         /// </summary>
         /// <remarks>
-        /// Delete all pay runs and employees. Disassociates those users who have access to other businesses or brands. Deactivates users only associated with this business.
+        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
         /// This endpoint is for brand users only.
         /// </remarks>
         public Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default)
