@@ -11,6 +11,8 @@ namespace KeyPayV2.My.Models.PayRun
     public class MyApiPaySlipModel
     {
         public string EmployeeEpfNumber { get; set; }
+        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
+        public IList<ApiOtherAmountsModel> OtherAmounts { get; set; }
         public IList<MyApiPaySlipBankPaymentModel> BankPayments { get; set; }
         public IList<MyApiPaySlipBenefitsInKindAdjustmentModel> BenefitsInKindAdjustments { get; set; }
         public string EmployeePostalAddressType { get; set; }

@@ -25,6 +25,8 @@ namespace KeyPayV2.Au.Models.Ess
         public string LeaveCategoryName { get; set; }
         public decimal HoursPerDay { get; set; }
         public decimal TotalUnits { get; set; }
+        public decimal PreviouslyAppliedUnits { get; set; }
+        public bool CanPartiallyEdit { get; set; }
         public string Notes { get; set; }
         public decimal TotalDays { get; set; }
         public string Amount { get; set; }
@@ -36,5 +38,8 @@ namespace KeyPayV2.Au.Models.Ess
         public AttachmentModel Attachment { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveUnitTypeEnum UnitType { get; set; }
+        public PartiallyAppliedLeaveRequestBannerModel Banner { get; set; }
+        public bool ManuallyApplied { get; set; }
+        public string AppliedLeaveUnitTypeDescription { get; set; }
     }
 }

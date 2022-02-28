@@ -755,6 +755,38 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get the timesheet settings for the business
+        /// </summary>
+        public void GetTheTimesheetSettingsForTheBusiness(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/timesheetsettings", Method.GET);
+        }
+
+        /// <summary>
+        /// Get the timesheet settings for the business
+        /// </summary>
+        public Task GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/timesheetsettings", Method.GET, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update the timesheet settings for the business
+        /// </summary>
+        public void UpdateTheTimesheetSettingsForTheBusiness(int businessId, AuBusinessTimesheetSettingsModel model)
+        {
+            ApiRequest($"/business/{businessId}/timesheetsettings", model, Method.PUT);
+        }
+
+        /// <summary>
+        /// Update the timesheet settings for the business
+        /// </summary>
+        public Task UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, AuBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/timesheetsettings", model, Method.PUT, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Business Details by External ID
         /// </summary>
         /// <remarks>

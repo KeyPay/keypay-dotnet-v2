@@ -26,6 +26,7 @@ namespace KeyPayV2.Nz.Models.PayRun
         public decimal LumpSumNumberOfPayPeriods { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LumpSumCalculationMethod? LumpSumCalculationMethod { get; set; }
+        public int? LumpSumEFinancialYear { get; set; }
         public int? TimesheetLineId { get; set; }
         public string TimesheetLineExternalId { get; set; }
         public int Id { get; set; }

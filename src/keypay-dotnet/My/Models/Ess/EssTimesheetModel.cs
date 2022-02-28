@@ -17,6 +17,7 @@ namespace KeyPayV2.My.Models.Ess
         public int WorkDurationInMinutes { get; set; }
         public int BreaksDurationInMinutes { get; set; }
         public int TotalDurationInMinutes { get; set; }
+        public int? AutoApprovedByRosterShiftId { get; set; }
         public string EmployeeName { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }

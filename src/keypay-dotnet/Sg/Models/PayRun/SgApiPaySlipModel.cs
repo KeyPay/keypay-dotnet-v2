@@ -15,6 +15,8 @@ namespace KeyPayV2.Sg.Models.PayRun
         public IList<ApiPaySlipCpfAdjustmentModel> CpfAdjustments { get; set; }
         public IList<ApiPaySlipTaxAdjustmentModel> ForeignTaxAdjustments { get; set; }
         public IList<SgApiPaySlipBankPaymentModel> BankPayments { get; set; }
+        public IList<ApiPaySlipEarningsLineModel> EarningsLines { get; set; }
+        public IList<ApiOtherAmountsModel> OtherAmounts { get; set; }
         public decimal WithholdingTaxAmountYtd { get; set; }
         public decimal ClearanceTaxAmountYtd { get; set; }
         public decimal CpfEmployeeContributionYtd { get; set; }
