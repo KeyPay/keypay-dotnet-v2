@@ -66,9 +66,11 @@ namespace KeyPayV2.Sg.Enums
         BusinessCentral,
         Paytron,
         AccessFinancials,
+        Comma,
         Zoho,
         FlatFileEmployeeImporter,
         Twinfield,
-        SageAccounting
+        SageAccounting,
+        Square
     }
 }

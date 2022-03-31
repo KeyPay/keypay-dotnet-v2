@@ -68,6 +68,7 @@ namespace KeyPayV2.Au.Enums
         MoreThan28DaysWithoutTfnQuoted,
         BackCalculationsApplied,
         LeaveAccrualReconciliationPreviousPayRun,
-        LeaveAccrualReconciliationThisPayRun
+        LeaveAccrualReconciliationThisPayRun,
+        PublicHolidayAutomation
     }
 }

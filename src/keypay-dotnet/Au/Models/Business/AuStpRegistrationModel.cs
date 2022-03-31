@@ -15,6 +15,7 @@ namespace KeyPayV2.Au.Models.Business
         public string Abn { get; set; }
         public string ContactName { get; set; }
         public string ContactPhoneNumber { get; set; }
+        public string ContactEmailAddress { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public int? SuburbId { get; set; }

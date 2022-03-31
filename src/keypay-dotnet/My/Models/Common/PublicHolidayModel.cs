@@ -16,5 +16,6 @@ namespace KeyPayV2.My.Models.Common
         public string Note { get; set; }
         public bool IsSystem { get; set; }
         public bool NotAPublicHoliday { get; set; }
+        public int MondayisedAlternativeToId { get; set; }
     }
 }

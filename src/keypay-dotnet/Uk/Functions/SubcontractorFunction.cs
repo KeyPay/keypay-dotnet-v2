@@ -22,9 +22,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new subcontractor
         /// </remarks>
-        public UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel model)
+        public void CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel)
         {
-            return ApiRequest<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", model, Method.POST);
+            ApiRequest($"/business/{businessId}/subcontractor", createModel, Method.POST);
         }
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new subcontractor
         /// </remarks>
-        public Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel model, CancellationToken cancellationToken = default)
+        public Task CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/subcontractor", createModel, Method.POST, cancellationToken);
         }
 
         /// <summary>

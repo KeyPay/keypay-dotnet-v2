@@ -25,6 +25,7 @@ namespace KeyPayV2.Uk.Models.Subcontractor
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public string UniqueTaxpayerReference { get; set; }
+        public string PartnershipUniqueTaxpayerReference { get; set; }
         public string NationalInsuranceNumber { get; set; }
         public string CompanyRegistrationNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
