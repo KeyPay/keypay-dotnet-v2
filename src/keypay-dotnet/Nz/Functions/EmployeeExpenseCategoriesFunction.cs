@@ -25,7 +25,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<EmployeeExpenseCategoryModel>>($"/business/{businessId}/employeeexpensecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<EmployeeExpenseCategoryModel>>($"/business/{businessId}/employeeexpensecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeExpenseCategoryModel>>($"/business/{businessId}/employeeexpensecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeExpenseCategoryModel>>($"/business/{businessId}/employeeexpensecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public EmployeeExpenseCategoryModel CreateEmployeeExpenseCategory(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory)
         {
-            return ApiRequest<EmployeeExpenseCategoryModel,EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory", employeeExpenseCategory, Method.POST);
+            return ApiRequest<EmployeeExpenseCategoryModel,EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory", employeeExpenseCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<EmployeeExpenseCategoryModel> CreateEmployeeExpenseCategoryAsync(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeExpenseCategoryModel,EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory", employeeExpenseCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeExpenseCategoryModel,EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory", employeeExpenseCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public EmployeeExpenseCategoryModel GetEmployeeExpenseCategoryById(int businessId, int id)
         {
-            return ApiRequest<EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory/{id}", Method.GET);
+            return ApiRequest<EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<EmployeeExpenseCategoryModel> GetEmployeeExpenseCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeExpenseCategoryModel>($"/business/{businessId}/employeeexpensecategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void UpdateEmployeeExpenseCategory(int businessId, int id, EmployeeExpenseCategoryModel employeeExpenseCategory)
         {
-            ApiRequest($"/business/{businessId}/employeeexpensecategory/{id}", employeeExpenseCategory, Method.PUT);
+            ApiRequest($"/business/{businessId}/employeeexpensecategory/{id}", employeeExpenseCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task UpdateEmployeeExpenseCategoryAsync(int businessId, int id, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeeexpensecategory/{id}", employeeExpenseCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employeeexpensecategory/{id}", employeeExpenseCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void DeleteEmployeeExpenseCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/employeeexpensecategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employeeexpensecategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task DeleteEmployeeExpenseCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeeexpensecategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employeeexpensecategory/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<JournalServiceTaxCode> GetTaxCodes(int businessId)
         {
-            return ApiRequest<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.GET);
+            return ApiRequest<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.Get);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.Get, cancellationToken);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgEssBankAccountModel> ListBankAccounts(int employeeId)
         {
-            return ApiRequest<List<SgEssBankAccountModel>>($"/ess/{employeeId}/bankaccounts", Method.GET);
+            return ApiRequest<List<SgEssBankAccountModel>>($"/ess/{employeeId}/bankaccounts", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgEssBankAccountModel>> ListBankAccountsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEssBankAccountModel>>($"/ess/{employeeId}/bankaccounts", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgEssBankAccountModel>>($"/ess/{employeeId}/bankaccounts", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssSaveBankAccountResponseModel CreateBankAccount(int employeeId, SgEssBankAccountModel model)
         {
-            return ApiRequest<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.POST);
+            return ApiRequest<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssSaveBankAccountResponseModel> CreateBankAccountAsync(int employeeId, SgEssBankAccountModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssBankAccountModel GetBankAccountById(int employeeId, int bankAccountId)
         {
-            return ApiRequest<SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.GET);
+            return ApiRequest<SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssBankAccountModel> GetBankAccountByIdAsync(int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssSaveBankAccountResponseModel DeleteBankAccount(int employeeId, int bankAccountId)
         {
-            return ApiRequest<SgEssSaveBankAccountResponseModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.DELETE);
+            return ApiRequest<SgEssSaveBankAccountResponseModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.Delete);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssSaveBankAccountResponseModel> DeleteBankAccountAsync(int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssSaveBankAccountResponseModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync<SgEssSaveBankAccountResponseModel>($"/ess/{employeeId}/bankaccounts/{bankAccountId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssSaveBankAccountResponseModel UpdateBankAccount(int employeeId, int id, SgEssBankAccountModel model)
         {
-            return ApiRequest<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.PUT);
+            return ApiRequest<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssSaveBankAccountResponseModel> UpdateBankAccountAsync(int employeeId, int id, SgEssBankAccountModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgEssSaveBankAccountResponseModel,SgEssBankAccountModel>($"/ess/{employeeId}/bankaccounts/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgDashboardModel GetDashboard(int employeeId)
         {
-            return ApiRequest<SgDashboardModel>($"/ess/{employeeId}/dashboard", Method.GET);
+            return ApiRequest<SgDashboardModel>($"/ess/{employeeId}/dashboard", Method.Get);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgDashboardModel> GetDashboardAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgDashboardModel>($"/ess/{employeeId}/dashboard", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgDashboardModel>($"/ess/{employeeId}/dashboard", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssEmployeeDetailsModel GetDetails(int employeeId)
         {
-            return ApiRequest<EssEmployeeDetailsModel>($"/ess/{employeeId}/details", Method.GET);
+            return ApiRequest<EssEmployeeDetailsModel>($"/ess/{employeeId}/details", Method.Get);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssEmployeeDetailsModel> GetDetailsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssEmployeeDetailsModel>($"/ess/{employeeId}/details", Method.GET, cancellationToken);
+            return ApiRequestAsync<EssEmployeeDetailsModel>($"/ess/{employeeId}/details", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgUnstructuredEmployeeModel SaveDetails(int employeeId, EmployeePartialEditModel model)
         {
-            return ApiRequest<SgUnstructuredEmployeeModel,EmployeePartialEditModel>($"/ess/{employeeId}/details", model, Method.POST);
+            return ApiRequest<SgUnstructuredEmployeeModel,EmployeePartialEditModel>($"/ess/{employeeId}/details", model, Method.Post);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgUnstructuredEmployeeModel> SaveDetailsAsync(int employeeId, EmployeePartialEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgUnstructuredEmployeeModel,EmployeePartialEditModel>($"/ess/{employeeId}/details", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgUnstructuredEmployeeModel,EmployeePartialEditModel>($"/ess/{employeeId}/details", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssDocumentModel> ListAllDocuments(int employeeId)
         {
-            return ApiRequest<List<EssDocumentModel>>($"/ess/{employeeId}/document", Method.GET);
+            return ApiRequest<List<EssDocumentModel>>($"/ess/{employeeId}/document", Method.Get);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssDocumentModel>> ListAllDocumentsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssDocumentModel>>($"/ess/{employeeId}/document", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssDocumentModel>>($"/ess/{employeeId}/document", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssDocumentModel GetDocumentDetailsById(int employeeId, string documentId)
         {
-            return ApiRequest<EssDocumentModel>($"/ess/{employeeId}/document/{documentId}", Method.GET);
+            return ApiRequest<EssDocumentModel>($"/ess/{employeeId}/document/{documentId}", Method.Get);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssDocumentModel> GetDocumentDetailsByIdAsync(int employeeId, string documentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssDocumentModel>($"/ess/{employeeId}/document/{documentId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EssDocumentModel>($"/ess/{employeeId}/document/{documentId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void AcknowledgeDocument(int employeeId, string documentId)
         {
-            ApiRequest($"/ess/{employeeId}/document/acknowledge/{documentId}", Method.POST);
+            ApiRequest($"/ess/{employeeId}/document/acknowledge/{documentId}", Method.Post);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task AcknowledgeDocumentAsync(int employeeId, string documentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/document/acknowledge/{documentId}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/document/acknowledge/{documentId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DownloadDocument(int employeeId, string documentId)
         {
-            ApiRequest($"/ess/{employeeId}/document/download/{documentId}", Method.GET);
+            ApiRequest($"/ess/{employeeId}/document/download/{documentId}", Method.Get);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DownloadDocumentAsync(int employeeId, string documentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/document/download/{documentId}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/document/download/{documentId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<IrasPaymentSummaryModel> GetIrasForms(int employeeId)
         {
-            return ApiRequest<List<IrasPaymentSummaryModel>>($"/ess/{employeeId}/document/irasforms", Method.GET);
+            return ApiRequest<List<IrasPaymentSummaryModel>>($"/ess/{employeeId}/document/irasforms", Method.Get);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<IrasPaymentSummaryModel>> GetIrasFormsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<IrasPaymentSummaryModel>>($"/ess/{employeeId}/document/irasforms", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<IrasPaymentSummaryModel>>($"/ess/{employeeId}/document/irasforms", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void GetIrasFormPdf(int employeeId, int documentId, string formType)
         {
-            ApiRequest($"/ess/{employeeId}/document/irasforms/{formType}/{documentId}", Method.GET);
+            ApiRequest($"/ess/{employeeId}/document/irasforms/{formType}/{documentId}", Method.Get);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task GetIrasFormPdfAsync(int employeeId, int documentId, string formType, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/document/irasforms/{formType}/{documentId}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/document/irasforms/{formType}/{documentId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssPayslipModel> ListPaySlips(int employeeId)
         {
-            return ApiRequest<List<EssPayslipModel>>($"/ess/{employeeId}/document/payslip", Method.GET);
+            return ApiRequest<List<EssPayslipModel>>($"/ess/{employeeId}/document/payslip", Method.Get);
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssPayslipModel>> ListPaySlipsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssPayslipModel>>($"/ess/{employeeId}/document/payslip", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssPayslipModel>>($"/ess/{employeeId}/document/payslip", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void GetPaySlipByPayRunId(int employeeId, int payrunId)
         {
-            ApiRequest($"/ess/{employeeId}/document/payslip/{payrunId}", Method.GET);
+            ApiRequest($"/ess/{employeeId}/document/payslip/{payrunId}", Method.Get);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task GetPaySlipByPayRunIdAsync(int employeeId, int payrunId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/document/payslip/{payrunId}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/document/payslip/{payrunId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EmployeeEmergencyContactsEditModel GetEmergencyContacts(int employeeId)
         {
-            return ApiRequest<EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", Method.GET);
+            return ApiRequest<EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", Method.Get);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EmployeeEmergencyContactsEditModel> GetEmergencyContactsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -398,7 +398,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EmployeeEmergencyContactsEditModel UpdateEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model)
         {
-            return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.PUT);
+            return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.Put);
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EmployeeEmergencyContactsEditModel> UpdateEmergencyContactsAsync(int employeeId, EmployeeEmergencyContactsEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EmployeeEmergencyContactsEditModel SaveEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model)
         {
-            return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.POST);
+            return ApiRequest<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.Post);
         }
 
         /// <summary>
@@ -431,7 +431,29 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EmployeeEmergencyContactsEditModel> SaveEmergencyContactsAsync(int employeeId, EmployeeEmergencyContactsEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeEmergencyContactsEditModel,EmployeeEmergencyContactsEditModel>($"/ess/{employeeId}/emergencycontacts", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Expense Requests
+        /// </summary>
+        /// <remarks>
+        /// Gets a paged view of expense requests for this employee.
+        /// </remarks>
+        public List<EssExpenseRequestResponseModel> GetExpenseRequests(int employeeId)
+        {
+            return ApiRequest<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Expense Requests
+        /// </summary>
+        /// <remarks>
+        /// Gets a paged view of expense requests for this employee.
+        /// </remarks>
+        public Task<List<EssExpenseRequestResponseModel>> GetExpenseRequestsAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -442,7 +464,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssExpenseRequestResponseModel> GetExpenseRequests(int employeeId, GetExpenseRequestsQueryModel request)
         {
-            return ApiRequest<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense?currentPage={request.CurrentPage}&pageSize={request.PageSize}", Method.GET);
+            return ApiRequest<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense?currentPage={request.CurrentPage}&pageSize={request.PageSize}", Method.Get);
         }
 
         /// <summary>
@@ -453,7 +475,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssExpenseRequestResponseModel>> GetExpenseRequestsAsync(int employeeId, GetExpenseRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense?currentPage={request.CurrentPage}&pageSize={request.PageSize}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense?currentPage={request.CurrentPage}&pageSize={request.PageSize}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -464,7 +486,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void CreateExpenseRequest(int employeeId, ExpenseRequestEditModel model)
         {
-            ApiRequest($"/ess/{employeeId}/expense", model, Method.POST);
+            ApiRequest($"/ess/{employeeId}/expense", model, Method.Post);
         }
 
         /// <summary>
@@ -475,7 +497,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task CreateExpenseRequestAsync(int employeeId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/expense", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/expense", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -486,7 +508,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssExpenseRequestResponseModel GetExpenseRequestById(int employeeId, int expenseRequestId)
         {
-            return ApiRequest<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.GET);
+            return ApiRequest<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.Get);
         }
 
         /// <summary>
@@ -497,7 +519,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssExpenseRequestResponseModel> GetExpenseRequestByIdAsync(int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -508,7 +530,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UpdateExpenseRequest(int employeeId, int expenseRequestId, ExpenseRequestEditModel model)
         {
-            ApiRequest($"/ess/{employeeId}/expense/{expenseRequestId}", model, Method.PUT);
+            ApiRequest($"/ess/{employeeId}/expense/{expenseRequestId}", model, Method.Put);
         }
 
         /// <summary>
@@ -519,7 +541,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UpdateExpenseRequestAsync(int employeeId, int expenseRequestId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/expense/{expenseRequestId}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/expense/{expenseRequestId}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -530,7 +552,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssExpenseRequestResponseModel DeleteExpenseRequest(int employeeId, int expenseRequestId)
         {
-            return ApiRequest<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.DELETE);
+            return ApiRequest<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.Delete);
         }
 
         /// <summary>
@@ -541,7 +563,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssExpenseRequestResponseModel> DeleteExpenseRequestAsync(int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync<EssExpenseRequestResponseModel>($"/ess/{employeeId}/expense/{expenseRequestId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -553,7 +575,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UploadAttachmentToExpenseRequest(int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request)
         {
-            ApiRequest($"/ess/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.PUT);
+            ApiRequest($"/ess/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.Put);
         }
 
         /// <summary>
@@ -565,7 +587,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UploadAttachmentToExpenseRequestAsync(int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -576,7 +598,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<ExpenseCategoryResponseModel> GetExpenseCategories(int employeeId)
         {
-            return ApiRequest<List<ExpenseCategoryResponseModel>>($"/ess/{employeeId}/expense/categories", Method.GET);
+            return ApiRequest<List<ExpenseCategoryResponseModel>>($"/ess/{employeeId}/expense/categories", Method.Get);
         }
 
         /// <summary>
@@ -587,7 +609,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<ExpenseCategoryResponseModel>> GetExpenseCategoriesAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ExpenseCategoryResponseModel>>($"/ess/{employeeId}/expense/categories", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<ExpenseCategoryResponseModel>>($"/ess/{employeeId}/expense/categories", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -598,7 +620,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EmployeeExpensePaymentSummaryModel> GetExpensePaymentSummary(int employeeId)
         {
-            return ApiRequest<List<EmployeeExpensePaymentSummaryModel>>($"/ess/{employeeId}/expense/summary", Method.GET);
+            return ApiRequest<List<EmployeeExpensePaymentSummaryModel>>($"/ess/{employeeId}/expense/summary", Method.Get);
         }
 
         /// <summary>
@@ -609,7 +631,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EmployeeExpensePaymentSummaryModel>> GetExpensePaymentSummaryAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeExpensePaymentSummaryModel>>($"/ess/{employeeId}/expense/summary", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeExpensePaymentSummaryModel>>($"/ess/{employeeId}/expense/summary", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -620,7 +642,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<JournalServiceTaxCode> GetTaxCodes(int employeeId)
         {
-            return ApiRequest<List<JournalServiceTaxCode>>($"/ess/{employeeId}/expense/taxcodes", Method.GET);
+            return ApiRequest<List<JournalServiceTaxCode>>($"/ess/{employeeId}/expense/taxcodes", Method.Get);
         }
 
         /// <summary>
@@ -631,7 +653,29 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<JournalServiceTaxCode>>($"/ess/{employeeId}/expense/taxcodes", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<JournalServiceTaxCode>>($"/ess/{employeeId}/expense/taxcodes", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Leave Requests
+        /// </summary>
+        /// <remarks>
+        /// Lists all leave requests for this employee, with optional filters
+        /// </remarks>
+        public List<EssLeaveRequestModel> ListLeaveRequests(int employeeId)
+        {
+            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave", Method.Get);
+        }
+
+        /// <summary>
+        /// List Leave Requests
+        /// </summary>
+        /// <remarks>
+        /// Lists all leave requests for this employee, with optional filters
+        /// </remarks>
+        public Task<List<EssLeaveRequestModel>> ListLeaveRequestsAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -642,7 +686,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssLeaveRequestModel> ListLeaveRequests(int employeeId, ListLeaveRequestsQueryModel request)
         {
-            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?showOtherEmployees={request.ShowOtherEmployees}&approvedOnly={request.ApprovedOnly}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?showOtherEmployees={request.ShowOtherEmployees}&approvedOnly={request.ApprovedOnly}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -653,7 +697,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssLeaveRequestModel>> ListLeaveRequestsAsync(int employeeId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?showOtherEmployees={request.ShowOtherEmployees}&approvedOnly={request.ApprovedOnly}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?showOtherEmployees={request.ShowOtherEmployees}&approvedOnly={request.ApprovedOnly}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -664,7 +708,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void CreateLeaveRequest(int employeeId, LeaveApplicationWithAttachmentModel leaveApplication)
         {
-            ApiRequest($"/ess/{employeeId}/leave", leaveApplication, Method.POST);
+            ApiRequest($"/ess/{employeeId}/leave", leaveApplication, Method.Post);
         }
 
         /// <summary>
@@ -675,7 +719,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task CreateLeaveRequestAsync(int employeeId, LeaveApplicationWithAttachmentModel leaveApplication, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/leave", leaveApplication, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/leave", leaveApplication, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -686,7 +730,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssLeaveRequestModel GetLeaveRequestById(int employeeId, int leaveRequestId)
         {
-            return ApiRequest<EssLeaveRequestModel>($"/ess/{employeeId}/leave/{leaveRequestId}", Method.GET);
+            return ApiRequest<EssLeaveRequestModel>($"/ess/{employeeId}/leave/{leaveRequestId}", Method.Get);
         }
 
         /// <summary>
@@ -697,7 +741,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssLeaveRequestModel> GetLeaveRequestByIdAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssLeaveRequestModel>($"/ess/{employeeId}/leave/{leaveRequestId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EssLeaveRequestModel>($"/ess/{employeeId}/leave/{leaveRequestId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -708,7 +752,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UpdateLeaveRequest(int employeeId, int leaveRequestId, LeaveApplicationWithAttachmentModel leaveApplication)
         {
-            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}", leaveApplication, Method.POST);
+            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}", leaveApplication, Method.Post);
         }
 
         /// <summary>
@@ -719,7 +763,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UpdateLeaveRequestAsync(int employeeId, int leaveRequestId, LeaveApplicationWithAttachmentModel leaveApplication, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}", leaveApplication, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}", leaveApplication, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -730,7 +774,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteLeaveRequest(int employeeId, int leaveRequestId)
         {
-            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}", Method.DELETE);
+            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}", Method.Delete);
         }
 
         /// <summary>
@@ -741,7 +785,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteLeaveRequestAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -753,7 +797,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UploadAttachmentToLeaveRequest(int employeeId, int leaveRequestId)
         {
-            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.PUT);
+            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.Put);
         }
 
         /// <summary>
@@ -765,7 +809,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UploadAttachmentToLeaveRequestAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -776,7 +820,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteAttachmentFromLeaveRequest(int employeeId, int leaveRequestId)
         {
-            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.DELETE);
+            ApiRequest($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.Delete);
         }
 
         /// <summary>
@@ -787,7 +831,29 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteAttachmentFromLeaveRequestAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/leave/{leaveRequestId}/attachment", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets the leave balances for the employee.
+        /// </remarks>
+        public List<LeaveBalanceModel> GetLeaveBalances(int employeeId)
+        {
+            return ApiRequest<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets the leave balances for the employee.
+        /// </remarks>
+        public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -798,7 +864,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<LeaveBalanceModel> GetLeaveBalances(int employeeId, GetLeaveBalancesQueryModel request)
         {
-            return ApiRequest<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -809,7 +875,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -820,7 +886,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssLeaveEstimate EstimateLeaveHours(int employeeId, EstimateLeaveHoursQueryModel request)
         {
-            return ApiRequest<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate?leaveCategoryId={request.LeaveCategoryId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate?leaveCategoryId={request.LeaveCategoryId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -831,7 +897,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssLeaveEstimate> EstimateLeaveHoursAsync(int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate?leaveCategoryId={request.LeaveCategoryId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate?leaveCategoryId={request.LeaveCategoryId}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -842,7 +908,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssLeaveCategoryModel> GetLeaveCategories(int employeeId)
         {
-            return ApiRequest<List<EssLeaveCategoryModel>>($"/ess/{employeeId}/leave/leavecategories", Method.GET);
+            return ApiRequest<List<EssLeaveCategoryModel>>($"/ess/{employeeId}/leave/leavecategories", Method.Get);
         }
 
         /// <summary>
@@ -853,17 +919,17 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssLeaveCategoryModel>> GetLeaveCategoriesAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssLeaveCategoryModel>>($"/ess/{employeeId}/leave/leavecategories", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssLeaveCategoryModel>>($"/ess/{employeeId}/leave/leavecategories", Method.Get, cancellationToken);
         }
 
         public void SgEssLookup_Addresses(int employeeId, int suburbId)
         {
-            ApiRequest($"/ess/{employeeId}/lookup/addresses/{suburbId}", Method.GET);
+            ApiRequest($"/ess/{employeeId}/lookup/addresses/{suburbId}", Method.Get);
         }
 
         public Task SgEssLookup_AddressesAsync(int employeeId, int suburbId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/lookup/addresses/{suburbId}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/lookup/addresses/{suburbId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -874,7 +940,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<LocationModel> GetLocations(int employeeId)
         {
-            return ApiRequest<List<LocationModel>>($"/ess/{employeeId}/lookup/location", Method.GET);
+            return ApiRequest<List<LocationModel>>($"/ess/{employeeId}/lookup/location", Method.Get);
         }
 
         /// <summary>
@@ -885,7 +951,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<LocationModel>> GetLocationsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LocationModel>>($"/ess/{employeeId}/lookup/location", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<LocationModel>>($"/ess/{employeeId}/lookup/location", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -896,7 +962,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgWorkTypeModel> GetShiftConditions(int employeeId)
         {
-            return ApiRequest<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/shiftcondition", Method.GET);
+            return ApiRequest<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/shiftcondition", Method.Get);
         }
 
         /// <summary>
@@ -907,7 +973,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgWorkTypeModel>> GetShiftConditionsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/shiftcondition", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/shiftcondition", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -918,7 +984,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SuburbResult GetSuburb(int employeeId, GetSuburbQueryModel request)
         {
-            return ApiRequest<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}", Method.GET);
+            return ApiRequest<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}", Method.Get);
         }
 
         /// <summary>
@@ -929,7 +995,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SuburbResult> GetSuburbAsync(int employeeId, GetSuburbQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -940,7 +1006,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public PagedResultModel<SuburbModel> SearchSuburbs(int employeeId, SearchSuburbsQueryModel request)
         {
-            return ApiRequest<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}", Method.GET);
+            return ApiRequest<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}", Method.Get);
         }
 
         /// <summary>
@@ -951,7 +1017,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<PagedResultModel<SuburbModel>> SearchSuburbsAsync(int employeeId, SearchSuburbsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -962,7 +1028,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<TitleViewModel> GetTitles(int employeeId)
         {
-            return ApiRequest<List<TitleViewModel>>($"/ess/{employeeId}/lookup/title", Method.GET);
+            return ApiRequest<List<TitleViewModel>>($"/ess/{employeeId}/lookup/title", Method.Get);
         }
 
         /// <summary>
@@ -973,7 +1039,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<TitleViewModel>> GetTitlesAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TitleViewModel>>($"/ess/{employeeId}/lookup/title", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<TitleViewModel>>($"/ess/{employeeId}/lookup/title", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -984,7 +1050,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgWorkTypeModel> GetWorkTypes(int employeeId)
         {
-            return ApiRequest<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/worktype", Method.GET);
+            return ApiRequest<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/worktype", Method.Get);
         }
 
         /// <summary>
@@ -995,7 +1061,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgWorkTypeModel>> GetWorkTypesAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/worktype", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgWorkTypeModel>>($"/ess/{employeeId}/lookup/worktype", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1006,7 +1072,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssEmployeeDetailsViewModel GetPersonalDetails(int employeeId)
         {
-            return ApiRequest<SgEssEmployeeDetailsViewModel>($"/ess/{employeeId}/personaldetails", Method.GET);
+            return ApiRequest<SgEssEmployeeDetailsViewModel>($"/ess/{employeeId}/personaldetails", Method.Get);
         }
 
         /// <summary>
@@ -1017,7 +1083,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssEmployeeDetailsViewModel> GetPersonalDetailsAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssEmployeeDetailsViewModel>($"/ess/{employeeId}/personaldetails", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgEssEmployeeDetailsViewModel>($"/ess/{employeeId}/personaldetails", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1028,7 +1094,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssEmployeeDetailsViewModel UpdatePersonalDetails(int employeeId, SgEssEmployeeDetailsEditModel model)
         {
-            return ApiRequest<SgEssEmployeeDetailsViewModel,SgEssEmployeeDetailsEditModel>($"/ess/{employeeId}/personaldetails", model, Method.PUT);
+            return ApiRequest<SgEssEmployeeDetailsViewModel,SgEssEmployeeDetailsEditModel>($"/ess/{employeeId}/personaldetails", model, Method.Put);
         }
 
         /// <summary>
@@ -1039,7 +1105,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssEmployeeDetailsViewModel> UpdatePersonalDetailsAsync(int employeeId, SgEssEmployeeDetailsEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssEmployeeDetailsViewModel,SgEssEmployeeDetailsEditModel>($"/ess/{employeeId}/personaldetails", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgEssEmployeeDetailsViewModel,SgEssEmployeeDetailsEditModel>($"/ess/{employeeId}/personaldetails", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -1050,7 +1116,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void GetEmployeeProfileImage(int employeeId)
         {
-            ApiRequest($"/ess/{employeeId}/profileimage", Method.GET);
+            ApiRequest($"/ess/{employeeId}/profileimage", Method.Get);
         }
 
         /// <summary>
@@ -1061,7 +1127,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task GetEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/profileimage", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/profileimage", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1072,7 +1138,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public ProfileImageMetadata SetEmployeeProfileImage(int employeeId)
         {
-            return ApiRequest<ProfileImageMetadata>($"/ess/{employeeId}/profileimage", Method.POST);
+            return ApiRequest<ProfileImageMetadata>($"/ess/{employeeId}/profileimage", Method.Post);
         }
 
         /// <summary>
@@ -1083,7 +1149,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<ProfileImageMetadata>($"/ess/{employeeId}/profileimage", Method.POST, cancellationToken);
+            return ApiRequestAsync<ProfileImageMetadata>($"/ess/{employeeId}/profileimage", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1094,7 +1160,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteEmployeeProfileImage(int employeeId)
         {
-            ApiRequest($"/ess/{employeeId}/profileimage", Method.DELETE);
+            ApiRequest($"/ess/{employeeId}/profileimage", Method.Delete);
         }
 
         /// <summary>
@@ -1105,7 +1171,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/profileimage", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/profileimage", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1116,7 +1182,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<PublicHolidayModel> GetPublicHolidays(int employeeId, GetPublicHolidaysQueryModel request)
         {
-            return ApiRequest<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -1127,7 +1193,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<PublicHolidayModel>> GetPublicHolidaysAsync(int employeeId, GetPublicHolidaysQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1136,9 +1202,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Retrieves the qualification details for a single employee.
         /// </remarks>
-        public List<EmployeeQualificationModel> GetQualificationsForEmployee(int employeeId)
+        public List<EssEmployeeQualificationModel> GetQualificationsForEmployee(int employeeId)
         {
-            return ApiRequest<List<EmployeeQualificationModel>>($"/ess/{employeeId}/qualification", Method.GET);
+            return ApiRequest<List<EssEmployeeQualificationModel>>($"/ess/{employeeId}/qualification", Method.Get);
         }
 
         /// <summary>
@@ -1147,75 +1213,31 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Retrieves the qualification details for a single employee.
         /// </remarks>
-        public Task<List<EmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int employeeId, CancellationToken cancellationToken = default)
+        public Task<List<EssEmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeQualificationModel>>($"/ess/{employeeId}/qualification", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssEmployeeQualificationModel>>($"/ess/{employeeId}/qualification", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Add/Update Employee Qualification
+        /// Add Employee Qualification
         /// </summary>
         /// <remarks>
-        /// Adds or updates a qualification for an employee.
+        /// Creates a qualification for an employee.
         /// </remarks>
-        public void AddUpdateEmployeeQualification(int employeeId, EmployeeQualificationModel qualification)
+        public void AddEmployeeQualification(int employeeId, EssEmployeeQualificationModel qualification)
         {
-            ApiRequest($"/ess/{employeeId}/qualification", qualification, Method.POST);
+            ApiRequest($"/ess/{employeeId}/qualification", qualification, Method.Post);
         }
 
         /// <summary>
-        /// Add/Update Employee Qualification
+        /// Add Employee Qualification
         /// </summary>
         /// <remarks>
-        /// Adds or updates a qualification for an employee.
+        /// Creates a qualification for an employee.
         /// </remarks>
-        public Task AddUpdateEmployeeQualificationAsync(int employeeId, EmployeeQualificationModel qualification, CancellationToken cancellationToken = default)
+        public Task AddEmployeeQualificationAsync(int employeeId, EssEmployeeQualificationModel qualification, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/qualification", qualification, Method.POST, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee Qualification
-        /// </summary>
-        /// <remarks>
-        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
-        /// </remarks>
-        public void DeleteEmployeeQualification(int employeeId, DeleteEmployeeQualificationQueryModel request)
-        {
-            ApiRequest($"/ess/{employeeId}/qualification?id={request.Id}", Method.DELETE);
-        }
-
-        /// <summary>
-        /// Delete Employee Qualification
-        /// </summary>
-        /// <remarks>
-        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
-        /// </remarks>
-        public Task DeleteEmployeeQualificationAsync(int employeeId, DeleteEmployeeQualificationQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/ess/{employeeId}/qualification?id={request.Id}", Method.DELETE, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Qualification Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the qualification with a specific ID.
-        /// </remarks>
-        public EmployeeQualificationModel GetQualificationDetails(int employeeId, int id)
-        {
-            return ApiRequest<EmployeeQualificationModel>($"/ess/{employeeId}/qualification/{id}", Method.GET);
-        }
-
-        /// <summary>
-        /// Get Qualification Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the qualification with a specific ID.
-        /// </remarks>
-        public Task<EmployeeQualificationModel> GetQualificationDetailsAsync(int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeQualificationModel>($"/ess/{employeeId}/qualification/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/qualification", qualification, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1225,9 +1247,9 @@ namespace KeyPayV2.Sg.Functions
         /// Uploads an attachment to the qualification with the specified ID.
         /// The request should be a MIME multipart file upload request.
         /// </remarks>
-        public void UploadAttachmentToQualification(int employeeId, int qualificationId, UploadAttachmentToQualificationQueryModel request)
+        public void UploadAttachmentToQualification(int employeeId, int employeeQualificationId, UploadAttachmentToQualificationQueryModel request)
         {
-            ApiRequest($"/ess/{employeeId}/qualification/{qualificationId}/attachment?fileName={request.FileName}", Method.PUT);
+            ApiRequest($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment?fileName={request.FileName}", Method.Put);
         }
 
         /// <summary>
@@ -1237,31 +1259,119 @@ namespace KeyPayV2.Sg.Functions
         /// Uploads an attachment to the qualification with the specified ID.
         /// The request should be a MIME multipart file upload request.
         /// </remarks>
-        public Task UploadAttachmentToQualificationAsync(int employeeId, int qualificationId, UploadAttachmentToQualificationQueryModel request, CancellationToken cancellationToken = default)
+        public Task UploadAttachmentToQualificationAsync(int employeeId, int employeeQualificationId, UploadAttachmentToQualificationQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/qualification/{qualificationId}/attachment?fileName={request.FileName}", Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment?fileName={request.FileName}", Method.Put, cancellationToken);
         }
 
         /// <summary>
-        /// Delete attachment from qualification
+        /// Delete attachment from EmployeeQualification
         /// </summary>
         /// <remarks>
-        /// Deletes the attachment on the qualification with the specified ID.
+        /// Deletes the attachment on the EmployeeQualification with the specified ID.
         /// </remarks>
-        public void DeleteAttachmentFromQualification(int employeeId, int qualificationId, int documentId)
+        public void DeleteAttachmentFromEmployeequalification(int employeeId, int employeeQualificationId, int documentId)
         {
-            ApiRequest($"/ess/{employeeId}/qualification/{qualificationId}/attachment/{documentId}", Method.DELETE);
+            ApiRequest($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment/{documentId}", Method.Delete);
         }
 
         /// <summary>
-        /// Delete attachment from qualification
+        /// Delete attachment from EmployeeQualification
         /// </summary>
         /// <remarks>
-        /// Deletes the attachment on the qualification with the specified ID.
+        /// Deletes the attachment on the EmployeeQualification with the specified ID.
         /// </remarks>
-        public Task DeleteAttachmentFromQualificationAsync(int employeeId, int qualificationId, int documentId, CancellationToken cancellationToken = default)
+        public Task DeleteAttachmentFromEmployeequalificationAsync(int employeeId, int employeeQualificationId, int documentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/qualification/{qualificationId}/attachment/{documentId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment/{documentId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Qualification Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the qualification with a specific EmployeeQualification ID.
+        /// </remarks>
+        public EssEmployeeQualificationModel GetQualificationDetails(int employeeId, int id)
+        {
+            return ApiRequest<EssEmployeeQualificationModel>($"/ess/{employeeId}/qualification/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Qualification Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the qualification with a specific EmployeeQualification ID.
+        /// </remarks>
+        public Task<EssEmployeeQualificationModel> GetQualificationDetailsAsync(int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EssEmployeeQualificationModel>($"/ess/{employeeId}/qualification/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Updates a qualification for an employee.
+        /// </remarks>
+        public void UpdateEmployeeQualification(int employeeId, int id, EssEmployeeQualificationModel qualification)
+        {
+            ApiRequest($"/ess/{employeeId}/qualification/{id}", qualification, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Updates a qualification for an employee.
+        /// </remarks>
+        public Task UpdateEmployeeQualificationAsync(int employeeId, int id, EssEmployeeQualificationModel qualification, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/qualification/{id}", qualification, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
+        /// </remarks>
+        public void DeleteEmployeeQualification(int employeeId, int id)
+        {
+            ApiRequest($"/ess/{employeeId}/qualification/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
+        /// </remarks>
+        public Task DeleteEmployeeQualificationAsync(int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/qualification/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Satisfaction Survey Results
+        /// </summary>
+        /// <remarks>
+        /// Gets satisfaction survey results for the employee
+        /// </remarks>
+        public List<EssSatisfactionSurvey> GetSatisfactionSurveyResults(int employeeId)
+        {
+            return ApiRequest<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Satisfaction Survey Results
+        /// </summary>
+        /// <remarks>
+        /// Gets satisfaction survey results for the employee
+        /// </remarks>
+        public Task<List<EssSatisfactionSurvey>> GetSatisfactionSurveyResultsAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1272,7 +1382,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssSatisfactionSurvey> GetSatisfactionSurveyResults(int employeeId, GetSatisfactionSurveyResultsQueryModel request)
         {
-            return ApiRequest<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -1283,7 +1393,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssSatisfactionSurvey>> GetSatisfactionSurveyResultsAsync(int employeeId, GetSatisfactionSurveyResultsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1294,7 +1404,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EmployeeSatisfactionValue SubmitSatisfactionSurvey(int employeeId, EssSatisfactionSurvey survey)
         {
-            return ApiRequest<EmployeeSatisfactionValue,EssSatisfactionSurvey>($"/ess/{employeeId}/satisfaction", survey, Method.POST);
+            return ApiRequest<EmployeeSatisfactionValue,EssSatisfactionSurvey>($"/ess/{employeeId}/satisfaction", survey, Method.Post);
         }
 
         /// <summary>
@@ -1305,7 +1415,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EmployeeSatisfactionValue> SubmitSatisfactionSurveyAsync(int employeeId, EssSatisfactionSurvey survey, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeSatisfactionValue,EssSatisfactionSurvey>($"/ess/{employeeId}/satisfaction", survey, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeSatisfactionValue,EssSatisfactionSurvey>($"/ess/{employeeId}/satisfaction", survey, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1316,7 +1426,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgFeaturesModel GetEnabledFeatures(int employeeId)
         {
-            return ApiRequest<SgFeaturesModel>($"/ess/{employeeId}/security/features", Method.GET);
+            return ApiRequest<SgFeaturesModel>($"/ess/{employeeId}/security/features", Method.Get);
         }
 
         /// <summary>
@@ -1327,7 +1437,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgFeaturesModel> GetEnabledFeaturesAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgFeaturesModel>($"/ess/{employeeId}/security/features", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgFeaturesModel>($"/ess/{employeeId}/security/features", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1338,7 +1448,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgEssRosterShiftModel> ListRosterShifts(int employeeId, ListRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -1349,7 +1459,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgEssRosterShiftModel>> ListRosterShiftsAsync(int employeeId, ListRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1360,7 +1470,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssRosterShiftModel GetRosterShiftById(int employeeId, int shiftId)
         {
-            return ApiRequest<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}", Method.GET);
+            return ApiRequest<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}", Method.Get);
         }
 
         /// <summary>
@@ -1371,7 +1481,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssRosterShiftModel> GetRosterShiftByIdAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1382,7 +1492,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int shiftId)
         {
-            return ApiRequest<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.POST);
+            return ApiRequest<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.Post);
         }
 
         /// <summary>
@@ -1393,7 +1503,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgAcceptRosterShiftResponseModel> AcceptRosterShiftAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.POST, cancellationToken);
+            return ApiRequestAsync<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1404,7 +1514,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssRosterShiftCountModel DeclineRosterShift(int employeeId, int shiftId, EssDeclineRosterShiftModel model)
         {
-            return ApiRequest<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.POST);
+            return ApiRequest<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.Post);
         }
 
         /// <summary>
@@ -1415,7 +1525,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssRosterShiftCountModel> DeclineRosterShiftAsync(int employeeId, int shiftId, EssDeclineRosterShiftModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1426,7 +1536,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int shiftId)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.Post);
         }
 
         /// <summary>
@@ -1437,7 +1547,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssRosterShiftActionResponse> AcceptShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1448,7 +1558,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int shiftId)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.Post);
         }
 
         /// <summary>
@@ -1459,7 +1569,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssRosterShiftActionResponse> CancelShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1470,7 +1580,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int shiftId)
         {
-            return ApiRequest<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates", Method.GET);
+            return ApiRequest<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates", Method.Get);
         }
 
         /// <summary>
@@ -1481,7 +1591,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssShiftSwapCandidate>> EmployeesEligibleForShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1492,7 +1602,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int shiftId)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.Post);
         }
 
         /// <summary>
@@ -1503,7 +1613,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssRosterShiftActionResponse> DeclineShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1514,7 +1624,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgAcceptRosterShiftsResponseModel BulkAcceptRosterShifts(int employeeId, EssBulkAcceptRosterShiftsModel model)
         {
-            return ApiRequest<SgAcceptRosterShiftsResponseModel,EssBulkAcceptRosterShiftsModel>($"/ess/{employeeId}/shift/accept", model, Method.POST);
+            return ApiRequest<SgAcceptRosterShiftsResponseModel,EssBulkAcceptRosterShiftsModel>($"/ess/{employeeId}/shift/accept", model, Method.Post);
         }
 
         /// <summary>
@@ -1525,7 +1635,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgAcceptRosterShiftsResponseModel> BulkAcceptRosterShiftsAsync(int employeeId, EssBulkAcceptRosterShiftsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgAcceptRosterShiftsResponseModel,EssBulkAcceptRosterShiftsModel>($"/ess/{employeeId}/shift/accept", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgAcceptRosterShiftsResponseModel,EssBulkAcceptRosterShiftsModel>($"/ess/{employeeId}/shift/accept", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1536,7 +1646,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssRosterShiftCountModel BulkDeclineRosterShifts(int employeeId, EssBulkDeclineRosterShiftsModel model)
         {
-            return ApiRequest<EssRosterShiftCountModel,EssBulkDeclineRosterShiftsModel>($"/ess/{employeeId}/shift/decline", model, Method.POST);
+            return ApiRequest<EssRosterShiftCountModel,EssBulkDeclineRosterShiftsModel>($"/ess/{employeeId}/shift/decline", model, Method.Post);
         }
 
         /// <summary>
@@ -1547,7 +1657,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssRosterShiftCountModel> BulkDeclineRosterShiftsAsync(int employeeId, EssBulkDeclineRosterShiftsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssRosterShiftCountModel,EssBulkDeclineRosterShiftsModel>($"/ess/{employeeId}/shift/decline", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EssRosterShiftCountModel,EssBulkDeclineRosterShiftsModel>($"/ess/{employeeId}/shift/decline", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1561,7 +1671,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
         {
-            return ApiRequest<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -1575,7 +1685,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1589,7 +1699,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
         {
-            return ApiRequest<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -1603,7 +1713,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1614,7 +1724,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int employeeId, FindNearbyRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -1625,7 +1735,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1636,7 +1746,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssBulkRosterShiftActionResponse BulkAcceptRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
         {
-            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/accept", model, Method.POST);
+            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/accept", model, Method.Post);
         }
 
         /// <summary>
@@ -1647,7 +1757,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssBulkRosterShiftActionResponse> BulkAcceptRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/accept", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/accept", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1658,7 +1768,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssBulkRosterShiftActionResponse BulkCancelRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
         {
-            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/cancel", model, Method.POST);
+            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/cancel", model, Method.Post);
         }
 
         /// <summary>
@@ -1669,7 +1779,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssBulkRosterShiftActionResponse> BulkCancelRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/cancel", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/cancel", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1680,7 +1790,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssBulkRosterShiftActionResponse BulkDeclineRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model)
         {
-            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/decline", model, Method.POST);
+            return ApiRequest<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/decline", model, Method.Post);
         }
 
         /// <summary>
@@ -1691,7 +1801,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssBulkRosterShiftActionResponse> BulkDeclineRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/decline", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssBulkRosterShiftActionResponse,EssBulkRosterShiftSwapModel>($"/ess/{employeeId}/shift/swap/decline", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1702,7 +1812,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssRosterShiftActionResponse ProposeShiftSwap(int employeeId, SwapShiftModel model)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse,SwapShiftModel>($"/ess/{employeeId}/shift/swap/propose", model, Method.POST);
+            return ApiRequest<SgEssRosterShiftActionResponse,SwapShiftModel>($"/ess/{employeeId}/shift/swap/propose", model, Method.Post);
         }
 
         /// <summary>
@@ -1713,7 +1823,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssRosterShiftActionResponse> ProposeShiftSwapAsync(int employeeId, SwapShiftModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse,SwapShiftModel>($"/ess/{employeeId}/shift/swap/propose", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse,SwapShiftModel>($"/ess/{employeeId}/shift/swap/propose", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1725,7 +1835,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void ClockOutEmployee(int employeeId, ClockOffModel request)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/clockoff", request, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/clockoff", request, Method.Post);
         }
 
         /// <summary>
@@ -1737,7 +1847,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task ClockOutEmployeeAsync(int employeeId, ClockOffModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/clockoff", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/clockoff", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1748,7 +1858,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public KioskEmployeeModel ClockInEmployee(int employeeId, SgClockOnModel model)
         {
-            return ApiRequest<KioskEmployeeModel,SgClockOnModel>($"/ess/{employeeId}/timeandattendance/clockon", model, Method.POST);
+            return ApiRequest<KioskEmployeeModel,SgClockOnModel>($"/ess/{employeeId}/timeandattendance/clockon", model, Method.Post);
         }
 
         /// <summary>
@@ -1759,7 +1869,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<KioskEmployeeModel> ClockInEmployeeAsync(int employeeId, SgClockOnModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<KioskEmployeeModel,SgClockOnModel>($"/ess/{employeeId}/timeandattendance/clockon", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<KioskEmployeeModel,SgClockOnModel>($"/ess/{employeeId}/timeandattendance/clockon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1771,7 +1881,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DiscardCurrentShift(int employeeId, ClockOffModel request)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/discard", request, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/discard", request, Method.Post);
         }
 
         /// <summary>
@@ -1783,7 +1893,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DiscardCurrentShiftAsync(int employeeId, ClockOffModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/discard", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/discard", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1794,7 +1904,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void EndBreak(int employeeId, EndBreakModel request)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/endbreak", request, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/endbreak", request, Method.Post);
         }
 
         /// <summary>
@@ -1805,7 +1915,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task EndBreakAsync(int employeeId, EndBreakModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/endbreak", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/endbreak", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1816,7 +1926,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgTimeAndAttendanceLookupDataModel GetLookupData(int employeeId)
         {
-            return ApiRequest<SgTimeAndAttendanceLookupDataModel>($"/ess/{employeeId}/timeandattendance/lookupdata", Method.GET);
+            return ApiRequest<SgTimeAndAttendanceLookupDataModel>($"/ess/{employeeId}/timeandattendance/lookupdata", Method.Get);
         }
 
         /// <summary>
@@ -1827,7 +1937,29 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgTimeAndAttendanceLookupDataModel> GetLookupDataAsync(int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgTimeAndAttendanceLookupDataModel>($"/ess/{employeeId}/timeandattendance/lookupdata", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgTimeAndAttendanceLookupDataModel>($"/ess/{employeeId}/timeandattendance/lookupdata", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Shift Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets shifts based on certain optional criteria.
+        /// </remarks>
+        public void GetShiftNotes(int employeeId, int shiftId)
+        {
+            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Shift Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets shifts based on certain optional criteria.
+        /// </remarks>
+        public Task GetShiftNotesAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1838,7 +1970,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void GetShiftNotes(int employeeId, int shiftId, GetShiftNotesQueryModel request)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.GET);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.Get);
         }
 
         /// <summary>
@@ -1849,7 +1981,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task GetShiftNotesAsync(int employeeId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1860,7 +1992,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void AddNoteToShift(int employeeId, int shiftId, AddNoteModel model)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes", model, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes", model, Method.Post);
         }
 
         /// <summary>
@@ -1871,7 +2003,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task AddNoteToShiftAsync(int employeeId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1882,7 +2014,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void MarkShiftNotesRead(int employeeId, MarkNotesReadViewModel model, string shiftId)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes/read-state", model, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes/read-state", model, Method.Post);
         }
 
         /// <summary>
@@ -1893,7 +2025,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task MarkShiftNotesReadAsync(int employeeId, MarkNotesReadViewModel model, string shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes/read-state", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes/read-state", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1904,7 +2036,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgTimeAndAttendanceShiftModel> Shifts(int employeeId, GetShiftsModel model)
         {
-            return ApiRequest<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/ess/{employeeId}/timeandattendance/shifts", model, Method.POST);
+            return ApiRequest<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/ess/{employeeId}/timeandattendance/shifts", model, Method.Post);
         }
 
         /// <summary>
@@ -1915,7 +2047,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgTimeAndAttendanceShiftModel>> ShiftsAsync(int employeeId, GetShiftsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/ess/{employeeId}/timeandattendance/shifts", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/ess/{employeeId}/timeandattendance/shifts", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1926,7 +2058,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void StartBreak(int employeeId, StartBreakModel request)
         {
-            ApiRequest($"/ess/{employeeId}/timeandattendance/startbreak", request, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timeandattendance/startbreak", request, Method.Post);
         }
 
         /// <summary>
@@ -1937,7 +2069,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task StartBreakAsync(int employeeId, StartBreakModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/startbreak", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/startbreak", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1948,7 +2080,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssTimesheetModel> ListTimesheets(int employeeId, ListTimesheetsQueryModel request)
         {
-            return ApiRequest<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -1959,7 +2091,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssTimesheetModel>> ListTimesheetsAsync(int employeeId, ListTimesheetsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1971,7 +2103,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet)
         {
-            ApiRequest($"/ess/{employeeId}/timesheet", timesheet, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timesheet", timesheet, Method.Post);
         }
 
         /// <summary>
@@ -1983,7 +2115,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task SubmitOrUpdateTimesheetAsync(int employeeId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timesheet", timesheet, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timesheet", timesheet, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1994,7 +2126,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet)
         {
-            ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.POST);
+            ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.Post);
         }
 
         /// <summary>
@@ -2005,7 +2137,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task EditTimesheetAsync(int employeeId, int timesheetId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2016,7 +2148,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteTimesheet(int employeeId, int timesheetId)
         {
-            ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", Method.DELETE);
+            ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", Method.Delete);
         }
 
         /// <summary>
@@ -2027,7 +2159,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteTimesheetAsync(int employeeId, int timesheetId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timesheet/{timesheetId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/timesheet/{timesheetId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -2038,7 +2170,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEssTimesheetDataModel GetTimesheetCreationData(int employeeId, GetTimesheetCreationDataQueryModel request)
         {
-            return ApiRequest<SgEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET);
+            return ApiRequest<SgEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
@@ -2049,7 +2181,29 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEssTimesheetDataModel> GetTimesheetCreationDataAsync(int employeeId, GetTimesheetCreationDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Unavailabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the unavailabilities for this employee, with optional filters.
+        /// </remarks>
+        public List<EssUnavailabilityModel> ListUnavailabilities(int employeeId)
+        {
+            return ApiRequest<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability", Method.Get);
+        }
+
+        /// <summary>
+        /// List Unavailabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the unavailabilities for this employee, with optional filters.
+        /// </remarks>
+        public Task<List<EssUnavailabilityModel>> ListUnavailabilitiesAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2060,7 +2214,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EssUnavailabilityModel> ListUnavailabilities(int employeeId, ListUnavailabilitiesQueryModel request)
         {
-            return ApiRequest<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -2071,7 +2225,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EssUnavailabilityModel>> ListUnavailabilitiesAsync(int employeeId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2082,7 +2236,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssUnavailabilityModel CreateUnavailability(int employeeId, UnavailabilityEditModel unavailability)
         {
-            return ApiRequest<EssUnavailabilityModel,UnavailabilityEditModel>($"/ess/{employeeId}/unavailability", unavailability, Method.POST);
+            return ApiRequest<EssUnavailabilityModel,UnavailabilityEditModel>($"/ess/{employeeId}/unavailability", unavailability, Method.Post);
         }
 
         /// <summary>
@@ -2093,7 +2247,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssUnavailabilityModel> CreateUnavailabilityAsync(int employeeId, UnavailabilityEditModel unavailability, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssUnavailabilityModel,UnavailabilityEditModel>($"/ess/{employeeId}/unavailability", unavailability, Method.POST, cancellationToken);
+            return ApiRequestAsync<EssUnavailabilityModel,UnavailabilityEditModel>($"/ess/{employeeId}/unavailability", unavailability, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2104,7 +2258,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EssUnavailabilityModel GetUnavailabilityById(int employeeId, int unavailabilityId)
         {
-            return ApiRequest<EssUnavailabilityModel>($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.GET);
+            return ApiRequest<EssUnavailabilityModel>($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.Get);
         }
 
         /// <summary>
@@ -2115,7 +2269,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EssUnavailabilityModel> GetUnavailabilityByIdAsync(int employeeId, int unavailabilityId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssUnavailabilityModel>($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EssUnavailabilityModel>($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2126,7 +2280,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UpdateUnavailability(int employeeId, int unavailabilityId, UnavailabilityEditModel unavailability)
         {
-            ApiRequest($"/ess/{employeeId}/unavailability/{unavailabilityId}", unavailability, Method.PUT);
+            ApiRequest($"/ess/{employeeId}/unavailability/{unavailabilityId}", unavailability, Method.Put);
         }
 
         /// <summary>
@@ -2137,7 +2291,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UpdateUnavailabilityAsync(int employeeId, int unavailabilityId, UnavailabilityEditModel unavailability, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/unavailability/{unavailabilityId}", unavailability, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/unavailability/{unavailabilityId}", unavailability, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -2148,7 +2302,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteUnavailability(int employeeId, int unavailabilityId)
         {
-            ApiRequest($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.DELETE);
+            ApiRequest($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.Delete);
         }
 
         /// <summary>
@@ -2159,7 +2313,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteUnavailabilityAsync(int employeeId, int unavailabilityId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/unavailability/{unavailabilityId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -2170,7 +2324,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void RegisterDeviceToken(DeviceTokenModel model)
         {
-            ApiRequest($"/ess/devicetoken/register", model, Method.POST);
+            ApiRequest($"/ess/devicetoken/register", model, Method.Post);
         }
 
         /// <summary>
@@ -2181,7 +2335,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/devicetoken/register", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/devicetoken/register", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2192,7 +2346,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UnregisterDeviceToken(DeviceTokenModel model)
         {
-            ApiRequest($"/ess/devicetoken/unregister", model, Method.POST);
+            ApiRequest($"/ess/devicetoken/unregister", model, Method.Post);
         }
 
         /// <summary>
@@ -2203,7 +2357,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/devicetoken/unregister", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/devicetoken/unregister", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2214,7 +2368,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<AvailableEmployeeModel> GetEmployees()
         {
-            return ApiRequest<List<AvailableEmployeeModel>>($"/ess/security/employees", Method.GET);
+            return ApiRequest<List<AvailableEmployeeModel>>($"/ess/security/employees", Method.Get);
         }
 
         /// <summary>
@@ -2225,7 +2379,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<AvailableEmployeeModel>> GetEmployeesAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AvailableEmployeeModel>>($"/ess/security/employees", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AvailableEmployeeModel>>($"/ess/security/employees", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2236,7 +2390,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void RecoverForgottenPassword(RecoverPasswordModel model)
         {
-            ApiRequest($"/ess/security/forgottenpassword", model, Method.POST);
+            ApiRequest($"/ess/security/forgottenpassword", model, Method.Post);
         }
 
         /// <summary>
@@ -2247,7 +2401,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task RecoverForgottenPasswordAsync(RecoverPasswordModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/security/forgottenpassword", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/ess/security/forgottenpassword", model, Method.Post, cancellationToken);
         }
     }
 }

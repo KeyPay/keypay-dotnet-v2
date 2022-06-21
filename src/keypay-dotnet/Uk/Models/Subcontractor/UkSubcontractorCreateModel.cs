@@ -15,7 +15,7 @@ namespace KeyPayV2.Uk.Models.Subcontractor
         public SubcontractorBusinessType? BusinessType { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
-        public string OtherName { get; set; }
+        public string MiddleName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string Town { get; set; }

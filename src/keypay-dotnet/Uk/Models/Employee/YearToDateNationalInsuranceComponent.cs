@@ -15,11 +15,13 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal TotalNiablePay { get; set; }
         public decimal Lel { get; set; }
         public decimal LelToPt { get; set; }
-        public decimal PtToUel { get; set; }
+        public decimal PtToFust { get; set; }
+        public decimal FustToUel { get; set; }
         public decimal AboveUel { get; set; }
         public decimal EmployerNi { get; set; }
         public decimal LelToSt { get; set; }
-        public decimal StToUel { get; set; }
+        public decimal StToFust { get; set; }
+        public decimal FustToUst { get; set; }
         public string Name { get; set; }
         public decimal Amount { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

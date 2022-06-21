@@ -25,7 +25,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzLeaveCategoryModel CreateLeaveCategory(int businessId, NzLeaveCategoryModel leaveCategory)
         {
-            return ApiRequest<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST);
+            return ApiRequest<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, NzLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzLeaveCategoryModel GetLeaveCategoryById(int businessId, int id)
         {
-            return ApiRequest<NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.GET);
+            return ApiRequest<NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzLeaveCategoryModel> GetLeaveCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzLeaveCategoryModel UpdateLeaveCategory(int businessId, int id, NzLeaveCategoryModel leaveCategory)
         {
-            return ApiRequest<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT);
+            return ApiRequest<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, NzLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync<NzLeaveCategoryModel,NzLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void DeleteLeaveCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/leavecategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/leavecategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

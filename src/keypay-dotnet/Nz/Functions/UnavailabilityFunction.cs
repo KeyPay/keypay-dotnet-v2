@@ -22,9 +22,31 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Lists all of the unavailabilities for this business, with optional filters.
         /// </remarks>
+        public List<UnavailabilityModel> ListUnavailabilities(int businessId)
+        {
+            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability", Method.Get);
+        }
+
+        /// <summary>
+        /// List Unavailabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the unavailabilities for this business, with optional filters.
+        /// </remarks>
+        public Task<List<UnavailabilityModel>> ListUnavailabilitiesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Unavailabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the unavailabilities for this business, with optional filters.
+        /// </remarks>
         public List<UnavailabilityModel> ListUnavailabilities(int businessId, ListUnavailabilitiesQueryModel request)
         {
-            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employeeId={request.EmployeeId}&defaultLocationId={request.DefaultLocationId}", Method.GET);
+            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employeeId={request.EmployeeId}&defaultLocationId={request.DefaultLocationId}", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +57,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<UnavailabilityModel>> ListUnavailabilitiesAsync(int businessId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employeeId={request.EmployeeId}&defaultLocationId={request.DefaultLocationId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employeeId={request.EmployeeId}&defaultLocationId={request.DefaultLocationId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +68,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public UnavailabilityModel CreateUnavailability(int businessId, UnavailabilitySaveModel unavailabilitySaveModel)
         {
-            return ApiRequest<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability", unavailabilitySaveModel, Method.POST);
+            return ApiRequest<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability", unavailabilitySaveModel, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +79,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<UnavailabilityModel> CreateUnavailabilityAsync(int businessId, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability", unavailabilitySaveModel, Method.POST, cancellationToken);
+            return ApiRequestAsync<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability", unavailabilitySaveModel, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +90,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public UnavailabilityModel GetUnavailabilityById(int businessId, int id)
         {
-            return ApiRequest<UnavailabilityModel>($"/business/{businessId}/unavailability/{id}", Method.GET);
+            return ApiRequest<UnavailabilityModel>($"/business/{businessId}/unavailability/{id}", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +101,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<UnavailabilityModel> GetUnavailabilityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnavailabilityModel>($"/business/{businessId}/unavailability/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UnavailabilityModel>($"/business/{businessId}/unavailability/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +112,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel)
         {
-            ApiRequest($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.PUT);
+            ApiRequest($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.Put);
         }
 
         /// <summary>
@@ -101,7 +123,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task UpdateUnavailabilityAsync(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +134,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void DeleteUnavailability(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/unavailability/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/unavailability/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -123,7 +145,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task DeleteUnavailabilityAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/unavailability/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/unavailability/{id}", Method.Delete, cancellationToken);
         }
     }
 }

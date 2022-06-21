@@ -25,7 +25,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<SgPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgPayCategoryModel CreatePayCategory(int businessId, SgPayCategoryModel payCategory)
         {
-            return ApiRequest<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.POST);
+            return ApiRequest<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgPayCategoryModel> CreatePayCategoryAsync(int businessId, SgPayCategoryModel payCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgPayCategoryModel GetPayCategoryById(int businessId, int id)
         {
-            return ApiRequest<SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.GET);
+            return ApiRequest<SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgPayCategoryModel UpdatePayCategory(int businessId, int id, SgPayCategoryModel payCategory)
         {
-            return ApiRequest<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.PUT);
+            return ApiRequest<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgPayCategoryModel> UpdatePayCategoryAsync(int businessId, int id, SgPayCategoryModel payCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgPayCategoryModel,SgPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeletePayCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/paycategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/paycategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeletePayCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paycategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paycategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

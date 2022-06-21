@@ -61,6 +61,9 @@ namespace KeyPayV2.My.Models.Common
         public string MaritalStatus { get; set; }
         public string PassportIssuingCountry { get; set; }
         public string TieredLeaveTemplate { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveAnniversarySetting? LeaveAnniversarySetting { get; set; }
+        public DateTime? LeaveAnniversarySettingDate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

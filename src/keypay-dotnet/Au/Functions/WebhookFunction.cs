@@ -24,7 +24,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<WebHook> ListWebHookRegistrations(int businessId)
         {
-            return ApiRequest<List<WebHook>>($"/business/{businessId}/webhookregistrations", Method.GET);
+            return ApiRequest<List<WebHook>>($"/business/{businessId}/webhookregistrations", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<WebHook>> ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<WebHook>>($"/business/{businessId}/webhookregistrations", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<WebHook>>($"/business/{businessId}/webhookregistrations", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public WebHook RegisterWebHook(int businessId, WebHook webHook)
         {
-            return ApiRequest<WebHook,WebHook>($"/business/{businessId}/webhookregistrations", webHook, Method.POST);
+            return ApiRequest<WebHook,WebHook>($"/business/{businessId}/webhookregistrations", webHook, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<WebHook> RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<WebHook,WebHook>($"/business/{businessId}/webhookregistrations", webHook, Method.POST, cancellationToken);
+            return ApiRequestAsync<WebHook,WebHook>($"/business/{businessId}/webhookregistrations", webHook, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteAllWebHookRegistrations(int businessId)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations", Method.DELETE);
+            ApiRequest($"/business/{businessId}/webhookregistrations", Method.Delete);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteAllWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public WebHook GetWebHookRegistrationById(int businessId, string id)
         {
-            return ApiRequest<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.GET);
+            return ApiRequest<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.Get);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<WebHook> GetWebHookRegistrationByIdAsync(int businessId, string id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UpdateWebHookRegistration(int businessId, string id, WebHook webHook)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.PUT);
+            ApiRequest($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.Put);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UpdateWebHookRegistrationAsync(int businessId, string id, WebHook webHook, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteWebHookRegistration(int businessId, string id)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/webhookregistrations/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteWebHookRegistrationAsync(int businessId, string id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void TestWebHook(int businessId, string id, TestWebHookQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.GET);
+            ApiRequest($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.Get);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task TestWebHookAsync(int businessId, string id, TestWebHookQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.Get, cancellationToken);
         }
     }
 }

@@ -12,6 +12,11 @@ namespace KeyPayV2.Uk.Enums
         J,
         M,
         X,
-        Z
+        Z,
+        F,
+        I,
+        L,
+        S,
+        V
     }
 }

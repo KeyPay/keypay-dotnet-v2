@@ -8,6 +8,7 @@ namespace KeyPayV2.Uk.Enums
         None,
         PeriodEndingDate,
         PaymentDate,
-        EmployeeId
+        EmployeeId,
+        PayRunId
     }
 }

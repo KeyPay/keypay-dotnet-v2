@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Models.Business
         public string TaxOfficeNumber { get; set; }
         public string TaxOfficeReference { get; set; }
         public string AccountsOfficeReference { get; set; }
+        public string CorporateTaxUniqueTaxpayerReference { get; set; }
         public string RtiUserId { get; set; }
         public bool IsAgent { get; set; }
         public string BusinessName { get; set; }

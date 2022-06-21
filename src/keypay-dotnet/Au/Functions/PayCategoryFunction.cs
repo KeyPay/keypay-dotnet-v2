@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayCategoryModel CreatePayCategory(int businessId, AuPayCategoryModel payCategory)
         {
-            return ApiRequest<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.POST);
+            return ApiRequest<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayCategoryModel> CreatePayCategoryAsync(int businessId, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayCategoryModel GetPayCategoryById(int businessId, int id)
         {
-            return ApiRequest<AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.GET);
+            return ApiRequest<AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayCategoryModel UpdatePayCategory(int businessId, int id, AuPayCategoryModel payCategory)
         {
-            return ApiRequest<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.PUT);
+            return ApiRequest<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayCategoryModel> UpdatePayCategoryAsync(int businessId, int id, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory/{id}", payCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeletePayCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/paycategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/paycategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeletePayCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paycategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paycategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

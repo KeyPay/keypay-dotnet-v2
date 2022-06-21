@@ -71,6 +71,9 @@ namespace KeyPayV2.Au.Enums
         FlatFileEmployeeImporter,
         Twinfield,
         SageAccounting,
-        Square
+        Square,
+        Quickfile,
+        Tide,
+        TideSso
     }
 }

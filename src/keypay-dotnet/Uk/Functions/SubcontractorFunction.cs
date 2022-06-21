@@ -24,7 +24,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel)
         {
-            ApiRequest($"/business/{businessId}/subcontractor", createModel, Method.POST);
+            ApiRequest($"/business/{businessId}/subcontractor", createModel, Method.Post);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/subcontractor", createModel, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/subcontractor", createModel, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSubcontractorPaymentDetailsModel SaveSubcontractorPaymentDetails(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model)
         {
-            return ApiRequest<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.POST);
+            return ApiRequest<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSubcontractorPaymentDetailsModel> SaveSubcontractorPaymentDetailsAsync(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.Post, cancellationToken);
         }
     }
 }

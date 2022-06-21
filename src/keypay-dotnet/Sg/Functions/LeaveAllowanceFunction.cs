@@ -24,7 +24,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
         {
-            return ApiRequest<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.GET);
+            return ApiRequest<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Dictionary<string, IList<SgLeaveAllowanceModel>> GetLeaveAllowancesForAllEmployees(int businessId)
         {
-            return ApiRequest<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances", Method.GET);
+            return ApiRequest<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<Dictionary<string, IList<SgLeaveAllowanceModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances", Method.GET, cancellationToken);
+            return ApiRequestAsync<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgLeaveAllowanceModel SetLeaveAllowances(int businessId, SgLeaveAllowancesRequest request)
         {
-            return ApiRequest<SgLeaveAllowanceModel,SgLeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.PUT);
+            return ApiRequest<SgLeaveAllowanceModel,SgLeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.Put);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgLeaveAllowanceModel> SetLeaveAllowancesAsync(int businessId, SgLeaveAllowancesRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgLeaveAllowanceModel,SgLeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgLeaveAllowanceModel,SgLeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Dictionary<string, IList<SgLeaveAllowanceModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId)
         {
-            return ApiRequest<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.GET);
+            return ApiRequest<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<Dictionary<string, IList<SgLeaveAllowanceModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<Dictionary<string, IList<SgLeaveAllowanceModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<SgLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate)
         {
-            return ApiRequest<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.POST);
+            return ApiRequest<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.Post);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id)
         {
-            return ApiRequest<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.GET);
+            return ApiRequest<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Get);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate)
         {
-            return ApiRequest<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.PUT);
+            return ApiRequest<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.Put);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgLeaveAllowanceTemplateModel,SgLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteLeaveAllowanceTemplate(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.POST);
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post, cancellationToken);
         }
     }
 }

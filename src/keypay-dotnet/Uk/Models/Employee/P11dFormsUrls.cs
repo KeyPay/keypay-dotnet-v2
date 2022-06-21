@@ -22,5 +22,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public string DownloadFile { get; set; }
         public string DownloadSubmission { get; set; }
         public string PaymentUrl { get; set; }
+        public string CheckForInformallyPayrollingEnabledUrl { get; set; }
     }
 }

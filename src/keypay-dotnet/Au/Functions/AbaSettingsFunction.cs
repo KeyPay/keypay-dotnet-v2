@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<BusinessAbaModel> ListAbaSettings(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<BusinessAbaModel>>($"/business/{businessId}/aba{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<BusinessAbaModel>>($"/business/{businessId}/aba{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BusinessAbaModel>>($"/business/{businessId}/aba{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<BusinessAbaModel>>($"/business/{businessId}/aba{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails)
         {
-            ApiRequest($"/business/{businessId}/aba", abaDetails, Method.POST);
+            ApiRequest($"/business/{businessId}/aba", abaDetails, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/aba", abaDetails, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/aba", abaDetails, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public BusinessAbaModel GetAbaSettingsRecordById(int businessId, int id)
         {
-            return ApiRequest<BusinessAbaModel>($"/business/{businessId}/aba/{id}", Method.GET);
+            return ApiRequest<BusinessAbaModel>($"/business/{businessId}/aba/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<BusinessAbaModel> GetAbaSettingsRecordByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<BusinessAbaModel>($"/business/{businessId}/aba/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<BusinessAbaModel>($"/business/{businessId}/aba/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UpdateAbaSettingsRecord(int businessId, int id, BusinessAbaModel abaDetails)
         {
-            ApiRequest($"/business/{businessId}/aba/{id}", abaDetails, Method.PUT);
+            ApiRequest($"/business/{businessId}/aba/{id}", abaDetails, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UpdateAbaSettingsRecordAsync(int businessId, int id, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/aba/{id}", abaDetails, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/aba/{id}", abaDetails, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteAbaSettingsRecord(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/aba/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/aba/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteAbaSettingsRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/aba/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/aba/{id}", Method.Delete, cancellationToken);
         }
     }
 }

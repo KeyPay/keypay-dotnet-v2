@@ -24,7 +24,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId)
         {
-            return ApiRequest<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.GET);
+            return ApiRequest<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public AdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, AdditionalEarningsInputModel model)
         {
-            return ApiRequest<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.POST);
+            return ApiRequest<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<AdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Gets the employee's additional earning with the specified ID.
         /// </remarks>
-        public AdditionalEarningsModel GetEmployeeAdditionalEarningById(int businessId, int employeeId, int id)
+        public AdditionalEarningsModel GetEmployeeAdditionalEarningById(int businessId, int employeeId, long id)
         {
-            return ApiRequest<AdditionalEarningsModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.GET);
+            return ApiRequest<AdditionalEarningsModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Get);
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Gets the employee's additional earning with the specified ID.
         /// </remarks>
-        public Task<AdditionalEarningsModel> GetEmployeeAdditionalEarningByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task<AdditionalEarningsModel> GetEmployeeAdditionalEarningByIdAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AdditionalEarningsModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<AdditionalEarningsModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -88,9 +88,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Updates the employee's additional earning with the specified ID.
         /// </remarks>
-        public AdditionalEarningsModel UpdateEmployeeAdditionalEarning(int businessId, int employeeId, int id, AdditionalEarningsInputModel model)
+        public AdditionalEarningsModel UpdateEmployeeAdditionalEarning(int businessId, int employeeId, long id, AdditionalEarningsInputModel model)
         {
-            return ApiRequest<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.PUT);
+            return ApiRequest<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -99,9 +99,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Updates the employee's additional earning with the specified ID.
         /// </remarks>
-        public Task<AdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, int id, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
+        public Task<AdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -110,9 +110,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Deletes the employee's additional earning with the specified ID.
         /// </remarks>
-        public void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, int id)
+        public void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -121,9 +121,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Deletes the employee's additional earning with the specified ID.
         /// </remarks>
-        public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<EmployeeRecurringBenefitsInKindAdjustmentModel> ListEmployeeBenefitsInKindAdjustments(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.GET);
+            return ApiRequest<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.Get);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<EmployeeRecurringBenefitsInKindAdjustmentModel>> ListEmployeeBenefitsInKindAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringBenefitsInKindAdjustmentModel CreateEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, EmployeeRecurringBenefitsInKindAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", model, Method.POST);
+            return ApiRequest<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", model, Method.Post);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringBenefitsInKindAdjustmentModel> CreateEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringBenefitsInKindAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringBenefitsInKindAdjustmentModel GetEmployeeBenefitsInKindAdjustmentById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.GET);
+            return ApiRequest<EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Get);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringBenefitsInKindAdjustmentModel> GetEmployeeBenefitsInKindAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringBenefitsInKindAdjustmentModel UpdateEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id, EmployeeRecurringBenefitsInKindAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", model, Method.PUT);
+            return ApiRequest<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringBenefitsInKindAdjustmentModel> UpdateEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringBenefitsInKindAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringBenefitsInKindAdjustmentModel,EmployeeRecurringBenefitsInKindAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId)
         {
-            return ApiRequest<List<MyEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.GET);
+            return ApiRequest<List<MyEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.Get);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, MyEmployeeRecurringDeductionModel model)
         {
-            return ApiRequest<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST);
+            return ApiRequest<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.Post);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployeeRecurringDeductionModel> CreateEmployeeDeductionAsync(int businessId, int employeeId, MyEmployeeRecurringDeductionModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
         {
-            return ApiRequest<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.GET);
+            return ApiRequest<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.Get);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployeeRecurringDeductionModel> GetEmployeeDeductionByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployeeRecurringDeductionModel GetEmployeeDeductionById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.GET);
+            return ApiRequest<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.Get);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployeeRecurringDeductionModel> GetEmployeeDeductionByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployeeRecurringDeductionModel UpdateEmployeeDeduction(int businessId, int employeeId, int id, MyEmployeeRecurringDeductionModel model)
         {
-            return ApiRequest<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT);
+            return ApiRequest<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployeeRecurringDeductionModel> UpdateEmployeeDeductionAsync(int businessId, int employeeId, int id, MyEmployeeRecurringDeductionModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<MyEmployeeRecurringDeductionModel,MyEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployeeDeduction(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployeeDeductionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<EmployerRecurringLiabilityModel> ListEmployerLiabilities(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.GET);
+            return ApiRequest<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.Get);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<EmployerRecurringLiabilityModel>> ListEmployerLiabilitiesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -398,7 +398,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployerRecurringLiabilityModel CreateEmployerLiability(int businessId, int employeeId, EmployerRecurringLiabilityModel model)
         {
-            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.POST);
+            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.Post);
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployerRecurringLiabilityModel> CreateEmployerLiabilityAsync(int businessId, int employeeId, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -420,7 +420,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployerRecurringLiabilityModel GetEmployerLiabilityById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.GET);
+            return ApiRequest<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Get);
         }
 
         /// <summary>
@@ -431,7 +431,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployerRecurringLiabilityModel> GetEmployerLiabilityByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -442,7 +442,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployerRecurringLiabilityModel UpdateEmployerLiability(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model)
         {
-            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.PUT);
+            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployerRecurringLiabilityModel> UpdateEmployerLiabilityAsync(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployerLiability(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployerLiabilityAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.GET);
+            return ApiRequest<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.Get);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -508,7 +508,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringExpenseModel CreateEmployeeExpense(int businessId, int employeeId, EmployeeRecurringExpenseModel model)
         {
-            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.POST);
+            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.Post);
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringExpenseModel> CreateEmployeeExpenseAsync(int businessId, int employeeId, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringExpenseModel GetEmployeeExpenseById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.GET);
+            return ApiRequest<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Get);
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringExpenseModel> GetEmployeeExpenseByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -552,7 +552,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringExpenseModel UpdateEmployeeExpense(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model)
         {
-            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.PUT);
+            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -563,7 +563,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -574,7 +574,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployeeExpense(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -585,7 +585,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployeeExpenseAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<EmployeeRecurringStatutoryContributionAdjustmentModel> ListEmployeeStatutoryContributionAdjustments(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.GET);
+            return ApiRequest<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.Get);
         }
 
         /// <summary>
@@ -607,7 +607,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<EmployeeRecurringStatutoryContributionAdjustmentModel>> ListEmployeeStatutoryContributionAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringStatutoryContributionAdjustmentModel CreateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.POST);
+            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.Post);
         }
 
         /// <summary>
@@ -629,7 +629,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> CreateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringStatutoryContributionAdjustmentModel GetEmployeeStatutoryContributionAdjustmentById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.GET);
+            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Get);
         }
 
         /// <summary>
@@ -651,7 +651,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> GetEmployeeStatutoryContributionAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringStatutoryContributionAdjustmentModel UpdateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.PUT);
+            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> UpdateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -684,7 +684,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -695,7 +695,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.GET);
+            return ApiRequest<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.Get);
         }
 
         /// <summary>
@@ -717,7 +717,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -728,7 +728,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringTaxAdjustmentModel CreateEmployeeTaxAdjustment(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.POST);
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.Post);
         }
 
         /// <summary>
@@ -739,7 +739,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringTaxAdjustmentModel> CreateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -750,7 +750,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringTaxAdjustmentModel GetEmployeeTaxAdjustmentById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.GET);
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Get);
         }
 
         /// <summary>
@@ -761,7 +761,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringTaxAdjustmentModel> GetEmployeeTaxAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -772,7 +772,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringTaxAdjustmentModel UpdateEmployeeTaxAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.PUT);
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -783,7 +783,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -794,7 +794,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployeeTaxAdjustment(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -805,7 +805,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -816,7 +816,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<EmployeeRecurringTaxReliefAdjustmentModel> ListEmployeeTaxReliefAdjustments(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.GET);
+            return ApiRequest<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.Get);
         }
 
         /// <summary>
@@ -827,7 +827,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<EmployeeRecurringTaxReliefAdjustmentModel>> ListEmployeeTaxReliefAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringTaxReliefAdjustmentModel CreateEmployeeTaxReliefAdjustment(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.POST);
+            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.Post);
         }
 
         /// <summary>
@@ -849,7 +849,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringTaxReliefAdjustmentModel> CreateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -860,7 +860,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringTaxReliefAdjustmentModel GetEmployeeTaxReliefAdjustmentById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.GET);
+            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Get);
         }
 
         /// <summary>
@@ -871,7 +871,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringTaxReliefAdjustmentModel> GetEmployeeTaxReliefAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeRecurringTaxReliefAdjustmentModel UpdateEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model)
         {
-            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.PUT);
+            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -893,7 +893,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeRecurringTaxReliefAdjustmentModel> UpdateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -904,7 +904,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -915,7 +915,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -926,7 +926,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
         {
-            return ApiRequest<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST);
+            return ApiRequest<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post);
         }
 
         /// <summary>
@@ -937,7 +937,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post, cancellationToken);
         }
     }
 }

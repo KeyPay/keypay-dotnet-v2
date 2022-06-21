@@ -25,7 +25,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UkBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<UkBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBusinessExportModel UpdateBusinessDetails(UkEditBusinessDetailsApiModel model)
         {
-            return ApiRequest<UkBusinessExportModel,UkEditBusinessDetailsApiModel>($"/business", model, Method.PUT);
+            return ApiRequest<UkBusinessExportModel,UkEditBusinessDetailsApiModel>($"/business", model, Method.Put);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBusinessExportModel> UpdateBusinessDetailsAsync(UkEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBusinessExportModel,UkEditBusinessDetailsApiModel>($"/business", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UkBusinessExportModel,UkEditBusinessDetailsApiModel>($"/business", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBusinessExportModel CreateNewBusiness(UkBusinessExportModel model)
         {
-            return ApiRequest<UkBusinessExportModel,UkBusinessExportModel>($"/business", model, Method.POST);
+            return ApiRequest<UkBusinessExportModel,UkBusinessExportModel>($"/business", model, Method.Post);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBusinessExportModel> CreateNewBusinessAsync(UkBusinessExportModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBusinessExportModel,UkBusinessExportModel>($"/business", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkBusinessExportModel,UkBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBusinessExportModel CreateNewBusiness(UkBusinessExportModel model, CreateNewBusinessQueryModel request)
         {
-            return ApiRequest<UkBusinessExportModel,UkBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.POST);
+            return ApiRequest<UkBusinessExportModel,UkBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBusinessExportModel> CreateNewBusinessAsync(UkBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBusinessExportModel,UkBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkBusinessExportModel,UkBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBusinessExportModel GetBusinessDetails(int businessId)
         {
-            return ApiRequest<UkBusinessExportModel>($"/business/{businessId}", Method.GET);
+            return ApiRequest<UkBusinessExportModel>($"/business/{businessId}", Method.Get);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBusinessExportModel>($"/business/{businessId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.PUT);
+            ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", viewModel, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel)
         {
-            ApiRequest($"/business/{businessId}/access", viewModel, Method.POST);
+            ApiRequest($"/business/{businessId}/access", viewModel, Method.Post);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/access?email={request.Email}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/access?email={request.Email}", Method.Delete);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request)
         {
-            return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.GET);
+            return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.Get);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.GET, cancellationToken);
+            return ApiRequestAsync<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<BusinessAction> ListBusinessNotifications(int businessId)
         {
-            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.GET);
+            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DismissBusinessNotifications(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.DELETE);
+            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkBacsApiModel> ListBacsSettings(int businessId)
         {
-            return ApiRequest<List<UkBacsApiModel>>($"/business/{businessId}/bacs", Method.GET);
+            return ApiRequest<List<UkBacsApiModel>>($"/business/{businessId}/bacs", Method.Get);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkBacsApiModel>> ListBacsSettingsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkBacsApiModel>>($"/business/{businessId}/bacs", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkBacsApiModel>>($"/business/{businessId}/bacs", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBacsApiModel CreateBacsSettingsRecord(int businessId, UkBacsApiModel model)
         {
-            return ApiRequest<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs", model, Method.POST);
+            return ApiRequest<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs", model, Method.Post);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBacsApiModel> CreateBacsSettingsRecordAsync(int businessId, UkBacsApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBacsApiModel GetBacsSettingsRecordById(int businessId, int id)
         {
-            return ApiRequest<UkBacsApiModel>($"/business/{businessId}/bacs/{id}", Method.GET);
+            return ApiRequest<UkBacsApiModel>($"/business/{businessId}/bacs/{id}", Method.Get);
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBacsApiModel> GetBacsSettingsRecordByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBacsApiModel>($"/business/{businessId}/bacs/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkBacsApiModel>($"/business/{businessId}/bacs/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -360,7 +360,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBacsApiModel UpdateBacsSettingsRecord(int businessId, int id, UkBacsApiModel model)
         {
-            return ApiRequest<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs/{id}", model, Method.PUT);
+            return ApiRequest<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBacsApiModel> UpdateBacsSettingsRecordAsync(int businessId, int id, UkBacsApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UkBacsApiModel,UkBacsApiModel>($"/business/{businessId}/bacs/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteBacsSettingsRecord(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/bacs/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/bacs/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -393,7 +393,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteBacsSettingsRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/bacs/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/bacs/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -404,7 +404,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<DocumentModel> ListBusinessDocumentDetails(int businessId)
         {
-            return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document", Method.GET);
+            return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document", Method.Get);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<DocumentModel>>($"/business/{businessId}/document", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<DocumentModel>>($"/business/{businessId}/document", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -426,7 +426,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file)
         {
-            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.POST);
+            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post);
         }
 
         /// <summary>
@@ -437,7 +437,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -448,7 +448,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request)
         {
-            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.POST);
+            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post);
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.POST, cancellationToken);
+            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public DocumentModel GetBusinessDocumentDetails(int businessId, int id)
         {
-            return ApiRequest<DocumentModel>($"/business/{businessId}/document/{id}", Method.GET);
+            return ApiRequest<DocumentModel>($"/business/{businessId}/document/{id}", Method.Get);
         }
 
         /// <summary>
@@ -481,7 +481,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<DocumentModel> GetBusinessDocumentDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<DocumentModel>($"/business/{businessId}/document/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<DocumentModel>($"/business/{businessId}/document/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -492,7 +492,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public DocumentModel UpdateBusinessDocumentPermissions(int businessId, int id, UpdateDocumentPermissionsModel model)
         {
-            return ApiRequest<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.PUT);
+            return ApiRequest<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -503,7 +503,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<DocumentModel> UpdateBusinessDocumentPermissionsAsync(int businessId, int id, UpdateDocumentPermissionsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -514,7 +514,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteBusinessDocument(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/document/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/document/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -525,7 +525,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/document/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/document/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -536,7 +536,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public DocumentFile GetBusinessDocumentContent(int businessId, int id)
         {
-            return ApiRequest<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.GET);
+            return ApiRequest<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get);
         }
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.GET, cancellationToken);
+            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -559,7 +559,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UkLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<UkLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -571,7 +571,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public EmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
         {
-            return ApiRequest<EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.GET);
+            return ApiRequest<EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get);
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<EmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -604,7 +604,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public EmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, EmployeePortalSettingsModel model)
         {
-            return ApiRequest<EmployeePortalSettingsModel,EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.POST);
+            return ApiRequest<EmployeePortalSettingsModel,EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post);
         }
 
         /// <summary>
@@ -615,7 +615,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<EmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, EmployeePortalSettingsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeePortalSettingsModel,EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<EmployeePortalSettingsModel,EmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public EntitlementsModel ListEntitlements(int businessId)
         {
-            return ApiRequest<EntitlementsModel>($"/business/{businessId}/entitlements", Method.GET);
+            return ApiRequest<EntitlementsModel>($"/business/{businessId}/entitlements", Method.Get);
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EntitlementsModel>($"/business/{businessId}/entitlements", Method.GET, cancellationToken);
+            return ApiRequestAsync<EntitlementsModel>($"/business/{businessId}/entitlements", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -648,7 +648,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public HmrcSettingsResponseModel GetHmrcSettings(int businessId)
         {
-            return ApiRequest<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.GET);
+            return ApiRequest<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.Get);
         }
 
         /// <summary>
@@ -659,7 +659,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<HmrcSettingsResponseModel> GetHmrcSettingsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.GET, cancellationToken);
+            return ApiRequestAsync<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -670,7 +670,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model)
         {
-            return ApiRequest<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.PUT);
+            return ApiRequest<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.Put);
         }
 
         /// <summary>
@@ -681,7 +681,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<HmrcSettingsResponseModel> UpdateHmrcSettingsAsync(int businessId, HmrcSettingsRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId, GetEmploymentAllowanceSettingsQueryModel request)
         {
-            return ApiRequest<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.GET);
+            return ApiRequest<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.Get);
         }
 
         /// <summary>
@@ -703,7 +703,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, GetEmploymentAllowanceSettingsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -720,7 +720,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEmploymentAllowanceModel UpdateEmploymentAllowanceSettings(int businessId, UkEmploymentAllowanceModel model)
         {
-            return ApiRequest<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.PUT);
+            return ApiRequest<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.Put);
         }
 
         /// <summary>
@@ -737,17 +737,17 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkEmploymentAllowanceModel> UpdateEmploymentAllowanceSettingsAsync(int businessId, UkEmploymentAllowanceModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.Put, cancellationToken);
         }
 
         public HmrcSettingsRequestModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId)
         {
-            return ApiRequest<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.DELETE);
+            return ApiRequest<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete);
         }
 
         public Task<HmrcSettingsRequestModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.DELETE, cancellationToken);
+            return ApiRequestAsync<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -758,7 +758,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.POST);
+            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post);
         }
 
         /// <summary>
@@ -769,7 +769,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -781,7 +781,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UkLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<UkLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -793,7 +793,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -804,7 +804,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkLocationModel CreateLocation(int businessId, UkLocationModel location)
         {
-            return ApiRequest<UkLocationModel,UkLocationModel>($"/business/{businessId}/location", location, Method.POST);
+            return ApiRequest<UkLocationModel,UkLocationModel>($"/business/{businessId}/location", location, Method.Post);
         }
 
         /// <summary>
@@ -815,7 +815,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkLocationModel> CreateLocationAsync(int businessId, UkLocationModel location, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkLocationModel,UkLocationModel>($"/business/{businessId}/location", location, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkLocationModel,UkLocationModel>($"/business/{businessId}/location", location, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -826,7 +826,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSingleLocationModel GetLocationById(int businessId, int id)
         {
-            return ApiRequest<UkSingleLocationModel>($"/business/{businessId}/location/{id}", Method.GET);
+            return ApiRequest<UkSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
         }
 
         /// <summary>
@@ -837,7 +837,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSingleLocationModel>($"/business/{businessId}/location/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -848,7 +848,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void UpdateLocation(int businessId, int id, UkLocationModel location)
         {
-            ApiRequest($"/business/{businessId}/location/{id}", location, Method.PUT);
+            ApiRequest($"/business/{businessId}/location/{id}", location, Method.Put);
         }
 
         /// <summary>
@@ -859,7 +859,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task UpdateLocationAsync(int businessId, int id, UkLocationModel location, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", location, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -870,7 +870,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteLocation(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/location/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -881,7 +881,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -892,7 +892,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
         {
-            return ApiRequest<UkEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.GET);
+            return ApiRequest<UkEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get);
         }
 
         /// <summary>
@@ -903,7 +903,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -917,7 +917,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void CreatePayslipConfiguration(int businessId, UkEditBusinessPaySlipApiModel model)
         {
-            ApiRequest($"/business/{businessId}/payslip", model, Method.POST);
+            ApiRequest($"/business/{businessId}/payslip", model, Method.Post);
         }
 
         /// <summary>
@@ -931,7 +931,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task CreatePayslipConfigurationAsync(int businessId, UkEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -942,7 +942,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public TimesheetRoundingRulesModel GetRoundingRules(int businessId)
         {
-            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.GET);
+            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get);
         }
 
         /// <summary>
@@ -953,7 +953,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.GET, cancellationToken);
+            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -964,7 +964,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
         {
-            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.POST);
+            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.Post);
         }
 
         /// <summary>
@@ -975,7 +975,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -986,7 +986,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkSmpApiRowModel> GetAllStatutoryMaternityLeaveData(int businessId)
         {
-            return ApiRequest<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.GET);
+            return ApiRequest<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.Get);
         }
 
         /// <summary>
@@ -997,7 +997,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkSmpApiRowModel>> GetAllStatutoryMaternityLeaveDataAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1008,7 +1008,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkBillingPlanResponseModel> ListBillingPlans(int businessId)
         {
-            return ApiRequest<List<UkBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.GET);
+            return ApiRequest<List<UkBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
         }
 
         /// <summary>
@@ -1019,7 +1019,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkBillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1030,7 +1030,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBillingPlanResponseModel GetBusinessBillingPlans(int businessId)
         {
-            return ApiRequest<UkBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.GET);
+            return ApiRequest<UkBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
         }
 
         /// <summary>
@@ -1041,7 +1041,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBillingPlanResponseModel> GetBusinessBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1052,7 +1052,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model)
         {
-            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.POST);
+            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.Post);
         }
 
         /// <summary>
@@ -1063,7 +1063,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1071,7 +1071,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public void GetTheTimesheetSettingsForTheBusiness(int businessId)
         {
-            ApiRequest($"/business/{businessId}/timesheetsettings", Method.GET);
+            ApiRequest($"/business/{businessId}/timesheetsettings", Method.Get);
         }
 
         /// <summary>
@@ -1079,7 +1079,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheetsettings", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/timesheetsettings", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1087,7 +1087,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public void UpdateTheTimesheetSettingsForTheBusiness(int businessId, UkBusinessTimesheetSettingsModel model)
         {
-            ApiRequest($"/business/{businessId}/timesheetsettings", model, Method.PUT);
+            ApiRequest($"/business/{businessId}/timesheetsettings", model, Method.Put);
         }
 
         /// <summary>
@@ -1095,7 +1095,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, UkBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheetsettings", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/timesheetsettings", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -1106,7 +1106,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
         {
-            return ApiRequest<UkBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.GET);
+            return ApiRequest<UkBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
         }
 
         /// <summary>
@@ -1117,7 +1117,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
         }
     }
 }

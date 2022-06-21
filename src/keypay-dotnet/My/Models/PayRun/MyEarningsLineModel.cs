@@ -34,7 +34,7 @@ namespace KeyPayV2.My.Models.PayRun
         public int? LumpSumEFinancialYear { get; set; }
         public int? TimesheetLineId { get; set; }
         public string TimesheetLineExternalId { get; set; }
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string ExternalId { get; set; }
         public string LocationId { get; set; }
         public string LocationName { get; set; }

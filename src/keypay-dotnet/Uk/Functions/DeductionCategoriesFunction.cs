@@ -25,7 +25,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkDeductionCategoryModel CreateDeductionCategory(int businessId, UkDeductionCategoryModel deductionCategory)
         {
-            return ApiRequest<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.POST);
+            return ApiRequest<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkDeductionCategoryModel GetDeductionCategoryById(int businessId, int id)
         {
-            return ApiRequest<UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.GET);
+            return ApiRequest<UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, UkDeductionCategoryModel deductionCategory)
         {
-            return ApiRequest<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.PUT);
+            return ApiRequest<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteDeductionCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/deductioncategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

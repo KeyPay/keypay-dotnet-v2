@@ -24,7 +24,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public UserModel GetUserDetails()
         {
-            return ApiRequest<UserModel>($"/user", Method.GET);
+            return ApiRequest<UserModel>($"/user", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UserModel>($"/user", Method.GET, cancellationToken);
+            return ApiRequestAsync<UserModel>($"/user", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public UserUpdatedModel UpdateUser(UpdateUserModel model)
         {
-            return ApiRequest<UserUpdatedModel,UpdateUserModel>($"/user", model, Method.PUT);
+            return ApiRequest<UserUpdatedModel,UpdateUserModel>($"/user", model, Method.Put);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UserUpdatedModel,UpdateUserModel>($"/user", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UserUpdatedModel,UpdateUserModel>($"/user", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NewUserCreatedModel CreateNewUser(NewUserModel model)
         {
-            return ApiRequest<NewUserCreatedModel,NewUserModel>($"/user", model, Method.POST);
+            return ApiRequest<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzUserAccountMetadata ListRelatedBusinessesAndEmployees()
         {
-            return ApiRequest<NzUserAccountMetadata>($"/user/account/metadata", Method.GET);
+            return ApiRequest<NzUserAccountMetadata>($"/user/account/metadata", Method.Get);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzUserAccountMetadata>($"/user/account/metadata", Method.GET, cancellationToken);
+            return ApiRequestAsync<NzUserAccountMetadata>($"/user/account/metadata", Method.Get, cancellationToken);
         }
     }
 }

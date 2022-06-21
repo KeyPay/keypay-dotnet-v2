@@ -24,7 +24,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<QualificationModel> ListQualifications(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<QualificationModel>>($"/business/{businessId}/qualification{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<QualificationModel>>($"/business/{businessId}/qualification{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<QualificationModel>> ListQualificationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<QualificationModel>>($"/business/{businessId}/qualification{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<QualificationModel>>($"/business/{businessId}/qualification{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void CreateQualification(int businessId, QualificationModel qualification)
         {
-            ApiRequest($"/business/{businessId}/qualification", qualification, Method.POST);
+            ApiRequest($"/business/{businessId}/qualification", qualification, Method.Post);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/qualification", qualification, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/qualification", qualification, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public QualificationModel GetQualificationById(int businessId, int id)
         {
-            return ApiRequest<QualificationModel>($"/business/{businessId}/qualification/{id}", Method.GET);
+            return ApiRequest<QualificationModel>($"/business/{businessId}/qualification/{id}", Method.Get);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<QualificationModel> GetQualificationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<QualificationModel>($"/business/{businessId}/qualification/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<QualificationModel>($"/business/{businessId}/qualification/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void UpdateQualification(int businessId, int id, QualificationModel qualification)
         {
-            ApiRequest($"/business/{businessId}/qualification/{id}", qualification, Method.PUT);
+            ApiRequest($"/business/{businessId}/qualification/{id}", qualification, Method.Put);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task UpdateQualificationAsync(int businessId, int id, QualificationModel qualification, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/qualification/{id}", qualification, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/qualification/{id}", qualification, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteQualification(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/qualification/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/qualification/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteQualificationAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/qualification/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/qualification/{id}", Method.Delete, cancellationToken);
         }
     }
 }

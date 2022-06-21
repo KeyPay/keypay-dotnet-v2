@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>KeyPayV2</RootNamespace>
-    <AssemblyName>KeyPayV2</AssemblyName>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.1.491</AssemblyVersion>
-    <FileVersion>2.0.1.491</FileVersion>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>KeyPayV2</RootNamespace>
+		<AssemblyName>KeyPayV2</AssemblyName>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>2.0.1.508</AssemblyVersion>
+    <FileVersion>2.0.1.508</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
@@ -15,18 +15,18 @@
     <PackageReleaseNotes>Currently in beta and not supported. Use at your own risk.
 This is a major version bump. This new version of the client is automatically generated from our source APIs meaning that it can always be kept up to date.
 This new version also provides proper support for multiple regions.
-This release: Job  build 473 JSON updates</PackageReleaseNotes>
+This release: Merge pull request #10 from KeyPay/gw/upgrade-dotnet-files</PackageReleaseNotes>
     <Copyright>Copyright 2020</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.1.491</Version>
+    <Version>2.0.1.508</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
-    <PackageReference Include="RestSharp" Version="106.10.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="RestSharp" Version="108.0.1" />
+		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="108.0.1" />
+	</ItemGroup>
 
 </Project>

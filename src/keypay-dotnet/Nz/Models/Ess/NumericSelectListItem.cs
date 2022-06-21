@@ -8,7 +8,7 @@ namespace KeyPayV2.Nz.Models.Ess
 {
     public class NumericSelectListItem
     {
-        public int Value { get; set; }
+        public long Value { get; set; }
         public string Text { get; set; }
     }
 }

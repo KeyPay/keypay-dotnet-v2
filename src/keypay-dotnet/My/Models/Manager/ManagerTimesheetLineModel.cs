@@ -59,6 +59,7 @@ namespace KeyPayV2.My.Models.Manager
         public bool OverdrawsLeave { get; set; }
         public string ReviewedBy { get; set; }
         public TimeSpan? DurationOverride { get; set; }
+        public int? AutoApprovedByRosterShiftId { get; set; }
         public decimal WorkDurationInMinutes { get; set; }
         public decimal BreaksDurationInMinutes { get; set; }
         public decimal TotalDurationInMinutes { get; set; }

@@ -27,7 +27,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void InitiateEmployeeSelfSetup(int businessId, NzInitiateEmployeeOnboardingApiModel model)
         {
-            ApiRequest($"/business/{businessId}/employeeonboarding/initiateselfservice", model, Method.POST);
+            ApiRequest($"/business/{businessId}/employeeonboarding/initiateselfservice", model, Method.Post);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task InitiateEmployeeSelfSetupAsync(int businessId, NzInitiateEmployeeOnboardingApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeeonboarding/initiateselfservice", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employeeonboarding/initiateselfservice", model, Method.Post, cancellationToken);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<JournalAccountModel> GetJournalAccounts(int businessId)
         {
-            return ApiRequest<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.GET);
+            return ApiRequest<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<JournalAccountModel>> GetJournalAccountsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public JournalAccountModel CreateANewJournalAccount(int businessId, JournalAccountModel request)
         {
-            return ApiRequest<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.POST);
+            return ApiRequest<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<JournalAccountModel> CreateANewJournalAccountAsync(int businessId, JournalAccountModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.POST, cancellationToken);
+            return ApiRequestAsync<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public JournalAccountModel GetJournalAccountById(int businessId, int id)
         {
-            return ApiRequest<JournalAccountModel>($"/business/{businessId}/accounts/{id}", Method.GET);
+            return ApiRequest<JournalAccountModel>($"/business/{businessId}/accounts/{id}", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<JournalAccountModel> GetJournalAccountByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalAccountModel>($"/business/{businessId}/accounts/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<JournalAccountModel>($"/business/{businessId}/accounts/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public JournalAccountModel UpdateAnExistingJournalAccount(int businessId, int id, JournalAccountModel request)
         {
-            return ApiRequest<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts/{id}", request, Method.PUT);
+            return ApiRequest<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts/{id}", request, Method.Put);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<JournalAccountModel> UpdateAnExistingJournalAccountAsync(int businessId, int id, JournalAccountModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts/{id}", request, Method.PUT, cancellationToken);
+            return ApiRequestAsync<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts/{id}", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteAnExistingJournalAccount(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/accounts/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/accounts/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteAnExistingJournalAccountAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/accounts/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/accounts/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request)
         {
-            return ApiRequest<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.POST);
+            return ApiRequest<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.POST, cancellationToken);
+            return ApiRequestAsync<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public JournalServiceProviderModel GetJournalServiceProvider(int businessId)
         {
-            return ApiRequest<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.GET);
+            return ApiRequest<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.Get);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.GET, cancellationToken);
+            return ApiRequestAsync<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model)
         {
-            return ApiRequest<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.PUT);
+            return ApiRequest<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.Put);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<string> GetJournalServiceProviders(int businessId)
         {
-            return ApiRequest<List<string>>($"/business/{businessId}/accounts/journalservices", Method.GET);
+            return ApiRequest<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/journalservices", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<string> GetJournalAccountTypes(int businessId)
         {
-            return ApiRequest<List<string>>($"/business/{businessId}/accounts/types", Method.GET);
+            return ApiRequest<List<string>>($"/business/{businessId}/accounts/types", Method.Get);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/types", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/types", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgChartOfAccountsModel GetChartOfAccounts(int businessId)
         {
-            return ApiRequest<SgChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.GET);
+            return ApiRequest<SgChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgChartOfAccountsModel UpdateChartOfAccounts(int businessId, SgChartOfAccountsGroupModel chartOfAccounts)
         {
-            return ApiRequest<SgChartOfAccountsModel,SgChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.POST);
+            return ApiRequest<SgChartOfAccountsModel,SgChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, SgChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgChartOfAccountsModel,SgChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgChartOfAccountsModel,SgChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
         {
-            return ApiRequest<SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.GET);
+            return ApiRequest<SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, SgChartOfAccountsLocationGroupModel chartOfAccounts)
         {
-            return ApiRequest<SgChartOfAccountsLocationGroupModel,SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.POST);
+            return ApiRequest<SgChartOfAccountsLocationGroupModel,SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, SgChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgChartOfAccountsLocationGroupModel,SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgChartOfAccountsLocationGroupModel,SgChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
         {
-            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete);
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete, cancellationToken);
         }
     }
 }

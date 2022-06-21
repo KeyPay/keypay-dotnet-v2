@@ -24,7 +24,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model)
         {
-            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.POST);
+            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.Post);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, int employeeId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(int businessId, SingleSignOnRequestModel model)
         {
-            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/singlesignon", model, Method.POST);
+            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/singlesignon", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/singlesignon", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/singlesignon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model)
         {
-            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.POST);
+            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.Post);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void OauthToken(OauthTokenQueryModel request)
         {
-            ApiRequest($"/oauth/token?request={request.Request}", Method.POST);
+            ApiRequest($"/oauth/token?request={request.Request}", Method.Post);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task OauthTokenAsync(OauthTokenQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/oauth/token?request={request.Request}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/oauth/token?request={request.Request}", Method.Post, cancellationToken);
         }
     }
 }

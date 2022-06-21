@@ -10,6 +10,7 @@ namespace KeyPayV2.My.Models.WorkType
 {
     public class MyWorkTypeModel
     {
+        public IList<MyEmploymentTypeEnum> EmploymentTypes { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int? PayCategoryId { get; set; }

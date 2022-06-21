@@ -25,7 +25,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<MyEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<MyEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<MyEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<MyEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<MyEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployingEntityModel CreateEmployingEntity(int businessId, MyEmployingEntityModel employingEntity)
         {
-            return ApiRequest<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity", employingEntity, Method.POST);
+            return ApiRequest<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity", employingEntity, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployingEntityModel> CreateEmployingEntityAsync(int businessId, MyEmployingEntityModel employingEntity, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity", employingEntity, Method.POST, cancellationToken);
+            return ApiRequestAsync<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity", employingEntity, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployingEntityModel GetEmployingEntityById(int businessId, int id)
         {
-            return ApiRequest<MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", Method.GET);
+            return ApiRequest<MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployingEntityModel> GetEmployingEntityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public MyEmployingEntityModel UpdateEmployingEntity(int businessId, int id, MyEmployingEntityModel employingEntity)
         {
-            return ApiRequest<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", employingEntity, Method.PUT);
+            return ApiRequest<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", employingEntity, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<MyEmployingEntityModel> UpdateEmployingEntityAsync(int businessId, int id, MyEmployingEntityModel employingEntity, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", employingEntity, Method.PUT, cancellationToken);
+            return ApiRequestAsync<MyEmployingEntityModel,MyEmployingEntityModel>($"/business/{businessId}/employingentity/{id}", employingEntity, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteEmployingEntity(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/employingentity/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employingentity/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteEmployingEntityAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employingentity/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employingentity/{id}", Method.Delete, cancellationToken);
         }
     }
 }

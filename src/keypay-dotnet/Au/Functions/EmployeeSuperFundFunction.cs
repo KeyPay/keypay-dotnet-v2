@@ -23,7 +23,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<SuperFundModel> ListSuperFunds(int businessId, int employeeId)
         {
-            return ApiRequest<List<SuperFundModel>>($"/business/{businessId}/employee/{employeeId}/superfund", Method.GET);
+            return ApiRequest<List<SuperFundModel>>($"/business/{businessId}/employee/{employeeId}/superfund", Method.Get);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<SuperFundModel>> ListSuperFundsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SuperFundModel>>($"/business/{businessId}/employee/{employeeId}/superfund", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SuperFundModel>>($"/business/{businessId}/employee/{employeeId}/superfund", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public SaveSuperFundResponseModel CreateSuperFund(int businessId, int employeeId, SaveSuperFundModel model)
         {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund", model, Method.POST);
+            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund", model, Method.Post);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int businessId, int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public SaveSuperFundResponseModel UpdateSuperFund(int businessId, int employeeId, int id, SaveSuperFundModel model)
         {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{id}", model, Method.PUT);
+            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int businessId, int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public SaveSuperFundResponseModel DeleteSuperFund(int businessId, int employeeId, int superfundId)
         {
-            return ApiRequest<SaveSuperFundResponseModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superfundId}", Method.DELETE);
+            return ApiRequest<SaveSuperFundResponseModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superfundId}", Method.Delete);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int businessId, int employeeId, int superfundId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SaveSuperFundResponseModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superfundId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync<SaveSuperFundResponseModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superfundId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public SuperFundModel GetSuperFundById(int businessId, int employeeId, int superFundId)
         {
-            return ApiRequest<SuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", Method.GET);
+            return ApiRequest<SuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", Method.Get);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<SuperFundModel> GetSuperFundByIdAsync(int businessId, int employeeId, int superFundId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", Method.Get, cancellationToken);
         }
     }
 }

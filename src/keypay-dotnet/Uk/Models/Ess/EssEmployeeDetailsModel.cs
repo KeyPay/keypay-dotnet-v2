@@ -85,5 +85,6 @@ namespace KeyPayV2.Uk.Models.Ess
         public string TerminationDescription { get; set; }
         public IList<NumericSelectListItem> TerminationReasons { get; set; }
         public bool HasSoleUser { get; set; }
+        public EmployeeDetailsFields Fields { get; set; }
     }
 }

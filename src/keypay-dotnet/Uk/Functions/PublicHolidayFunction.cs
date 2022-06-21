@@ -24,7 +24,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<PublicHolidayModel> GetPublicHolidaysForYear(int businessId, GetPublicHolidaysForYearQueryModel request)
         {
-            return ApiRequest<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday?year={request.Year}", Method.GET);
+            return ApiRequest<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday?year={request.Year}", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<PublicHolidayModel>> GetPublicHolidaysForYearAsync(int businessId, GetPublicHolidaysForYearQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday?year={request.Year}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday?year={request.Year}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PublicHolidayModel AddAPublicHoliday(int businessId, PublicHolidayModel publicHoliday)
         {
-            return ApiRequest<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday", publicHoliday, Method.POST);
+            return ApiRequest<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday", publicHoliday, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PublicHolidayModel> AddAPublicHolidayAsync(int businessId, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday", publicHoliday, Method.POST, cancellationToken);
+            return ApiRequestAsync<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday", publicHoliday, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeletePublicHolidayByDate(int businessId, DeletePublicHolidayByDateQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/publicholiday?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/publicholiday?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Delete);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeletePublicHolidayByDateAsync(int businessId, DeletePublicHolidayByDateQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/publicholiday?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/publicholiday?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PublicHolidayModel GetPublicHolidayDetails(int businessId, int id)
         {
-            return ApiRequest<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.GET);
+            return ApiRequest<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.Get);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PublicHolidayModel> GetPublicHolidayDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PublicHolidayModel UpdatePublicHoliday(int businessId, int id, PublicHolidayModel publicHoliday)
         {
-            return ApiRequest<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.PUT);
+            return ApiRequest<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.Put);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PublicHolidayModel> UpdatePublicHolidayAsync(int businessId, int id, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.PUT, cancellationToken);
+            return ApiRequestAsync<PublicHolidayModel,PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeletePublicHoliday(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/publicholiday/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/publicholiday/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeletePublicHolidayAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/publicholiday/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/publicholiday/{id}", Method.Delete, cancellationToken);
         }
     }
 }

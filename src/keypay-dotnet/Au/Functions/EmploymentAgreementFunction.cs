@@ -24,7 +24,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public ShiftCostingsResponseModel GetShiftCostingsForEmployee(int businessId, int employeeId, ShiftCostingsRequestModel model)
         {
-            return ApiRequest<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftcosting", model, Method.POST);
+            return ApiRequest<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftcosting", model, Method.Post);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<ShiftCostingsResponseModel> GetShiftCostingsForEmployeeAsync(int businessId, int employeeId, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftcosting", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftcosting", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<ShiftPeriodModel> GetShiftPeriodsForEmployee(int businessId, int employeeId, GetShiftPeriodsModel model)
         {
-            return ApiRequest<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.POST);
+            return ApiRequest<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<ShiftPeriodModel>> GetShiftPeriodsForEmployeeAsync(int businessId, int employeeId, GetShiftPeriodsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employee/{employeeId}/timesheet/shiftperiods", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public EmploymentAgreementModel GetEmploymentAgreementById(int businessId, int id)
         {
-            return ApiRequest<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}", Method.GET);
+            return ApiRequest<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}", Method.Get);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<EmploymentAgreementModel> GetEmploymentAgreementByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmploymentAgreementModel>($"/business/{businessId}/employmentagreement/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public ShiftCostingsResponseModel EvaluateShiftCostings(int businessId, int id, ShiftCostingsRequestModel model)
         {
-            return ApiRequest<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employmentagreement/{id}/shiftcosting", model, Method.POST);
+            return ApiRequest<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employmentagreement/{id}/shiftcosting", model, Method.Post);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<ShiftCostingsResponseModel> EvaluateShiftCostingsAsync(int businessId, int id, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employmentagreement/{id}/shiftcosting", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<ShiftCostingsResponseModel,ShiftCostingsRequestModel>($"/business/{businessId}/employmentagreement/{id}/shiftcosting", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<ShiftCostingsResponseModel> BulkEvaluateShiftCostings(int businessId, int id, List<ShiftCostingsRequestModel> requests)
         {
-            return ApiRequest<List<ShiftCostingsResponseModel>,List<ShiftCostingsRequestModel>>($"/business/{businessId}/employmentagreement/{id}/shiftcosting/bulk", requests, Method.POST);
+            return ApiRequest<List<ShiftCostingsResponseModel>,List<ShiftCostingsRequestModel>>($"/business/{businessId}/employmentagreement/{id}/shiftcosting/bulk", requests, Method.Post);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<ShiftCostingsResponseModel>> BulkEvaluateShiftCostingsAsync(int businessId, int id, List<ShiftCostingsRequestModel> requests, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ShiftCostingsResponseModel>,List<ShiftCostingsRequestModel>>($"/business/{businessId}/employmentagreement/{id}/shiftcosting/bulk", requests, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<ShiftCostingsResponseModel>,List<ShiftCostingsRequestModel>>($"/business/{businessId}/employmentagreement/{id}/shiftcosting/bulk", requests, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<ShiftPeriodModel> GetShiftPeriods(int businessId, int id, GetShiftPeriodsModel model)
         {
-            return ApiRequest<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employmentagreement/{id}/shiftperiods", model, Method.POST);
+            return ApiRequest<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employmentagreement/{id}/shiftperiods", model, Method.Post);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<ShiftPeriodModel>> GetShiftPeriodsAsync(int businessId, int id, GetShiftPeriodsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employmentagreement/{id}/shiftperiods", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<ShiftPeriodModel>,GetShiftPeriodsModel>($"/business/{businessId}/employmentagreement/{id}/shiftperiods", model, Method.Post, cancellationToken);
         }
     }
 }

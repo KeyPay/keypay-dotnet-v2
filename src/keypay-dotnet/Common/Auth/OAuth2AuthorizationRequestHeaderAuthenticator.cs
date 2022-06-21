@@ -11,7 +11,7 @@ namespace KeyPayV2.Common.Auth
     /// <remarks>
     /// Based on http://tools.ietf.org/html/draft-ietf-oauth-v2-10#section-5.1.1
     /// </remarks>
-    public class OAuth2AuthorizationRequestHeaderAuthenticator : RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator
+    public class OAuth2AuthorizationRequestHeaderAuthenticator : RestSharp.Authenticators.OAuth2.OAuth2AuthorizationRequestHeaderAuthenticator
     {
         /// <summary>
         /// Stores the Authorization header value as "[tokenType] accessToken". used for performance.

@@ -22,9 +22,31 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Get invoices for the specified Brand.
         /// </remarks>
+        public List<InvoiceModel> GetBrandInvoices(int brandId)
+        {
+            return ApiRequest<List<InvoiceModel>>($"/brand/{brandId}/Invoice", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Brand Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Brand.
+        /// </remarks>
+        public Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<InvoiceModel>>($"/brand/{brandId}/Invoice", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Brand Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Brand.
+        /// </remarks>
         public List<InvoiceModel> GetBrandInvoices(int brandId, GetBrandInvoicesQueryModel request)
         {
-            return ApiRequest<List<InvoiceModel>>($"/brand/{brandId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<InvoiceModel>>($"/brand/{brandId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +57,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, GetBrandInvoicesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<InvoiceModel>>($"/brand/{brandId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<InvoiceModel>>($"/brand/{brandId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +68,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public InvoiceModel GetBrandInvoiceById(int id, int brandId)
         {
-            return ApiRequest<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.GET);
+            return ApiRequest<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.Get);
         }
 
         /// <summary>
@@ -57,7 +79,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<InvoiceModel> GetBrandInvoiceByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +90,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public byte[] GetBrandInvoiceExcelById(int id, int brandId)
         {
-            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/excel", Method.GET);
+            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/excel", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +101,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<byte[]> GetBrandInvoiceExcelByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/excel", Method.GET, cancellationToken);
+            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/excel", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +112,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public byte[] GetBrandInvoicePdfById(int id, int brandId)
         {
-            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/pdf", Method.GET);
+            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/pdf", Method.Get);
         }
 
         /// <summary>
@@ -101,7 +123,29 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<byte[]> GetBrandInvoicePdfByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/pdf", Method.GET, cancellationToken);
+            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Business.
+        /// </remarks>
+        public List<InvoiceModel> GetBusinessInvoices(int businessId)
+        {
+            return ApiRequest<List<InvoiceModel>>($"/business/{businessId}/Invoice", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Business.
+        /// </remarks>
+        public Task<List<InvoiceModel>> GetBusinessInvoicesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<InvoiceModel>>($"/business/{businessId}/Invoice", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +156,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<InvoiceModel> GetBusinessInvoices(int businessId, GetBusinessInvoicesQueryModel request)
         {
-            return ApiRequest<List<InvoiceModel>>($"/business/{businessId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<InvoiceModel>>($"/business/{businessId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -123,7 +167,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<InvoiceModel>> GetBusinessInvoicesAsync(int businessId, GetBusinessInvoicesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<InvoiceModel>>($"/business/{businessId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<InvoiceModel>>($"/business/{businessId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +178,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public InvoiceModel GetBusinessInvoiceById(int businessId, int id)
         {
-            return ApiRequest<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.GET);
+            return ApiRequest<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.Get);
         }
 
         /// <summary>
@@ -145,7 +189,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<InvoiceModel> GetBusinessInvoiceByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +200,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public byte[] GetBusinessInvoicePdfById(int businessId, int id)
         {
-            return ApiByteArrayRequest($"/business/{businessId}/Invoice/{id}/pdf", Method.GET);
+            return ApiByteArrayRequest($"/business/{businessId}/Invoice/{id}/pdf", Method.Get);
         }
 
         /// <summary>
@@ -167,7 +211,29 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<byte[]> GetBusinessInvoicePdfByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/Invoice/{id}/pdf", Method.GET, cancellationToken);
+            return ApiByteArrayRequestAsync($"/business/{businessId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Reseller Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Reseller.
+        /// </remarks>
+        public List<InvoiceModel> GetResellerInvoices(int? resellerId)
+        {
+            return ApiRequest<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Reseller Invoices
+        /// </summary>
+        /// <remarks>
+        /// Get invoices for the specified Reseller.
+        /// </remarks>
+        public Task<List<InvoiceModel>> GetResellerInvoicesAsync(int? resellerId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -178,7 +244,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<InvoiceModel> GetResellerInvoices(int? resellerId, GetResellerInvoicesQueryModel request)
         {
-            return ApiRequest<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET);
+            return ApiRequest<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
         }
 
         /// <summary>
@@ -189,7 +255,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<InvoiceModel>> GetResellerInvoicesAsync(int? resellerId, GetResellerInvoicesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<InvoiceModel>>($"/reseller/{resellerId}/Invoice?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +266,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public InvoiceModel GetResellerInvoiceById(int resellerId, int id)
         {
-            return ApiRequest<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.GET);
+            return ApiRequest<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.Get);
         }
 
         /// <summary>
@@ -211,7 +277,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<InvoiceModel> GetResellerInvoiceByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -222,7 +288,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public byte[] GetResellerInvoiceExcelById(int resellerId, int id)
         {
-            return ApiByteArrayRequest($"/reseller/{resellerId}/Invoice/{id}/excel", Method.GET);
+            return ApiByteArrayRequest($"/reseller/{resellerId}/Invoice/{id}/excel", Method.Get);
         }
 
         /// <summary>
@@ -233,7 +299,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<byte[]> GetResellerInvoiceExcelByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/reseller/{resellerId}/Invoice/{id}/excel", Method.GET, cancellationToken);
+            return ApiByteArrayRequestAsync($"/reseller/{resellerId}/Invoice/{id}/excel", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -244,7 +310,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public byte[] GetResellerInvoicePdfById(int resellerId, int id)
         {
-            return ApiByteArrayRequest($"/reseller/{resellerId}/Invoice/{id}/pdf", Method.GET);
+            return ApiByteArrayRequest($"/reseller/{resellerId}/Invoice/{id}/pdf", Method.Get);
         }
 
         /// <summary>
@@ -255,7 +321,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<byte[]> GetResellerInvoicePdfByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/reseller/{resellerId}/Invoice/{id}/pdf", Method.GET, cancellationToken);
+            return ApiByteArrayRequestAsync($"/reseller/{resellerId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
         }
     }
 }

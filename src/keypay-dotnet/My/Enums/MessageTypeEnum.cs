@@ -53,6 +53,7 @@ namespace KeyPayV2.My.Enums
         ShiftSwapRejected,
         ShiftSwapApproved,
         P60Available,
+        P60Error,
         LeavingEmployeeFormNotification,
         AutoEnrolmentNotification,
         LodgementNotification,

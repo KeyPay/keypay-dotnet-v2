@@ -25,7 +25,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<SgDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory)
         {
-            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.POST);
+            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgDeductionCategoryModel GetDeductionCategoryById(int businessId, int id)
         {
-            return ApiRequest<SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.GET);
+            return ApiRequest<SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, SgDeductionCategoryModel deductionCategory)
         {
-            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.PUT);
+            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteDeductionCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/deductioncategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

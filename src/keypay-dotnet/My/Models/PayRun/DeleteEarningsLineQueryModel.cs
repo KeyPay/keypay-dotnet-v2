@@ -8,6 +8,6 @@ namespace KeyPayV2.My.Models.PayRun
 {
     public class DeleteEarningsLineQueryModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
     }
 }

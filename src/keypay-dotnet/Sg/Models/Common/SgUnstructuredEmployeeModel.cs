@@ -52,6 +52,9 @@ namespace KeyPayV2.Sg.Models.Common
         public string EmploymentType { get; set; }
         public string TieredLeaveTemplate { get; set; }
         public string TerminationReason { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveAnniversarySetting? LeaveAnniversarySetting { get; set; }
+        public DateTime? LeaveAnniversarySettingDate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

@@ -25,7 +25,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<EarningsLineSplitApiModel> GetEmployeeEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<EarningsLineSplitApiModel>> GetEmployeeEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public EarningsLineSplitApiModel GetEarningsLineSplitByLocationId(int businessId, int employeeId, int locationId)
         {
-            return ApiRequest<EarningsLineSplitApiModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.GET);
+            return ApiRequest<EarningsLineSplitApiModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<EarningsLineSplitApiModel> GetEarningsLineSplitByLocationIdAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EarningsLineSplitApiModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EarningsLineSplitApiModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.PUT);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteEarningsLineSplit(int businessId, int employeeId, int locationId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteEarningsLineSplitAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", Method.Delete, cancellationToken);
         }
     }
 }

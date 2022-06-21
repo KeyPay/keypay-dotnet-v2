@@ -24,7 +24,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgBenefitsInKind> GetBenefitsInKinds(int businessId, int employeeId)
         {
-            return ApiRequest<List<SgBenefitsInKind>>($"/business/{businessId}/employee/{employeeId}/benefitsinkind", Method.GET);
+            return ApiRequest<List<SgBenefitsInKind>>($"/business/{businessId}/employee/{employeeId}/benefitsinkind", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgBenefitsInKind>> GetBenefitsInKindsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgBenefitsInKind>>($"/business/{businessId}/employee/{employeeId}/benefitsinkind", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgBenefitsInKind>>($"/business/{businessId}/employee/{employeeId}/benefitsinkind", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void CreateBenefitInKind(int businessId, int employeeId, SgBenefitsInKind model)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkind", model, Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkind", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task CreateBenefitInKindAsync(int businessId, int employeeId, SgBenefitsInKind model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkind", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkind", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgBenefitsInKind GetBenefitsInKind(int businessId, int employeeId, int id)
         {
-            return ApiRequest<SgBenefitsInKind>($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.GET);
+            return ApiRequest<SgBenefitsInKind>($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgBenefitsInKind> GetBenefitsInKindAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgBenefitsInKind>($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgBenefitsInKind>($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void UpdateAnBenefitInKind(int businessId, int employeeId, int id, SgBenefitsInKind request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", request, Method.PUT);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", request, Method.Put);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task UpdateAnBenefitInKindAsync(int businessId, int employeeId, int id, SgBenefitsInKind request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", request, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteBenefitInKind(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteBenefitInKindAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkind/{id}", Method.Delete, cancellationToken);
         }
     }
 }

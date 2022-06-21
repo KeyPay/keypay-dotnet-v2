@@ -25,7 +25,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<EmployerLiabilityCategoryModel>>($"/business/{businessId}/employerliabilitycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<EmployerLiabilityCategoryModel>>($"/business/{businessId}/employerliabilitycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployerLiabilityCategoryModel>>($"/business/{businessId}/employerliabilitycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<EmployerLiabilityCategoryModel>>($"/business/{businessId}/employerliabilitycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void CreateEmployerLiabilityCategory(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory)
         {
-            ApiRequest($"/business/{businessId}/employerliabilitycategory", employerLiabilityCategory, Method.POST);
+            ApiRequest($"/business/{businessId}/employerliabilitycategory", employerLiabilityCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task CreateEmployerLiabilityCategoryAsync(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory", employerLiabilityCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory", employerLiabilityCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id)
         {
-            return ApiRequest<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.GET);
+            return ApiRequest<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<EmployerLiabilityCategoryModel> GetEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void UpdateEmployerLiabilityCategory(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory)
         {
-            ApiRequest($"/business/{businessId}/employerliabilitycategory/{id}", employerLiabilityCategory, Method.PUT);
+            ApiRequest($"/business/{businessId}/employerliabilitycategory/{id}", employerLiabilityCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task UpdateEmployerLiabilityCategoryAsync(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", employerLiabilityCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", employerLiabilityCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteEmployerLiabilityCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/employerliabilitycategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employerliabilitycategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

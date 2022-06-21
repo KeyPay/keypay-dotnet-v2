@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding)
         {
-            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.PUT);
+            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Put);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.PUT, cancellationToken);
+            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request)
         {
-            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.PUT);
+            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Put);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.PUT, cancellationToken);
+            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void PublishPaymentSummaries(int businessId, int financialYearEnding)
         {
-            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.POST);
+            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Post);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task PublishPaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void PublishPaymentSummaries(int businessId, int financialYearEnding, PublishPaymentSummariesQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.POST);
+            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Post);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task PublishPaymentSummariesAsync(int businessId, int financialYearEnding, PublishPaymentSummariesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UnpublishPaymentSummaries(int businessId, int financialYearEnding)
         {
-            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Delete);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UnpublishPaymentSummaries(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Delete);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Delete, cancellationToken);
         }
     }
 }

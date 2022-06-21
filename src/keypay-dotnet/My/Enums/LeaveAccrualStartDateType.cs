@@ -6,6 +6,7 @@ namespace KeyPayV2.My.Enums
     public enum LeaveAccrualStartDateType
     {
         EmployeeStartDate,
-        SpecifiedDate
+        SpecifiedDate,
+        CalendarYear
     }
 }

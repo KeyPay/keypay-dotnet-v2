@@ -25,7 +25,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NzEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<NzEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<NzEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NzEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NzEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzEmployeeGroupModel CreateEmployeeGroup(int businessId, NzEmployeeGroupModel employeeGroup)
         {
-            return ApiRequest<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.POST);
+            return ApiRequest<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.POST, cancellationToken);
+            return ApiRequestAsync<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
         {
-            return ApiRequest<NzDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.GET);
+            return ApiRequest<NzDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<NzDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, NzEmployeeGroupModel employeeGroup)
         {
-            return ApiRequest<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT);
+            return ApiRequest<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT, cancellationToken);
+            return ApiRequestAsync<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void DeleteEmployeeGroup(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/employeegroup/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employeegroup/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeegroup/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employeegroup/{id}", Method.Delete, cancellationToken);
         }
     }
 }

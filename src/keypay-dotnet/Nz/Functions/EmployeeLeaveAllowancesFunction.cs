@@ -23,7 +23,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NzLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId)
         {
-            return ApiRequest<List<NzLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.GET);
+            return ApiRequest<List<NzLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.Get);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NzLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NzLeaveAllowanceModel>>($"/business/{businessId}/employee/{employeeId}/leaveallowances", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void SetLeaveAllowances(int businessId, int employeeId, IList<NzLeaveAllowanceModel> leaveAllowances)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.PUT);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.Put);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<NzLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.Put, cancellationToken);
         }
     }
 }

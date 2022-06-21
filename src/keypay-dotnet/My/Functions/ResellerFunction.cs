@@ -24,7 +24,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<ResellerModel> ListResellers()
         {
-            return ApiRequest<List<ResellerModel>>($"/reseller", Method.GET);
+            return ApiRequest<List<ResellerModel>>($"/reseller", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<ResellerModel>> ListResellersAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ResellerModel>>($"/reseller", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<ResellerModel>>($"/reseller", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public ResellerModel GetResellerById(int id)
         {
-            return ApiRequest<ResellerModel>($"/reseller/{id}", Method.GET);
+            return ApiRequest<ResellerModel>($"/reseller/{id}", Method.Get);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<ResellerModel> GetResellerByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<ResellerModel>($"/reseller/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<ResellerModel>($"/reseller/{id}", Method.Get, cancellationToken);
         }
     }
 }

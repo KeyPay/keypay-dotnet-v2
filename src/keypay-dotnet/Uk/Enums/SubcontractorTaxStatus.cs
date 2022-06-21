@@ -7,7 +7,6 @@ namespace KeyPayV2.Uk.Enums
     {
         Unmatched,
         Standard,
-        Higher,
         Gross,
         VerificationRequired
     }

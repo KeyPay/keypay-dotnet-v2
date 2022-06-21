@@ -18,6 +18,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal LelCalculation { get; set; }
         public decimal PtCalculation { get; set; }
         public decimal StCalculation { get; set; }
+        public decimal PtToFustCalculation { get; set; }
+        public decimal StToFustCalculation { get; set; }
         public decimal UelCalculation { get; set; }
         public decimal UelPlusCalculation { get; set; }
         public bool DirectorsNi { get; set; }

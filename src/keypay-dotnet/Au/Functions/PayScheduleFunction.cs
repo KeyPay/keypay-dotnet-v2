@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<AuPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayScheduleModel CreatePaySchedule(int businessId, AuPayScheduleModel paySchedule)
         {
-            return ApiRequest<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.POST);
+            return ApiRequest<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayScheduleModel> CreatePayScheduleAsync(int businessId, AuPayScheduleModel paySchedule, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.POST, cancellationToken);
+            return ApiRequestAsync<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayScheduleModel GetPayScheduleById(int businessId, int id)
         {
-            return ApiRequest<AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", Method.GET);
+            return ApiRequest<AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayScheduleModel> GetPayScheduleByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayScheduleModel UpdatePaySchedule(int businessId, int id, AuPayScheduleModel paySchedule)
         {
-            return ApiRequest<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.PUT);
+            return ApiRequest<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayScheduleModel> UpdatePayScheduleAsync(int businessId, int id, AuPayScheduleModel paySchedule, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.PUT, cancellationToken);
+            return ApiRequestAsync<AuPayScheduleModel,AuPayScheduleModel>($"/business/{businessId}/payschedule/{id}", paySchedule, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeletePaySchedule(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/payschedule/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/payschedule/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeletePayScheduleAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payschedule/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payschedule/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId)
         {
-            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.GET);
+            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.GET, cancellationToken);
+            return ApiRequestAsync<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId)
         {
-            return ApiRequest<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata", Method.GET);
+            return ApiRequest<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata", Method.Get);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata", Method.GET, cancellationToken);
+            return ApiRequestAsync<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId)
         {
-            return ApiRequest<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.GET);
+            return ApiRequest<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.Get);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<PayScheduleDateForecastResultApiModel>> ListNextPayDatesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.Get, cancellationToken);
         }
     }
 }

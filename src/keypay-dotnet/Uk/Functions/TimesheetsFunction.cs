@@ -25,7 +25,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UkTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<UkTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<UkTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkIndividualTimesheetLineModel CreateTimesheetLine(int businessId, UkIndividualTimesheetLineModel request)
         {
-            return ApiRequest<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet", request, Method.POST);
+            return ApiRequest<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet", request, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet", request, Method.POST, cancellationToken);
+            return ApiRequestAsync<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request)
         {
-            return ApiRequest<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.PUT);
+            return ApiRequest<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.PUT, cancellationToken);
+            return ApiRequestAsync<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteTimesheetLine(int businessId, int timesheetLineId)
         {
-            ApiRequest($"/business/{businessId}/timesheet/{timesheetLineId}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Delete);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/{timesheetLineId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void UpdateReplaceTimesheets(int businessId, UkSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.PUT);
+            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.Put);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task UpdateReplaceTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/bulk", request, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void BulkInsertTimesheets(int businessId, UkSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.POST);
+            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.Post);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task BulkInsertTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/bulk", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
         }
     }
 }

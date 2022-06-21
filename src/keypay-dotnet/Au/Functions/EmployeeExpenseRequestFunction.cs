@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<ExpenseRequestResponseModel> ListExpenseRequests(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<ExpenseRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/expenserequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<ExpenseRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/expenserequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<ExpenseRequestResponseModel>> ListExpenseRequestsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ExpenseRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/expenserequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<ExpenseRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/expenserequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void CreateExpenseRequest(int businessId, int employeeId, ExpenseRequestEditModel model)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest", model, Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest", model, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task CreateExpenseRequestAsync(int businessId, int employeeId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public ExpenseRequestResponseModel GetExpenseRequestById(int businessId, int employeeId, int expenseRequestId)
         {
-            return ApiRequest<ExpenseRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.GET);
+            return ApiRequest<ExpenseRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<ExpenseRequestResponseModel> GetExpenseRequestByIdAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<ExpenseRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<ExpenseRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UpdateExpenseRequest(int businessId, int employeeId, int expenseRequestId, ExpenseRequestEditModel model)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", model, Method.PUT);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", model, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UpdateExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteExpenseRequest(int businessId, int employeeId, int expenseRequestId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void ApproveExpenseRequest(int businessId, int employeeId, int expenseRequestId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/approve", Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/approve", Method.Post);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task ApproveExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/approve", Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/approve", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UploadAttachmentToExpenseRequest(int businessId, int employeeId, int expenseRequestId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/attachment", Method.PUT);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/attachment", Method.Put);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UploadAttachmentToExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/attachment", Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/attachment", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, string reason)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.Post);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, string reason, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.Post, cancellationToken);
         }
     }
 }

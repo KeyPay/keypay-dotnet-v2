@@ -25,7 +25,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEmployeeGroupModel CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup)
         {
-            return ApiRequest<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.POST);
+            return ApiRequest<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
         {
-            return ApiRequest<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.GET);
+            return ApiRequest<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, SgEmployeeGroupModel employeeGroup)
         {
-            return ApiRequest<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT);
+            return ApiRequest<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteEmployeeGroup(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/employeegroup/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employeegroup/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeegroup/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employeegroup/{id}", Method.Delete, cancellationToken);
         }
     }
 }

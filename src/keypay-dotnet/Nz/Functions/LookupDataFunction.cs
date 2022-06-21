@@ -24,7 +24,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NameIdPair> ListTimeZoneTypes(int businessId)
         {
-            return ApiRequest<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.GET);
+            return ApiRequest<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         public List<NameIdPair> ListCountries()
         {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/countries", Method.GET);
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/countries", Method.Get);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         public Task<List<NameIdPair>> ListCountriesAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/countries", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/countries", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NameIdPair> ListEmployeeGroupPermissionTypes()
         {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.GET);
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         public List<string> ListGenderOptions()
         {
-            return ApiRequest<List<string>>($"/lookupdata/genders", Method.GET);
+            return ApiRequest<List<string>>($"/lookupdata/genders", Method.Get);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         public Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<string>>($"/lookupdata/genders", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<string>>($"/lookupdata/genders", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NameIdPair> ListReportTypes()
         {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/reports", Method.GET);
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/reports", Method.Get);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/reports", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/reports", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NameIdPair> ListTimeZoneTypes()
         {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/timezones", Method.GET);
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/timezones", Method.Get);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/timezones", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/timezones", Method.Get, cancellationToken);
         }
     }
 }

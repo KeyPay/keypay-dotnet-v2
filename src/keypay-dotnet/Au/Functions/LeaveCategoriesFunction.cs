@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuLeaveCategoryModel CreateLeaveCategory(int businessId, AuLeaveCategoryModel leaveCategory)
         {
-            return ApiRequest<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST);
+            return ApiRequest<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.POST, cancellationToken);
+            return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory", leaveCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuLeaveCategoryModel GetLeaveCategoryById(int businessId, int id)
         {
-            return ApiRequest<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.GET);
+            return ApiRequest<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuLeaveCategoryModel> GetLeaveCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuLeaveCategoryModel UpdateLeaveCategory(int businessId, int id, AuLeaveCategoryModel leaveCategory)
         {
-            return ApiRequest<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT);
+            return ApiRequest<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.PUT, cancellationToken);
+            return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteLeaveCategory(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/leavecategory/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/leavecategory/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

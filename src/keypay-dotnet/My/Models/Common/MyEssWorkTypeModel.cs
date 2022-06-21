@@ -12,6 +12,7 @@ namespace KeyPayV2.My.Models.Common
     {
         public bool IsUnitBasedWorkType { get; set; }
         public string UnitType { get; set; }
+        public IList<MyEmploymentTypeEnum> EmploymentTypes { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int? PayCategoryId { get; set; }

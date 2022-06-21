@@ -24,7 +24,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<PayRateScheduleModel> ListPayRateAdjustmentSchedule(int businessId, int employeeId)
         {
-            return ApiRequest<List<PayRateScheduleModel>>($"/business/{businessId}/employee/{employeeId}/payrateschedule", Method.GET);
+            return ApiRequest<List<PayRateScheduleModel>>($"/business/{businessId}/employee/{employeeId}/payrateschedule", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<PayRateScheduleModel>> ListPayRateAdjustmentScheduleAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PayRateScheduleModel>>($"/business/{businessId}/employee/{employeeId}/payrateschedule", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PayRateScheduleModel>>($"/business/{businessId}/employee/{employeeId}/payrateschedule", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public PayRateScheduleModel CreatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, PayRateScheduleModel model)
         {
-            return ApiRequest<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule", model, Method.POST);
+            return ApiRequest<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<PayRateScheduleModel> CreatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, PayRateScheduleModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public PayRateScheduleModel UpdatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id, PayRateScheduleModel model)
         {
-            return ApiRequest<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", model, Method.PUT);
+            return ApiRequest<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<PayRateScheduleModel> UpdatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, PayRateScheduleModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void DeletePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task DeletePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public PayRateScheduleModel GetPayRateAdjustmentScheduleRecordById(int businessId, int employeeId, int recordId)
         {
-            return ApiRequest<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{recordId}", Method.GET);
+            return ApiRequest<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{recordId}", Method.Get);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<PayRateScheduleModel> GetPayRateAdjustmentScheduleRecordByIdAsync(int businessId, int employeeId, int recordId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{recordId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{recordId}", Method.Get, cancellationToken);
         }
     }
 }

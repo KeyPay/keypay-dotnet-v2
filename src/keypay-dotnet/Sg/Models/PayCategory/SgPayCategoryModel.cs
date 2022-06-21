@@ -14,6 +14,8 @@ namespace KeyPayV2.Sg.Models.PayCategory
         public PayCategoryPaymentSummaryClassification? PaymentSummaryClassification { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public CpfClassification? CpfClassification { get; set; }
+        public bool IsShgExempt { get; set; }
+        public bool IsSdlExempt { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }

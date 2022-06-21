@@ -24,7 +24,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgBankAccountModel> ListBankAccounts(int businessId, int employeeId)
         {
-            return ApiRequest<List<SgBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.GET);
+            return ApiRequest<List<SgBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, SgBankAccountModel model)
         {
-            return ApiRequest<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.POST);
+            return ApiRequest<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, SgBankAccountModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId)
         {
-            return ApiRequest<SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.GET);
+            return ApiRequest<SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId)
         {
-            return ApiRequest<SgSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.DELETE);
+            return ApiRequest<SgSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync<SgSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, SgBankAccountModel model)
         {
-            return ApiRequest<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.PUT);
+            return ApiRequest<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int id, SgBankAccountModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgSaveBankAccountResponseModel,SgBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.Put, cancellationToken);
         }
     }
 }

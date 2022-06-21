@@ -24,7 +24,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<SgWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SgWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgWorkTypeModel CreateWorkType(int businessId, SgWorkTypeModel workType)
         {
-            return ApiRequest<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype", workType, Method.POST);
+            return ApiRequest<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype", workType, Method.Post);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgWorkTypeModel> CreateWorkTypeAsync(int businessId, SgWorkTypeModel workType, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype", workType, Method.POST, cancellationToken);
+            return ApiRequestAsync<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype", workType, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgWorkTypeModel GetWorkTypeById(int businessId, int id)
         {
-            return ApiRequest<SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", Method.GET);
+            return ApiRequest<SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", Method.Get);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgWorkTypeModel> GetWorkTypeByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgWorkTypeModel UpdateWorkType(int businessId, int id, SgWorkTypeModel workType)
         {
-            return ApiRequest<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.PUT);
+            return ApiRequest<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.Put);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgWorkTypeModel> UpdateWorkTypeAsync(int businessId, int id, SgWorkTypeModel workType, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.PUT, cancellationToken);
+            return ApiRequestAsync<SgWorkTypeModel,SgWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteWorkType(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/worktype/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/worktype/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteWorkTypeAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/worktype/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/worktype/{id}", Method.Delete, cancellationToken);
         }
     }
 }

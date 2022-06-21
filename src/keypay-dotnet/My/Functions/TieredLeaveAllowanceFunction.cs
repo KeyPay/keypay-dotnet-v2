@@ -25,7 +25,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<TieredLeaveAllowanceTemplateApiModel> ListTieredLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<TieredLeaveAllowanceTemplateApiModel>>($"/business/{businessId}/tieredleaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<TieredLeaveAllowanceTemplateApiModel>>($"/business/{businessId}/tieredleaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<TieredLeaveAllowanceTemplateApiModel>> ListTieredLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TieredLeaveAllowanceTemplateApiModel>>($"/business/{businessId}/tieredleaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<TieredLeaveAllowanceTemplateApiModel>>($"/business/{businessId}/tieredleaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public TieredLeaveAllowanceTemplateApiModel CreateTieredLeaveAllowanceTemplate(int businessId, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate)
         {
-            return ApiRequest<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate", tieredLeaveAllowanceTemplate, Method.POST);
+            return ApiRequest<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate", tieredLeaveAllowanceTemplate, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<TieredLeaveAllowanceTemplateApiModel> CreateTieredLeaveAllowanceTemplateAsync(int businessId, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate", tieredLeaveAllowanceTemplate, Method.POST, cancellationToken);
+            return ApiRequestAsync<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate", tieredLeaveAllowanceTemplate, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public TieredLeaveAllowanceTemplateApiModel GetTieredLeaveAllowanceTemplateById(int businessId, int id)
         {
-            return ApiRequest<TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.GET);
+            return ApiRequest<TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<TieredLeaveAllowanceTemplateApiModel> GetTieredLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public TieredLeaveAllowanceTemplateApiModel UpdateTieredLeaveAllowanceTemplate(int businessId, int id, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate)
         {
-            return ApiRequest<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", tieredLeaveAllowanceTemplate, Method.PUT);
+            return ApiRequest<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", tieredLeaveAllowanceTemplate, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<TieredLeaveAllowanceTemplateApiModel> UpdateTieredLeaveAllowanceTemplateAsync(int businessId, int id, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", tieredLeaveAllowanceTemplate, Method.PUT, cancellationToken);
+            return ApiRequestAsync<TieredLeaveAllowanceTemplateApiModel,TieredLeaveAllowanceTemplateApiModel>($"/business/{businessId}/tieredleaveallowancetemplate/{id}", tieredLeaveAllowanceTemplate, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void DeleteTieredLeaveAllowanceTemplate(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task DeleteTieredLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/tieredleaveallowancetemplate/{id}", Method.Delete, cancellationToken);
         }
     }
 }

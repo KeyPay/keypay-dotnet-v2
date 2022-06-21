@@ -24,7 +24,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<PensionSchemeApiModel> ListPensionSchemes(int businessId)
         {
-            return ApiRequest<List<PensionSchemeApiModel>>($"/business/{businessId}/pensionscheme", Method.GET);
+            return ApiRequest<List<PensionSchemeApiModel>>($"/business/{businessId}/pensionscheme", Method.Get);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<PensionSchemeApiModel>> ListPensionSchemesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PensionSchemeApiModel>>($"/business/{businessId}/pensionscheme", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PensionSchemeApiModel>>($"/business/{businessId}/pensionscheme", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeApiModel CreatePensionScheme(int businessId, PensionSchemeApiModel model)
         {
-            return ApiRequest<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme", model, Method.POST);
+            return ApiRequest<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme", model, Method.Post);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeApiModel> CreatePensionSchemeAsync(int businessId, PensionSchemeApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeApiModel GetPensionScheme(int businessId, int id)
         {
-            return ApiRequest<PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", Method.GET);
+            return ApiRequest<PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", Method.Get);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeApiModel> GetPensionSchemeAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeApiModel UpdatePensionScheme(int businessId, int id, PensionSchemeApiModel model)
         {
-            return ApiRequest<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", model, Method.PUT);
+            return ApiRequest<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", model, Method.Put);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeApiModel> UpdatePensionSchemeAsync(int businessId, int id, PensionSchemeApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", model, Method.PUT, cancellationToken);
+            return ApiRequestAsync<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeletePensionScheme(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/pensionscheme/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/pensionscheme/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeletePensionSchemeAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/pensionscheme/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/pensionscheme/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<PensionSchemeContributionPlanApiModel> ListPensionSchemeContributionPlans(int businessId, int schemeId)
         {
-            return ApiRequest<List<PensionSchemeContributionPlanApiModel>>($"/business/{businessId}/pensionscheme/{schemeId}/plan", Method.GET);
+            return ApiRequest<List<PensionSchemeContributionPlanApiModel>>($"/business/{businessId}/pensionscheme/{schemeId}/plan", Method.Get);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<PensionSchemeContributionPlanApiModel>> ListPensionSchemeContributionPlansAsync(int businessId, int schemeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PensionSchemeContributionPlanApiModel>>($"/business/{businessId}/pensionscheme/{schemeId}/plan", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<PensionSchemeContributionPlanApiModel>>($"/business/{businessId}/pensionscheme/{schemeId}/plan", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeContributionPlanApiModel CreatePensionSchemeContributionPlan(int businessId, int schemeId, PensionSchemeContributionPlanApiModel contributionPlan)
         {
-            return ApiRequest<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan", contributionPlan, Method.POST);
+            return ApiRequest<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan", contributionPlan, Method.Post);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeContributionPlanApiModel> CreatePensionSchemeContributionPlanAsync(int businessId, int schemeId, PensionSchemeContributionPlanApiModel contributionPlan, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan", contributionPlan, Method.POST, cancellationToken);
+            return ApiRequestAsync<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan", contributionPlan, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeContributionPlanApiModel GetPensionSchemeContributionPlan(int businessId, int schemeId, int planId)
         {
-            return ApiRequest<PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", Method.GET);
+            return ApiRequest<PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", Method.Get);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeContributionPlanApiModel> GetPensionSchemeContributionPlanAsync(int businessId, int schemeId, int planId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeContributionPlanApiModel UpdatePensionSchemeContributionPlan(int businessId, int schemeId, int planId, PensionSchemeContributionPlanApiModel contributionPlan)
         {
-            return ApiRequest<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", contributionPlan, Method.PUT);
+            return ApiRequest<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", contributionPlan, Method.Put);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeContributionPlanApiModel> UpdatePensionSchemeContributionPlanAsync(int businessId, int schemeId, int planId, PensionSchemeContributionPlanApiModel contributionPlan, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", contributionPlan, Method.PUT, cancellationToken);
+            return ApiRequestAsync<PensionSchemeContributionPlanApiModel,PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", contributionPlan, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public PensionSchemeStagingModel SetPensionSchemeDates(int businessId, PensionSchemeStagingModel model)
         {
-            return ApiRequest<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.POST);
+            return ApiRequest<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.Post);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<PensionSchemeStagingModel> SetPensionSchemeDatesAsync(int businessId, PensionSchemeStagingModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.Post, cancellationToken);
         }
     }
 }

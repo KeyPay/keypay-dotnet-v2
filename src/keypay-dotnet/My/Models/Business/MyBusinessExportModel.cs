@@ -17,6 +17,9 @@ namespace KeyPayV2.My.Models.Business
         public string BlockNumber { get; set; }
         public string UnitNumber { get; set; }
         public string LevelNumber { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveAnniversarySetting? LeaveAnniversarySetting { get; set; }
+        public DateTime? LeaveAnniversarySettingDate { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Region { get; set; }

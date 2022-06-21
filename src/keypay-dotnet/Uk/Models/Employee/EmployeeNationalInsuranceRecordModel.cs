@@ -15,9 +15,9 @@ namespace KeyPayV2.Uk.Models.Employee
         public string PayrollId { get; set; }
         public string TaxCode { get; set; }
         public bool HasStudentLoan { get; set; }
-        public int SlCodingNoticeSequenceNumber { get; set; }
+        public long SlCodingNoticeSequenceNumber { get; set; }
         public bool HasPostGradLoan { get; set; }
-        public int PglCodingNoticeSequenceNumber { get; set; }
+        public long PglCodingNoticeSequenceNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public StudentLoanType StudentLoanType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -38,8 +38,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public EmployeeStatementEnum EmployeeStatement { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStarterTypeEnum EmployeeStarterType { get; set; }
-        public int P6CodingNoticeSequenceNumber { get; set; }
-        public int P9CodingNoticeSequenceNumber { get; set; }
+        public long P6CodingNoticeSequenceNumber { get; set; }
+        public long P9CodingNoticeSequenceNumber { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public bool IsApprentice { get; set; }
@@ -51,9 +51,11 @@ namespace KeyPayV2.Uk.Models.Employee
         public bool? OccupationalPension { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService? Source { get; set; }
-        public int NotNoticeSequenceNumber { get; set; }
+        public long NotNoticeSequenceNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeTypeEnum? EmployeeType { get; set; }
         public int EmployeeId { get; set; }
+        public DateTime? FreeportQualifyingEndDate { get; set; }
+        public DateTime? VeteransQualifyingEndDate { get; set; }
     }
 }

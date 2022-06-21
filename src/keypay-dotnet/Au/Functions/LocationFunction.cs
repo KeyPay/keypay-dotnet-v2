@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<AuLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<AuLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuLocationModel CreateLocation(int businessId, AuLocationModel location)
         {
-            return ApiRequest<AuLocationModel,AuLocationModel>($"/business/{businessId}/location", location, Method.POST);
+            return ApiRequest<AuLocationModel,AuLocationModel>($"/business/{businessId}/location", location, Method.Post);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuLocationModel> CreateLocationAsync(int businessId, AuLocationModel location, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuLocationModel,AuLocationModel>($"/business/{businessId}/location", location, Method.POST, cancellationToken);
+            return ApiRequestAsync<AuLocationModel,AuLocationModel>($"/business/{businessId}/location", location, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuSingleLocationModel GetLocationById(int businessId, int id)
         {
-            return ApiRequest<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.GET);
+            return ApiRequest<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UpdateLocation(int businessId, int id, AuLocationModel location)
         {
-            ApiRequest($"/business/{businessId}/location/{id}", location, Method.PUT);
+            ApiRequest($"/business/{businessId}/location/{id}", location, Method.Put);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UpdateLocationAsync(int businessId, int id, AuLocationModel location, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", location, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteLocation(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/location/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
         }
     }
 }

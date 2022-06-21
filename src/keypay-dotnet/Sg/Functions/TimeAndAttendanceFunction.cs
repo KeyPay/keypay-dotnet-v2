@@ -25,7 +25,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<TimeAndAttendanceKioskModel> ListKiosks(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<TimeAndAttendanceKioskModel>> ListKiosksAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public TimeAndAttendanceKioskModel CreateKiosk(int businessId, TimeAndAttendanceKioskModel kiosk)
         {
-            return ApiRequest<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk", kiosk, Method.POST);
+            return ApiRequest<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk", kiosk, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<TimeAndAttendanceKioskModel> CreateKioskAsync(int businessId, TimeAndAttendanceKioskModel kiosk, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk", kiosk, Method.POST, cancellationToken);
+            return ApiRequestAsync<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk", kiosk, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public TimeAndAttendanceKioskModel GetKioskById(int businessId, int id)
         {
-            return ApiRequest<TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", Method.GET);
+            return ApiRequest<TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<TimeAndAttendanceKioskModel> GetKioskByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public TimeAndAttendanceKioskModel UpdateKiosk(int businessId, int id, TimeAndAttendanceKioskModel kiosk)
         {
-            return ApiRequest<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", kiosk, Method.PUT);
+            return ApiRequest<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", kiosk, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<TimeAndAttendanceKioskModel> UpdateKioskAsync(int businessId, int id, TimeAndAttendanceKioskModel kiosk, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", kiosk, Method.PUT, cancellationToken);
+            return ApiRequestAsync<TimeAndAttendanceKioskModel,TimeAndAttendanceKioskModel>($"/business/{businessId}/kiosk/{id}", kiosk, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteKiosk(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/kiosk/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteKioskAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void AddCompleteShiftForEmployee(int businessId, int kioskId, AuAddShiftModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/addshift", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/addshift", model, Method.Post);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task AddCompleteShiftForEmployeeAsync(int businessId, int kioskId, AuAddShiftModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/addshift", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/addshift", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void ChangePin(int businessId, int kioskId, ChangeKioskPinModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/changepin", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/changepin", model, Method.Post);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task ChangePinAsync(int businessId, int kioskId, ChangeKioskPinModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/changepin", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/changepin", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void CheckEmployee(int businessId, BasicKioskEmployeeModel model, string kioskId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.Post);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task CheckEmployeeAsync(int businessId, BasicKioskEmployeeModel model, string kioskId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public KioskEmployeeModel VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId)
         {
-            return ApiRequest<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.POST);
+            return ApiRequest<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.Post);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, CheckKioskPinModel model, string kioskId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void ClockOutEmployee(int businessId, int kioskId, ClockOffModel request)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/clockoff", request, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/clockoff", request, Method.Post);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task ClockOutEmployeeAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/clockoff", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/clockoff", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void ClockInEmployee(int businessId, int kioskId, AuClockOnModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/clockon", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/clockon", model, Method.Post);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task ClockInEmployeeAsync(int businessId, int kioskId, AuClockOnModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/clockon", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/clockon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/discard", request, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/discard", request, Method.Post);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DiscardCurrentShiftAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/discard", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/discard", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void SendPinResetEmail(int businessId, PinResetModel model, string kioskId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/emailreset", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/emailreset", model, Method.Post);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/emailreset", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/emailreset", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void EndBreak(int businessId, int kioskId, EndBreakModel request)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/endbreak", request, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/endbreak", request, Method.Post);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task EndBreakAsync(int businessId, int kioskId, EndBreakModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/endbreak", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/endbreak", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId)
         {
-            return ApiRequest<SgTimeAndAttendanceLookupDataModel>($"/business/{businessId}/kiosk/{kioskId}/lookupdata/{employeeId}", Method.GET);
+            return ApiRequest<SgTimeAndAttendanceLookupDataModel>($"/business/{businessId}/kiosk/{kioskId}/lookupdata/{employeeId}", Method.Get);
         }
 
         /// <summary>
@@ -349,7 +349,29 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgTimeAndAttendanceLookupDataModel> GetEmployeeLookupDataAsync(int businessId, int employeeId, int kioskId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgTimeAndAttendanceLookupDataModel>($"/business/{businessId}/kiosk/{kioskId}/lookupdata/{employeeId}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SgTimeAndAttendanceLookupDataModel>($"/business/{businessId}/kiosk/{kioskId}/lookupdata/{employeeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Shift Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets all the notes for a specific shift.
+        /// </remarks>
+        public void GetShiftNotes(int businessId, int kioskId, int shiftId)
+        {
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Shift Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets all the notes for a specific shift.
+        /// </remarks>
+        public Task GetShiftNotesAsync(int businessId, int kioskId, int shiftId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -360,7 +382,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void GetShiftNotes(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.GET);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.Get);
         }
 
         /// <summary>
@@ -371,7 +393,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task GetShiftNotesAsync(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes?employeeId={request.EmployeeId}&isAdminInitiated={request.IsAdminInitiated}&type={request.Type}&visibility={request.Visibility}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -382,7 +404,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void AddNoteToShift(int businessId, int kioskId, int shiftId, AddNoteModel model)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes", model, Method.Post);
         }
 
         /// <summary>
@@ -393,7 +415,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task AddNoteToShiftAsync(int businessId, int kioskId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -404,7 +426,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeleteNoteFromShift(int businessId, int kioskId, int shiftId, int noteId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/{noteId}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/{noteId}", Method.Delete);
         }
 
         /// <summary>
@@ -415,7 +437,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeleteNoteFromShiftAsync(int businessId, int kioskId, int shiftId, int noteId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/{noteId}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/{noteId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -426,7 +448,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.Post);
         }
 
         /// <summary>
@@ -437,7 +459,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -448,7 +470,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void SendPinResetSms(int businessId, PinResetModel model, string kioskId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/smsreset", model, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/smsreset", model, Method.Post);
         }
 
         /// <summary>
@@ -459,7 +481,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/smsreset", model, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/smsreset", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -470,7 +492,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId)
         {
-            return ApiRequest<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff", Method.GET);
+            return ApiRequest<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff", Method.Get);
         }
 
         /// <summary>
@@ -481,7 +503,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -492,7 +514,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public BasicKioskEmployeeModel AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model)
         {
-            return ApiRequest<BasicKioskEmployeeModel,KioskCreateEmployeeModel>($"/business/{businessId}/kiosk/{kioskId}/staff", model, Method.POST);
+            return ApiRequest<BasicKioskEmployeeModel,KioskCreateEmployeeModel>($"/business/{businessId}/kiosk/{kioskId}/staff", model, Method.Post);
         }
 
         /// <summary>
@@ -503,7 +525,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<BasicKioskEmployeeModel> AddAnEmployeeAsync(int businessId, int kioskId, KioskCreateEmployeeModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<BasicKioskEmployeeModel,KioskCreateEmployeeModel>($"/business/{businessId}/kiosk/{kioskId}/staff", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<BasicKioskEmployeeModel,KioskCreateEmployeeModel>($"/business/{businessId}/kiosk/{kioskId}/staff", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -514,7 +536,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void StartBreak(int businessId, int kioskId, StartBreakModel request)
         {
-            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/startbreak", request, Method.POST);
+            ApiRequest($"/business/{businessId}/kiosk/{kioskId}/startbreak", request, Method.Post);
         }
 
         /// <summary>
@@ -525,7 +547,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task StartBreakAsync(int businessId, int kioskId, StartBreakModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/startbreak", request, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/startbreak", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -536,7 +558,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void EmployeeHasAccess(int businessId, int employeeId)
         {
-            ApiRequest($"/business/{businessId}/kiosk/hasaccess/{employeeId}", Method.GET);
+            ApiRequest($"/business/{businessId}/kiosk/hasaccess/{employeeId}", Method.Get);
         }
 
         /// <summary>
@@ -547,7 +569,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task EmployeeHasAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/kiosk/hasaccess/{employeeId}", Method.GET, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/kiosk/hasaccess/{employeeId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -558,7 +580,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<SgTimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model)
         {
-            return ApiRequest<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/kiosk/shifts", model, Method.POST);
+            return ApiRequest<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/kiosk/shifts", model, Method.Post);
         }
 
         /// <summary>
@@ -569,7 +591,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<SgTimeAndAttendanceShiftModel>> ShiftsAsync(int businessId, GetShiftsModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/kiosk/shifts", model, Method.POST, cancellationToken);
+            return ApiRequestAsync<List<SgTimeAndAttendanceShiftModel>,GetShiftsModel>($"/business/{businessId}/kiosk/shifts", model, Method.Post, cancellationToken);
         }
     }
 }

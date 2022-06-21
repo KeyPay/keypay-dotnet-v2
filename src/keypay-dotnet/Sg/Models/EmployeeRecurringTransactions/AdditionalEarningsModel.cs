@@ -10,7 +10,7 @@ namespace KeyPayV2.Sg.Models.EmployeeRecurringTransactions
 {
     public class AdditionalEarningsModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public int? PayCategoryId { get; set; }
         public int EmployeeId { get; set; }

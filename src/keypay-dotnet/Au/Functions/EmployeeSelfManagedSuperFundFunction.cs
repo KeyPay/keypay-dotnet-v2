@@ -24,7 +24,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SelfManagedSuperFundModel>>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<SelfManagedSuperFundModel>>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SelfManagedSuperFundModel>>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<SelfManagedSuperFundModel>>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void CreateEmployeeSelfManagedSuperFund(int businessId, int employeeId, SelfManagedSuperFundModel fund)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.POST);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.Post);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task CreateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.POST, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public SelfManagedSuperFundModel GetEmployeeSelfManagedSuperFundById(int businessId, int employeeId, int id)
         {
-            return ApiRequest<SelfManagedSuperFundModel>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", Method.GET);
+            return ApiRequest<SelfManagedSuperFundModel>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", Method.Get);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<SelfManagedSuperFundModel> GetEmployeeSelfManagedSuperFundByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SelfManagedSuperFundModel>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<SelfManagedSuperFundModel>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void UpdateEmployeeSelfManagedSuperFund(int businessId, int employeeId, int id, SelfManagedSuperFundModel fund)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", fund, Method.PUT);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", fund, Method.Put);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task UpdateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, int id, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", fund, Method.PUT, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund/{id}", fund, Method.Put, cancellationToken);
         }
     }
 }

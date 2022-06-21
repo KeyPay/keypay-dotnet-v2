@@ -25,7 +25,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET);
+            return ApiRequest<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.GET, cancellationToken);
+            return ApiRequestAsync<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayRateTemplateModel CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate)
         {
-            return ApiRequest<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.POST);
+            return ApiRequest<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayRateTemplateModel> CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.POST, cancellationToken);
+            return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayRateTemplateModel GetPayRateTemplateById(int businessId, int id)
         {
-            return ApiRequest<AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", Method.GET);
+            return ApiRequest<AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", Method.Get);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayRateTemplateModel> GetPayRateTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", Method.GET, cancellationToken);
+            return ApiRequestAsync<AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayRateTemplateModel UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate)
         {
-            return ApiRequest<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.PUT);
+            return ApiRequest<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayRateTemplateModel> UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.PUT, cancellationToken);
+            return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeletePayRateTemplate(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/payratetemplate/{id}", Method.DELETE);
+            ApiRequest($"/business/{businessId}/payratetemplate/{id}", Method.Delete);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeletePayRateTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payratetemplate/{id}", Method.DELETE, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payratetemplate/{id}", Method.Delete, cancellationToken);
         }
     }
 }
