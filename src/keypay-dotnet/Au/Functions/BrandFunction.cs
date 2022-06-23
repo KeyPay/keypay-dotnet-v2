@@ -37,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all of the brand labels to which you have access.
+        /// Lists all the brand labels to which you have access.
         /// </remarks>
         public List<BrandModel> ListBrandLabels()
         {
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all of the brand labels to which you have access.
+        /// Lists all the brand labels to which you have access.
         /// </remarks>
         public Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default)
         {
@@ -127,7 +127,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign-up report
+        /// Brand sign up report
         /// </remarks>
         public List<SignupModel> SignupReport(int brandId)
         {
@@ -138,7 +138,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign-up report
+        /// Brand sign up report
         /// </remarks>
         public Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default)
         {
@@ -149,7 +149,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign-up report
+        /// Brand sign up report
         /// </remarks>
         public List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request)
         {
@@ -160,7 +160,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign-up report
+        /// Brand sign up report
         /// </remarks>
         public Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
         {

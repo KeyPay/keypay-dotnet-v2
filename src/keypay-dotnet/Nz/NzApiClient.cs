@@ -53,7 +53,7 @@ namespace KeyPayV2.Nz
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
     }
-    public class NzApiClient : BaseApiClient
+    public class NzApiClient : BaseApiClient, INzApiClient
     {
         public NzApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {

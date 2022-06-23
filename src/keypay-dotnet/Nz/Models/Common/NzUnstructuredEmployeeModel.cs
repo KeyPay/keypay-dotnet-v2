@@ -35,26 +35,7 @@ namespace KeyPayV2.Nz.Models.Common
         public string KiwiSaver_EnrollmentStatus { get; set; }
         public string KiwiSaver_IneligibilityReason { get; set; }
         public bool? KiwiSaver_PreviouslyReported { get; set; }
-        public string TaxCodeDeclaration_IrdNumber { get; set; }
-        public bool? TaxCodeDeclaration_NewZealandResident { get; set; }
-        public string TaxCodeDeclaration_SpecialTaxCode { get; set; }
-        public bool? TaxCodeDeclaration_IsPrimaryIncome { get; set; }
-        public bool? TaxCodeDeclaration_MeetsMainIncomeMeansTest { get; set; }
-        public bool? TaxCodeDeclaration_IncomeAppliedToTestedBenefit { get; set; }
-        public bool? TaxCodeDeclaration_StudentLoan { get; set; }
-        public bool? TaxCodeDeclaration_FtcOverseasSuperOrPension { get; set; }
-        public DateTime? TaxCodeDeclaration_DateSigned { get; set; }
-        public decimal? TaxCodeDeclaration_SpecialTaxCodeRate { get; set; }
-        public int? TaxCodeDeclaration_IncomeBand { get; set; }
-        public bool? TaxCodeDeclaration_IsNonDisclosed { get; set; }
-        public bool? TaxCodeDeclaration_RegisteredForGST { get; set; }
-        public decimal? TaxCodeDeclaration_ElectedExtraPayRate { get; set; }
-        public decimal? TaxCodeDeclaration_EsctRate { get; set; }
-        public decimal? TaxCodeDeclaration_StudentLoanRate { get; set; }
-        public DateTime? TaxCodeDeclaration_SpecialTaxCodeRateEndDate { get; set; }
-        public DateTime? TaxCodeDeclaration_StudentLoanRateEndDate { get; set; }
         public string EmployingEntityNZBN { get; set; }
-        public bool? TaxCodeDeclaration_IrregularEmployment { get; set; }
         public string EmployingEntityId { get; set; }
         public bool? PostalAddressIsOverseas { get; set; }
         public bool? ResidentialAddressIsOverseas { get; set; }
@@ -62,6 +43,26 @@ namespace KeyPayV2.Nz.Models.Common
         public string TerminationReason { get; set; }
         public string LeaveWithoutPayAweAdjustmentType { get; set; }
         public DateTime? AdjustedLeaveEntitlementDate { get; set; }
+        public string TaxCodeDeclaration_TaxCode { get; set; }
+        public decimal? TaxCodeDeclaration_StudentLoanRate { get; set; }
+        public DateTime? TaxCodeDeclaration_SpecialTaxCodeRateEndDate { get; set; }
+        public DateTime? TaxCodeDeclaration_StudentLoanRateEndDate { get; set; }
+        public bool? TaxCodeDeclaration_RegisteredForGST { get; set; }
+        public DateTime? TaxCodeDeclaration_DateSigned { get; set; }
+        public decimal? TaxCodeDeclaration_EsctRate { get; set; }
+        public string TaxCodeDeclaration_IrdNumber { get; set; }
+        public string TaxCodeDeclaration_SpecialTaxCode { get; set; }
+        public decimal? TaxCodeDeclaration_SpecialTaxCodeRate { get; set; }
+        public bool? TaxCodeDeclaration_IrregularEmployment { get; set; }
+        public bool? TaxCodeDeclaration_NewZealandResident { get; set; }
+        public bool? TaxCodeDeclaration_IsPrimaryIncome { get; set; }
+        public bool? TaxCodeDeclaration_MeetsMainIncomeMeansTest { get; set; }
+        public bool? TaxCodeDeclaration_IncomeAppliedToTestedBenefit { get; set; }
+        public bool? TaxCodeDeclaration_StudentLoan { get; set; }
+        public bool? TaxCodeDeclaration_FtcOverseasSuperOrPension { get; set; }
+        public int? TaxCodeDeclaration_IncomeBand { get; set; }
+        public bool? TaxCodeDeclaration_IsNonDisclosed { get; set; }
+        public decimal? TaxCodeDeclaration_ElectedExtraPayRate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

@@ -481,7 +481,7 @@ namespace KeyPayV2.Uk.Functions
         /// Delete BACS Settings Record
         /// </summary>
         /// <remarks>
-        /// Deletes the BACS settings record with the given ID.
+        /// Deletes the BACS settings record with the specified ID.
         /// </remarks>
         public void DeleteBacsSettingsRecord(int businessId, int id)
         {
@@ -492,7 +492,7 @@ namespace KeyPayV2.Uk.Functions
         /// Delete BACS Settings Record
         /// </summary>
         /// <remarks>
-        /// Deletes the BACS settings record with the given ID.
+        /// Deletes the BACS settings record with the specified ID.
         /// </remarks>
         public Task DeleteBacsSettingsRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {

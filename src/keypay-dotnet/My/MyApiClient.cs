@@ -54,7 +54,7 @@ namespace KeyPayV2.My
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
     }
-    public class MyApiClient : BaseApiClient
+    public class MyApiClient : BaseApiClient, IMyApiClient
     {
         public MyApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {

@@ -55,7 +55,7 @@ namespace KeyPayV2.Uk
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
     }
-    public class UkApiClient : BaseApiClient
+    public class UkApiClient : BaseApiClient, IUkApiClient
     {
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {

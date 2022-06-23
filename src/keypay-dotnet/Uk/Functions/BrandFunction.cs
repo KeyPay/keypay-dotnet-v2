@@ -37,7 +37,7 @@ namespace KeyPayV2.Uk.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all of the brand labels to which you have access.
+        /// Lists all the brand labels to which you have access.
         /// </remarks>
         public List<BrandModel> ListBrandLabels()
         {
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all of the brand labels to which you have access.
+        /// Lists all the brand labels to which you have access.
         /// </remarks>
         public Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default)
         {

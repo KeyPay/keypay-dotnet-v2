@@ -58,7 +58,7 @@ namespace KeyPayV2.Sg
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
     }
-    public class SgApiClient : BaseApiClient
+    public class SgApiClient : BaseApiClient, ISgApiClient
     {
         public SgApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {

@@ -58,7 +58,7 @@ namespace KeyPayV2.Au
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
     }
-    public class AuApiClient : BaseApiClient
+    public class AuApiClient : BaseApiClient, IAuApiClient
     {
         public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {

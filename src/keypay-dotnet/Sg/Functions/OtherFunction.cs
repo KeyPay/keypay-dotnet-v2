@@ -47,7 +47,7 @@ namespace KeyPayV2.Sg.Functions
         /// List Banks
         /// </summary>
         /// <remarks>
-        /// Lists all banks.
+        /// Lists all of the banks.
         /// </remarks>
         public List<GiroBankModel> ListBanks()
         {
@@ -58,7 +58,7 @@ namespace KeyPayV2.Sg.Functions
         /// List Banks
         /// </summary>
         /// <remarks>
-        /// Lists all banks.
+        /// Lists all of the banks.
         /// </remarks>
         public Task<List<GiroBankModel>> ListBanksAsync(CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace KeyPayV2.Sg.Functions
         /// Get Specific Bank Branch Details
         /// </summary>
         /// <remarks>
-        /// Search for a bank branch based on a Bank Swift, Branch Code and Account Number.
+        /// Search for bank branch based on a Bank Swift, Branch Code and Account Number.
         /// </remarks>
         public GiroBankBranchModel GetSpecificBankBranchDetails(GetSpecificBankBranchDetailsQueryModel request)
         {
@@ -80,7 +80,7 @@ namespace KeyPayV2.Sg.Functions
         /// Get Specific Bank Branch Details
         /// </summary>
         /// <remarks>
-        /// Search for a bank branch based on a Bank Swift, Branch Code and Account Number.
+        /// Search for bank branch based on a Bank Swift, Branch Code and Account Number.
         /// </remarks>
         public Task<GiroBankBranchModel> GetSpecificBankBranchDetailsAsync(GetSpecificBankBranchDetailsQueryModel request, CancellationToken cancellationToken = default)
         {

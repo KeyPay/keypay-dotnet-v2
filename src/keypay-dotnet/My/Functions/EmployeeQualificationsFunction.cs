@@ -65,7 +65,7 @@ namespace KeyPayV2.My.Functions
         /// Add/Update Employee Qualification
         /// </summary>
         /// <remarks>
-        /// Adds or updates an employee qualification.
+        /// Adds or updates a qualification for an employee.
         /// </remarks>
         public void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationModel qualification)
         {
@@ -76,7 +76,7 @@ namespace KeyPayV2.My.Functions
         /// Add/Update Employee Qualification
         /// </summary>
         /// <remarks>
-        /// Adds or updates an employee qualification.
+        /// Adds or updates a qualification for an employee.
         /// </remarks>
         public Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationModel qualification, CancellationToken cancellationToken = default)
         {

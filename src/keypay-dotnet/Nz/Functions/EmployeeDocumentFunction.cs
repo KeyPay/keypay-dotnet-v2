@@ -291,7 +291,7 @@ namespace KeyPayV2.Nz.Functions
         /// Delete Employee Document
         /// </summary>
         /// <remarks>
-        /// Deletes the employee document with the given ID.
+        /// Deletes the employee document with the specified ID.
         /// </remarks>
         public void DeleteEmployeeDocument(int businessId, int employeeId, int id)
         {
@@ -302,7 +302,7 @@ namespace KeyPayV2.Nz.Functions
         /// Delete Employee Document
         /// </summary>
         /// <remarks>
-        /// Deletes the employee document with the given ID.
+        /// Deletes the employee document with the specified ID.
         /// </remarks>
         public Task DeleteEmployeeDocumentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
