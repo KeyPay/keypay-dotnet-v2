@@ -12,7 +12,20 @@ using KeyPayV2.Nz.Models.EmployeeEarningsLineSplit;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class EmployeeEarningsLineSplitFunction : BaseFunction
+    public interface IEmployeeEarningsLineSplitFunction
+    {
+        List<EarningsLineSplitApiModel> GetEmployeeEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<EarningsLineSplitApiModel>> GetEmployeeEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit);
+        Task CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
+        EarningsLineSplitApiModel GetEarningsLineSplitByLocationId(int businessId, int employeeId, int locationId);
+        Task<EarningsLineSplitApiModel> GetEarningsLineSplitByLocationIdAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default);
+        void UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit);
+        Task UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
+        void DeleteEarningsLineSplit(int businessId, int employeeId, int locationId);
+        Task DeleteEarningsLineSplitAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeEarningsLineSplitFunction : BaseFunction, IEmployeeEarningsLineSplitFunction
     {
         public EmployeeEarningsLineSplitFunction(ApiRequestExecutor api) : base(api) {}
 

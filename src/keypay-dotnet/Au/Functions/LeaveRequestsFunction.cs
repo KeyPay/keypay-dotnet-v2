@@ -12,7 +12,32 @@ using KeyPayV2.Au.Models.LeaveRequests;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class LeaveRequestsFunction : BaseFunction
+    public interface ILeaveRequestsFunction
+    {
+        List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
+        Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
+        HourLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
+        Task<HourLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
+        HourLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId);
+        Task<HourLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, HourLeaveRequestModel model);
+        Task UpdateLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
+        HourLeaveRequestResponseModel DeleteLeaveRequest(int businessId, int employeeId, int leaveRequestId);
+        Task<HourLeaveRequestResponseModel> DeleteLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        HourLeaveRequestResponseModel ApproveLeaveRequest(int businessId, int employeeId, int leaveRequestId);
+        Task<HourLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        HourLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline);
+        Task<HourLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default);
+        HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request);
+        Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default);
+        List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId);
+        Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request);
+        Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class LeaveRequestsFunction : BaseFunction, ILeaveRequestsFunction
     {
         public LeaveRequestsFunction(ApiRequestExecutor api) : base(api) {}
 

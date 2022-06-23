@@ -12,7 +12,38 @@ using KeyPayV2.Sg.Models.Invoices;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class InvoicesFunction : BaseFunction
+    public interface IInvoicesFunction
+    {
+        List<InvoiceModel> GetBrandInvoices(int brandId);
+        Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, CancellationToken cancellationToken = default);
+        List<InvoiceModel> GetBrandInvoices(int brandId, GetBrandInvoicesQueryModel request);
+        Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, GetBrandInvoicesQueryModel request, CancellationToken cancellationToken = default);
+        InvoiceModel GetBrandInvoiceById(int id, int brandId);
+        Task<InvoiceModel> GetBrandInvoiceByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
+        byte[] GetBrandInvoiceExcelById(int id, int brandId);
+        Task<byte[]> GetBrandInvoiceExcelByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
+        byte[] GetBrandInvoicePdfById(int id, int brandId);
+        Task<byte[]> GetBrandInvoicePdfByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
+        List<InvoiceModel> GetBusinessInvoices(int businessId);
+        Task<List<InvoiceModel>> GetBusinessInvoicesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<InvoiceModel> GetBusinessInvoices(int businessId, GetBusinessInvoicesQueryModel request);
+        Task<List<InvoiceModel>> GetBusinessInvoicesAsync(int businessId, GetBusinessInvoicesQueryModel request, CancellationToken cancellationToken = default);
+        InvoiceModel GetBusinessInvoiceById(int businessId, int id);
+        Task<InvoiceModel> GetBusinessInvoiceByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        byte[] GetBusinessInvoicePdfById(int businessId, int id);
+        Task<byte[]> GetBusinessInvoicePdfByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        List<InvoiceModel> GetResellerInvoices(int? resellerId);
+        Task<List<InvoiceModel>> GetResellerInvoicesAsync(int? resellerId, CancellationToken cancellationToken = default);
+        List<InvoiceModel> GetResellerInvoices(int? resellerId, GetResellerInvoicesQueryModel request);
+        Task<List<InvoiceModel>> GetResellerInvoicesAsync(int? resellerId, GetResellerInvoicesQueryModel request, CancellationToken cancellationToken = default);
+        InvoiceModel GetResellerInvoiceById(int resellerId, int id);
+        Task<InvoiceModel> GetResellerInvoiceByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default);
+        byte[] GetResellerInvoiceExcelById(int resellerId, int id);
+        Task<byte[]> GetResellerInvoiceExcelByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default);
+        byte[] GetResellerInvoicePdfById(int resellerId, int id);
+        Task<byte[]> GetResellerInvoicePdfByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default);
+    }
+    public class InvoicesFunction : BaseFunction, IInvoicesFunction
     {
         public InvoicesFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -4,6 +4,56 @@ using KeyPayV2.My.Functions;
 
 namespace KeyPayV2.My
 {
+    public interface IMyApiClient : IBaseApiClient
+    {
+        IBrandFunction Brand { get; }
+        IInvoicesFunction Invoices { get; }
+        IBusinessFunction Business { get; }
+        IChartOfAccountsFunction ChartOfAccounts { get; }
+        IDeductionCategoriesFunction DeductionCategories { get; }
+        IEmployeeFunction Employee { get; }
+        IEmployeeAccessFunction EmployeeAccess { get; }
+        IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
+        IEmployeeBankAccountFunction EmployeeBankAccount { get; }
+        IEmployeeDocumentFunction EmployeeDocument { get; }
+        IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
+        IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
+        IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
+        ILeaveAllowanceFunction LeaveAllowance { get; }
+        ILeaveRequestsFunction LeaveRequests { get; }
+        ILocationFunction Location { get; }
+        IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
+        IPayRunFunction PayRun { get; }
+        IEmployeeQualificationsFunction EmployeeQualifications { get; }
+        IAuthenticationFunction Authentication { get; }
+        IEmploymentAgreementFunction EmploymentAgreement { get; }
+        IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
+        IEmployeeGroupsFunction EmployeeGroups { get; }
+        IEmployeeOnboardingFunction EmployeeOnboarding { get; }
+        IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
+        IEmployingEntitiesFunction EmployingEntities { get; }
+        ITimeAndAttendanceFunction TimeAndAttendance { get; }
+        ILeaveCategoriesFunction LeaveCategories { get; }
+        ILookupDataFunction LookupData { get; }
+        IManagerFunction Manager { get; }
+        IPayCategoryFunction PayCategory { get; }
+        IPayRateTemplateFunction PayRateTemplate { get; }
+        IPayScheduleFunction PaySchedule { get; }
+        IPublicHolidayFunction PublicHoliday { get; }
+        IQualificationsFunction Qualifications { get; }
+        IReportingFunction Reporting { get; }
+        IOtherFunction Other { get; }
+        IRosterShiftFunction RosterShift { get; }
+        ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
+        ITimesheetsFunction Timesheets { get; }
+        IUnavailabilityFunction Unavailability { get; }
+        IWebhookFunction Webhook { get; }
+        IWorkTypeFunction WorkType { get; }
+        IEssFunction Ess { get; }
+        IResellerFunction Reseller { get; }
+        IUserFunction User { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
+    }
     public class MyApiClient : BaseApiClient
     {
         public MyApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
@@ -57,52 +107,52 @@ namespace KeyPayV2.My
             WhiteLabel = new WhiteLabelFunction(Api);
         }
 
-        public BrandFunction Brand { get; }
-        public InvoicesFunction Invoices { get; }
-        public BusinessFunction Business { get; }
-        public ChartOfAccountsFunction ChartOfAccounts { get; }
-        public DeductionCategoriesFunction DeductionCategories { get; }
-        public EmployeeFunction Employee { get; }
-        public EmployeeAccessFunction EmployeeAccess { get; }
-        public EmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
-        public EmployeeBankAccountFunction EmployeeBankAccount { get; }
-        public EmployeeDocumentFunction EmployeeDocument { get; }
-        public EmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
-        public EmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
-        public EmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        public LeaveAllowanceFunction LeaveAllowance { get; }
-        public LeaveRequestsFunction LeaveRequests { get; }
-        public LocationFunction Location { get; }
-        public EmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        public PayRunFunction PayRun { get; }
-        public EmployeeQualificationsFunction EmployeeQualifications { get; }
-        public AuthenticationFunction Authentication { get; }
-        public EmploymentAgreementFunction EmploymentAgreement { get; }
-        public EmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
-        public EmployeeGroupsFunction EmployeeGroups { get; }
-        public EmployeeOnboardingFunction EmployeeOnboarding { get; }
-        public EmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
-        public EmployingEntitiesFunction EmployingEntities { get; }
-        public TimeAndAttendanceFunction TimeAndAttendance { get; }
-        public LeaveCategoriesFunction LeaveCategories { get; }
-        public LookupDataFunction LookupData { get; }
-        public ManagerFunction Manager { get; }
-        public PayCategoryFunction PayCategory { get; }
-        public PayRateTemplateFunction PayRateTemplate { get; }
-        public PayScheduleFunction PaySchedule { get; }
-        public PublicHolidayFunction PublicHoliday { get; }
-        public QualificationsFunction Qualifications { get; }
-        public ReportingFunction Reporting { get; }
-        public OtherFunction Other { get; }
-        public RosterShiftFunction RosterShift { get; }
-        public TieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
-        public TimesheetsFunction Timesheets { get; }
-        public UnavailabilityFunction Unavailability { get; }
-        public WebhookFunction Webhook { get; }
-        public WorkTypeFunction WorkType { get; }
-        public EssFunction Ess { get; }
-        public ResellerFunction Reseller { get; }
-        public UserFunction User { get; }
-        public WhiteLabelFunction WhiteLabel { get; }
+        public IBrandFunction Brand { get; }
+        public IInvoicesFunction Invoices { get; }
+        public IBusinessFunction Business { get; }
+        public IChartOfAccountsFunction ChartOfAccounts { get; }
+        public IDeductionCategoriesFunction DeductionCategories { get; }
+        public IEmployeeFunction Employee { get; }
+        public IEmployeeAccessFunction EmployeeAccess { get; }
+        public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
+        public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
+        public IEmployeeDocumentFunction EmployeeDocument { get; }
+        public IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
+        public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
+        public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
+        public ILeaveAllowanceFunction LeaveAllowance { get; }
+        public ILeaveRequestsFunction LeaveRequests { get; }
+        public ILocationFunction Location { get; }
+        public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
+        public IPayRunFunction PayRun { get; }
+        public IEmployeeQualificationsFunction EmployeeQualifications { get; }
+        public IAuthenticationFunction Authentication { get; }
+        public IEmploymentAgreementFunction EmploymentAgreement { get; }
+        public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
+        public IEmployeeGroupsFunction EmployeeGroups { get; }
+        public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
+        public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
+        public IEmployingEntitiesFunction EmployingEntities { get; }
+        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
+        public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ILookupDataFunction LookupData { get; }
+        public IManagerFunction Manager { get; }
+        public IPayCategoryFunction PayCategory { get; }
+        public IPayRateTemplateFunction PayRateTemplate { get; }
+        public IPayScheduleFunction PaySchedule { get; }
+        public IPublicHolidayFunction PublicHoliday { get; }
+        public IQualificationsFunction Qualifications { get; }
+        public IReportingFunction Reporting { get; }
+        public IOtherFunction Other { get; }
+        public IRosterShiftFunction RosterShift { get; }
+        public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
+        public ITimesheetsFunction Timesheets { get; }
+        public IUnavailabilityFunction Unavailability { get; }
+        public IWebhookFunction Webhook { get; }
+        public IWorkTypeFunction WorkType { get; }
+        public IEssFunction Ess { get; }
+        public IResellerFunction Reseller { get; }
+        public IUserFunction User { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
     }
 }

@@ -12,7 +12,14 @@ using KeyPayV2.Uk.Models.Subcontractor;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class SubcontractorFunction : BaseFunction
+    public interface ISubcontractorFunction
+    {
+        UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel);
+        Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default);
+        UkSubcontractorPaymentDetailsModel SaveSubcontractorPaymentDetails(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model);
+        Task<UkSubcontractorPaymentDetailsModel> SaveSubcontractorPaymentDetailsAsync(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model, CancellationToken cancellationToken = default);
+    }
+    public class SubcontractorFunction : BaseFunction, ISubcontractorFunction
     {
         public SubcontractorFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -22,9 +29,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new subcontractor
         /// </remarks>
-        public void CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel)
+        public UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel)
         {
-            ApiRequest($"/business/{businessId}/subcontractor", createModel, Method.Post);
+            return ApiRequest<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", createModel, Method.Post);
         }
 
         /// <summary>
@@ -33,9 +40,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new subcontractor
         /// </remarks>
-        public Task CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default)
+        public Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/subcontractor", createModel, Method.Post, cancellationToken);
+            return ApiRequestAsync<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", createModel, Method.Post, cancellationToken);
         }
 
         /// <summary>

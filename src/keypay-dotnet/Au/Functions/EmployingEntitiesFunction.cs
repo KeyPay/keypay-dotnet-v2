@@ -12,7 +12,20 @@ using KeyPayV2.Au.Models.EmployingEntities;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EmployingEntitiesFunction : BaseFunction
+    public interface IEmployingEntitiesFunction
+    {
+        List<AuEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        AuEmployingEntityModel CreateEmployingEntity(int businessId, AuEmployingEntityModel employingEntity);
+        Task<AuEmployingEntityModel> CreateEmployingEntityAsync(int businessId, AuEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
+        AuEmployingEntityModel GetEmployingEntityById(int businessId, int id);
+        Task<AuEmployingEntityModel> GetEmployingEntityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuEmployingEntityModel UpdateEmployingEntity(int businessId, int id, AuEmployingEntityModel employingEntity);
+        Task<AuEmployingEntityModel> UpdateEmployingEntityAsync(int businessId, int id, AuEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
+        void DeleteEmployingEntity(int businessId, int id);
+        Task DeleteEmployingEntityAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployingEntitiesFunction : BaseFunction, IEmployingEntitiesFunction
     {
         public EmployingEntitiesFunction(ApiRequestExecutor api) : base(api) {}
 

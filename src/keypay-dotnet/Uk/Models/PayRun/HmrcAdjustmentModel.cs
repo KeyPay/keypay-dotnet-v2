@@ -8,11 +8,11 @@ namespace KeyPayV2.Uk.Models.PayRun
 {
     public class HmrcAdjustmentModel
     {
+        public string NiCategory { get; set; }
+        public bool? ApplyTaxRelief { get; set; }
         public string Notes { get; set; }
         public decimal Amount { get; set; }
         public string ContributionType { get; set; }
-        public string NiCategory { get; set; }
-        public bool? ApplyTaxRelief { get; set; }
         public int Id { get; set; }
         public string ExternalId { get; set; }
         public string LocationId { get; set; }

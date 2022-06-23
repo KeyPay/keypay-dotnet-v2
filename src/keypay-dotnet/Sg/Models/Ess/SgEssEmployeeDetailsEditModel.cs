@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.Ess
     {
         public SgAddressModel ResidentialAddress { get; set; }
         public SgAddressModel PostalAddress { get; set; }
+        public string LegalName { get; set; }
         public int Id { get; set; }
         public int? TitleId { get; set; }
         public string FirstName { get; set; }

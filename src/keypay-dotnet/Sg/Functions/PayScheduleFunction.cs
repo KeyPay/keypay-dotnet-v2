@@ -12,7 +12,26 @@ using KeyPayV2.Sg.Models.PaySchedule;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class PayScheduleFunction : BaseFunction
+    public interface IPayScheduleFunction
+    {
+        List<SgPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgPayScheduleModel CreatePaySchedule(int businessId, SgPayScheduleModel paySchedule);
+        Task<SgPayScheduleModel> CreatePayScheduleAsync(int businessId, SgPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
+        SgPayScheduleModel GetPayScheduleById(int businessId, int id);
+        Task<SgPayScheduleModel> GetPayScheduleByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgPayScheduleModel UpdatePaySchedule(int businessId, int id, SgPayScheduleModel paySchedule);
+        Task<SgPayScheduleModel> UpdatePayScheduleAsync(int businessId, int id, SgPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
+        void DeletePaySchedule(int businessId, int id);
+        Task DeletePayScheduleAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId);
+        Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default);
+        PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId);
+        Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default);
+        List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId);
+        Task<List<PayScheduleDateForecastResultApiModel>> ListNextPayDatesAsync(int businessId, CancellationToken cancellationToken = default);
+    }
+    public class PayScheduleFunction : BaseFunction, IPayScheduleFunction
     {
         public PayScheduleFunction(ApiRequestExecutor api) : base(api) {}
 

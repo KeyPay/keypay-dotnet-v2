@@ -17,9 +17,9 @@ namespace KeyPayV2.Sg.Enums
         Deductions,
         EmployerContributions,
         KiwiSaverContributions,
-        CpfContributions,
-        Contributions,
+        StatutoryContributions,
         PayrolledBenefits,
-        BenefitsInKindAdjustments
+        BenefitsInKindAdjustments,
+        StatutoryDetails
     }
 }

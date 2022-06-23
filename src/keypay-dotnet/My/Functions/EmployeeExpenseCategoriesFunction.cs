@@ -12,7 +12,22 @@ using KeyPayV2.My.Models.EmployeeExpenseCategories;
 
 namespace KeyPayV2.My.Functions
 {
-    public class EmployeeExpenseCategoriesFunction : BaseFunction
+    public interface IEmployeeExpenseCategoriesFunction
+    {
+        List<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        EmployeeExpenseCategoryModel CreateEmployeeExpenseCategory(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory);
+        Task<EmployeeExpenseCategoryModel> CreateEmployeeExpenseCategoryAsync(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default);
+        EmployeeExpenseCategoryModel GetEmployeeExpenseCategoryById(int businessId, int id);
+        Task<EmployeeExpenseCategoryModel> GetEmployeeExpenseCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateEmployeeExpenseCategory(int businessId, int id, EmployeeExpenseCategoryModel employeeExpenseCategory);
+        Task UpdateEmployeeExpenseCategoryAsync(int businessId, int id, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default);
+        void DeleteEmployeeExpenseCategory(int businessId, int id);
+        Task DeleteEmployeeExpenseCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        List<JournalServiceTaxCode> GetTaxCodes(int businessId);
+        Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int businessId, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeExpenseCategoriesFunction : BaseFunction, IEmployeeExpenseCategoriesFunction
     {
         public EmployeeExpenseCategoriesFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployingEntities;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployingEntitiesFunction : BaseFunction
+    public interface IEmployingEntitiesFunction
+    {
+        List<SgEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgEmployingEntityModel CreateEmployingEntity(int businessId, SgEmployingEntityModel employingEntity);
+        Task<SgEmployingEntityModel> CreateEmployingEntityAsync(int businessId, SgEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
+        SgEmployingEntityModel GetEmployingEntityById(int businessId, int id);
+        Task<SgEmployingEntityModel> GetEmployingEntityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgEmployingEntityModel UpdateEmployingEntity(int businessId, int id, SgEmployingEntityModel employingEntity);
+        Task<SgEmployingEntityModel> UpdateEmployingEntityAsync(int businessId, int id, SgEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
+        void DeleteEmployingEntity(int businessId, int id);
+        Task DeleteEmployingEntityAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployingEntitiesFunction : BaseFunction, IEmployingEntitiesFunction
     {
         public EmployingEntitiesFunction(ApiRequestExecutor api) : base(api) {}
 

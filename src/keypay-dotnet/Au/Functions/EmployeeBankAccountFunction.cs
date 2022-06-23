@@ -12,7 +12,20 @@ using KeyPayV2.Au.Models.EmployeeBankAccount;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EmployeeBankAccountFunction : BaseFunction
+    public interface IEmployeeBankAccountFunction
+    {
+        List<AuBankAccountModel> ListBankAccounts(int businessId, int employeeId);
+        Task<List<AuBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        AuSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, AuBankAccountModel model);
+        Task<AuSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, AuBankAccountModel model, CancellationToken cancellationToken = default);
+        AuBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId);
+        Task<AuBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        AuSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId);
+        Task<AuSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, AuBankAccountModel model);
+        Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int id, AuBankAccountModel model, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeBankAccountFunction : BaseFunction, IEmployeeBankAccountFunction
     {
         public EmployeeBankAccountFunction(ApiRequestExecutor api) : base(api) {}
 

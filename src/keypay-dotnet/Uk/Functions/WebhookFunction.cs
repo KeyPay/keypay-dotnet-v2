@@ -12,7 +12,24 @@ using KeyPayV2.Uk.Models.Webhook;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class WebhookFunction : BaseFunction
+    public interface IWebhookFunction
+    {
+        List<WebHook> ListWebHookRegistrations(int businessId);
+        Task<List<WebHook>> ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
+        WebHook RegisterWebHook(int businessId, WebHook webHook);
+        Task<WebHook> RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default);
+        void DeleteAllWebHookRegistrations(int businessId);
+        Task DeleteAllWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
+        WebHook GetWebHookRegistrationById(int businessId, string id);
+        Task<WebHook> GetWebHookRegistrationByIdAsync(int businessId, string id, CancellationToken cancellationToken = default);
+        void UpdateWebHookRegistration(int businessId, string id, WebHook webHook);
+        Task UpdateWebHookRegistrationAsync(int businessId, string id, WebHook webHook, CancellationToken cancellationToken = default);
+        void DeleteWebHookRegistration(int businessId, string id);
+        Task DeleteWebHookRegistrationAsync(int businessId, string id, CancellationToken cancellationToken = default);
+        void TestWebHook(int businessId, string id, TestWebHookQueryModel request);
+        Task TestWebHookAsync(int businessId, string id, TestWebHookQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class WebhookFunction : BaseFunction, IWebhookFunction
     {
         public WebhookFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -12,7 +12,78 @@ using KeyPayV2.Sg.Models.Business;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class BusinessFunction : BaseFunction
+    public interface IBusinessFunction
+    {
+        List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model);
+        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default);
+        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request);
+        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetails(int businessId);
+        Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
+        Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request);
+        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default);
+        void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel);
+        Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default);
+        void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request);
+        Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request);
+        Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        List<BusinessAction> ListBusinessNotifications(int businessId);
+        Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
+        void DismissBusinessNotifications(int businessId, int id);
+        Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        List<DocumentModel> ListBusinessDocumentDetails(int businessId);
+        Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file);
+        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default);
+        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request);
+        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default);
+        DocumentModel GetBusinessDocumentDetails(int businessId, int id);
+        Task<DocumentModel> GetBusinessDocumentDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        DocumentModel UpdateBusinessDocumentPermissions(int businessId, int id, UpdateDocumentPermissionsModel model);
+        Task<DocumentModel> UpdateBusinessDocumentPermissionsAsync(int businessId, int id, UpdateDocumentPermissionsModel model, CancellationToken cancellationToken = default);
+        void DeleteBusinessDocument(int businessId, int id);
+        Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        DocumentFile GetBusinessDocumentContent(int businessId, int id);
+        Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        EmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
+        Task<EmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        EmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, EmployeePortalSettingsModel model);
+        Task<EmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, EmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
+        EntitlementsModel ListEntitlements(int businessId);
+        Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
+        void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
+        Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
+        List<SgGiroBankModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateNewPaymentFileRecord(int businessId, SgGiroBankModel model);
+        Task CreateNewPaymentFileRecordAsync(int businessId, SgGiroBankModel model, CancellationToken cancellationToken = default);
+        SgGiroBankModel GetPaymentFileById(int businessId, int id);
+        Task<SgGiroBankModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel model);
+        Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default);
+        void DeletePaymentFileRecord(int businessId, int id);
+        Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
+        Task<SgEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
+        void CreatePayslipConfiguration(int businessId, SgEditBusinessPaySlipApiModel model);
+        Task CreatePayslipConfigurationAsync(int businessId, SgEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default);
+        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
+        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
+        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
+        void GetTheTimesheetSettingsForTheBusiness(int businessId);
+        Task GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
+        void UpdateTheTimesheetSettingsForTheBusiness(int businessId, SgBusinessTimesheetSettingsModel model);
+        Task UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, SgBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
+        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class BusinessFunction : BaseFunction, IBusinessFunction
     {
         public BusinessFunction(ApiRequestExecutor api) : base(api) {}
 

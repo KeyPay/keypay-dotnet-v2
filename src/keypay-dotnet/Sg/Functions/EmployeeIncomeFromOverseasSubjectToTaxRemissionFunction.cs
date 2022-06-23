@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeeIncomeFromOverseasSubjectToTaxRemission;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction : BaseFunction
+    public interface IEmployeeIncomeFromOverseasSubjectToTaxRemissionFunction
+    {
+        List<SgIncomeFromOverseasSubjectToTaxRemissionModel> GetIncomeFromOverseasSubjectToTaxRemissions(int businessId, int employeeId);
+        Task<List<SgIncomeFromOverseasSubjectToTaxRemissionModel>> GetIncomeFromOverseasSubjectToTaxRemissionsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void CreateIncomeFromOverseasSubjectToTaxRemission(int businessId, int employeeId, SgIncomeFromOverseasSubjectToTaxRemissionModel model);
+        Task CreateIncomeFromOverseasSubjectToTaxRemissionAsync(int businessId, int employeeId, SgIncomeFromOverseasSubjectToTaxRemissionModel model, CancellationToken cancellationToken = default);
+        SgIncomeFromOverseasSubjectToTaxRemissionModel GetIncomeFromOverseasSubjectToTaxRemission(int businessId, int employeeId, int id);
+        Task<SgIncomeFromOverseasSubjectToTaxRemissionModel> GetIncomeFromOverseasSubjectToTaxRemissionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateAnExistingIncomeFromOverseasSubjectToTaxRemission(int businessId, int employeeId, int id, SgIncomeFromOverseasSubjectToTaxRemissionModel request);
+        Task UpdateAnExistingIncomeFromOverseasSubjectToTaxRemissionAsync(int businessId, int employeeId, int id, SgIncomeFromOverseasSubjectToTaxRemissionModel request, CancellationToken cancellationToken = default);
+        void DeleteIncomeFromOverseasSubjectToTaxRemission(int businessId, int employeeId, int id);
+        Task DeleteIncomeFromOverseasSubjectToTaxRemissionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction : BaseFunction, IEmployeeIncomeFromOverseasSubjectToTaxRemissionFunction
     {
         public EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction(ApiRequestExecutor api) : base(api) {}
 

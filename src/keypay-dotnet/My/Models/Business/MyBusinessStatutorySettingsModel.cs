@@ -25,5 +25,11 @@ namespace KeyPayV2.My.Models.Business
         public string OfficerEmail { get; set; }
         public bool? EisEnabled { get; set; }
         public string ZakatNumber { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public EPFBookletOptions? BookletOption { get; set; }
+        public bool? ApplyBookletOptionToAllEmployees { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public MyStatutoryContributionAdjustmentAmountType? AdditionalEpfType { get; set; }
+        public decimal? AdditionalEpfAmount { get; set; }
     }
 }

@@ -12,7 +12,22 @@ using KeyPayV2.Au.Models.Location;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class LocationFunction : BaseFunction
+    public interface ILocationFunction
+    {
+        List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<AuLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        AuLocationModel CreateLocation(int businessId, AuLocationModel location);
+        Task<AuLocationModel> CreateLocationAsync(int businessId, AuLocationModel location, CancellationToken cancellationToken = default);
+        AuSingleLocationModel GetLocationById(int businessId, int id);
+        Task<AuSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateLocation(int businessId, int id, AuLocationModel location);
+        Task UpdateLocationAsync(int businessId, int id, AuLocationModel location, CancellationToken cancellationToken = default);
+        void DeleteLocation(int businessId, int id);
+        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
 

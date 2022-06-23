@@ -12,6 +12,11 @@ namespace KeyPayV2.Nz.Enums
         Income,
         Unknown,
         NotAllowed,
-        CostOfGoodsSold
+        CostOfGoodsSold,
+        AssetAndLiability,
+        CapitalsAndReserves,
+        Sales,
+        Purchases,
+        Overheads
     }
 }

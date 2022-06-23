@@ -12,7 +12,66 @@ using KeyPayV2.Sg.Models.Employee;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeFunction : BaseFunction
+    public interface IEmployeeFunction
+    {
+        void DeleteEmployee(int businessId, int employeeId);
+        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
+        Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void GetEmployeeProfileImage(int businessId, int employeeId);
+        Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
+        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeProfileImage(int businessId, int employeeId);
+        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
+        List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId);
+        Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
+        Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
+        SgOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
+        Task<SgOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetOpeningBalances(int businessId, int employeeId, SgOpeningBalancesModel model);
+        Task SetOpeningBalancesAsync(int businessId, int employeeId, SgOpeningBalancesModel model, CancellationToken cancellationToken = default);
+        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
+        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<SgWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<SgWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
+        Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model);
+        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default);
+        List<SgWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<SgWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void ActivateEmployee(int businessId, int employeeId);
+        Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void GrantKioskAccess(int businessId, int employeeId);
+        Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void RevokeKioskAccess(int businessId, int employeeId);
+        Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
+        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model);
+        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
+        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request);
+        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId);
+        Task<SgUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, SgUnstructuredEmployeeModel model);
+        Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
+        Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
+        Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
 

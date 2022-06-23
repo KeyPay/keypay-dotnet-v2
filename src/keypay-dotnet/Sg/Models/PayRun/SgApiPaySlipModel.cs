@@ -33,6 +33,8 @@ namespace KeyPayV2.Sg.Models.PayRun
         public string EmployeePostalSuburbName { get; set; }
         public string EmployeePostalSuburbPostcode { get; set; }
         public string EmployeePostalSuburbState { get; set; }
+        public DateTime? TerminationDate { get; set; }
+        public DateTime? StartDate { get; set; }
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }

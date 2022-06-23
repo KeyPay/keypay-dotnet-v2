@@ -83,6 +83,10 @@ namespace KeyPayV2.Au.Enums
         EmployeeCarsReport,
         P46Car,
         IrbFormCp8d,
-        DocumentAcknowledgementsReport
+        DocumentAcknowledgementsReport,
+        PaymentAndDeductionStatementReport,
+        Cis300,
+        Zakat,
+        EisContributionsReport
     }
 }

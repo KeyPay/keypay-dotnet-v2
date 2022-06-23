@@ -12,7 +12,40 @@ using KeyPayV2.Au.Models.ChartOfAccounts;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class ChartOfAccountsFunction : BaseFunction
+    public interface IChartOfAccountsFunction
+    {
+        List<JournalAccountModel> GetJournalAccounts(int businessId);
+        Task<List<JournalAccountModel>> GetJournalAccountsAsync(int businessId, CancellationToken cancellationToken = default);
+        JournalAccountModel CreateANewJournalAccount(int businessId, JournalAccountModel request);
+        Task<JournalAccountModel> CreateANewJournalAccountAsync(int businessId, JournalAccountModel request, CancellationToken cancellationToken = default);
+        JournalAccountModel GetJournalAccountById(int businessId, int id);
+        Task<JournalAccountModel> GetJournalAccountByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        JournalAccountModel UpdateAnExistingJournalAccount(int businessId, int id, JournalAccountModel request);
+        Task<JournalAccountModel> UpdateAnExistingJournalAccountAsync(int businessId, int id, JournalAccountModel request, CancellationToken cancellationToken = default);
+        void DeleteAnExistingJournalAccount(int businessId, int id);
+        Task DeleteAnExistingJournalAccountAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request);
+        Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default);
+        JournalServiceProviderModel GetJournalServiceProvider(int businessId);
+        Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default);
+        JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model);
+        Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default);
+        List<string> GetJournalServiceProviders(int businessId);
+        Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default);
+        List<string> GetJournalAccountTypes(int businessId);
+        Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsModel GetChartOfAccounts(int businessId);
+        Task<AuChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsModel UpdateChartOfAccounts(int businessId, AuChartOfAccountsGroupModel chartOfAccounts);
+        Task<AuChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, AuChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        AuChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId);
+        Task<AuChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts);
+        Task<AuChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId);
+        Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
+    }
+    public class ChartOfAccountsFunction : BaseFunction, IChartOfAccountsFunction
     {
         public ChartOfAccountsFunction(ApiRequestExecutor api) : base(api) {}
 

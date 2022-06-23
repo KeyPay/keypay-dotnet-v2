@@ -12,7 +12,20 @@ using KeyPayV2.Au.Models.AbaSettings;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class AbaSettingsFunction : BaseFunction
+    public interface IAbaSettingsFunction
+    {
+        List<BusinessAbaModel> ListAbaSettings(int businessId, ODataQuery oDataQuery = null);
+        Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails);
+        Task CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default);
+        BusinessAbaModel GetAbaSettingsRecordById(int businessId, int id);
+        Task<BusinessAbaModel> GetAbaSettingsRecordByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateAbaSettingsRecord(int businessId, int id, BusinessAbaModel abaDetails);
+        Task UpdateAbaSettingsRecordAsync(int businessId, int id, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default);
+        void DeleteAbaSettingsRecord(int businessId, int id);
+        Task DeleteAbaSettingsRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class AbaSettingsFunction : BaseFunction, IAbaSettingsFunction
     {
         public AbaSettingsFunction(ApiRequestExecutor api) : base(api) {}
 

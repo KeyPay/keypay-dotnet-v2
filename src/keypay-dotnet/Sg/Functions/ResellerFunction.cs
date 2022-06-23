@@ -12,7 +12,14 @@ using KeyPayV2.Sg.Models.Reseller;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class ResellerFunction : BaseFunction
+    public interface IResellerFunction
+    {
+        List<ResellerModel> ListResellers();
+        Task<List<ResellerModel>> ListResellersAsync(CancellationToken cancellationToken = default);
+        ResellerModel GetResellerById(int id);
+        Task<ResellerModel> GetResellerByIdAsync(int id, CancellationToken cancellationToken = default);
+    }
+    public class ResellerFunction : BaseFunction, IResellerFunction
     {
         public ResellerFunction(ApiRequestExecutor api) : base(api) {}
 

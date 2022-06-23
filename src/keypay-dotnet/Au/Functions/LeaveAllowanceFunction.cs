@@ -12,7 +12,32 @@ using KeyPayV2.Au.Models.LeaveAllowance;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class LeaveAllowanceFunction : BaseFunction
+    public interface ILeaveAllowanceFunction
+    {
+        AuLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId);
+        Task<AuLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
+        Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
+        Dictionary<string, IList<AuLeaveAllowanceModel>> GetLeaveAllowancesForAllEmployees(int businessId);
+        Task<Dictionary<string, IList<AuLeaveAllowanceModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        AuLeaveAllowanceModel SetLeaveAllowances(int businessId, AuLeaveAllowancesRequest request);
+        Task<AuLeaveAllowanceModel> SetLeaveAllowancesAsync(int businessId, AuLeaveAllowancesRequest request, CancellationToken cancellationToken = default);
+        Dictionary<string, IList<AuLeaveAllowanceModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId);
+        Task<Dictionary<string, IList<AuLeaveAllowanceModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<AuLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        AuLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate);
+        Task<AuLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        AuLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id);
+        Task<AuLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate);
+        Task<AuLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, AuLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        void DeleteLeaveAllowanceTemplate(int businessId, int id);
+        Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void ReapplyLeaveAllowanceTemplate(int businessId, int id);
+        Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class LeaveAllowanceFunction : BaseFunction, ILeaveAllowanceFunction
     {
         public LeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
 

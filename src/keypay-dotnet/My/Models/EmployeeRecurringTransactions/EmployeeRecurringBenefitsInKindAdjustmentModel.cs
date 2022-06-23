@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.My.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.My.Enums;
 
 namespace KeyPayV2.My.Models.EmployeeRecurringTransactions
@@ -9,7 +11,8 @@ namespace KeyPayV2.My.Models.EmployeeRecurringTransactions
     public class EmployeeRecurringBenefitsInKindAdjustmentModel
     {
         public bool Taxable { get; set; }
-        public int Type { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public MyBenefitsInKindType Type { get; set; }
         public string Specify { get; set; }
         public int? Id { get; set; }
         public int EmployeeId { get; set; }

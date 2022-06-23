@@ -11,7 +11,20 @@ using KeyPayV2.Sg.Models.Common;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class WorkTypeFunction : BaseFunction
+    public interface IWorkTypeFunction
+    {
+        List<SgWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgWorkTypeModel CreateWorkType(int businessId, SgWorkTypeModel workType);
+        Task<SgWorkTypeModel> CreateWorkTypeAsync(int businessId, SgWorkTypeModel workType, CancellationToken cancellationToken = default);
+        SgWorkTypeModel GetWorkTypeById(int businessId, int id);
+        Task<SgWorkTypeModel> GetWorkTypeByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgWorkTypeModel UpdateWorkType(int businessId, int id, SgWorkTypeModel workType);
+        Task<SgWorkTypeModel> UpdateWorkTypeAsync(int businessId, int id, SgWorkTypeModel workType, CancellationToken cancellationToken = default);
+        void DeleteWorkType(int businessId, int id);
+        Task DeleteWorkTypeAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class WorkTypeFunction : BaseFunction, IWorkTypeFunction
     {
         public WorkTypeFunction(ApiRequestExecutor api) : base(api) {}
 

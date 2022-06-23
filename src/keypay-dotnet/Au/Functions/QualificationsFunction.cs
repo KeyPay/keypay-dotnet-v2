@@ -11,7 +11,20 @@ using KeyPayV2.Au.Models.Common;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class QualificationsFunction : BaseFunction
+    public interface IQualificationsFunction
+    {
+        List<QualificationModel> ListQualifications(int businessId, ODataQuery oDataQuery = null);
+        Task<List<QualificationModel>> ListQualificationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateQualification(int businessId, QualificationModel qualification);
+        Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default);
+        QualificationModel GetQualificationById(int businessId, int id);
+        Task<QualificationModel> GetQualificationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateQualification(int businessId, int id, QualificationModel qualification);
+        Task UpdateQualificationAsync(int businessId, int id, QualificationModel qualification, CancellationToken cancellationToken = default);
+        void DeleteQualification(int businessId, int id);
+        Task DeleteQualificationAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class QualificationsFunction : BaseFunction, IQualificationsFunction
     {
         public QualificationsFunction(ApiRequestExecutor api) : base(api) {}
 

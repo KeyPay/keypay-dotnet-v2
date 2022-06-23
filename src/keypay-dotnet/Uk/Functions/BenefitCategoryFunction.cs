@@ -12,7 +12,28 @@ using KeyPayV2.Uk.Models.BenefitCategory;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class BenefitCategoryFunction : BaseFunction
+    public interface IBenefitCategoryFunction
+    {
+        List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId);
+        Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
+        UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model);
+        Task<UkUpdateBenefitCategoryResult> UpdateBenefitCategoryAsync(int businessId, UkBenefitCategoryReadModel model, CancellationToken cancellationToken = default);
+        UkBenefitCategoryReadModel CreateBenefitCategory(int businessId, UkBenefitCategoryEditModel model);
+        Task<UkBenefitCategoryReadModel> CreateBenefitCategoryAsync(int businessId, UkBenefitCategoryEditModel model, CancellationToken cancellationToken = default);
+        UkBenefitCategoryReadModel GetBenefitCategoryById(int businessId, int id);
+        Task<UkBenefitCategoryReadModel> GetBenefitCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void DeleteBenefitCategory(int businessId, int id);
+        Task DeleteBenefitCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        CreateMultipleBenefitCategoriesResult CreateBenefitCategories(int businessId, List<UkBenefitCategoryEditModel> model);
+        Task<CreateMultipleBenefitCategoriesResult> CreateBenefitCategoriesAsync(int businessId, List<UkBenefitCategoryEditModel> model, CancellationToken cancellationToken = default);
+        UkBenefitCategoriesProcessingOptions GetProcessingOptions(int businessId);
+        Task<UkBenefitCategoriesProcessingOptions> GetProcessingOptionsAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetProcessingOptions(int businessId, SaveBenefitCategoriesProcessingOptionsModel model);
+        Task SetProcessingOptionsAsync(int businessId, SaveBenefitCategoriesProcessingOptionsModel model, CancellationToken cancellationToken = default);
+        List<BenefitCategoryRegisteredFromTaxYearOption> GetRegisteredFromTaxYearOptions(int businessId);
+        Task<List<BenefitCategoryRegisteredFromTaxYearOption>> GetRegisteredFromTaxYearOptionsAsync(int businessId, CancellationToken cancellationToken = default);
+    }
+    public class BenefitCategoryFunction : BaseFunction, IBenefitCategoryFunction
     {
         public BenefitCategoryFunction(ApiRequestExecutor api) : base(api) {}
 

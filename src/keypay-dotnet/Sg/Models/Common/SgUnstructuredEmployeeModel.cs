@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.Common
 {
     public class SgUnstructuredEmployeeModel
     {
+        public string LegalName { get; set; }
         public decimal? HoursPerDay { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AddressTypeEnum ResidentialAddressType { get; set; }

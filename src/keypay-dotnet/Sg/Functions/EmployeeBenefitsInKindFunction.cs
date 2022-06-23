@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeeBenefitsInKind;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeBenefitsInKindFunction : BaseFunction
+    public interface IEmployeeBenefitsInKindFunction
+    {
+        List<SgBenefitsInKind> GetBenefitsInKinds(int businessId, int employeeId);
+        Task<List<SgBenefitsInKind>> GetBenefitsInKindsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void CreateBenefitInKind(int businessId, int employeeId, SgBenefitsInKind model);
+        Task CreateBenefitInKindAsync(int businessId, int employeeId, SgBenefitsInKind model, CancellationToken cancellationToken = default);
+        SgBenefitsInKind GetBenefitsInKind(int businessId, int employeeId, int id);
+        Task<SgBenefitsInKind> GetBenefitsInKindAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateAnBenefitInKind(int businessId, int employeeId, int id, SgBenefitsInKind request);
+        Task UpdateAnBenefitInKindAsync(int businessId, int employeeId, int id, SgBenefitsInKind request, CancellationToken cancellationToken = default);
+        void DeleteBenefitInKind(int businessId, int employeeId, int id);
+        Task DeleteBenefitInKindAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeBenefitsInKindFunction : BaseFunction, IEmployeeBenefitsInKindFunction
     {
         public EmployeeBenefitsInKindFunction(ApiRequestExecutor api) : base(api) {}
 

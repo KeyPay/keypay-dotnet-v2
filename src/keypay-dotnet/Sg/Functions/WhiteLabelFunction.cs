@@ -12,7 +12,22 @@ using KeyPayV2.Sg.Models.WhiteLabel;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class WhiteLabelFunction : BaseFunction
+    public interface IWhiteLabelFunction
+    {
+        List<WhiteLabelModel> ListWhiteLabels();
+        Task<List<WhiteLabelModel>> ListWhiteLabelsAsync(CancellationToken cancellationToken = default);
+        WhiteLabelModel GetWhiteLabelById(int id);
+        Task<WhiteLabelModel> GetWhiteLabelByIdAsync(int id, CancellationToken cancellationToken = default);
+        List<CommonActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId);
+        Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default);
+        List<CommonActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request);
+        Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int whitelabelId);
+        Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request);
+        Task<List<SignupModel>> SignupReportAsync(int whitelabelId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class WhiteLabelFunction : BaseFunction, IWhiteLabelFunction
     {
         public WhiteLabelFunction(ApiRequestExecutor api) : base(api) {}
 

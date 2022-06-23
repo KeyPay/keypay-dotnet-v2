@@ -12,7 +12,26 @@ using KeyPayV2.Nz.Models.Other;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class OtherFunction : BaseFunction
+    public interface IOtherFunction
+    {
+        NzPayRunDetailsModel NzPayRunDetails_Get(int businessId, int payRunId);
+        Task<NzPayRunDetailsModel> NzPayRunDetails_GetAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
+        Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        void GetPaySlipsByFinalisedPayRunId(int businessId);
+        Task GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
+        void GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request);
+        Task GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        List<ShiftSwappingReportExportModel> ReportsShiftSwapping_Get(int businessId);
+        Task<List<ShiftSwappingReportExportModel>> ReportsShiftSwapping_GetAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ShiftSwappingReportExportModel> ReportsShiftSwapping_Get(int businessId, ReportsShiftSwapping_GetQueryModel request);
+        Task<List<ShiftSwappingReportExportModel>> ReportsShiftSwapping_GetAsync(int businessId, ReportsShiftSwapping_GetQueryModel request, CancellationToken cancellationToken = default);
+        List<TasksReportExportModel> ReportsTasksReport_Get(int businessId);
+        Task<List<TasksReportExportModel>> ReportsTasksReport_GetAsync(int businessId, CancellationToken cancellationToken = default);
+        List<TasksReportExportModel> ReportsTasksReport_Get(int businessId, ReportsTasksReport_GetQueryModel request);
+        Task<List<TasksReportExportModel>> ReportsTasksReport_GetAsync(int businessId, ReportsTasksReport_GetQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class OtherFunction : BaseFunction, IOtherFunction
     {
         public OtherFunction(ApiRequestExecutor api) : base(api) {}
 

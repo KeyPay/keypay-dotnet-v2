@@ -12,7 +12,32 @@ using KeyPayV2.Nz.Models.LeaveAllowance;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class LeaveAllowanceFunction : BaseFunction
+    public interface ILeaveAllowanceFunction
+    {
+        NzLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId);
+        Task<NzLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
+        Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
+        Dictionary<string, IList<NzLeaveAllowanceModel>> GetLeaveAllowancesForAllEmployees(int businessId);
+        Task<Dictionary<string, IList<NzLeaveAllowanceModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        NzLeaveAllowanceModel SetLeaveAllowances(int businessId, NzLeaveAllowancesRequest request);
+        Task<NzLeaveAllowanceModel> SetLeaveAllowancesAsync(int businessId, NzLeaveAllowancesRequest request, CancellationToken cancellationToken = default);
+        Dictionary<string, IList<NzLeaveAllowanceModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId);
+        Task<Dictionary<string, IList<NzLeaveAllowanceModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<NzLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateLeaveAllowanceTemplate(int businessId, NzLeaveAllowanceTemplateModel leaveAllowanceTemplate);
+        Task CreateLeaveAllowanceTemplateAsync(int businessId, NzLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        NzLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id);
+        Task<NzLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateLeaveAllowanceTemplate(int businessId, int id, NzLeaveAllowanceTemplateModel leaveAllowanceTemplate);
+        Task UpdateLeaveAllowanceTemplateAsync(int businessId, int id, NzLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        void DeleteLeaveAllowanceTemplate(int businessId, int id);
+        Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void ReapplyLeaveAllowanceTemplate(int businessId, int id);
+        Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class LeaveAllowanceFunction : BaseFunction, ILeaveAllowanceFunction
     {
         public LeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -11,7 +11,12 @@ using KeyPayV2.Sg.Models.Common;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeOnboardingFunction : BaseFunction
+    public interface IEmployeeOnboardingFunction
+    {
+        void InitiateEmployeeSelfSetup(int businessId, SgInitiateEmployeeOnboardingApiModel model);
+        Task InitiateEmployeeSelfSetupAsync(int businessId, SgInitiateEmployeeOnboardingApiModel model, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeOnboardingFunction : BaseFunction, IEmployeeOnboardingFunction
     {
         public EmployeeOnboardingFunction(ApiRequestExecutor api) : base(api) {}
 

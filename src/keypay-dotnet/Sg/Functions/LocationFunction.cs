@@ -12,7 +12,22 @@ using KeyPayV2.Sg.Models.Location;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class LocationFunction : BaseFunction
+    public interface ILocationFunction
+    {
+        List<SgLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<SgLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateLocation(int businessId, SgLocationModel location);
+        Task CreateLocationAsync(int businessId, SgLocationModel location, CancellationToken cancellationToken = default);
+        SgSingleLocationModel GetLocationById(int businessId, int id);
+        Task<SgSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateLocation(int businessId, int id, SgLocationModel location);
+        Task UpdateLocationAsync(int businessId, int id, SgLocationModel location, CancellationToken cancellationToken = default);
+        void DeleteLocation(int businessId, int id);
+        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
 

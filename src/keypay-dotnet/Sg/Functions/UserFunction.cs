@@ -12,7 +12,18 @@ using KeyPayV2.Sg.Models.User;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class UserFunction : BaseFunction
+    public interface IUserFunction
+    {
+        UserModel GetUserDetails();
+        Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default);
+        UserUpdatedModel UpdateUser(UpdateUserModel model);
+        Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default);
+        NewUserCreatedModel CreateNewUser(NewUserModel model);
+        Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default);
+        SgUserAccountMetadata ListRelatedBusinessesAndEmployees();
+        Task<SgUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default);
+    }
+    public class UserFunction : BaseFunction, IUserFunction
     {
         public UserFunction(ApiRequestExecutor api) : base(api) {}
 

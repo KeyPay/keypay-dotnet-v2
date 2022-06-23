@@ -12,7 +12,22 @@ using KeyPayV2.Au.Models.SuperFund;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class SuperFundFunction : BaseFunction
+    public interface ISuperFundFunction
+    {
+        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateSelfManagedSuperFund(int businessId, SelfManagedSuperFundModel fund);
+        Task CreateSelfManagedSuperFundAsync(int businessId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
+        SelfManagedSuperFundModel GetSelfManagedSuperFundById(int businessId, int id);
+        Task<SelfManagedSuperFundModel> GetSelfManagedSuperFundByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateSelfManagedSuperFund(int businessId, int id, SelfManagedSuperFundModel fund);
+        Task UpdateSelfManagedSuperFundAsync(int businessId, int id, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
+        List<AuSmsfElectronicServiceAddressModel> ListElectronicServiceAddresses(int businessId);
+        Task<List<AuSmsfElectronicServiceAddressModel>> ListElectronicServiceAddressesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<SuperProductEditModel> SearchSuperFunds(int businessId, SearchSuperFundsQueryModel request);
+        Task<List<SuperProductEditModel>> SearchSuperFundsAsync(int businessId, SearchSuperFundsQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class SuperFundFunction : BaseFunction, ISuperFundFunction
     {
         public SuperFundFunction(ApiRequestExecutor api) : base(api) {}
 

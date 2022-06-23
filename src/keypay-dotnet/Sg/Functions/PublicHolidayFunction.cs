@@ -12,7 +12,22 @@ using KeyPayV2.Sg.Models.PublicHoliday;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class PublicHolidayFunction : BaseFunction
+    public interface IPublicHolidayFunction
+    {
+        List<PublicHolidayModel> GetPublicHolidaysForYear(int businessId, GetPublicHolidaysForYearQueryModel request);
+        Task<List<PublicHolidayModel>> GetPublicHolidaysForYearAsync(int businessId, GetPublicHolidaysForYearQueryModel request, CancellationToken cancellationToken = default);
+        PublicHolidayModel AddAPublicHoliday(int businessId, PublicHolidayModel publicHoliday);
+        Task<PublicHolidayModel> AddAPublicHolidayAsync(int businessId, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default);
+        void DeletePublicHolidayByDate(int businessId, DeletePublicHolidayByDateQueryModel request);
+        Task DeletePublicHolidayByDateAsync(int businessId, DeletePublicHolidayByDateQueryModel request, CancellationToken cancellationToken = default);
+        PublicHolidayModel GetPublicHolidayDetails(int businessId, int id);
+        Task<PublicHolidayModel> GetPublicHolidayDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        PublicHolidayModel UpdatePublicHoliday(int businessId, int id, PublicHolidayModel publicHoliday);
+        Task<PublicHolidayModel> UpdatePublicHolidayAsync(int businessId, int id, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default);
+        void DeletePublicHoliday(int businessId, int id);
+        Task DeletePublicHolidayAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class PublicHolidayFunction : BaseFunction, IPublicHolidayFunction
     {
         public PublicHolidayFunction(ApiRequestExecutor api) : base(api) {}
 

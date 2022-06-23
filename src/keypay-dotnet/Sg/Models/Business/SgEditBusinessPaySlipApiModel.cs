@@ -16,6 +16,7 @@ namespace KeyPayV2.Sg.Models.Business
         public bool ShowBasePayRate { get; set; }
         public bool ShowEmployeeId { get; set; }
         public bool ShowRateForAnnualEarnings { get; set; }
+        public bool ShowEmployeeAddress { get; set; }
         public int Id { get; set; }
         public string EmailFrom { get; set; }
         public string EmailBodyMessage { get; set; }

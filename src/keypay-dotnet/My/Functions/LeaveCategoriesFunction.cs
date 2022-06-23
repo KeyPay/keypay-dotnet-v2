@@ -12,7 +12,20 @@ using KeyPayV2.My.Models.LeaveCategories;
 
 namespace KeyPayV2.My.Functions
 {
-    public class LeaveCategoriesFunction : BaseFunction
+    public interface ILeaveCategoriesFunction
+    {
+        List<MyLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<MyLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        MyLeaveCategoryModel CreateLeaveCategory(int businessId, MyLeaveCategoryModel leaveCategory);
+        Task<MyLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, MyLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
+        MyLeaveCategoryModel GetLeaveCategoryById(int businessId, int id);
+        Task<MyLeaveCategoryModel> GetLeaveCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        MyLeaveCategoryModel UpdateLeaveCategory(int businessId, int id, MyLeaveCategoryModel leaveCategory);
+        Task<MyLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, MyLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
+        void DeleteLeaveCategory(int businessId, int id);
+        Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class LeaveCategoriesFunction : BaseFunction, ILeaveCategoriesFunction
     {
         public LeaveCategoriesFunction(ApiRequestExecutor api) : base(api) {}
 

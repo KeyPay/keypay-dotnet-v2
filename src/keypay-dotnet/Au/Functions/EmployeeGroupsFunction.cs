@@ -12,7 +12,20 @@ using KeyPayV2.Au.Models.EmployeeGroups;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EmployeeGroupsFunction : BaseFunction
+    public interface IEmployeeGroupsFunction
+    {
+        List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        AuEmployeeGroupModel CreateEmployeeGroup(int businessId, AuEmployeeGroupModel employeeGroup);
+        Task<AuEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        AuDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
+        Task<AuDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, AuEmployeeGroupModel employeeGroup);
+        Task<AuEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        void DeleteEmployeeGroup(int businessId, int id);
+        Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeGroupsFunction : BaseFunction, IEmployeeGroupsFunction
     {
         public EmployeeGroupsFunction(ApiRequestExecutor api) : base(api) {}
 

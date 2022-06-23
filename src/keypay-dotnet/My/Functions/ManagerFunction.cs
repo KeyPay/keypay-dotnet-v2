@@ -12,7 +12,208 @@ using KeyPayV2.My.Models.Manager;
 
 namespace KeyPayV2.My.Functions
 {
-    public class ManagerFunction : BaseFunction
+    public interface IManagerFunction
+    {
+        void DownloadDocument(int businessId, int employeeId, int documentId);
+        Task DownloadDocumentAsync(int businessId, int employeeId, int documentId, CancellationToken cancellationToken = default);
+        ManagerExpenseRequestModel CreateExpenseRequest(int businessId, int employeeId, ExpenseRequestEditModel expenseRequest);
+        Task<ManagerExpenseRequestModel> CreateExpenseRequestAsync(int businessId, int employeeId, ExpenseRequestEditModel expenseRequest, CancellationToken cancellationToken = default);
+        ManagerExpenseRequestModel GetExpenseRequest(int businessId, int employeeId, int expenseRequestId);
+        Task<ManagerExpenseRequestModel> GetExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        ManagerExpenseRequestModel EditExpenseRequest(int businessId, int employeeId, int expenseRequestId, ExpenseRequestEditModel expenseRequest);
+        Task<ManagerExpenseRequestModel> EditExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, ExpenseRequestEditModel expenseRequest, CancellationToken cancellationToken = default);
+        void DeleteExpenseRequest(int businessId, int employeeId, int expenseRequestId);
+        Task DeleteExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        ManagerExpenseRequestModel ApproveExpenseRequest(int businessId, int employeeId, int expenseRequestId);
+        Task<ManagerExpenseRequestModel> ApproveExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        AttachmentModel UploadAttachmentToExpenseRequest(int businessId, int employeeId, FileUploadModel file, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request);
+        Task<AttachmentModel> UploadAttachmentToExpenseRequestAsync(int businessId, int employeeId, FileUploadModel file, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request, CancellationToken cancellationToken = default);
+        ManagerExpenseRequestModel DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, DeclineReason reason);
+        Task<ManagerExpenseRequestModel> DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, DeclineReason reason, CancellationToken cancellationToken = default);
+        ExpenseReferenceData GetExpensesReferenceData(int businessId, int employeeId);
+        Task<ExpenseReferenceData> GetExpensesReferenceDataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ManagerLeaveRequestModel CreateLeaveRequest(int businessId, int employeeId, ManagerLeaveApplicationModel leaveApplication);
+        Task<ManagerLeaveRequestModel> CreateLeaveRequestAsync(int businessId, int employeeId, ManagerLeaveApplicationModel leaveApplication, CancellationToken cancellationToken = default);
+        ManagerLeaveRequestModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId);
+        Task<ManagerLeaveRequestModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        ManagerLeaveRequestModel UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, ManagerLeaveApplicationModel leaveApplication);
+        Task<ManagerLeaveRequestModel> UpdateLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, ManagerLeaveApplicationModel leaveApplication, CancellationToken cancellationToken = default);
+        ManagerLeaveRequestModel DeleteLeaveRequest(int businessId, int employeeId, int leaveRequestId);
+        Task<ManagerLeaveRequestModel> DeleteLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        ManagerLeaveRequestModel ApproveLeaveRequest(int businessId, int employeeId, int leaveRequestId);
+        Task<ManagerLeaveRequestModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        DocumentFile GetLeaveRequestAttachment(int businessId, int employeeId, int leaveRequestId);
+        Task<DocumentFile> GetLeaveRequestAttachmentAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        ManagerLeaveRequestModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineReason declineReason);
+        Task<ManagerLeaveRequestModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineReason declineReason, CancellationToken cancellationToken = default);
+        List<ManagerLeaveRequestModel> OverlappingLeaveRequests(int businessId, int employeeId, int leaveRequestId);
+        Task<List<ManagerLeaveRequestModel>> OverlappingLeaveRequestsAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
+        List<ManagerLeaveCategoryModel> ListLeaveCategories(int businessId, int employeeId);
+        Task<List<ManagerLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ManagerLeaveEstimate EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request);
+        Task<ManagerLeaveEstimate> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default);
+        ManagerUnavailabilityModel CreateUnavailability(int businessId, int employeeId, UnavailabilityEditModel model);
+        Task<ManagerUnavailabilityModel> CreateUnavailabilityAsync(int businessId, int employeeId, UnavailabilityEditModel model, CancellationToken cancellationToken = default);
+        ManagerUnavailabilityModel UpdateUnavailability(int businessId, int employeeId, int unavailabilityId, UnavailabilityEditModel model);
+        Task<ManagerUnavailabilityModel> UpdateUnavailabilityAsync(int businessId, int employeeId, int unavailabilityId, UnavailabilityEditModel model, CancellationToken cancellationToken = default);
+        void DeleteUnavailability(int businessId, int employeeId, int unavailabilityId);
+        Task DeleteUnavailabilityAsync(int businessId, int employeeId, int unavailabilityId, CancellationToken cancellationToken = default);
+        ManagerTimesheetLineModel GetTimesheet(int businessId, int employeeId, int timesheetId);
+        Task<ManagerTimesheetLineModel> GetTimesheetAsync(int businessId, int employeeId, int timesheetId, CancellationToken cancellationToken = default);
+        ManagerTimesheetLineModel EditTimesheet(int businessId, int employeeId, int timesheetId, ManagerTimesheetSubmitModel timesheet);
+        Task<ManagerTimesheetLineModel> EditTimesheetAsync(int businessId, int employeeId, int timesheetId, ManagerTimesheetSubmitModel timesheet, CancellationToken cancellationToken = default);
+        void DeleteTimesheet(int businessId, int employeeId, int timesheetId);
+        Task DeleteTimesheetAsync(int businessId, int employeeId, int timesheetId, CancellationToken cancellationToken = default);
+        ManagerTimesheetLineModel ApproveTimesheet(int businessId, int employeeId, int timesheetId);
+        Task<ManagerTimesheetLineModel> ApproveTimesheetAsync(int businessId, int employeeId, int timesheetId, CancellationToken cancellationToken = default);
+        ManagerTimesheetLineModel RejectTimesheet(int businessId, int employeeId, int timesheetId);
+        Task<ManagerTimesheetLineModel> RejectTimesheetAsync(int businessId, int employeeId, int timesheetId, CancellationToken cancellationToken = default);
+        MyTimesheetReferenceData GetTimesheetReferenceData(int businessId, int employeeId);
+        Task<MyTimesheetReferenceData> GetTimesheetReferenceDataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void GetEmployeeProfileImage(int businessId, int employeeId);
+        Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
+        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeProfileImage(int businessId, int employeeId);
+        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void InitiateEmployeeSelfSetup(int businessId, MyInitiateEmployeeOnboardingApiModel model);
+        Task InitiateEmployeeSelfSetupAsync(int businessId, MyInitiateEmployeeOnboardingApiModel model, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsModel> GetListOfEmployees(int businessId);
+        Task<List<EmployeeDetailsModel>> GetListOfEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        PagedResultModel<ManagerExpenseRequestModel> GetBusinessExpenseRequests(int businessId);
+        Task<PagedResultModel<ManagerExpenseRequestModel>> GetBusinessExpenseRequestsAsync(int businessId, CancellationToken cancellationToken = default);
+        PagedResultModel<ManagerExpenseRequestModel> GetBusinessExpenseRequests(int businessId, GetBusinessExpenseRequestsQueryModel request);
+        Task<PagedResultModel<ManagerExpenseRequestModel>> GetBusinessExpenseRequestsAsync(int businessId, GetBusinessExpenseRequestsQueryModel request, CancellationToken cancellationToken = default);
+        List<ExpenseCategoryResponseModel> ListExpenseCategories(int businessId);
+        Task<List<ExpenseCategoryResponseModel>> ListExpenseCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ManagerExpenseEmployeeModel> ListExpenseRequestEmployees(int businessId);
+        Task<List<ManagerExpenseEmployeeModel>> ListExpenseRequestEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<LocationModel> ListExpenseRequestLocations(int businessId);
+        Task<List<LocationModel>> ListExpenseRequestLocationsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ExpenseTaxCode> ListTaxCodes(int businessId);
+        Task<List<ExpenseTaxCode>> ListTaxCodesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<TimeAndAttendanceKioskModel> GetKiosks(int businessId);
+        Task<List<TimeAndAttendanceKioskModel>> GetKiosksAsync(int businessId, CancellationToken cancellationToken = default);
+        TimeAndAttendanceKioskModel GetKioskById(int businessId, int id);
+        Task<TimeAndAttendanceKioskModel> GetKioskByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        KioskEmployeeModel ChangePin(int businessId, int kioskId, ChangeKioskPinModel model);
+        Task<KioskEmployeeModel> ChangePinAsync(int businessId, int kioskId, ChangeKioskPinModel model, CancellationToken cancellationToken = default);
+        BasicKioskEmployeeModel CheckEmployee(int businessId, int kioskId, CheckKioskEmployeeIdModel model);
+        Task<BasicKioskEmployeeModel> CheckEmployeeAsync(int businessId, int kioskId, CheckKioskEmployeeIdModel model, CancellationToken cancellationToken = default);
+        KioskEmployeeModel VerifyKioskPin(int businessId, int kioskId, CheckKioskPinModel model);
+        Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, int kioskId, CheckKioskPinModel model, CancellationToken cancellationToken = default);
+        KioskEmployeeModel ClockOutEmployee(int businessId, int kioskId, ClockOffModel request);
+        Task<KioskEmployeeModel> ClockOutEmployeeAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
+        KioskEmployeeModel ClockInEmployee(int businessId, int kioskId, ClockOnModel request);
+        Task<KioskEmployeeModel> ClockInEmployeeAsync(int businessId, int kioskId, ClockOnModel request, CancellationToken cancellationToken = default);
+        KioskEmployeeModel DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request);
+        Task<KioskEmployeeModel> DiscardCurrentShiftAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
+        void SendPinResetEmail(int businessId, PinResetModel model, string kioskId);
+        Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        KioskEmployeeModel EndBreak(int businessId, int kioskId, EndBreakModel request);
+        Task<KioskEmployeeModel> EndBreakAsync(int businessId, int kioskId, EndBreakModel request, CancellationToken cancellationToken = default);
+        MyTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId);
+        Task<MyTimeAndAttendanceLookupDataModel> GetEmployeeLookupDataAsync(int businessId, int employeeId, int kioskId, CancellationToken cancellationToken = default);
+        List<ShiftNoteViewModel> GetShiftNotes(int businessId, int kioskId, int shiftId);
+        Task<List<ShiftNoteViewModel>> GetShiftNotesAsync(int businessId, int kioskId, int shiftId, CancellationToken cancellationToken = default);
+        List<ShiftNoteViewModel> GetShiftNotes(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request);
+        Task<List<ShiftNoteViewModel>> GetShiftNotesAsync(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default);
+        ShiftNoteViewModel AddNoteToShift(int businessId, int kioskId, int shiftId, AddNoteModel model);
+        Task<ShiftNoteViewModel> AddNoteToShiftAsync(int businessId, int kioskId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default);
+        void DeleteNoteFromShift(int businessId, int kioskId, int shiftId, int noteId);
+        Task DeleteNoteFromShiftAsync(int businessId, int kioskId, int shiftId, int noteId, CancellationToken cancellationToken = default);
+        void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId);
+        Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default);
+        void SendPinResetSms(int businessId, PinResetModel model, string kioskId);
+        Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId);
+        Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default);
+        void AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model);
+        Task AddAnEmployeeAsync(int businessId, int kioskId, KioskCreateEmployeeModel model, CancellationToken cancellationToken = default);
+        KioskEmployeeModel StartBreak(int businessId, int kioskId, StartBreakModel request);
+        Task<KioskEmployeeModel> StartBreakAsync(int businessId, int kioskId, StartBreakModel request, CancellationToken cancellationToken = default);
+        List<MyTimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model);
+        Task<List<MyTimeAndAttendanceShiftModel>> ShiftsAsync(int businessId, GetShiftsModel model, CancellationToken cancellationToken = default);
+        List<TimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
+        Task<List<TimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateKioskTimesheetLine(int businessId, IndividualTimesheetLineModel request);
+        Task CreateKioskTimesheetLineAsync(int businessId, IndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        void UpdateKioskTimesheetLine(int businessId, int timesheetLineId, IndividualTimesheetLineModel request);
+        Task UpdateKioskTimesheetLineAsync(int businessId, int timesheetLineId, IndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        void UpdateCommentsInATimesheet(int businessId, TimesheetLineCommentsModel request, string timesheetLineId);
+        Task UpdateCommentsInATimesheetAsync(int businessId, TimesheetLineCommentsModel request, string timesheetLineId, CancellationToken cancellationToken = default);
+        List<ManagerLeaveRequestModel> ListLeaveRequests(int businessId);
+        Task<List<ManagerLeaveRequestModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ManagerLeaveRequestModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request);
+        Task<List<ManagerLeaveRequestModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
+        List<ManagerLeaveCategoryModel> ListLeaveCategories(int businessId);
+        Task<List<ManagerLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ManagerLeaveEmployeeModel> ListLeaveEmployees(int businessId);
+        Task<List<ManagerLeaveEmployeeModel>> ListLeaveEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<LocationModel> ListLeaveLocations(int businessId);
+        Task<List<LocationModel>> ListLeaveLocationsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ManagerLeaveRequestModel> OverlappingLeaveRequests(int businessId, OverlappingLeaveRequestsQueryModel request);
+        Task<List<ManagerLeaveRequestModel>> OverlappingLeaveRequestsAsync(int businessId, OverlappingLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
+        List<LocationModel> ListEmployeeLocations(int businessId, ODataQuery oDataQuery = null);
+        Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<LocationModel> GetListOfLocations(int businessId);
+        Task<List<LocationModel>> GetListOfLocationsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<MyRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId);
+        Task<List<MyRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<MyRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request);
+        Task<List<MyRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
+        MyRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
+        Task<MyRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        MyRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
+        Task<MyRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        List<MyEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
+        Task<List<MyEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
+        ManagerRosterShiftModel GetRosterShiftById(int businessId, int rosterShiftId);
+        Task<ManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, CancellationToken cancellationToken = default);
+        ManagerRosterShiftModel GetRosterShiftById(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request);
+        Task<ManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request, CancellationToken cancellationToken = default);
+        void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
+        Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
+        List<ManagerRosterEmployeeModel> ListRosterEmployees(int businessId);
+        Task<List<ManagerRosterEmployeeModel>> ListRosterEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<LocationModel> ListRosterLocations(int businessId);
+        Task<List<LocationModel>> ListRosterLocationsAsync(int businessId, CancellationToken cancellationToken = default);
+        MyManagerRosterDataModel ManageRosterData(int businessId);
+        Task<MyManagerRosterDataModel> ManageRosterDataAsync(int businessId, CancellationToken cancellationToken = default);
+        MyManagerRosterDataModel ManageRosterData(int businessId, ManageRosterDataQueryModel request);
+        Task<MyManagerRosterDataModel> ManageRosterDataAsync(int businessId, ManageRosterDataQueryModel request, CancellationToken cancellationToken = default);
+        List<ManagerRosterEmployeeModel> ListManagerRosterEmployees(int businessId);
+        Task<List<ManagerRosterEmployeeModel>> ListManagerRosterEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<RosterShiftRole> GetTheListOfRolesAvailable(int businessId);
+        Task<List<RosterShiftRole>> GetTheListOfRolesAvailableAsync(int businessId, CancellationToken cancellationToken = default);
+        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
+        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
+        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
+        PagedResultModel<ManagerTimesheetLineModel> GetBusinessTimesheets(int businessId);
+        Task<PagedResultModel<ManagerTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, CancellationToken cancellationToken = default);
+        PagedResultModel<ManagerTimesheetLineModel> GetBusinessTimesheets(int businessId, GetBusinessTimesheetsQueryModel request);
+        Task<PagedResultModel<ManagerTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, GetBusinessTimesheetsQueryModel request, CancellationToken cancellationToken = default);
+        MyIndividualTimesheetLineModel CreateTimesheetLine(int businessId, MyIndividualTimesheetLineModel request);
+        Task<MyIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, MyIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        MyIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, MyIndividualTimesheetLineModel request);
+        Task<MyIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, MyIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        List<ManagerEmployeeGroup> ListEmployeeGroups(int businessId);
+        Task<List<ManagerEmployeeGroup>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ManagerTimesheetEmployeeModel> ListTimesheetEmployees(int businessId);
+        Task<List<ManagerTimesheetEmployeeModel>> ListTimesheetEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<LocationModel> ListTimesheetLocations(int businessId);
+        Task<List<LocationModel>> ListTimesheetLocationsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<MyAvailableBusinessModel> ListBusinesses();
+        Task<List<MyAvailableBusinessModel>> ListBusinessesAsync(CancellationToken cancellationToken = default);
+    }
+    public class ManagerFunction : BaseFunction, IManagerFunction
     {
         public ManagerFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -1722,7 +1923,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<MyRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<MyRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}&includeWarnings={request.IncludeWarnings}", Method.Get);
+            return ApiRequest<List<MyRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&currentPage={request.CurrentPage}&includeWarnings={request.IncludeWarnings}", Method.Get);
         }
 
         /// <summary>
@@ -1735,7 +1936,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<MyRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&pageNum={request.PageNum}&includeWarnings={request.IncludeWarnings}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<MyRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/manager/rostershift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&shiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("shiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("selectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&employeeId={request.EmployeeId}&locationId={request.LocationId}&employeeGroupId={request.EmployeeGroupId}&unassignedShiftsOnly={request.UnassignedShiftsOnly}&selectAllRoles={request.SelectAllRoles}&excludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&pageSize={request.PageSize}&currentPage={request.CurrentPage}&includeWarnings={request.IncludeWarnings}", Method.Get, cancellationToken);
         }
 
         /// <summary>

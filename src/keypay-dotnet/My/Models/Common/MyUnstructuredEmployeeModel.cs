@@ -10,6 +10,7 @@ namespace KeyPayV2.My.Models.Common
 {
     public class MyUnstructuredEmployeeModel
     {
+        public string LegalName { get; set; }
         public decimal? HoursPerDay { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AddressTypeEnum ResidentialAddressType { get; set; }
@@ -28,12 +29,15 @@ namespace KeyPayV2.My.Models.Common
         public string BankAccount1_BankName { get; set; }
         public string BankAccount1_BankCode { get; set; }
         public string BankAccount1_BranchCode { get; set; }
+        public string BankAccount1_MyBankCode { get; set; }
         public string BankAccount2_BankName { get; set; }
         public string BankAccount2_BankCode { get; set; }
         public string BankAccount2_BranchCode { get; set; }
+        public string BankAccount2_MyBankCode { get; set; }
         public string BankAccount3_BankName { get; set; }
         public string BankAccount3_BankCode { get; set; }
         public string BankAccount3_BranchCode { get; set; }
+        public string BankAccount3_MyBankCode { get; set; }
         public string Ethnicity { get; set; }
         public string Religion { get; set; }
         public string Nationality { get; set; }

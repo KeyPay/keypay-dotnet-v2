@@ -12,7 +12,20 @@ using KeyPayV2.Nz.Models.DeductionCategories;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class DeductionCategoriesFunction : BaseFunction
+    public interface IDeductionCategoriesFunction
+    {
+        List<NzDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        NzDeductionCategoryModel CreateDeductionCategory(int businessId, NzDeductionCategoryModel deductionCategory);
+        Task<NzDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        NzDeductionCategoryModel GetDeductionCategoryById(int businessId, int id);
+        Task<NzDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        NzDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, NzDeductionCategoryModel deductionCategory);
+        Task<NzDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        void DeleteDeductionCategory(int businessId, int id);
+        Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class DeductionCategoriesFunction : BaseFunction, IDeductionCategoriesFunction
     {
         public DeductionCategoriesFunction(ApiRequestExecutor api) : base(api) {}
 

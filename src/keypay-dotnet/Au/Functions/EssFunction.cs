@@ -12,7 +12,246 @@ using KeyPayV2.Au.Models.Ess;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EssFunction : BaseFunction
+    public interface IEssFunction
+    {
+        List<AuEssBankAccountModel> ListBankAccounts(int employeeId);
+        Task<List<AuEssBankAccountModel>> ListBankAccountsAsync(int employeeId, CancellationToken cancellationToken = default);
+        AuEssSaveBankAccountResponseModel CreateBankAccount(int employeeId, AuEssBankAccountModel model);
+        Task<AuEssSaveBankAccountResponseModel> CreateBankAccountAsync(int employeeId, AuEssBankAccountModel model, CancellationToken cancellationToken = default);
+        AuEssBankAccountModel GetBankAccountById(int employeeId, int bankAccountId);
+        Task<AuEssBankAccountModel> GetBankAccountByIdAsync(int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        AuEssSaveBankAccountResponseModel DeleteBankAccount(int employeeId, int bankAccountId);
+        Task<AuEssSaveBankAccountResponseModel> DeleteBankAccountAsync(int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        AuEssSaveBankAccountResponseModel UpdateBankAccount(int employeeId, int id, AuEssBankAccountModel model);
+        Task<AuEssSaveBankAccountResponseModel> UpdateBankAccountAsync(int employeeId, int id, AuEssBankAccountModel model, CancellationToken cancellationToken = default);
+        AuDashboardModel GetDashboard(int employeeId);
+        Task<AuDashboardModel> GetDashboardAsync(int employeeId, CancellationToken cancellationToken = default);
+        EssEmployeeDetailsModel GetDetails(int employeeId);
+        Task<EssEmployeeDetailsModel> GetDetailsAsync(int employeeId, CancellationToken cancellationToken = default);
+        AuUnstructuredEmployeeModel SaveDetails(int employeeId, EmployeePartialEditModel model);
+        Task<AuUnstructuredEmployeeModel> SaveDetailsAsync(int employeeId, EmployeePartialEditModel model, CancellationToken cancellationToken = default);
+        List<EssDocumentModel> ListAllDocuments(int employeeId);
+        Task<List<EssDocumentModel>> ListAllDocumentsAsync(int employeeId, CancellationToken cancellationToken = default);
+        EssDocumentModel GetDocumentDetailsById(int employeeId, string documentId);
+        Task<EssDocumentModel> GetDocumentDetailsByIdAsync(int employeeId, string documentId, CancellationToken cancellationToken = default);
+        EssDocumentModel AcknowledgeDocument(int employeeId, string documentId);
+        Task<EssDocumentModel> AcknowledgeDocumentAsync(int employeeId, string documentId, CancellationToken cancellationToken = default);
+        byte[] DownloadDocument(int employeeId, string documentId);
+        Task<byte[]> DownloadDocumentAsync(int employeeId, string documentId, CancellationToken cancellationToken = default);
+        List<EssPaymentSummaryModel> GetPaymentSummaries(int employeeId);
+        Task<List<EssPaymentSummaryModel>> GetPaymentSummariesAsync(int employeeId, CancellationToken cancellationToken = default);
+        byte[] GetPaymentSummaryPdf(int employeeId, int documentId);
+        Task<byte[]> GetPaymentSummaryPdfAsync(int employeeId, int documentId, CancellationToken cancellationToken = default);
+        List<EssPayslipModel> ListPaySlips(int employeeId);
+        Task<List<EssPayslipModel>> ListPaySlipsAsync(int employeeId, CancellationToken cancellationToken = default);
+        byte[] GetPaySlipByPayRunId(int employeeId, int payrunId);
+        Task<byte[]> GetPaySlipByPayRunIdAsync(int employeeId, int payrunId, CancellationToken cancellationToken = default);
+        EmployeeEmergencyContactsEditModel GetEmergencyContacts(int employeeId);
+        Task<EmployeeEmergencyContactsEditModel> GetEmergencyContactsAsync(int employeeId, CancellationToken cancellationToken = default);
+        EmployeeEmergencyContactsEditModel UpdateEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model);
+        Task<EmployeeEmergencyContactsEditModel> UpdateEmergencyContactsAsync(int employeeId, EmployeeEmergencyContactsEditModel model, CancellationToken cancellationToken = default);
+        EmployeeEmergencyContactsEditModel SaveEmergencyContacts(int employeeId, EmployeeEmergencyContactsEditModel model);
+        Task<EmployeeEmergencyContactsEditModel> SaveEmergencyContactsAsync(int employeeId, EmployeeEmergencyContactsEditModel model, CancellationToken cancellationToken = default);
+        List<EssExpenseRequestResponseModel> GetExpenseRequests(int employeeId);
+        Task<List<EssExpenseRequestResponseModel>> GetExpenseRequestsAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<EssExpenseRequestResponseModel> GetExpenseRequests(int employeeId, GetExpenseRequestsQueryModel request);
+        Task<List<EssExpenseRequestResponseModel>> GetExpenseRequestsAsync(int employeeId, GetExpenseRequestsQueryModel request, CancellationToken cancellationToken = default);
+        void CreateExpenseRequest(int employeeId, ExpenseRequestEditModel model);
+        Task CreateExpenseRequestAsync(int employeeId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default);
+        EssExpenseRequestResponseModel GetExpenseRequestById(int employeeId, int expenseRequestId);
+        Task<EssExpenseRequestResponseModel> GetExpenseRequestByIdAsync(int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void UpdateExpenseRequest(int employeeId, int expenseRequestId, ExpenseRequestEditModel model);
+        Task UpdateExpenseRequestAsync(int employeeId, int expenseRequestId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default);
+        EssExpenseRequestResponseModel DeleteExpenseRequest(int employeeId, int expenseRequestId);
+        Task<EssExpenseRequestResponseModel> DeleteExpenseRequestAsync(int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void UploadAttachmentToExpenseRequest(int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request);
+        Task UploadAttachmentToExpenseRequestAsync(int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request, CancellationToken cancellationToken = default);
+        List<ExpenseCategoryResponseModel> GetExpenseCategories(int employeeId);
+        Task<List<ExpenseCategoryResponseModel>> GetExpenseCategoriesAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeExpensePaymentSummaryModel> GetExpensePaymentSummary(int employeeId);
+        Task<List<EmployeeExpensePaymentSummaryModel>> GetExpensePaymentSummaryAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<JournalServiceTaxCode> GetTaxCodes(int employeeId);
+        Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<EssLeaveRequestModel> ListLeaveRequests(int employeeId);
+        Task<List<EssLeaveRequestModel>> ListLeaveRequestsAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<EssLeaveRequestModel> ListLeaveRequests(int employeeId, ListLeaveRequestsQueryModel request);
+        Task<List<EssLeaveRequestModel>> ListLeaveRequestsAsync(int employeeId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
+        void CreateLeaveRequest(int employeeId, LeaveApplicationWithAttachmentModel leaveApplication);
+        Task CreateLeaveRequestAsync(int employeeId, LeaveApplicationWithAttachmentModel leaveApplication, CancellationToken cancellationToken = default);
+        EssLeaveRequestModel GetLeaveRequestById(int employeeId, int leaveRequestId);
+        Task<EssLeaveRequestModel> GetLeaveRequestByIdAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        void UpdateLeaveRequest(int employeeId, int leaveRequestId, LeaveApplicationWithAttachmentModel leaveApplication);
+        Task UpdateLeaveRequestAsync(int employeeId, int leaveRequestId, LeaveApplicationWithAttachmentModel leaveApplication, CancellationToken cancellationToken = default);
+        void DeleteLeaveRequest(int employeeId, int leaveRequestId);
+        Task DeleteLeaveRequestAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        void UploadAttachmentToLeaveRequest(int employeeId, int leaveRequestId);
+        Task UploadAttachmentToLeaveRequestAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        void DeleteAttachmentFromLeaveRequest(int employeeId, int leaveRequestId);
+        Task DeleteAttachmentFromLeaveRequestAsync(int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int employeeId);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int employeeId, GetLeaveBalancesQueryModel request);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
+        EssLeaveEstimate EstimateLeaveHours(int employeeId, EstimateLeaveHoursQueryModel request);
+        Task<EssLeaveEstimate> EstimateLeaveHoursAsync(int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default);
+        List<EssLeaveCategoryModel> GetLeaveCategories(int employeeId);
+        Task<List<EssLeaveCategoryModel>> GetLeaveCategoriesAsync(int employeeId, CancellationToken cancellationToken = default);
+        void AuEssLookup_Addresses(int employeeId, int suburbId);
+        Task AuEssLookup_AddressesAsync(int employeeId, int suburbId, CancellationToken cancellationToken = default);
+        List<LocationModel> GetLocations(int employeeId);
+        Task<List<LocationModel>> GetLocationsAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<AuWorkTypeModel> GetShiftConditions(int employeeId);
+        Task<List<AuWorkTypeModel>> GetShiftConditionsAsync(int employeeId, CancellationToken cancellationToken = default);
+        SuburbResult GetSuburb(int employeeId, GetSuburbQueryModel request);
+        Task<SuburbResult> GetSuburbAsync(int employeeId, GetSuburbQueryModel request, CancellationToken cancellationToken = default);
+        PagedResultModel<SuburbModel> SearchSuburbs(int employeeId, SearchSuburbsQueryModel request);
+        Task<PagedResultModel<SuburbModel>> SearchSuburbsAsync(int employeeId, SearchSuburbsQueryModel request, CancellationToken cancellationToken = default);
+        List<TitleViewModel> GetTitles(int employeeId);
+        Task<List<TitleViewModel>> GetTitlesAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<AuWorkTypeModel> GetWorkTypes(int employeeId);
+        Task<List<AuWorkTypeModel>> GetWorkTypesAsync(int employeeId, CancellationToken cancellationToken = default);
+        AuEssEmployeeDetailsViewModel GetPersonalDetails(int employeeId);
+        Task<AuEssEmployeeDetailsViewModel> GetPersonalDetailsAsync(int employeeId, CancellationToken cancellationToken = default);
+        AuEssEmployeeDetailsViewModel UpdatePersonalDetails(int employeeId, AuEssEmployeeDetailsEditModel model);
+        Task<AuEssEmployeeDetailsViewModel> UpdatePersonalDetailsAsync(int employeeId, AuEssEmployeeDetailsEditModel model, CancellationToken cancellationToken = default);
+        void GetEmployeeProfileImage(int employeeId);
+        Task GetEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
+        ProfileImageMetadata SetEmployeeProfileImage(int employeeId);
+        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeProfileImage(int employeeId);
+        Task DeleteEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<PublicHolidayModel> GetPublicHolidays(int employeeId, GetPublicHolidaysQueryModel request);
+        Task<List<PublicHolidayModel>> GetPublicHolidaysAsync(int employeeId, GetPublicHolidaysQueryModel request, CancellationToken cancellationToken = default);
+        List<EssEmployeeQualificationModel> GetQualificationsForEmployee(int employeeId);
+        Task<List<EssEmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int employeeId, CancellationToken cancellationToken = default);
+        void AddEmployeeQualification(int employeeId, EssEmployeeQualificationModel qualification);
+        Task AddEmployeeQualificationAsync(int employeeId, EssEmployeeQualificationModel qualification, CancellationToken cancellationToken = default);
+        void UploadAttachmentToQualification(int employeeId, int employeeQualificationId, UploadAttachmentToQualificationQueryModel request);
+        Task UploadAttachmentToQualificationAsync(int employeeId, int employeeQualificationId, UploadAttachmentToQualificationQueryModel request, CancellationToken cancellationToken = default);
+        void DeleteAttachmentFromEmployeequalification(int employeeId, int employeeQualificationId, int documentId);
+        Task DeleteAttachmentFromEmployeequalificationAsync(int employeeId, int employeeQualificationId, int documentId, CancellationToken cancellationToken = default);
+        EssEmployeeQualificationModel GetQualificationDetails(int employeeId, int id);
+        Task<EssEmployeeQualificationModel> GetQualificationDetailsAsync(int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateEmployeeQualification(int employeeId, int id, EssEmployeeQualificationModel qualification);
+        Task UpdateEmployeeQualificationAsync(int employeeId, int id, EssEmployeeQualificationModel qualification, CancellationToken cancellationToken = default);
+        void DeleteEmployeeQualification(int employeeId, int id);
+        Task DeleteEmployeeQualificationAsync(int employeeId, int id, CancellationToken cancellationToken = default);
+        List<EssSatisfactionSurvey> GetSatisfactionSurveyResults(int employeeId);
+        Task<List<EssSatisfactionSurvey>> GetSatisfactionSurveyResultsAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<EssSatisfactionSurvey> GetSatisfactionSurveyResults(int employeeId, GetSatisfactionSurveyResultsQueryModel request);
+        Task<List<EssSatisfactionSurvey>> GetSatisfactionSurveyResultsAsync(int employeeId, GetSatisfactionSurveyResultsQueryModel request, CancellationToken cancellationToken = default);
+        EmployeeSatisfactionValue SubmitSatisfactionSurvey(int employeeId, EssSatisfactionSurvey survey);
+        Task<EmployeeSatisfactionValue> SubmitSatisfactionSurveyAsync(int employeeId, EssSatisfactionSurvey survey, CancellationToken cancellationToken = default);
+        AuFeaturesModel GetEnabledFeatures(int employeeId);
+        Task<AuFeaturesModel> GetEnabledFeaturesAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int employeeId, ODataQuery oDataQuery = null);
+        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateEssSelfManagedSuperFund(int employeeId, SelfManagedSuperFundModel fund);
+        Task CreateEssSelfManagedSuperFundAsync(int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
+        SelfManagedSuperFundModel GetEssSelfManagedSuperFundById(int employeeId, int id);
+        Task<SelfManagedSuperFundModel> GetEssSelfManagedSuperFundByIdAsync(int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateEssSelfManagedSuperFund(int employeeId, int id, SelfManagedSuperFundModel fund);
+        Task UpdateEssSelfManagedSuperFundAsync(int employeeId, int id, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
+        List<AuEssRosterShiftModel> ListRosterShifts(int employeeId, ListRosterShiftsQueryModel request);
+        Task<List<AuEssRosterShiftModel>> ListRosterShiftsAsync(int employeeId, ListRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
+        AuEssRosterShiftModel GetRosterShiftById(int employeeId, int shiftId);
+        Task<AuEssRosterShiftModel> GetRosterShiftByIdAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        AuAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int shiftId);
+        Task<AuAcceptRosterShiftResponseModel> AcceptRosterShiftAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        EssRosterShiftCountModel DeclineRosterShift(int employeeId, int shiftId, EssDeclineRosterShiftModel model);
+        Task<EssRosterShiftCountModel> DeclineRosterShiftAsync(int employeeId, int shiftId, EssDeclineRosterShiftModel model, CancellationToken cancellationToken = default);
+        AuEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int shiftId);
+        Task<AuEssRosterShiftActionResponse> AcceptShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        AuEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int shiftId);
+        Task<AuEssRosterShiftActionResponse> CancelShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int shiftId);
+        Task<List<EssShiftSwapCandidate>> EmployeesEligibleForShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        AuEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int shiftId);
+        Task<AuEssRosterShiftActionResponse> DeclineShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        AuAcceptRosterShiftsResponseModel BulkAcceptRosterShifts(int employeeId, EssBulkAcceptRosterShiftsModel model);
+        Task<AuAcceptRosterShiftsResponseModel> BulkAcceptRosterShiftsAsync(int employeeId, EssBulkAcceptRosterShiftsModel model, CancellationToken cancellationToken = default);
+        EssRosterShiftCountModel BulkDeclineRosterShifts(int employeeId, EssBulkDeclineRosterShiftsModel model);
+        Task<EssRosterShiftCountModel> BulkDeclineRosterShiftsAsync(int employeeId, EssBulkDeclineRosterShiftsModel model, CancellationToken cancellationToken = default);
+        AuRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
+        Task<AuRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        AuRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
+        Task<AuRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        List<AuEssRosterShiftModel> FindNearbyRosterShifts(int employeeId, FindNearbyRosterShiftsQueryModel request);
+        Task<List<AuEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
+        AuEssBulkRosterShiftActionResponse BulkAcceptRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model);
+        Task<AuEssBulkRosterShiftActionResponse> BulkAcceptRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default);
+        AuEssBulkRosterShiftActionResponse BulkCancelRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model);
+        Task<AuEssBulkRosterShiftActionResponse> BulkCancelRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default);
+        AuEssBulkRosterShiftActionResponse BulkDeclineRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model);
+        Task<AuEssBulkRosterShiftActionResponse> BulkDeclineRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default);
+        AuEssRosterShiftActionResponse ProposeShiftSwap(int employeeId, SwapShiftModel model);
+        Task<AuEssRosterShiftActionResponse> ProposeShiftSwapAsync(int employeeId, SwapShiftModel model, CancellationToken cancellationToken = default);
+        List<SuperFundModel> ListSuperFunds(int employeeId);
+        Task<List<SuperFundModel>> ListSuperFundsAsync(int employeeId, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel CreateSuperFund(int employeeId, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel UpdateSuperFund(int employeeId, int id, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel DeleteSuperFund(int employeeId, int superfundId);
+        Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int employeeId, int superfundId, CancellationToken cancellationToken = default);
+        SuperFundModel GetSuperFundById(int employeeId, int superFundId);
+        Task<SuperFundModel> GetSuperFundByIdAsync(int employeeId, int superFundId, CancellationToken cancellationToken = default);
+        List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId, AuEssSuperFund_ProductSearchQueryModel request);
+        Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, AuEssSuperFund_ProductSearchQueryModel request, CancellationToken cancellationToken = default);
+        void ClockOutEmployee(int employeeId, ClockOffModel request);
+        Task ClockOutEmployeeAsync(int employeeId, ClockOffModel request, CancellationToken cancellationToken = default);
+        KioskEmployeeModel ClockInEmployee(int employeeId, AuClockOnModel model);
+        Task<KioskEmployeeModel> ClockInEmployeeAsync(int employeeId, AuClockOnModel model, CancellationToken cancellationToken = default);
+        void DiscardCurrentShift(int employeeId, ClockOffModel request);
+        Task DiscardCurrentShiftAsync(int employeeId, ClockOffModel request, CancellationToken cancellationToken = default);
+        void EndBreak(int employeeId, EndBreakModel request);
+        Task EndBreakAsync(int employeeId, EndBreakModel request, CancellationToken cancellationToken = default);
+        AuTimeAndAttendanceLookupDataModel GetLookupData(int employeeId);
+        Task<AuTimeAndAttendanceLookupDataModel> GetLookupDataAsync(int employeeId, CancellationToken cancellationToken = default);
+        void GetShiftNotes(int employeeId, int shiftId);
+        Task GetShiftNotesAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        void GetShiftNotes(int employeeId, int shiftId, GetShiftNotesQueryModel request);
+        Task GetShiftNotesAsync(int employeeId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default);
+        void AddNoteToShift(int employeeId, int shiftId, AddNoteModel model);
+        Task AddNoteToShiftAsync(int employeeId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default);
+        void MarkShiftNotesRead(int employeeId, MarkNotesReadViewModel model, string shiftId);
+        Task MarkShiftNotesReadAsync(int employeeId, MarkNotesReadViewModel model, string shiftId, CancellationToken cancellationToken = default);
+        List<AuTimeAndAttendanceShiftModel> Shifts(int employeeId, GetShiftsModel model);
+        Task<List<AuTimeAndAttendanceShiftModel>> ShiftsAsync(int employeeId, GetShiftsModel model, CancellationToken cancellationToken = default);
+        void StartBreak(int employeeId, StartBreakModel request);
+        Task StartBreakAsync(int employeeId, StartBreakModel request, CancellationToken cancellationToken = default);
+        List<EssTimesheetModel> ListTimesheets(int employeeId, ListTimesheetsQueryModel request);
+        Task<List<EssTimesheetModel>> ListTimesheetsAsync(int employeeId, ListTimesheetsQueryModel request, CancellationToken cancellationToken = default);
+        void SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet);
+        Task SubmitOrUpdateTimesheetAsync(int employeeId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default);
+        void EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet);
+        Task EditTimesheetAsync(int employeeId, int timesheetId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default);
+        void DeleteTimesheet(int employeeId, int timesheetId);
+        Task DeleteTimesheetAsync(int employeeId, int timesheetId, CancellationToken cancellationToken = default);
+        AuEssTimesheetDataModel GetTimesheetCreationData(int employeeId, GetTimesheetCreationDataQueryModel request);
+        Task<AuEssTimesheetDataModel> GetTimesheetCreationDataAsync(int employeeId, GetTimesheetCreationDataQueryModel request, CancellationToken cancellationToken = default);
+        List<EssUnavailabilityModel> ListUnavailabilities(int employeeId);
+        Task<List<EssUnavailabilityModel>> ListUnavailabilitiesAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<EssUnavailabilityModel> ListUnavailabilities(int employeeId, ListUnavailabilitiesQueryModel request);
+        Task<List<EssUnavailabilityModel>> ListUnavailabilitiesAsync(int employeeId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default);
+        EssUnavailabilityModel CreateUnavailability(int employeeId, UnavailabilityEditModel unavailability);
+        Task<EssUnavailabilityModel> CreateUnavailabilityAsync(int employeeId, UnavailabilityEditModel unavailability, CancellationToken cancellationToken = default);
+        EssUnavailabilityModel GetUnavailabilityById(int employeeId, int unavailabilityId);
+        Task<EssUnavailabilityModel> GetUnavailabilityByIdAsync(int employeeId, int unavailabilityId, CancellationToken cancellationToken = default);
+        void UpdateUnavailability(int employeeId, int unavailabilityId, UnavailabilityEditModel unavailability);
+        Task UpdateUnavailabilityAsync(int employeeId, int unavailabilityId, UnavailabilityEditModel unavailability, CancellationToken cancellationToken = default);
+        void DeleteUnavailability(int employeeId, int unavailabilityId);
+        Task DeleteUnavailabilityAsync(int employeeId, int unavailabilityId, CancellationToken cancellationToken = default);
+        void RegisterDeviceToken(DeviceTokenModel model);
+        Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
+        void UnregisterDeviceToken(DeviceTokenModel model);
+        Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
+        List<AvailableEmployeeModel> GetEmployees();
+        Task<List<AvailableEmployeeModel>> GetEmployeesAsync(CancellationToken cancellationToken = default);
+        void RecoverForgottenPassword(RecoverPasswordModel model);
+        Task RecoverForgottenPasswordAsync(RecoverPasswordModel model, CancellationToken cancellationToken = default);
+    }
+    public class EssFunction : BaseFunction, IEssFunction
     {
         public EssFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -1092,7 +1331,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the personal details for the specified employee.
         /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)" or "0".
         /// Valid TitleId values can be obtained from api/v2/ess/{employeeId}/lookup/title
         /// Valid SuburbId values can be obtained from api/v2/ess/{employeeId}/lookup/suburbs
         /// </remarks>
@@ -1107,7 +1346,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the personal details for the specified employee.
         /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)" or "0".
         /// Valid TitleId values can be obtained from api/v2/ess/{employeeId}/lookup/title
         /// Valid SuburbId values can be obtained from api/v2/ess/{employeeId}/lookup/suburbs
         /// </remarks>
@@ -1476,7 +1715,8 @@ namespace KeyPayV2.Au.Functions
         /// Create ESS Self Managed Super Fund
         /// </summary>
         /// <remarks>
-        /// Creates a new self managed super fund for the employee.
+        /// Create a new self managed super fund for the employee. 
+        /// To update existing self managed super funds, please use the PUT method.
         /// </remarks>
         public void CreateEssSelfManagedSuperFund(int employeeId, SelfManagedSuperFundModel fund)
         {
@@ -1487,7 +1727,8 @@ namespace KeyPayV2.Au.Functions
         /// Create ESS Self Managed Super Fund
         /// </summary>
         /// <remarks>
-        /// Creates a new self managed super fund for the employee.
+        /// Create a new self managed super fund for the employee. 
+        /// To update existing self managed super funds, please use the PUT method.
         /// </remarks>
         public Task CreateEssSelfManagedSuperFundAsync(int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
         {

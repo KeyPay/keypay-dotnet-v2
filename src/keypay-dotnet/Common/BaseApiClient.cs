@@ -7,7 +7,25 @@ using RestSharp;
 
 namespace KeyPayV2.Common
 {
-    public abstract class BaseApiClient
+    public interface IBaseApiClient
+    {
+        void ApiRequest(string url, Method method = Method.Get);
+        void ApiRequest<TInput>(string url, TInput input, Method method = Method.Get) where TInput : class;
+        Task ApiRequestAsync(string url, Method method = Method.Get, CancellationToken cancellationToken = default);
+        Task ApiRequestAsync<TInput>(string url, TInput input, Method method = Method.Get, CancellationToken cancellationToken = default) where TInput : class;
+
+        TResult ApiRequest<TResult>(string url, Method method = Method.Get) where TResult : new();
+        Task<TResult> ApiRequestAsync<TResult>(string url, Method method = Method.Get, CancellationToken cancellationToken = default) where TResult : new();
+        TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method = Method.Get) where TResult : new() where TInput : class;
+        Task<TResult> ApiRequestAsync<TResult, TInput>(string url, TInput input, Method method = Method.Get, CancellationToken cancellationToken = default) where TResult : new() where TInput : class;
+
+        byte[] ApiFileRequest(string url, Method method = Method.Get);
+        Task<byte[]> ApiFileRequestAsync(string url, Method method = Method.Get, CancellationToken cancellationToken = default);
+        byte[] ApiFileRequest<TInput>(string url, TInput input, Method method = Method.Get) where TInput : class;
+        Task<byte[]> ApiFileRequestAsync<TInput>(string url, TInput input, Method method = Method.Get, CancellationToken cancellationToken = default) where TInput : class;
+    }
+
+    public abstract class BaseApiClient : IBaseApiClient
     {
         protected readonly ApiRequestExecutor Api;
 

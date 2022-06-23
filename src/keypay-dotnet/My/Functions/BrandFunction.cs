@@ -12,7 +12,24 @@ using KeyPayV2.My.Models.Brand;
 
 namespace KeyPayV2.My.Functions
 {
-    public class BrandFunction : BaseFunction
+    public interface IBrandFunction
+    {
+        List<BrandModel> ListBrandLabels();
+        Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default);
+        void CancelBusiness(int businessId, string brandId);
+        Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default);
+        List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId);
+        Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, CancellationToken cancellationToken = default);
+        List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request);
+        Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int brandId);
+        Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request);
+        Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
+        BrandModel GetBrandLabelById(int id);
+        Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default);
+    }
+    public class BrandFunction : BaseFunction, IBrandFunction
     {
         public BrandFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -20,7 +37,7 @@ namespace KeyPayV2.My.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all the brand labels to which you have access.
+        /// Lists all of the brand labels to which you have access.
         /// </remarks>
         public List<BrandModel> ListBrandLabels()
         {
@@ -31,7 +48,7 @@ namespace KeyPayV2.My.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all the brand labels to which you have access.
+        /// Lists all of the brand labels to which you have access.
         /// </remarks>
         public Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default)
         {

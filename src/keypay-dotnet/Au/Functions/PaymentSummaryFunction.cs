@@ -12,7 +12,24 @@ using KeyPayV2.Au.Models.PaymentSummary;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class PaymentSummaryFunction : BaseFunction
+    public interface IPaymentSummaryFunction
+    {
+        List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, ODataQuery oDataQuery = null);
+        Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding);
+        Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
+        PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request);
+        Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request, CancellationToken cancellationToken = default);
+        void PublishPaymentSummaries(int businessId, int financialYearEnding);
+        Task PublishPaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
+        void PublishPaymentSummaries(int businessId, int financialYearEnding, PublishPaymentSummariesQueryModel request);
+        Task PublishPaymentSummariesAsync(int businessId, int financialYearEnding, PublishPaymentSummariesQueryModel request, CancellationToken cancellationToken = default);
+        void UnpublishPaymentSummaries(int businessId, int financialYearEnding);
+        Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
+        void UnpublishPaymentSummaries(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request);
+        Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class PaymentSummaryFunction : BaseFunction, IPaymentSummaryFunction
     {
         public PaymentSummaryFunction(ApiRequestExecutor api) : base(api) {}
 

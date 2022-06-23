@@ -12,7 +12,24 @@ using KeyPayV2.Au.Models.EmploymentAgreement;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EmploymentAgreementFunction : BaseFunction
+    public interface IEmploymentAgreementFunction
+    {
+        ShiftCostingsResponseModel GetShiftCostingsForEmployee(int businessId, int employeeId, ShiftCostingsRequestModel model);
+        Task<ShiftCostingsResponseModel> GetShiftCostingsForEmployeeAsync(int businessId, int employeeId, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default);
+        List<ShiftPeriodModel> GetShiftPeriodsForEmployee(int businessId, int employeeId, GetShiftPeriodsModel model);
+        Task<List<ShiftPeriodModel>> GetShiftPeriodsForEmployeeAsync(int businessId, int employeeId, GetShiftPeriodsModel model, CancellationToken cancellationToken = default);
+        List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, ODataQuery oDataQuery = null);
+        Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        EmploymentAgreementModel GetEmploymentAgreementById(int businessId, int id);
+        Task<EmploymentAgreementModel> GetEmploymentAgreementByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        ShiftCostingsResponseModel EvaluateShiftCostings(int businessId, int id, ShiftCostingsRequestModel model);
+        Task<ShiftCostingsResponseModel> EvaluateShiftCostingsAsync(int businessId, int id, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default);
+        List<ShiftCostingsResponseModel> BulkEvaluateShiftCostings(int businessId, int id, List<ShiftCostingsRequestModel> requests);
+        Task<List<ShiftCostingsResponseModel>> BulkEvaluateShiftCostingsAsync(int businessId, int id, List<ShiftCostingsRequestModel> requests, CancellationToken cancellationToken = default);
+        List<ShiftPeriodModel> GetShiftPeriods(int businessId, int id, GetShiftPeriodsModel model);
+        Task<List<ShiftPeriodModel>> GetShiftPeriodsAsync(int businessId, int id, GetShiftPeriodsModel model, CancellationToken cancellationToken = default);
+    }
+    public class EmploymentAgreementFunction : BaseFunction, IEmploymentAgreementFunction
     {
         public EmploymentAgreementFunction(ApiRequestExecutor api) : base(api) {}
 

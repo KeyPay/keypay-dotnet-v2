@@ -12,7 +12,68 @@ using KeyPayV2.Au.Models.Employee;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EmployeeFunction : BaseFunction
+    public interface IEmployeeFunction
+    {
+        void DeleteEmployee(int businessId, int employeeId);
+        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
+        Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void GetEmployeeProfileImage(int businessId, int employeeId);
+        Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
+        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeProfileImage(int businessId, int employeeId);
+        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
+        List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId);
+        Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
+        Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
+        AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
+        Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model);
+        Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default);
+        List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId);
+        Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
+        Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model);
+        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default);
+        void SyncEmployeeToQbo(int businessId, int employeeId);
+        Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<AuWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<AuWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void ActivateEmployee(int businessId, int employeeId);
+        Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void GrantKioskAccess(int businessId, int employeeId);
+        Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void RevokeKioskAccess(int businessId, int employeeId);
+        Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<AuUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<AuUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
+        Task<List<AuUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, AuUnstructuredEmployeeModel model);
+        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, AuUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
+        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, AuUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request);
+        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, AuUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        AuUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId);
+        Task<AuUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, AuUnstructuredEmployeeModel model);
+        Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, AuUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
+        AuUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
+        Task<AuUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
+        AuUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
+        Task<AuUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -666,7 +727,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the employee with the specified ID.
         /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)" or "0".
         /// </remarks>
         public EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, AuUnstructuredEmployeeModel model)
         {
@@ -679,7 +740,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the employee with the specified ID.
         /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)" or "0".
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, AuUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {

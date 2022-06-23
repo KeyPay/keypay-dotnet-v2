@@ -12,7 +12,116 @@ using KeyPayV2.My.Models.PayRun;
 
 namespace KeyPayV2.My.Functions
 {
-    public class PayRunFunction : BaseFunction
+    public interface IPayRunFunction
+    {
+        List<PayRunTotalModel> ListPayRunTotalsForEmployee(int businessId, int employeeId);
+        Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<MyJournalItemResponse> GetJournalDetails(int businessId, int payRunId);
+        Task<List<MyJournalItemResponse>> GetJournalDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        List<PayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null);
+        Task<List<PayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        PayRunModel CreatePayRun(int businessId, PayRunCreateRequest request);
+        Task<PayRunModel> CreatePayRunSynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
+        PayRunModel GetPayRun(int businessId, int payRunId);
+        Task<PayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void DeletePayRun(int businessId, int payRunId);
+        Task DeletePayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        ApplyLeaveRequestResult BulkApplyLeaveRequests(int businessId, int payRunId, BulkApplyLeaveRequestModel bulkApplyLeaveRequestModel);
+        Task<ApplyLeaveRequestResult> BulkApplyLeaveRequestsAsync(int businessId, int payRunId, BulkApplyLeaveRequestModel bulkApplyLeaveRequestModel, CancellationToken cancellationToken = default);
+        MyPayRunDeductionResponse ListDeductions(int businessId, int payRunId);
+        Task<MyPayRunDeductionResponse> ListDeductionsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void CreateDeductions(int businessId, int payRunId, SubmitPayRunDeductionRequest request);
+        Task CreateDeductionsAsync(int businessId, int payRunId, SubmitPayRunDeductionRequest request, CancellationToken cancellationToken = default);
+        void DeleteDeduction(int businessId, int payRunId, DeleteDeductionQueryModel request);
+        Task DeleteDeductionAsync(int businessId, int payRunId, DeleteDeductionQueryModel request, CancellationToken cancellationToken = default);
+        MyPayRunDeductionResponse GetDeductionsByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<MyPayRunDeductionResponse> GetDeductionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        MyPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId);
+        Task<MyPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void CreateEarningsLines(int businessId, int payRunId, MySubmitPayRunEarningsLineRequest request);
+        Task CreateEarningsLinesAsync(int businessId, int payRunId, MySubmitPayRunEarningsLineRequest request, CancellationToken cancellationToken = default);
+        void DeleteEarningsLine(int businessId, int payRunId, DeleteEarningsLineQueryModel request);
+        Task DeleteEarningsLineAsync(int businessId, int payRunId, DeleteEarningsLineQueryModel request, CancellationToken cancellationToken = default);
+        MyPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<MyPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        PayRunTotalModel IncludeEmployee(int businessId, int employeeId, int payRunId);
+        Task<PayRunTotalModel> IncludeEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        void RemoveEmployeeFromPayRun(int businessId, int employeeId, int payRunId);
+        Task RemoveEmployeeFromPayRunAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        PayRunEmployeeExpenseResponse ListEmployeeExpenses(int businessId, int payRunId);
+        Task<PayRunEmployeeExpenseResponse> ListEmployeeExpensesAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void CreateEmployeeExpenses(int businessId, int payRunId, SubmitPayRunEmployeeExpenseRequest request);
+        Task CreateEmployeeExpensesAsync(int businessId, int payRunId, SubmitPayRunEmployeeExpenseRequest request, CancellationToken cancellationToken = default);
+        void DeleteEmployeeExpense(int businessId, int payRunId, DeleteEmployeeExpenseQueryModel request);
+        Task DeleteEmployeeExpenseAsync(int businessId, int payRunId, DeleteEmployeeExpenseQueryModel request, CancellationToken cancellationToken = default);
+        PayRunEmployeeExpenseResponse GetEmployeeExpensesByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<PayRunEmployeeExpenseResponse> GetEmployeeExpensesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        PayRunEmployerLiabilityResponse ListEmployerLiabilities(int businessId, int payRunId);
+        Task<PayRunEmployerLiabilityResponse> ListEmployerLiabilitiesAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void CreateEmployerLiabilities(int businessId, int payRunId, SubmitPayRunEmployerLiabilityRequest request);
+        Task CreateEmployerLiabilitiesAsync(int businessId, int payRunId, SubmitPayRunEmployerLiabilityRequest request, CancellationToken cancellationToken = default);
+        void DeleteEmployerLiability(int businessId, int payRunId, DeleteEmployerLiabilityQueryModel request);
+        Task DeleteEmployerLiabilityAsync(int businessId, int payRunId, DeleteEmployerLiabilityQueryModel request, CancellationToken cancellationToken = default);
+        PayRunEmployerLiabilityResponse GetEmployerLiabilitiesByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<PayRunEmployerLiabilityResponse> GetEmployerLiabilitiesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        byte[] GetPaySlipFile(int businessId, int employeeId, int payRunId);
+        Task<byte[]> GetPaySlipFileAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        PayRunFinaliseResult FinalisePayRun(int businessId, int payRunId, FinalisePayRunOptions options);
+        Task<PayRunFinaliseResult> FinalisePayRunAsync(int businessId, int payRunId, FinalisePayRunOptions options, CancellationToken cancellationToken = default);
+        LeaveAccrualResponse GetLeaveAccruals(int businessId, int payRunId);
+        Task<LeaveAccrualResponse> GetLeaveAccrualsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        LeaveAccrualResponse GetLeaveAccruals(int businessId, int payRunId, GetLeaveAccrualsQueryModel request);
+        Task<LeaveAccrualResponse> GetLeaveAccrualsAsync(int businessId, int payRunId, GetLeaveAccrualsQueryModel request, CancellationToken cancellationToken = default);
+        void SaveLeaveAccruals(int businessId, int payRunId, SubmitLeaveAccrualsModel model);
+        Task SaveLeaveAccrualsAsync(int businessId, int payRunId, SubmitLeaveAccrualsModel model, CancellationToken cancellationToken = default);
+        void DeleteLeaveAccrual(int businessId, int payRunId, DeleteLeaveAccrualQueryModel request);
+        Task DeleteLeaveAccrualAsync(int businessId, int payRunId, DeleteLeaveAccrualQueryModel request, CancellationToken cancellationToken = default);
+        LeaveAccrualResponse GetLeaveAccrualsForEmployee(int businessId, int employeeId, int payRunId);
+        Task<LeaveAccrualResponse> GetLeaveAccrualsForEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        LeaveAccrualResponse GetLeaveAccrualsForEmployee(int businessId, int employeeId, int payRunId, GetLeaveAccrualsForEmployeeQueryModel request);
+        Task<LeaveAccrualResponse> GetLeaveAccrualsForEmployeeAsync(int businessId, int employeeId, int payRunId, GetLeaveAccrualsForEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        NetToGrossModel NetToGross(int businessId, NetToGrossRequest netToGrossRequest, string payRunId);
+        Task<NetToGrossModel> NetToGrossAsync(int businessId, NetToGrossRequest netToGrossRequest, string payRunId, CancellationToken cancellationToken = default);
+        void SetPayRunNotation(int businessId, int payRunId, PayRunNotationModel model);
+        Task SetPayRunNotationAsync(int businessId, int payRunId, PayRunNotationModel model, CancellationToken cancellationToken = default);
+        void DeletePayRunNotation(int businessId, int payRunId);
+        Task DeletePayRunNotationAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        PayRunTotalNotationModel CreateNoteForEmployee(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model);
+        Task<PayRunTotalNotationModel> CreateNoteForEmployeeAsync(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model, CancellationToken cancellationToken = default);
+        void DeleteNoteForEmployee(int businessId, int employeeId, int payRunId);
+        Task DeleteNoteForEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        List<MyBankPaymentModel> GetPayRunPayments(int businessId, int payRunId);
+        Task<List<MyBankPaymentModel>> GetPayRunPaymentsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        Dictionary<String,MyApiPaySlipModel> ListPaySlipData(int businessId, int payRunId);
+        Task<Dictionary<String,MyApiPaySlipModel>> ListPaySlipDataAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        Dictionary<String,MyApiPaySlipModel> ListPaySlipData(int businessId, int payRunId, ListPaySlipDataQueryModel request);
+        Task<Dictionary<String,MyApiPaySlipModel>> ListPaySlipDataAsync(int businessId, int payRunId, ListPaySlipDataQueryModel request, CancellationToken cancellationToken = default);
+        MyApiPaySlipModel GetPaySlipDataByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<MyApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        MyApiPaySlipModel GetPaySlipDataByEmployeeId(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request);
+        Task<MyApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request, CancellationToken cancellationToken = default);
+        void Recalculate(int businessId, int payRunId);
+        Task RecalculateAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void SetUiUnlockEnabled(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request);
+        Task SetUiUnlockEnabledAsync(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request, CancellationToken cancellationToken = default);
+        PayRunSummaryModel GetPayRunSummary(int businessId, int payRunId);
+        Task<PayRunSummaryModel> GetPayRunSummaryAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void TerminateEmployeeInPayRun(int businessId, int payRunId, TerminateEmployeeRequest request);
+        Task TerminateEmployeeInPayRunAsync(int businessId, int payRunId, TerminateEmployeeRequest request, CancellationToken cancellationToken = default);
+        MyPayRunTotalResponse ListPayRunTotals(int businessId, int payRunId);
+        Task<MyPayRunTotalResponse> ListPayRunTotalsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        MyPayRunTotalResponse GetPayRunTotalsByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<MyPayRunTotalResponse> GetPayRunTotalsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        void UnlockPayRun(int businessId, int payRunId, PayRunUnlockRequest request);
+        Task UnlockPayRunAsync(int businessId, int payRunId, PayRunUnlockRequest request, CancellationToken cancellationToken = default);
+        PayRunJobModel CreatePayRunAsync(int businessId, PayRunCreateRequest request);
+        Task<PayRunJobModel> CreatePayRunAsynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
+        PayRunJobStatusModel GetCreationStatus(int businessId, Guid jobId);
+        Task<PayRunJobStatusModel> GetCreationStatusAsync(int businessId, Guid jobId, CancellationToken cancellationToken = default);
+        List<PayRunSummaryModel> ListPayRunsSummaries(int businessId, ODataQuery oDataQuery = null);
+        Task<List<PayRunSummaryModel>> ListPayRunsSummariesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+    }
+    public class PayRunFunction : BaseFunction, IPayRunFunction
     {
         public PayRunFunction(ApiRequestExecutor api) : base(api) {}
 

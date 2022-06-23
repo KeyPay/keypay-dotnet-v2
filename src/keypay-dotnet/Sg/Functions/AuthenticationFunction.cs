@@ -12,7 +12,18 @@ using KeyPayV2.Sg.Models.Authentication;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class AuthenticationFunction : BaseFunction
+    public interface IAuthenticationFunction
+    {
+        SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model);
+        Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, int employeeId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
+        SingleSignOnResponseModel SingleSignOn(int businessId, SingleSignOnRequestModel model);
+        Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
+        SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model);
+        Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
+        void OauthToken(OauthTokenQueryModel request);
+        Task OauthTokenAsync(OauthTokenQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class AuthenticationFunction : BaseFunction, IAuthenticationFunction
     {
         public AuthenticationFunction(ApiRequestExecutor api) : base(api) {}
 

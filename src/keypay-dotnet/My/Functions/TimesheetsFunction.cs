@@ -12,7 +12,22 @@ using KeyPayV2.My.Models.Timesheets;
 
 namespace KeyPayV2.My.Functions
 {
-    public class TimesheetsFunction : BaseFunction
+    public interface ITimesheetsFunction
+    {
+        List<MyTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
+        Task<List<MyTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        MyIndividualTimesheetLineModel CreateTimesheetLine(int businessId, MyIndividualTimesheetLineModel request);
+        Task<MyIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, MyIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        MyIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, MyIndividualTimesheetLineModel request);
+        Task<MyIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, MyIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        void DeleteTimesheetLine(int businessId, int timesheetLineId);
+        Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
+        void UpdateReplaceTimesheets(int businessId, MySubmitTimesheetsRequest request);
+        Task UpdateReplaceTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        void BulkInsertTimesheets(int businessId, MySubmitTimesheetsRequest request);
+        Task BulkInsertTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+    }
+    public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
         public TimesheetsFunction(ApiRequestExecutor api) : base(api) {}
 

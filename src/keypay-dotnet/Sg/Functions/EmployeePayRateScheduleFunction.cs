@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeePayRateSchedule;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeePayRateScheduleFunction : BaseFunction
+    public interface IEmployeePayRateScheduleFunction
+    {
+        List<PayRateScheduleModel> ListPayRateAdjustmentSchedule(int businessId, int employeeId);
+        Task<List<PayRateScheduleModel>> ListPayRateAdjustmentScheduleAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        PayRateScheduleModel CreatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, PayRateScheduleModel model);
+        Task<PayRateScheduleModel> CreatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, PayRateScheduleModel model, CancellationToken cancellationToken = default);
+        PayRateScheduleModel UpdatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id, PayRateScheduleModel model);
+        Task<PayRateScheduleModel> UpdatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, PayRateScheduleModel model, CancellationToken cancellationToken = default);
+        void DeletePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id);
+        Task DeletePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        PayRateScheduleModel GetPayRateAdjustmentScheduleRecordById(int businessId, int employeeId, int recordId);
+        Task<PayRateScheduleModel> GetPayRateAdjustmentScheduleRecordByIdAsync(int businessId, int employeeId, int recordId, CancellationToken cancellationToken = default);
+    }
+    public class EmployeePayRateScheduleFunction : BaseFunction, IEmployeePayRateScheduleFunction
     {
         public EmployeePayRateScheduleFunction(ApiRequestExecutor api) : base(api) {}
 

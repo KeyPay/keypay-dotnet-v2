@@ -12,6 +12,8 @@ namespace KeyPayV2.Sg.Models.EmployeeRecurringTransactions
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public SgEmployeeRecurringDeductionPaidToEnum PaidTo { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DeductionFrequency DeductionFrequency { get; set; }
         public string Name { get; set; }
         public int DeductionCategoryId { get; set; }
         public int PaidToAccountId { get; set; }

@@ -8,6 +8,8 @@ namespace KeyPayV2.Sg.Enums
         None,
         DBS,
         UOB,
+        OCBC,
+        Citibank,
         HSBC,
         BNPParibas
     }

@@ -35,6 +35,8 @@ namespace KeyPayV2.Sg.Enums
         EarningsCertificate,
         PreviousEmployer,
         JobKeeper,
-        JobMaker
+        JobMaker,
+        SelfManagedSuperFunds,
+        CisSubcontractor
     }
 }

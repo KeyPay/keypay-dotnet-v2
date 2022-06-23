@@ -11,7 +11,20 @@ using KeyPayV2.Au.Models.Common;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class EmployeeSuperFundFunction : BaseFunction
+    public interface IEmployeeSuperFundFunction
+    {
+        List<SuperFundModel> ListSuperFunds(int businessId, int employeeId);
+        Task<List<SuperFundModel>> ListSuperFundsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel CreateSuperFund(int businessId, int employeeId, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int businessId, int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel UpdateSuperFund(int businessId, int employeeId, int id, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int businessId, int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel DeleteSuperFund(int businessId, int employeeId, int superfundId);
+        Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int businessId, int employeeId, int superfundId, CancellationToken cancellationToken = default);
+        SuperFundModel GetSuperFundById(int businessId, int employeeId, int superFundId);
+        Task<SuperFundModel> GetSuperFundByIdAsync(int businessId, int employeeId, int superFundId, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeSuperFundFunction : BaseFunction, IEmployeeSuperFundFunction
     {
         public EmployeeSuperFundFunction(ApiRequestExecutor api) : base(api) {}
 

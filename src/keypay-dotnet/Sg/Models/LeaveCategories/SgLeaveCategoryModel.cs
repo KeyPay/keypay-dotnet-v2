@@ -33,5 +33,6 @@ namespace KeyPayV2.Sg.Models.LeaveCategories
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveUnitTypeEnum LeaveUnitType { get; set; }
         public bool PayoutAsETP { get; set; }
+        public bool? AccruesFirstPayRunPerPeriodOnly { get; set; }
     }
 }

@@ -12,7 +12,24 @@ using KeyPayV2.Au.Models.Brand;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class BrandFunction : BaseFunction
+    public interface IBrandFunction
+    {
+        List<BrandModel> ListBrandLabels();
+        Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default);
+        void CancelBusiness(int businessId, string brandId);
+        Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default);
+        List<AuActiveEmployeesModel> ActiveEmployeesReport(int brandId);
+        Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, CancellationToken cancellationToken = default);
+        List<AuActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request);
+        Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int brandId);
+        Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request);
+        Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
+        BrandModel GetBrandLabelById(int id);
+        Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default);
+    }
+    public class BrandFunction : BaseFunction, IBrandFunction
     {
         public BrandFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -20,7 +37,7 @@ namespace KeyPayV2.Au.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all the brand labels to which you have access.
+        /// Lists all of the brand labels to which you have access.
         /// </remarks>
         public List<BrandModel> ListBrandLabels()
         {
@@ -31,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// List Brand Labels
         /// </summary>
         /// <remarks>
-        /// Lists all the brand labels to which you have access.
+        /// Lists all of the brand labels to which you have access.
         /// </remarks>
         public Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default)
         {
@@ -110,7 +127,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign up report
+        /// Brand sign-up report
         /// </remarks>
         public List<SignupModel> SignupReport(int brandId)
         {
@@ -121,7 +138,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign up report
+        /// Brand sign-up report
         /// </remarks>
         public Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default)
         {
@@ -132,7 +149,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign up report
+        /// Brand sign-up report
         /// </remarks>
         public List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request)
         {
@@ -143,7 +160,7 @@ namespace KeyPayV2.Au.Functions
         /// Signup Report
         /// </summary>
         /// <remarks>
-        /// Brand sign up report
+        /// Brand sign-up report
         /// </remarks>
         public Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
         {

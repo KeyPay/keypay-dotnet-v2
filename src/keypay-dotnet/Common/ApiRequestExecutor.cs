@@ -32,15 +32,8 @@ namespace KeyPayV2.Common
             var response = client.Execute(request);
             ResponseCallback?.Invoke(response);
 
-            var statusCodeExceptionMessage = response.ErrorException?.Message?.StartsWith("Request failed with status code") ?? false;
-            if (response.ErrorException != null && !statusCodeExceptionMessage)
-            {
-                throw response.ErrorException;
-            }
-            if ((int)response.StatusCode >= 400 || statusCodeExceptionMessage)
-            {
-                throw new KeyPayHttpException(response.StatusCode, response.StatusDescription, request.Method, request.Resource, response.Content);
-            }
+            HandleResponse(response, request.Method, request.Resource);
+
             var result = JsonConvert.DeserializeObject<T>(response.Content);
             return result;
         }
@@ -50,12 +43,9 @@ namespace KeyPayV2.Common
             var client = GetClient(request);
             var response = await client.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
             ResponseCallback?.Invoke(response);
-            if (response.ErrorException != null)
-                throw response.ErrorException;
-            if ((int)response.StatusCode >= 400)
-            {
-                throw new KeyPayHttpException(response.StatusCode, response.StatusDescription, request.Method, request.Resource, response.Content);
-            }
+
+            HandleResponse(response, request.Method, request.Resource);
+
             var result = JsonConvert.DeserializeObject<T>(response.Content);
             return result;
         }
@@ -117,12 +107,21 @@ namespace KeyPayV2.Common
         private void HandleResponse(RestResponse resp, Method requestMethod, string requestResource)
         {
             ResponseCallback?.Invoke(resp);
-            if (resp.ErrorException != null)
+
+            var statusCodeExceptionMessage = resp.ErrorException?.Message?.StartsWith("Request failed with status code") ?? false;
+            if (resp.ErrorException != null && !statusCodeExceptionMessage)
+            {
                 throw resp.ErrorException;
+            }
             if (resp.StatusCode == HttpStatusCode.Unauthorized)
+            {
                 throw new TokenExpiredException(resp.StatusDescription);
-            if (resp.StatusCode >= HttpStatusCode.BadRequest && resp.StatusCode <= HttpStatusCode.InternalServerError)
+            }
+            var isKeyPayHttpException = resp.StatusCode >= HttpStatusCode.BadRequest && resp.StatusCode <= HttpStatusCode.InternalServerError;
+            if (statusCodeExceptionMessage || isKeyPayHttpException)
+            {
                 throw new KeyPayHttpException(resp.StatusCode, resp.StatusDescription, requestMethod, requestResource, resp.Content);
+            }
         }
     }
 }

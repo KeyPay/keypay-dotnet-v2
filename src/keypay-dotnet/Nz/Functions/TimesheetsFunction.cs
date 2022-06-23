@@ -12,7 +12,22 @@ using KeyPayV2.Nz.Models.Timesheets;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class TimesheetsFunction : BaseFunction
+    public interface ITimesheetsFunction
+    {
+        List<NzTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        NzIndividualTimesheetLineModel CreateTimesheetLine(int businessId, NzIndividualTimesheetLineModel request);
+        Task<NzIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        NzIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request);
+        Task<NzIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        void DeleteTimesheetLine(int businessId, int timesheetLineId);
+        Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
+        void UpdateReplaceTimesheets(int businessId, NzSubmitTimesheetsRequest request);
+        Task UpdateReplaceTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        void BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request);
+        Task BulkInsertTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+    }
+    public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
         public TimesheetsFunction(ApiRequestExecutor api) : base(api) {}
 

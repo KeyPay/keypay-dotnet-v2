@@ -67,6 +67,13 @@ namespace KeyPayV2.Au.Models.Common
         public bool? ResidentialAddressIsOverseas { get; set; }
         public string EmploymentType { get; set; }
         public string TerminationReason { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public TaxFileDeclarationTaxCategoryCombination? TaxCategory { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public MedicareLevySurchargeWithholdingTier? MedicareLevySurchargeWithholdingTier { get; set; }
+        public bool? ClaimMedicareLevyReduction { get; set; }
+        public bool? MedicareLevyReductionSpouse { get; set; }
+        public int? MedicareLevyReductionDependentCount { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

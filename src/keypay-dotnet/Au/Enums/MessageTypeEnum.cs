@@ -107,6 +107,7 @@ namespace KeyPayV2.Au.Enums
         QualificationUpdatedNotification,
         QualificationExpiringNotification,
         QualificationExpiredNotification,
-        CreditCardExpiringReminder
+        CreditCardExpiringReminder,
+        ResendPaymentAndDeductionStatement
     }
 }

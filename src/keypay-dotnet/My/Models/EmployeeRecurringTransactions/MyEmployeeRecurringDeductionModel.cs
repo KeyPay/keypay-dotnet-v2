@@ -10,6 +10,8 @@ namespace KeyPayV2.My.Models.EmployeeRecurringTransactions
 {
     public class MyEmployeeRecurringDeductionModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DeductionFrequency DeductionFrequency { get; set; }
         public string Name { get; set; }
         public int DeductionCategoryId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

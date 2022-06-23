@@ -12,7 +12,14 @@ using KeyPayV2.Uk.Models.EmploymentAgreement;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class EmploymentAgreementFunction : BaseFunction
+    public interface IEmploymentAgreementFunction
+    {
+        ShiftCostingsResponseModel GetShiftCostingsForEmployee(int businessId, int employeeId, ShiftCostingsRequestModel model);
+        Task<ShiftCostingsResponseModel> GetShiftCostingsForEmployeeAsync(int businessId, int employeeId, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default);
+        List<ShiftPeriodModel> GetShiftPeriodsForEmployee(int businessId, int employeeId, GetShiftPeriodsModel model);
+        Task<List<ShiftPeriodModel>> GetShiftPeriodsForEmployeeAsync(int businessId, int employeeId, GetShiftPeriodsModel model, CancellationToken cancellationToken = default);
+    }
+    public class EmploymentAgreementFunction : BaseFunction, IEmploymentAgreementFunction
     {
         public EmploymentAgreementFunction(ApiRequestExecutor api) : base(api) {}
 

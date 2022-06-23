@@ -12,7 +12,20 @@ using KeyPayV2.Nz.Models.PayCategory;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class PayCategoryFunction : BaseFunction
+    public interface IPayCategoryFunction
+    {
+        List<NzPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        NzPayCategoryModel CreatePayCategory(int businessId, NzPayCategoryModel payCategory);
+        Task<NzPayCategoryModel> CreatePayCategoryAsync(int businessId, NzPayCategoryModel payCategory, CancellationToken cancellationToken = default);
+        NzPayCategoryModel GetPayCategoryById(int businessId, int id);
+        Task<NzPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        NzPayCategoryModel UpdatePayCategory(int businessId, int id, NzPayCategoryModel payCategory);
+        Task<NzPayCategoryModel> UpdatePayCategoryAsync(int businessId, int id, NzPayCategoryModel payCategory, CancellationToken cancellationToken = default);
+        void DeletePayCategory(int businessId, int id);
+        Task DeletePayCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class PayCategoryFunction : BaseFunction, IPayCategoryFunction
     {
         public PayCategoryFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -12,7 +12,22 @@ using KeyPayV2.Uk.Models.Unavailability;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class UnavailabilityFunction : BaseFunction
+    public interface IUnavailabilityFunction
+    {
+        List<UnavailabilityModel> ListUnavailabilities(int businessId);
+        Task<List<UnavailabilityModel>> ListUnavailabilitiesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<UnavailabilityModel> ListUnavailabilities(int businessId, ListUnavailabilitiesQueryModel request);
+        Task<List<UnavailabilityModel>> ListUnavailabilitiesAsync(int businessId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default);
+        UnavailabilityModel CreateUnavailability(int businessId, UnavailabilitySaveModel unavailabilitySaveModel);
+        Task<UnavailabilityModel> CreateUnavailabilityAsync(int businessId, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default);
+        UnavailabilityModel GetUnavailabilityById(int businessId, int id);
+        Task<UnavailabilityModel> GetUnavailabilityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel);
+        Task UpdateUnavailabilityAsync(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default);
+        void DeleteUnavailability(int businessId, int id);
+        Task DeleteUnavailabilityAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class UnavailabilityFunction : BaseFunction, IUnavailabilityFunction
     {
         public UnavailabilityFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -12,7 +12,62 @@ using KeyPayV2.My.Models.TimeAndAttendance;
 
 namespace KeyPayV2.My.Functions
 {
-    public class TimeAndAttendanceFunction : BaseFunction
+    public interface ITimeAndAttendanceFunction
+    {
+        List<TimeAndAttendanceKioskModel> ListKiosks(int businessId, ODataQuery oDataQuery = null);
+        Task<List<TimeAndAttendanceKioskModel>> ListKiosksAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        TimeAndAttendanceKioskModel CreateKiosk(int businessId, TimeAndAttendanceKioskModel kiosk);
+        Task<TimeAndAttendanceKioskModel> CreateKioskAsync(int businessId, TimeAndAttendanceKioskModel kiosk, CancellationToken cancellationToken = default);
+        TimeAndAttendanceKioskModel GetKioskById(int businessId, int id);
+        Task<TimeAndAttendanceKioskModel> GetKioskByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        TimeAndAttendanceKioskModel UpdateKiosk(int businessId, int id, TimeAndAttendanceKioskModel kiosk);
+        Task<TimeAndAttendanceKioskModel> UpdateKioskAsync(int businessId, int id, TimeAndAttendanceKioskModel kiosk, CancellationToken cancellationToken = default);
+        void DeleteKiosk(int businessId, int id);
+        Task DeleteKioskAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void AddCompleteShiftForEmployee(int businessId, int kioskId, AuAddShiftModel model);
+        Task AddCompleteShiftForEmployeeAsync(int businessId, int kioskId, AuAddShiftModel model, CancellationToken cancellationToken = default);
+        void ChangePin(int businessId, int kioskId, ChangeKioskPinModel model);
+        Task ChangePinAsync(int businessId, int kioskId, ChangeKioskPinModel model, CancellationToken cancellationToken = default);
+        void CheckEmployee(int businessId, BasicKioskEmployeeModel model, string kioskId);
+        Task CheckEmployeeAsync(int businessId, BasicKioskEmployeeModel model, string kioskId, CancellationToken cancellationToken = default);
+        KioskEmployeeModel VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId);
+        Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, CheckKioskPinModel model, string kioskId, CancellationToken cancellationToken = default);
+        void ClockOutEmployee(int businessId, int kioskId, ClockOffModel request);
+        Task ClockOutEmployeeAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
+        void ClockInEmployee(int businessId, int kioskId, AuClockOnModel model);
+        Task ClockInEmployeeAsync(int businessId, int kioskId, AuClockOnModel model, CancellationToken cancellationToken = default);
+        void DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request);
+        Task DiscardCurrentShiftAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
+        void SendPinResetEmail(int businessId, PinResetModel model, string kioskId);
+        Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        void EndBreak(int businessId, int kioskId, EndBreakModel request);
+        Task EndBreakAsync(int businessId, int kioskId, EndBreakModel request, CancellationToken cancellationToken = default);
+        MyTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId);
+        Task<MyTimeAndAttendanceLookupDataModel> GetEmployeeLookupDataAsync(int businessId, int employeeId, int kioskId, CancellationToken cancellationToken = default);
+        void GetShiftNotes(int businessId, int kioskId, int shiftId);
+        Task GetShiftNotesAsync(int businessId, int kioskId, int shiftId, CancellationToken cancellationToken = default);
+        void GetShiftNotes(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request);
+        Task GetShiftNotesAsync(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default);
+        void AddNoteToShift(int businessId, int kioskId, int shiftId, AddNoteModel model);
+        Task AddNoteToShiftAsync(int businessId, int kioskId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default);
+        void DeleteNoteFromShift(int businessId, int kioskId, int shiftId, int noteId);
+        Task DeleteNoteFromShiftAsync(int businessId, int kioskId, int shiftId, int noteId, CancellationToken cancellationToken = default);
+        void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId);
+        Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default);
+        void SendPinResetSms(int businessId, PinResetModel model, string kioskId);
+        Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId);
+        Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default);
+        BasicKioskEmployeeModel AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model);
+        Task<BasicKioskEmployeeModel> AddAnEmployeeAsync(int businessId, int kioskId, KioskCreateEmployeeModel model, CancellationToken cancellationToken = default);
+        void StartBreak(int businessId, int kioskId, StartBreakModel request);
+        Task StartBreakAsync(int businessId, int kioskId, StartBreakModel request, CancellationToken cancellationToken = default);
+        void EmployeeHasAccess(int businessId, int employeeId);
+        Task EmployeeHasAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<MyTimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model);
+        Task<List<MyTimeAndAttendanceShiftModel>> ShiftsAsync(int businessId, GetShiftsModel model, CancellationToken cancellationToken = default);
+    }
+    public class TimeAndAttendanceFunction : BaseFunction, ITimeAndAttendanceFunction
     {
         public TimeAndAttendanceFunction(ApiRequestExecutor api) : base(api) {}
 

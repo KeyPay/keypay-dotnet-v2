@@ -34,6 +34,7 @@ namespace KeyPayV2.Uk.Models.Ess
         public string MiddleName { get; set; }
         public string Surname { get; set; }
         public string PreviousSurname { get; set; }
+        public string LegalName { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string ResidentialStreetAddress { get; set; }

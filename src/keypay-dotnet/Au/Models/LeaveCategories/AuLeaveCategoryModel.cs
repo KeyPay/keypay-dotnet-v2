@@ -18,6 +18,7 @@ namespace KeyPayV2.Au.Models.LeaveCategories
         [JsonConverter(typeof(StringEnumConverter))]
         public AuLeaveCategoryTypeEnum LeaveCategoryType { get; set; }
         public AuLeaveAccrualRuleModel LeaveAccrualRule { get; set; }
+        public int? TransferOnTerminationToPayCategoryId { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Units { get; set; }
@@ -36,5 +37,6 @@ namespace KeyPayV2.Au.Models.LeaveCategories
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveUnitTypeEnum LeaveUnitType { get; set; }
         public bool PayoutAsETP { get; set; }
+        public bool? AccruesFirstPayRunPerPeriodOnly { get; set; }
     }
 }

@@ -12,7 +12,22 @@ using KeyPayV2.Nz.Models.Location;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class LocationFunction : BaseFunction
+    public interface ILocationFunction
+    {
+        List<NzLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<NzLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        NzLocationModel CreateLocation(int businessId, NzLocationModel location);
+        Task<NzLocationModel> CreateLocationAsync(int businessId, NzLocationModel location, CancellationToken cancellationToken = default);
+        NzSingleLocationModel GetLocationById(int businessId, int id);
+        Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateLocation(int businessId, int id, NzLocationModel location);
+        Task UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default);
+        void DeleteLocation(int businessId, int id);
+        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
 

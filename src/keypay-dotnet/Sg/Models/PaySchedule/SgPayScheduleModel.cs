@@ -13,6 +13,7 @@ namespace KeyPayV2.Sg.Models.PaySchedule
         public AutoPayConfigurationModel AutoPayConfiguration { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PayCycleFrequencyEnum Frequency { get; set; }
+        public bool EmptyPaysIncludeSystemDeductions { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

@@ -66,6 +66,8 @@ namespace KeyPayV2.Uk.Models.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public PostponementOptionEnum? PostponementOption { get; set; }
         public DateTime? DeferralDate { get; set; }
+        public DateTime? FreeportQualifyingEndDate { get; set; }
+        public DateTime? VeteransQualifyingEndDate { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

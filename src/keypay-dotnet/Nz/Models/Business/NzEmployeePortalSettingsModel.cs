@@ -29,6 +29,7 @@ namespace KeyPayV2.Nz.Models.Business
         public bool AllowEmployeeShiftSelection { get; set; }
         public int? ClockOnWindowMinutes { get; set; }
         public int? ClockOffWindowMinutes { get; set; }
+        public int? ClockOnReminderNotificationMinutes { get; set; }
         public int? ClockOffReminderNotificationMinutes { get; set; }
         public bool SendEmployeeDetailsUpdateNotifications { get; set; }
     }

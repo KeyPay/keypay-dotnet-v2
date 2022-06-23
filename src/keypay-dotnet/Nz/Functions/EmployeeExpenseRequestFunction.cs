@@ -12,7 +12,26 @@ using KeyPayV2.Nz.Models.EmployeeExpenseRequest;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class EmployeeExpenseRequestFunction : BaseFunction
+    public interface IEmployeeExpenseRequestFunction
+    {
+        List<ExpenseRequestResponseModel> ListExpenseRequests(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<ExpenseRequestResponseModel>> ListExpenseRequestsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateExpenseRequest(int businessId, int employeeId, ExpenseRequestEditModel model);
+        Task CreateExpenseRequestAsync(int businessId, int employeeId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default);
+        ExpenseRequestResponseModel GetExpenseRequestById(int businessId, int employeeId, int expenseRequestId);
+        Task<ExpenseRequestResponseModel> GetExpenseRequestByIdAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void UpdateExpenseRequest(int businessId, int employeeId, int expenseRequestId, ExpenseRequestEditModel model);
+        Task UpdateExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default);
+        void DeleteExpenseRequest(int businessId, int employeeId, int expenseRequestId);
+        Task DeleteExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void ApproveExpenseRequest(int businessId, int employeeId, int expenseRequestId);
+        Task ApproveExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void UploadAttachmentToExpenseRequest(int businessId, int employeeId, int expenseRequestId);
+        Task UploadAttachmentToExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, string reason);
+        Task DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, string reason, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeExpenseRequestFunction : BaseFunction, IEmployeeExpenseRequestFunction
     {
         public EmployeeExpenseRequestFunction(ApiRequestExecutor api) : base(api) {}
 

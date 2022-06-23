@@ -12,7 +12,20 @@ using KeyPayV2.Au.Models.PayRateTemplate;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class PayRateTemplateFunction : BaseFunction
+    public interface IPayRateTemplateFunction
+    {
+        List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        AuPayRateTemplateModel CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate);
+        Task<AuPayRateTemplateModel> CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
+        AuPayRateTemplateModel GetPayRateTemplateById(int businessId, int id);
+        Task<AuPayRateTemplateModel> GetPayRateTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuPayRateTemplateModel UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate);
+        Task<AuPayRateTemplateModel> UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
+        void DeletePayRateTemplate(int businessId, int id);
+        Task DeletePayRateTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class PayRateTemplateFunction : BaseFunction, IPayRateTemplateFunction
     {
         public PayRateTemplateFunction(ApiRequestExecutor api) : base(api) {}
 

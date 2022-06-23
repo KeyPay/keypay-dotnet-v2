@@ -70,6 +70,12 @@ namespace KeyPayV2.Nz.Enums
         LeaveAccrualReconciliationPreviousPayRun,
         LeaveAccrualReconciliationThisPayRun,
         PublicHolidayAutomation,
-        CisSubcontractorRequiresVerification
+        CisSubcontractorRequiresVerification,
+        ItnRequiresUpdate,
+        CisSubcontractorLastPaymentDate,
+        CisSubcontractorUnmatched,
+        CpfRefundRequired,
+        CpfYearEndRecalculationRequired,
+        TimesheetOutOfSequence
     }
 }

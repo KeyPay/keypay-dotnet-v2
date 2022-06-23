@@ -12,7 +12,14 @@ using KeyPayV2.Uk.Models.EmployeeLeaveAllowances;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class EmployeeLeaveAllowancesFunction : BaseFunction
+    public interface IEmployeeLeaveAllowancesFunction
+    {
+        List<UkLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId);
+        Task<List<UkLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetLeaveAllowances(int businessId, int employeeId, IList<UkLeaveAllowanceModel> leaveAllowances);
+        Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<UkLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeLeaveAllowancesFunction : BaseFunction, IEmployeeLeaveAllowancesFunction
     {
         public EmployeeLeaveAllowancesFunction(ApiRequestExecutor api) : base(api) {}
 

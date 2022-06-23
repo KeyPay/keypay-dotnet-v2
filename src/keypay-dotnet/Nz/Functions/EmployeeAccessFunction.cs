@@ -12,7 +12,20 @@ using KeyPayV2.Nz.Models.EmployeeAccess;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class EmployeeAccessFunction : BaseFunction
+    public interface IEmployeeAccessFunction
+    {
+        List<EmployeeAccessModel> GetUsersWithAccessToEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<EmployeeAccessModel>> GetUsersWithAccessToEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request);
+        Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request, CancellationToken cancellationToken = default);
+        void GrantEmployeeAccess(int businessId, int employeeId, CreateEmployeeAccessModel viewModel);
+        Task GrantEmployeeAccessAsync(int businessId, int employeeId, CreateEmployeeAccessModel viewModel, CancellationToken cancellationToken = default);
+        void RevokeEmployeeAccess(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request);
+        Task RevokeEmployeeAccessAsync(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request, CancellationToken cancellationToken = default);
+        EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request);
+        Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeAccessFunction : BaseFunction, IEmployeeAccessFunction
     {
         public EmployeeAccessFunction(ApiRequestExecutor api) : base(api) {}
 

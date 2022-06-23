@@ -12,7 +12,34 @@ using KeyPayV2.Sg.Models.Other;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class OtherFunction : BaseFunction
+    public interface IOtherFunction
+    {
+        List<GiroBankModel> ListBanks();
+        Task<List<GiroBankModel>> ListBanksAsync(CancellationToken cancellationToken = default);
+        GiroBankBranchModel GetSpecificBankBranchDetails(GetSpecificBankBranchDetailsQueryModel request);
+        Task<GiroBankBranchModel> GetSpecificBankBranchDetailsAsync(GetSpecificBankBranchDetailsQueryModel request, CancellationToken cancellationToken = default);
+        List<GiroBankBranchModel> SgBank_Branches(SgBank_BranchesQueryModel request);
+        Task<List<GiroBankBranchModel>> SgBank_BranchesAsync(SgBank_BranchesQueryModel request, CancellationToken cancellationToken = default);
+        GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request);
+        Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default);
+        SgPayRunDetailsModel SgPayRunDetails_Get(int businessId, int payRunId);
+        Task<SgPayRunDetailsModel> SgPayRunDetails_GetAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
+        Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        void GetPaySlipsByFinalisedPayRunId(int businessId);
+        Task GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
+        void GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request);
+        Task GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        List<ShiftSwappingReportExportModel> ReportsShiftSwapping_Get(int businessId);
+        Task<List<ShiftSwappingReportExportModel>> ReportsShiftSwapping_GetAsync(int businessId, CancellationToken cancellationToken = default);
+        List<ShiftSwappingReportExportModel> ReportsShiftSwapping_Get(int businessId, ReportsShiftSwapping_GetQueryModel request);
+        Task<List<ShiftSwappingReportExportModel>> ReportsShiftSwapping_GetAsync(int businessId, ReportsShiftSwapping_GetQueryModel request, CancellationToken cancellationToken = default);
+        List<TasksReportExportModel> ReportsTasksReport_Get(int businessId);
+        Task<List<TasksReportExportModel>> ReportsTasksReport_GetAsync(int businessId, CancellationToken cancellationToken = default);
+        List<TasksReportExportModel> ReportsTasksReport_Get(int businessId, ReportsTasksReport_GetQueryModel request);
+        Task<List<TasksReportExportModel>> ReportsTasksReport_GetAsync(int businessId, ReportsTasksReport_GetQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class OtherFunction : BaseFunction, IOtherFunction
     {
         public OtherFunction(ApiRequestExecutor api) : base(api) {}
 
@@ -20,7 +47,7 @@ namespace KeyPayV2.Sg.Functions
         /// List Banks
         /// </summary>
         /// <remarks>
-        /// Lists all of the banks.
+        /// Lists all banks.
         /// </remarks>
         public List<GiroBankModel> ListBanks()
         {
@@ -31,7 +58,7 @@ namespace KeyPayV2.Sg.Functions
         /// List Banks
         /// </summary>
         /// <remarks>
-        /// Lists all of the banks.
+        /// Lists all banks.
         /// </remarks>
         public Task<List<GiroBankModel>> ListBanksAsync(CancellationToken cancellationToken = default)
         {
@@ -42,7 +69,7 @@ namespace KeyPayV2.Sg.Functions
         /// Get Specific Bank Branch Details
         /// </summary>
         /// <remarks>
-        /// Search for bank branch based on a Bank Swift, Branch Code and Account Number.
+        /// Search for a bank branch based on a Bank Swift, Branch Code and Account Number.
         /// </remarks>
         public GiroBankBranchModel GetSpecificBankBranchDetails(GetSpecificBankBranchDetailsQueryModel request)
         {
@@ -53,7 +80,7 @@ namespace KeyPayV2.Sg.Functions
         /// Get Specific Bank Branch Details
         /// </summary>
         /// <remarks>
-        /// Search for bank branch based on a Bank Swift, Branch Code and Account Number.
+        /// Search for a bank branch based on a Bank Swift, Branch Code and Account Number.
         /// </remarks>
         public Task<GiroBankBranchModel> GetSpecificBankBranchDetailsAsync(GetSpecificBankBranchDetailsQueryModel request, CancellationToken cancellationToken = default)
         {

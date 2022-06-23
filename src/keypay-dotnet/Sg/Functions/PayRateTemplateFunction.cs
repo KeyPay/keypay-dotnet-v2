@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.PayRateTemplate;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class PayRateTemplateFunction : BaseFunction
+    public interface IPayRateTemplateFunction
+    {
+        List<PayRateTemplateExportModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<PayRateTemplateExportModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        PayRateTemplateExportModel CreatePayRateTemplate(int businessId, PayRateTemplateExportModel payRateTemplate);
+        Task<PayRateTemplateExportModel> CreatePayRateTemplateAsync(int businessId, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
+        PayRateTemplateExportModel GetPayRateTemplateById(int businessId, int id);
+        Task<PayRateTemplateExportModel> GetPayRateTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        PayRateTemplateExportModel UpdatePayRateTemplate(int businessId, int id, PayRateTemplateExportModel payRateTemplate);
+        Task<PayRateTemplateExportModel> UpdatePayRateTemplateAsync(int businessId, int id, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
+        void DeletePayRateTemplate(int businessId, int id);
+        Task DeletePayRateTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class PayRateTemplateFunction : BaseFunction, IPayRateTemplateFunction
     {
         public PayRateTemplateFunction(ApiRequestExecutor api) : base(api) {}
 

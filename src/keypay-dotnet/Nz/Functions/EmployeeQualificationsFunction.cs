@@ -12,7 +12,30 @@ using KeyPayV2.Nz.Models.EmployeeQualifications;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class EmployeeQualificationsFunction : BaseFunction
+    public interface IEmployeeQualificationsFunction
+    {
+        List<EmployeeQualificationModel> GetQualificationsForEmployee(int businessId, int employeeId);
+        Task<List<EmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationModel qualification);
+        Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationModel qualification, CancellationToken cancellationToken = default);
+        void DeleteEmployeeQualification(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request);
+        Task DeleteEmployeeQualificationAsync(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request, CancellationToken cancellationToken = default);
+        EmployeeQualificationModel GetQualificationDetails(int businessId, int employeeId, int id);
+        Task<EmployeeQualificationModel> GetQualificationDetailsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        List<EmployeeQualificationDocumentModel> ListDocumentsForEmployeeQualification(int businessId, int employeeId, int qualificationId);
+        Task<List<EmployeeQualificationDocumentModel>> ListDocumentsForEmployeeQualificationAsync(int businessId, int employeeId, int qualificationId, CancellationToken cancellationToken = default);
+        List<EmployeeQualificationDocumentModel> CreateEmployeeQualificationDocument(int businessId, int employeeId, FileUploadModel file, int qualificationId);
+        Task<List<EmployeeQualificationDocumentModel>> CreateEmployeeQualificationDocumentAsync(int businessId, int employeeId, FileUploadModel file, int qualificationId, CancellationToken cancellationToken = default);
+        List<EmployeeQualificationDocumentModel> CreateEmployeeQualificationDocument(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request);
+        Task<List<EmployeeQualificationDocumentModel>> CreateEmployeeQualificationDocumentAsync(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request, CancellationToken cancellationToken = default);
+        EmployeeQualificationDocumentModel GetQualificationDocumentById(int businessId, int employeeId, int id, int qualificationId);
+        Task<EmployeeQualificationDocumentModel> GetQualificationDocumentByIdAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeQualificationDocument(int businessId, int employeeId, int id, int qualificationId);
+        Task DeleteEmployeeQualificationDocumentAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default);
+        DocumentFile GetQualificationDocumentFile(int businessId, int employeeId, int id, int qualificationId);
+        Task<DocumentFile> GetQualificationDocumentFileAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeQualificationsFunction : BaseFunction, IEmployeeQualificationsFunction
     {
         public EmployeeQualificationsFunction(ApiRequestExecutor api) : base(api) {}
 

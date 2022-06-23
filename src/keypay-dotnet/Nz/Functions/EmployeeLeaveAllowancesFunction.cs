@@ -11,7 +11,14 @@ using KeyPayV2.Nz.Models.Common;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class EmployeeLeaveAllowancesFunction : BaseFunction
+    public interface IEmployeeLeaveAllowancesFunction
+    {
+        List<NzLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId);
+        Task<List<NzLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetLeaveAllowances(int businessId, int employeeId, IList<NzLeaveAllowanceModel> leaveAllowances);
+        Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<NzLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeLeaveAllowancesFunction : BaseFunction, IEmployeeLeaveAllowancesFunction
     {
         public EmployeeLeaveAllowancesFunction(ApiRequestExecutor api) : base(api) {}
 

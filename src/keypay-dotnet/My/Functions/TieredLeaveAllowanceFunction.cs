@@ -12,7 +12,20 @@ using KeyPayV2.My.Models.TieredLeaveAllowance;
 
 namespace KeyPayV2.My.Functions
 {
-    public class TieredLeaveAllowanceFunction : BaseFunction
+    public interface ITieredLeaveAllowanceFunction
+    {
+        List<TieredLeaveAllowanceTemplateApiModel> ListTieredLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<TieredLeaveAllowanceTemplateApiModel>> ListTieredLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        TieredLeaveAllowanceTemplateApiModel CreateTieredLeaveAllowanceTemplate(int businessId, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate);
+        Task<TieredLeaveAllowanceTemplateApiModel> CreateTieredLeaveAllowanceTemplateAsync(int businessId, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        TieredLeaveAllowanceTemplateApiModel GetTieredLeaveAllowanceTemplateById(int businessId, int id);
+        Task<TieredLeaveAllowanceTemplateApiModel> GetTieredLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        TieredLeaveAllowanceTemplateApiModel UpdateTieredLeaveAllowanceTemplate(int businessId, int id, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate);
+        Task<TieredLeaveAllowanceTemplateApiModel> UpdateTieredLeaveAllowanceTemplateAsync(int businessId, int id, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        void DeleteTieredLeaveAllowanceTemplate(int businessId, int id);
+        Task DeleteTieredLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class TieredLeaveAllowanceFunction : BaseFunction, ITieredLeaveAllowanceFunction
     {
         public TieredLeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
 

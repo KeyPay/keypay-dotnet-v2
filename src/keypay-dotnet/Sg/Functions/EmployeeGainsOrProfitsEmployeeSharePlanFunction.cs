@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeeGainsOrProfitsEmployeeSharePlan;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeGainsOrProfitsEmployeeSharePlanFunction : BaseFunction
+    public interface IEmployeeGainsOrProfitsEmployeeSharePlanFunction
+    {
+        List<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlans(int businessId, int employeeId);
+        Task<List<SgGainsOrProfitsEmployeeSharePlanModel>> GetGainsOrProfitsEmployeeSharePlansAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void CreateGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model);
+        Task CreateGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model, CancellationToken cancellationToken = default);
+        SgGainsOrProfitsEmployeeSharePlanModel GetGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id);
+        Task<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateAnExistingGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request);
+        Task UpdateAnExistingGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request, CancellationToken cancellationToken = default);
+        void DeleteGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id);
+        Task DeleteGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeGainsOrProfitsEmployeeSharePlanFunction : BaseFunction, IEmployeeGainsOrProfitsEmployeeSharePlanFunction
     {
         public EmployeeGainsOrProfitsEmployeeSharePlanFunction(ApiRequestExecutor api) : base(api) {}
 

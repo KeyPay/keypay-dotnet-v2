@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.PayCategory;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class PayCategoryFunction : BaseFunction
+    public interface IPayCategoryFunction
+    {
+        List<SgPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgPayCategoryModel CreatePayCategory(int businessId, SgPayCategoryModel payCategory);
+        Task<SgPayCategoryModel> CreatePayCategoryAsync(int businessId, SgPayCategoryModel payCategory, CancellationToken cancellationToken = default);
+        SgPayCategoryModel GetPayCategoryById(int businessId, int id);
+        Task<SgPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgPayCategoryModel UpdatePayCategory(int businessId, int id, SgPayCategoryModel payCategory);
+        Task<SgPayCategoryModel> UpdatePayCategoryAsync(int businessId, int id, SgPayCategoryModel payCategory, CancellationToken cancellationToken = default);
+        void DeletePayCategory(int businessId, int id);
+        Task DeletePayCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class PayCategoryFunction : BaseFunction, IPayCategoryFunction
     {
         public PayCategoryFunction(ApiRequestExecutor api) : base(api) {}
 

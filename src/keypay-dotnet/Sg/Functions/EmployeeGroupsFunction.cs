@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeeGroups;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeGroupsFunction : BaseFunction
+    public interface IEmployeeGroupsFunction
+    {
+        List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgEmployeeGroupModel CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup);
+        Task<SgEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        SgDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
+        Task<SgDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, SgEmployeeGroupModel employeeGroup);
+        Task<SgEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        void DeleteEmployeeGroup(int businessId, int id);
+        Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeGroupsFunction : BaseFunction, IEmployeeGroupsFunction
     {
         public EmployeeGroupsFunction(ApiRequestExecutor api) : base(api) {}
 

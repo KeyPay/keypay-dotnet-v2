@@ -12,7 +12,18 @@ using KeyPayV2.Uk.Models.EmployeeBenefitCategory;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class EmployeeBenefitCategoryFunction : BaseFunction
+    public interface IEmployeeBenefitCategoryFunction
+    {
+        UkEmployeeBenefitCategories ListEmployeeBenefits(int businessId, int employeeId);
+        Task<UkEmployeeBenefitCategories> ListEmployeeBenefitsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        UkEmployeeBenefitCategoryModel UpdateEmployeeBenefit(int businessId, int employeeId, UkEmployeeBenefitCategoryModel model);
+        Task<UkEmployeeBenefitCategoryModel> UpdateEmployeeBenefitAsync(int businessId, int employeeId, UkEmployeeBenefitCategoryModel model, CancellationToken cancellationToken = default);
+        UkEmployeeBenefitCategoryModel CreateEmployeeBenefit(int businessId, int employeeId, UkEmployeeBenefitCategoryEditModel model);
+        Task<UkEmployeeBenefitCategoryModel> CreateEmployeeBenefitAsync(int businessId, int employeeId, UkEmployeeBenefitCategoryEditModel model, CancellationToken cancellationToken = default);
+        UkEmployeeBenefitCategoryModel GetEmployeeBenefit(int businessId, int employeeId, int benefitCategoryId);
+        Task<UkEmployeeBenefitCategoryModel> GetEmployeeBenefitAsync(int businessId, int employeeId, int benefitCategoryId, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeBenefitCategoryFunction : BaseFunction, IEmployeeBenefitCategoryFunction
     {
         public EmployeeBenefitCategoryFunction(ApiRequestExecutor api) : base(api) {}
 

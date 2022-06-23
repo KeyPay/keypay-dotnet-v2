@@ -12,7 +12,20 @@ using KeyPayV2.Au.Models.DeductionCategories;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class DeductionCategoriesFunction : BaseFunction
+    public interface IDeductionCategoriesFunction
+    {
+        List<AuDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        AuDeductionCategoryModel CreateDeductionCategory(int businessId, AuDeductionCategoryModel deductionCategory);
+        Task<AuDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, AuDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        AuDeductionCategoryModel GetDeductionCategoryById(int businessId, int id);
+        Task<AuDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, AuDeductionCategoryModel deductionCategory);
+        Task<AuDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, AuDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        void DeleteDeductionCategory(int businessId, int id);
+        Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class DeductionCategoriesFunction : BaseFunction, IDeductionCategoriesFunction
     {
         public DeductionCategoriesFunction(ApiRequestExecutor api) : base(api) {}
 

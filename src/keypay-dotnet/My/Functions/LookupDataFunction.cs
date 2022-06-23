@@ -12,7 +12,22 @@ using KeyPayV2.My.Models.LookupData;
 
 namespace KeyPayV2.My.Functions
 {
-    public class LookupDataFunction : BaseFunction
+    public interface ILookupDataFunction
+    {
+        List<NameIdPair> ListTimeZoneTypes(int businessId);
+        Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NameIdPair> ListCountries();
+        Task<List<NameIdPair>> ListCountriesAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListEmployeeGroupPermissionTypes();
+        Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default);
+        List<string> ListGenderOptions();
+        Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListReportTypes();
+        Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListTimeZoneTypes();
+        Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default);
+    }
+    public class LookupDataFunction : BaseFunction, ILookupDataFunction
     {
         public LookupDataFunction(ApiRequestExecutor api) : base(api) {}
 

@@ -11,7 +11,14 @@ using KeyPayV2.My.Models.Common;
 
 namespace KeyPayV2.My.Functions
 {
-    public class EmployeeLeaveAllowancesFunction : BaseFunction
+    public interface IEmployeeLeaveAllowancesFunction
+    {
+        List<MyLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId);
+        Task<List<MyLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetLeaveAllowances(int businessId, int employeeId, IList<MyLeaveAllowanceModel> leaveAllowances);
+        Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<MyLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeLeaveAllowancesFunction : BaseFunction, IEmployeeLeaveAllowancesFunction
     {
         public EmployeeLeaveAllowancesFunction(ApiRequestExecutor api) : base(api) {}
 

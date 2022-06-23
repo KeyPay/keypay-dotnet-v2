@@ -12,7 +12,36 @@ using KeyPayV2.My.Models.EmployeeDocument;
 
 namespace KeyPayV2.My.Functions
 {
-    public class EmployeeDocumentFunction : BaseFunction
+    public interface IEmployeeDocumentFunction
+    {
+        List<EmployeeDocumentModel> ListEmployeeDocuments(int businessId, int employeeId);
+        Task<List<EmployeeDocumentModel>> ListEmployeeDocumentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel UpdateEmployeeDocumentPermissions(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model);
+        Task<EmployeeDocumentModel> UpdateEmployeeDocumentPermissionsAsync(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId);
+        Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request);
+        Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default);
+        void LinkEmployeeDocumentToExpenseRequest(int businessId, int employeeId, int id, int documentId);
+        Task LinkEmployeeDocumentToExpenseRequestAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void UnlinkEmployeeDocumentFromExpenseRequest(int businessId, int employeeId, int id, int documentId);
+        Task UnlinkEmployeeDocumentFromExpenseRequestAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void LinkEmployeeDocumentToLeaveRequest(int businessId, int employeeId, int id, int documentId);
+        Task LinkEmployeeDocumentToLeaveRequestAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void UnlinkEmployeeDocumentFromLeaveRequest(int businessId, int employeeId, int id, int documentId);
+        Task UnlinkEmployeeDocumentFromLeaveRequestAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void LinkEmployeeDocumentToTimesheet(int businessId, int employeeId, int id, int documentId);
+        Task LinkEmployeeDocumentToTimesheetAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void UnlinkEmployeeDocumentFromTimesheet(int businessId, int employeeId, int id, int documentId);
+        Task UnlinkEmployeeDocumentFromTimesheetAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel GetEmployeeDocumentDetails(int businessId, int employeeId, int id);
+        Task<EmployeeDocumentModel> GetEmployeeDocumentDetailsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void DeleteEmployeeDocument(int businessId, int employeeId, int id);
+        Task DeleteEmployeeDocumentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        DocumentFile GetEmployeeDocumentContent(int businessId, int employeeId, int id);
+        Task<DocumentFile> GetEmployeeDocumentContentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeDocumentFunction : BaseFunction, IEmployeeDocumentFunction
     {
         public EmployeeDocumentFunction(ApiRequestExecutor api) : base(api) {}
 

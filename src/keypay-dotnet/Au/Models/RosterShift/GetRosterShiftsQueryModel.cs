@@ -22,7 +22,7 @@ namespace KeyPayV2.Au.Models.RosterShift
         public bool SelectAllRoles { get; set; }
         public bool ExcludeShiftsOverlappingFromDate { get; set; }
         public int? PageSize { get; set; }
-        public int? PageNum { get; set; }
+        public int? CurrentPage { get; set; }
         public bool IncludeWarnings { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace KeyPayV2.My.Models.Ess
     {
         public MyAddressModel ResidentialAddress { get; set; }
         public MyAddressModel PostalAddress { get; set; }
+        public string LegalName { get; set; }
         public bool CanEdit { get; set; }
         public bool HasProfileImage { get; set; }
         public bool CanEditProfileImage { get; set; }

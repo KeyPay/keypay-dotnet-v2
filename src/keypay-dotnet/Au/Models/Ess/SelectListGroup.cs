@@ -8,7 +8,6 @@ namespace KeyPayV2.Au.Models.Ess
 {
     public class SelectListGroup
     {
-        public bool Disabled { get; set; }
         public string Name { get; set; }
     }
 }

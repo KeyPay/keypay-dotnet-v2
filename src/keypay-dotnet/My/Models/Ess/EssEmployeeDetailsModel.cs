@@ -10,6 +10,7 @@ namespace KeyPayV2.My.Models.Ess
 {
     public class EssEmployeeDetailsModel
     {
+        public bool TimesheetsReadOnly { get; set; }
         public int Id { get; set; }
         public int? TitleId { get; set; }
         public string FirstName { get; set; }
@@ -17,6 +18,7 @@ namespace KeyPayV2.My.Models.Ess
         public string MiddleName { get; set; }
         public string Surname { get; set; }
         public string PreviousSurname { get; set; }
+        public string LegalName { get; set; }
         public string Gender { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public DateTime? AnniversaryDate { get; set; }

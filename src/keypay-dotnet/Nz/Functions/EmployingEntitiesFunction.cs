@@ -12,7 +12,20 @@ using KeyPayV2.Nz.Models.EmployingEntities;
 
 namespace KeyPayV2.Nz.Functions
 {
-    public class EmployingEntitiesFunction : BaseFunction
+    public interface IEmployingEntitiesFunction
+    {
+        List<NzEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        NzEmployingEntityModel CreateEmployingEntity(int businessId, NzEmployingEntityModel employingEntity);
+        Task<NzEmployingEntityModel> CreateEmployingEntityAsync(int businessId, NzEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
+        NzEmployingEntityModel GetEmployingEntityById(int businessId, int id);
+        Task<NzEmployingEntityModel> GetEmployingEntityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        NzEmployingEntityModel UpdateEmployingEntity(int businessId, int id, NzEmployingEntityModel employingEntity);
+        Task<NzEmployingEntityModel> UpdateEmployingEntityAsync(int businessId, int id, NzEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
+        void DeleteEmployingEntity(int businessId, int id);
+        Task DeleteEmployingEntityAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployingEntitiesFunction : BaseFunction, IEmployingEntitiesFunction
     {
         public EmployingEntitiesFunction(ApiRequestExecutor api) : base(api) {}
 

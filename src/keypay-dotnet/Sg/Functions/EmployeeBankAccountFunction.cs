@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeeBankAccount;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeBankAccountFunction : BaseFunction
+    public interface IEmployeeBankAccountFunction
+    {
+        List<SgBankAccountModel> ListBankAccounts(int businessId, int employeeId);
+        Task<List<SgBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        SgSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, SgBankAccountModel model);
+        Task<SgSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, SgBankAccountModel model, CancellationToken cancellationToken = default);
+        SgBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId);
+        Task<SgBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        SgSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId);
+        Task<SgSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        SgSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, SgBankAccountModel model);
+        Task<SgSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int id, SgBankAccountModel model, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeBankAccountFunction : BaseFunction, IEmployeeBankAccountFunction
     {
         public EmployeeBankAccountFunction(ApiRequestExecutor api) : base(api) {}
 

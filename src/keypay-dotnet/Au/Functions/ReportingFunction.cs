@@ -12,7 +12,100 @@ using KeyPayV2.Au.Models.Reporting;
 
 namespace KeyPayV2.Au.Functions
 {
-    public class ReportingFunction : BaseFunction
+    public interface IReportingFunction
+    {
+        List<BirthdayReportExportModel> BirthdayReport(int businessId, BirthdayReportQueryModel request);
+        Task<List<BirthdayReportExportModel>> BirthdayReportAsync(int businessId, BirthdayReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuCostingReportApiModel> CostingReport(int businessId);
+        Task<List<AuCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
+        Task<List<AuCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
+        List<DeductionsReportExportModel> DeductionsReport(int businessId);
+        Task<List<DeductionsReportExportModel>> DeductionsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<DeductionsReportExportModel> DeductionsReport(int businessId, DeductionsReportQueryModel request);
+        Task<List<DeductionsReportExportModel>> DeductionsReportAsync(int businessId, DeductionsReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuDetailedActivityReportExportModel> DetailedActivityReport(int businessId);
+        Task<List<AuDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuDetailedActivityReportExportModel> DetailedActivityReport(int businessId, DetailedActivityReportQueryModel request);
+        Task<List<AuDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, DetailedActivityReportQueryModel request, CancellationToken cancellationToken = default);
+        List<DocumentAcknowledgementsReportExportModel> DocumentAcknowledgementsReport(int businessId);
+        Task<List<DocumentAcknowledgementsReportExportModel>> DocumentAcknowledgementsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<DocumentAcknowledgementsReportExportModel> DocumentAcknowledgementsReport(int businessId, DocumentAcknowledgementsReportQueryModel request);
+        Task<List<DocumentAcknowledgementsReportExportModel>> DocumentAcknowledgementsReportAsync(int businessId, DocumentAcknowledgementsReportQueryModel request, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsAuditReportApiModel> EmployeeAuditReport(int businessId);
+        Task<List<EmployeeDetailsAuditReportApiModel>> EmployeeAuditReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsAuditReportApiModel> EmployeeAuditReport(int businessId, EmployeeAuditReportQueryModel request);
+        Task<List<EmployeeDetailsAuditReportApiModel>> EmployeeAuditReportAsync(int businessId, EmployeeAuditReportQueryModel request, CancellationToken cancellationToken = default);
+        List<dynamic> EmployeeDetailsReport(int businessId);
+        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportQueryModel request);
+        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportQueryModel request, CancellationToken cancellationToken = default);
+        List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportRequestModel model);
+        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportRequestModel model, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsReportField> EmployeeDetailsReportFields(int businessId);
+        Task<List<EmployeeDetailsReportField>> EmployeeDetailsReportFieldsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuGrossToNetResponseModel> GrossToNetReport(int businessId);
+        Task<List<AuGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuGrossToNetResponseModel> GrossToNetReport(int businessId, GrossToNetReportQueryModel request);
+        Task<List<AuGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, GrossToNetReportQueryModel request, CancellationToken cancellationToken = default);
+        void JournalReport(int businessId, JournalReportQueryModel request);
+        Task JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuLeaveBalancesExportModel> LeaveBalancesReport(int businessId);
+        Task<List<AuLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuLeaveBalancesExportModel> LeaveBalancesReport(int businessId, LeaveBalancesReportQueryModel request);
+        Task<List<AuLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, LeaveBalancesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<LeaveHistoryReportGroupModel> LeaveHistoryReport(int businessId);
+        Task<List<LeaveHistoryReportGroupModel>> LeaveHistoryReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<LeaveHistoryReportGroupModel> LeaveHistoryReport(int businessId, LeaveHistoryReportQueryModel request);
+        Task<List<LeaveHistoryReportGroupModel>> LeaveHistoryReportAsync(int businessId, LeaveHistoryReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuLeaveLiabilityExportModel> LeaveLiabilityReport(int businessId);
+        Task<List<AuLeaveLiabilityExportModel>> LeaveLiabilityReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuLeaveLiabilityExportModel> LeaveLiabilityReport(int businessId, LeaveLiabilityReportQueryModel request);
+        Task<List<AuLeaveLiabilityExportModel>> LeaveLiabilityReportAsync(int businessId, LeaveLiabilityReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuOrdinaryTimeEarningsApiModel> OrdinaryTimeEarningsReport(int businessId);
+        Task<List<AuOrdinaryTimeEarningsApiModel>> OrdinaryTimeEarningsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuOrdinaryTimeEarningsApiModel> OrdinaryTimeEarningsReport(int businessId, OrdinaryTimeEarningsReportQueryModel request);
+        Task<List<AuOrdinaryTimeEarningsApiModel>> OrdinaryTimeEarningsReportAsync(int businessId, OrdinaryTimeEarningsReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuPayCategoriesModel> PayCategoriesReport(int businessId);
+        Task<List<AuPayCategoriesModel>> PayCategoriesReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuPayCategoriesModel> PayCategoriesReport(int businessId, PayCategoriesReportQueryModel request);
+        Task<List<AuPayCategoriesModel>> PayCategoriesReportAsync(int businessId, PayCategoriesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<PaygReportExportModel> PaygReport(int businessId);
+        Task<List<PaygReportExportModel>> PaygReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<PaygReportExportModel> PaygReport(int businessId, PaygReportQueryModel request);
+        Task<List<PaygReportExportModel>> PaygReportAsync(int businessId, PaygReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuPaymentHistoryModel> EmployeePaymentHistoryReport(int businessId);
+        Task<List<AuPaymentHistoryModel>> EmployeePaymentHistoryReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuPaymentHistoryModel> EmployeePaymentHistoryReport(int businessId, EmployeePaymentHistoryReportQueryModel request);
+        Task<List<AuPaymentHistoryModel>> EmployeePaymentHistoryReportAsync(int businessId, EmployeePaymentHistoryReportQueryModel request, CancellationToken cancellationToken = default);
+        List<PayrollTaxReportExportModel> PayrollTaxReport(int businessId);
+        Task<List<PayrollTaxReportExportModel>> PayrollTaxReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<PayrollTaxReportExportModel> PayrollTaxReport(int businessId, PayrollTaxReportQueryModel request);
+        Task<List<PayrollTaxReportExportModel>> PayrollTaxReportAsync(int businessId, PayrollTaxReportQueryModel request, CancellationToken cancellationToken = default);
+        List<ActivityReportExportModel> PayRunActivityReport(int businessId, PayRunActivityReportQueryModel request);
+        Task<List<ActivityReportExportModel>> PayRunActivityReportAsync(int businessId, PayRunActivityReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuPayRunInclusionExportModel> PayRunInclusionsReport(int businessId);
+        Task<List<AuPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuPayRunInclusionExportModel> PayRunInclusionsReport(int businessId, PayRunInclusionsReportQueryModel request);
+        Task<List<AuPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, PayRunInclusionsReportQueryModel request, CancellationToken cancellationToken = default);
+        List<AuRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId);
+        Task<List<AuRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId, RosterVsTimesheetComparisonReportQueryModel request);
+        Task<List<AuRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, RosterVsTimesheetComparisonReportQueryModel request, CancellationToken cancellationToken = default);
+        List<SuperAccrualExportModel> SuperContributionReportByEmployee(int businessId);
+        Task<List<SuperAccrualExportModel>> SuperContributionReportByEmployeeAsync(int businessId, CancellationToken cancellationToken = default);
+        List<SuperAccrualExportModel> SuperContributionReportByEmployee(int businessId, SuperContributionReportByEmployeeQueryModel request);
+        Task<List<SuperAccrualExportModel>> SuperContributionReportByEmployeeAsync(int businessId, SuperContributionReportByEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        List<SuperContributionsReportExportModel> SuperContributionReportBySuperFund(int businessId);
+        Task<List<SuperContributionsReportExportModel>> SuperContributionReportBySuperFundAsync(int businessId, CancellationToken cancellationToken = default);
+        List<SuperContributionsReportExportModel> SuperContributionReportBySuperFund(int businessId, SuperContributionReportBySuperFundQueryModel request);
+        Task<List<SuperContributionsReportExportModel>> SuperContributionReportBySuperFundAsync(int businessId, SuperContributionReportBySuperFundQueryModel request, CancellationToken cancellationToken = default);
+        List<AuTimesheetExportModel> TimesheetReport(int businessId);
+        Task<List<AuTimesheetExportModel>> TimesheetReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuTimesheetExportModel> TimesheetReport(int businessId, TimesheetReportQueryModel request);
+        Task<List<AuTimesheetExportModel>> TimesheetReportAsync(int businessId, TimesheetReportQueryModel request, CancellationToken cancellationToken = default);
+    }
+    public class ReportingFunction : BaseFunction, IReportingFunction
     {
         public ReportingFunction(ApiRequestExecutor api) : base(api) {}
 

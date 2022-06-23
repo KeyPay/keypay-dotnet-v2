@@ -12,7 +12,20 @@ using KeyPayV2.Uk.Models.EmployerLiabilityCategories;
 
 namespace KeyPayV2.Uk.Functions
 {
-    public class EmployerLiabilityCategoriesFunction : BaseFunction
+    public interface IEmployerLiabilityCategoriesFunction
+    {
+        List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void CreateEmployerLiabilityCategory(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory);
+        Task CreateEmployerLiabilityCategoryAsync(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default);
+        EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id);
+        Task<EmployerLiabilityCategoryModel> GetEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateEmployerLiabilityCategory(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory);
+        Task UpdateEmployerLiabilityCategoryAsync(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default);
+        void DeleteEmployerLiabilityCategory(int businessId, int id);
+        Task DeleteEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployerLiabilityCategoriesFunction : BaseFunction, IEmployerLiabilityCategoriesFunction
     {
         public EmployerLiabilityCategoriesFunction(ApiRequestExecutor api) : base(api) {}
 

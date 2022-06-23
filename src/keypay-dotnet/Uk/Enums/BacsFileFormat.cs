@@ -23,6 +23,10 @@ namespace KeyPayV2.Uk.Enums
         OpenBanking,
         LloydsNonStandardBacsFormat,
         Telleroo,
-        NatWestBulkBankLine
+        NatWestBulkBankLine,
+        VirginMoney,
+        StarlingBank,
+        Comma,
+        LloydsCboPayments
     }
 }

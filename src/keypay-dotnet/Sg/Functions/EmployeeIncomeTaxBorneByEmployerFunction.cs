@@ -12,7 +12,20 @@ using KeyPayV2.Sg.Models.EmployeeIncomeTaxBorneByEmployer;
 
 namespace KeyPayV2.Sg.Functions
 {
-    public class EmployeeIncomeTaxBorneByEmployerFunction : BaseFunction
+    public interface IEmployeeIncomeTaxBorneByEmployerFunction
+    {
+        List<SgIncomeTaxBorneByEmployerModel> GetIncomeTaxBorneByEmployer(int businessId, int employeeId);
+        Task<List<SgIncomeTaxBorneByEmployerModel>> GetIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void CreateIncomeTaxBorneByEmployer(int businessId, int employeeId, SgIncomeTaxBorneByEmployerModel model);
+        Task CreateIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, SgIncomeTaxBorneByEmployerModel model, CancellationToken cancellationToken = default);
+        SgIncomeTaxBorneByEmployerModel GetIncomeTaxBorneByEmployer(int businessId, int employeeId, int id);
+        Task<SgIncomeTaxBorneByEmployerModel> GetIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateAnExistingIncomeTaxBorneByEmployer(int businessId, int employeeId, int id, SgIncomeTaxBorneByEmployerModel request);
+        Task UpdateAnExistingIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, int id, SgIncomeTaxBorneByEmployerModel request, CancellationToken cancellationToken = default);
+        void DeleteIncomeTaxBorneByEmployer(int businessId, int employeeId, int id);
+        Task DeleteIncomeTaxBorneByEmployerAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+    }
+    public class EmployeeIncomeTaxBorneByEmployerFunction : BaseFunction, IEmployeeIncomeTaxBorneByEmployerFunction
     {
         public EmployeeIncomeTaxBorneByEmployerFunction(ApiRequestExecutor api) : base(api) {}
 
