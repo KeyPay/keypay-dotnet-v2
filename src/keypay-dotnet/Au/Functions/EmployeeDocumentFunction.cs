@@ -18,10 +18,10 @@ namespace KeyPayV2.Au.Functions
         Task<List<EmployeeDocumentModel>> ListEmployeeDocumentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeDocumentModel UpdateEmployeeDocumentPermissions(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model);
         Task<EmployeeDocumentModel> UpdateEmployeeDocumentPermissionsAsync(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model, CancellationToken cancellationToken = default);
-        List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId);
-        Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request);
-        Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file);
+        Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request);
+        Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default);
         void LinkEmployeeDocumentToExpenseRequest(int businessId, int employeeId, int id, int documentId);
         Task LinkEmployeeDocumentToExpenseRequestAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
         void UnlinkEmployeeDocumentFromExpenseRequest(int businessId, int employeeId, int id, int documentId);
@@ -95,9 +95,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Uploads new document(s) for this employee. The request should be a MIME multipart file upload request.
         /// </remarks>
-        public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId)
+        public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file)
         {
-            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.Post);
+            return ApiFileRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", file, Method.Post);
         }
 
         /// <summary>
@@ -106,9 +106,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Uploads new document(s) for this employee. The request should be a MIME multipart file upload request.
         /// </remarks>
-        public Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.Post, cancellationToken);
+            return ApiFileRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", file, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -117,9 +117,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Uploads new document(s) for this employee. The request should be a MIME multipart file upload request.
         /// </remarks>
-        public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request)
+        public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request)
         {
-            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", Method.Post);
+            return ApiFileRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", file, Method.Post);
         }
 
         /// <summary>
@@ -128,9 +128,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Uploads new document(s) for this employee. The request should be a MIME multipart file upload request.
         /// </remarks>
-        public Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", Method.Post, cancellationToken);
+            return ApiFileRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", file, Method.Post, cancellationToken);
         }
 
         /// <summary>

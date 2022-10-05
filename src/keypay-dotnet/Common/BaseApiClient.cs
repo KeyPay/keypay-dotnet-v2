@@ -64,7 +64,7 @@ namespace KeyPayV2.Common
         public void ApiRequest<TInput>(string url, TInput input, Method method = Method.Get) where TInput : class
         {
             var req = new RestRequest(url, method);
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             Api.Execute(req);
         }
 
@@ -90,7 +90,7 @@ namespace KeyPayV2.Common
         public Task ApiRequestAsync<TInput>(string url, TInput input, Method method = Method.Get, CancellationToken cancellationToken = default) where TInput : class
         {
             var req = new RestRequest(url, method);
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             return Api.ExecuteAsync(req, cancellationToken);
         }
 
@@ -134,11 +134,19 @@ namespace KeyPayV2.Common
         public TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method = Method.Get) where TResult : new() where TInput : class
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             var result = Api.Execute<TResult>(req);
             return result;
         }
 
+        private void AddJsonBody<TInput>(RestRequest req, TInput input) where TInput : class
+        {
+            if (input == null && typeof(TInput) == typeof(string))
+                req.AddJsonBody("");
+            else if(input != null)
+                req.AddJsonBody(input);
+        }
+        
         /// <summary>
         /// Make an API Request to an endpoint that is not listed
         /// </summary>
@@ -152,7 +160,7 @@ namespace KeyPayV2.Common
         public Task<TResult> ApiRequestAsync<TResult, TInput>(string url, TInput input, Method method = Method.Get, CancellationToken cancellationToken = default) where TResult : new() where TInput : class
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             return Api.ExecuteAsync<TResult>(req, cancellationToken);
         }
 
@@ -196,7 +204,7 @@ namespace KeyPayV2.Common
         public byte[] ApiFileRequest<TInput>(string url, TInput input, Method method = Method.Get) where TInput : class
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             var result = Api.DownloadFile(req);
             return result;
         }
@@ -214,7 +222,7 @@ namespace KeyPayV2.Common
         public Task<byte[]> ApiFileRequestAsync<TInput>(string url, TInput input, Method method = Method.Get, CancellationToken cancellationToken = default) where TInput : class
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             return Api.DownloadFileAsync(req, cancellationToken);
         }
     }

@@ -20,6 +20,6 @@ namespace KeyPayV2.Sg.Models.Timesheets
         public IdType LocationIdType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public IdType WorkTypeIdType { get; set; }
-        public IDictionary<string,List<SgTimesheetLineModel>> Timesheets { get; set; }
+        public IDictionary<string,IList<SgTimesheetLineModel>> Timesheets { get; set; }
     }
 }

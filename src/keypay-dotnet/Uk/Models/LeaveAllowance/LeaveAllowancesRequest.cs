@@ -14,6 +14,6 @@ namespace KeyPayV2.Uk.Models.LeaveAllowance
         public IdType EmployeeIdType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public IdType LeaveCategoryIdType { get; set; }
-        public Dictionary<string,List<LeaveAllowanceApiModel>> LeaveAllowances { get; set; }
+        public Dictionary<string,IList<LeaveAllowanceApiModel>> LeaveAllowances { get; set; }
     }
 }

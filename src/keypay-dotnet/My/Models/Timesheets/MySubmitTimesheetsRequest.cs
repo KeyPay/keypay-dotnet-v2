@@ -20,6 +20,6 @@ namespace KeyPayV2.My.Models.Timesheets
         public IdType LocationIdType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public IdType WorkTypeIdType { get; set; }
-        public IDictionary<string,List<MyTimesheetLineModel>> Timesheets { get; set; }
+        public IDictionary<string,IList<MyTimesheetLineModel>> Timesheets { get; set; }
     }
 }

@@ -41,11 +41,19 @@ namespace KeyPayV2.Common
             var req = new RestRequest(url, method);
             return Api.ExecuteAsync<T>(req, cancellationToken);
         }
+        
+        private void AddJsonBody<TInput>(RestRequest req, TInput input) where TInput : class
+        {
+            if (input == null && typeof(TInput) == typeof(string))
+                req.AddJsonBody("");
+            else if(input != null)
+                req.AddJsonBody(input);
+        }
 
         protected TResult ApiRequest<TResult, TInput>(string url, TInput input, Method method) where TResult : new() where TInput : class
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             var result = Api.Execute<TResult>(req);
             return result;
         }
@@ -53,21 +61,21 @@ namespace KeyPayV2.Common
         protected Task<TResult> ApiRequestAsync<TResult, TInput>(string url, TInput input, Method method, CancellationToken cancellationToken) where TResult : new() where TInput : class
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             return Api.ExecuteAsync<TResult>(req, cancellationToken);
         }
 
         protected void ApiRequest(string url, object input, Method method)
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             Api.Execute(req);
         }
 
         protected Task ApiRequestAsync(string url, object input, Method method, CancellationToken cancellationToken)
         {
             var req = new RestRequest(url, method) { RequestFormat = DataFormat.Json };
-            req.AddJsonBody(input);
+            AddJsonBody(req, input);
             return Api.ExecuteAsync(req, cancellationToken);
         }
 
