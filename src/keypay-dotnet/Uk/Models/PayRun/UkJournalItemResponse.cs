@@ -25,5 +25,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public bool IsCredit { get; set; }
         public bool IsDebit { get; set; }
         public string LocationExternalReferenceId { get; set; }
+        public IList<Int32> ReportingDimensionValueIds { get; set; }
+        public IDictionary<string,IList<string>> ReportingDimensionValueNames { get; set; }
     }
 }

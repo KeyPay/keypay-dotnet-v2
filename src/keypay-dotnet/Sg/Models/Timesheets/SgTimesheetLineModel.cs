@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.Timesheets
 {
     public class SgTimesheetLineModel
     {
+        public bool LocationIsDeleted { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? StartTime { get; set; }

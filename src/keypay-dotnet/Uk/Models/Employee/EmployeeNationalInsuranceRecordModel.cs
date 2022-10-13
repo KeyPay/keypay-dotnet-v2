@@ -16,8 +16,10 @@ namespace KeyPayV2.Uk.Models.Employee
         public string TaxCode { get; set; }
         public bool HasStudentLoan { get; set; }
         public long SlCodingNoticeSequenceNumber { get; set; }
+        public long Sl2CodingNoticeSequenceNumber { get; set; }
         public bool HasPostGradLoan { get; set; }
         public long PglCodingNoticeSequenceNumber { get; set; }
+        public long Pgl2CodingNoticeSequenceNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public StudentLoanType StudentLoanType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

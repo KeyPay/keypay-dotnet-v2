@@ -33,5 +33,6 @@ namespace KeyPayV2.Sg.Models.Manager
         public List<TimesheetShiftConditionModelv3> ShiftConditions { get; set; }
         public string HiddenComments { get; set; }
         public Attachment Attachment { get; set; }
+        public bool LocationIsDeleted { get; set; }
     }
 }

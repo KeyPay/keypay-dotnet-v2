@@ -10,6 +10,7 @@ namespace KeyPayV2.Nz.Models.Timesheets
 {
     public class NzTimesheetLineModel
     {
+        public bool LocationIsDeleted { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? StartTime { get; set; }

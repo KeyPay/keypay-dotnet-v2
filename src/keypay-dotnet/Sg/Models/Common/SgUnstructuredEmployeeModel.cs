@@ -32,6 +32,8 @@ namespace KeyPayV2.Sg.Models.Common
         public string BankAccount2_BranchCode { get; set; }
         public string BankAccount3_BankSwift { get; set; }
         public string BankAccount3_BranchCode { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public IdentityTypeEnum? IdentityType { get; set; }
         public string NationalRegistrationIdentityNumber { get; set; }
         public string Ethnicity { get; set; }
         public string Religion { get; set; }
@@ -40,6 +42,7 @@ namespace KeyPayV2.Sg.Models.Common
         public string Nationality { get; set; }
         public string CoveredByEmploymentAct { get; set; }
         public DateTime? ObtainedResidencyDate { get; set; }
+        public DateTime? ObtainedApprovalDate { get; set; }
         public DateTime? NationalRegistrationIdentityExpiryDate { get; set; }
         public string ApplyFullCpfRate { get; set; }
         public bool? SdlExempt { get; set; }
@@ -126,5 +129,6 @@ namespace KeyPayV2.Sg.Models.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
+        public List<Int32> ReportingDimensionValueIds { get; set; }
     }
 }

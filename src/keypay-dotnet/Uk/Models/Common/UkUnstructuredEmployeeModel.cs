@@ -18,8 +18,10 @@ namespace KeyPayV2.Uk.Models.Common
         public string StudentLoanType { get; set; }
         public bool HasPostGradLoan { get; set; }
         public long PglCodingNoticeSequenceNumber { get; set; }
+        public long Pgl2CodingNoticeSequenceNumber { get; set; }
         public bool HasStudentLoan { get; set; }
         public long SlCodingNoticeSequenceNumber { get; set; }
+        public long Sl2CodingNoticeSequenceNumber { get; set; }
         public string NationalInsuranceCalculationMethod { get; set; }
         public string NationalInsuranceCategory { get; set; }
         public string PreviousEmployerOfficeNumber { get; set; }
@@ -33,6 +35,7 @@ namespace KeyPayV2.Uk.Models.Common
         public int? PreviousEmployerTaxPeriodNumber { get; set; }
         public string PreviousEmployerTaxCode { get; set; }
         public long P6CodingNoticeSequenceNumber { get; set; }
+        public long P9CodingNoticeSequenceNumber { get; set; }
         public DateTime? AppointmentStartDate { get; set; }
         public DateTime? AppointmentEndDate { get; set; }
         public string EmployeeStarterType { get; set; }
@@ -138,5 +141,6 @@ namespace KeyPayV2.Uk.Models.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
+        public List<Int32> ReportingDimensionValueIds { get; set; }
     }
 }

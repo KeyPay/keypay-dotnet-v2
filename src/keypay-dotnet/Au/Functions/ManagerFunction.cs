@@ -1648,6 +1648,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public AuIndividualTimesheetLineModel CreateKioskTimesheetLine(int businessId, AuIndividualTimesheetLineModel request)
         {
@@ -1659,6 +1660,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task<AuIndividualTimesheetLineModel> CreateKioskTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
@@ -1670,6 +1672,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public AuIndividualTimesheetLineModel UpdateKioskTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request)
         {
@@ -1681,6 +1684,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task<AuIndividualTimesheetLineModel> UpdateKioskTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
@@ -2306,6 +2310,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public AuIndividualTimesheetLineModel CreateTimesheetLine(int businessId, AuIndividualTimesheetLineModel request)
         {
@@ -2317,6 +2322,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
@@ -2328,6 +2334,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public AuIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request)
         {
@@ -2339,6 +2346,7 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task<AuIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {

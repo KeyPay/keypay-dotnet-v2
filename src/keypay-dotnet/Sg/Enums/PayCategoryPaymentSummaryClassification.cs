@@ -64,6 +64,13 @@ namespace KeyPayV2.Sg.Enums
         EtpDeathBenefitCodeN,
         EtpDeathBenefitCodeB,
         EtpDeathBenefitCodeT,
-        ReturnToWorkPayment
+        ReturnToWorkPayment,
+        SgGratuity,
+        SgNoticePay,
+        SgExGratiaPayment,
+        SgOtherLumpSumPayments,
+        SgCompensationLossOfOffice,
+        SgRetirementBenefitsPre1993,
+        SgRetirementBenefitsFrom1993
     }
 }

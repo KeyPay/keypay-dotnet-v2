@@ -5,18 +5,18 @@
 		<RootNamespace>KeyPayV2</RootNamespace>
 		<AssemblyName>KeyPayV2</AssemblyName>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.2.533</AssemblyVersion>
-    <FileVersion>2.0.2.533</FileVersion>
+    <AssemblyVersion>2.0.2.537</AssemblyVersion>
+    <FileVersion>2.0.2.537</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
     <RepositoryUrl>https://github.com/keypay/keypay-dotnet</RepositoryUrl>
     <PackageTags>keypay yourpayroll api payroll</PackageTags>
     <PackageReleaseNotes>Provides proper support for multiple regions.
-This release: Stop directly referencing Namotion.Reflection which causes conflicts (#24)</PackageReleaseNotes>
+This release: Update AV test config</PackageReleaseNotes>
     <Copyright>Copyright 2022</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.2.533</Version>
+    <Version>2.0.2.537</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>

@@ -9,6 +9,7 @@ namespace KeyPayV2.Nz.Enums
         PayRunDefault,
         TimesheetLocations,
         PayRunDefaultWithTimesheets,
-        ActiveSubcontractors
+        ActiveSubcontractors,
+        EmployingEntity
     }
 }

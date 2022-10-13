@@ -27,6 +27,8 @@ namespace KeyPayV2.Sg.Models.PayRun
         public int? LumpSumEFinancialYear { get; set; }
         public int? TimesheetLineId { get; set; }
         public string TimesheetLineExternalId { get; set; }
+        public IList<Int32> ReportingDimensionValueIds { get; set; }
+        public IDictionary<string,IList<string>> ReportingDimensionValueNames { get; set; }
         public long Id { get; set; }
         public string ExternalId { get; set; }
         public string LocationId { get; set; }

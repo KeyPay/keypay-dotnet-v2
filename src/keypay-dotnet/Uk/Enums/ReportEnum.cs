@@ -85,8 +85,13 @@ namespace KeyPayV2.Uk.Enums
         IrbFormCp8d,
         DocumentAcknowledgementsReport,
         PaymentAndDeductionStatementReport,
+        UkGenderPayGapDataReport,
         Cis300,
         Zakat,
-        EisContributionsReport
+        EisContributionsReport,
+        EmployeeLeaveRatesReport,
+        P11,
+        P60,
+        AverageHoursReport
     }
 }

@@ -11,6 +11,7 @@ namespace KeyPayV2.Nz
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
+        IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeFunction Employee { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -62,6 +63,7 @@ namespace KeyPayV2.Nz
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
+            ReportingDimensions = new ReportingDimensionsFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -110,6 +112,7 @@ namespace KeyPayV2.Nz
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
+        public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeFunction Employee { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }

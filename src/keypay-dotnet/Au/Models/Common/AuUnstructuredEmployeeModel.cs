@@ -26,6 +26,7 @@ namespace KeyPayV2.Au.Models.Common
         public bool? IsExemptFromFloodLevy { get; set; }
         public bool? HasApprovedWorkingHolidayVisa { get; set; }
         public string WorkingHolidayVisaCountry { get; set; }
+        public DateTime? WorkingHolidayVisaStartDate { get; set; }
         public bool? IsSeasonalWorker { get; set; }
         public bool? HasWithholdingVariation { get; set; }
         public decimal? TaxVariation { get; set; }
@@ -144,5 +145,6 @@ namespace KeyPayV2.Au.Models.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
+        public List<Int32> ReportingDimensionValueIds { get; set; }
     }
 }

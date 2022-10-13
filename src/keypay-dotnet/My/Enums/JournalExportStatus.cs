@@ -20,6 +20,8 @@ namespace KeyPayV2.My.Enums
         FailureGSTSetup,
         FailureKnownError,
         FailuresTenantNotSupplied,
+        FailureNoJournalId,
+        FailureAPIError,
         ResultUnknown
     }
 }

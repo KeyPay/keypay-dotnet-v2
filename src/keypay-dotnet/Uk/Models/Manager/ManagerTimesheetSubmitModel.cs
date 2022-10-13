@@ -31,5 +31,6 @@ namespace KeyPayV2.Uk.Models.Manager
         public Attachment Attachment { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService? Source { get; set; }
+        public bool LocationIsDeleted { get; set; }
     }
 }

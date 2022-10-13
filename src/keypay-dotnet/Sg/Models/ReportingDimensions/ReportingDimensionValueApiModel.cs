@@ -6,15 +6,15 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using KeyPayV2.Sg.Enums;
 
-namespace KeyPayV2.Sg.Models.Employee
+namespace KeyPayV2.Sg.Models.ReportingDimensions
 {
-    public class OpeningBalancesLumpSumPaymentModel
+    public class ReportingDimensionValueApiModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
+        public int ReportingDimensionId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public PayCategoryType PayCategoryType { get; set; }
-        public decimal? TaxFreeComponent { get; set; }
-        public decimal? TaxableComponent { get; set; }
-        public decimal? TaxWithheld { get; set; }
+        public ExternalService Source { get; set; }
+        public string ExternalId { get; set; }
     }
 }

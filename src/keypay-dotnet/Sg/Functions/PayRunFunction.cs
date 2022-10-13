@@ -104,6 +104,14 @@ namespace KeyPayV2.Sg.Functions
         Task<SgApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request, CancellationToken cancellationToken = default);
         void Recalculate(int businessId, int payRunId);
         Task RecalculateAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        PayRunSdlAdjustmentResponse ListSdlAdjustments(int businessId, int payRunId);
+        Task<PayRunSdlAdjustmentResponse> ListSdlAdjustmentsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void CreateSdlAdjustments(int businessId, int payRunId, SubmitPayRunSdlAdjustmentRequest request);
+        Task CreateSdlAdjustmentsAsync(int businessId, int payRunId, SubmitPayRunSdlAdjustmentRequest request, CancellationToken cancellationToken = default);
+        void DeleteSdlAdjustment(int businessId, int payRunId, DeleteSdlAdjustmentQueryModel request);
+        Task DeleteSdlAdjustmentAsync(int businessId, int payRunId, DeleteSdlAdjustmentQueryModel request, CancellationToken cancellationToken = default);
+        PayRunSdlAdjustmentResponse GetVoluntarySdlContributionsByEmployeeId(int businessId, int employeeId, int payRunId);
+        Task<PayRunSdlAdjustmentResponse> GetVoluntarySdlContributionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         void SetUiUnlockEnabled(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request);
         Task SetUiUnlockEnabledAsync(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request, CancellationToken cancellationToken = default);
         PayRunSummaryModel GetPayRunSummary(int businessId, int payRunId);
@@ -1133,6 +1141,94 @@ namespace KeyPayV2.Sg.Functions
         public Task RecalculateAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/recalculate", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List SDL adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the SDL adjustments for a pay run.
+        /// </remarks>
+        public PayRunSdlAdjustmentResponse ListSdlAdjustments(int businessId, int payRunId)
+        {
+            return ApiRequest<PayRunSdlAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/sdladjustments", Method.Get);
+        }
+
+        /// <summary>
+        /// List SDL adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the SDL adjustments for a pay run.
+        /// </remarks>
+        public Task<PayRunSdlAdjustmentResponse> ListSdlAdjustmentsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PayRunSdlAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/sdladjustments", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create SDL adjustments
+        /// </summary>
+        /// <remarks>
+        /// Adds SDL adjustments to the specified pay run.
+        /// </remarks>
+        public void CreateSdlAdjustments(int businessId, int payRunId, SubmitPayRunSdlAdjustmentRequest request)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/sdladjustments", request, Method.Post);
+        }
+
+        /// <summary>
+        /// Create SDL adjustments
+        /// </summary>
+        /// <remarks>
+        /// Adds SDL adjustments to the specified pay run.
+        /// </remarks>
+        public Task CreateSdlAdjustmentsAsync(int businessId, int payRunId, SubmitPayRunSdlAdjustmentRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/sdladjustments", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete SDL adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the SDL adjustment with the specified ID from the pay run.
+        /// </remarks>
+        public void DeleteSdlAdjustment(int businessId, int payRunId, DeleteSdlAdjustmentQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/sdladjustments?employeeId={request.EmployeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete SDL adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the SDL adjustment with the specified ID from the pay run.
+        /// </remarks>
+        public Task DeleteSdlAdjustmentAsync(int businessId, int payRunId, DeleteSdlAdjustmentQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/sdladjustments?employeeId={request.EmployeeId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get voluntary SDL contributions by Employee ID
+        /// </summary>
+        /// <remarks>
+        /// Gets all SDL adjustments for a specific employee in a pay run.
+        /// </remarks>
+        public PayRunSdlAdjustmentResponse GetVoluntarySdlContributionsByEmployeeId(int businessId, int employeeId, int payRunId)
+        {
+            return ApiRequest<PayRunSdlAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/sdladjustments/{employeeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get voluntary SDL contributions by Employee ID
+        /// </summary>
+        /// <remarks>
+        /// Gets all SDL adjustments for a specific employee in a pay run.
+        /// </remarks>
+        public Task<PayRunSdlAdjustmentResponse> GetVoluntarySdlContributionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PayRunSdlAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/sdladjustments/{employeeId}", Method.Get, cancellationToken);
         }
 
         /// <summary>

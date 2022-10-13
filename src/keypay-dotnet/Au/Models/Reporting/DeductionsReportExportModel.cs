@@ -16,5 +16,6 @@ namespace KeyPayV2.Au.Models.Reporting
         public string ExternalId { get; set; }
         public string Location { get; set; }
         public List<DeductionsReportDeductionAmountModel> Amounts { get; set; }
+        public string Note { get; set; }
     }
 }

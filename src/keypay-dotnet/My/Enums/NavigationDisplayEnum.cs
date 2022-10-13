@@ -8,6 +8,7 @@ namespace KeyPayV2.My.Enums
         Full,
         Primary,
         Secondary,
-        None
+        None,
+        HideInternalPageNav
     }
 }

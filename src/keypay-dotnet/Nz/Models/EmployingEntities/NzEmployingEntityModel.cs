@@ -13,6 +13,7 @@ namespace KeyPayV2.Nz.Models.EmployingEntities
         public string Region { get; set; }
         public bool CharitableOrganisation { get; set; }
         public string AddressLine3 { get; set; }
+        public string IrdNumber { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string ContactName { get; set; }

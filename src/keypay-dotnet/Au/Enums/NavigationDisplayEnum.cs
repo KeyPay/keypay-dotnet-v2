@@ -8,6 +8,7 @@ namespace KeyPayV2.Au.Enums
         Full,
         Primary,
         Secondary,
-        None
+        None,
+        HideInternalPageNav
     }
 }

@@ -18,5 +18,6 @@ namespace KeyPayV2.Uk.Models.EmploymentAgreement
         public bool IncludeEvaluationResults { get; set; }
         public ShiftCostingsEmployeeModel Employee { get; set; }
         public IList<ShiftCostingsRequestShiftModel> Shifts { get; set; }
+        public IList<RateOverride> OverrideRates { get; set; }
     }
 }

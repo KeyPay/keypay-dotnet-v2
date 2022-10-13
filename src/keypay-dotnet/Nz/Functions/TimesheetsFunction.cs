@@ -60,6 +60,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         /// <remarks>
         /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public NzIndividualTimesheetLineModel CreateTimesheetLine(int businessId, NzIndividualTimesheetLineModel request)
         {
@@ -71,6 +72,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         /// <remarks>
         /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task<NzIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
@@ -82,6 +84,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         /// <remarks>
         /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public NzIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request)
         {
@@ -93,6 +96,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         /// <remarks>
         /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task<NzIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
@@ -156,6 +160,7 @@ namespace KeyPayV2.Nz.Functions
         /// Adds timesheets for the specified business. This will not replace any existing timesheets.
         /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
         /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public void BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request)
         {
@@ -169,6 +174,7 @@ namespace KeyPayV2.Nz.Functions
         /// Adds timesheets for the specified business. This will not replace any existing timesheets.
         /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
         /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
         public Task BulkInsertTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {

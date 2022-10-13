@@ -108,6 +108,8 @@ namespace KeyPayV2.Sg.Enums
         QualificationExpiringNotification,
         QualificationExpiredNotification,
         CreditCardExpiringReminder,
-        ResendPaymentAndDeductionStatement
+        ResendPaymentAndDeductionStatement,
+        EmployeeSelfSetupReminder,
+        EmployeeOnboardingP45Uploaded
     }
 }

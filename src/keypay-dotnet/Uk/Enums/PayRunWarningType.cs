@@ -76,6 +76,8 @@ namespace KeyPayV2.Uk.Enums
         CisSubcontractorUnmatched,
         CpfRefundRequired,
         CpfYearEndRecalculationRequired,
-        TimesheetOutOfSequence
+        TaxCodeDisplayNameTooLong,
+        TimesheetOutOfSequence,
+        ExpiredContractorTaxRate
     }
 }

@@ -13,6 +13,7 @@ namespace KeyPayV2.Uk.Models.EmploymentAgreement
         public string State { get; set; }
         public string ClassificationId { get; set; }
         public string Classification { get; set; }
+        public bool LocationIsDeleted { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? StartTime { get; set; }

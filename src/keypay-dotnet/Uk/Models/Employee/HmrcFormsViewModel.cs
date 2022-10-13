@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public IList<P11dGridViewModel> P11ds { get; set; }
         public bool HasP45 { get; set; }
         public P45ViewModel P45 { get; set; }
+        public PrevP45ViewModel PrevP45 { get; set; }
         public bool HasP60s { get; set; }
         public bool HasP11ds { get; set; }
         public AutoEnrolmentNoticeViewModel AutoEnrolmentData { get; set; }

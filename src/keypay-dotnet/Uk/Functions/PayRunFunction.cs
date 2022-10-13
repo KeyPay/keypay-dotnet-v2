@@ -18,12 +18,12 @@ namespace KeyPayV2.Uk.Functions
         Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<UkJournalItemResponse> GetJournalDetails(int businessId, int payRunId);
         Task<List<UkJournalItemResponse>> GetJournalDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
-        List<PayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null);
-        Task<List<PayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        PayRunModel CreatePayRun(int businessId, PayRunCreateRequest request);
-        Task<PayRunModel> CreatePayRunSynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
-        PayRunModel GetPayRun(int businessId, int payRunId);
-        Task<PayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        List<UkPayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null);
+        Task<List<UkPayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        UkPayRunModel CreatePayRun(int businessId, PayRunCreateRequest request);
+        Task<UkPayRunModel> CreatePayRunSynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
+        UkPayRunModel GetPayRun(int businessId, int payRunId);
+        Task<UkPayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         void DeletePayRun(int businessId, int payRunId);
         Task DeletePayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         UkPayRunTotalBenefitResponse ListBenefits(int businessId, int payRunId);
@@ -212,9 +212,9 @@ namespace KeyPayV2.Uk.Functions
         /// Get a list of pay runs associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null)
+        public List<UkPayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<PayRunModel>>($"/business/{businessId}/payrun{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<List<UkPayRunModel>>($"/business/{businessId}/payrun{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -224,9 +224,9 @@ namespace KeyPayV2.Uk.Functions
         /// Get a list of pay runs associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<PayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkPayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PayRunModel>>($"/business/{businessId}/payrun{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UkPayRunModel>>($"/business/{businessId}/payrun{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -235,9 +235,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new pay run for this business.
         /// </remarks>
-        public PayRunModel CreatePayRun(int businessId, PayRunCreateRequest request)
+        public UkPayRunModel CreatePayRun(int businessId, PayRunCreateRequest request)
         {
-            return ApiRequest<PayRunModel,PayRunCreateRequest>($"/business/{businessId}/payrun", request, Method.Post);
+            return ApiRequest<UkPayRunModel,PayRunCreateRequest>($"/business/{businessId}/payrun", request, Method.Post);
         }
 
         /// <summary>
@@ -246,9 +246,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new pay run for this business.
         /// </remarks>
-        public Task<PayRunModel> CreatePayRunSynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default)
+        public Task<UkPayRunModel> CreatePayRunSynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRunModel,PayRunCreateRequest>($"/business/{businessId}/payrun", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<UkPayRunModel,PayRunCreateRequest>($"/business/{businessId}/payrun", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -257,9 +257,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the pay run with the specified ID.
         /// </remarks>
-        public PayRunModel GetPayRun(int businessId, int payRunId)
+        public UkPayRunModel GetPayRun(int businessId, int payRunId)
         {
-            return ApiRequest<PayRunModel>($"/business/{businessId}/payrun/{payRunId}", Method.Get);
+            return ApiRequest<UkPayRunModel>($"/business/{businessId}/payrun/{payRunId}", Method.Get);
         }
 
         /// <summary>
@@ -268,9 +268,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the pay run with the specified ID.
         /// </remarks>
-        public Task<PayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        public Task<UkPayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRunModel>($"/business/{businessId}/payrun/{payRunId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkPayRunModel>($"/business/{businessId}/payrun/{payRunId}", Method.Get, cancellationToken);
         }
 
         /// <summary>

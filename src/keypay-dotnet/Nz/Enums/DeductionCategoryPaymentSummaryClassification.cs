@@ -26,6 +26,7 @@ namespace KeyPayV2.Nz.Enums
         ChildSupportGarnishee,
         PayrollGiving,
         SalarySacrificeOtherEmployeeBenefits,
-        SalarySacrificeSuperannuation
+        SalarySacrificeSuperannuation,
+        IrdArrears
     }
 }

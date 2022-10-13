@@ -8,7 +8,7 @@ using KeyPayV2.Sg.Enums;
 
 namespace KeyPayV2.Sg.Models.PaySchedule
 {
-    public class AutoPayConfigurationModel
+    public class SgAutoPayConfigurationModel
     {
         public bool Enabled { get; set; }
         public bool Paused { get; set; }
@@ -21,8 +21,6 @@ namespace KeyPayV2.Sg.Models.PaySchedule
         [JsonConverter(typeof(StringEnumConverter))]
         public TimesheetImportOption TimesheetImportOption { get; set; }
         public bool ExportJournals { get; set; }
-        public bool SubmitToPensionSync { get; set; }
-        public bool LodgePayRun { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PublishPaySlipsPreference PublishPaySlips { get; set; }
         public int PublishPaySlipsHour { get; set; }

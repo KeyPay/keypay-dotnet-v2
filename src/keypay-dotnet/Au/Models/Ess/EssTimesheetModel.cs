@@ -18,6 +18,7 @@ namespace KeyPayV2.Au.Models.Ess
         public int BreaksDurationInMinutes { get; set; }
         public int TotalDurationInMinutes { get; set; }
         public int? AutoApprovedByRosterShiftId { get; set; }
+        public bool LocationIsDeleted { get; set; }
         public string EmployeeName { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }

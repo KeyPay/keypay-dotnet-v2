@@ -12,6 +12,7 @@ namespace KeyPayV2.Au
         IAbaSettingsFunction AbaSettings { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
+        IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeFunction Employee { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -68,6 +69,7 @@ namespace KeyPayV2.Au
             AbaSettings = new AbaSettingsFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
+            ReportingDimensions = new ReportingDimensionsFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -121,6 +123,7 @@ namespace KeyPayV2.Au
         public IAbaSettingsFunction AbaSettings { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
+        public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeFunction Employee { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }

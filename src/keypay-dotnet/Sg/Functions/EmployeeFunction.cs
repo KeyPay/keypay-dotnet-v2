@@ -596,7 +596,7 @@ namespace KeyPayV2.Sg.Functions
         ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model)
         {
@@ -616,7 +616,7 @@ namespace KeyPayV2.Sg.Functions
         ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {
@@ -636,7 +636,7 @@ namespace KeyPayV2.Sg.Functions
         ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
@@ -656,7 +656,7 @@ namespace KeyPayV2.Sg.Functions
         ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>National Registration Identity (including Nationality, Legal Status)</li></list></p>
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {

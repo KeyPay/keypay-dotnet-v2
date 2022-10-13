@@ -74,6 +74,7 @@ namespace KeyPayV2.Uk.Enums
         Square,
         Quickfile,
         Tide,
-        TideSso
+        TideSso,
+        FreeAgent
     }
 }

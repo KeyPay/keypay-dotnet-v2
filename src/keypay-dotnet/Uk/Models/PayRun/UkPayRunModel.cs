@@ -4,10 +4,11 @@ using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
 
-namespace KeyPayV2.Uk.Models.Common
+namespace KeyPayV2.Uk.Models.PayRun
 {
-    public class PayRunModel
+    public class UkPayRunModel
     {
+        public bool IsCis { get; set; }
         public int Id { get; set; }
         public DateTime? DateFinalised { get; set; }
         public int PayScheduleId { get; set; }

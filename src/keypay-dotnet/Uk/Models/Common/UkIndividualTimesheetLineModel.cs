@@ -10,6 +10,7 @@ namespace KeyPayV2.Uk.Models.Common
 {
     public class UkIndividualTimesheetLineModel
     {
+        public bool LocationIsDeleted { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public DateTime? StartTime { get; set; }

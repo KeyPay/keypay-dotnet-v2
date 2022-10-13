@@ -21,6 +21,7 @@ namespace KeyPayV2.Nz.Models.Reporting
         public decimal KiwiSaverEmployeeContributionAmount { get; set; }
         public decimal KiwiSaverEmployerContributionAmount { get; set; }
         public decimal EsctContributionAmount { get; set; }
+        public decimal EsctAdjustmentAmount { get; set; }
         public decimal TotalKiwiSaver { get; set; }
     }
 }

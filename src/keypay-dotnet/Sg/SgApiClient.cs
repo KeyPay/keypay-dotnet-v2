@@ -12,6 +12,7 @@ namespace KeyPayV2.Sg
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
+        IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeFunction Employee { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -27,6 +28,7 @@ namespace KeyPayV2.Sg
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveRequestsFunction LeaveRequests { get; }
         ILocationFunction Location { get; }
+        IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
@@ -68,6 +70,7 @@ namespace KeyPayV2.Sg
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
+            ReportingDimensions = new ReportingDimensionsFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -83,6 +86,7 @@ namespace KeyPayV2.Sg
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
+            EmployeeIrasLumpSum = new EmployeeIrasLumpSumFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
@@ -121,6 +125,7 @@ namespace KeyPayV2.Sg
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
+        public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeFunction Employee { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -136,6 +141,7 @@ namespace KeyPayV2.Sg
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveRequestsFunction LeaveRequests { get; }
         public ILocationFunction Location { get; }
+        public IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }

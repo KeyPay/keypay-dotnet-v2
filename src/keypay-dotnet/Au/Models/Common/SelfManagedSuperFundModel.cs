@@ -17,5 +17,6 @@ namespace KeyPayV2.Au.Models.Common
         public string ElectronicServiceAddress { get; set; }
         public string Email { get; set; }
         public int? EmployeeId { get; set; }
+        public string ExternalId { get; set; }
     }
 }

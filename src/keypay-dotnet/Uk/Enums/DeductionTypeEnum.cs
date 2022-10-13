@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Enums
         PercentageOTE,
         PercentageStudentLoan,
         PercentageNet,
-        Tiered
+        Tiered,
+        Custom
     }
 }
