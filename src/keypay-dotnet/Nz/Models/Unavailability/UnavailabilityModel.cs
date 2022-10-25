@@ -19,6 +19,9 @@ namespace KeyPayV2.Nz.Models.Unavailability
         public bool Recurring { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DayOfWeek? RecurringDay { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DayOfWeekFlagsEnum? RecurringDays { get; set; }
+        public string RecurringDaysCsv { get; set; }
         public bool IsAllDay { get; set; }
         public bool ViewOnly { get; set; }
     }

@@ -111,6 +111,13 @@ namespace KeyPayV2.Nz.Enums
         ResendPaymentAndDeductionStatement,
         EmployeeSelfSetupReminder,
         EmployeeOnboardingP45Uploaded,
-        MagicTokenCreated
+        InitiateEmployeeOnboardingWithContract,
+        SignatoryContract,
+        WorkEligibilityExpiringNotification,
+        WorkEligibilityExpiredNotification,
+        ContractSignedEmployeeNotification,
+        ContractSignedEmployerNotification,
+        InitiateEmployeeOnboardingWithLogin,
+        AuthorisingSignatoryNotification
     }
 }

@@ -8,6 +8,7 @@ namespace KeyPayV2.Au.Models.User
 {
     public class NewUserCreatedModel
     {
+        public int Id { get; set; }
         public string Username { get; set; }
         public string DisplayName { get; set; }
         public string TimeZone { get; set; }

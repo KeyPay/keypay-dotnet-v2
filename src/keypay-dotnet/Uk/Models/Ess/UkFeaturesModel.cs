@@ -40,5 +40,6 @@ namespace KeyPayV2.Uk.Models.Ess
         public bool EnableWorkZoneClockOn { get; set; }
         public bool ShiftBidding { get; set; }
         public bool AllowToSelectHigherClassification { get; set; }
+        public bool AllowEmployeeWorkEligibilitySelfService { get; set; }
     }
 }

@@ -22,6 +22,8 @@ namespace KeyPayV2.My.Functions
         Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default);
         List<string> ListGenderOptions();
         Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default);
+        List<String> ListIndustryOptions();
+        Task<List<String>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default);
         List<NameIdPair> ListReportTypes();
         Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default);
         List<NameIdPair> ListTimeZoneTypes();
@@ -105,6 +107,22 @@ namespace KeyPayV2.My.Functions
         public Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<string>>($"/lookupdata/genders", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List industry options
+        /// </summary>
+        public List<String> ListIndustryOptions()
+        {
+            return ApiRequest<List<String>>($"/lookupdata/industries", Method.Get);
+        }
+
+        /// <summary>
+        /// List industry options
+        /// </summary>
+        public Task<List<String>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<String>>($"/lookupdata/industries", Method.Get, cancellationToken);
         }
 
         /// <summary>

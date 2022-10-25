@@ -12,7 +12,7 @@ namespace KeyPayV2.My.Models.Ess
     {
         public DateTime? AnniversaryDate { get; set; }
         public string ExternalId { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public int BusinessId { get; set; }
         public string TaxFileNumber { get; set; }
