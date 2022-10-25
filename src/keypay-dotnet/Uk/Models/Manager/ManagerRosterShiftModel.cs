@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
 
 namespace KeyPayV2.Uk.Models.Manager
@@ -34,5 +36,7 @@ namespace KeyPayV2.Uk.Models.Manager
         public DateTime? DatePublished { get; set; }
         public bool Biddable { get; set; }
         public DateTime? ShiftSwapCutoffTime { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ShiftAssignmentStatusEnum? ShiftAssignmentStatus { get; set; }
     }
 }

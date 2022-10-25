@@ -129,6 +129,6 @@ namespace KeyPayV2.Sg.Models.Common
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
-        public List<Int32> ReportingDimensionValueIds { get; set; }
+        public string ReportingDimensionValues { get; set; }
     }
 }

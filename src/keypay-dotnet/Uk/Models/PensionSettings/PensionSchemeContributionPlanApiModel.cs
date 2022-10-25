@@ -36,5 +36,6 @@ namespace KeyPayV2.Uk.Models.PensionSettings
         public DefaultUETOffsetEnum? UpperDefaultEarningsCapType { get; set; }
         public List<PensionSchemeContributionPlanPostponementRuleApiModel> PensionSchemeContributionPlanPostponementRules { get; set; }
         public string CollectionSourceId { get; set; }
+        public bool UseTaxMonthPayPeriod { get; set; }
     }
 }

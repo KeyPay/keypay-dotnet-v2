@@ -110,6 +110,7 @@ namespace KeyPayV2.Uk.Enums
         CreditCardExpiringReminder,
         ResendPaymentAndDeductionStatement,
         EmployeeSelfSetupReminder,
-        EmployeeOnboardingP45Uploaded
+        EmployeeOnboardingP45Uploaded,
+        MagicTokenCreated
     }
 }

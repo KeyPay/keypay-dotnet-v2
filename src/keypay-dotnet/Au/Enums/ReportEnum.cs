@@ -92,6 +92,7 @@ namespace KeyPayV2.Au.Enums
         EmployeeLeaveRatesReport,
         P11,
         P60,
-        AverageHoursReport
+        AverageHoursReport,
+        UkCourtOrderReport
     }
 }

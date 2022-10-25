@@ -1754,6 +1754,9 @@ namespace KeyPayV2.Uk.Functions
         ///             TaxCode and TaxCalculationMethod.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model)
         {
@@ -1779,6 +1782,9 @@ namespace KeyPayV2.Uk.Functions
         ///             TaxCode and TaxCalculationMethod.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {
@@ -1804,6 +1810,9 @@ namespace KeyPayV2.Uk.Functions
         ///             TaxCode and TaxCalculationMethod.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
@@ -1829,6 +1838,9 @@ namespace KeyPayV2.Uk.Functions
         ///             TaxCode and TaxCalculationMethod.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {

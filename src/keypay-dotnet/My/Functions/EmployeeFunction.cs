@@ -597,6 +597,9 @@ namespace KeyPayV2.My.Functions
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, MyUnstructuredEmployeeModel model)
         {
@@ -617,6 +620,9 @@ namespace KeyPayV2.My.Functions
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, MyUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {
@@ -637,6 +643,9 @@ namespace KeyPayV2.My.Functions
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
@@ -657,6 +666,9 @@ namespace KeyPayV2.My.Functions
         ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
         ///             For an employee record to be considered 'Complete' the following groups of data are required:
         ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
