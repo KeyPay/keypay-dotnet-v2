@@ -13,6 +13,7 @@ namespace KeyPayV2.My.Models.Reporting
         public IList<TimesheetLineStatusType> Statuses { get; set; }
         public int? WorkTypeId { get; set; }
         public int PayScheduleId { get; set; }
+        public bool IncludePostTaxDeductions { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public int LocationId { get; set; }

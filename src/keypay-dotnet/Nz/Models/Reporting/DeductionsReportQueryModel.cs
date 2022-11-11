@@ -12,6 +12,7 @@ namespace KeyPayV2.Nz.Models.Reporting
         public int DeductionCategoryId { get; set; }
         public bool DisableRollupReporting { get; set; }
         public int PayScheduleId { get; set; }
+        public bool IncludePostTaxDeductions { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public int LocationId { get; set; }

@@ -9,6 +9,7 @@ namespace KeyPayV2.Au.Models.Reporting
     public class SuperContributionReportByEmployeeQueryModel
     {
         public int PayScheduleId { get; set; }
+        public bool IncludePostTaxDeductions { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public int LocationId { get; set; }

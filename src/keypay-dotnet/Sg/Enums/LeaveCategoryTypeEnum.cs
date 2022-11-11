@@ -12,6 +12,7 @@ namespace KeyPayV2.Sg.Enums
         PersonalCarersLeave,
         StatutoryAdoptionLeave,
         StatutoryPaternityLeave,
-        StatutoryParentalBereavementLeave
+        StatutoryParentalBereavementLeave,
+        OccupationalSickLeave
     }
 }

@@ -22,10 +22,10 @@ namespace KeyPayV2.Uk.Functions
         Task<UkIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         void DeleteTimesheetLine(int businessId, int timesheetLineId);
         Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
-        void UpdateReplaceTimesheets(int businessId, UkSubmitTimesheetsRequest request);
-        Task UpdateReplaceTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
-        void BulkInsertTimesheets(int businessId, UkSubmitTimesheetsRequest request);
-        Task BulkInsertTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        UkSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, UkSubmitTimesheetsRequest request);
+        Task<UkSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        UkSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, UkSubmitTimesheetsRequest request);
+        Task<UkSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
     }
     public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
@@ -135,9 +135,9 @@ namespace KeyPayV2.Uk.Functions
         /// for the specified employees within the specified time period
         /// (StartTime - EndTime) will be replaced with the timesheets specified.
         /// </remarks>
-        public void UpdateReplaceTimesheets(int businessId, UkSubmitTimesheetsRequest request)
+        public UkSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, UkSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.Put);
+            return ApiRequest<UkSubmitTimesheetsResponse,UkSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put);
         }
 
         /// <summary>
@@ -148,9 +148,9 @@ namespace KeyPayV2.Uk.Functions
         /// for the specified employees within the specified time period
         /// (StartTime - EndTime) will be replaced with the timesheets specified.
         /// </remarks>
-        public Task UpdateReplaceTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
+        public Task<UkSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
+            return ApiRequestAsync<UkSubmitTimesheetsResponse,UkSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -162,9 +162,9 @@ namespace KeyPayV2.Uk.Functions
         /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
         /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
-        public void BulkInsertTimesheets(int businessId, UkSubmitTimesheetsRequest request)
+        public UkSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, UkSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/bulk", request, Method.Post);
+            return ApiRequest<UkSubmitTimesheetsResponse,UkSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post);
         }
 
         /// <summary>
@@ -176,9 +176,9 @@ namespace KeyPayV2.Uk.Functions
         /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
         /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
-        public Task BulkInsertTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
+        public Task<UkSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<UkSubmitTimesheetsResponse,UkSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
         }
     }
 }

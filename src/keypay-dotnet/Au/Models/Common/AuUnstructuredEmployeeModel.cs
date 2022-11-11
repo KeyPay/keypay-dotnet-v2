@@ -32,6 +32,7 @@ namespace KeyPayV2.Au.Models.Common
         public decimal? TaxVariation { get; set; }
         public DateTime? DateTaxFileDeclarationSigned { get; set; }
         public DateTime? DateTaxFileDeclarationReported { get; set; }
+        public string BusinessAwardPackage { get; set; }
         public string EmploymentAgreement { get; set; }
         public bool? IsExemptFromPayrollTax { get; set; }
         public string BankAccount1_BSB { get; set; }

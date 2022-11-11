@@ -17,6 +17,10 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
         public bool PayoutNegativeBalance { get; set; }
         public LeaveAccrualRuleModel LeaveAccrualRule { get; set; }
         public bool IncludeIn52WeekAverageCalculation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveCategoryUkOccupationalAbsenceServiceBandType OccupationalAbsenceServiceBandType { get; set; }
+        public IList<UkLeaveCategoryUkOccupationalAbsenceServiceBandModel> OccupationalAbsenceServiceBands { get; set; }
+        public IList<UkLeaveCategoryUkOccupationalAbsencePaymentBandModel> OccupationalAbsencePaymentBands { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Units { get; set; }
@@ -36,5 +40,6 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
         public LeaveUnitTypeEnum LeaveUnitType { get; set; }
         public bool PayoutAsETP { get; set; }
         public bool? AccruesFirstPayRunPerPeriodOnly { get; set; }
+        public int? PreventNegativeBalanceUnpaidLeaveCategoryId { get; set; }
     }
 }

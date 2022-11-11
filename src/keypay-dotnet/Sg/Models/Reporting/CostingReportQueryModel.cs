@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.Reporting
     {
         public bool ShowZeroPayCategories { get; set; }
         public int PayScheduleId { get; set; }
+        public bool IncludePostTaxDeductions { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public int LocationId { get; set; }

@@ -75,6 +75,7 @@ namespace KeyPayV2.Nz.Enums
         Quickfile,
         Tide,
         TideSso,
-        FreeAgent
+        FreeAgent,
+        Akahu
     }
 }
