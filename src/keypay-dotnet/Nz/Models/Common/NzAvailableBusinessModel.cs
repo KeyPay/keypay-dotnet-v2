@@ -38,6 +38,7 @@ namespace KeyPayV2.Nz.Models.Common
         public string Name { get; set; }
         public string Region { get; set; }
         public string RegistrationNumber { get; set; }
+        public bool RegistrationNumberValidationBypassed { get; set; }
         public string LegalName { get; set; }
         public string ContactName { get; set; }
         public string ContactEmailAddress { get; set; }

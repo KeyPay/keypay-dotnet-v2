@@ -20,6 +20,7 @@ namespace KeyPayV2.Nz.Models.Timesheets
         public IdType LocationIdType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public IdType WorkTypeIdType { get; set; }
+        public bool ReturnResponse { get; set; }
         public IDictionary<string,IList<NzTimesheetLineModel>> Timesheets { get; set; }
     }
 }

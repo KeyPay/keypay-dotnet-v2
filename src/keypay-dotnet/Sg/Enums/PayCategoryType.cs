@@ -75,6 +75,10 @@ namespace KeyPayV2.Sg.Enums
         NormalTerminationLeaveLoading,
         PublicHolidayWorked,
         PublicHolidayNotWorked,
-        UnusedLeavePaymentNormalTermination
+        UnusedLeavePaymentNormalTermination,
+        BackPayLessThan12Months,
+        BackPayMoreThan12Months,
+        BackPaySuperableLessThan12Months,
+        BackPaySuperableMoreThan12Months
     }
 }

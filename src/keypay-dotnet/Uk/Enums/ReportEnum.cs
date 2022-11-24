@@ -93,6 +93,7 @@ namespace KeyPayV2.Uk.Enums
         P11,
         P60,
         AverageHoursReport,
-        UkCourtOrderReport
+        UkCourtOrderReport,
+        UkOccupationalSickPayReport
     }
 }

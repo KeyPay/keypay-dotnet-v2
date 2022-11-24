@@ -25,6 +25,7 @@ namespace KeyPayV2.Nz.Enums
         AddEmployeeFromKiosk,
         ViewEmployeeDetails,
         EditBasicEmployeeDetails,
-        EditAllEmployeeDetails
+        EditAllEmployeeDetails,
+        ViewTimesheetReports
     }
 }

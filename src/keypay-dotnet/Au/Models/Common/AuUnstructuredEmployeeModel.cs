@@ -68,6 +68,7 @@ namespace KeyPayV2.Au.Models.Common
         public bool? PostalAddressIsOverseas { get; set; }
         public bool? ResidentialAddressIsOverseas { get; set; }
         public string EmploymentType { get; set; }
+        public string ContractorABN { get; set; }
         public string TerminationReason { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public TaxFileDeclarationTaxCategoryCombination? TaxCategory { get; set; }

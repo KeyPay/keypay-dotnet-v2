@@ -9,6 +9,7 @@ namespace KeyPayV2.My.Models.EmployingEntities
     public class MyEmployingEntityModel
     {
         public string Crn { get; set; }
+        public bool RegistrationNumberValidationBypassed { get; set; }
         public string AddressLine3 { get; set; }
         public string CountryId { get; set; }
         public string BlockNumber { get; set; }

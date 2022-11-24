@@ -11,6 +11,7 @@ namespace KeyPayV2.My.Models.Business
     public class MyBusinessExportModel
     {
         public string Crn { get; set; }
+        public bool RegistrationNumberValidationBypassed { get; set; }
         public string Suburb { get; set; }
         public string State { get; set; }
         public string CountryId { get; set; }
@@ -42,6 +43,8 @@ namespace KeyPayV2.My.Models.Business
         public string AddressLine2 { get; set; }
         public string PostCode { get; set; }
         public string WhiteLabelName { get; set; }
+        public int? WhiteLabelId { get; set; }
+        public int? BusinessTemplateId { get; set; }
         public string PromoCode { get; set; }
         public DateTime DateCreated { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

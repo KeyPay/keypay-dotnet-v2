@@ -78,6 +78,7 @@ namespace KeyPayV2.Sg.Enums
         CpfYearEndRecalculationRequired,
         TaxCodeDisplayNameTooLong,
         TimesheetOutOfSequence,
-        ExpiredContractorTaxRate
+        ExpiredContractorTaxRate,
+        ConcurrentPayRun
     }
 }

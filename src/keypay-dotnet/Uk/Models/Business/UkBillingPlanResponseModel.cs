@@ -35,5 +35,6 @@ namespace KeyPayV2.Uk.Models.Business
         [JsonConverter(typeof(StringEnumConverter))]
         public FunctionToggle FunctionEmployeeOnboarding { get; set; }
         public string Description { get; set; }
+        public bool IsHidden { get; set; }
     }
 }
