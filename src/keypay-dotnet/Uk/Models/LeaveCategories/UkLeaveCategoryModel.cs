@@ -21,6 +21,7 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
         public LeaveCategoryUkOccupationalAbsenceServiceBandType OccupationalAbsenceServiceBandType { get; set; }
         public IList<UkLeaveCategoryUkOccupationalAbsenceServiceBandModel> OccupationalAbsenceServiceBands { get; set; }
         public IList<UkLeaveCategoryUkOccupationalAbsencePaymentBandModel> OccupationalAbsencePaymentBands { get; set; }
+        public string OccupationalAbsenceServiceBandTypeDescription { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Units { get; set; }

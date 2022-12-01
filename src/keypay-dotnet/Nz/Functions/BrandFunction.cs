@@ -18,6 +18,8 @@ namespace KeyPayV2.Nz.Functions
         Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default);
         void CancelBusiness(int businessId, string brandId);
         Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default);
+        List<BusinessTemplateModel> ListBusinessTemplates(string brandId);
+        Task<List<BusinessTemplateModel>> ListBusinessTemplatesAsync(string brandId, CancellationToken cancellationToken = default);
         List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId);
         Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, CancellationToken cancellationToken = default);
         List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request);
@@ -77,6 +79,22 @@ namespace KeyPayV2.Nz.Functions
         public Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/brand/{brandId}/business/{businessId}/cancel", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Business Templates
+        /// </summary>
+        public List<BusinessTemplateModel> ListBusinessTemplates(string brandId)
+        {
+            return ApiRequest<List<BusinessTemplateModel>>($"/brand/{brandId}/business-templates", Method.Get);
+        }
+
+        /// <summary>
+        /// List Business Templates
+        /// </summary>
+        public Task<List<BusinessTemplateModel>> ListBusinessTemplatesAsync(string brandId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BusinessTemplateModel>>($"/brand/{brandId}/business-templates", Method.Get, cancellationToken);
         }
 
         /// <summary>

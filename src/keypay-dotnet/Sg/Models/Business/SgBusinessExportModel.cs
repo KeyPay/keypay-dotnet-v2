@@ -43,7 +43,6 @@ namespace KeyPayV2.Sg.Models.Business
         public string PostCode { get; set; }
         public string WhiteLabelName { get; set; }
         public int? WhiteLabelId { get; set; }
-        public int? BusinessTemplateId { get; set; }
         public string PromoCode { get; set; }
         public DateTime DateCreated { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
@@ -51,5 +50,10 @@ namespace KeyPayV2.Sg.Models.Business
         public DateTime? LeaveYearStart { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService? Source { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public NumberOfEmployeesRangeEnum? NumberOfEmployees { get; set; }
+        public string IndustryName { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayCycleFrequencyEnum? PayCycleFrequency { get; set; }
     }
 }

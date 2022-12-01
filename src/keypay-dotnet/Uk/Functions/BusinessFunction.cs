@@ -24,6 +24,10 @@ namespace KeyPayV2.Uk.Functions
         Task<UkBusinessExportModel> CreateNewBusinessAsync(UkBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
         UkBusinessExportModel GetBusinessDetails(int businessId);
         Task<UkBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        void DeleteBusiness(int businessId);
+        Task DeleteBusinessAsync(int businessId, CancellationToken cancellationToken = default);
+        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
+        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
         List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
         Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request);
@@ -80,6 +84,8 @@ namespace KeyPayV2.Uk.Functions
         Task<UkEmploymentAllowanceModel> UpdateEmploymentAllowanceSettingsAsync(int businessId, UkEmploymentAllowanceModel model, CancellationToken cancellationToken = default);
         HmrcSettingsRequestModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId);
         Task<HmrcSettingsRequestModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default);
+        HmrcSettingsResponseModel SimpleUpdateEmployerHmrcSettings(int businessId, SimpleHmrcSettingsRequestModel model);
+        Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
         List<UkLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
@@ -229,6 +235,44 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Business
+        /// </summary>
+        /// <remarks>
+        /// Deletes the business with the specified ID.
+        /// </remarks>
+        public void DeleteBusiness(int businessId)
+        {
+            ApiRequest($"/business/{businessId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Business
+        /// </summary>
+        /// <remarks>
+        /// Deletes the business with the specified ID.
+        /// </remarks>
+        public Task DeleteBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -851,6 +895,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<HmrcSettingsRequestModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Simple Update Employer HMRC Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates a subset of the HMRC Settings for the business.
+        /// </remarks>
+        public HmrcSettingsResponseModel SimpleUpdateEmployerHmrcSettings(int businessId, SimpleHmrcSettingsRequestModel model)
+        {
+            return ApiRequest<HmrcSettingsResponseModel,SimpleHmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/simple-update", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Simple Update Employer HMRC Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates a subset of the HMRC Settings for the business.
+        /// </remarks>
+        public Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<HmrcSettingsResponseModel,SimpleHmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/simple-update", model, Method.Put, cancellationToken);
         }
 
         /// <summary>

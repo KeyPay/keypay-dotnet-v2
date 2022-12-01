@@ -11,6 +11,7 @@ namespace KeyPayV2.Sg.Models.Business
     public class CreateBusinessAccessModel
     {
         public bool SuppressNotificationEmails { get; set; }
+        public bool MergeExistingAccess { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public RelatedUserType AccessType { get; set; }
         public IList<EmployeeGroupAccessModel> EmployeeGroups { get; set; }
