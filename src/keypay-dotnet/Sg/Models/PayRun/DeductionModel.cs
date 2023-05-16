@@ -14,6 +14,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public string Notes { get; set; }
         public string PaymentReference { get; set; }
         public string Note { get; set; }
+        public int? AssociatedEmployeeDeductionCategoryId { get; set; }
         public string PayToBankAccountBSB { get; set; }
         public string PayToBankAccountSwift { get; set; }
         public string PayToBankAccountBankCode { get; set; }

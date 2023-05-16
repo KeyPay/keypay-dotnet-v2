@@ -10,6 +10,7 @@ namespace KeyPayV2.Au.Models.Ess
 {
     public class EmployeePartialEditModel
     {
+        public int Id { get; set; }
         public DateTime? AnniversaryDate { get; set; }
         public string ExternalId { get; set; }
         public DateTime? StartDate { get; set; }

@@ -76,6 +76,7 @@ namespace KeyPayV2.Nz.Enums
         Tide,
         TideSso,
         FreeAgent,
-        Akahu
+        Akahu,
+        InstaPay
     }
 }

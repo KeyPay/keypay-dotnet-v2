@@ -79,6 +79,7 @@ namespace KeyPayV2.Au.Enums
         TaxCodeDisplayNameTooLong,
         TimesheetOutOfSequence,
         ExpiredContractorTaxRate,
-        ConcurrentPayRun
+        ConcurrentPayRun,
+        StudentLoanAdjustment
     }
 }

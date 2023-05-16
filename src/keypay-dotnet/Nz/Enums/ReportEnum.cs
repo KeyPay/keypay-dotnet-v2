@@ -94,6 +94,7 @@ namespace KeyPayV2.Nz.Enums
         P60,
         AverageHoursReport,
         UkCourtOrderReport,
-        UkOccupationalPayReport
+        UkOccupationalPayReport,
+        EisSocsoCombinedContributionsReport
     }
 }

@@ -26,6 +26,7 @@ namespace KeyPayV2.Au.Models.Ess
         public EssCurrentExpensesModel Expenses { get; set; }
         public int PendingShiftCount { get; set; }
         public int ProposedSwapCount { get; set; }
+        public int PendingLeaveCount { get; set; }
         public EssCurrentShiftModel CurrentShift { get; set; }
         public int DocumentsRequiringAcknowledgementCount { get; set; }
         public string Region { get; set; }

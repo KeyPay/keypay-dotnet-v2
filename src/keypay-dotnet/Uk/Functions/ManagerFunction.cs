@@ -74,6 +74,8 @@ namespace KeyPayV2.Uk.Functions
         Task<ManagerTimesheetLineModel> RejectTimesheetAsync(int businessId, int employeeId, int timesheetId, CancellationToken cancellationToken = default);
         UkTimesheetReferenceData GetTimesheetReferenceData(int businessId, int employeeId);
         Task<UkTimesheetReferenceData> GetTimesheetReferenceDataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ManagerDashboardModel GetDashboard(int businessId);
+        Task<ManagerDashboardModel> GetDashboardAsync(int businessId, CancellationToken cancellationToken = default);
         void GetEmployeeProfileImage(int businessId, int employeeId);
         Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
@@ -877,6 +879,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkTimesheetReferenceData> GetTimesheetReferenceDataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkTimesheetReferenceData>($"/business/{businessId}/manager/{employeeId}/timesheet/reference", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Dashboard
+        /// </summary>
+        /// <remarks>
+        /// Gets a set of useful information that the manager may need.
+        /// </remarks>
+        public ManagerDashboardModel GetDashboard(int businessId)
+        {
+            return ApiRequest<ManagerDashboardModel>($"/business/{businessId}/manager/dashboard", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Dashboard
+        /// </summary>
+        /// <remarks>
+        /// Gets a set of useful information that the manager may need.
+        /// </remarks>
+        public Task<ManagerDashboardModel> GetDashboardAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ManagerDashboardModel>($"/business/{businessId}/manager/dashboard", Method.Get, cancellationToken);
         }
 
         /// <summary>

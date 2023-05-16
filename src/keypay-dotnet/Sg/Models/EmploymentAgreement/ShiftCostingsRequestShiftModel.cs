@@ -10,7 +10,9 @@ namespace KeyPayV2.Sg.Models.EmploymentAgreement
 {
     public class ShiftCostingsRequestShiftModel
     {
+        public string ShiftId { get; set; }
         public string State { get; set; }
+        public IList<RateOverride> OverrideRates { get; set; }
         public string ClassificationId { get; set; }
         public string Classification { get; set; }
         public bool LocationIsDeleted { get; set; }
