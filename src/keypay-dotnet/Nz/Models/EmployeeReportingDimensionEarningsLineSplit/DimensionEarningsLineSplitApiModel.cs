@@ -4,11 +4,12 @@ using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
 using KeyPayV2.Nz.Enums;
 
-namespace KeyPayV2.Nz.Models.EmployeeEarningsLineSplit
+namespace KeyPayV2.Nz.Models.EmployeeReportingDimensionEarningsLineSplit
 {
-    public class EarningsLineSplitEditModel
+    public class DimensionEarningsLineSplitApiModel
     {
-        public int LocationId { get; set; }
+        public int Id { get; set; }
+        public IList<ReducedReportingDimensionValueApiModel> ReportingDimensionValues { get; set; }
         public decimal? AllocatedPercentage { get; set; }
         public bool AllocateBalance { get; set; }
     }

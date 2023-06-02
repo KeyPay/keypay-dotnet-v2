@@ -16,6 +16,7 @@ namespace KeyPayV2.My.Models.Business
         public string AccountNumber { get; set; }
         public string AccountName { get; set; }
         public string BranchCode { get; set; }
+        public string OrganisationCode { get; set; }
         public string LodgementReference { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PaymentFilePaymentAdditionalContent PaymentAdditionalContent { get; set; }
@@ -23,6 +24,7 @@ namespace KeyPayV2.My.Models.Business
         public string PaymentCode { get; set; }
         public string HsbcnetCustomerId { get; set; }
         public string BankCode { get; set; }
+        public string CorporateId { get; set; }
         public int? ValueDateDaysBeforeDatePaid { get; set; }
     }
 }

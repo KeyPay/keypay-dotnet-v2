@@ -7,6 +7,17 @@ namespace KeyPayV2.My.Enums
     {
         HSBC,
         Maybank,
-        HSBCnet
+        HSBCnet,
+        AmBank,
+        CIMBBulkPayment,
+        PublicBankECP,
+        HongLeongConnectFirst,
+        HongLeongConnectBiz,
+        OCBCGiro,
+        Maybank2UBiz,
+        Maybank2E_StaffPayroll,
+        RHBSmartPayroll,
+        AllianceBizSmart,
+        EAmPayday
     }
 }

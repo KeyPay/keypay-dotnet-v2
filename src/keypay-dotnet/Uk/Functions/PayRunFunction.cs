@@ -26,6 +26,8 @@ namespace KeyPayV2.Uk.Functions
         Task<UkPayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         void DeletePayRun(int businessId, int payRunId);
         Task DeletePayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void StartApprovalProcess(int businessId, int payRunId);
+        Task StartApprovalProcessAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         UkPayRunTotalBenefitResponse ListBenefits(int businessId, int payRunId);
         Task<UkPayRunTotalBenefitResponse> ListBenefitsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         UkPayRunTotalBenefitResponse GetBenefits(int businessId, int employeeId, int payRunId);
@@ -293,6 +295,28 @@ namespace KeyPayV2.Uk.Functions
         public Task DeletePayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Start Approval Process
+        /// </summary>
+        /// <remarks>
+        /// Start the approval process for a pay run that requires approval, notifying the default contacts for this pay schedule.
+        /// </remarks>
+        public void StartApprovalProcess(int businessId, int payRunId)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/approval/start", Method.Post);
+        }
+
+        /// <summary>
+        /// Start Approval Process
+        /// </summary>
+        /// <remarks>
+        /// Start the approval process for a pay run that requires approval, notifying the default contacts for this pay schedule.
+        /// </remarks>
+        public Task StartApprovalProcessAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/approval/start", Method.Post, cancellationToken);
         }
 
         /// <summary>

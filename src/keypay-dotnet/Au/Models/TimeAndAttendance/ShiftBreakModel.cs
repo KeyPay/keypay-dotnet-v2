@@ -12,6 +12,7 @@ namespace KeyPayV2.Au.Models.TimeAndAttendance
     {
         public StartBreakModel Start { get; set; }
         public EndBreakModel End { get; set; }
+        public bool IsPaidBreak { get; set; }
         public int? EmployeeId { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }

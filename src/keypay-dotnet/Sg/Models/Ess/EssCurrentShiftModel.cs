@@ -16,5 +16,6 @@ namespace KeyPayV2.Sg.Models.Ess
         [JsonConverter(typeof(StringEnumConverter))]
         public TimeAttendanceStatus Status { get; set; }
         public bool LongShift { get; set; }
+        public bool IsPaidBreak { get; set; }
     }
 }

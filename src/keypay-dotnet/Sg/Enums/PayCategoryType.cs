@@ -79,6 +79,8 @@ namespace KeyPayV2.Sg.Enums
         BackPayLessThan12Months,
         BackPayMoreThan12Months,
         BackPaySuperableLessThan12Months,
-        BackPaySuperableMoreThan12Months
+        BackPaySuperableMoreThan12Months,
+        UkOccupationalSickPay,
+        PaidFamilyAndDomesticViolenceLeave
     }
 }

@@ -118,6 +118,11 @@ namespace KeyPayV2.Au.Enums
         ContractSignedEmployeeNotification,
         ContractSignedEmployerNotification,
         InitiateEmployeeOnboardingWithLogin,
-        AuthorisingSignatoryNotification
+        AuthorisingSignatoryNotification,
+        IntegrationCustomFeatureRequest,
+        EmailAddressChanged,
+        EmailAddressConfirmChanged,
+        RecoveryEmailAddressChanged,
+        RecoveryEmailAddressConfirmChanged
     }
 }

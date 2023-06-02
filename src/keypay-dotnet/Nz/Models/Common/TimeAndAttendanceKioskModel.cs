@@ -25,5 +25,6 @@ namespace KeyPayV2.Nz.Models.Common
         public bool? IsPhotoRequired { get; set; }
         public bool CanAddEmployees { get; set; }
         public bool AvailableToAllRestrictedUsersWithKioskAccess { get; set; }
+        public bool PaidBreaksEnabled { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.Employee
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public NationalInsuranceType Category { get; set; }
+        public DateTime DatePaid { get; set; }
         public decimal TotalNiablePay { get; set; }
         public decimal Lel { get; set; }
         public decimal LelToPt { get; set; }

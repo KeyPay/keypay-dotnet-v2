@@ -14,6 +14,7 @@ namespace KeyPayV2.Au.Models.Reporting
         public decimal NetEarnings { get; set; }
         public decimal Sgc { get; set; }
         public decimal EmployerContribution { get; set; }
+        public decimal NonRescEmployerContribution { get; set; }
         public decimal TotalGrossPlusSuper { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }

@@ -20,6 +20,7 @@ namespace KeyPayV2.Sg
         IEmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
         IEmployeeDocumentFunction EmployeeDocument { get; }
         IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
+        IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         IEmployeeGainsOrProfitsEmployeeSharePlanFunction EmployeeGainsOrProfitsEmployeeSharePlan { get; }
         IEmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }
@@ -78,6 +79,7 @@ namespace KeyPayV2.Sg
             EmployeeBenefitsInKind = new EmployeeBenefitsInKindFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
+            EmployeeReportingDimensionEarningsLineSplit = new EmployeeReportingDimensionEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeGainsOrProfitsEmployeeSharePlan = new EmployeeGainsOrProfitsEmployeeSharePlanFunction(Api);
             EmployeeIncomeFromOverseasSubjectToTaxRemission = new EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction(Api);
@@ -133,6 +135,7 @@ namespace KeyPayV2.Sg
         public IEmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
         public IEmployeeDocumentFunction EmployeeDocument { get; }
         public IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
+        public IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public IEmployeeGainsOrProfitsEmployeeSharePlanFunction EmployeeGainsOrProfitsEmployeeSharePlan { get; }
         public IEmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }

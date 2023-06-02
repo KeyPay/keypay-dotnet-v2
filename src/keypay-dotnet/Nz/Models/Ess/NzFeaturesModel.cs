@@ -41,5 +41,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public bool ShiftBidding { get; set; }
         public bool AllowToSelectHigherClassification { get; set; }
         public bool AllowEmployeeWorkEligibilitySelfService { get; set; }
+        public bool PaidBreaksEnabled { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.Common
         public int? ParentId { get; set; }
         public string Name { get; set; }
         public string ExternalId { get; set; }
+        public string ExternalAccountingLocationId { get; set; }
         public string Source { get; set; }
         public string FullyQualifiedName { get; set; }
         public bool IsGlobal { get; set; }

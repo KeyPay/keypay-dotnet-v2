@@ -136,6 +136,8 @@ namespace KeyPayV2.Au.Functions
         Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
         List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId);
         Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default);
+        List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request);
+        Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, ListKioskStaffQueryModel request, CancellationToken cancellationToken = default);
         void AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model);
         Task AddAnEmployeeAsync(int businessId, int kioskId, KioskCreateEmployeeModel model, CancellationToken cancellationToken = default);
         KioskEmployeeModel StartBreak(int businessId, int kioskId, StartBreakModel request);
@@ -170,6 +172,8 @@ namespace KeyPayV2.Au.Functions
         Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default);
         List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request);
         Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
+        void CreateRosterShift(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request);
+        Task CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         AuRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
         Task<AuRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         AuRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
@@ -180,6 +184,8 @@ namespace KeyPayV2.Au.Functions
         Task<AuManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, CancellationToken cancellationToken = default);
         AuManagerRosterShiftModel GetRosterShiftById(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request);
         Task<AuManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request, CancellationToken cancellationToken = default);
+        void UpdateRosterShift(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request);
+        Task UpdateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
         Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
         List<ManagerRosterEmployeeModel> ListRosterEmployees(int businessId);
@@ -1559,7 +1565,7 @@ namespace KeyPayV2.Au.Functions
         /// List Kiosk Staff
         /// </summary>
         /// <remarks>
-        /// Lists all the staff associated with a kiosk.
+        /// Lists all the staff associated with a kiosk and their current shifts.
         /// </remarks>
         public List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId)
         {
@@ -1570,11 +1576,33 @@ namespace KeyPayV2.Au.Functions
         /// List Kiosk Staff
         /// </summary>
         /// <remarks>
-        /// Lists all the staff associated with a kiosk.
+        /// Lists all the staff associated with a kiosk and their current shifts.
         /// </remarks>
         public Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/manager/kiosk/{kioskId}/staff", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Kiosk Staff
+        /// </summary>
+        /// <remarks>
+        /// Lists all the staff associated with a kiosk and their current shifts.
+        /// </remarks>
+        public List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request)
+        {
+            return ApiRequest<List<BasicKioskEmployeeModel>>($"/business/{businessId}/manager/kiosk/{kioskId}/staff?restrictCurrentShiftsToCurrentKioskLocation={request.RestrictCurrentShiftsToCurrentKioskLocation}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Kiosk Staff
+        /// </summary>
+        /// <remarks>
+        /// Lists all the staff associated with a kiosk and their current shifts.
+        /// </remarks>
+        public Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, ListKioskStaffQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/manager/kiosk/{kioskId}/staff?restrictCurrentShiftsToCurrentKioskLocation={request.RestrictCurrentShiftsToCurrentKioskLocation}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1968,6 +1996,28 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Create roster shift
+        /// </summary>
+        /// <remarks>
+        /// Create or update an individual roster shift
+        /// </remarks>
+        public void CreateRosterShift(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/manager/rostershift?publish={request.Publish}", shiftModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Create roster shift
+        /// </summary>
+        /// <remarks>
+        /// Create or update an individual roster shift
+        /// </remarks>
+        public Task CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/manager/rostershift?publish={request.Publish}", shiftModel, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Find Matching Clock Off Roster Shift
         /// </summary>
         /// <remarks>
@@ -2087,6 +2137,28 @@ namespace KeyPayV2.Au.Functions
         public Task<AuManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuManagerRosterShiftModel>($"/business/{businessId}/manager/rostershift/{rosterShiftId}?includeCosts={request.IncludeCosts}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public void UpdateRosterShift(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}", shiftModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public Task UpdateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}", shiftModel, Method.Put, cancellationToken);
         }
 
         /// <summary>

@@ -77,6 +77,8 @@ namespace KeyPayV2.Uk.Enums
         TideSso,
         FreeAgent,
         Akahu,
-        InstaPay
+        InstaPay,
+        Zepto,
+        Slack
     }
 }

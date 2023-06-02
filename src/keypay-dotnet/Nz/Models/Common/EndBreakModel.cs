@@ -10,6 +10,7 @@ namespace KeyPayV2.Nz.Models.Common
 {
     public class EndBreakModel
     {
+        public bool IsPaidBreak { get; set; }
         public int? EmployeeId { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }

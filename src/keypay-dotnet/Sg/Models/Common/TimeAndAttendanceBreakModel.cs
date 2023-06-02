@@ -12,5 +12,6 @@ namespace KeyPayV2.Sg.Models.Common
         public DateTime StartTimeLocal { get; set; }
         public DateTime? EndTimeUtc { get; set; }
         public DateTime? EndTimeLocal { get; set; }
+        public bool IsPaidBreak { get; set; }
     }
 }

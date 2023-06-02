@@ -104,8 +104,12 @@ namespace KeyPayV2.Uk.Functions
         Task<UkP46CarModel> IgnoreP46CarDetailAsync(int businessId, UkIgnoreP46CarModel model, CancellationToken cancellationToken = default);
         UkP60SummaryForEmployeeDto LoadP60Data(int businessId, int employeeId, LoadP60DataQueryModel request);
         Task<UkP60SummaryForEmployeeDto> LoadP60DataAsync(int businessId, int employeeId, LoadP60DataQueryModel request, CancellationToken cancellationToken = default);
+        IsPublishedP60ResponseModel ShowP60Status(int businessId, IsPublishedP60RequestModel isPublishedP60RequestModel);
+        Task<IsPublishedP60ResponseModel> ShowP60StatusAsync(int businessId, IsPublishedP60RequestModel isPublishedP60RequestModel, CancellationToken cancellationToken = default);
         ListP60sResult ListP60Data(int businessId, ListP60DataQueryModel request);
         Task<ListP60sResult> ListP60DataAsync(int businessId, ListP60DataQueryModel request, CancellationToken cancellationToken = default);
+        PublishP60ApiResponseModel PublishP60(int businessId, PublishP60RequestModel publishP60RequestModel);
+        Task<PublishP60ApiResponseModel> PublishP60Async(int businessId, PublishP60RequestModel publishP60RequestModel, CancellationToken cancellationToken = default);
         List<UkPayCategoriesModel> PayCategoriesReport(int businessId);
         Task<List<UkPayCategoriesModel>> PayCategoriesReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<UkPayCategoriesModel> PayCategoriesReport(int businessId, PayCategoriesReportQueryModel request);
@@ -1030,6 +1034,22 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Show P60 Status
+        /// </summary>
+        public IsPublishedP60ResponseModel ShowP60Status(int businessId, IsPublishedP60RequestModel isPublishedP60RequestModel)
+        {
+            return ApiRequest<IsPublishedP60ResponseModel,IsPublishedP60RequestModel>($"/business/{businessId}/report/p60/ispublished", isPublishedP60RequestModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Show P60 Status
+        /// </summary>
+        public Task<IsPublishedP60ResponseModel> ShowP60StatusAsync(int businessId, IsPublishedP60RequestModel isPublishedP60RequestModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<IsPublishedP60ResponseModel,IsPublishedP60RequestModel>($"/business/{businessId}/report/p60/ispublished", isPublishedP60RequestModel, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// List P60 Data
         /// </summary>
         public ListP60sResult ListP60Data(int businessId, ListP60DataQueryModel request)
@@ -1043,6 +1063,22 @@ namespace KeyPayV2.Uk.Functions
         public Task<ListP60sResult> ListP60DataAsync(int businessId, ListP60DataQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<ListP60sResult>($"/business/{businessId}/report/p60/list?financialYearEnding={request.FinancialYearEnding}&locationId={request.LocationId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Publish P60
+        /// </summary>
+        public PublishP60ApiResponseModel PublishP60(int businessId, PublishP60RequestModel publishP60RequestModel)
+        {
+            return ApiRequest<PublishP60ApiResponseModel,PublishP60RequestModel>($"/business/{businessId}/report/p60/publish", publishP60RequestModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Publish P60
+        /// </summary>
+        public Task<PublishP60ApiResponseModel> PublishP60Async(int businessId, PublishP60RequestModel publishP60RequestModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PublishP60ApiResponseModel,PublishP60RequestModel>($"/business/{businessId}/report/p60/publish", publishP60RequestModel, Method.Post, cancellationToken);
         }
 
         /// <summary>

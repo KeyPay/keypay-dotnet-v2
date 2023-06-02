@@ -27,6 +27,7 @@ namespace KeyPayV2.Uk.Enums
         VirginMoney,
         StarlingBank,
         Comma,
-        LloydsCboPayments
+        LloydsCboPayments,
+        SantanderMultipleBacs
     }
 }

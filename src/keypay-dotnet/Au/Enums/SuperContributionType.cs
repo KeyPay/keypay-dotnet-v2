@@ -8,6 +8,7 @@ namespace KeyPayV2.Au.Enums
         SuperGuarantee,
         SalarySacrifice,
         MemberVoluntary,
-        EmployerContribution
+        EmployerContribution,
+        NonRescEmployerContribution
     }
 }

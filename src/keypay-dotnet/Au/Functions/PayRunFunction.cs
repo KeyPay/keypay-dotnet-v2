@@ -26,6 +26,8 @@ namespace KeyPayV2.Au.Functions
         Task<PayRunModel> GetPayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         void DeletePayRun(int businessId, int payRunId);
         Task DeletePayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        void StartApprovalProcess(int businessId, int payRunId);
+        Task StartApprovalProcessAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         ApplyLeaveRequestResult BulkApplyLeaveRequests(int businessId, int payRunId, BulkApplyLeaveRequestModel bulkApplyLeaveRequestModel);
         Task<ApplyLeaveRequestResult> BulkApplyLeaveRequestsAsync(int businessId, int payRunId, BulkApplyLeaveRequestModel bulkApplyLeaveRequestModel, CancellationToken cancellationToken = default);
         AuPayRunDeductionResponse ListDeductions(int businessId, int payRunId);
@@ -275,6 +277,28 @@ namespace KeyPayV2.Au.Functions
         public Task DeletePayRunAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Start Approval Process
+        /// </summary>
+        /// <remarks>
+        /// Start the approval process for a pay run that requires approval, notifying the default contacts for this pay schedule.
+        /// </remarks>
+        public void StartApprovalProcess(int businessId, int payRunId)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/approval/start", Method.Post);
+        }
+
+        /// <summary>
+        /// Start Approval Process
+        /// </summary>
+        /// <remarks>
+        /// Start the approval process for a pay run that requires approval, notifying the default contacts for this pay schedule.
+        /// </remarks>
+        public Task StartApprovalProcessAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/approval/start", Method.Post, cancellationToken);
         }
 
         /// <summary>

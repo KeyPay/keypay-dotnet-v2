@@ -6,6 +6,7 @@ namespace KeyPayV2.Nz.Enums
     public enum LeaveAccrualType
     {
         Ongoing,
-        Yearly
+        Yearly,
+        BasedOnLengthOfService
     }
 }

@@ -25,5 +25,6 @@ namespace KeyPayV2.Uk.Models.Common
         public string Status { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public BasicPayAdjustmentTypeEnum? BasicPayAdjustmentType { get; set; }
+        public bool IsLinkedToOccupationalAbsence { get; set; }
     }
 }

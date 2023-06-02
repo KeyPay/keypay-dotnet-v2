@@ -24,6 +24,8 @@ namespace KeyPayV2.Uk.Functions
         Task<UkLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, UkLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         void DeleteLeaveCategory(int businessId, int id);
         Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void SaveLeaveYearSettings(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel);
+        Task SaveLeaveYearSettingsAsync(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel, CancellationToken cancellationToken = default);
     }
     public class LeaveCategoriesFunction : BaseFunction, ILeaveCategoriesFunction
     {
@@ -139,6 +141,22 @@ namespace KeyPayV2.Uk.Functions
         public Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Save Leave Year Settings
+        /// </summary>
+        public void SaveLeaveYearSettings(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel)
+        {
+            ApiRequest($"/business/{businessId}/leavecategory/saveleaveyearsettings", leaveBusinessSettingsModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Save Leave Year Settings
+        /// </summary>
+        public Task SaveLeaveYearSettingsAsync(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leavecategory/saveleaveyearsettings", leaveBusinessSettingsModel, Method.Put, cancellationToken);
         }
     }
 }

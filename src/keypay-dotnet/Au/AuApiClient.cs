@@ -19,6 +19,7 @@ namespace KeyPayV2.Au
         IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         IEmployeeDocumentFunction EmployeeDocument { get; }
         IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
+        IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
@@ -76,6 +77,7 @@ namespace KeyPayV2.Au
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
+            EmployeeReportingDimensionEarningsLineSplit = new EmployeeReportingDimensionEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
@@ -130,6 +132,7 @@ namespace KeyPayV2.Au
         public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         public IEmployeeDocumentFunction EmployeeDocument { get; }
         public IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
+        public IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }

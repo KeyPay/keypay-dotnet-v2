@@ -15,5 +15,6 @@ namespace KeyPayV2.Uk.Models.Manager
         public DateTime? SubmittedEnd { get; set; }
         public string FormattedStart { get; set; }
         public string FormattedEnd { get; set; }
+        public bool IsPaidBreak { get; set; }
     }
 }

@@ -51,6 +51,8 @@ namespace KeyPayV2.My.Models.Ess
         public bool IsLocked { get; set; }
         public decimal? Cost { get; set; }
         public ShiftCostingData CostingData { get; set; }
+        public decimal? CostByLocation { get; set; }
+        public ShiftCostingData CostingDataByLocation { get; set; }
         public bool Discard { get; set; }
         public IList<Int32> ShiftConditionIds { get; set; }
         public bool IsOverlapping { get; set; }

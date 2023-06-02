@@ -58,6 +58,8 @@ namespace KeyPayV2.Sg.Functions
         Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
         List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId);
         Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default);
+        List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request);
+        Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, ListKioskStaffQueryModel request, CancellationToken cancellationToken = default);
         BasicKioskEmployeeModel AddAnEmployee(int businessId, int kioskId, KioskCreateEmployeeModel model);
         Task<BasicKioskEmployeeModel> AddAnEmployeeAsync(int businessId, int kioskId, KioskCreateEmployeeModel model, CancellationToken cancellationToken = default);
         void StartBreak(int businessId, int kioskId, StartBreakModel request);
@@ -543,7 +545,7 @@ namespace KeyPayV2.Sg.Functions
         /// List Kiosk Staff
         /// </summary>
         /// <remarks>
-        /// Lists all the staff associated with a kiosk.
+        /// Lists all the staff associated with a kiosk and their current shifts.
         /// </remarks>
         public List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId)
         {
@@ -554,11 +556,33 @@ namespace KeyPayV2.Sg.Functions
         /// List Kiosk Staff
         /// </summary>
         /// <remarks>
-        /// Lists all the staff associated with a kiosk.
+        /// Lists all the staff associated with a kiosk and their current shifts.
         /// </remarks>
         public Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Kiosk Staff
+        /// </summary>
+        /// <remarks>
+        /// Lists all the staff associated with a kiosk and their current shifts.
+        /// </remarks>
+        public List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request)
+        {
+            return ApiRequest<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff?restrictCurrentShiftsToCurrentKioskLocation={request.RestrictCurrentShiftsToCurrentKioskLocation}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Kiosk Staff
+        /// </summary>
+        /// <remarks>
+        /// Lists all the staff associated with a kiosk and their current shifts.
+        /// </remarks>
+        public Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, ListKioskStaffQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff?restrictCurrentShiftsToCurrentKioskLocation={request.RestrictCurrentShiftsToCurrentKioskLocation}", Method.Get, cancellationToken);
         }
 
         /// <summary>

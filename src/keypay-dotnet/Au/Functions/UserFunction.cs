@@ -20,8 +20,16 @@ namespace KeyPayV2.Au.Functions
         Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default);
         NewUserCreatedModel CreateNewUser(NewUserModel model);
         Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default);
+        RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser();
+        Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(CancellationToken cancellationToken = default);
+        RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser(ListRelatedBusinessesForTheProvidedUserQueryModel request);
+        Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(ListRelatedBusinessesForTheProvidedUserQueryModel request, CancellationToken cancellationToken = default);
         AuUserAccountMetadata ListRelatedBusinessesAndEmployees();
         Task<AuUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default);
+        AuUserAccountPartnerMetadata ListRelatedPartners();
+        Task<AuUserAccountPartnerMetadata> ListRelatedPartnersAsync(CancellationToken cancellationToken = default);
+        AuUserAccountPartnerMetadata ListRelatedPartners(ListRelatedPartnersQueryModel request);
+        Task<AuUserAccountPartnerMetadata> ListRelatedPartnersAsync(ListRelatedPartnersQueryModel request, CancellationToken cancellationToken = default);
     }
     public class UserFunction : BaseFunction, IUserFunction
     {
@@ -102,6 +110,50 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// List Related Businesses for the provided user.
+        /// </summary>
+        /// <remarks>
+        /// List Related Businesses for the provided user. This is an Admin only function
+        /// </remarks>
+        public RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser()
+        {
+            return ApiRequest<RelatedBusinessesModel>($"/user/account/businesses", Method.Get);
+        }
+
+        /// <summary>
+        /// List Related Businesses for the provided user.
+        /// </summary>
+        /// <remarks>
+        /// List Related Businesses for the provided user. This is an Admin only function
+        /// </remarks>
+        public Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<RelatedBusinessesModel>($"/user/account/businesses", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Related Businesses for the provided user.
+        /// </summary>
+        /// <remarks>
+        /// List Related Businesses for the provided user. This is an Admin only function
+        /// </remarks>
+        public RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser(ListRelatedBusinessesForTheProvidedUserQueryModel request)
+        {
+            return ApiRequest<RelatedBusinessesModel>($"/user/account/businesses?username={request.Username}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Related Businesses for the provided user.
+        /// </summary>
+        /// <remarks>
+        /// List Related Businesses for the provided user. This is an Admin only function
+        /// </remarks>
+        public Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(ListRelatedBusinessesForTheProvidedUserQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<RelatedBusinessesModel>($"/user/account/businesses?username={request.Username}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// List Related Businesses And Employees
         /// </summary>
         /// <remarks>
@@ -121,6 +173,50 @@ namespace KeyPayV2.Au.Functions
         public Task<AuUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuUserAccountMetadata>($"/user/account/metadata", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Related Partners
+        /// </summary>
+        /// <remarks>
+        /// List related partner IDs that are associated to the businesses and employees linked to user.
+        /// </remarks>
+        public AuUserAccountPartnerMetadata ListRelatedPartners()
+        {
+            return ApiRequest<AuUserAccountPartnerMetadata>($"/user/account/partner/metadata", Method.Get);
+        }
+
+        /// <summary>
+        /// List Related Partners
+        /// </summary>
+        /// <remarks>
+        /// List related partner IDs that are associated to the businesses and employees linked to user.
+        /// </remarks>
+        public Task<AuUserAccountPartnerMetadata> ListRelatedPartnersAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuUserAccountPartnerMetadata>($"/user/account/partner/metadata", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Related Partners
+        /// </summary>
+        /// <remarks>
+        /// List related partner IDs that are associated to the businesses and employees linked to user.
+        /// </remarks>
+        public AuUserAccountPartnerMetadata ListRelatedPartners(ListRelatedPartnersQueryModel request)
+        {
+            return ApiRequest<AuUserAccountPartnerMetadata>($"/user/account/partner/metadata?username={request.Username}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Related Partners
+        /// </summary>
+        /// <remarks>
+        /// List related partner IDs that are associated to the businesses and employees linked to user.
+        /// </remarks>
+        public Task<AuUserAccountPartnerMetadata> ListRelatedPartnersAsync(ListRelatedPartnersQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuUserAccountPartnerMetadata>($"/user/account/partner/metadata?username={request.Username}", Method.Get, cancellationToken);
         }
     }
 }

@@ -18,5 +18,8 @@ namespace KeyPayV2.Au.Models.Business
         public bool ManagersCanCreateTimesheetsForEmployeesThatAreNotEnabled { get; set; }
         public bool TimesheetsEnabled { get; set; }
         public bool ApproveIfMatchesRosterShift { get; set; }
+        public bool AllowPaidBreaks { get; set; }
+        public bool HasMaximumPaidBreakDuration { get; set; }
+        public int? MaximumPaidBreakDuration { get; set; }
     }
 }

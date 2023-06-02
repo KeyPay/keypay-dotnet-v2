@@ -28,6 +28,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public string TimesheetLineExternalId { get; set; }
         public IList<Int32> ReportingDimensionValueIds { get; set; }
         public IDictionary<string,IList<string>> ReportingDimensionValueNames { get; set; }
+        public decimal NetPayment { get; set; }
         public long Id { get; set; }
         public string ExternalId { get; set; }
         public string LocationId { get; set; }

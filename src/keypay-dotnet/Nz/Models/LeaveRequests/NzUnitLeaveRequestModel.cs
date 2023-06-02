@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
 
 namespace KeyPayV2.Nz.Models.LeaveRequests
 {
-    public class UnitLeaveRequestModel
+    public class NzUnitLeaveRequestModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LeaveUnitTypeEnum? LeaveUnitType { get; set; }
         public decimal Units { get; set; }
         public bool AutomaticallyApprove { get; set; }
         public int EmployeeId { get; set; }

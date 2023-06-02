@@ -9,6 +9,7 @@ namespace KeyPayV2.My.Models.Ess
     public class ShiftPartModel
     {
         public bool IsBreak { get; set; }
+        public bool IsPaidBreak { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public TimeSpan EffectiveDuration { get; set; }

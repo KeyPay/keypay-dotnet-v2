@@ -22,8 +22,6 @@ namespace KeyPayV2.Au.Functions
         Task<AuBusinessExportModel> CreateNewBusinessAsync(AuBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
         AuBusinessExportModel GetBusinessDetails(int businessId);
         Task<AuBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        void DeleteBusiness(int businessId);
-        Task DeleteBusinessAsync(int businessId, CancellationToken cancellationToken = default);
         void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
         Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
         List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
@@ -185,28 +183,6 @@ namespace KeyPayV2.Au.Functions
         public Task<AuBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Business
-        /// </summary>
-        /// <remarks>
-        /// Deletes the business with the specified ID.
-        /// </remarks>
-        public void DeleteBusiness(int businessId)
-        {
-            ApiRequest($"/business/{businessId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Business
-        /// </summary>
-        /// <remarks>
-        /// Deletes the business with the specified ID.
-        /// </remarks>
-        public Task DeleteBusinessAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

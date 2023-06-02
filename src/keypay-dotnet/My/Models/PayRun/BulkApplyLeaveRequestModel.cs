@@ -9,5 +9,6 @@ namespace KeyPayV2.My.Models.PayRun
     public class BulkApplyLeaveRequestModel
     {
         public List<Int32> LeaveRequestIds { get; set; }
+        public bool AlignToPayRunPeriod { get; set; }
     }
 }

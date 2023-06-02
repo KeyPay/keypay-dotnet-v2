@@ -80,6 +80,10 @@ namespace KeyPayV2.Sg.Enums
         TimesheetOutOfSequence,
         ExpiredContractorTaxRate,
         ConcurrentPayRun,
-        StudentLoanAdjustment
+        StudentLoanAdjustment,
+        UnpaidLeaveWithAvailableBalance,
+        OccupationalLeaveApplied,
+        OccupationalLeaveAppliedPrevious,
+        OccupationalLeaveEntitlementExhausted
     }
 }

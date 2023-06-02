@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.Common
 {
     public class StartBreakModel
     {
+        public bool IsPaidBreak { get; set; }
         public int? EmployeeId { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }

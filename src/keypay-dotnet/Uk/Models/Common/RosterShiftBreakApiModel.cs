@@ -11,5 +11,6 @@ namespace KeyPayV2.Uk.Models.Common
         public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public bool IsPaidBreak { get; set; }
     }
 }

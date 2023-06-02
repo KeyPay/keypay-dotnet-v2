@@ -80,6 +80,10 @@ namespace KeyPayV2.Au.Enums
         TimesheetOutOfSequence,
         ExpiredContractorTaxRate,
         ConcurrentPayRun,
-        StudentLoanAdjustment
+        StudentLoanAdjustment,
+        UnpaidLeaveWithAvailableBalance,
+        OccupationalLeaveApplied,
+        OccupationalLeaveAppliedPrevious,
+        OccupationalLeaveEntitlementExhausted
     }
 }

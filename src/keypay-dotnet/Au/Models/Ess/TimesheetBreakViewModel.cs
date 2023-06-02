@@ -13,6 +13,7 @@ namespace KeyPayV2.Au.Models.Ess
         public DateTime? End { get; set; }
         public DateTime? SubmittedStart { get; set; }
         public DateTime? SubmittedEnd { get; set; }
+        public bool IsPaidBreak { get; set; }
         public string FormattedStart { get; set; }
         public string FormattedEnd { get; set; }
     }

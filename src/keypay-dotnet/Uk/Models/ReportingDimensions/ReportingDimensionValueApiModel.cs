@@ -16,5 +16,9 @@ namespace KeyPayV2.Uk.Models.ReportingDimensions
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService Source { get; set; }
         public string ExternalId { get; set; }
+        public bool AllEmployees { get; set; }
+        public string SpecificEmployees { get; set; }
+        public string FilterCombinationStrategy { get; set; }
+        public IList<ReportingDimensionValueFilterApiModel> Filters { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace KeyPayV2.Au.Models.Manager
     {
         public DateTime? Start { get; set; }
         public DateTime? End { get; set; }
+        public bool IsPaidBreak { get; set; }
     }
 }
