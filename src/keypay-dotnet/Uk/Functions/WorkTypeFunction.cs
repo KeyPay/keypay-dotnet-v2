@@ -13,8 +13,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IWorkTypeFunction
     {
-        List<UkWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkWorkTypeModel> ListWorkTypes(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<UkWorkTypeModel>> ListWorkTypesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkWorkTypeModel CreateWorkType(int businessId, UkWorkTypeModel workType);
         Task<UkWorkTypeModel> CreateWorkTypeAsync(int businessId, UkWorkTypeModel workType, CancellationToken cancellationToken = default);
         UkWorkTypeModel GetWorkTypeById(int businessId, int id);
@@ -35,7 +35,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the work types for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null)
+        public List<UkWorkTypeModel> ListWorkTypes(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -47,7 +47,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the work types for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkWorkTypeModel>> ListWorkTypesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

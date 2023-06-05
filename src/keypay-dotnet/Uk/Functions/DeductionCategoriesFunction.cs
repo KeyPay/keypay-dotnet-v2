@@ -14,8 +14,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IDeductionCategoriesFunction
     {
-        List<UkDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkDeductionCategoryModel> ListDeductionCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkDeductionCategoryModel CreateDeductionCategory(int businessId, UkDeductionCategoryModel deductionCategory);
         Task<UkDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         UkDeductionCategoryModel GetDeductionCategoryById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the deduction categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<UkDeductionCategoryModel> ListDeductionCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the deduction categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

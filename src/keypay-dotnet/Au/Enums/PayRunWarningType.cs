@@ -84,6 +84,8 @@ namespace KeyPayV2.Au.Enums
         UnpaidLeaveWithAvailableBalance,
         OccupationalLeaveApplied,
         OccupationalLeaveAppliedPrevious,
-        OccupationalLeaveEntitlementExhausted
+        OccupationalLeaveEntitlementExhausted,
+        AnnualLeaveCashedOut,
+        EmployeeHasTakenPaidFamilyAndDomesticViolenceLeave
     }
 }

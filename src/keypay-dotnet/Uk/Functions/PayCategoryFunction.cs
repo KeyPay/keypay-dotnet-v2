@@ -14,8 +14,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IPayCategoryFunction
     {
-        List<UkPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkPayCategoryModel> ListPayCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<UkPayCategoryModel>> ListPayCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkPayCategoryModel CreatePayCategory(int businessId, UkPayCategoryModel payCategory);
         Task<UkPayCategoryModel> CreatePayCategoryAsync(int businessId, UkPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         UkPayCategoryModel GetPayCategoryById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the pay categories for the business
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<UkPayCategoryModel> ListPayCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the pay categories for the business
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkPayCategoryModel>> ListPayCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

@@ -14,8 +14,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IBusinessFunction
     {
-        List<NzBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
-        Task<List<NzBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null);
+        Task<List<NzBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzBusinessExportModel CreateNewBusiness(NzBusinessExportModel model);
         Task<NzBusinessExportModel> CreateNewBusinessAsync(NzBusinessExportModel model, CancellationToken cancellationToken = default);
         NzBusinessExportModel CreateNewBusiness(NzBusinessExportModel model, CreateNewBusinessQueryModel request);
@@ -94,7 +94,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<NzBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
+        public List<NzBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<NzBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -106,7 +106,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<NzBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<NzBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

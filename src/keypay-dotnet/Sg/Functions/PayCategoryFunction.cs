@@ -14,8 +14,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IPayCategoryFunction
     {
-        List<SgPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<SgPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgPayCategoryModel> ListPayCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<SgPayCategoryModel>> ListPayCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         SgPayCategoryModel CreatePayCategory(int businessId, SgPayCategoryModel payCategory);
         Task<SgPayCategoryModel> CreatePayCategoryAsync(int businessId, SgPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         SgPayCategoryModel GetPayCategoryById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the pay categories for the business
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<SgPayCategoryModel> ListPayCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the pay categories for the business
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgPayCategoryModel>> ListPayCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

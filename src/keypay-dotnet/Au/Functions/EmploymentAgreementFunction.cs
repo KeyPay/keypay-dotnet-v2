@@ -18,8 +18,8 @@ namespace KeyPayV2.Au.Functions
         Task<ShiftCostingsResponseModel> GetShiftCostingsForEmployeeAsync(int businessId, int employeeId, ShiftCostingsRequestModel model, CancellationToken cancellationToken = default);
         List<ShiftPeriodModel> GetShiftPeriodsForEmployee(int businessId, int employeeId, GetShiftPeriodsModel model);
         Task<List<ShiftPeriodModel>> GetShiftPeriodsForEmployeeAsync(int businessId, int employeeId, GetShiftPeriodsModel model, CancellationToken cancellationToken = default);
-        List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, ODataQuery oDataQuery = null);
-        Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         EmploymentAgreementModel GetEmploymentAgreementById(int businessId, int id);
         Task<EmploymentAgreementModel> GetEmploymentAgreementByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         ShiftCostingsResponseModel EvaluateShiftCostings(int businessId, int id, ShiftCostingsRequestModel model);
@@ -84,7 +84,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all of the employment agreements for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, ODataQuery oDataQuery = null)
+        public List<BasicEmploymentAgreementModel> ListEmploymentAgreements(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -96,7 +96,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all of the employment agreements for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<BasicEmploymentAgreementModel>> ListEmploymentAgreementsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<BasicEmploymentAgreementModel>>($"/business/{businessId}/employmentagreement{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

@@ -24,8 +24,8 @@ namespace KeyPayV2.Nz.Functions
         Task<NzLeaveAllowanceModel> SetLeaveAllowancesAsync(int businessId, NzLeaveAllowancesRequest request, CancellationToken cancellationToken = default);
         Dictionary<string, IList<NzLeaveAllowanceModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId);
         Task<Dictionary<string, IList<NzLeaveAllowanceModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<NzLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
-        Task<List<NzLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<NzLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateLeaveAllowanceTemplate(int businessId, NzLeaveAllowanceTemplateModel leaveAllowanceTemplate);
         Task CreateLeaveAllowanceTemplateAsync(int businessId, NzLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
         NzLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id);
@@ -158,7 +158,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the leave allowance templates for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<NzLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
+        public List<NzLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<NzLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -170,7 +170,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the leave allowance templates for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<NzLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<NzLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

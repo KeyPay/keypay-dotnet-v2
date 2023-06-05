@@ -14,8 +14,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface ILeaveCategoriesFunction
     {
-        List<MyLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<MyLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<MyLeaveCategoryModel> ListLeaveCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<MyLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         MyLeaveCategoryModel CreateLeaveCategory(int businessId, MyLeaveCategoryModel leaveCategory);
         Task<MyLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, MyLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         MyLeaveCategoryModel GetLeaveCategoryById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<MyLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<MyLeaveCategoryModel> ListLeaveCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<MyLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<MyLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<MyLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<MyLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

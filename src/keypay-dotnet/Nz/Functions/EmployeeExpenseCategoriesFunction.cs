@@ -14,8 +14,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IEmployeeExpenseCategoriesFunction
     {
-        List<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         EmployeeExpenseCategoryModel CreateEmployeeExpenseCategory(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory);
         Task<EmployeeExpenseCategoryModel> CreateEmployeeExpenseCategoryAsync(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default);
         EmployeeExpenseCategoryModel GetEmployeeExpenseCategoryById(int businessId, int id);
@@ -38,7 +38,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the employee expense categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<EmployeeExpenseCategoryModel>>($"/business/{businessId}/employeeexpensecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -50,7 +50,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the employee expense categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<EmployeeExpenseCategoryModel>>($"/business/{businessId}/employeeexpensecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

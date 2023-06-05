@@ -14,8 +14,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface IPayCategoryFunction
     {
-        List<MyPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<MyPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<MyPayCategoryModel> ListPayCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<MyPayCategoryModel>> ListPayCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         MyPayCategoryModel CreatePayCategory(int businessId, MyPayCategoryModel payCategory);
         Task<MyPayCategoryModel> CreatePayCategoryAsync(int businessId, MyPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         MyPayCategoryModel GetPayCategoryById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all the pay categories for the business
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<MyPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<MyPayCategoryModel> ListPayCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<MyPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all the pay categories for the business
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<MyPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<MyPayCategoryModel>> ListPayCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<MyPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

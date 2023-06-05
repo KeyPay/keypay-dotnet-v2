@@ -14,8 +14,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILeaveCategoriesFunction
     {
-        List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzLeaveCategoryModel CreateLeaveCategory(int businessId, NzLeaveCategoryModel leaveCategory);
         Task<NzLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, NzLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         NzLeaveCategoryModel GetLeaveCategoryById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
+        public List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

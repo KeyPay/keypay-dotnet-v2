@@ -9,6 +9,7 @@ namespace KeyPayV2.Nz.Enums
         OpeningBalanceAllowances,
         ExtraPay,
         RedundancyPayRetirementAllowance,
+        AnnualHolidaysCashOut,
         HolidayPay,
         AccLevy,
         AverageEarnings,

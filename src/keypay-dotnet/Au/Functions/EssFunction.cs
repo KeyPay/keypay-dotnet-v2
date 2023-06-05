@@ -144,8 +144,8 @@ namespace KeyPayV2.Au.Functions
         Task<EmployeeSatisfactionValue> SubmitSatisfactionSurveyAsync(int employeeId, EssSatisfactionSurvey survey, CancellationToken cancellationToken = default);
         AuFeaturesModel GetEnabledFeatures(int employeeId);
         Task<AuFeaturesModel> GetEnabledFeaturesAsync(int employeeId, CancellationToken cancellationToken = default);
-        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int employeeId, ODataQuery oDataQuery = null);
-        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int employeeId, string query, ODataQuery oDataQuery = null);
+        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateEssSelfManagedSuperFund(int employeeId, SelfManagedSuperFundModel fund);
         Task CreateEssSelfManagedSuperFundAsync(int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
         SelfManagedSuperFundModel GetEssSelfManagedSuperFundById(int employeeId, int id);
@@ -1694,7 +1694,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the self managed super funds for the employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int employeeId, ODataQuery oDataQuery = null)
+        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int employeeId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SelfManagedSuperFundModel>>($"/ess/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -1706,7 +1706,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the self managed super funds for the employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SelfManagedSuperFundModel>>($"/ess/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

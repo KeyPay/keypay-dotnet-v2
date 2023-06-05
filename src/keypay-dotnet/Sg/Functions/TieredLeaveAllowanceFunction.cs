@@ -14,8 +14,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface ITieredLeaveAllowanceFunction
     {
-        List<TieredLeaveAllowanceTemplateApiModel> ListTieredLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
-        Task<List<TieredLeaveAllowanceTemplateApiModel>> ListTieredLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<TieredLeaveAllowanceTemplateApiModel> ListTieredLeaveAllowanceTemplates(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<TieredLeaveAllowanceTemplateApiModel>> ListTieredLeaveAllowanceTemplatesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         TieredLeaveAllowanceTemplateApiModel CreateTieredLeaveAllowanceTemplate(int businessId, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate);
         Task<TieredLeaveAllowanceTemplateApiModel> CreateTieredLeaveAllowanceTemplateAsync(int businessId, TieredLeaveAllowanceTemplateApiModel tieredLeaveAllowanceTemplate, CancellationToken cancellationToken = default);
         TieredLeaveAllowanceTemplateApiModel GetTieredLeaveAllowanceTemplateById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the Tiered Leave Allowance templates for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<TieredLeaveAllowanceTemplateApiModel> ListTieredLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
+        public List<TieredLeaveAllowanceTemplateApiModel> ListTieredLeaveAllowanceTemplates(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<TieredLeaveAllowanceTemplateApiModel>>($"/business/{businessId}/tieredleaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the Tiered Leave Allowance templates for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<TieredLeaveAllowanceTemplateApiModel>> ListTieredLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<TieredLeaveAllowanceTemplateApiModel>> ListTieredLeaveAllowanceTemplatesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TieredLeaveAllowanceTemplateApiModel>>($"/business/{businessId}/tieredleaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

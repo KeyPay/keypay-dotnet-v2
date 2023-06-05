@@ -14,8 +14,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IAbaSettingsFunction
     {
-        List<BusinessAbaModel> ListAbaSettings(int businessId, ODataQuery oDataQuery = null);
-        Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<BusinessAbaModel> ListAbaSettings(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails);
         Task CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default);
         BusinessAbaModel GetAbaSettingsRecordById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Au.Functions
         /// Retrieves all the ABA settings associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<BusinessAbaModel> ListAbaSettings(int businessId, ODataQuery oDataQuery = null)
+        public List<BusinessAbaModel> ListAbaSettings(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<BusinessAbaModel>>($"/business/{businessId}/aba{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Au.Functions
         /// Retrieves all the ABA settings associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<BusinessAbaModel>>($"/business/{businessId}/aba{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

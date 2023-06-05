@@ -14,10 +14,10 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ILocationFunction
     {
-        List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        List<AuLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
+        Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<AuLocationModel> ListBusinessLocations(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuLocationModel CreateLocation(int businessId, AuLocationModel location);
         Task<AuLocationModel> CreateLocationAsync(int businessId, AuLocationModel location, CancellationToken cancellationToken = default);
         AuSingleLocationModel GetLocationById(int businessId, int id);
@@ -38,7 +38,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the locations for an employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        public List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<AuLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -50,7 +50,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the locations for an employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<AuLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -62,7 +62,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the locations for a business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<AuLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null)
+        public List<AuLocationModel> ListBusinessLocations(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<AuLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -74,7 +74,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the locations for a business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<AuLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

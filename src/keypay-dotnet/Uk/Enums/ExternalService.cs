@@ -79,6 +79,7 @@ namespace KeyPayV2.Uk.Enums
         Akahu,
         InstaPay,
         Zepto,
-        Slack
+        Slack,
+        Caxton
     }
 }

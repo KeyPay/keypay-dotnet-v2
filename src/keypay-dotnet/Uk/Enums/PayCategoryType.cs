@@ -23,6 +23,7 @@ namespace KeyPayV2.Uk.Enums
         RedundancyPayRetirementAllowance,
         GenuineRedundancyLeaveLoading,
         KeepingInTouchDay,
+        AnnualHolidaysCashOut,
         HolidayPay,
         AccLevy,
         AverageEarnings,

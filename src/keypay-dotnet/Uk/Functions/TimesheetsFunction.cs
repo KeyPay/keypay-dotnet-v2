@@ -14,8 +14,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface ITimesheetsFunction
     {
-        List<UkTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkTimesheetLineModel> GetBusinessTimesheets(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<UkTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkIndividualTimesheetLineModel CreateTimesheetLine(int businessId, UkIndividualTimesheetLineModel request);
         Task<UkIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         UkIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request);
@@ -38,7 +38,7 @@ namespace KeyPayV2.Uk.Functions
         /// Retrieves all timesheets for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
+        public List<UkTimesheetLineModel> GetBusinessTimesheets(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -50,7 +50,7 @@ namespace KeyPayV2.Uk.Functions
         /// Retrieves all timesheets for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

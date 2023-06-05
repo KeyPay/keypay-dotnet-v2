@@ -14,8 +14,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ISuperFundFunction
     {
-        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, ODataQuery oDataQuery = null);
-        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateSelfManagedSuperFund(int businessId, SelfManagedSuperFundModel fund);
         Task CreateSelfManagedSuperFundAsync(int businessId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
         SelfManagedSuperFundModel GetSelfManagedSuperFundById(int businessId, int id);
@@ -38,7 +38,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the self managed super funds for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, ODataQuery oDataQuery = null)
+        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SelfManagedSuperFundModel>>($"/business/{businessId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -50,7 +50,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the self managed super funds for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SelfManagedSuperFundModel>>($"/business/{businessId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

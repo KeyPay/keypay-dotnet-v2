@@ -14,12 +14,12 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IReportingDimensionsFunction
     {
-        List<ReportingDimensionApiModel> ListDimensions(int businessId, ODataQuery oDataQuery = null);
-        Task<List<ReportingDimensionApiModel>> ListDimensionsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<ReportingDimensionApiModel> ListDimensions(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<ReportingDimensionApiModel>> ListDimensionsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         ReportingDimensionApiModel CreateDimension(int businessId, ReportingDimensionApiModel dimension);
         Task<ReportingDimensionApiModel> CreateDimensionAsync(int businessId, ReportingDimensionApiModel dimension, CancellationToken cancellationToken = default);
-        List<ReportingDimensionValueApiModel> ListDimensionValues(int businessId, int dimensionId, ODataQuery oDataQuery = null);
-        Task<List<ReportingDimensionValueApiModel>> ListDimensionValuesAsync(int businessId, int dimensionId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<ReportingDimensionValueApiModel> ListDimensionValues(int businessId, int dimensionId, string query, ODataQuery oDataQuery = null);
+        Task<List<ReportingDimensionValueApiModel>> ListDimensionValuesAsync(int businessId, int dimensionId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         ReportingDimensionValueApiModel CreateDimensionValue(int businessId, int dimensionId, ReportingDimensionValueApiModel dimensionValue);
         Task<ReportingDimensionValueApiModel> CreateDimensionValueAsync(int businessId, int dimensionId, ReportingDimensionValueApiModel dimensionValue, CancellationToken cancellationToken = default);
         ReportingDimensionValueApiModel GetDimensionValueById(int businessId, int id, int dimensionId);
@@ -46,7 +46,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the dimensions defined for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<ReportingDimensionApiModel> ListDimensions(int businessId, ODataQuery oDataQuery = null)
+        public List<ReportingDimensionApiModel> ListDimensions(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<ReportingDimensionApiModel>>($"/business/{businessId}/dimension{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -58,7 +58,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the dimensions defined for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<ReportingDimensionApiModel>> ListDimensionsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<ReportingDimensionApiModel>> ListDimensionsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<ReportingDimensionApiModel>>($"/business/{businessId}/dimension{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -92,7 +92,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the values defined for the specified dimension.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<ReportingDimensionValueApiModel> ListDimensionValues(int businessId, int dimensionId, ODataQuery oDataQuery = null)
+        public List<ReportingDimensionValueApiModel> ListDimensionValues(int businessId, int dimensionId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<ReportingDimensionValueApiModel>>($"/business/{businessId}/dimension/{dimensionId}/value{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -104,7 +104,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the values defined for the specified dimension.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<ReportingDimensionValueApiModel>> ListDimensionValuesAsync(int businessId, int dimensionId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<ReportingDimensionValueApiModel>> ListDimensionValuesAsync(int businessId, int dimensionId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<ReportingDimensionValueApiModel>>($"/business/{businessId}/dimension/{dimensionId}/value{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

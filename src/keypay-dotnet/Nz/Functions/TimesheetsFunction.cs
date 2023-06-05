@@ -14,8 +14,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ITimesheetsFunction
     {
-        List<NzTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
-        Task<List<NzTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzTimesheetLineModel> GetBusinessTimesheets(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<NzTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzIndividualTimesheetLineModel CreateTimesheetLine(int businessId, NzIndividualTimesheetLineModel request);
         Task<NzIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         NzIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request);
@@ -38,7 +38,7 @@ namespace KeyPayV2.Nz.Functions
         /// Retrieves all timesheets for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<NzTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
+        public List<NzTimesheetLineModel> GetBusinessTimesheets(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<NzTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -50,7 +50,7 @@ namespace KeyPayV2.Nz.Functions
         /// Retrieves all timesheets for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<NzTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<NzTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

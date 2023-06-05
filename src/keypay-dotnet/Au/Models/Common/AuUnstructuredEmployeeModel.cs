@@ -77,6 +77,7 @@ namespace KeyPayV2.Au.Models.Common
         public bool? ClaimMedicareLevyReduction { get; set; }
         public bool? MedicareLevyReductionSpouse { get; set; }
         public int? MedicareLevyReductionDependentCount { get; set; }
+        public string DvlPaySlipDescription { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

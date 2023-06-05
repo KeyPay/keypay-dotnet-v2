@@ -82,8 +82,8 @@ namespace KeyPayV2.Uk.Functions
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int businessId, int employeeId);
         Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
+        Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void InitiateEmployeeSelfSetup(int businessId, InitiateEmployeeOnboardingApiModel model);
         Task InitiateEmployeeSelfSetupAsync(int businessId, InitiateEmployeeOnboardingApiModel model, CancellationToken cancellationToken = default);
         List<EmployeeDetailsModel> GetListOfEmployees(int businessId);
@@ -144,8 +144,8 @@ namespace KeyPayV2.Uk.Functions
         Task<KioskEmployeeModel> StartBreakAsync(int businessId, int kioskId, StartBreakModel request, CancellationToken cancellationToken = default);
         List<UkTimeAndAttendanceShiftModel> Shifts(int businessId, GetShiftsModel model);
         Task<List<UkTimeAndAttendanceShiftModel>> ShiftsAsync(int businessId, GetShiftsModel model, CancellationToken cancellationToken = default);
-        List<TimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
-        Task<List<TimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<TimesheetLineModel> GetBusinessTimesheets(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<TimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateKioskTimesheetLine(int businessId, IndividualTimesheetLineModel request);
         Task CreateKioskTimesheetLineAsync(int businessId, IndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         void UpdateKioskTimesheetLine(int businessId, int timesheetLineId, IndividualTimesheetLineModel request);
@@ -164,8 +164,8 @@ namespace KeyPayV2.Uk.Functions
         Task<List<LocationModel>> ListLeaveLocationsAsync(int businessId, CancellationToken cancellationToken = default);
         List<ManagerLeaveRequestModel> OverlappingLeaveRequests(int businessId, OverlappingLeaveRequestsQueryModel request);
         Task<List<ManagerLeaveRequestModel>> OverlappingLeaveRequestsAsync(int businessId, OverlappingLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
-        List<LocationModel> ListEmployeeLocations(int businessId, ODataQuery oDataQuery = null);
-        Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<LocationModel> ListEmployeeLocations(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<LocationModel> GetListOfLocations(int businessId);
         Task<List<LocationModel>> GetListOfLocationsAsync(int businessId, CancellationToken cancellationToken = default);
         List<UkRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId);
@@ -982,7 +982,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for an employee that are available to the manager.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        public List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<LocationModel>>($"/business/{businessId}/manager/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -994,7 +994,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for an employee that are available to the manager.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<LocationModel>>($"/business/{businessId}/manager/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -1678,7 +1678,7 @@ namespace KeyPayV2.Uk.Functions
         /// Retrieves all timesheets that the manager has access to for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<TimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
+        public List<TimesheetLineModel> GetBusinessTimesheets(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<TimesheetLineModel>>($"/business/{businessId}/manager/kiosk/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -1690,7 +1690,7 @@ namespace KeyPayV2.Uk.Functions
         /// Retrieves all timesheets that the manager has access to for the specified business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<TimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<TimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TimesheetLineModel>>($"/business/{businessId}/manager/kiosk/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -1904,7 +1904,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for an employee that are available to the manager.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<LocationModel> ListEmployeeLocations(int businessId, ODataQuery oDataQuery = null)
+        public List<LocationModel> ListEmployeeLocations(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<LocationModel>>($"/business/{businessId}/manager/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -1916,7 +1916,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for an employee that are available to the manager.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<LocationModel>>($"/business/{businessId}/manager/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

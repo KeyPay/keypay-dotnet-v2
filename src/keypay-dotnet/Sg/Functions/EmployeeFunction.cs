@@ -48,16 +48,16 @@ namespace KeyPayV2.Sg.Functions
         Task<List<SgWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void ActivateEmployee(int businessId, int employeeId);
         Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
-        Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, string query, ODataQuery oDataQuery = null);
+        Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void GrantKioskAccess(int businessId, int employeeId);
         Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void RevokeKioskAccess(int businessId, int employeeId);
         Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
-        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
-        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, string options, ODataQuery oDataQuery = null);
+        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, string options, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, string options, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
+        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, string options, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model);
         Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
         EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request);
@@ -461,7 +461,7 @@ namespace KeyPayV2.Sg.Functions
         /// This data can be filtered much more efficiently though so if you only need the basic employee details, this endpoint is preferred.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null)
+        public List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, string query, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<EmployeeDetailsModel>>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -474,7 +474,7 @@ namespace KeyPayV2.Sg.Functions
         /// This data can be filtered much more efficiently though so if you only need the basic employee details, this endpoint is preferred.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<EmployeeDetailsModel>>($"/business/{businessId}/employee/details{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -533,7 +533,7 @@ namespace KeyPayV2.Sg.Functions
         /// </p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null)
+        public List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, string options, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -548,7 +548,7 @@ namespace KeyPayV2.Sg.Functions
         /// </p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, string options, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -563,7 +563,7 @@ namespace KeyPayV2.Sg.Functions
         /// </p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
+        public List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, string options, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
         }
@@ -578,7 +578,7 @@ namespace KeyPayV2.Sg.Functions
         /// </p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, string options, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
