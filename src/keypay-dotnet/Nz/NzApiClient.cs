@@ -34,8 +34,8 @@ namespace KeyPayV2.Nz
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         IEmployingEntitiesFunction EmployingEntities { get; }
-        ITimeAndAttendanceFunction TimeAndAttendance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
+        ITimeAndAttendanceFunction TimeAndAttendance { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayCategoryFunction PayCategory { get; }
@@ -87,8 +87,8 @@ namespace KeyPayV2.Nz
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
-            TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
+            TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
@@ -137,8 +137,8 @@ namespace KeyPayV2.Nz
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public IEmployingEntitiesFunction EmployingEntities { get; }
-        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayCategoryFunction PayCategory { get; }
