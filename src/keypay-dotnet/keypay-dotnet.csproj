@@ -4,19 +4,18 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>KeyPayV2</RootNamespace>
 		<AssemblyName>KeyPayV2</AssemblyName>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.2.575</AssemblyVersion>
-    <FileVersion>2.0.2.575</FileVersion>
+	    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>2.0.3.22</AssemblyVersion>
+    <FileVersion>2.0.3.22</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/keypay/keypay-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/keypay/keypay-dotnet-v2</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
-    <RepositoryUrl>https://github.com/keypay/keypay-dotnet</RepositoryUrl>
+    <RepositoryUrl>https://github.com/keypay/keypay-dotnet-v2</RepositoryUrl>
     <PackageTags>keypay yourpayroll api payroll</PackageTags>
-    <PackageReleaseNotes>Provides proper support for multiple regions.
-This release: Update CodeGenerator.cs</PackageReleaseNotes>
-    <Copyright>Copyright 2022</Copyright>
+    <PackageReleaseNotes>KeyPay API dotnet client v2</PackageReleaseNotes>
+    <Copyright>Copyright 2023</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.0.2.575</Version>
+    <Version>2.0.3.22</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>
