@@ -143,6 +143,8 @@ namespace KeyPayV2.Sg.Functions
         Task DeleteVoluntaryCpfContributionAsync(int businessId, int payRunId, DeleteVoluntaryCpfContributionQueryModel request, CancellationToken cancellationToken = default);
         PayRunCpfAdjustmentResponse GetVoluntaryCpfContributionsByEmployeeId(int businessId, int employeeId, int payRunId);
         Task<PayRunCpfAdjustmentResponse> GetVoluntaryCpfContributionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        List<DetailedPayRunWarningModel> ListPayRunWarnings(int businessId, int payRunId);
+        Task<List<DetailedPayRunWarningModel>> ListPayRunWarningsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         PayRunJobModel CreatePayRunAsync(int businessId, PayRunCreateRequest request);
         Task<PayRunJobModel> CreatePayRunAsynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
         PayRunJobStatusModel GetCreationStatus(int businessId, Guid jobId);
@@ -1562,6 +1564,28 @@ namespace KeyPayV2.Sg.Functions
         public Task<PayRunCpfAdjustmentResponse> GetVoluntaryCpfContributionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PayRunCpfAdjustmentResponse>($"/business/{businessId}/payrun/{payRunId}/voluntarycpf/{employeeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Pay Run Warnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the warnings in a pay run.
+        /// </remarks>
+        public List<DetailedPayRunWarningModel> ListPayRunWarnings(int businessId, int payRunId)
+        {
+            return ApiRequest<List<DetailedPayRunWarningModel>>($"/business/{businessId}/payrun/{payRunId}/warnings", Method.Get);
+        }
+
+        /// <summary>
+        /// List Pay Run Warnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the warnings in a pay run.
+        /// </remarks>
+        public Task<List<DetailedPayRunWarningModel>> ListPayRunWarningsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<DetailedPayRunWarningModel>>($"/business/{businessId}/payrun/{payRunId}/warnings", Method.Get, cancellationToken);
         }
 
         /// <summary>

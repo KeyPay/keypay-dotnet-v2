@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Au.Models.Common;
-using KeyPayV2.Au.Enums;
+using KeyPayV2.My.Models.Common;
+using KeyPayV2.My.Enums;
 
-namespace KeyPayV2.Au.Models.Common
+namespace KeyPayV2.My.Models.Ess
 {
     public class AvailableEmployeeModel
     {

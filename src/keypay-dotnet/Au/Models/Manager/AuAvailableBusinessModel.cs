@@ -1,17 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Sg.Models.Common;
-using KeyPayV2.Sg.Models.Manager;
+using KeyPayV2.Au.Models.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.Sg.Enums;
+using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Sg.Models.Common
+namespace KeyPayV2.Au.Models.Manager
 {
-    public class SgAvailableBusinessModel
+    public class AuAvailableBusinessModel
     {
-        public string BusinessNumber { get; set; }
+        public string ManagementSoftwareId { get; set; }
+        public string SbrSoftwareProvider { get; set; }
+        public string SbrSoftwareId { get; set; }
+        public IList<AuTimeAndAttendanceKioskModel> Kiosks { get; set; }
+        public string Abn { get; set; }
         public WhiteLabelBrandingModel Branding { get; set; }
         public DateTime TimesheetEntryPeriodEnd { get; set; }
         public bool IsPayrollAdmin { get; set; }

@@ -21,16 +21,6 @@ namespace KeyPayV2.Uk.Functions
         Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default);
         NewUserCreatedModel CreateNewUser(NewUserModel model);
         Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default);
-        RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser();
-        Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(CancellationToken cancellationToken = default);
-        RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser(ListRelatedBusinessesForTheProvidedUserQueryModel request);
-        Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(ListRelatedBusinessesForTheProvidedUserQueryModel request, CancellationToken cancellationToken = default);
-        UkUserAccountMetadata ListRelatedBusinessesAndEmployees();
-        Task<UkUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default);
-        UkUserAccountPartnerMetadata ListRelatedPartners();
-        Task<UkUserAccountPartnerMetadata> ListRelatedPartnersAsync(CancellationToken cancellationToken = default);
-        UkUserAccountPartnerMetadata ListRelatedPartners(ListRelatedPartnersQueryModel request);
-        Task<UkUserAccountPartnerMetadata> ListRelatedPartnersAsync(ListRelatedPartnersQueryModel request, CancellationToken cancellationToken = default);
     }
     public class UserFunction : BaseFunction, IUserFunction
     {
@@ -108,116 +98,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Related Businesses for the provided user.
-        /// </summary>
-        /// <remarks>
-        /// List Related Businesses for the provided user. This is an Admin only function
-        /// </remarks>
-        public RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser()
-        {
-            return ApiRequest<RelatedBusinessesModel>($"/user/account/businesses", Method.Get);
-        }
-
-        /// <summary>
-        /// List Related Businesses for the provided user.
-        /// </summary>
-        /// <remarks>
-        /// List Related Businesses for the provided user. This is an Admin only function
-        /// </remarks>
-        public Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<RelatedBusinessesModel>($"/user/account/businesses", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Related Businesses for the provided user.
-        /// </summary>
-        /// <remarks>
-        /// List Related Businesses for the provided user. This is an Admin only function
-        /// </remarks>
-        public RelatedBusinessesModel ListRelatedBusinessesForTheProvidedUser(ListRelatedBusinessesForTheProvidedUserQueryModel request)
-        {
-            return ApiRequest<RelatedBusinessesModel>($"/user/account/businesses?username={request.Username}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Related Businesses for the provided user.
-        /// </summary>
-        /// <remarks>
-        /// List Related Businesses for the provided user. This is an Admin only function
-        /// </remarks>
-        public Task<RelatedBusinessesModel> ListRelatedBusinessesForTheProvidedUserAsync(ListRelatedBusinessesForTheProvidedUserQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<RelatedBusinessesModel>($"/user/account/businesses?username={request.Username}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Related Businesses And Employees
-        /// </summary>
-        /// <remarks>
-        /// List account information with businesses and employees linked to user.
-        /// </remarks>
-        public UkUserAccountMetadata ListRelatedBusinessesAndEmployees()
-        {
-            return ApiRequest<UkUserAccountMetadata>($"/user/account/metadata", Method.Get);
-        }
-
-        /// <summary>
-        /// List Related Businesses And Employees
-        /// </summary>
-        /// <remarks>
-        /// List account information with businesses and employees linked to user.
-        /// </remarks>
-        public Task<UkUserAccountMetadata> ListRelatedBusinessesAndEmployeesAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUserAccountMetadata>($"/user/account/metadata", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Related Partners
-        /// </summary>
-        /// <remarks>
-        /// List related partner IDs that are associated to the businesses and employees linked to user.
-        /// </remarks>
-        public UkUserAccountPartnerMetadata ListRelatedPartners()
-        {
-            return ApiRequest<UkUserAccountPartnerMetadata>($"/user/account/partner/metadata", Method.Get);
-        }
-
-        /// <summary>
-        /// List Related Partners
-        /// </summary>
-        /// <remarks>
-        /// List related partner IDs that are associated to the businesses and employees linked to user.
-        /// </remarks>
-        public Task<UkUserAccountPartnerMetadata> ListRelatedPartnersAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUserAccountPartnerMetadata>($"/user/account/partner/metadata", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Related Partners
-        /// </summary>
-        /// <remarks>
-        /// List related partner IDs that are associated to the businesses and employees linked to user.
-        /// </remarks>
-        public UkUserAccountPartnerMetadata ListRelatedPartners(ListRelatedPartnersQueryModel request)
-        {
-            return ApiRequest<UkUserAccountPartnerMetadata>($"/user/account/partner/metadata?username={request.Username}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Related Partners
-        /// </summary>
-        /// <remarks>
-        /// List related partner IDs that are associated to the businesses and employees linked to user.
-        /// </remarks>
-        public Task<UkUserAccountPartnerMetadata> ListRelatedPartnersAsync(ListRelatedPartnersQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUserAccountPartnerMetadata>($"/user/account/partner/metadata?username={request.Username}", Method.Get, cancellationToken);
         }
     }
 }

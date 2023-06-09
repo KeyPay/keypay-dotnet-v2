@@ -135,6 +135,8 @@ namespace KeyPayV2.Au.Functions
         Task<AuPayRunTotalResponse> GetPayRunTotalsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         void UnlockPayRun(int businessId, int payRunId, PayRunUnlockRequest request);
         Task UnlockPayRunAsync(int businessId, int payRunId, PayRunUnlockRequest request, CancellationToken cancellationToken = default);
+        List<DetailedPayRunWarningModel> ListPayRunWarnings(int businessId, int payRunId);
+        Task<List<DetailedPayRunWarningModel>> ListPayRunWarningsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         PayRunJobModel CreatePayRunAsync(int businessId, PayRunCreateRequest request);
         Task<PayRunJobModel> CreatePayRunAsynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
         PayRunJobStatusModel GetCreationStatus(int businessId, Guid jobId);
@@ -1466,6 +1468,28 @@ namespace KeyPayV2.Au.Functions
         public Task UnlockPayRunAsync(int businessId, int payRunId, PayRunUnlockRequest request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/unlock", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Pay Run Warnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the warnings in a pay run.
+        /// </remarks>
+        public List<DetailedPayRunWarningModel> ListPayRunWarnings(int businessId, int payRunId)
+        {
+            return ApiRequest<List<DetailedPayRunWarningModel>>($"/business/{businessId}/payrun/{payRunId}/warnings", Method.Get);
+        }
+
+        /// <summary>
+        /// List Pay Run Warnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the warnings in a pay run.
+        /// </remarks>
+        public Task<List<DetailedPayRunWarningModel>> ListPayRunWarningsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<DetailedPayRunWarningModel>>($"/business/{businessId}/payrun/{payRunId}/warnings", Method.Get, cancellationToken);
         }
 
         /// <summary>
