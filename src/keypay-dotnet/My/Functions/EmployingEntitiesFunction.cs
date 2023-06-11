@@ -15,8 +15,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface IEmployingEntitiesFunction
     {
-        List<MyEmployingEntityModel> ListEmployingEntities(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<MyEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<MyEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null);
+        Task<List<MyEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         MyEmployingEntityModel CreateEmployingEntity(int businessId, MyEmployingEntityModel employingEntity);
         Task<MyEmployingEntityModel> CreateEmployingEntityAsync(int businessId, MyEmployingEntityModel employingEntity, CancellationToken cancellationToken = default);
         MyEmployingEntityModel GetEmployingEntityById(int businessId, int id);
@@ -37,7 +37,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all the employing entities for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<MyEmployingEntityModel> ListEmployingEntities(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<MyEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<MyEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -49,7 +49,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all the employing entities for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<MyEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<MyEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<MyEmployingEntityModel>>($"/business/{businessId}/employingentity{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

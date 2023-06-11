@@ -15,10 +15,10 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface ILocationFunction
     {
-        List<SgLocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
-        Task<List<SgLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        List<SgLocationModel> ListBusinessLocations(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<SgLocationModel>> ListBusinessLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<SgLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateLocation(int businessId, SgLocationModel location);
         Task CreateLocationAsync(int businessId, SgLocationModel location, CancellationToken cancellationToken = default);
         SgSingleLocationModel GetLocationById(int businessId, int id);
@@ -39,7 +39,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the locations for an employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgLocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
+        public List<SgLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -51,7 +51,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the locations for an employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -63,7 +63,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the locations for a business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgLocationModel> ListBusinessLocations(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<SgLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -75,7 +75,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the locations for a business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgLocationModel>> ListBusinessLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

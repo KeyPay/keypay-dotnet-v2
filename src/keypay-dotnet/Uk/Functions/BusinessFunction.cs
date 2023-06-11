@@ -15,8 +15,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IBusinessFunction
     {
-        List<UkBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null);
-        Task<List<UkBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<UkBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkBusinessExportModel UpdateBusinessDetails(UkEditBusinessDetailsApiModel model);
         Task<UkBusinessExportModel> UpdateBusinessDetailsAsync(UkEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default);
         UkBusinessExportModel CreateNewBusiness(UkBusinessExportModel model);
@@ -65,8 +65,8 @@ namespace KeyPayV2.Uk.Functions
         Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default);
         DocumentFile GetBusinessDocumentContent(int businessId, int id);
         Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        List<UkLocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
-        Task<List<UkLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<UkLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         EmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
         Task<EmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         EmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, EmployeePortalSettingsModel model);
@@ -87,8 +87,8 @@ namespace KeyPayV2.Uk.Functions
         Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
-        List<UkLocationModel> ListBusinessLocations(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<UkLocationModel>> ListBusinessLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<UkLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
+        Task<List<UkLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkLocationModel CreateLocation(int businessId, UkLocationModel location);
         Task<UkLocationModel> CreateLocationAsync(int businessId, UkLocationModel location, CancellationToken cancellationToken = default);
         UkSingleLocationModel GetLocationById(int businessId, int id);
@@ -133,7 +133,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null)
+        public List<UkBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -145,7 +145,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -683,7 +683,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for an employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkLocationModel> ListEmployeeLocations(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
+        public List<UkLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -695,7 +695,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for an employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -927,7 +927,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for a business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UkLocationModel> ListBusinessLocations(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<UkLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<UkLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -939,7 +939,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the locations for a business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UkLocationModel>> ListBusinessLocationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkLocationModel>>($"/business/{businessId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

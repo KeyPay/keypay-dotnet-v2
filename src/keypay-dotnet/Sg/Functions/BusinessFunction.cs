@@ -15,8 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IBusinessFunction
     {
-        List<SgBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null);
-        Task<List<SgBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model);
         Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default);
         SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request);
@@ -61,8 +61,8 @@ namespace KeyPayV2.Sg.Functions
         Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
-        List<SgGiroBankModel> ListPaymentFiles(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgGiroBankModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateNewPaymentFileRecord(int businessId, SgGiroBankModel model);
         Task CreateNewPaymentFileRecordAsync(int businessId, SgGiroBankModel model, CancellationToken cancellationToken = default);
         SgGiroBankModel GetPaymentFileById(int businessId, int id);
@@ -99,7 +99,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null)
+        public List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -111,7 +111,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -605,7 +605,7 @@ namespace KeyPayV2.Sg.Functions
         /// Retrieves all the payment files associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgGiroBankModel> ListPaymentFiles(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<SgGiroBankModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgGiroBankModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -617,7 +617,7 @@ namespace KeyPayV2.Sg.Functions
         /// Retrieves all the payment files associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgGiroBankModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

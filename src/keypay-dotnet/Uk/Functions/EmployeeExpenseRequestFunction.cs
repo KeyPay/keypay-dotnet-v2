@@ -15,8 +15,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IEmployeeExpenseRequestFunction
     {
-        List<ExpenseRequestResponseModel> ListExpenseRequests(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
-        Task<List<ExpenseRequestResponseModel>> ListExpenseRequestsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<ExpenseRequestResponseModel> ListExpenseRequests(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<ExpenseRequestResponseModel>> ListExpenseRequestsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateExpenseRequest(int businessId, int employeeId, ExpenseRequestEditModel model);
         Task CreateExpenseRequestAsync(int businessId, int employeeId, ExpenseRequestEditModel model, CancellationToken cancellationToken = default);
         ExpenseRequestResponseModel GetExpenseRequestById(int businessId, int employeeId, int expenseRequestId);
@@ -43,7 +43,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all of the expense requests for this employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<ExpenseRequestResponseModel> ListExpenseRequests(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
+        public List<ExpenseRequestResponseModel> ListExpenseRequests(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<ExpenseRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/expenserequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -55,7 +55,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all of the expense requests for this employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<ExpenseRequestResponseModel>> ListExpenseRequestsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<ExpenseRequestResponseModel>> ListExpenseRequestsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<ExpenseRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/expenserequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

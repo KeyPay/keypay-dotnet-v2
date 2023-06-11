@@ -14,8 +14,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface IQualificationsFunction
     {
-        List<QualificationModel> ListQualifications(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<QualificationModel>> ListQualificationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<QualificationModel> ListQualifications(int businessId, ODataQuery oDataQuery = null);
+        Task<List<QualificationModel>> ListQualificationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateQualification(int businessId, QualificationModel qualification);
         Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default);
         QualificationModel GetQualificationById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all of the qualifications for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<QualificationModel> ListQualifications(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<QualificationModel> ListQualifications(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<QualificationModel>>($"/business/{businessId}/qualification{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all of the qualifications for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<QualificationModel>> ListQualificationsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<QualificationModel>> ListQualificationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<QualificationModel>>($"/business/{businessId}/qualification{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

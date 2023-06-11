@@ -15,8 +15,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IPayScheduleFunction
     {
-        List<AuPayScheduleModel> ListPaySchedules(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<AuPayScheduleModel>> ListPaySchedulesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<AuPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuPayScheduleModel CreatePaySchedule(int businessId, AuPayScheduleModel paySchedule);
         Task<AuPayScheduleModel> CreatePayScheduleAsync(int businessId, AuPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
         AuPayScheduleModel GetPayScheduleById(int businessId, int id);
@@ -43,7 +43,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the pay schedules for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<AuPayScheduleModel> ListPaySchedules(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<AuPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<AuPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -55,7 +55,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the pay schedules for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<AuPayScheduleModel>> ListPaySchedulesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<AuPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<AuPayScheduleModel>>($"/business/{businessId}/payschedule{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

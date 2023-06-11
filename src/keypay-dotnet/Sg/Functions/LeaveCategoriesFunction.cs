@@ -15,8 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface ILeaveCategoriesFunction
     {
-        List<SgLeaveCategoryModel> ListLeaveCategories(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<SgLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         SgLeaveCategoryModel CreateLeaveCategory(int businessId, SgLeaveCategoryModel leaveCategory);
         Task<SgLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, SgLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         SgLeaveCategoryModel GetLeaveCategoryById(int businessId, int id);
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SgLeaveCategoryModel> ListLeaveCategories(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<SgLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SgLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -49,7 +49,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all of the leave categories for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SgLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

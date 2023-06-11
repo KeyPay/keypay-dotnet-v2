@@ -15,8 +15,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IPaymentSummaryFunction
     {
-        List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, string query, ODataQuery oDataQuery = null);
-        Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, ODataQuery oDataQuery = null);
+        Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding);
         Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
         PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request);
@@ -41,7 +41,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the payment summaries for the specified financial year.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, string query, ODataQuery oDataQuery = null)
+        public List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -53,7 +53,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the payment summaries for the specified financial year.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

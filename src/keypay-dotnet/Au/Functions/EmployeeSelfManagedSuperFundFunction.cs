@@ -14,8 +14,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeSelfManagedSuperFundFunction
     {
-        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
-        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateEmployeeSelfManagedSuperFund(int businessId, int employeeId, SelfManagedSuperFundModel fund);
         Task CreateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
         SelfManagedSuperFundModel GetEmployeeSelfManagedSuperFundById(int businessId, int employeeId, int id);
@@ -34,7 +34,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the self managed super funds for the employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
+        public List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<SelfManagedSuperFundModel>>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -46,7 +46,7 @@ namespace KeyPayV2.Au.Functions
         /// Lists all the self managed super funds for the employee.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SelfManagedSuperFundModel>>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

@@ -21,8 +21,8 @@ namespace KeyPayV2.Au.Functions
         Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
         SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model);
         Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
-        void OauthToken(HttpRequestMessage request);
-        Task OauthTokenAsync(HttpRequestMessage request, CancellationToken cancellationToken = default);
+        void OauthToken();
+        Task OauthTokenAsync(CancellationToken cancellationToken = default);
     }
     public class AuthenticationFunction : BaseFunction, IAuthenticationFunction
     {
@@ -100,7 +100,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// See the guide on <a href="http://api.keypay.com.au/guides/OAuth2">OAuth2 authentication</a> for more details.
         /// </remarks>
-        public void OauthToken(HttpRequestMessage request)
+        public void OauthToken()
         {
             ApiRequest($"/oauth/token", Method.Post);
         }
@@ -111,7 +111,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// See the guide on <a href="http://api.keypay.com.au/guides/OAuth2">OAuth2 authentication</a> for more details.
         /// </remarks>
-        public Task OauthTokenAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
+        public Task OauthTokenAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/oauth/token", Method.Post, cancellationToken);
         }

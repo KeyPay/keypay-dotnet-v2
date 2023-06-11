@@ -15,8 +15,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface IBusinessFunction
     {
-        List<MyBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null);
-        Task<List<MyBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<MyBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<MyBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model);
         Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CancellationToken cancellationToken = default);
         MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model, CreateNewBusinessQueryModel request);
@@ -61,8 +61,8 @@ namespace KeyPayV2.My.Functions
         Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
-        List<MyBankDetailsModel> ListPaymentFiles(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
+        Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateNewPaymentFileRecord(int businessId, MyBankDetailsModel model);
         Task CreateNewPaymentFileRecordAsync(int businessId, MyBankDetailsModel model, CancellationToken cancellationToken = default);
         MyBankDetailsModel GetPaymentFileById(int businessId, int id);
@@ -103,7 +103,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<MyBusinessExportModel> ListBusinesses(string query, ODataQuery oDataQuery = null)
+        public List<MyBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<MyBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -115,7 +115,7 @@ namespace KeyPayV2.My.Functions
         /// Lists all the businesses associated with the current user.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<MyBusinessExportModel>> ListBusinessesAsync(string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<MyBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<MyBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -609,7 +609,7 @@ namespace KeyPayV2.My.Functions
         /// Retrieves all the payment files associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<MyBankDetailsModel> ListPaymentFiles(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<MyBankDetailsModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -621,7 +621,7 @@ namespace KeyPayV2.My.Functions
         /// Retrieves all the payment files associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<MyBankDetailsModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

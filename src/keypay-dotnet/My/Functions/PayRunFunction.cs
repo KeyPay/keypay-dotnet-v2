@@ -19,8 +19,8 @@ namespace KeyPayV2.My.Functions
         Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<MyJournalItemResponse> GetJournalDetails(int businessId, int payRunId);
         Task<List<MyJournalItemResponse>> GetJournalDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
-        List<PayRunModel> ListPayRuns(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<PayRunModel>> ListPayRunsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<PayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null);
+        Task<List<PayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         PayRunModel CreatePayRun(int businessId, PayRunCreateRequest request);
         Task<PayRunModel> CreatePayRunSynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
         PayRunModel GetPayRun(int businessId, int payRunId);
@@ -123,8 +123,8 @@ namespace KeyPayV2.My.Functions
         Task<PayRunJobModel> CreatePayRunAsynchronouslyAsync(int businessId, PayRunCreateRequest request, CancellationToken cancellationToken = default);
         PayRunJobStatusModel GetCreationStatus(int businessId, Guid jobId);
         Task<PayRunJobStatusModel> GetCreationStatusAsync(int businessId, Guid jobId, CancellationToken cancellationToken = default);
-        List<PayRunSummaryModel> ListPayRunsSummaries(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<PayRunSummaryModel>> ListPayRunsSummariesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<PayRunSummaryModel> ListPayRunsSummaries(int businessId, ODataQuery oDataQuery = null);
+        Task<List<PayRunSummaryModel>> ListPayRunsSummariesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
     }
     public class PayRunFunction : BaseFunction, IPayRunFunction
     {
@@ -181,7 +181,7 @@ namespace KeyPayV2.My.Functions
         /// Get a list of pay runs associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayRunModel> ListPayRuns(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<PayRunModel> ListPayRuns(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<PayRunModel>>($"/business/{businessId}/payrun{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -193,7 +193,7 @@ namespace KeyPayV2.My.Functions
         /// Get a list of pay runs associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<PayRunModel>> ListPayRunsAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<PayRunModel>> ListPayRunsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<PayRunModel>>($"/business/{businessId}/payrun{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
@@ -1327,7 +1327,7 @@ namespace KeyPayV2.My.Functions
         /// Get a list of pay run summaries associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayRunSummaryModel> ListPayRunsSummaries(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<PayRunSummaryModel> ListPayRunsSummaries(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<PayRunSummaryModel>>($"/business/{businessId}/payrun/summary{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -1339,7 +1339,7 @@ namespace KeyPayV2.My.Functions
         /// Get a list of pay run summaries associated with the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<PayRunSummaryModel>> ListPayRunsSummariesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<PayRunSummaryModel>> ListPayRunsSummariesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<PayRunSummaryModel>>($"/business/{businessId}/payrun/summary{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

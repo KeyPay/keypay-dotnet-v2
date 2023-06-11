@@ -14,8 +14,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IWorkTypeFunction
     {
-        List<NzWorkTypeModel> ListWorkTypes(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<NzWorkTypeModel>> ListWorkTypesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzWorkTypeModel CreateWorkType(int businessId, NzWorkTypeModel workType);
         Task<NzWorkTypeModel> CreateWorkTypeAsync(int businessId, NzWorkTypeModel workType, CancellationToken cancellationToken = default);
         NzWorkTypeModel GetWorkTypeById(int businessId, int id);
@@ -36,7 +36,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the work types for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<NzWorkTypeModel> ListWorkTypes(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<NzWorkTypeModel> ListWorkTypes(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -48,7 +48,7 @@ namespace KeyPayV2.Nz.Functions
         /// Lists all the work types for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<NzWorkTypeModel>> ListWorkTypesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<NzWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

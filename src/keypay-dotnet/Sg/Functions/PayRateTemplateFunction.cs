@@ -15,8 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IPayRateTemplateFunction
     {
-        List<PayRateTemplateExportModel> ListPayRateTemplates(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<PayRateTemplateExportModel>> ListPayRateTemplatesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<PayRateTemplateExportModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<PayRateTemplateExportModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         PayRateTemplateExportModel CreatePayRateTemplate(int businessId, PayRateTemplateExportModel payRateTemplate);
         Task<PayRateTemplateExportModel> CreatePayRateTemplateAsync(int businessId, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
         PayRateTemplateExportModel GetPayRateTemplateById(int businessId, int id);
@@ -37,7 +37,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the pay rate templates for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<PayRateTemplateExportModel> ListPayRateTemplates(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<PayRateTemplateExportModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<PayRateTemplateExportModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -49,7 +49,7 @@ namespace KeyPayV2.Sg.Functions
         /// Lists all the pay rate templates for the business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<PayRateTemplateExportModel>> ListPayRateTemplatesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<PayRateTemplateExportModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<PayRateTemplateExportModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

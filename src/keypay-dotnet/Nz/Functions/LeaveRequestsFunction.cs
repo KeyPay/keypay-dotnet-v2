@@ -15,8 +15,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILeaveRequestsFunction
     {
-        List<NzUnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
-        Task<List<NzUnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzUnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<NzUnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void UpdateLeaveRequest(int businessId, int employeeId, NzUnitLeaveRequestModel model);
         Task UpdateLeaveRequestAsync(int businessId, int employeeId, NzUnitLeaveRequestModel model, CancellationToken cancellationToken = default);
         UnitLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, NzUnitLeaveRequestModel model);
@@ -49,7 +49,7 @@ namespace KeyPayV2.Nz.Functions
         /// Returns all leave requests for this employee, optionally filtered by OData parameters.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<NzUnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
+        public List<NzUnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<NzUnitLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -61,7 +61,7 @@ namespace KeyPayV2.Nz.Functions
         /// Returns all leave requests for this employee, optionally filtered by OData parameters.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<NzUnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<NzUnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzUnitLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

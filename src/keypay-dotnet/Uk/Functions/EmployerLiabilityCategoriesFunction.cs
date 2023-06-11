@@ -15,8 +15,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IEmployerLiabilityCategoriesFunction
     {
-        List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, string query, ODataQuery oDataQuery = null);
-        Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateEmployerLiabilityCategory(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory);
         Task CreateEmployerLiabilityCategoryAsync(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default);
         EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id);
@@ -37,7 +37,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the employer liability categories for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, string query, ODataQuery oDataQuery = null)
+        public List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<EmployerLiabilityCategoryModel>>($"/business/{businessId}/employerliabilitycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -49,7 +49,7 @@ namespace KeyPayV2.Uk.Functions
         /// Lists all the employer liability categories for this business.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<EmployerLiabilityCategoryModel>>($"/business/{businessId}/employerliabilitycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }

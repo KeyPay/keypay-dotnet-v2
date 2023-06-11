@@ -15,8 +15,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ILeaveRequestsFunction
     {
-        List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, string query, ODataQuery oDataQuery = null);
-        Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
         Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
@@ -49,7 +49,7 @@ namespace KeyPayV2.Au.Functions
         /// Returns all leave requests for this employee, optionally filtered by OData parameters.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, string query, ODataQuery oDataQuery = null)
+        public List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
             return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
@@ -61,7 +61,7 @@ namespace KeyPayV2.Au.Functions
         /// Returns all leave requests for this employee, optionally filtered by OData parameters.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, string query, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
