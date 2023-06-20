@@ -77,10 +77,7 @@ namespace KeyPayV2.Sg.Enums
         PublicHolidayWorked,
         PublicHolidayNotWorked,
         UnusedLeavePaymentNormalTermination,
-        BackPayLessThan12Months,
-        BackPayMoreThan12Months,
-        BackPaySuperableLessThan12Months,
-        BackPaySuperableMoreThan12Months,
+        BackPayment,
         UkOccupationalSickPay,
         PaidFamilyAndDomesticViolenceLeave
     }

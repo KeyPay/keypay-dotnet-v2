@@ -36,6 +36,7 @@ namespace KeyPayV2.My.Enums
         LifestyleExpensesB,
         VaccinationExpenses,
         LifestyleNotForBusinessUse,
-        ElectricVehicleExpenditure
+        ElectricVehicleExpenditure,
+        InterventionExpenditureForADHDAndGDDAndOtherLearningDisabilities
     }
 }
