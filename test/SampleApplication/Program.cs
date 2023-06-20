@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 
-namespace SampleApplication
+namespace SampleApplication;
+
+public static class Program
 {
-    public class Program
+    public static void Main()
     {
-        public static void Main(string[] args)
-        {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .UseApplicationInsights()
-                .Build();
+        var builder = WebApplication.CreateBuilder();
 
-            host.Run();
-        }
+        var startup = new Startup(builder.Configuration);
+        startup.ConfigureServices(builder.Services);
+        
+        var app = builder.Build();
+        
+        startup.Configure(
+            app,
+            builder.Environment
+        );
+        
+        app.Run();
     }
 }
