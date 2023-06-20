@@ -27,6 +27,8 @@ Install-Package KeyPayV2
 
 There is a Sample Application that demonstrates a few core concepts of working with the KeyPay Client. Please check out our [online documentation](http://api.keypay.com.au/) as a reference, or contact our [Support](https://keypay.com.au/contact).
 
+The sample application may be found in `test/SampleApplication`. Front-end dependencies are managed using Bower. With [Bower installed in your local environment](https://bower.io/#install-bower), run `bower install` within the `test/SampleApplication` directory to install front-end dependencies to the `test/SampleApplication/wwwroot/lib` directory.
+
 # Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -1,71 +1,71 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace SampleApplication
+namespace SampleApplication;
+
+public class Startup
 {
-    public class Startup
+    private IConfiguration Configuration { get; }
+        
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IHostingEnvironment env)
+        Configuration = configuration;
+    }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Add framework services.
+        services.AddMvc();
+
+        services.AddLogging(builder =>
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            builder.AddConfiguration(Configuration.GetSection("Logging"));
+            builder.AddDebug();
+            builder.AddConsole();
+        });
+
+        services.AddSession(options =>
+        {
+            // Set a short timeout for easy testing.
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+            options.Cookie.HttpOnly = true;
+        });
+            
+        services.AddSingleton(_ => Configuration);
+
+        services.AddApplicationInsightsTelemetry();
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        app.UseRouting();
+        
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
         }
 
-        public IConfigurationRoot Configuration { get; }
+        app.UseStaticFiles();
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        app.UseSession();
+
+        app.UseEndpoints(routes =>
         {
-            // Add framework services.
-            services.AddMvc();
-            // Adds a default in-memory implementation of IDistributedCache.
-            services.AddDistributedMemoryCache();
-
-            services.AddSession(options =>
-            {
-                // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.CookieHttpOnly = true;
-            });
-            services.AddSingleton(provider => Configuration);
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
-            app.UseStaticFiles();
-
-            app.UseSession();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-        }
+            routes.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}"
+            );
+        });
     }
 }
