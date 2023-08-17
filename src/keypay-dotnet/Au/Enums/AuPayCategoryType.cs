@@ -28,6 +28,7 @@ namespace KeyPayV2.Au.Enums
         EtpTypePUnusedLeavePayment,
         NormalTerminationLeaveLoading,
         UnusedLeavePaymentNormalTermination,
+        BackPayment,
         PaidFamilyAndDomesticViolenceLeave
     }
 }
