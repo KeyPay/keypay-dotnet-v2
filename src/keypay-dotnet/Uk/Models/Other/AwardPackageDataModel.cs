@@ -10,7 +10,7 @@ namespace KeyPayV2.Uk.Models.Other
     {
         public IList<EmploymentAgreementModel> EmploymentAgreements { get; set; }
         public IList<ConsolidatedPayCategoryModel> PayCategories { get; set; }
-        public IList<LeaveCategoryModel> LeaveCategories { get; set; }
+        public IList<AwardLeaveCategoryModel> LeaveCategories { get; set; }
         public IList<EmployeeExpenseCategoryModel> ExpenseCategories { get; set; }
         public IList<WorkTypeModel> WorkTypes { get; set; }
         public IList<TagModel> Tags { get; set; }

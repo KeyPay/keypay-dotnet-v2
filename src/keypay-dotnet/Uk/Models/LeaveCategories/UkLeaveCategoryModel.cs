@@ -42,5 +42,6 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
         public bool PayoutAsETP { get; set; }
         public bool? AccruesFirstPayRunPerPeriodOnly { get; set; }
         public int? PreventNegativeBalanceUnpaidLeaveCategoryId { get; set; }
+        public LeaveEntitlementModel LeaveEntitlement { get; set; }
     }
 }

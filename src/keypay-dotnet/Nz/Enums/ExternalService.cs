@@ -82,6 +82,10 @@ namespace KeyPayV2.Nz.Enums
         Slack,
         Caxton,
         QuickbooksStandalonePayroll,
-        ImportEmployeeSelfSetup
+        ImportEmployeeSelfSetup,
+        XeroIdentityPayrollSignUp,
+        XeroIdentityHrSignUp,
+        SageIntacct,
+        DailyPay
     }
 }

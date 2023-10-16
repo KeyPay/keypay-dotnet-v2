@@ -28,6 +28,7 @@ namespace KeyPayV2.Uk.Enums
         StarlingBank,
         Comma,
         LloydsCboPayments,
-        SantanderMultipleBacs
+        SantanderMultipleBacs,
+        SantanderUpdatedMultipleBacs
     }
 }

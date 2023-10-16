@@ -40,6 +40,6 @@ namespace KeyPayV2.Uk.Models.EmploymentAgreement
         public string HiddenComments { get; set; }
         public Attachment Attachment { get; set; }
         public string SubmittedByUser { get; set; }
-        public List<ReportingDimensionValueBaseApiModel> DimensionValues { get; set; }
+        public IList<Int32> DimensionValueIds { get; set; }
     }
 }

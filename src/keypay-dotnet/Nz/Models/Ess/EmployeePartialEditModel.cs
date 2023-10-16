@@ -29,6 +29,8 @@ namespace KeyPayV2.Nz.Models.Ess
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeTimesheetSetting TimesheetSetting { get; set; }
         public string TerminationReason { get; set; }
+        public string PortableLongServiceLeaveId { get; set; }
+        public bool IncludeInPortableLongServiceLeaveReport { get; set; }
         public int? TitleId { get; set; }
         public string FirstName { get; set; }
         public string OtherName { get; set; }

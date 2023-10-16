@@ -86,6 +86,7 @@ namespace KeyPayV2.Sg.Enums
         OccupationalLeaveAppliedPrevious,
         OccupationalLeaveEntitlementExhausted,
         AnnualLeaveCashedOut,
-        EmployeeHasTakenPaidFamilyAndDomesticViolenceLeave
+        EmployeeHasTakenPaidFamilyAndDomesticViolenceLeave,
+        ConcurrentPayRunAU
     }
 }

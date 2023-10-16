@@ -16,6 +16,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public int WeekNumber { get; set; }
         public bool Include { get; set; }
         public bool OffsetSpp { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BasicPayAdjustmentTypeEnum BasicPayAdjustmentType { get; set; }
         public decimal? Amount { get; set; }
         public int? PayRunId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

@@ -21,6 +21,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal? AverageWeeklyEarningsOverride { get; set; }
         public decimal? EmployerPensionProtection { get; set; }
         public bool OffsetSpp { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BasicPayAdjustmentTypeEnum BasicPayAdjustmentType { get; set; }
         public bool PayLumpSum { get; set; }
         public IList<UkSppApiModel> Spp { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

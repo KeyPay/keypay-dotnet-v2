@@ -41,6 +41,5 @@ namespace KeyPayV2.Nz.Models.Ess
         public PartiallyAppliedLeaveRequestBannerModel Banner { get; set; }
         public bool ManuallyApplied { get; set; }
         public string AppliedLeaveUnitTypeDescription { get; set; }
-        public string ReturnToWorkInterviewUrl { get; set; }
     }
 }

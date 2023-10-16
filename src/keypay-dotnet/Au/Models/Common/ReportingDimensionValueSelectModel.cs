@@ -10,6 +10,7 @@ namespace KeyPayV2.Au.Models.Common
     {
         public int ReportingDimensionId { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsNoLongerAllowed { get; set; }
         public int? Value { get; set; }
         public string Text { get; set; }
     }

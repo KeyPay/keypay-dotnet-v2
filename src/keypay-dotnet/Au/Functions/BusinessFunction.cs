@@ -65,6 +65,10 @@ namespace KeyPayV2.Au.Functions
         Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
+        void GetTheLeaveSettingsForTheBusiness(int businessId);
+        Task GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
+        void UpdateTheLeaveSettingsForTheBusiness(int businessId, AuBusinessLeaveSettingsModel model);
+        Task UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, AuBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default);
         AuEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
         Task<AuEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
         void CreatePayslipConfiguration(int businessId, AuEditBusinessPaySlipApiModel model);
@@ -644,6 +648,38 @@ namespace KeyPayV2.Au.Functions
         public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the leave settings for the business
+        /// </summary>
+        public void GetTheLeaveSettingsForTheBusiness(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/leavesettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the leave settings for the business
+        /// </summary>
+        public Task GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leavesettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update the leave settings for the business
+        /// </summary>
+        public void UpdateTheLeaveSettingsForTheBusiness(int businessId, AuBusinessLeaveSettingsModel model)
+        {
+            ApiRequest($"/business/{businessId}/leavesettings", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update the leave settings for the business
+        /// </summary>
+        public Task UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, AuBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leavesettings", model, Method.Put, cancellationToken);
         }
 
         /// <summary>

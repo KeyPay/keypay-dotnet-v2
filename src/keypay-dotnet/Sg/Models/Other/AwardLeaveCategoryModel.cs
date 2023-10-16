@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Au.Models.Common;
+using KeyPayV2.Sg.Models.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.Au.Enums;
+using KeyPayV2.Sg.Enums;
 
-namespace KeyPayV2.Au.Models.Other
+namespace KeyPayV2.Sg.Models.Other
 {
-    public class LeaveCategoryModel
+    public class AwardLeaveCategoryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -29,8 +29,11 @@ namespace KeyPayV2.Au.Models.Other
         public LeaveCategoryTypeEnum LeaveCategoryType { get; set; }
         public bool DeductFromPrimaryPayCategory { get; set; }
         public int? DeductFromPayCategoryId { get; set; }
+        public string DeductFromSystemPayCategoryName { get; set; }
         public int? TransferToPayCategoryId { get; set; }
+        public string TransferToSystemPayCategoryName { get; set; }
         public int? TransferUnusedLeaveToPayCategoryId { get; set; }
+        public string TransferUnusedLeaveToSystemPayCategoryName { get; set; }
         public bool HideAccrualsOnPayslip { get; set; }
         public bool UseDeductFromPayCategoryRate { get; set; }
         public LeaveAccrualRuleViewModel LeaveAccrualRule { get; set; }

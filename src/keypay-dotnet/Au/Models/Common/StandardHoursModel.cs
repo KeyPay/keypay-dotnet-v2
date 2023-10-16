@@ -14,5 +14,6 @@ namespace KeyPayV2.Au.Models.Common
         public decimal StandardHoursPerDay { get; set; }
         public bool UseAdvancedWorkWeek { get; set; }
         public List<StandardHoursDayModel> StandardWorkDays { get; set; }
+        public decimal? FullTimeEquivalentHours { get; set; }
     }
 }

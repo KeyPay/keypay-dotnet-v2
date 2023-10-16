@@ -97,6 +97,8 @@ namespace KeyPayV2.Au.Enums
         UkOccupationalPayReport,
         EisSocsoCombinedContributionsReport,
         P45Report,
-        CpfOwAndAwReconciliationReport
+        CpfOwAndAwReconciliationReport,
+        PayRunFpsReport,
+        PortableLongServiceLeaveReport
     }
 }

@@ -5,7 +5,6 @@ namespace KeyPayV2.Uk.Enums
 {
     public enum ExternalService
     {
-        Harmony,
         None,
         Saasu,
         Xero,
@@ -17,6 +16,7 @@ namespace KeyPayV2.Uk.Enums
         FileImport,
         FileExport,
         QuickBooks,
+        Harmony,
         AwardStore,
         Attache,
         IntegratedRostering,
@@ -82,6 +82,10 @@ namespace KeyPayV2.Uk.Enums
         Slack,
         Caxton,
         QuickbooksStandalonePayroll,
-        ImportEmployeeSelfSetup
+        ImportEmployeeSelfSetup,
+        XeroIdentityPayrollSignUp,
+        XeroIdentityHrSignUp,
+        SageIntacct,
+        DailyPay
     }
 }
