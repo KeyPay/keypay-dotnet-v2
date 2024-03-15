@@ -40,6 +40,7 @@ namespace KeyPayV2.Uk.Models.Business
         public bool? SecondedEmployeesEnabled { get; set; }
         public bool? OccupationalPensionsEnabled { get; set; }
         public bool? IncludeEmploymentAllowanceInJournals { get; set; }
+        public bool? InvestmentZoneTaxSiteEnabled { get; set; }
         public HmrcPaymentReminderModel HmrcPaymentReminder { get; set; }
     }
 }

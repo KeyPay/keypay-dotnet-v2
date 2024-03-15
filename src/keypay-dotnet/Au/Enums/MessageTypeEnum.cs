@@ -111,6 +111,7 @@ namespace KeyPayV2.Au.Enums
         ResendPaymentAndDeductionStatement,
         EmployeeSelfSetupReminder,
         EmployeeOnboardingP45Uploaded,
+        BusinessAccessGranted,
         InitiateEmployeeOnboardingWithContract,
         SignatoryContract,
         WorkEligibilityExpiringNotification,
@@ -123,6 +124,7 @@ namespace KeyPayV2.Au.Enums
         EmailAddressChanged,
         EmailAddressConfirmChanged,
         RecoveryEmailAddressChanged,
-        RecoveryEmailAddressConfirmChanged
+        RecoveryEmailAddressConfirmChanged,
+        FraudProtectionCheckResult
     }
 }

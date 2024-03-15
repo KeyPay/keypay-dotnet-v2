@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.PayRun
     {
         public int LeaveDataId { get; set; }
         public int LeaveAccrualId { get; set; }
+        public int LeaveAccrualIdOmp { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public decimal? Rate { get; set; }

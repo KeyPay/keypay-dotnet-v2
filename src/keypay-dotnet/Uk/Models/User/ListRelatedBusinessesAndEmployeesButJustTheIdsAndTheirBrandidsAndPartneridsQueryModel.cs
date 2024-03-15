@@ -9,5 +9,6 @@ namespace KeyPayV2.Uk.Models.User
     public class ListRelatedBusinessesAndEmployeesButJustTheIdsAndTheirBrandidsAndPartneridsQueryModel
     {
         public string Username { get; set; }
+        public int? UserId { get; set; }
     }
 }

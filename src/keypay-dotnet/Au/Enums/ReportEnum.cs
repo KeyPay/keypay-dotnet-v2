@@ -99,6 +99,9 @@ namespace KeyPayV2.Au.Enums
         P45Report,
         CpfOwAndAwReconciliationReport,
         PayRunFpsReport,
-        PortableLongServiceLeaveReport
+        PortableLongServiceLeaveReport,
+        UkTaxAndNiBandwidthsReport,
+        CustomisablePayrollReport,
+        CasualConversionReport
     }
 }

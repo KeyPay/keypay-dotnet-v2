@@ -22,5 +22,6 @@ namespace KeyPayV2.Uk.Models.Business
         public int? PayRunId { get; set; }
         public decimal? Earnings { get; set; }
         public int EmployeeId { get; set; }
+        public int? OccupationalMaternityId { get; set; }
     }
 }

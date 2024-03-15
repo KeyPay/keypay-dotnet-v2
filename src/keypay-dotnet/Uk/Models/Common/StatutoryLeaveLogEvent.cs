@@ -14,6 +14,7 @@ namespace KeyPayV2.Uk.Models.Common
         public StatutoryLeaveLogEventTypeEnum Type { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public StatutoryLeaveLogCategoryEnum Category { get; set; }
+        public String[] Messages { get; set; }
         public string Message { get; set; }
     }
 }

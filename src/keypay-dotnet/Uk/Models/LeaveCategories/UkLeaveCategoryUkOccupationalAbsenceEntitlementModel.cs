@@ -10,6 +10,5 @@ namespace KeyPayV2.Uk.Models.LeaveCategories
     {
         public int PaymentBandIndex { get; set; }
         public decimal Units { get; set; }
-        public decimal Days { get; set; }
     }
 }

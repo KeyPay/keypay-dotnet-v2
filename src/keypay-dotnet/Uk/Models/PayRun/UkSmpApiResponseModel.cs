@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Models.PayRun
     public class UkSmpApiResponseModel
     {
         public int LeaveAccrualId { get; set; }
+        public int? LeaveAccrualIdOmp { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public SmpEligibilityEnum Status { get; set; }
         public IList<StatutoryLeaveLogEvent> Log { get; set; }

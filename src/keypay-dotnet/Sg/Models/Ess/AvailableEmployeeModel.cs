@@ -18,5 +18,6 @@ namespace KeyPayV2.Sg.Models.Ess
         public int DefaultLocationId { get; set; }
         public string ProfileImageUrl { get; set; }
         public string Region { get; set; }
+        public bool IsTerminated { get; set; }
     }
 }

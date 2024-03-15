@@ -1794,6 +1794,14 @@ namespace KeyPayV2.Uk.Functions
         /// <p>
         ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
         ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model)
         {
@@ -1822,6 +1830,14 @@ namespace KeyPayV2.Uk.Functions
         /// <p>
         ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
         ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {
@@ -1850,6 +1866,14 @@ namespace KeyPayV2.Uk.Functions
         /// <p>
         ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
         ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
@@ -1878,6 +1902,14 @@ namespace KeyPayV2.Uk.Functions
         /// <p>
         ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
         ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
@@ -1913,6 +1945,7 @@ namespace KeyPayV2.Uk.Functions
         /// Updates the employee with the specified ID.
         /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
         /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// <p>Bypassing address validation:</p><p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p><ol><li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li><li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li><li>Now you can enter your address unrestricted in the normal fields.</li></ol><p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
         /// </remarks>
         public EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, UkUnstructuredEmployeeModel model)
         {
@@ -1926,6 +1959,7 @@ namespace KeyPayV2.Uk.Functions
         /// Updates the employee with the specified ID.
         /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
         /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// <p>Bypassing address validation:</p><p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p><ol><li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li><li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li><li>Now you can enter your address unrestricted in the normal fields.</li></ol><p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
         {

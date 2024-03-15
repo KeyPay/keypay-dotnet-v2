@@ -87,6 +87,13 @@ namespace KeyPayV2.Nz.Enums
         OccupationalLeaveEntitlementExhausted,
         AnnualLeaveCashedOut,
         EmployeeHasTakenPaidFamilyAndDomesticViolenceLeave,
-        ConcurrentPayRunAU
+        ConcurrentPayRunAU,
+        EmployeePensionOptoutForPeriod,
+        EmployeePensionContributionsCeased,
+        EmployeePensionOptoutOrCease,
+        PensionOptOutCouldNotConnect,
+        PensionOptoutScopeUnauthorised,
+        PensionOptoutUnmatched,
+        PensionCeaseUnmatched
     }
 }

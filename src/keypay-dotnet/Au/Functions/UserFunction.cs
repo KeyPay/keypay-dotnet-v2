@@ -189,7 +189,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public UserAccountMetadataLite ListRelatedBusinessesAndEmployeesButJustTheIdsAndTheirBrandidsAndPartnerids(ListRelatedBusinessesAndEmployeesButJustTheIdsAndTheirBrandidsAndPartneridsQueryModel request)
         {
-            return ApiRequest<UserAccountMetadataLite>($"/user/account/metadatalite?username={request.Username}", Method.Get);
+            return ApiRequest<UserAccountMetadataLite>($"/user/account/metadatalite?username={request.Username}&userId={request.UserId}", Method.Get);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<UserAccountMetadataLite> ListRelatedBusinessesAndEmployeesButJustTheIdsAndTheirBrandidsAndPartneridsAsync(ListRelatedBusinessesAndEmployeesButJustTheIdsAndTheirBrandidsAndPartneridsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UserAccountMetadataLite>($"/user/account/metadatalite?username={request.Username}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UserAccountMetadataLite>($"/user/account/metadatalite?username={request.Username}&userId={request.UserId}", Method.Get, cancellationToken);
         }
 
         /// <summary>

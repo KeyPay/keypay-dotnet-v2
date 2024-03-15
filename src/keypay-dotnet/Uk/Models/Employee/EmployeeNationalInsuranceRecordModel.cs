@@ -59,6 +59,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public int EmployeeId { get; set; }
         public DateTime? FreeportQualifyingEndDate { get; set; }
         public DateTime? VeteransQualifyingEndDate { get; set; }
+        public DateTime? InvestmentQualifyingEndDate { get; set; }
         public string MdmId { get; set; }
         public int? MdmVersion { get; set; }
         public string MdmSchemaVersion { get; set; }

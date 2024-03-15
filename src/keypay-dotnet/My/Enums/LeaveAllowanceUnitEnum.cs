@@ -11,6 +11,7 @@ namespace KeyPayV2.My.Enums
         HoursPerPayRun,
         StandardDays,
         StandardWeeks,
-        DayPerCalendarDay
+        DayPerCalendarDay,
+        DayPerMonth
     }
 }

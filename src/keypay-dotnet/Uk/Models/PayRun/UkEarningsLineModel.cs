@@ -17,6 +17,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public decimal EmployerNationalInsuranceContribution { get; set; }
         public decimal EmployeePensionContribution { get; set; }
         public decimal EmployerPensionContribution { get; set; }
+        public bool PayRateNetPaymentEarningsLineDeleted { get; set; }
         public string PayCategoryId { get; set; }
         public string PayCategoryName { get; set; }
         public decimal Units { get; set; }

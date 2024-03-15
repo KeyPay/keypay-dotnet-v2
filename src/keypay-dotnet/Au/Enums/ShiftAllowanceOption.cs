@@ -8,6 +8,7 @@ namespace KeyPayV2.Au.Enums
         Fixed,
         PerHourWorked,
         PercentageOfShiftCost,
-        PerShiftUnit
+        PerShiftUnit,
+        PerDay
     }
 }

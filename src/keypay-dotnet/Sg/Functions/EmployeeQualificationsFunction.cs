@@ -17,8 +17,8 @@ namespace KeyPayV2.Sg.Functions
     {
         List<EmployeeQualificationModel> GetQualificationsForEmployee(int businessId, int employeeId);
         Task<List<EmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationModel qualification);
-        Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationModel qualification, CancellationToken cancellationToken = default);
+        void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationRequest qualification);
+        Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationRequest qualification, CancellationToken cancellationToken = default);
         void DeleteEmployeeQualification(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request);
         Task DeleteEmployeeQualificationAsync(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request, CancellationToken cancellationToken = default);
         EmployeeQualificationModel GetQualificationDetails(int businessId, int employeeId, int id);
@@ -68,7 +68,7 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Adds or updates a qualification for an employee.
         /// </remarks>
-        public void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationModel qualification)
+        public void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationRequest qualification)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification", qualification, Method.Post);
         }
@@ -79,7 +79,7 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Adds or updates a qualification for an employee.
         /// </remarks>
-        public Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationModel qualification, CancellationToken cancellationToken = default)
+        public Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationRequest qualification, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification", qualification, Method.Post, cancellationToken);
         }

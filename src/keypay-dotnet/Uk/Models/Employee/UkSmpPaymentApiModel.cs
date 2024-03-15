@@ -17,6 +17,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public bool Include { get; set; }
         public bool OffsetSmp { get; set; }
         public decimal? Amount { get; set; }
+        public decimal? AmountOmp { get; set; }
         public int? PayRunId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DoNotPaySmpReasonEnum? DoNotPayReason { get; set; }

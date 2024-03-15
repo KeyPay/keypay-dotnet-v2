@@ -86,6 +86,6 @@ namespace KeyPayV2.Au.Enums
         XeroIdentityPayrollSignUp,
         XeroIdentityHrSignUp,
         SageIntacct,
-        DailyPay
+        InstaPayDaily
     }
 }

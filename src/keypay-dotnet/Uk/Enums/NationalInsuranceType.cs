@@ -17,6 +17,10 @@ namespace KeyPayV2.Uk.Enums
         I,
         L,
         S,
-        V
+        V,
+        D,
+        E,
+        K,
+        N
     }
 }

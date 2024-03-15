@@ -618,7 +618,7 @@ namespace KeyPayV2.Au.Functions
         /// <p>
         ///             MatchType parameter values:
         ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
-        ///                     then based on first name + surname + date of birth 
+        ///                     then based on first name + surname + date of birth + email address
         ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
         ///                 </li></list></p>
         /// <p>
@@ -644,7 +644,7 @@ namespace KeyPayV2.Au.Functions
         /// <p>
         ///             MatchType parameter values:
         ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
-        ///                     then based on first name + surname + date of birth 
+        ///                     then based on first name + surname + date of birth + email address
         ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
         ///                 </li></list></p>
         /// <p>
@@ -670,7 +670,7 @@ namespace KeyPayV2.Au.Functions
         /// <p>
         ///             MatchType parameter values:
         ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
-        ///                     then based on first name + surname + date of birth 
+        ///                     then based on first name + surname + date of birth + email address
         ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
         ///                 </li></list></p>
         /// <p>
@@ -696,7 +696,7 @@ namespace KeyPayV2.Au.Functions
         /// <p>
         ///             MatchType parameter values:
         ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the tax file number,
-        ///                     then based on first name + surname + date of birth 
+        ///                     then based on first name + surname + date of birth + email address
         ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
         ///                 </li></list></p>
         /// <p>

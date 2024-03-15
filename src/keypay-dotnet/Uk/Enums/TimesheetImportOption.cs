@@ -7,6 +7,7 @@ namespace KeyPayV2.Uk.Enums
     {
         None,
         ThisPayPeriod,
-        AllOutstanding
+        AllOutstanding,
+        CustomPeriod
     }
 }

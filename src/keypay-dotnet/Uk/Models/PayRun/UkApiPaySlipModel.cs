@@ -40,7 +40,6 @@ namespace KeyPayV2.Uk.Models.PayRun
         public decimal ThisEmploymentYtdPayrolledBenefits { get; set; }
         public decimal ThisEmploymentYtdTaxDeducted { get; set; }
         public decimal ThisEmploymentYtdNIablePay { get; set; }
-        public bool ShowHealthAndSocialCareLevyMessage { get; set; }
         public IList<ApiPaySlipLeaveModel> TotalAccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> AccruedLeave { get; set; }
         public IList<ApiPaySlipLeaveModel> LeaveTaken { get; set; }

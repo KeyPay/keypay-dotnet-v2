@@ -40,6 +40,7 @@ namespace KeyPayV2.My.Models.PayRun
         [JsonConverter(typeof(StringEnumConverter))]
         public PayRunFinaliseActionPreference SubmitToPensionSync { get; set; }
         public DateTime? SubmitToPensionSyncScheduledDateTimeUtc { get; set; }
+        public IList<PayRunSuperBatchModel> SuperPayments { get; set; }
         public bool IsFirstFinalisation { get; set; }
     }
 }

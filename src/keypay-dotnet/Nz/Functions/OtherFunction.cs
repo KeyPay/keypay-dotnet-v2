@@ -35,6 +35,8 @@ namespace KeyPayV2.Nz.Functions
         Task<List<WorkersCompReportGridModel>> ReportsWorkersComp_GetAsync(int businessId, ReportsWorkersComp_GetQueryModel request, CancellationToken cancellationToken = default);
         void UpdateStatusEvent(int businessId, IList<TeamCollaborationUpdateStatusModel> model, UpdateStatusEventQueryModel request);
         Task UpdateStatusEventAsync(int businessId, IList<TeamCollaborationUpdateStatusModel> model, UpdateStatusEventQueryModel request, CancellationToken cancellationToken = default);
+        void HandleRequestsForPollingDataFromZapier(HandleRequestsForPollingDataFromZapierQueryModel request);
+        Task HandleRequestsForPollingDataFromZapierAsync(HandleRequestsForPollingDataFromZapierQueryModel request, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
@@ -170,6 +172,28 @@ namespace KeyPayV2.Nz.Functions
         public Task UpdateStatusEventAsync(int businessId, IList<TeamCollaborationUpdateStatusModel> model, UpdateStatusEventQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/teamcollaboration/updatestatus?service={request.Service}", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Handle requests for polling data from Zapier
+        /// </summary>
+        /// <remarks>
+        /// Accepts a url and businessId from the Zapier app and returns the response from the url in the required format to satisfy Zapier.
+        /// </remarks>
+        public void HandleRequestsForPollingDataFromZapier(HandleRequestsForPollingDataFromZapierQueryModel request)
+        {
+            ApiRequest($"/ZapierWebhooks/Polling?url={request.Url}&businessId={request.BusinessId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Handle requests for polling data from Zapier
+        /// </summary>
+        /// <remarks>
+        /// Accepts a url and businessId from the Zapier app and returns the response from the url in the required format to satisfy Zapier.
+        /// </remarks>
+        public Task HandleRequestsForPollingDataFromZapierAsync(HandleRequestsForPollingDataFromZapierQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ZapierWebhooks/Polling?url={request.Url}&businessId={request.BusinessId}", Method.Get, cancellationToken);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace KeyPayV2.Uk.Models.Business
     public class UkEditBusinessPaySlipApiModel
     {
         public bool ShowEmployeeAddress { get; set; }
-        public bool ShowHealthAndSocialCareLevyMessage { get; set; }
         public bool ShowCrnNumber { get; set; }
         public bool ShowPayeReference { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

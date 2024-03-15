@@ -6,7 +6,7 @@ using KeyPayV2.Common.Exceptions;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
-using RestSharp.Serializers.NewtonsoftJson;
+using RestSharp.Serializers.Json;
 
 namespace KeyPayV2.Common
 {
@@ -85,7 +85,9 @@ namespace KeyPayV2.Common
             var options = new RestClientOptions()
             {
                 BaseUrl = new Uri(baseUrl),
-                MaxTimeout = 600000 // 10 min timeout for long EI queries
+                MaxTimeout = 600000, // 10 min timeout for long EI queries
+                Authenticator = Authenticator,
+                CookieContainer = new CookieContainer(),
             };
 
             if (!string.IsNullOrEmpty(userAgent))
@@ -93,14 +95,14 @@ namespace KeyPayV2.Common
                 options.UserAgent = userAgent;
             }
 
-            var client = new RestClient(options)
-            {
-                Authenticator = Authenticator
-            };
+            var client = new RestClient(
+                options,
+                configureSerialization: s => s.UseSerializer(() => new RestSharp.Serializers.NewtonsoftJson.JsonNetSerializer())
+            );
 
-            client.UseNewtonsoftJson();
+            request.OnBeforeDeserialization = resp => 
+                HandleResponse(resp, request.Method, request.Resource);
 
-            request.OnBeforeDeserialization = resp => HandleResponse(resp, request.Method, request.Resource);
             return client;
         }
 
