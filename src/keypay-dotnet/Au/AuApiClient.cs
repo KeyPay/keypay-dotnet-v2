@@ -6,7 +6,6 @@ namespace KeyPayV2.Au
 {
     public interface IAuApiClient : IBaseApiClient
     {
-        IOtherFunction Other { get; }
         IBrandFunction Brand { get; }
         IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
@@ -45,6 +44,7 @@ namespace KeyPayV2.Au
         IPayCategoryFunction PayCategory { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
+        IOtherFunction Other { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
@@ -64,7 +64,6 @@ namespace KeyPayV2.Au
     {
         public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
-            Other = new OtherFunction(Api);
             Brand = new BrandFunction(Api);
             Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
@@ -103,6 +102,7 @@ namespace KeyPayV2.Au
             PayCategory = new PayCategoryFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
+            Other = new OtherFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
@@ -119,7 +119,6 @@ namespace KeyPayV2.Au
             WhiteLabel = new WhiteLabelFunction(Api);
         }
 
-        public IOtherFunction Other { get; }
         public IBrandFunction Brand { get; }
         public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
@@ -158,6 +157,7 @@ namespace KeyPayV2.Au
         public IPayCategoryFunction PayCategory { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
+        public IOtherFunction Other { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }

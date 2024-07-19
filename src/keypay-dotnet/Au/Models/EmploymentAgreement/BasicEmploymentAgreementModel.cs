@@ -18,5 +18,6 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
         public string AwardName { get; set; }
         public int Rank { get; set; }
         public string ExternalId { get; set; }
+        public int AwardId { get; set; }
     }
 }

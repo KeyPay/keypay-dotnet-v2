@@ -10,6 +10,9 @@ namespace KeyPayV2.Uk.Models.Employee
 {
     public class UkSmpDataApiModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DoNotPaySmpReasonEnum? DoNotPayReason { get; set; }
+        public UkOccupationalMaternityLeaveDataApiModel OccupationalMaternity { get; set; }
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -25,11 +28,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public bool OffsetSmp { get; set; }
         public bool PayLumpSum { get; set; }
         public IList<UkSmpApiModel> Smp { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public DoNotPaySmpReasonEnum? DoNotPayReason { get; set; }
         public decimal? SmpAdjust { get; set; }
         public string Notes { get; set; }
         public bool DoNotMakeSalarySacrificeDeductions { get; set; }
-        public UkOccupationalMaternityLeaveDataApiModel OccupationalMaternity { get; set; }
     }
 }

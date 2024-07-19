@@ -32,8 +32,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public DateTime? ExportJournalsDateTime { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PayRunFinaliseActionPreference? LodgePayRunPreference { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PayRunFinaliseActionPreference? SuperPaymentPreference { get; set; }
+        public bool SuperPaymentPreference { get; set; }
         public DateTime? LodgePayRunDateTime { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PayRunFinaliseActionPreference? RunReportPacksPreference { get; set; }

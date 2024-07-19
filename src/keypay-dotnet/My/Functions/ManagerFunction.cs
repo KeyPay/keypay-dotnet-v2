@@ -2152,7 +2152,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void UpdateRosterShift(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}", shiftModel, Method.Put);
+            ApiRequest($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
         }
 
         /// <summary>
@@ -2163,7 +2163,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task UpdateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}", shiftModel, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
         }
 
         /// <summary>

@@ -13,6 +13,7 @@ namespace KeyPayV2.Nz.Models.PaySchedule
         public NzAutoPayConfigurationModel AutoPayConfiguration { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public NzPayCycleFrequencyEnum Frequency { get; set; }
+        public PayScheduleApprovalSettingsModel PaySchedulePaymentApprovalSettings { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

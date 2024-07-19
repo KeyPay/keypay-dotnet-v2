@@ -86,6 +86,9 @@ namespace KeyPayV2.Uk.Enums
         XeroIdentityPayrollSignUp,
         XeroIdentityHrSignUp,
         SageIntacct,
-        InstaPayDaily
+        InstaPayDaily,
+        Salesforce,
+        AutomatedPublicHolidayNotWorked,
+        EmployeePayRatesUpload
     }
 }

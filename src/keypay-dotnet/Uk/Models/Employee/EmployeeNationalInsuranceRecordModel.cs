@@ -26,6 +26,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public TaxCalculationMethodEnum TaxCalculationMethod { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public NationalInsuranceCalculationMethodEnum NationalInsuranceCalculationMethod { get; set; }
+        public bool? ExcludeEarningsFromAppLevy { get; set; }
         public bool IsCompanyDirector { get; set; }
         public DateTime? AppointmentStartDate { get; set; }
         public DateTime? AppointmentEndDate { get; set; }
@@ -66,5 +67,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public bool TriggeredFromMdm { get; set; }
         public bool SendToMdm { get; set; }
         public IDictionary<String,String> IgnoreFields { get; set; }
+        public int? HrOrganisationId { get; set; }
     }
 }

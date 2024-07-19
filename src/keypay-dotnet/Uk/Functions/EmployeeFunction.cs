@@ -109,6 +109,8 @@ namespace KeyPayV2.Uk.Functions
         Task UnattachEmployeeDocumentFromStatutoryAdoptionLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
         UkSapCalcApiModel CalculateStatutoryAdoptionLeavePeriodData(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request);
         Task<UkSapCalcApiModel> CalculateStatutoryAdoptionLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel CreateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, UkShppDataApiModel smp);
+        Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel smp, CancellationToken cancellationToken = default);
         UkSmpDataApiModel GetStatutoryMaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request);
         Task<UkSmpDataApiModel> GetStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
         UkSmpDataApiResponseModel CreateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, UkSmpDataApiModel smp);
@@ -159,6 +161,10 @@ namespace KeyPayV2.Uk.Functions
         Task<UkSspApiModel> CreateStatutorySickPayAsync(int businessId, int employeeId, UkSspApiModel ssp, CancellationToken cancellationToken = default);
         UkSspApiModel GetStatutorySickPayById(int businessId, int employeeId, int periodOfLeaveId);
         Task<UkSspApiModel> GetStatutorySickPayByIdAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default);
+        PeriodOfLeaveModel UpdateStatutorySickPay(int businessId, int employeeId, int periodOfLeaveId, UkSspUpdateModel model);
+        Task<PeriodOfLeaveModel> UpdateStatutorySickPayAsync(int businessId, int employeeId, int periodOfLeaveId, UkSspUpdateModel model, CancellationToken cancellationToken = default);
+        void DeletePeriodOfLeave(int businessId, int employeeId, int periodOfLeaveId);
+        Task DeletePeriodOfLeaveAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default);
         void SyncEmployeeToQbo(int businessId, int employeeId);
         Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<UkWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
@@ -1069,6 +1075,28 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Create Statutory Shared Parental Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Shared Parental Leave period for an employee
+        /// </remarks>
+        public UkSmpDataApiResponseModel CreateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, UkShppDataApiModel smp)
+        {
+            return ApiRequest<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp", smp, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Statutory Shared Parental Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Shared Parental Leave period for an employee
+        /// </remarks>
+        public Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel smp, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp", smp, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Statutory Maternity Leave Period Data
         /// </summary>
         /// <remarks>
@@ -1556,6 +1584,38 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkSspApiModel> GetStatutorySickPayByIdAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkSspApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Statutory Sick Pay
+        /// </summary>
+        public PeriodOfLeaveModel UpdateStatutorySickPay(int businessId, int employeeId, int periodOfLeaveId, UkSspUpdateModel model)
+        {
+            return ApiRequest<PeriodOfLeaveModel,UkSspUpdateModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Statutory Sick Pay
+        /// </summary>
+        public Task<PeriodOfLeaveModel> UpdateStatutorySickPayAsync(int businessId, int employeeId, int periodOfLeaveId, UkSspUpdateModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PeriodOfLeaveModel,UkSspUpdateModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Period of Leave
+        /// </summary>
+        public void DeletePeriodOfLeave(int businessId, int employeeId, int periodOfLeaveId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Period of Leave
+        /// </summary>
+        public Task DeletePeriodOfLeaveAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp/{periodOfLeaveId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

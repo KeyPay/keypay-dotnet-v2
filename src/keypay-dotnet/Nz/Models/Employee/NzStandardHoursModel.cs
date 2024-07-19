@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
 
 namespace KeyPayV2.Nz.Models.Employee
@@ -15,5 +17,7 @@ namespace KeyPayV2.Nz.Models.Employee
         public bool UseAdvancedWorkWeek { get; set; }
         public List<StandardHoursDayModel> StandardWorkDays { get; set; }
         public decimal? FullTimeEquivalentHours { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AdvancedWorkWeekConfigurationOption? AdvancedWorkWeekConfiguration { get; set; }
     }
 }

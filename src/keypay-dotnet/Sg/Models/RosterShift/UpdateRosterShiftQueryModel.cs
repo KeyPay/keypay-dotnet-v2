@@ -9,5 +9,6 @@ namespace KeyPayV2.Sg.Models.RosterShift
     public class UpdateRosterShiftQueryModel
     {
         public bool Publish { get; set; }
+        public bool? ClearBreaks { get; set; }
     }
 }

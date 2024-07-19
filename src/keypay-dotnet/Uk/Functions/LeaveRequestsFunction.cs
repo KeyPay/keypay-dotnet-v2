@@ -15,22 +15,22 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface ILeaveRequestsFunction
     {
-        List<UnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<UnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void UpdateLeaveRequest(int businessId, int employeeId, UnitLeaveRequestModel model);
-        Task UpdateLeaveRequestAsync(int businessId, int employeeId, UnitLeaveRequestModel model, CancellationToken cancellationToken = default);
-        UnitLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, UnitLeaveRequestModel model);
-        Task<UnitLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, UnitLeaveRequestModel model, CancellationToken cancellationToken = default);
-        UnitLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId);
-        Task<UnitLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
-        void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, UnitLeaveRequestModel model);
-        Task UpdateLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, UnitLeaveRequestModel model, CancellationToken cancellationToken = default);
-        UnitLeaveRequestResponseModel DeleteLeaveRequest(int businessId, int employeeId, int leaveRequestId);
-        Task<UnitLeaveRequestResponseModel> DeleteLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
-        UnitLeaveRequestResponseModel ApproveLeaveRequest(int businessId, int employeeId, int leaveRequestId);
-        Task<UnitLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
-        UnitLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline);
-        Task<UnitLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default);
+        List<UkUnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<UkUnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void UpdateLeaveRequest(int businessId, int employeeId, UkUnitLeaveRequestModel model);
+        Task UpdateLeaveRequestAsync(int businessId, int employeeId, UkUnitLeaveRequestModel model, CancellationToken cancellationToken = default);
+        UkUnitLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, UkUnitLeaveRequestModel model);
+        Task<UkUnitLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, UkUnitLeaveRequestModel model, CancellationToken cancellationToken = default);
+        UkUnitLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId);
+        Task<UkUnitLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, UkUnitLeaveRequestModel model);
+        Task UpdateLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, UkUnitLeaveRequestModel model, CancellationToken cancellationToken = default);
+        UkUnitLeaveRequestResponseModel DeleteLeaveRequest(int businessId, int employeeId, int leaveRequestId);
+        Task<UkUnitLeaveRequestResponseModel> DeleteLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        UkUnitLeaveRequestResponseModel ApproveLeaveRequest(int businessId, int employeeId, int leaveRequestId);
+        Task<UkUnitLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
+        UkUnitLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline);
+        Task<UkUnitLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default);
         UnitLeaveEstimateModel EstimateLeaveUnits(int businessId, int employeeId, EstimateLeaveUnitsQueryModel request);
         Task<UnitLeaveEstimateModel> EstimateLeaveUnitsAsync(int businessId, int employeeId, EstimateLeaveUnitsQueryModel request, CancellationToken cancellationToken = default);
         List<UnitLeaveRequestResponseModel> ListLeaveRequests(int businessId);
@@ -49,9 +49,9 @@ namespace KeyPayV2.Uk.Functions
         /// Returns all leave requests for this employee, optionally filtered by OData parameters.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public List<UnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        public List<UkUnitLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UnitLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<List<UkUnitLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace KeyPayV2.Uk.Functions
         /// Returns all leave requests for this employee, optionally filtered by OData parameters.
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<List<UnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<UkUnitLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UnitLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UkUnitLeaveRequestResponseModel>>($"/business/{businessId}/employee/{employeeId}/leaverequest{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the leave request with the specified ID.
         /// </remarks>
-        public void UpdateLeaveRequest(int businessId, int employeeId, UnitLeaveRequestModel model)
+        public void UpdateLeaveRequest(int businessId, int employeeId, UkUnitLeaveRequestModel model)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put);
         }
@@ -83,7 +83,7 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the leave request with the specified ID.
         /// </remarks>
-        public Task UpdateLeaveRequestAsync(int businessId, int employeeId, UnitLeaveRequestModel model, CancellationToken cancellationToken = default)
+        public Task UpdateLeaveRequestAsync(int businessId, int employeeId, UkUnitLeaveRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put, cancellationToken);
         }
@@ -94,9 +94,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new leave request for an employee.
         /// </remarks>
-        public UnitLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, UnitLeaveRequestModel model)
+        public UkUnitLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, UkUnitLeaveRequestModel model)
         {
-            return ApiRequest<UnitLeaveRequestResponseModel,UnitLeaveRequestModel>($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Post);
+            return ApiRequest<UkUnitLeaveRequestResponseModel,UkUnitLeaveRequestModel>($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Post);
         }
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a new leave request for an employee.
         /// </remarks>
-        public Task<UnitLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, UnitLeaveRequestModel model, CancellationToken cancellationToken = default)
+        public Task<UkUnitLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, UkUnitLeaveRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnitLeaveRequestResponseModel,UnitLeaveRequestModel>($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<UkUnitLeaveRequestResponseModel,UkUnitLeaveRequestModel>($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -116,9 +116,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the details for a leave request with the specified ID.
         /// </remarks>
-        public UnitLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId)
+        public UkUnitLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId)
         {
-            return ApiRequest<UnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Get);
+            return ApiRequest<UkUnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Get);
         }
 
         /// <summary>
@@ -127,9 +127,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the details for a leave request with the specified ID.
         /// </remarks>
-        public Task<UnitLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
+        public Task<UkUnitLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkUnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the leave request with the specified ID.
         /// </remarks>
-        public void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, UnitLeaveRequestModel model)
+        public void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, UkUnitLeaveRequestModel model)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", model, Method.Put);
         }
@@ -149,7 +149,7 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the leave request with the specified ID.
         /// </remarks>
-        public Task UpdateLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, UnitLeaveRequestModel model, CancellationToken cancellationToken = default)
+        public Task UpdateLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, UkUnitLeaveRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", model, Method.Put, cancellationToken);
         }
@@ -160,9 +160,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Deletes the leave request with the specified ID.
         /// </remarks>
-        public UnitLeaveRequestResponseModel DeleteLeaveRequest(int businessId, int employeeId, int leaveRequestId)
+        public UkUnitLeaveRequestResponseModel DeleteLeaveRequest(int businessId, int employeeId, int leaveRequestId)
         {
-            return ApiRequest<UnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Delete);
+            return ApiRequest<UkUnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Delete);
         }
 
         /// <summary>
@@ -171,9 +171,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Deletes the leave request with the specified ID.
         /// </remarks>
-        public Task<UnitLeaveRequestResponseModel> DeleteLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
+        public Task<UkUnitLeaveRequestResponseModel> DeleteLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Delete, cancellationToken);
+            return ApiRequestAsync<UkUnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -182,9 +182,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Approves the leave request with the specified ID.
         /// </remarks>
-        public UnitLeaveRequestResponseModel ApproveLeaveRequest(int businessId, int employeeId, int leaveRequestId)
+        public UkUnitLeaveRequestResponseModel ApproveLeaveRequest(int businessId, int employeeId, int leaveRequestId)
         {
-            return ApiRequest<UnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.Post);
+            return ApiRequest<UkUnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.Post);
         }
 
         /// <summary>
@@ -193,9 +193,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Approves the leave request with the specified ID.
         /// </remarks>
-        public Task<UnitLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
+        public Task<UkUnitLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.Post, cancellationToken);
+            return ApiRequestAsync<UkUnitLeaveRequestResponseModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/approve", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -204,9 +204,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Declines the leave request with the specified ID.
         /// </remarks>
-        public UnitLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline)
+        public UkUnitLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline)
         {
-            return ApiRequest<UnitLeaveRequestResponseModel,DeclineLeaveRequest>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/decline", decline, Method.Post);
+            return ApiRequest<UkUnitLeaveRequestResponseModel,DeclineLeaveRequest>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/decline", decline, Method.Post);
         }
 
         /// <summary>
@@ -215,9 +215,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Declines the leave request with the specified ID.
         /// </remarks>
-        public Task<UnitLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default)
+        public Task<UkUnitLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnitLeaveRequestResponseModel,DeclineLeaveRequest>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/decline", decline, Method.Post, cancellationToken);
+            return ApiRequestAsync<UkUnitLeaveRequestResponseModel,DeclineLeaveRequest>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/decline", decline, Method.Post, cancellationToken);
         }
 
         /// <summary>

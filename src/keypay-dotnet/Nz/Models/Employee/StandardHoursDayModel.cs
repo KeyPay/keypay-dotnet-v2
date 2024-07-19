@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Nz.Enums;
 
 namespace KeyPayV2.Nz.Models.Employee
@@ -19,5 +21,7 @@ namespace KeyPayV2.Nz.Models.Employee
         public int? LocationId { get; set; }
         public int? WorkTypeId { get; set; }
         public decimal Hours { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public WorkDayType? WorkDayType { get; set; }
     }
 }

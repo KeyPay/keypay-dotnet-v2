@@ -102,6 +102,8 @@ namespace KeyPayV2.Nz.Enums
         PortableLongServiceLeaveReport,
         UkTaxAndNiBandwidthsReport,
         CustomisablePayrollReport,
+        SuperannuationStaplingDetailsReport,
+        HmrcInboxReport,
         CasualConversionReport
     }
 }

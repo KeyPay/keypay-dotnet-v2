@@ -93,6 +93,8 @@ namespace KeyPayV2.My.Functions
         Task<PayRunTotalNotationModel> CreateNoteForEmployeeAsync(int businessId, int employeeId, int payRunId, PayRunTotalNotationModel model, CancellationToken cancellationToken = default);
         void DeleteNoteForEmployee(int businessId, int employeeId, int payRunId);
         Task DeleteNoteForEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        void StartPaymentApprovalProcess(int businessId, int payRunId);
+        Task StartPaymentApprovalProcessAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         List<MyBankPaymentModel> GetPayRunPayments(int businessId, int payRunId);
         Task<List<MyBankPaymentModel>> GetPayRunPaymentsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         Dictionary<String,MyApiPaySlipModel> ListPaySlipData(int businessId, int payRunId);
@@ -988,6 +990,30 @@ namespace KeyPayV2.My.Functions
         public Task DeleteNoteForEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/notation/{employeeId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Start Payment Approval Process
+        /// </summary>
+        /// <remarks>
+        /// Start the payment approval process for a unfinalised payrun can be with finalised with payment approval required
+        /// All default notification user configured on the pay schedule notified to approve the following payment
+        /// </remarks>
+        public void StartPaymentApprovalProcess(int businessId, int payRunId)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/paymentapproval/start", Method.Get);
+        }
+
+        /// <summary>
+        /// Start Payment Approval Process
+        /// </summary>
+        /// <remarks>
+        /// Start the payment approval process for a unfinalised payrun can be with finalised with payment approval required
+        /// All default notification user configured on the pay schedule notified to approve the following payment
+        /// </remarks>
+        public Task StartPaymentApprovalProcessAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/paymentapproval/start", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -12,6 +12,10 @@ namespace KeyPayV2.My.Enums
         SuperannuationIncomeStream,
         Casual,
         NotApplicable,
-        IndependentContractor
+        IndependentContractor,
+        Management,
+        Contract,
+        Intern,
+        Other
     }
 }

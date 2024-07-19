@@ -121,10 +121,19 @@ namespace KeyPayV2.Au.Enums
         InitiateEmployeeOnboardingWithLogin,
         AuthorisingSignatoryNotification,
         IntegrationCustomFeatureRequest,
+        UserAccountLockedByAdmin,
+        UserAccountUnlockedByAdmin,
         EmailAddressChanged,
         EmailAddressConfirmChanged,
         RecoveryEmailAddressChanged,
         RecoveryEmailAddressConfirmChanged,
-        FraudProtectionCheckResult
+        FraudProtectionCheckResult,
+        SuspiciousLogin,
+        PaymentApprovalNotification,
+        PaymentApprovalReminder,
+        PaymentApprovalStatusChanged,
+        BulkActionUserPasswordChanged,
+        BulkActionUserAccountLocked,
+        BulkActionUserAccountUnlocked
     }
 }

@@ -9,6 +9,7 @@ using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
 using KeyPayV2.Sg.Enums;
 using KeyPayV2.Sg.Models.Common;
+using KeyPayV2.Sg.Models.EmployeeExpenseCategories;
 
 namespace KeyPayV2.Sg.Functions
 {

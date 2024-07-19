@@ -41,10 +41,10 @@ namespace KeyPayV2.Sg.Functions
         Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<SgWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<SgWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
-        Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model);
-        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default);
+        SgStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
+        Task<SgStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, SgStandardHoursModel model);
+        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, SgStandardHoursModel model, CancellationToken cancellationToken = default);
         List<SgWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<SgWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void ActivateEmployee(int businessId, int employeeId);
@@ -370,9 +370,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the standard hours for this employee.
         /// </remarks>
-        public StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
+        public SgStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
         {
-            return ApiRequest<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
+            return ApiRequest<SgStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
         }
 
         /// <summary>
@@ -381,9 +381,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the standard hours for this employee.
         /// </remarks>
-        public Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<SgStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
+            return ApiRequestAsync<SgStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -392,9 +392,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Sets the standard hours for this employee.
         /// </remarks>
-        public StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model)
+        public StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, SgStandardHoursModel model)
         {
-            return ApiRequest<StandardHoursModel,StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
+            return ApiRequest<StandardHoursModel,SgStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
         }
 
         /// <summary>
@@ -403,9 +403,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Sets the standard hours for this employee.
         /// </remarks>
-        public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default)
+        public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, SgStandardHoursModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<StandardHoursModel,StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
+            return ApiRequestAsync<StandardHoursModel,SgStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
         }
 
         /// <summary>

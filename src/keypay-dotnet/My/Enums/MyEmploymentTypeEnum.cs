@@ -6,12 +6,16 @@ namespace KeyPayV2.My.Enums
     public enum MyEmploymentTypeEnum
     {
         Unknown,
-        FullTime,
+        Permanent,
         PartTime,
         LabourHire,
         SuperannuationIncomeStream,
         Casual,
         NotApplicable,
-        IndependentContractor
+        IndependentContractor,
+        Management,
+        Contract,
+        Intern,
+        Other
     }
 }

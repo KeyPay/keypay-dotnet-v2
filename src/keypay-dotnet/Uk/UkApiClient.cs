@@ -6,7 +6,6 @@ namespace KeyPayV2.Uk
 {
     public interface IUkApiClient : IBaseApiClient
     {
-        IOtherFunction Other { get; }
         IBrandFunction Brand { get; }
         IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
@@ -46,6 +45,7 @@ namespace KeyPayV2.Uk
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
+        IOtherFunction Other { get; }
         IRosterShiftFunction RosterShift { get; }
         ISubcontractorFunction Subcontractor { get; }
         ITimesheetsFunction Timesheets { get; }
@@ -61,7 +61,6 @@ namespace KeyPayV2.Uk
     {
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
-            Other = new OtherFunction(Api);
             Brand = new BrandFunction(Api);
             Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
@@ -101,6 +100,7 @@ namespace KeyPayV2.Uk
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
+            Other = new OtherFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             Subcontractor = new SubcontractorFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
@@ -113,7 +113,6 @@ namespace KeyPayV2.Uk
             WhiteLabel = new WhiteLabelFunction(Api);
         }
 
-        public IOtherFunction Other { get; }
         public IBrandFunction Brand { get; }
         public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
@@ -153,6 +152,7 @@ namespace KeyPayV2.Uk
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
+        public IOtherFunction Other { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ISubcontractorFunction Subcontractor { get; }
         public ITimesheetsFunction Timesheets { get; }

@@ -14,6 +14,8 @@ namespace KeyPayV2.Uk.Models.Common
         public string TaxCode { get; set; }
         public string IsCompanyDirector { get; set; }
         public string EmployeePaidIrregularly { get; set; }
+        public bool? ApplyRolledUpHolidayPay { get; set; }
+        public decimal? RolledUpHolidayPayPercentage { get; set; }
         public string TaxCalculationMethod { get; set; }
         public string StudentLoanType { get; set; }
         public bool HasPostGradLoan { get; set; }
@@ -71,6 +73,8 @@ namespace KeyPayV2.Uk.Models.Common
         public DateTime? DeferralDate { get; set; }
         public DateTime? FreeportQualifyingEndDate { get; set; }
         public DateTime? VeteransQualifyingEndDate { get; set; }
+        public DateTime? InvestmentQualifyingEndDate { get; set; }
+        public bool? ExcludeEarningsFromAppLevy { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

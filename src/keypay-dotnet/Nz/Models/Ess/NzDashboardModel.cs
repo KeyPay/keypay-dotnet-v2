@@ -10,6 +10,7 @@ namespace KeyPayV2.Nz.Models.Ess
     {
         public NzFeaturesModel Features { get; set; }
         public NzEssRosterShiftModel NextShift { get; set; }
+        public EssCurrentShiftModel CurrentShift { get; set; }
         public EssPayslipModel LatestPayslip { get; set; }
         public IList<LeaveBalanceModel> LeaveBalances { get; set; }
         public List<TitleViewModel> Titles { get; set; }
@@ -27,7 +28,6 @@ namespace KeyPayV2.Nz.Models.Ess
         public int PendingShiftCount { get; set; }
         public int ProposedSwapCount { get; set; }
         public int PendingLeaveCount { get; set; }
-        public EssCurrentShiftModel CurrentShift { get; set; }
         public int DocumentsRequiringAcknowledgementCount { get; set; }
         public string Region { get; set; }
         public int BiddableShiftCount { get; set; }

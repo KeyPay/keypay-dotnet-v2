@@ -26,6 +26,7 @@ namespace KeyPayV2.My.Enums
         ViewEmployeeDetails,
         EditBasicEmployeeDetails,
         EditAllEmployeeDetails,
-        ViewTimesheetReports
+        ViewTimesheetReports,
+        EmployeeNotes
     }
 }

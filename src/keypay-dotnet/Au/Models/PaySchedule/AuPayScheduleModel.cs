@@ -18,6 +18,7 @@ namespace KeyPayV2.Au.Models.PaySchedule
         public AuAutoPayConfigurationModel AutoPayConfiguration { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AuPayCycleFrequencyEnum Frequency { get; set; }
+        public PayScheduleApprovalSettingsModel PaySchedulePaymentApprovalSettings { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

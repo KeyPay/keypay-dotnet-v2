@@ -6,7 +6,6 @@ namespace KeyPayV2.My
 {
     public interface IMyApiClient : IBaseApiClient
     {
-        IOtherFunction Other { get; }
         IBrandFunction Brand { get; }
         IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
@@ -45,6 +44,7 @@ namespace KeyPayV2.My
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
+        IOtherFunction Other { get; }
         IRosterShiftFunction RosterShift { get; }
         ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         ITimesheetsFunction Timesheets { get; }
@@ -60,7 +60,6 @@ namespace KeyPayV2.My
     {
         public MyApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
-            Other = new OtherFunction(Api);
             Brand = new BrandFunction(Api);
             Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
@@ -99,6 +98,7 @@ namespace KeyPayV2.My
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
+            Other = new OtherFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
@@ -111,7 +111,6 @@ namespace KeyPayV2.My
             WhiteLabel = new WhiteLabelFunction(Api);
         }
 
-        public IOtherFunction Other { get; }
         public IBrandFunction Brand { get; }
         public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
@@ -150,6 +149,7 @@ namespace KeyPayV2.My
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
+        public IOtherFunction Other { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public ITimesheetsFunction Timesheets { get; }

@@ -13,9 +13,9 @@ namespace KeyPayV2.My.Models.Invoices
         public int? BusinessId { get; set; }
         public string BillingPlan { get; set; }
         public string Description { get; set; }
-        public decimal UnitPriceIncludingGst { get; set; }
+        public decimal? UnitPriceIncludingGst { get; set; }
         public decimal Quantity { get; set; }
-        public decimal TotalIncludingGst { get; set; }
+        public decimal? TotalIncludingGst { get; set; }
         public List<InvoiceLineItemDetailModel> Details { get; set; }
         public string WhiteLabelName { get; set; }
         public string BrandName { get; set; }

@@ -22,6 +22,7 @@ namespace KeyPayV2.Sg.Enums
         FailuresTenantNotSupplied,
         FailureNoJournalId,
         FailureAPIError,
+        FailureMissingTaxInfo,
         ResultUnknown
     }
 }

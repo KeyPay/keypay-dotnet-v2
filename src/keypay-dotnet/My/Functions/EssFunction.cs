@@ -1928,10 +1928,11 @@ namespace KeyPayV2.My.Functions
         /// given ESS settings for shift matching, returns that shift.
         /// Otherwise, the Shift result will be null.
         /// Note that if the time matches a shift exactly, the Shift result will also be null.
+        /// However, if allowNotEnded is set to true, the ongoing shift will be returned.
         /// </remarks>
         public MyRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
         {
-            return ApiRequest<MyRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<MyRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}&allowNotEnded={request.AllowNotEnded}", Method.Get);
         }
 
         /// <summary>
@@ -1942,10 +1943,11 @@ namespace KeyPayV2.My.Functions
         /// given ESS settings for shift matching, returns that shift.
         /// Otherwise, the Shift result will be null.
         /// Note that if the time matches a shift exactly, the Shift result will also be null.
+        /// However, if allowNotEnded is set to true, the ongoing shift will be returned.
         /// </remarks>
         public Task<MyRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MyRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<MyRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}&allowNotEnded={request.AllowNotEnded}", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -94,6 +94,7 @@ namespace KeyPayV2.Nz.Enums
         PensionOptOutCouldNotConnect,
         PensionOptoutScopeUnauthorised,
         PensionOptoutUnmatched,
-        PensionCeaseUnmatched
+        PensionCeaseUnmatched,
+        RolledUpHolidayPayAndStatutoryPayWarning
     }
 }

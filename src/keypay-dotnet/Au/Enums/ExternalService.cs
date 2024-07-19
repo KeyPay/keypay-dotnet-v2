@@ -5,9 +5,9 @@ namespace KeyPayV2.Au.Enums
 {
     public enum ExternalService
     {
+        Xero,
         None,
         Saasu,
-        Xero,
         MYOB,
         Deputy,
         EmployeeTimePunch,
@@ -86,6 +86,9 @@ namespace KeyPayV2.Au.Enums
         XeroIdentityPayrollSignUp,
         XeroIdentityHrSignUp,
         SageIntacct,
-        InstaPayDaily
+        InstaPayDaily,
+        Salesforce,
+        AutomatedPublicHolidayNotWorked,
+        EmployeePayRatesUpload
     }
 }

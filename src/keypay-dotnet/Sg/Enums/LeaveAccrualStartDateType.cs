@@ -7,6 +7,7 @@ namespace KeyPayV2.Sg.Enums
     {
         EmployeeStartDate,
         SpecifiedDate,
-        CalendarYear
+        CalendarYear,
+        CategorySpecificDate
     }
 }

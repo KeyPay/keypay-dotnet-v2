@@ -9,5 +9,6 @@ namespace KeyPayV2.My.Models.Ess
     public class FindMatchingClockOnRosterShiftQueryModel
     {
         public DateTime LocalTime { get; set; }
+        public bool? AllowNotEnded { get; set; }
     }
 }

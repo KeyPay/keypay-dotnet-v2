@@ -42,5 +42,6 @@ namespace KeyPayV2.Nz.Models.PaySchedule
         public int RunReportPacksDay { get; set; }
         public TimeSpan? RunReportPacksTimeOfDay { get; set; }
         public List<Int32> ReportPacksToRun { get; set; }
+        public bool SuperPayment { get; set; }
     }
 }

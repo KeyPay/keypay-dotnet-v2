@@ -22,6 +22,7 @@ namespace KeyPayV2.Au.Enums
         FailuresTenantNotSupplied,
         FailureNoJournalId,
         FailureAPIError,
+        FailureMissingTaxInfo,
         ResultUnknown
     }
 }

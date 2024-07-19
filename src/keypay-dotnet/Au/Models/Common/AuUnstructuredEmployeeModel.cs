@@ -80,6 +80,9 @@ namespace KeyPayV2.Au.Models.Common
         public string DvlPaySlipDescription { get; set; }
         public string PortableLongServiceLeaveId { get; set; }
         public bool? IncludeInPortableLongServiceLeaveReport { get; set; }
+        public bool? AutomaticallyApplyPublicHolidayNotWorkedEarningsLines { get; set; }
+        public int? AwardId { get; set; }
+        public int? EmploymentAgreementId { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

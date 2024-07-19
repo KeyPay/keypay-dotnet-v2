@@ -29,6 +29,7 @@ namespace KeyPayV2.Uk.Enums
         Comma,
         LloydsCboPayments,
         SantanderMultipleBacs,
-        SantanderUpdatedMultipleBacs
+        SantanderUpdatedMultipleBacs,
+        RoyalBankOfScotlandBulkBankLine
     }
 }

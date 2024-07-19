@@ -11,6 +11,7 @@ namespace KeyPayV2.Sg.Enums
         OCBC,
         Citibank,
         HSBC,
-        BNPParibas
+        BNPParibas,
+        Mizuho
     }
 }
