@@ -45,6 +45,7 @@ namespace KeyPayV2.Sg.Models.Common
         public DateTime? ObtainedApprovalDate { get; set; }
         public DateTime? NationalRegistrationIdentityExpiryDate { get; set; }
         public string ApplyFullCpfRate { get; set; }
+        public bool? ShgExempt { get; set; }
         public bool? SdlExempt { get; set; }
         public bool? CpfExempt { get; set; }
         public string EmployingEntityUen { get; set; }

@@ -109,8 +109,20 @@ namespace KeyPayV2.Uk.Functions
         Task UnattachEmployeeDocumentFromStatutoryAdoptionLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
         UkSapCalcApiModel CalculateStatutoryAdoptionLeavePeriodData(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request);
         Task<UkSapCalcApiModel> CalculateStatutoryAdoptionLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
-        UkSmpDataApiResponseModel CreateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, UkShppDataApiModel smp);
-        Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel smp, CancellationToken cancellationToken = default);
+        UkShppDataApiModel GetStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, GetStatutorySharedParentalLeavePeriodDataQueryModel request);
+        Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutorySharedParentalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel CreateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, UkShppDataApiModel shpp);
+        Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel shpp, CancellationToken cancellationToken = default);
+        UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int id);
+        Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int id);
+        Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int id, int documentId);
+        Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void UnattachEmployeeDocumentFromStatutorySharedParentalLeave(int businessId, int employeeId, int id, int documentId);
+        Task UnattachEmployeeDocumentFromStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        UkSmpCalcApiModel CalculateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, CalculateStatutorySharedParentalLeavePeriodDataQueryModel request);
+        Task<UkSmpCalcApiModel> CalculateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutorySharedParentalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
         UkSmpDataApiModel GetStatutoryMaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request);
         Task<UkSmpDataApiModel> GetStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
         UkSmpDataApiResponseModel CreateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, UkSmpDataApiModel smp);
@@ -1075,14 +1087,25 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Create Statutory Shared Parental Leave Period data
+        /// Get Statutory Shared Parental Leave Period Data
         /// </summary>
         /// <remarks>
-        /// Creates a Statutory Shared Parental Leave period for an employee
+        /// Gets the Statutory Shared Parental Leave period data for a specific employee
         /// </remarks>
-        public UkSmpDataApiResponseModel CreateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, UkShppDataApiModel smp)
+        public UkShppDataApiModel GetStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, GetStatutorySharedParentalLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp", smp, Method.Post);
+            return ApiRequest<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Shared Parental Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Shared Parental Leave period data for a specific employee
+        /// </remarks>
+        public Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutorySharedParentalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1091,9 +1114,112 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Creates a Statutory Shared Parental Leave period for an employee
         /// </remarks>
-        public Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel smp, CancellationToken cancellationToken = default)
+        public UkSmpDataApiResponseModel CreateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, UkShppDataApiModel shpp)
         {
-            return ApiRequestAsync<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp", smp, Method.Post, cancellationToken);
+            return ApiRequest<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp", shpp, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Statutory Shared Parental Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Shared Parental Leave period for an employee
+        /// </remarks>
+        public Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel shpp, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp", shpp, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Statutory Shared Parental Leave Period Data By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Shared Parental Leave period data for a specific employee
+        /// </remarks>
+        public UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Shared Parental Leave Period Data By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Shared Parental Leave period data for a specific employee
+        /// </remarks>
+        public Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Statutory Shared Parental Leave Attachments
+        /// </summary>
+        public List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/attachments", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Shared Parental Leave Attachments
+        /// </summary>
+        public Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/attachments", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Attach Employee Document to Statutory Shared Parental Leave
+        /// </summary>
+        public EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int id, int documentId)
+        {
+            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{documentId}", Method.Put);
+        }
+
+        /// <summary>
+        /// Attach Employee Document to Statutory Shared Parental Leave
+        /// </summary>
+        public Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{documentId}", Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unattach Employee Document from Statutory Shared Parental Leave
+        /// </summary>
+        public void UnattachEmployeeDocumentFromStatutorySharedParentalLeave(int businessId, int employeeId, int id, int documentId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{documentId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Unattach Employee Document from Statutory Shared Parental Leave
+        /// </summary>
+        public Task UnattachEmployeeDocumentFromStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{documentId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Shared Parental Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Shared Parental Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public UkSmpCalcApiModel CalculateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, CalculateStatutorySharedParentalLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Shared Parental Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Shared Parental Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public Task<UkSmpCalcApiModel> CalculateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutorySharedParentalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -104,6 +104,7 @@ namespace KeyPayV2.Uk.Enums
         CustomisablePayrollReport,
         SuperannuationStaplingDetailsReport,
         HmrcInboxReport,
+        HrdfMonthlyContributionsReport,
         CasualConversionReport
     }
 }

@@ -20,6 +20,7 @@ namespace KeyPayV2.My.Enums
         AllianceBizSmart,
         EAmPayday,
         UnitedOverseas,
-        StandardCharteredS2B
+        StandardCharteredS2B,
+        IslamBulkPayment
     }
 }

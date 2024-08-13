@@ -129,6 +129,7 @@ namespace KeyPayV2.My.Enums
         RecoveryEmailAddressConfirmChanged,
         FraudProtectionCheckResult,
         SuspiciousLogin,
+        ImpossibleTravelLogin,
         PaymentApprovalNotification,
         PaymentApprovalReminder,
         PaymentApprovalStatusChanged,

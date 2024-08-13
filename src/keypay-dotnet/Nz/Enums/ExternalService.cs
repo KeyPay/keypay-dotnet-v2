@@ -89,6 +89,8 @@ namespace KeyPayV2.Nz.Enums
         InstaPayDaily,
         Salesforce,
         AutomatedPublicHolidayNotWorked,
-        EmployeePayRatesUpload
+        EmployeePayRatesUpload,
+        Zapier,
+        StapledSuperFund
     }
 }

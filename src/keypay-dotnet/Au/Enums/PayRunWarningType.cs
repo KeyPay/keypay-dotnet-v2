@@ -95,6 +95,7 @@ namespace KeyPayV2.Au.Enums
         PensionOptoutScopeUnauthorised,
         PensionOptoutUnmatched,
         PensionCeaseUnmatched,
-        RolledUpHolidayPayAndStatutoryPayWarning
+        RolledUpHolidayPayAndStatutoryPayWarning,
+        PendingDeductions
     }
 }
