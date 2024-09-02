@@ -9,7 +9,6 @@ namespace KeyPayV2.My.Models.Employee
     public class MyOpeningBalancesModel
     {
         public OpeningBalancesMyBenefitsInKindModel BenefitsInKind { get; set; }
-        public OpeningBalancesPayrollHistoryModel PayrollHistory { get; set; }
         public OpeningBalancesStatutoryContributionsModel StatutoryContributionsAndPcb { get; set; }
         public OpeningBalancesTaxReliefModel TaxReliefs { get; set; }
         public int? EmployeeId { get; set; }

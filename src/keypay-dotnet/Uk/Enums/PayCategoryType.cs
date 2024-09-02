@@ -82,6 +82,7 @@ namespace KeyPayV2.Uk.Enums
         PaidFamilyAndDomesticViolenceLeave,
         UkOccupationalMaternityPay,
         RolledUpHolidayPay,
-        ShppInTouchPay
+        ShppInTouchPay,
+        AlternativeHolidaysCashOut
     }
 }

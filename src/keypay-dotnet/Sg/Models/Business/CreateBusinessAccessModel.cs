@@ -18,6 +18,7 @@ namespace KeyPayV2.Sg.Models.Business
         public IList<LocationAccessModel> LocationAccess { get; set; }
         public ReportAccessModel Reports { get; set; }
         public KioskAccessModel KioskAccess { get; set; }
+        public PayrollAccessModel PayrollAccess { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
     }
