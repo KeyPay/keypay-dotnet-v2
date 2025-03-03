@@ -9,6 +9,7 @@ namespace KeyPayV2.My.Enums
         Annually,
         Fixed,
         Daily,
-        Monthly
+        Monthly,
+        Weekly
     }
 }

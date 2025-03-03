@@ -117,8 +117,8 @@ namespace KeyPayV2.Au.Functions
         Task<KioskEmployeeModel> ClockInEmployeeAsync(int businessId, int kioskId, ClockOnModel request, CancellationToken cancellationToken = default);
         KioskEmployeeModel DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request);
         Task<KioskEmployeeModel> DiscardCurrentShiftAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
-        void SendPinResetEmail(int businessId, PinResetModel model, string kioskId);
-        Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        void SendPinResetEmail(int businessId, string kioskId, PinResetModel model);
+        Task SendPinResetEmailAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default);
         KioskEmployeeModel EndBreak(int businessId, int kioskId, EndBreakModel request);
         Task<KioskEmployeeModel> EndBreakAsync(int businessId, int kioskId, EndBreakModel request, CancellationToken cancellationToken = default);
         AuTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId);
@@ -131,10 +131,10 @@ namespace KeyPayV2.Au.Functions
         Task<ShiftNoteViewModel> AddNoteToShiftAsync(int businessId, int kioskId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default);
         void DeleteNoteFromShift(int businessId, int kioskId, int shiftId, int noteId);
         Task DeleteNoteFromShiftAsync(int businessId, int kioskId, int shiftId, int noteId, CancellationToken cancellationToken = default);
-        void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId);
-        Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default);
-        void SendPinResetSms(int businessId, PinResetModel model, string kioskId);
-        Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        void MarkShiftNotesRead(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model);
+        Task MarkShiftNotesReadAsync(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model, CancellationToken cancellationToken = default);
+        void SendPinResetSms(int businessId, string kioskId, PinResetModel model);
+        Task SendPinResetSmsAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default);
         List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId);
         Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default);
         List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request);
@@ -151,8 +151,8 @@ namespace KeyPayV2.Au.Functions
         Task<AuIndividualTimesheetLineModel> CreateKioskTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         AuIndividualTimesheetLineModel UpdateKioskTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request);
         Task<AuIndividualTimesheetLineModel> UpdateKioskTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
-        AuIndividualTimesheetLineModel UpdateCommentsInATimesheet(int businessId, TimesheetLineCommentsModel request, string timesheetLineId);
-        Task<AuIndividualTimesheetLineModel> UpdateCommentsInATimesheetAsync(int businessId, TimesheetLineCommentsModel request, string timesheetLineId, CancellationToken cancellationToken = default);
+        AuIndividualTimesheetLineModel UpdateCommentsInATimesheet(int businessId, string timesheetLineId, TimesheetLineCommentsModel request);
+        Task<AuIndividualTimesheetLineModel> UpdateCommentsInATimesheetAsync(int businessId, string timesheetLineId, TimesheetLineCommentsModel request, CancellationToken cancellationToken = default);
         List<ManagerLeaveRequestModel> ListLeaveRequests(int businessId);
         Task<List<ManagerLeaveRequestModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default);
         List<ManagerLeaveRequestModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request);
@@ -185,8 +185,8 @@ namespace KeyPayV2.Au.Functions
         Task<AuManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, CancellationToken cancellationToken = default);
         AuManagerRosterShiftModel GetRosterShiftById(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request);
         Task<AuManagerRosterShiftModel> GetRosterShiftByIdAsync(int businessId, int rosterShiftId, GetRosterShiftByIdQueryModel request, CancellationToken cancellationToken = default);
-        void UpdateRosterShift(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request);
-        Task UpdateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        void UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
+        Task UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
         Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
         List<ManagerRosterEmployeeModel> ListRosterEmployees(int businessId);
@@ -1374,7 +1374,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by email.
         /// </remarks>
-        public void SendPinResetEmail(int businessId, PinResetModel model, string kioskId)
+        public void SendPinResetEmail(int businessId, string kioskId, PinResetModel model)
         {
             ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/emailreset", model, Method.Post);
         }
@@ -1385,7 +1385,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by email.
         /// </remarks>
-        public Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default)
+        public Task SendPinResetEmailAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/manager/kiosk/{kioskId}/emailreset", model, Method.Post, cancellationToken);
         }
@@ -1528,7 +1528,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Marks some shift notes as either read or unread.
         /// </remarks>
-        public void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId)
+        public void MarkShiftNotesRead(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model)
         {
             ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.Post);
         }
@@ -1539,7 +1539,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Marks some shift notes as either read or unread.
         /// </remarks>
-        public Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default)
+        public Task MarkShiftNotesReadAsync(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/manager/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.Post, cancellationToken);
         }
@@ -1550,7 +1550,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by SMS. Note that the current business must have SMS notifications enabled.
         /// </remarks>
-        public void SendPinResetSms(int businessId, PinResetModel model, string kioskId)
+        public void SendPinResetSms(int businessId, string kioskId, PinResetModel model)
         {
             ApiRequest($"/business/{businessId}/manager/kiosk/{kioskId}/smsreset", model, Method.Post);
         }
@@ -1561,7 +1561,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by SMS. Note that the current business must have SMS notifications enabled.
         /// </remarks>
-        public Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default)
+        public Task SendPinResetSmsAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/manager/kiosk/{kioskId}/smsreset", model, Method.Post, cancellationToken);
         }
@@ -1754,7 +1754,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Update an individual timesheet line with comments
         /// </remarks>
-        public AuIndividualTimesheetLineModel UpdateCommentsInATimesheet(int businessId, TimesheetLineCommentsModel request, string timesheetLineId)
+        public AuIndividualTimesheetLineModel UpdateCommentsInATimesheet(int businessId, string timesheetLineId, TimesheetLineCommentsModel request)
         {
             return ApiRequest<AuIndividualTimesheetLineModel,TimesheetLineCommentsModel>($"/business/{businessId}/manager/kiosk/timesheetcomments/{timesheetLineId}", request, Method.Put);
         }
@@ -1765,7 +1765,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Update an individual timesheet line with comments
         /// </remarks>
-        public Task<AuIndividualTimesheetLineModel> UpdateCommentsInATimesheetAsync(int businessId, TimesheetLineCommentsModel request, string timesheetLineId, CancellationToken cancellationToken = default)
+        public Task<AuIndividualTimesheetLineModel> UpdateCommentsInATimesheetAsync(int businessId, string timesheetLineId, TimesheetLineCommentsModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuIndividualTimesheetLineModel,TimesheetLineCommentsModel>($"/business/{businessId}/manager/kiosk/timesheetcomments/{timesheetLineId}", request, Method.Put, cancellationToken);
         }
@@ -2150,7 +2150,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Update an individual roster shift
         /// </remarks>
-        public void UpdateRosterShift(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request)
+        public void UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
         {
             ApiRequest($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
         }
@@ -2161,7 +2161,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Update an individual roster shift
         /// </remarks>
-        public Task UpdateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        public Task UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/manager/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
         }

@@ -17,6 +17,7 @@ namespace KeyPayV2.Nz.Models.PayRun
         public decimal StudentLoan { get; set; }
         public decimal StudentLoanMandatory { get; set; }
         public decimal StudentLoanVoluntary { get; set; }
+        public DateTime? KnownDateOfEarnings { get; set; }
         public string PayCategoryId { get; set; }
         public string PayCategoryName { get; set; }
         public decimal Units { get; set; }

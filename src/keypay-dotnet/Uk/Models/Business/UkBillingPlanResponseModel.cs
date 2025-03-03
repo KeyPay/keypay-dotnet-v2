@@ -19,7 +19,8 @@ namespace KeyPayV2.Uk.Models.Business
         [JsonConverter(typeof(StringEnumConverter))]
         public FunctionToggle FunctionOccupationalAbsence { get; set; }
         public decimal PricePerP11D { get; set; }
-        public bool FunctionEnableCis { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public FunctionToggle FunctionEnableCis { get; set; }
         public decimal PricePerCisSubContractor { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }

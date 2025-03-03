@@ -105,6 +105,9 @@ namespace KeyPayV2.Sg.Enums
         SuperannuationStaplingDetailsReport,
         HmrcInboxReport,
         HrdfMonthlyContributionsReport,
+        CpfApexOverviewReport,
+        EmployeeIrregularEmploymentReport,
+        StatsNzQesReport,
         CasualConversionReport
     }
 }

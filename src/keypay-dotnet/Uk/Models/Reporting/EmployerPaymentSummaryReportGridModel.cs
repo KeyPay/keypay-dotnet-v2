@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk.Models.Reporting
         public DateTime PeriodEnd { get; set; }
         public decimal SmpRecovered { get; set; }
         public decimal NicCompensationOnSmp { get; set; }
+        public decimal SncpRecovered { get; set; }
+        public decimal NicCompensationOnSncp { get; set; }
         public decimal SppRecovered { get; set; }
         public decimal NicCompensationOnSpp { get; set; }
         public decimal SpbpRecovered { get; set; }

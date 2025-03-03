@@ -83,6 +83,24 @@ namespace KeyPayV2.Sg.Enums
         UkOccupationalMaternityPay,
         RolledUpHolidayPay,
         ShppInTouchPay,
-        AlternativeHolidaysCashOut
+        AlternativeHolidaysCashOut,
+        StatutoryNeonatalCarePay,
+        SeverancePay,
+        VacationPay,
+        BereavementLeave,
+        BonusDiscretionary,
+        BonusWorkRelated,
+        Commission,
+        CarAllowance,
+        RetroactivePay,
+        VacationPayoutTimeOff,
+        ControlledTips,
+        CellPhoneAllowance,
+        Overtime,
+        FlexTimeOff,
+        OtherPay,
+        PayInLieuOfNotice,
+        PersonalTimeOff,
+        WorkedHolidayPremiumPay
     }
 }

@@ -31,6 +31,9 @@ namespace KeyPayV2.My.Models.Ess
         public string TerminationReason { get; set; }
         public string PortableLongServiceLeaveId { get; set; }
         public bool IncludeInPortableLongServiceLeaveReport { get; set; }
+        public bool IsContractor { get; set; }
+        public string TradingName { get; set; }
+        public string Abn { get; set; }
         public int? TitleId { get; set; }
         public string FirstName { get; set; }
         public string OtherName { get; set; }
@@ -77,15 +80,5 @@ namespace KeyPayV2.My.Models.Ess
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }
         public string MobilePhone { get; set; }
-        public string ResidentialAddress_MdmId { get; set; }
-        public int? ResidentialAddress_MdmVersion { get; set; }
-        public string ResidentialAddress_MdmSchemaVersion { get; set; }
-        public string PostalAddress_MdmId { get; set; }
-        public int? PostalAddress_MdmVersion { get; set; }
-        public string PostalAddress_MdmSchemaVersion { get; set; }
-        public bool TriggeredFromMdm { get; set; }
-        public bool SendToMdm { get; set; }
-        public IDictionary<String,String> IgnoreFields { get; set; }
-        public bool MdmSyncUser { get; set; }
     }
 }

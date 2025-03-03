@@ -7,6 +7,10 @@ namespace KeyPayV2.Uk
     public interface IUkApiClient : IBaseApiClient
     {
         IBrandFunction Brand { get; }
+        IOtherFunction Other { get; }
+        IPayRunFunction PayRun { get; }
+        IReportingFunction Reporting { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
         IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -26,7 +30,6 @@ namespace KeyPayV2.Uk
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveRequestsFunction LeaveRequests { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IAuthenticationFunction Authentication { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
@@ -39,13 +42,12 @@ namespace KeyPayV2.Uk
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayCategoryFunction PayCategory { get; }
+        IPayeSchemeFunction PayeScheme { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPensionSettingsFunction PensionSettings { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
-        IReportingFunction Reporting { get; }
-        IOtherFunction Other { get; }
         IRosterShiftFunction RosterShift { get; }
         ISubcontractorFunction Subcontractor { get; }
         ITimesheetsFunction Timesheets { get; }
@@ -55,13 +57,16 @@ namespace KeyPayV2.Uk
         IEssFunction Ess { get; }
         IResellerFunction Reseller { get; }
         IUserFunction User { get; }
-        IWhiteLabelFunction WhiteLabel { get; }
     }
     public class UkApiClient : BaseApiClient, IUkApiClient
     {
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Brand = new BrandFunction(Api);
+            Other = new OtherFunction(Api);
+            PayRun = new PayRunFunction(Api);
+            Reporting = new ReportingFunction(Api);
+            WhiteLabel = new WhiteLabelFunction(Api);
             Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
@@ -81,7 +86,6 @@ namespace KeyPayV2.Uk
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
-            PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
@@ -94,13 +98,12 @@ namespace KeyPayV2.Uk
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
+            PayeScheme = new PayeSchemeFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PensionSettings = new PensionSettingsFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
-            Reporting = new ReportingFunction(Api);
-            Other = new OtherFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             Subcontractor = new SubcontractorFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
@@ -110,10 +113,13 @@ namespace KeyPayV2.Uk
             Ess = new EssFunction(Api);
             Reseller = new ResellerFunction(Api);
             User = new UserFunction(Api);
-            WhiteLabel = new WhiteLabelFunction(Api);
         }
 
         public IBrandFunction Brand { get; }
+        public IOtherFunction Other { get; }
+        public IPayRunFunction PayRun { get; }
+        public IReportingFunction Reporting { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
         public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -133,7 +139,6 @@ namespace KeyPayV2.Uk
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveRequestsFunction LeaveRequests { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IAuthenticationFunction Authentication { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
@@ -146,13 +151,12 @@ namespace KeyPayV2.Uk
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayCategoryFunction PayCategory { get; }
+        public IPayeSchemeFunction PayeScheme { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPensionSettingsFunction PensionSettings { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
-        public IReportingFunction Reporting { get; }
-        public IOtherFunction Other { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ISubcontractorFunction Subcontractor { get; }
         public ITimesheetsFunction Timesheets { get; }
@@ -162,6 +166,5 @@ namespace KeyPayV2.Uk
         public IEssFunction Ess { get; }
         public IResellerFunction Reseller { get; }
         public IUserFunction User { get; }
-        public IWhiteLabelFunction WhiteLabel { get; }
     }
 }

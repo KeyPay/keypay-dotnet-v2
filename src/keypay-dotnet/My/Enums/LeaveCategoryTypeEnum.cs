@@ -18,6 +18,7 @@ namespace KeyPayV2.My.Enums
         EntitlementBasedLeave,
         OccupationalMaternityLeave,
         StatutorySharedParentalPay,
-        LeaveWithoutPay
+        LeaveWithoutPay,
+        StatutoryNeonatalCareLeave
     }
 }

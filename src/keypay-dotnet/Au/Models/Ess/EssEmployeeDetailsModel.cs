@@ -90,5 +90,6 @@ namespace KeyPayV2.Au.Models.Ess
         public EmployeeDetailsFields Fields { get; set; }
         public bool PendingEmailUpdate { get; set; }
         public string NewEmail { get; set; }
+        public IList<SelectListItem> Genders { get; set; }
     }
 }

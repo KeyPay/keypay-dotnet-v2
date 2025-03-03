@@ -14,6 +14,9 @@ namespace KeyPayV2.Sg.Models.Business
         public int UserBusinessRestrictionCount { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public BusinessRestrictionTypeEnum? PayRunApprovalAccess { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BusinessRestrictionTypeEnum? PayRunCreationAccess { get; set; }
         public Int32[] SelectedPaySchedulesForPayRunApproval { get; set; }
+        public Int32[] SelectedPaySchedulesForPayRunCreation { get; set; }
     }
 }

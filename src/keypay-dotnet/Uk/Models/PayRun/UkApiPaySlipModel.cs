@@ -46,7 +46,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public IList<ApiPaySlipDeductionModel> Deductions { get; set; }
         public IList<ApiYearToDateEarningsBreakdownModel> GrossYTDDetails { get; set; }
         public IList<ApiEmployeeExpenseGridModel> EmployeeExpenses { get; set; }
-        public decimal TotalHours { get; set; }
+        public decimal? TotalHours { get; set; }
         public decimal GrossEarnings { get; set; }
         public decimal NetEarnings { get; set; }
         public decimal TaxableEarnings { get; set; }

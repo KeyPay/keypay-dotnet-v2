@@ -11,6 +11,7 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
     public class EmploymentAgreementModel
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string Classification { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmploymentTypeEnum EmploymentType { get; set; }

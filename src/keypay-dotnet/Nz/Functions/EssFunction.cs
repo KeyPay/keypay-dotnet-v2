@@ -199,18 +199,18 @@ namespace KeyPayV2.Nz.Functions
         Task GetShiftNotesAsync(int employeeId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default);
         void AddNoteToShift(int employeeId, int shiftId, AddNoteModel model);
         Task AddNoteToShiftAsync(int employeeId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default);
-        void MarkShiftNotesRead(int employeeId, MarkNotesReadViewModel model, string shiftId);
-        Task MarkShiftNotesReadAsync(int employeeId, MarkNotesReadViewModel model, string shiftId, CancellationToken cancellationToken = default);
+        void MarkShiftNotesRead(int employeeId, string shiftId, MarkNotesReadViewModel model);
+        Task MarkShiftNotesReadAsync(int employeeId, string shiftId, MarkNotesReadViewModel model, CancellationToken cancellationToken = default);
         List<NzTimeAndAttendanceShiftModel> Shifts(int employeeId, GetShiftsModel model);
         Task<List<NzTimeAndAttendanceShiftModel>> ShiftsAsync(int employeeId, GetShiftsModel model, CancellationToken cancellationToken = default);
         void StartBreak(int employeeId, StartBreakModel request);
         Task StartBreakAsync(int employeeId, StartBreakModel request, CancellationToken cancellationToken = default);
         List<EssTimesheetModel> ListTimesheets(int employeeId, ListTimesheetsQueryModel request);
         Task<List<EssTimesheetModel>> ListTimesheetsAsync(int employeeId, ListTimesheetsQueryModel request, CancellationToken cancellationToken = default);
-        void SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet);
-        Task SubmitOrUpdateTimesheetAsync(int employeeId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default);
-        void EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet);
-        Task EditTimesheetAsync(int employeeId, int timesheetId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default);
+        EssTimesheetAndSummaryModel SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet);
+        Task<EssTimesheetAndSummaryModel> SubmitOrUpdateTimesheetAsync(int employeeId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default);
+        EssTimesheetAndSummaryModel EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet);
+        Task<EssTimesheetAndSummaryModel> EditTimesheetAsync(int employeeId, int timesheetId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default);
         void DeleteTimesheet(int employeeId, int timesheetId);
         Task DeleteTimesheetAsync(int employeeId, int timesheetId, CancellationToken cancellationToken = default);
         NzEssTimesheetDataModel GetTimesheetCreationData(int employeeId, GetTimesheetCreationDataQueryModel request);
@@ -2282,7 +2282,7 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Marks some shift notes as either read or unread.
         /// </remarks>
-        public void MarkShiftNotesRead(int employeeId, MarkNotesReadViewModel model, string shiftId)
+        public void MarkShiftNotesRead(int employeeId, string shiftId, MarkNotesReadViewModel model)
         {
             ApiRequest($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes/read-state", model, Method.Post);
         }
@@ -2293,7 +2293,7 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Marks some shift notes as either read or unread.
         /// </remarks>
-        public Task MarkShiftNotesReadAsync(int employeeId, MarkNotesReadViewModel model, string shiftId, CancellationToken cancellationToken = default)
+        public Task MarkShiftNotesReadAsync(int employeeId, string shiftId, MarkNotesReadViewModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes/read-state", model, Method.Post, cancellationToken);
         }
@@ -2371,9 +2371,9 @@ namespace KeyPayV2.Nz.Functions
         /// If no ID is specified, create a new timesheet for the employee. 
         /// Otherwise, update the timesheet with the specified ID.
         /// </remarks>
-        public void SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet)
+        public EssTimesheetAndSummaryModel SubmitOrUpdateTimesheet(int employeeId, EssTimesheetModel timesheet)
         {
-            ApiRequest($"/ess/{employeeId}/timesheet", timesheet, Method.Post);
+            return ApiRequest<EssTimesheetAndSummaryModel,EssTimesheetModel>($"/ess/{employeeId}/timesheet", timesheet, Method.Post);
         }
 
         /// <summary>
@@ -2383,9 +2383,9 @@ namespace KeyPayV2.Nz.Functions
         /// If no ID is specified, create a new timesheet for the employee. 
         /// Otherwise, update the timesheet with the specified ID.
         /// </remarks>
-        public Task SubmitOrUpdateTimesheetAsync(int employeeId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default)
+        public Task<EssTimesheetAndSummaryModel> SubmitOrUpdateTimesheetAsync(int employeeId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timesheet", timesheet, Method.Post, cancellationToken);
+            return ApiRequestAsync<EssTimesheetAndSummaryModel,EssTimesheetModel>($"/ess/{employeeId}/timesheet", timesheet, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2394,9 +2394,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Edits the timesheet with the specified ID.
         /// </remarks>
-        public void EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet)
+        public EssTimesheetAndSummaryModel EditTimesheet(int employeeId, int timesheetId, EssTimesheetModel timesheet)
         {
-            ApiRequest($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.Post);
+            return ApiRequest<EssTimesheetAndSummaryModel,EssTimesheetModel>($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.Post);
         }
 
         /// <summary>
@@ -2405,9 +2405,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Edits the timesheet with the specified ID.
         /// </remarks>
-        public Task EditTimesheetAsync(int employeeId, int timesheetId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default)
+        public Task<EssTimesheetAndSummaryModel> EditTimesheetAsync(int employeeId, int timesheetId, EssTimesheetModel timesheet, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.Post, cancellationToken);
+            return ApiRequestAsync<EssTimesheetAndSummaryModel,EssTimesheetModel>($"/ess/{employeeId}/timesheet/{timesheetId}", timesheet, Method.Post, cancellationToken);
         }
 
         /// <summary>

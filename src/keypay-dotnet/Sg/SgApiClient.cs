@@ -6,8 +6,11 @@ namespace KeyPayV2.Sg
 {
     public interface ISgApiClient : IBaseApiClient
     {
-        IOtherFunction Other { get; }
         IBrandFunction Brand { get; }
+        IOtherFunction Other { get; }
+        IPayRunFunction PayRun { get; }
+        IReportingFunction Reporting { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
         IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -31,7 +34,6 @@ namespace KeyPayV2.Sg
         ILocationFunction Location { get; }
         IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IAuthenticationFunction Authentication { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
@@ -49,7 +51,6 @@ namespace KeyPayV2.Sg
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
-        IReportingFunction Reporting { get; }
         IRosterShiftFunction RosterShift { get; }
         ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         ITimesheetsFunction Timesheets { get; }
@@ -59,14 +60,16 @@ namespace KeyPayV2.Sg
         IEssFunction Ess { get; }
         IResellerFunction Reseller { get; }
         IUserFunction User { get; }
-        IWhiteLabelFunction WhiteLabel { get; }
     }
     public class SgApiClient : BaseApiClient, ISgApiClient
     {
         public SgApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
-            Other = new OtherFunction(Api);
             Brand = new BrandFunction(Api);
+            Other = new OtherFunction(Api);
+            PayRun = new PayRunFunction(Api);
+            Reporting = new ReportingFunction(Api);
+            WhiteLabel = new WhiteLabelFunction(Api);
             Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
@@ -90,7 +93,6 @@ namespace KeyPayV2.Sg
             Location = new LocationFunction(Api);
             EmployeeIrasLumpSum = new EmployeeIrasLumpSumFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
-            PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
@@ -108,7 +110,6 @@ namespace KeyPayV2.Sg
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
-            Reporting = new ReportingFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
@@ -118,11 +119,13 @@ namespace KeyPayV2.Sg
             Ess = new EssFunction(Api);
             Reseller = new ResellerFunction(Api);
             User = new UserFunction(Api);
-            WhiteLabel = new WhiteLabelFunction(Api);
         }
 
-        public IOtherFunction Other { get; }
         public IBrandFunction Brand { get; }
+        public IOtherFunction Other { get; }
+        public IPayRunFunction PayRun { get; }
+        public IReportingFunction Reporting { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
         public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -146,7 +149,6 @@ namespace KeyPayV2.Sg
         public ILocationFunction Location { get; }
         public IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IAuthenticationFunction Authentication { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
@@ -164,7 +166,6 @@ namespace KeyPayV2.Sg
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
-        public IReportingFunction Reporting { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public ITimesheetsFunction Timesheets { get; }
@@ -174,6 +175,5 @@ namespace KeyPayV2.Sg
         public IEssFunction Ess { get; }
         public IResellerFunction Reseller { get; }
         public IUserFunction User { get; }
-        public IWhiteLabelFunction WhiteLabel { get; }
     }
 }

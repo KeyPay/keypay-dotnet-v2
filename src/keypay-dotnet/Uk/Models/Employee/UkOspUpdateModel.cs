@@ -9,5 +9,7 @@ namespace KeyPayV2.Uk.Models.Employee
     public class UkOspUpdateModel
     {
         public int? LeaveCategoryId { get; set; }
+        public bool? HalfDayFirstDay { get; set; }
+        public bool? HalfDayLastDay { get; set; }
     }
 }

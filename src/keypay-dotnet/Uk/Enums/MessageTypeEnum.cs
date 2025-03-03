@@ -10,16 +10,13 @@ namespace KeyPayV2.Uk.Enums
         RecoverPassword,
         EmployeeAccess,
         BusinessAccess,
-        CancelAccount,
         Invoice,
-        InvoicePaymentSuccessNotification,
         AutomatedPassword,
         LeaveRequestNotification,
         RestrictedAccess,
         ResendPayslip,
         PaymentSummaryAvailable,
         SuperPaymentsUpdateResults,
-        InvoicePaymentFailedNotification,
         NewShiftsPublished,
         ShiftsUnpublished,
         ShiftDeclined,
@@ -135,6 +132,13 @@ namespace KeyPayV2.Uk.Enums
         PaymentApprovalStatusChanged,
         BulkActionUserPasswordChanged,
         BulkActionUserAccountLocked,
-        BulkActionUserAccountUnlocked
+        BulkActionUserAccountUnlocked,
+        P60DownloadReady,
+        PartnerBusinessDeactivationNotification30Days,
+        EHDirectBusinessDeactivationNotification30Days,
+        RecoverTwoFactorAuthentication,
+        AccountRecoverySubmitted,
+        ScheduledJournalExportFailed,
+        AddEmployeeEmployeeOnboarding
     }
 }

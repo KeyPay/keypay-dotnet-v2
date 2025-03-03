@@ -19,5 +19,6 @@ namespace KeyPayV2.Au.Models.PayRun
         public string CallbackUrl { get; set; }
         public bool? CreateWithEmptyPays { get; set; }
         public bool? Adhoc { get; set; }
+        public bool? IncludeTerminatedEmployees { get; set; }
     }
 }

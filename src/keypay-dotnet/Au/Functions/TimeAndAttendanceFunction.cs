@@ -29,18 +29,18 @@ namespace KeyPayV2.Au.Functions
         Task AddCompleteShiftForEmployeeAsync(int businessId, int kioskId, AuAddShiftModel model, CancellationToken cancellationToken = default);
         void ChangePin(int businessId, int kioskId, ChangeKioskPinModel model);
         Task ChangePinAsync(int businessId, int kioskId, ChangeKioskPinModel model, CancellationToken cancellationToken = default);
-        void CheckEmployee(int businessId, BasicKioskEmployeeModel model, string kioskId);
-        Task CheckEmployeeAsync(int businessId, BasicKioskEmployeeModel model, string kioskId, CancellationToken cancellationToken = default);
-        KioskEmployeeModel VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId);
-        Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, CheckKioskPinModel model, string kioskId, CancellationToken cancellationToken = default);
+        void CheckEmployee(int businessId, string kioskId, BasicKioskEmployeeModel model);
+        Task CheckEmployeeAsync(int businessId, string kioskId, BasicKioskEmployeeModel model, CancellationToken cancellationToken = default);
+        KioskEmployeeModel VerifyKioskPin(int businessId, string kioskId, CheckKioskPinModel model);
+        Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, string kioskId, CheckKioskPinModel model, CancellationToken cancellationToken = default);
         void ClockOutEmployee(int businessId, int kioskId, ClockOffModel request);
         Task ClockOutEmployeeAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
         void ClockInEmployee(int businessId, int kioskId, AuClockOnModel model);
         Task ClockInEmployeeAsync(int businessId, int kioskId, AuClockOnModel model, CancellationToken cancellationToken = default);
         void DiscardCurrentShift(int businessId, int kioskId, ClockOffModel request);
         Task DiscardCurrentShiftAsync(int businessId, int kioskId, ClockOffModel request, CancellationToken cancellationToken = default);
-        void SendPinResetEmail(int businessId, PinResetModel model, string kioskId);
-        Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        void SendPinResetEmail(int businessId, string kioskId, PinResetModel model);
+        Task SendPinResetEmailAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default);
         void EndBreak(int businessId, int kioskId, EndBreakModel request);
         Task EndBreakAsync(int businessId, int kioskId, EndBreakModel request, CancellationToken cancellationToken = default);
         AuTimeAndAttendanceLookupDataModel GetEmployeeLookupData(int businessId, int employeeId, int kioskId);
@@ -53,10 +53,10 @@ namespace KeyPayV2.Au.Functions
         Task AddNoteToShiftAsync(int businessId, int kioskId, int shiftId, AddNoteModel model, CancellationToken cancellationToken = default);
         void DeleteNoteFromShift(int businessId, int kioskId, int shiftId, int noteId);
         Task DeleteNoteFromShiftAsync(int businessId, int kioskId, int shiftId, int noteId, CancellationToken cancellationToken = default);
-        void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId);
-        Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default);
-        void SendPinResetSms(int businessId, PinResetModel model, string kioskId);
-        Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default);
+        void MarkShiftNotesRead(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model);
+        Task MarkShiftNotesReadAsync(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model, CancellationToken cancellationToken = default);
+        void SendPinResetSms(int businessId, string kioskId, PinResetModel model);
+        Task SendPinResetSmsAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default);
         List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId);
         Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, CancellationToken cancellationToken = default);
         List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request);
@@ -236,7 +236,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// If the specified employee has kiosk access, returns details about the employee and their current shift.
         /// </remarks>
-        public void CheckEmployee(int businessId, BasicKioskEmployeeModel model, string kioskId)
+        public void CheckEmployee(int businessId, string kioskId, BasicKioskEmployeeModel model)
         {
             ApiRequest($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.Post);
         }
@@ -247,7 +247,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// If the specified employee has kiosk access, returns details about the employee and their current shift.
         /// </remarks>
-        public Task CheckEmployeeAsync(int businessId, BasicKioskEmployeeModel model, string kioskId, CancellationToken cancellationToken = default)
+        public Task CheckEmployeeAsync(int businessId, string kioskId, BasicKioskEmployeeModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/checkid", model, Method.Post, cancellationToken);
         }
@@ -258,7 +258,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Verifies the employee's kiosk PIN. Returns error code 400 if the PIN is incorrect.
         /// </remarks>
-        public KioskEmployeeModel VerifyKioskPin(int businessId, CheckKioskPinModel model, string kioskId)
+        public KioskEmployeeModel VerifyKioskPin(int businessId, string kioskId, CheckKioskPinModel model)
         {
             return ApiRequest<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.Post);
         }
@@ -269,7 +269,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Verifies the employee's kiosk PIN. Returns error code 400 if the PIN is incorrect.
         /// </remarks>
-        public Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, CheckKioskPinModel model, string kioskId, CancellationToken cancellationToken = default)
+        public Task<KioskEmployeeModel> VerifyKioskPinAsync(int businessId, string kioskId, CheckKioskPinModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<KioskEmployeeModel,CheckKioskPinModel>($"/business/{businessId}/kiosk/{kioskId}/checkpin", model, Method.Post, cancellationToken);
         }
@@ -350,7 +350,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by email.
         /// </remarks>
-        public void SendPinResetEmail(int businessId, PinResetModel model, string kioskId)
+        public void SendPinResetEmail(int businessId, string kioskId, PinResetModel model)
         {
             ApiRequest($"/business/{businessId}/kiosk/{kioskId}/emailreset", model, Method.Post);
         }
@@ -361,7 +361,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by email.
         /// </remarks>
-        public Task SendPinResetEmailAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default)
+        public Task SendPinResetEmailAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/emailreset", model, Method.Post, cancellationToken);
         }
@@ -504,7 +504,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Marks some shift notes as either read or unread.
         /// </remarks>
-        public void MarkShiftNotesRead(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId)
+        public void MarkShiftNotesRead(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model)
         {
             ApiRequest($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.Post);
         }
@@ -515,7 +515,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Marks some shift notes as either read or unread.
         /// </remarks>
-        public Task MarkShiftNotesReadAsync(int businessId, MarkNotesReadViewModel model, string kioskId, string shiftId, CancellationToken cancellationToken = default)
+        public Task MarkShiftNotesReadAsync(int businessId, string kioskId, string shiftId, MarkNotesReadViewModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes/read-state", model, Method.Post, cancellationToken);
         }
@@ -526,7 +526,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by SMS. Note that the current business must have SMS notifications enabled.
         /// </remarks>
-        public void SendPinResetSms(int businessId, PinResetModel model, string kioskId)
+        public void SendPinResetSms(int businessId, string kioskId, PinResetModel model)
         {
             ApiRequest($"/business/{businessId}/kiosk/{kioskId}/smsreset", model, Method.Post);
         }
@@ -537,7 +537,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sends kiosk PIN reset instructions to an employee by SMS. Note that the current business must have SMS notifications enabled.
         /// </remarks>
-        public Task SendPinResetSmsAsync(int businessId, PinResetModel model, string kioskId, CancellationToken cancellationToken = default)
+        public Task SendPinResetSmsAsync(int businessId, string kioskId, PinResetModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/kiosk/{kioskId}/smsreset", model, Method.Post, cancellationToken);
         }

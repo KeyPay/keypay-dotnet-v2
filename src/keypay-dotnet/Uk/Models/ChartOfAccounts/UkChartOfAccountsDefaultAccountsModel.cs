@@ -25,6 +25,23 @@ namespace KeyPayV2.Uk.Models.ChartOfAccounts
         public bool EmployeePensionLiabilitySplitByLocation { get; set; }
         public bool StudentLoanLiabilitySplitByLocation { get; set; }
         public bool PostgraduateStudentLoanLiabilitySplitByLocation { get; set; }
+        public bool? PayeLiabilityAccountSplitByEmployingEntity { get; set; }
+        public bool? PayeExpenseSplitByEmployingEntity { get; set; }
+        public bool? PaymentAccountSplitByEmployingEntity { get; set; }
+        public bool? DefaultExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployeeExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployerLiabilityExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployerLiabilityLiabilitySplitByEmployingEntity { get; set; }
+        public bool? DefaultLiabilitySplitByEmployingEntity { get; set; }
+        public bool? EmployerPensionLiabilitySplitByEmployingEntity { get; set; }
+        public bool? EmployerPensionExpenseSplitByEmployingEntity { get; set; }
+        public bool? NationalInsuranceLiabilitySplitByEmployingEntity { get; set; }
+        public bool? NationalInsuranceExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployerNationalInsuranceLiabilitySplitByEmployingEntity { get; set; }
+        public bool? EmployeeNationalInsuranceLiabilitySplitByEmployingEntity { get; set; }
+        public bool? EmployeePensionLiabilitySplitByEmployingEntity { get; set; }
+        public bool? StudentLoanLiabilitySplitByEmployingEntity { get; set; }
+        public bool? PostgraduateStudentLoanLiabilitySplitByEmployingEntity { get; set; }
         public int? PayeLiabilityAccountId { get; set; }
         public int? PayeExpenseAccountId { get; set; }
         public int? EmployerPensionLiabilityAccountId { get; set; }

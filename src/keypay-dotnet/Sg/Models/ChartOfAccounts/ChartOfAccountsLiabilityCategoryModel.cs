@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.ChartOfAccounts
     {
         public int? LiabilityAccountId { get; set; }
         public bool SplitByLocation { get; set; }
+        public bool? SplitByEmployingEntity { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int? ExpenseAccountId { get; set; }

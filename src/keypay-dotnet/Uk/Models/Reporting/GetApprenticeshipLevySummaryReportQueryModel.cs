@@ -9,5 +9,7 @@ namespace KeyPayV2.Uk.Models.Reporting
     public class GetApprenticeshipLevySummaryReportQueryModel
     {
         public int FinancialYearEnding { get; set; }
+        public int? PayeSchemeId { get; set; }
+        public DateTime Date { get; set; }
     }
 }

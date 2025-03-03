@@ -39,6 +39,7 @@ namespace KeyPayV2.My.Enums
         ElectricVehicleExpenditure,
         InterventionExpenditureForADHDAndGDDAndOtherLearningDisabilities,
         FullMedicalExaminationForParents,
-        DentalExaminationAndTreatment
+        DentalExaminationAndTreatment,
+        InterestPaymentFirstResidentialHomeLoan
     }
 }

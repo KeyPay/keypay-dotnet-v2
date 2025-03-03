@@ -5,25 +5,25 @@
 		<RootNamespace>KeyPayV2</RootNamespace>
 		<AssemblyName>KeyPayV2</AssemblyName>
 	    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2.2.0.44</AssemblyVersion>
-    <FileVersion>2.2.0.44</FileVersion>
+    <AssemblyVersion>3.0.0.46</AssemblyVersion>
+    <FileVersion>3.0.0.46</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet-v2</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
     <RepositoryUrl>https://github.com/keypay/keypay-dotnet-v2</RepositoryUrl>
     <PackageTags>keypay yourpayroll api payroll</PackageTags>
     <PackageReleaseNotes>KeyPay API dotnet client v2</PackageReleaseNotes>
-    <Copyright>Copyright 2024</Copyright>
+    <Copyright>Copyright 2025</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>2.2.0.44</Version>
+    <Version>3.0.0.46</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="RestSharp" Version="110.2.0" />
-		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
+		<PackageReference Include="RestSharp" Version="112.1.0" />
+		<PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
 	</ItemGroup>
 
 </Project>

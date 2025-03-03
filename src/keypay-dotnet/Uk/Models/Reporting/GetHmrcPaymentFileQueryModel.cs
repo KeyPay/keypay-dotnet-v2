@@ -10,5 +10,6 @@ namespace KeyPayV2.Uk.Models.Reporting
     {
         public DateTime DateInPayPeriod { get; set; }
         public PaymentReminderPeriod PaymentPeriod { get; set; }
+        public int? PayeSchemeId { get; set; }
     }
 }

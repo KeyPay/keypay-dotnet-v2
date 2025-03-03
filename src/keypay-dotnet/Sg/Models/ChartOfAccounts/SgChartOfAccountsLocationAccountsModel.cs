@@ -13,6 +13,7 @@ namespace KeyPayV2.Sg.Models.ChartOfAccounts
         public int? CpfEmployeeLiabilityAccountId { get; set; }
         public int? SdlEmployerExpenseAccountId { get; set; }
         public int? SdlEmployerLiabilityAccountId { get; set; }
+        public int? TaxLiabilityAccountId { get; set; }
         public int? PaymentAccountId { get; set; }
         public int? DefaultExpenseAccountId { get; set; }
         public int? EmployeeExpenseAccountId { get; set; }

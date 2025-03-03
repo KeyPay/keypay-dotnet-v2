@@ -19,6 +19,7 @@ namespace KeyPayV2.My.Models.PayRun
         public Object MetaData { get; set; }
         public string MetaDataJson { get; set; }
         public string EmployeeExternalId { get; set; }
+        public bool? DisableAutoProgression { get; set; }
         public string FormattedWarningMessage { get; set; }
     }
 }

@@ -71,6 +71,9 @@ namespace KeyPayV2.Sg.Enums
         SgOtherLumpSumPayments,
         SgCompensationLossOfOffice,
         SgRetirementBenefitsPre1993,
-        SgRetirementBenefitsFrom1993
+        SgRetirementBenefitsFrom1993,
+        OrdinaryTime,
+        OtherPayment,
+        SeverancePay
     }
 }

@@ -27,8 +27,8 @@ namespace KeyPayV2.Au.Functions
         Task<AuRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         List<AuEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
         Task<List<AuEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
-        void UpdateRosterShift(int businessId, AuRosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request);
-        Task UpdateRosterShiftAsync(int businessId, AuRosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        void UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
+        Task UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
         Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
     }
@@ -194,7 +194,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Update an individual roster shift
         /// </remarks>
-        public void UpdateRosterShift(int businessId, AuRosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request)
+        public void UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
         {
             ApiRequest($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
         }
@@ -205,7 +205,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Update an individual roster shift
         /// </remarks>
-        public Task UpdateRosterShiftAsync(int businessId, AuRosterShiftEditModel shiftModel, int rosterShiftId, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        public Task UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
         }

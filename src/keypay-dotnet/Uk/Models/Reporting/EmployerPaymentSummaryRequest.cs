@@ -20,5 +20,6 @@ namespace KeyPayV2.Uk.Models.Reporting
         public bool PayeSchemeCeased { get; set; }
         public DateTime? PayeSchemeCeasedDate { get; set; }
         public bool IsAutomaticSubmission { get; set; }
+        public int? PayeSchemeId { get; set; }
     }
 }

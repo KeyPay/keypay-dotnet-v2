@@ -11,5 +11,6 @@ namespace KeyPayV2.Au.Models.Reporting
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public int LocationId { get; set; }
+        public int? EmployingEntityId { get; set; }
     }
 }

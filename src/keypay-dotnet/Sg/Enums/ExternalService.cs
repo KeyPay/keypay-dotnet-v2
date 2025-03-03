@@ -91,6 +91,7 @@ namespace KeyPayV2.Sg.Enums
         AutomatedPublicHolidayNotWorked,
         EmployeePayRatesUpload,
         Zapier,
-        StapledSuperFund
+        StapledSuperFund,
+        Swag
     }
 }

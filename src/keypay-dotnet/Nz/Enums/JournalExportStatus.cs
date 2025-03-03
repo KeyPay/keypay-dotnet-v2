@@ -23,6 +23,9 @@ namespace KeyPayV2.Nz.Enums
         FailureNoJournalId,
         FailureAPIError,
         FailureMissingTaxInfo,
+        FailureRecordingJournalReference,
+        FailureNoProviderFound,
+        FailureUsingManuallyEnteredDimension,
         ResultUnknown
     }
 }

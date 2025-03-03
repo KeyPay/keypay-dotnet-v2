@@ -29,11 +29,5 @@ namespace KeyPayV2.Nz.Models.Ess
         public string BranchCode { get; set; }
         public string MyBankCode { get; set; }
         public string MyOtherBankName { get; set; }
-        public string MdmId { get; set; }
-        public int? MdmVersion { get; set; }
-        public string MdmSchemaVersion { get; set; }
-        public bool TriggeredFromMdm { get; set; }
-        public bool SendToMdm { get; set; }
-        public IDictionary<String,String> IgnoreFields { get; set; }
     }
 }

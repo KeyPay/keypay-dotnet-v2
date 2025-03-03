@@ -7,6 +7,7 @@ namespace KeyPayV2.Au.Enums
     {
         EarningsLocation,
         DefaultLocation,
-        EarningsRollUpLocation
+        EarningsRollUpLocation,
+        EmployeeResidentialState
     }
 }

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
 
 namespace KeyPayV2.Au.Models.ChartOfAccounts
@@ -18,6 +20,36 @@ namespace KeyPayV2.Au.Models.ChartOfAccounts
         public bool PaygExpenseSplitByLocation { get; set; }
         public bool SuperannuationExpenseSplitByLocation { get; set; }
         public bool SuperannuationLiabilitySplitByLocation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit PaymentAccountSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit DefaultExpenseSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit EmployeeExpenseSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit EmployerLiabilityExpenseSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit EmployerLiabilityLiabilitySplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit DefaultLiabilitySplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit PaygLiabilityAccountSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit PaygExpenseSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit SuperannuationExpenseSplit { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountSplit SuperannuationLiabilitySplit { get; set; }
+        public bool? PaymentAccountSplitByEmployingEntity { get; set; }
+        public bool? DefaultExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployeeExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployerLiabilityExpenseSplitByEmployingEntity { get; set; }
+        public bool? EmployerLiabilityLiabilitySplitByEmployingEntity { get; set; }
+        public bool? DefaultLiabilitySplitByEmployingEntity { get; set; }
+        public bool? PaygLiabilityAccountSplitByEmployingEntity { get; set; }
+        public bool? PaygExpenseSplitByEmployingEntity { get; set; }
+        public bool? SuperannuationExpenseSplitByEmployingEntity { get; set; }
+        public bool? SuperannuationLiabilitySplitByEmployingEntity { get; set; }
         public int? PaygLiabilityAccountId { get; set; }
         public int? PaygExpenseAccountId { get; set; }
         public int? SuperannuationExpenseAccountId { get; set; }

@@ -15,6 +15,10 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IBrandFunction
     {
+        List<SignupModel> SignupReport(int brandId);
+        Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request);
+        Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
         List<BrandModel> ListBrandLabels();
         Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default);
         void CancelBusiness(int businessId, string brandId);
@@ -25,16 +29,56 @@ namespace KeyPayV2.Au.Functions
         Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, CancellationToken cancellationToken = default);
         List<AuActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request);
         Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
-        List<SignupModel> SignupReport(int brandId);
-        Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default);
-        List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request);
-        Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
         BrandModel GetBrandLabelById(int id);
         Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default);
     }
     public class BrandFunction : BaseFunction, IBrandFunction
     {
         public BrandFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// Brand sign up report
+        /// </remarks>
+        public List<SignupModel> SignupReport(int brandId)
+        {
+            return ApiRequest<List<SignupModel>>($"/brand/{brandId}/reports/signups", Method.Get);
+        }
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// Brand sign up report
+        /// </remarks>
+        public Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SignupModel>>($"/brand/{brandId}/reports/signups", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// Brand sign up report
+        /// </remarks>
+        public List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request)
+        {
+            return ApiRequest<List<SignupModel>>($"/brand/{brandId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// Brand sign up report
+        /// </remarks>
+        public Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SignupModel>>($"/brand/{brandId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// List Brand Labels
@@ -140,50 +184,6 @@ namespace KeyPayV2.Au.Functions
         public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/brand/{brandId}/reports/activeemployees?emailAddresses={request.EmailAddresses}&includeInactiveBusinesses={request.IncludeInactiveBusinesses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// Brand sign up report
-        /// </remarks>
-        public List<SignupModel> SignupReport(int brandId)
-        {
-            return ApiRequest<List<SignupModel>>($"/brand/{brandId}/reports/signups", Method.Get);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// Brand sign up report
-        /// </remarks>
-        public Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SignupModel>>($"/brand/{brandId}/reports/signups", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// Brand sign up report
-        /// </remarks>
-        public List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request)
-        {
-            return ApiRequest<List<SignupModel>>($"/brand/{brandId}/reports/signups?emailAddresses={request.EmailAddresses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// Brand sign up report
-        /// </remarks>
-        public Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SignupModel>>($"/brand/{brandId}/reports/signups?emailAddresses={request.EmailAddresses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
 
         /// <summary>

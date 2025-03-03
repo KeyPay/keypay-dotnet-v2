@@ -14,6 +14,7 @@ namespace KeyPayV2.Uk.Enums
         KeepingInTouchDay,
         StatutoryParentalBereavementPay,
         RolledUpHolidayPay,
-        ShppInTouchPay
+        ShppInTouchPay,
+        StatutoryNeonatalCarePay
     }
 }

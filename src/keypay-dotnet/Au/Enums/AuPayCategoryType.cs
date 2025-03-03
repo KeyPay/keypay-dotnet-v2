@@ -19,6 +19,7 @@ namespace KeyPayV2.Au.Enums
         EtpSuperableTypeOTaxable,
         EtpSuperableTypeOTaxFree,
         EtpTypeOUnusedLeavePayment,
+        GST,
         EtpTypeSTaxable,
         EtpTypeSTaxFree,
         EtpTypePTaxable,

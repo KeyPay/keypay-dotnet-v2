@@ -15,6 +15,10 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IWhiteLabelFunction
     {
+        List<SignupModel> SignupReport(int whitelabelId);
+        Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default);
+        List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request);
+        Task<List<SignupModel>> SignupReportAsync(int whitelabelId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
         List<WhiteLabelModel> ListWhiteLabels();
         Task<List<WhiteLabelModel>> ListWhiteLabelsAsync(CancellationToken cancellationToken = default);
         WhiteLabelModel GetWhiteLabelById(int id);
@@ -23,14 +27,54 @@ namespace KeyPayV2.Nz.Functions
         Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default);
         List<CommonActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request);
         Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
-        List<SignupModel> SignupReport(int whitelabelId);
-        Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default);
-        List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request);
-        Task<List<SignupModel>> SignupReportAsync(int whitelabelId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
     }
     public class WhiteLabelFunction : BaseFunction, IWhiteLabelFunction
     {
         public WhiteLabelFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// White Label sign up report
+        /// </remarks>
+        public List<SignupModel> SignupReport(int whitelabelId)
+        {
+            return ApiRequest<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups", Method.Get);
+        }
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// White Label sign up report
+        /// </remarks>
+        public Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// White Label sign up report
+        /// </remarks>
+        public List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request)
+        {
+            return ApiRequest<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Signup Report
+        /// </summary>
+        /// <remarks>
+        /// White Label sign up report
+        /// </remarks>
+        public Task<List<SignupModel>> SignupReportAsync(int whitelabelId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// List White Labels
@@ -118,50 +162,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<CommonActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?emailAddresses={request.EmailAddresses}&includeInactiveBusinesses={request.IncludeInactiveBusinesses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// White Label sign up report
-        /// </remarks>
-        public List<SignupModel> SignupReport(int whitelabelId)
-        {
-            return ApiRequest<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups", Method.Get);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// White Label sign up report
-        /// </remarks>
-        public Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// White Label sign up report
-        /// </remarks>
-        public List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request)
-        {
-            return ApiRequest<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups?emailAddresses={request.EmailAddresses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Signup Report
-        /// </summary>
-        /// <remarks>
-        /// White Label sign up report
-        /// </remarks>
-        public Task<List<SignupModel>> SignupReportAsync(int whitelabelId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups?emailAddresses={request.EmailAddresses}&fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
     }
 }

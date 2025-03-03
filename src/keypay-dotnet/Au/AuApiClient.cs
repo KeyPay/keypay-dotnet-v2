@@ -7,6 +7,10 @@ namespace KeyPayV2.Au
     public interface IAuApiClient : IBaseApiClient
     {
         IBrandFunction Brand { get; }
+        IOtherFunction Other { get; }
+        IPayRunFunction PayRun { get; }
+        IReportingFunction Reporting { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
         IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
         IAbaSettingsFunction AbaSettings { get; }
@@ -26,7 +30,6 @@ namespace KeyPayV2.Au
         ILeaveRequestsFunction LeaveRequests { get; }
         ILocationFunction Location { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         IAuthenticationFunction Authentication { get; }
@@ -44,11 +47,9 @@ namespace KeyPayV2.Au
         IPayCategoryFunction PayCategory { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
-        IOtherFunction Other { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
-        IReportingFunction Reporting { get; }
         IRosterShiftFunction RosterShift { get; }
         ISuperFundFunction SuperFund { get; }
         ITimesheetsFunction Timesheets { get; }
@@ -58,13 +59,16 @@ namespace KeyPayV2.Au
         IEssFunction Ess { get; }
         IResellerFunction Reseller { get; }
         IUserFunction User { get; }
-        IWhiteLabelFunction WhiteLabel { get; }
     }
     public class AuApiClient : BaseApiClient, IAuApiClient
     {
         public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Brand = new BrandFunction(Api);
+            Other = new OtherFunction(Api);
+            PayRun = new PayRunFunction(Api);
+            Reporting = new ReportingFunction(Api);
+            WhiteLabel = new WhiteLabelFunction(Api);
             Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
@@ -84,7 +88,6 @@ namespace KeyPayV2.Au
             LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
-            PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmployeeSelfManagedSuperFund = new EmployeeSelfManagedSuperFundFunction(Api);
             Authentication = new AuthenticationFunction(Api);
@@ -102,11 +105,9 @@ namespace KeyPayV2.Au
             PayCategory = new PayCategoryFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
-            Other = new OtherFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
-            Reporting = new ReportingFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             SuperFund = new SuperFundFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
@@ -116,10 +117,13 @@ namespace KeyPayV2.Au
             Ess = new EssFunction(Api);
             Reseller = new ResellerFunction(Api);
             User = new UserFunction(Api);
-            WhiteLabel = new WhiteLabelFunction(Api);
         }
 
         public IBrandFunction Brand { get; }
+        public IOtherFunction Other { get; }
+        public IPayRunFunction PayRun { get; }
+        public IReportingFunction Reporting { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
         public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
         public IAbaSettingsFunction AbaSettings { get; }
@@ -139,7 +143,6 @@ namespace KeyPayV2.Au
         public ILeaveRequestsFunction LeaveRequests { get; }
         public ILocationFunction Location { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         public IAuthenticationFunction Authentication { get; }
@@ -157,11 +160,9 @@ namespace KeyPayV2.Au
         public IPayCategoryFunction PayCategory { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
-        public IOtherFunction Other { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
-        public IReportingFunction Reporting { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ISuperFundFunction SuperFund { get; }
         public ITimesheetsFunction Timesheets { get; }
@@ -171,6 +172,5 @@ namespace KeyPayV2.Au
         public IEssFunction Ess { get; }
         public IResellerFunction Reseller { get; }
         public IUserFunction User { get; }
-        public IWhiteLabelFunction WhiteLabel { get; }
     }
 }

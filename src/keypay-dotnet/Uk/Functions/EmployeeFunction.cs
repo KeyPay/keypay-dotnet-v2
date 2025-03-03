@@ -139,6 +139,22 @@ namespace KeyPayV2.Uk.Functions
         Task UnattachEmployeeDocumentFromStatutoryMaternityLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
         UkSmpCalcApiModel CalculateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, CalculateStatutoryMaternityLeavePeriodDataQueryModel request);
         Task<UkSmpCalcApiModel> CalculateStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryMaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
+        UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request);
+        Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel CreateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, UkSncpDataApiModel sncp);
+        Task<UkSmpDataApiResponseModel> CreateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default);
+        UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodDataById(int businessId, int employeeId, int id);
+        Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> GetStatutoryNeonatalLeaveAttachments(int businessId, int employeeId, int id);
+        Task<List<EmployeeDocumentModel>> GetStatutoryNeonatalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel AttachEmployeeDocumentToStatutoryNeonatalLeave(int businessId, int employeeId, int id, int documentId);
+        Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void UnattachEmployeeDocumentFromStatutoryNeonatalLeave(int businessId, int employeeId, int id, int documentId);
+        Task UnattachEmployeeDocumentFromStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default);
+        void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request);
+        Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default);
+        UkSncpCalcApiModel CalculateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, CalculateStatutoryNeonatalLeavePeriodDataQueryModel request);
+        Task<UkSncpCalcApiModel> CalculateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
         UkSpbpDataApiModel GetStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, GetStatutoryParentalBereavementLeavePeriodDataQueryModel request);
         Task<UkSpbpDataApiModel> GetStatutoryParentalBereavementLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryParentalBereavementLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
         UkSpbpDataApiResponseModel CreateStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, UkSpbpDataApiModel spbp);
@@ -1372,6 +1388,158 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkSmpCalcApiModel> CalculateStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryMaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Statutory Neonatal Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Neonatal Leave period data for a specific employee
+        /// </remarks>
+        public UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Neonatal Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Neonatal Leave period data for a specific employee
+        /// </remarks>
+        public Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Statutory Neonatal Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Neonatal Leave period for an employee
+        /// </remarks>
+        public UkSmpDataApiResponseModel CreateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, UkSncpDataApiModel sncp)
+        {
+            return ApiRequest<UkSmpDataApiResponseModel,UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp", sncp, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Statutory Neonatal Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Creates a Statutory Neonatal Leave period for an employee
+        /// </remarks>
+        public Task<UkSmpDataApiResponseModel> CreateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp", sncp, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Statutory Neonatal Leave Period Data By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Neonatal Leave period data for a specific employee
+        /// </remarks>
+        public UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodDataById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Neonatal Leave Period Data By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Neonatal Leave period data for a specific employee
+        /// </remarks>
+        public Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Statutory Neonatal Leave Attachments
+        /// </summary>
+        public List<EmployeeDocumentModel> GetStatutoryNeonatalLeaveAttachments(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/attachments", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Neonatal Leave Attachments
+        /// </summary>
+        public Task<List<EmployeeDocumentModel>> GetStatutoryNeonatalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/attachments", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Attach Employee Document to Statutory Neonatal Leave
+        /// </summary>
+        public EmployeeDocumentModel AttachEmployeeDocumentToStatutoryNeonatalLeave(int businessId, int employeeId, int id, int documentId)
+        {
+            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{documentId}", Method.Put);
+        }
+
+        /// <summary>
+        /// Attach Employee Document to Statutory Neonatal Leave
+        /// </summary>
+        public Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{documentId}", Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unattach Employee Document from Statutory Neonatal Leave
+        /// </summary>
+        public void UnattachEmployeeDocumentFromStatutoryNeonatalLeave(int businessId, int employeeId, int id, int documentId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{documentId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Unattach Employee Document from Statutory Neonatal Leave
+        /// </summary>
+        public Task UnattachEmployeeDocumentFromStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int documentId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{documentId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Pause Statutory Neonatal Care Leave
+        /// </summary>
+        public void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/paused?isPaused={request.IsPaused}", Method.Put);
+        }
+
+        /// <summary>
+        /// Pause Statutory Neonatal Care Leave
+        /// </summary>
+        public Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/paused?isPaused={request.IsPaused}", Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Neonatal Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Neonatal Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public UkSncpCalcApiModel CalculateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, CalculateStatutoryNeonatalLeavePeriodDataQueryModel request)
+        {
+            return ApiRequest<UkSncpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Calculate Statutory Neonatal Leave Period Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Neonatal Leave period data for a specific employee including information about payments already made and pending
+        /// </remarks>
+        public Task<UkSncpCalcApiModel> CalculateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSncpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

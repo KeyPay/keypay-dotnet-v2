@@ -11,7 +11,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public int? DocumentId { get; set; }
         public List<Int32> EmployeeIds { get; set; }
         public int DocumentStatus { get; set; }
-        public int? EmployingEntityId { get; set; }
+        public int EmployingEntityId { get; set; }
         public int LocationId { get; set; }
     }
 }

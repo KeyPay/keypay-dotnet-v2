@@ -83,6 +83,7 @@ namespace KeyPayV2.Au.Models.Common
         public bool? AutomaticallyApplyPublicHolidayNotWorkedEarningsLines { get; set; }
         public int? AwardId { get; set; }
         public int? EmploymentAgreementId { get; set; }
+        public bool? DisableAutoProgression { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

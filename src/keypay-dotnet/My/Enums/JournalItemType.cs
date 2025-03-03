@@ -38,6 +38,23 @@ namespace KeyPayV2.My.Enums
         LeaveTakenLiability,
         LeaveTakenExpense,
         LeaveAdjustmentLiability,
-        LeaveAdjustmentExpense
+        LeaveAdjustmentExpense,
+        EpfEmployerLiability,
+        EpfEmployerExpense,
+        EpfEmployeeLiability,
+        SocsoEmployerLiability,
+        SocsoEmployerExpense,
+        SocsoEmployeeLiability,
+        EisEmployerLiability,
+        EisEmployerExpense,
+        EisEmployeeLiability,
+        HrdfEmployerLiability,
+        HrdfEmployerExpense,
+        Cp38Liability,
+        Cp38Expense,
+        PcbBorneByEmployerLiability,
+        PcbBorneByEmployerExpense,
+        BenefitsInKindEmployerLiability,
+        BenefitsInKindEmployerExpense
     }
 }

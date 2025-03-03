@@ -15,6 +15,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface IOtherFunction
     {
+        void GetPaymentFilesByFinalisedPayRunId(int businessId);
+        Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
         MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId);
@@ -30,9 +32,31 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Gets the payment files for a finalised pay run with the specified Id.
         /// </remarks>
+        public void GetPaymentFilesByFinalisedPayRunId(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/report/paymentfile", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Payment Files by Finalised Pay Run Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the payment files for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/report/paymentfile", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Payment Files by Finalised Pay Run Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the payment files for a finalised pay run with the specified Id.
+        /// </remarks>
         public void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/report/paymentfile?payRunId={request.PayRunId}&paymentFileId={request.PaymentFileId}", Method.Get);
+            ApiRequest($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get);
         }
 
         /// <summary>
@@ -43,7 +67,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/report/paymentfile?payRunId={request.PayRunId}&paymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
         }
 
         public MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId)
