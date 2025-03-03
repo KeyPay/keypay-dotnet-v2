@@ -23,6 +23,10 @@ Install-Package KeyPayV2
 	var businesses = api.Business.ListBusinesses();
 ```
 
+## V3 breaking changes
+
+Package version 3.0.0.46 introduced some breaking changes, which are documented [here](V3BreakingChanges.md)
+
 ## More Help?
 
 There is a Sample Application that demonstrates a few core concepts of working with the KeyPay Client. Please check out our [online documentation](http://api.keypay.com.au/) as a reference, or contact our [Support](https://keypay.com.au/contact).
