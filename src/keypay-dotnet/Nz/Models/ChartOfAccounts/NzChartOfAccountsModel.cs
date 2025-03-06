@@ -11,5 +11,6 @@ namespace KeyPayV2.Nz.Models.ChartOfAccounts
         public bool Complete { get; set; }
         public NzChartOfAccountsGroupModel ChartofAccounts { get; set; }
         public List<NzChartOfAccountsLocationGroupModel> LocationSpecificChartOfAccounts { get; set; }
+        public List<NzChartOfAccountsEmployingEntityGroupModel> EmployingEntitySpecificChartOfAccounts { get; set; }
     }
 }

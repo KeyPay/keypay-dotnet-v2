@@ -10,7 +10,6 @@ namespace KeyPayV2.Sg.Models.ChartOfAccounts
     {
         public SgChartOfAccountsLocationAccountsModel DefaultAccounts { get; set; }
         public int LocationId { get; set; }
-        public int EmployingEntityId { get; set; }
         public List<ChartOfAccountsLocationCategoryModel> PayCategories { get; set; }
         public List<ChartOfAccountsLiabilityLocationCategoryModel> DeductionCategories { get; set; }
         public List<ChartOfAccountsLocationCategoryModel> EmployeeExpenseCategories { get; set; }

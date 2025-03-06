@@ -11,5 +11,6 @@ namespace KeyPayV2.My.Models.ChartOfAccounts
         public bool Complete { get; set; }
         public MyChartOfAccountsGroupModel ChartofAccounts { get; set; }
         public List<MyChartOfAccountsLocationGroupModel> LocationSpecificChartOfAccounts { get; set; }
+        public List<MyChartOfAccountsEmployingEntityGroupModel> EmployingEntitySpecificChartOfAccounts { get; set; }
     }
 }

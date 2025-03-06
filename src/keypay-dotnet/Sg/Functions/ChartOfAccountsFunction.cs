@@ -39,6 +39,12 @@ namespace KeyPayV2.Sg.Functions
         Task<SgChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
         SgChartOfAccountsModel UpdateChartOfAccounts(int businessId, SgChartOfAccountsGroupModel chartOfAccounts);
         Task<SgChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, SgChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        SgChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
+        Task<SgChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
+        SgChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, SgChartOfAccountsEmployingEntityGroupModel chartOfAccounts);
+        Task<SgChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, SgChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
+        Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
         SgChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId);
         Task<SgChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
         SgChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, SgChartOfAccountsLocationGroupModel chartOfAccounts);
@@ -312,6 +318,72 @@ namespace KeyPayV2.Sg.Functions
         public Task<SgChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, SgChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<SgChartOfAccountsModel,SgChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
+        /// </remarks>
+        public SgChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
+        {
+            return ApiRequest<SgChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
+        /// </remarks>
+        public Task<SgChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public SgChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, SgChartOfAccountsEmployingEntityGroupModel chartOfAccounts)
+        {
+            return ApiRequest<SgChartOfAccountsEmployingEntityGroupModel,SgChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<SgChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, SgChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgChartOfAccountsEmployingEntityGroupModel,SgChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

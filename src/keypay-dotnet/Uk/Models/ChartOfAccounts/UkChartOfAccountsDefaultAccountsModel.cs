@@ -20,7 +20,6 @@ namespace KeyPayV2.Uk.Models.ChartOfAccounts
         public bool EmployerPensionExpenseSplitByLocation { get; set; }
         public bool NationalInsuranceLiabilitySplitByLocation { get; set; }
         public bool NationalInsuranceExpenseSplitByLocation { get; set; }
-        public bool EmployerNationalInsuranceLiabilitySplitByLocation { get; set; }
         public bool EmployeeNationalInsuranceLiabilitySplitByLocation { get; set; }
         public bool EmployeePensionLiabilitySplitByLocation { get; set; }
         public bool StudentLoanLiabilitySplitByLocation { get; set; }
@@ -37,7 +36,6 @@ namespace KeyPayV2.Uk.Models.ChartOfAccounts
         public bool? EmployerPensionExpenseSplitByEmployingEntity { get; set; }
         public bool? NationalInsuranceLiabilitySplitByEmployingEntity { get; set; }
         public bool? NationalInsuranceExpenseSplitByEmployingEntity { get; set; }
-        public bool? EmployerNationalInsuranceLiabilitySplitByEmployingEntity { get; set; }
         public bool? EmployeeNationalInsuranceLiabilitySplitByEmployingEntity { get; set; }
         public bool? EmployeePensionLiabilitySplitByEmployingEntity { get; set; }
         public bool? StudentLoanLiabilitySplitByEmployingEntity { get; set; }
