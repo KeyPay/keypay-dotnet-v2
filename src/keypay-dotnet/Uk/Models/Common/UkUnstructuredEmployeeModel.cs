@@ -75,6 +75,7 @@ namespace KeyPayV2.Uk.Models.Common
         public DateTime? VeteransQualifyingEndDate { get; set; }
         public DateTime? InvestmentQualifyingEndDate { get; set; }
         public bool? ExcludeEarningsFromAppLevy { get; set; }
+        public string WorkplacePostcode { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string PreferredName { get; set; }

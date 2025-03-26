@@ -139,6 +139,8 @@ namespace KeyPayV2.My.Enums
         RecoverTwoFactorAuthentication,
         AccountRecoverySubmitted,
         ScheduledJournalExportFailed,
-        AddEmployeeEmployeeOnboarding
+        AddEmployeeEmployeeOnboarding,
+        FeatureUsageReportGenerated,
+        NotifyAkahuUserOfFailedPaymentStatus
     }
 }

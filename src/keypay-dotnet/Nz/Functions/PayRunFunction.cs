@@ -15,6 +15,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IPayRunFunction
     {
+        PayRunFinaliseResult FinalisePayRun(int businessId, int payRunId, FinalisePayRunOptions options);
+        Task<PayRunFinaliseResult> FinalisePayRunAsync(int businessId, int payRunId, FinalisePayRunOptions options, CancellationToken cancellationToken = default);
         NzPayRunDetailsModel GetPayRunDetails(int businessId, int payRunId);
         Task<NzPayRunDetailsModel> GetPayRunDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         Dictionary<String,NzApiPaySlipModelWithConfig> ListPaySlipData(int businessId, int payRunId);
@@ -131,8 +133,6 @@ namespace KeyPayV2.Nz.Functions
         Task DeleteEmployerLiabilityAsync(int businessId, int payRunId, DeleteEmployerLiabilityQueryModel request, CancellationToken cancellationToken = default);
         PayRunEmployerLiabilityResponse GetEmployerLiabilitiesByEmployeeId(int businessId, int employeeId, int payRunId);
         Task<PayRunEmployerLiabilityResponse> GetEmployerLiabilitiesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
-        PayRunFinaliseResult FinalisePayRun(int businessId, int payRunId, FinalisePayRunOptions options);
-        Task<PayRunFinaliseResult> FinalisePayRunAsync(int businessId, int payRunId, FinalisePayRunOptions options, CancellationToken cancellationToken = default);
         LeaveAccrualResponse GetLeaveAccruals(int businessId, int payRunId);
         Task<LeaveAccrualResponse> GetLeaveAccrualsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         LeaveAccrualResponse GetLeaveAccruals(int businessId, int payRunId, GetLeaveAccrualsQueryModel request);
@@ -155,6 +155,28 @@ namespace KeyPayV2.Nz.Functions
     public class PayRunFunction : BaseFunction, IPayRunFunction
     {
         public PayRunFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Finalise Pay Run
+        /// </summary>
+        /// <remarks>
+        /// Finalises the specified pay run. A pay run can only be finalised if there are no calculations in progress.
+        /// </remarks>
+        public PayRunFinaliseResult FinalisePayRun(int businessId, int payRunId, FinalisePayRunOptions options)
+        {
+            return ApiRequest<PayRunFinaliseResult,FinalisePayRunOptions>($"/business/{businessId}/payrun/{payRunId}/finalise", options, Method.Post);
+        }
+
+        /// <summary>
+        /// Finalise Pay Run
+        /// </summary>
+        /// <remarks>
+        /// Finalises the specified pay run. A pay run can only be finalised if there are no calculations in progress.
+        /// </remarks>
+        public Task<PayRunFinaliseResult> FinalisePayRunAsync(int businessId, int payRunId, FinalisePayRunOptions options, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PayRunFinaliseResult,FinalisePayRunOptions>($"/business/{businessId}/payrun/{payRunId}/finalise", options, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// Get Pay Run Details
@@ -1436,28 +1458,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<PayRunEmployerLiabilityResponse> GetEmployerLiabilitiesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PayRunEmployerLiabilityResponse>($"/business/{businessId}/payrun/{payRunId}/employerliabilities/{employeeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Finalise Pay Run
-        /// </summary>
-        /// <remarks>
-        /// Finalises the specified pay run. A pay run can only be finalised if there are no calculations in progress.
-        /// </remarks>
-        public PayRunFinaliseResult FinalisePayRun(int businessId, int payRunId, FinalisePayRunOptions options)
-        {
-            return ApiRequest<PayRunFinaliseResult,FinalisePayRunOptions>($"/business/{businessId}/payrun/{payRunId}/finalise", options, Method.Post);
-        }
-
-        /// <summary>
-        /// Finalise Pay Run
-        /// </summary>
-        /// <remarks>
-        /// Finalises the specified pay run. A pay run can only be finalised if there are no calculations in progress.
-        /// </remarks>
-        public Task<PayRunFinaliseResult> FinalisePayRunAsync(int businessId, int payRunId, FinalisePayRunOptions options, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PayRunFinaliseResult,FinalisePayRunOptions>($"/business/{businessId}/payrun/{payRunId}/finalise", options, Method.Post, cancellationToken);
         }
 
         /// <summary>

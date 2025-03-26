@@ -6,7 +6,7 @@ using KeyPayV2.Au.Enums;
 
 namespace KeyPayV2.Au.Models.PaymentSummary
 {
-    public class PublishPaymentSummariesQueryModel
+    public class AuPaymentSummary_DeleteQueryModel
     {
         public int? EmployeeId { get; set; }
         public int? EmployingEntityId { get; set; }

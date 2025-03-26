@@ -15,6 +15,10 @@ namespace KeyPayV2.My.Functions
 {
     public interface IReportingFunction
     {
+        List<MyCostingReportApiModel> CostingReport(int businessId);
+        Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<MyCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
+        Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
         byte[] PayRunAuditReport(int businessId, int payRunId);
         Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         byte[] PayRunAuditReport(int businessId, int payRunId, PayRunAuditReportQueryModel request);
@@ -27,10 +31,10 @@ namespace KeyPayV2.My.Functions
         Task<List<MyRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<MyRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId, RosterVsTimesheetComparisonReportQueryModel request);
         Task<List<MyRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, RosterVsTimesheetComparisonReportQueryModel request, CancellationToken cancellationToken = default);
-        List<MyCostingReportApiModel> CostingReport(int businessId);
-        Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<MyCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
-        Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] DeductionsReportAsExcel(int businessId);
+        Task<byte[]> DeductionsReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] DeductionsReportAsExcel(int businessId, DeductionsReportAsExcelQueryModel request);
+        Task<byte[]> DeductionsReportAsExcelAsync(int businessId, DeductionsReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
         List<MyDetailedActivityReportExportModel> DetailedActivityReport(int businessId);
         Task<List<MyDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<MyDetailedActivityReportExportModel> DetailedActivityReport(int businessId, DetailedActivityReportQueryModel request);
@@ -145,6 +149,50 @@ namespace KeyPayV2.My.Functions
     public class ReportingFunction : BaseFunction, IReportingFunction
     {
         public ReportingFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public List<MyCostingReportApiModel> CostingReport(int businessId)
+        {
+            return ApiRequest<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public List<MyCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request)
+        {
+            return ApiRequest<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Pay Run Audit Report
@@ -279,47 +327,47 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Costing Report
+        /// Deductions Report as Excel
         /// </summary>
         /// <remarks>
-        /// Generates a costing report.
+        /// Generates a Deductions Report as an Excel file.
         /// </remarks>
-        public List<MyCostingReportApiModel> CostingReport(int businessId)
+        public byte[] DeductionsReportAsExcel(int businessId)
         {
-            return ApiRequest<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get);
+            return ApiByteArrayRequest($"/api/payroll/internal/business/{businessId}/report/deductions/xlsx", Method.Get);
         }
 
         /// <summary>
-        /// Costing Report
+        /// Deductions Report as Excel
         /// </summary>
         /// <remarks>
-        /// Generates a costing report.
+        /// Generates a Deductions Report as an Excel file.
         /// </remarks>
-        public Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<byte[]> DeductionsReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get, cancellationToken);
+            return ApiByteArrayRequestAsync($"/api/payroll/internal/business/{businessId}/report/deductions/xlsx", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Costing Report
+        /// Deductions Report as Excel
         /// </summary>
         /// <remarks>
-        /// Generates a costing report.
+        /// Generates a Deductions Report as an Excel file.
         /// </remarks>
-        public List<MyCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request)
+        public byte[] DeductionsReportAsExcel(int businessId, DeductionsReportAsExcelQueryModel request)
         {
-            return ApiRequest<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiByteArrayRequest($"/api/payroll/internal/business/{businessId}/report/deductions/xlsx?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&DeductionCategoryId={request.DeductionCategoryId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&FilterType={request.FilterType}", Method.Get);
         }
 
         /// <summary>
-        /// Costing Report
+        /// Deductions Report as Excel
         /// </summary>
         /// <remarks>
-        /// Generates a costing report.
+        /// Generates a Deductions Report as an Excel file.
         /// </remarks>
-        public Task<List<MyCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default)
+        public Task<byte[]> DeductionsReportAsExcelAsync(int businessId, DeductionsReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiByteArrayRequestAsync($"/api/payroll/internal/business/{businessId}/report/deductions/xlsx?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&DeductionCategoryId={request.DeductionCategoryId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&FilterType={request.FilterType}", Method.Get, cancellationToken);
         }
 
         /// <summary>

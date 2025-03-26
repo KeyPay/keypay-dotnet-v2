@@ -101,6 +101,8 @@ namespace KeyPayV2.Sg.Enums
         OtherPay,
         PayInLieuOfNotice,
         PersonalTimeOff,
-        WorkedHolidayPremiumPay
+        WorkedHolidayPremiumPay,
+        PensionCommencementExcess,
+        StandAloneLumpSum
     }
 }

@@ -108,6 +108,7 @@ namespace KeyPayV2.Au.Enums
         CpfApexOverviewReport,
         EmployeeIrregularEmploymentReport,
         StatsNzQesReport,
+        IrdReconciliationReport,
         CasualConversionReport
     }
 }

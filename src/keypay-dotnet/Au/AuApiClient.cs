@@ -8,6 +8,7 @@ namespace KeyPayV2.Au
     {
         IBrandFunction Brand { get; }
         IOtherFunction Other { get; }
+        IPaymentSummaryFunction PaymentSummary { get; }
         IPayRunFunction PayRun { get; }
         IReportingFunction Reporting { get; }
         IWhiteLabelFunction WhiteLabel { get; }
@@ -45,7 +46,6 @@ namespace KeyPayV2.Au
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayCategoryFunction PayCategory { get; }
-        IPaymentSummaryFunction PaymentSummary { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
@@ -66,6 +66,7 @@ namespace KeyPayV2.Au
         {
             Brand = new BrandFunction(Api);
             Other = new OtherFunction(Api);
+            PaymentSummary = new PaymentSummaryFunction(Api);
             PayRun = new PayRunFunction(Api);
             Reporting = new ReportingFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
@@ -103,7 +104,6 @@ namespace KeyPayV2.Au
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
-            PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
@@ -121,6 +121,7 @@ namespace KeyPayV2.Au
 
         public IBrandFunction Brand { get; }
         public IOtherFunction Other { get; }
+        public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRunFunction PayRun { get; }
         public IReportingFunction Reporting { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
@@ -158,7 +159,6 @@ namespace KeyPayV2.Au
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayCategoryFunction PayCategory { get; }
-        public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }

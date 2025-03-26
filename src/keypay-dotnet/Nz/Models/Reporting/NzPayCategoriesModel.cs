@@ -11,6 +11,7 @@ namespace KeyPayV2.Nz.Models.Reporting
         public decimal KiwiSaverEmployeeContribution { get; set; }
         public decimal KiwiSaverEmployerContribution { get; set; }
         public decimal EsctContribution { get; set; }
+        public bool IncludeInAverageDailyPayDaysPaid { get; set; }
         public string PayCategory { get; set; }
         public string PayRun { get; set; }
         public DateTime DatePaid { get; set; }

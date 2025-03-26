@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk.Enums
         StatutoryParentalBereavementPay,
         RolledUpHolidayPay,
         ShppInTouchPay,
-        StatutoryNeonatalCarePay
+        StatutoryNeonatalCarePay,
+        PensionCommencementExcess,
+        StandAloneLumpSum
     }
 }
