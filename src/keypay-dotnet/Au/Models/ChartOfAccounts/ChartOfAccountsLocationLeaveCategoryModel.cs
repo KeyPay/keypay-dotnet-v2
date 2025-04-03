@@ -10,6 +10,7 @@ namespace KeyPayV2.Au.Models.ChartOfAccounts
     {
         public int? LiabilityAccountId { get; set; }
         public bool AccrueFromContingentPeriod { get; set; }
+        public bool IsLongServiceLeave { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int? ExpenseAccountId { get; set; }

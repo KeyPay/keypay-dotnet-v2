@@ -38,6 +38,7 @@ namespace KeyPayV2.Nz.Enums
         JobMaker,
         SelfManagedSuperFunds,
         CisSubcontractor,
-        ContractorTaxDetails
+        ContractorTaxDetails,
+        TaxDeclaration
     }
 }

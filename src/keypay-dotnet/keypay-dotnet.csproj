@@ -5,8 +5,8 @@
 		<RootNamespace>KeyPayV2</RootNamespace>
 		<AssemblyName>KeyPayV2</AssemblyName>
 	    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>3.0.0.51</AssemblyVersion>
-    <FileVersion>3.0.0.51</FileVersion>
+    <AssemblyVersion>3.0.0.52</AssemblyVersion>
+    <FileVersion>3.0.0.52</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet-v2</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
@@ -15,7 +15,7 @@
     <PackageReleaseNotes>KeyPay API dotnet client v2</PackageReleaseNotes>
     <Copyright>Copyright 2025</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>3.0.0.51</Version>
+    <Version>3.0.0.52</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>
