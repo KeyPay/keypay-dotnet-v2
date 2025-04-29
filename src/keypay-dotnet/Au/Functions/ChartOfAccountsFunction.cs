@@ -15,6 +15,14 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IChartOfAccountsFunction
     {
+        List<string> GetJournalAccountTypes(int businessId);
+        Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<string> GetJournalServiceProviders(int businessId);
+        Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default);
+        JournalServiceProviderModel GetJournalServiceProvider(int businessId);
+        Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default);
+        JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model);
+        Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default);
         List<JournalAccountModel> GetJournalAccounts(int businessId);
         Task<List<JournalAccountModel>> GetJournalAccountsAsync(int businessId, CancellationToken cancellationToken = default);
         JournalAccountModel CreateANewJournalAccount(int businessId, JournalAccountModel request);
@@ -27,14 +35,6 @@ namespace KeyPayV2.Au.Functions
         Task DeleteAnExistingJournalAccountAsync(int businessId, int id, CancellationToken cancellationToken = default);
         JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request);
         Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default);
-        JournalServiceProviderModel GetJournalServiceProvider(int businessId);
-        Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default);
-        JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model);
-        Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default);
-        List<string> GetJournalServiceProviders(int businessId);
-        Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default);
-        List<string> GetJournalAccountTypes(int businessId);
-        Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default);
         AuChartOfAccountsModel GetChartOfAccounts(int businessId);
         Task<AuChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
         AuChartOfAccountsModel UpdateChartOfAccounts(int businessId, AuChartOfAccountsGroupModel chartOfAccounts);
@@ -55,6 +55,94 @@ namespace KeyPayV2.Au.Functions
     public class ChartOfAccountsFunction : BaseFunction, IChartOfAccountsFunction
     {
         public ChartOfAccountsFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Journal Account Types
+        /// </summary>
+        /// <remarks>
+        /// Gets the reference list of Journal Account Types.
+        /// </remarks>
+        public List<string> GetJournalAccountTypes(int businessId)
+        {
+            return ApiRequest<List<string>>($"/business/{businessId}/accounts/types", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Journal Account Types
+        /// </summary>
+        /// <remarks>
+        /// Gets the reference list of Journal Account Types.
+        /// </remarks>
+        public Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/types", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Journal Service providers
+        /// </summary>
+        /// <remarks>
+        /// Gets the Journal Service providers that can be configured via the API.
+        /// </remarks>
+        public List<string> GetJournalServiceProviders(int businessId)
+        {
+            return ApiRequest<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Journal Service providers
+        /// </summary>
+        /// <remarks>
+        /// Gets the Journal Service providers that can be configured via the API.
+        /// </remarks>
+        public Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Journal Service provider
+        /// </summary>
+        /// <remarks>
+        /// Gets the name of the journal service provider.
+        /// </remarks>
+        public JournalServiceProviderModel GetJournalServiceProvider(int businessId)
+        {
+            return ApiRequest<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Journal Service provider
+        /// </summary>
+        /// <remarks>
+        /// Gets the name of the journal service provider.
+        /// </remarks>
+        public Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Journal Service provider
+        /// </summary>
+        /// <remarks>
+        /// Updates the journal service provider.
+        /// </remarks>
+        public JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model)
+        {
+            return ApiRequest<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Journal Service provider
+        /// </summary>
+        /// <remarks>
+        /// Updates the journal service provider.
+        /// </remarks>
+        public Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.Put, cancellationToken);
+        }
 
         /// <summary>
         /// Get Journal Accounts
@@ -186,94 +274,6 @@ namespace KeyPayV2.Au.Functions
         public Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Journal Service provider
-        /// </summary>
-        /// <remarks>
-        /// Gets the name of the journal service provider.
-        /// </remarks>
-        public JournalServiceProviderModel GetJournalServiceProvider(int businessId)
-        {
-            return ApiRequest<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Journal Service provider
-        /// </summary>
-        /// <remarks>
-        /// Gets the name of the journal service provider.
-        /// </remarks>
-        public Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Journal Service provider
-        /// </summary>
-        /// <remarks>
-        /// Updates the journal service provider.
-        /// </remarks>
-        public JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model)
-        {
-            return ApiRequest<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Journal Service provider
-        /// </summary>
-        /// <remarks>
-        /// Updates the journal service provider.
-        /// </remarks>
-        public Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<JournalServiceProviderModel,JournalServiceProviderModel>($"/business/{businessId}/accounts/journalservice", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Journal Service providers
-        /// </summary>
-        /// <remarks>
-        /// Gets the Journal Service providers that can be configured via the API.
-        /// </remarks>
-        public List<string> GetJournalServiceProviders(int businessId)
-        {
-            return ApiRequest<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Journal Service providers
-        /// </summary>
-        /// <remarks>
-        /// Gets the Journal Service providers that can be configured via the API.
-        /// </remarks>
-        public Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Journal Account Types
-        /// </summary>
-        /// <remarks>
-        /// Gets the reference list of Journal Account Types.
-        /// </remarks>
-        public List<string> GetJournalAccountTypes(int businessId)
-        {
-            return ApiRequest<List<string>>($"/business/{businessId}/accounts/types", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Journal Account Types
-        /// </summary>
-        /// <remarks>
-        /// Gets the reference list of Journal Account Types.
-        /// </remarks>
-        public Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/types", Method.Get, cancellationToken);
         }
 
         /// <summary>

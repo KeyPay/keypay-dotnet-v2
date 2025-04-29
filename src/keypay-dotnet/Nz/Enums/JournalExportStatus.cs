@@ -26,6 +26,7 @@ namespace KeyPayV2.Nz.Enums
         FailureRecordingJournalReference,
         FailureNoProviderFound,
         FailureUsingManuallyEnteredDimension,
+        FailureICLExportUsedForNonICLJournal,
         ResultUnknown
     }
 }

@@ -15,16 +15,36 @@ namespace KeyPayV2.My.Functions
 {
     public interface IOtherFunction
     {
+        LeaveAccrualRuleModel RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategory(int businessId, int leaveCategoryId);
+        Task<LeaveAccrualRuleModel> RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategoryAsync(int businessId, int leaveCategoryId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        List<MyBankModel> ListBanks();
+        Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default);
         MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId);
         Task<MyEssStatutoryDetailsModel> EssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
         public OtherFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// retrieves the leave accrual rule associated with the leave category
+        /// </summary>
+        public LeaveAccrualRuleModel RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategory(int businessId, int leaveCategoryId)
+        {
+            return ApiRequest<LeaveAccrualRuleModel>($"/business/{businessId}/leavecategory/{leaveCategoryId}/LeaveAccrualRule", Method.Get);
+        }
+
+        /// <summary>
+        /// retrieves the leave accrual rule associated with the leave category
+        /// </summary>
+        public Task<LeaveAccrualRuleModel> RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategoryAsync(int businessId, int leaveCategoryId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<LeaveAccrualRuleModel>($"/business/{businessId}/leavecategory/{leaveCategoryId}/LeaveAccrualRule", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Payment Files by Finalised Pay Run Id
@@ -68,6 +88,22 @@ namespace KeyPayV2.My.Functions
         public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List banks
+        /// </summary>
+        public List<MyBankModel> ListBanks()
+        {
+            return ApiRequest<List<MyBankModel>>($"/bank", Method.Get);
+        }
+
+        /// <summary>
+        /// List banks
+        /// </summary>
+        public Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyBankModel>>($"/bank", Method.Get, cancellationToken);
         }
 
         public MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId)

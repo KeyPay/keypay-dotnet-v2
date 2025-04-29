@@ -16,6 +16,9 @@ namespace KeyPayV2.My.Enums
         Management,
         Contract,
         Intern,
-        Other
+        Other,
+        Volunteer,
+        Seasonal,
+        Consultant
     }
 }

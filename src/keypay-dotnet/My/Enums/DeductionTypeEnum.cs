@@ -13,6 +13,7 @@ namespace KeyPayV2.My.Enums
         PercentageNet,
         Tiered,
         Custom,
-        PercentageSuperannuation
+        PercentageSuperannuation,
+        PercentageCompensation
     }
 }

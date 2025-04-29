@@ -7,13 +7,18 @@ namespace KeyPayV2.Uk
     public interface IUkApiClient : IBaseApiClient
     {
         IBrandFunction Brand { get; }
-        IOtherFunction Other { get; }
-        IPayRunFunction PayRun { get; }
-        IReportingFunction Reporting { get; }
-        IWhiteLabelFunction WhiteLabel { get; }
-        IInvoicesFunction Invoices { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
+        IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
+        IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
+        IInvoicesFunction Invoices { get; }
+        IOtherFunction Other { get; }
+        IPayRunFunction PayRun { get; }
+        IQualificationsFunction Qualifications { get; }
+        IReportingFunction Reporting { get; }
+        ITimeAndAttendanceFunction TimeAndAttendance { get; }
+        IWebhookFunction Webhook { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
         IBenefitCategoryFunction BenefitCategory { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
@@ -33,11 +38,8 @@ namespace KeyPayV2.Uk
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IAuthenticationFunction Authentication { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
-        IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         IEmployeeGroupsFunction EmployeeGroups { get; }
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
-        IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
-        ITimeAndAttendanceFunction TimeAndAttendance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
@@ -47,12 +49,10 @@ namespace KeyPayV2.Uk
         IPayScheduleFunction PaySchedule { get; }
         IPensionSettingsFunction PensionSettings { get; }
         IPublicHolidayFunction PublicHoliday { get; }
-        IQualificationsFunction Qualifications { get; }
         IRosterShiftFunction RosterShift { get; }
         ISubcontractorFunction Subcontractor { get; }
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
-        IWebhookFunction Webhook { get; }
         IWorkTypeFunction WorkType { get; }
         IEssFunction Ess { get; }
         IResellerFunction Reseller { get; }
@@ -63,13 +63,18 @@ namespace KeyPayV2.Uk
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Brand = new BrandFunction(Api);
-            Other = new OtherFunction(Api);
-            PayRun = new PayRunFunction(Api);
-            Reporting = new ReportingFunction(Api);
-            WhiteLabel = new WhiteLabelFunction(Api);
-            Invoices = new InvoicesFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
+            EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
+            EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
+            Invoices = new InvoicesFunction(Api);
+            Other = new OtherFunction(Api);
+            PayRun = new PayRunFunction(Api);
+            Qualifications = new QualificationsFunction(Api);
+            Reporting = new ReportingFunction(Api);
+            TimeAndAttendance = new TimeAndAttendanceFunction(Api);
+            Webhook = new WebhookFunction(Api);
+            WhiteLabel = new WhiteLabelFunction(Api);
             BenefitCategory = new BenefitCategoryFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
@@ -89,11 +94,8 @@ namespace KeyPayV2.Uk
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
-            EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
-            TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
@@ -103,12 +105,10 @@ namespace KeyPayV2.Uk
             PaySchedule = new PayScheduleFunction(Api);
             PensionSettings = new PensionSettingsFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
-            Qualifications = new QualificationsFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             Subcontractor = new SubcontractorFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
-            Webhook = new WebhookFunction(Api);
             WorkType = new WorkTypeFunction(Api);
             Ess = new EssFunction(Api);
             Reseller = new ResellerFunction(Api);
@@ -116,13 +116,18 @@ namespace KeyPayV2.Uk
         }
 
         public IBrandFunction Brand { get; }
-        public IOtherFunction Other { get; }
-        public IPayRunFunction PayRun { get; }
-        public IReportingFunction Reporting { get; }
-        public IWhiteLabelFunction WhiteLabel { get; }
-        public IInvoicesFunction Invoices { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
+        public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
+        public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
+        public IInvoicesFunction Invoices { get; }
+        public IOtherFunction Other { get; }
+        public IPayRunFunction PayRun { get; }
+        public IQualificationsFunction Qualifications { get; }
+        public IReportingFunction Reporting { get; }
+        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
+        public IWebhookFunction Webhook { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
         public IBenefitCategoryFunction BenefitCategory { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
@@ -142,11 +147,8 @@ namespace KeyPayV2.Uk
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IAuthenticationFunction Authentication { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public IEmployeeGroupsFunction EmployeeGroups { get; }
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
-        public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
-        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
@@ -156,12 +158,10 @@ namespace KeyPayV2.Uk
         public IPayScheduleFunction PaySchedule { get; }
         public IPensionSettingsFunction PensionSettings { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
-        public IQualificationsFunction Qualifications { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ISubcontractorFunction Subcontractor { get; }
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
-        public IWebhookFunction Webhook { get; }
         public IWorkTypeFunction WorkType { get; }
         public IEssFunction Ess { get; }
         public IResellerFunction Reseller { get; }

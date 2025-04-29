@@ -86,7 +86,7 @@ namespace KeyPayV2.Sg.Enums
         AlternativeHolidaysCashOut,
         StatutoryNeonatalCarePay,
         SeverancePay,
-        VacationPay,
+        VacationPayout,
         BereavementLeave,
         BonusDiscretionary,
         BonusWorkRelated,
@@ -103,6 +103,12 @@ namespace KeyPayV2.Sg.Enums
         PersonalTimeOff,
         WorkedHolidayPremiumPay,
         PensionCommencementExcess,
-        StandAloneLumpSum
+        StandAloneLumpSum,
+        SickPay,
+        UnpaidTimeOff,
+        RegularPayHourly,
+        RegularPayAnnual,
+        RetroactivePayHourly,
+        WorkedHolidayPremiumPayDouble
     }
 }

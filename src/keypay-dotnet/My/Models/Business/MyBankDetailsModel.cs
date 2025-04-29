@@ -26,5 +26,8 @@ namespace KeyPayV2.My.Models.Business
         public string BankCode { get; set; }
         public string CorporateId { get; set; }
         public int? ValueDateDaysBeforeDatePaid { get; set; }
+        public bool? EncryptAndSign { get; set; }
+        public PgpKeyEditModel BankPublicKey { get; set; }
+        public PgpKeyPairEditModel ClientKeyPair { get; set; }
     }
 }

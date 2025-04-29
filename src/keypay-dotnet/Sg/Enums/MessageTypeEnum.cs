@@ -141,6 +141,8 @@ namespace KeyPayV2.Sg.Enums
         ScheduledJournalExportFailed,
         AddEmployeeEmployeeOnboarding,
         FeatureUsageReportGenerated,
-        NotifyAkahuUserOfFailedPaymentStatus
+        NotifyAkahuUserOfFailedPaymentStatus,
+        AccountRecoveryRequestApproved,
+        AccountRecoveryRequestDeclined
     }
 }

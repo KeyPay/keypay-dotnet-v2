@@ -28,17 +28,8 @@ namespace KeyPayV2.My.Enums
         SalarySacrificeOtherEmployeeBenefits,
         SalarySacrificeSuperannuation,
         IrdArrears,
-        UnionSpecial,
         UnionDues,
-        UnionFringeDeductions,
-        VoluntaryDeduction,
-        OtherDeduction,
-        GeneralDeduction,
         CharityDeduction,
-        OptionalCI,
-        OptionalLifeInsurance,
-        Advance,
-        Garnishment,
-        SupplementalLifeInsurance
+        Custom
     }
 }
