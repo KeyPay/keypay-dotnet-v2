@@ -25,6 +25,8 @@ namespace KeyPayV2.My.Functions
         Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default);
         MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId);
         Task<MyEssStatutoryDetailsModel> EssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default);
+        NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
+        Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
@@ -114,6 +116,22 @@ namespace KeyPayV2.My.Functions
         public Task<MyEssStatutoryDetailsModel> EssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<MyEssStatutoryDetailsModel>($"/ess/{employeeId}/statutorydetails", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model)
+        {
+            return ApiRequest<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
         }
     }
 }

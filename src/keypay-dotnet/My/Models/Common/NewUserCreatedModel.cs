@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using KeyPayV2.My.Models.Common;
 using KeyPayV2.My.Enums;
 
-namespace KeyPayV2.My.Models.User
+namespace KeyPayV2.My.Models.Common
 {
     public class NewUserCreatedModel
     {

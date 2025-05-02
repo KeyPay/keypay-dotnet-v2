@@ -29,6 +29,8 @@ namespace KeyPayV2.Sg.Functions
         Task<List<GiroBankBranchModel>> SgBank_BranchesAsync(SgBank_BranchesQueryModel request, CancellationToken cancellationToken = default);
         GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request);
         Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default);
+        NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
+        Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
@@ -168,6 +170,22 @@ namespace KeyPayV2.Sg.Functions
         public Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<GiroBankModel>($"/bank/details?bankSwift={request.BankSwift}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model)
+        {
+            return ApiRequest<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
         }
     }
 }
