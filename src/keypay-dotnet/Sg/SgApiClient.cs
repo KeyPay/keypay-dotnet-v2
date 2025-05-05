@@ -9,18 +9,23 @@ namespace KeyPayV2.Sg
         IBrandFunction Brand { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
+        IDeductionCategoriesFunction DeductionCategories { get; }
         IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
+        IEmployeeGroupsFunction EmployeeGroups { get; }
         IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         IEmployingEntitiesFunction EmployingEntities { get; }
         IInvoicesFunction Invoices { get; }
+        ILeaveAllowanceFunction LeaveAllowance { get; }
+        ILeaveCategoriesFunction LeaveCategories { get; }
         IOtherFunction Other { get; }
         IPayRunFunction PayRun { get; }
+        IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
+        ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
-        IDeductionCategoriesFunction DeductionCategories { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeFunction Employee { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
@@ -35,7 +40,6 @@ namespace KeyPayV2.Sg
         IEmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }
         IEmployeeIncomeTaxBorneByEmployerFunction EmployeeIncomeTaxBorneByEmployer { get; }
         IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveRequestsFunction LeaveRequests { get; }
         ILocationFunction Location { get; }
         IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
@@ -43,17 +47,13 @@ namespace KeyPayV2.Sg
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IAuthenticationFunction Authentication { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
-        IEmployeeGroupsFunction EmployeeGroups { get; }
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
-        ILeaveCategoriesFunction LeaveCategories { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayCategoryFunction PayCategory { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         IPayScheduleFunction PaySchedule { get; }
-        IPublicHolidayFunction PublicHoliday { get; }
         IRosterShiftFunction RosterShift { get; }
-        ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
         IWorkTypeFunction WorkType { get; }
@@ -68,18 +68,23 @@ namespace KeyPayV2.Sg
             Brand = new BrandFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
+            DeductionCategories = new DeductionCategoriesFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
+            EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
             Invoices = new InvoicesFunction(Api);
+            LeaveAllowance = new LeaveAllowanceFunction(Api);
+            LeaveCategories = new LeaveCategoriesFunction(Api);
             Other = new OtherFunction(Api);
             PayRun = new PayRunFunction(Api);
+            PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
+            TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
-            DeductionCategories = new DeductionCategoriesFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
@@ -94,7 +99,6 @@ namespace KeyPayV2.Sg
             EmployeeIncomeFromOverseasSubjectToTaxRemission = new EmployeeIncomeFromOverseasSubjectToTaxRemissionFunction(Api);
             EmployeeIncomeTaxBorneByEmployer = new EmployeeIncomeTaxBorneByEmployerFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
-            LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
             EmployeeIrasLumpSum = new EmployeeIrasLumpSumFunction(Api);
@@ -102,17 +106,13 @@ namespace KeyPayV2.Sg
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
-            LeaveCategories = new LeaveCategoriesFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
-            PublicHoliday = new PublicHolidayFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
-            TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             WorkType = new WorkTypeFunction(Api);
@@ -124,18 +124,23 @@ namespace KeyPayV2.Sg
         public IBrandFunction Brand { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
+        public IDeductionCategoriesFunction DeductionCategories { get; }
         public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
+        public IEmployeeGroupsFunction EmployeeGroups { get; }
         public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public IEmployingEntitiesFunction EmployingEntities { get; }
         public IInvoicesFunction Invoices { get; }
+        public ILeaveAllowanceFunction LeaveAllowance { get; }
+        public ILeaveCategoriesFunction LeaveCategories { get; }
         public IOtherFunction Other { get; }
         public IPayRunFunction PayRun { get; }
+        public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
+        public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
-        public IDeductionCategoriesFunction DeductionCategories { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeFunction Employee { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
@@ -150,7 +155,6 @@ namespace KeyPayV2.Sg
         public IEmployeeIncomeFromOverseasSubjectToTaxRemissionFunction EmployeeIncomeFromOverseasSubjectToTaxRemission { get; }
         public IEmployeeIncomeTaxBorneByEmployerFunction EmployeeIncomeTaxBorneByEmployer { get; }
         public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveRequestsFunction LeaveRequests { get; }
         public ILocationFunction Location { get; }
         public IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
@@ -158,17 +162,13 @@ namespace KeyPayV2.Sg
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IAuthenticationFunction Authentication { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public IEmployeeGroupsFunction EmployeeGroups { get; }
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
-        public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayCategoryFunction PayCategory { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public IPayScheduleFunction PaySchedule { get; }
-        public IPublicHolidayFunction PublicHoliday { get; }
         public IRosterShiftFunction RosterShift { get; }
-        public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
         public IWorkTypeFunction WorkType { get; }

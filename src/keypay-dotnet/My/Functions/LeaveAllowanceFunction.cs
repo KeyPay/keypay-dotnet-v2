@@ -15,10 +15,6 @@ namespace KeyPayV2.My.Functions
 {
     public interface ILeaveAllowanceFunction
     {
-        MyLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId);
-        Task<MyLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
-        Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
         Dictionary<string, IList<MyLeaveAllowanceModel>> GetLeaveAllowancesForAllEmployees(int businessId);
         Task<Dictionary<string, IList<MyLeaveAllowanceModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
         MyLeaveAllowanceModel SetLeaveAllowances(int businessId, MyLeaveAllowancesRequest request);
@@ -37,54 +33,14 @@ namespace KeyPayV2.My.Functions
         Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void ReapplyLeaveAllowanceTemplate(int businessId, int id);
         Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        MyLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId);
+        Task<MyLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
+        Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
     }
     public class LeaveAllowanceFunction : BaseFunction, ILeaveAllowanceFunction
     {
         public LeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get Leave Allowance Template for Employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the current leave allowance template for the specified employee
-        /// </remarks>
-        public MyLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<MyLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Leave Allowance Template for Employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the current leave allowance template for the specified employee
-        /// </remarks>
-        public Task<MyLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Assign Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Assigns employee to existing leave allowance template
-        /// </remarks>
-        public void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post);
-        }
-
-        /// <summary>
-        /// Assign Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Assigns employee to existing leave allowance template
-        /// </remarks>
-        public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// Get Leave Allowances for All Employees
@@ -284,6 +240,50 @@ namespace KeyPayV2.My.Functions
         public Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Leave Allowance Template for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the current leave allowance template for the specified employee
+        /// </remarks>
+        public MyLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<MyLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Leave Allowance Template for Employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the current leave allowance template for the specified employee
+        /// </remarks>
+        public Task<MyLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Assign Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Assigns employee to existing leave allowance template
+        /// </remarks>
+        public void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Assign Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Assigns employee to existing leave allowance template
+        /// </remarks>
+        public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post, cancellationToken);
         }
     }
 }
