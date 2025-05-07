@@ -92,6 +92,7 @@ namespace KeyPayV2.Nz.Enums
         EmployeePayRatesUpload,
         Zapier,
         StapledSuperFund,
-        Swag
+        Swag,
+        Crezco
     }
 }
