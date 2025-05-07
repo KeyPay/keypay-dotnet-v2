@@ -22,6 +22,7 @@ namespace KeyPayV2.My.Models.PayRun
         public decimal HrdfAmount { get; set; }
         public decimal PcbBorneByEmployerAmount { get; set; }
         public int? ArrearsForYear { get; set; }
+        public decimal EarningsVarianceOffset { get; set; }
         public string PayCategoryId { get; set; }
         public string PayCategoryName { get; set; }
         public decimal Units { get; set; }

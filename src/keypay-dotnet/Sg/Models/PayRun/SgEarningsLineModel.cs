@@ -15,6 +15,7 @@ namespace KeyPayV2.Sg.Models.PayRun
         public decimal EmployerVoluntaryCpfAmount { get; set; }
         public decimal EmployerVoluntaryMediSaveAmount { get; set; }
         public decimal SdlContributionAmount { get; set; }
+        public decimal EarningsVarianceOffset { get; set; }
         public string PayCategoryId { get; set; }
         public string PayCategoryName { get; set; }
         public decimal Units { get; set; }
