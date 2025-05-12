@@ -19,6 +19,16 @@ namespace KeyPayV2.Nz.Functions
         Task<NzEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
         void CreatePayslipConfiguration(int businessId, NzEditBusinessPaySlipApiModel model);
         Task CreatePayslipConfigurationAsync(int businessId, NzEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default);
+        NzEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
+        Task<NzEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        NzEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, NzEmployeePortalSettingsModel model);
+        Task<NzEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, NzEmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
+        List<BillingPlanResponseModel> ListBillingPlans(int businessId);
+        Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default);
+        BillingPlanResponseModel GetBusinessBillingPlan(int businessId);
+        Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
+        Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
         List<BusinessAction> ListBusinessNotifications(int businessId);
         Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
         void DismissBusinessNotifications(int businessId, int id);
@@ -69,18 +79,8 @@ namespace KeyPayV2.Nz.Functions
         Task<NzBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
         void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
         Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
-        NzEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
-        Task<NzEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
-        NzEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, NzEmployeePortalSettingsModel model);
-        Task<NzEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, NzEmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
-        List<BillingPlanResponseModel> ListBillingPlans(int businessId);
-        Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default);
-        BillingPlanResponseModel GetBusinessBillingPlan(int businessId);
-        Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
-        void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
-        Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
         void GetTheTimesheetSettingsForTheBusiness(int businessId);
@@ -142,6 +142,116 @@ namespace KeyPayV2.Nz.Functions
         public Task CreatePayslipConfigurationAsync(int businessId, NzEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public NzEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
+        {
+            return ApiRequest<NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public Task<NzEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public NzEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, NzEmployeePortalSettingsModel model)
+        {
+            return ApiRequest<NzEmployeePortalSettingsModel,NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public Task<NzEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, NzEmployeePortalSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzEmployeePortalSettingsModel,NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Billing Plans
+        /// </summary>
+        /// <remarks>
+        /// Lists all the billing plans for the business.
+        /// </remarks>
+        public List<BillingPlanResponseModel> ListBillingPlans(int businessId)
+        {
+            return ApiRequest<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
+        }
+
+        /// <summary>
+        /// List Billing Plans
+        /// </summary>
+        /// <remarks>
+        /// Lists all the billing plans for the business.
+        /// </remarks>
+        public Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Billing Plan
+        /// </summary>
+        /// <remarks>
+        /// Get the current billing plan for the business.
+        /// </remarks>
+        public BillingPlanResponseModel GetBusinessBillingPlan(int businessId)
+        {
+            return ApiRequest<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Billing Plan
+        /// </summary>
+        /// <remarks>
+        /// Get the current billing plan for the business.
+        /// </remarks>
+        public Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Business Billing Plan
+        /// </summary>
+        /// <remarks>
+        /// Sets the current billing plan for a business
+        /// </remarks>
+        public void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model)
+        {
+            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Business Billing Plan
+        /// </summary>
+        /// <remarks>
+        /// Sets the current billing plan for a business
+        /// </remarks>
+        public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -697,50 +807,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get Employee Portal Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates the business employee portal settings
-        /// </remarks>
-        public NzEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
-        {
-            return ApiRequest<NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Portal Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates the business employee portal settings
-        /// </remarks>
-        public Task<NzEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Portal Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates the business employee portal settings
-        /// </remarks>
-        public NzEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, NzEmployeePortalSettingsModel model)
-        {
-            return ApiRequest<NzEmployeePortalSettingsModel,NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Update Employee Portal Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates the business employee portal settings
-        /// </remarks>
-        public Task<NzEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, NzEmployeePortalSettingsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzEmployeePortalSettingsModel,NzEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Change the tax year
         /// </summary>
         /// <remarks>
@@ -760,72 +826,6 @@ namespace KeyPayV2.Nz.Functions
         public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Billing Plans
-        /// </summary>
-        /// <remarks>
-        /// Lists all the billing plans for the business.
-        /// </remarks>
-        public List<BillingPlanResponseModel> ListBillingPlans(int businessId)
-        {
-            return ApiRequest<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
-        }
-
-        /// <summary>
-        /// List Billing Plans
-        /// </summary>
-        /// <remarks>
-        /// Lists all the billing plans for the business.
-        /// </remarks>
-        public Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Billing Plan
-        /// </summary>
-        /// <remarks>
-        /// Get the current billing plan for the business.
-        /// </remarks>
-        public BillingPlanResponseModel GetBusinessBillingPlan(int businessId)
-        {
-            return ApiRequest<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Billing Plan
-        /// </summary>
-        /// <remarks>
-        /// Get the current billing plan for the business.
-        /// </remarks>
-        public Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Business Billing Plan
-        /// </summary>
-        /// <remarks>
-        /// Sets the current billing plan for a business
-        /// </remarks>
-        public void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model)
-        {
-            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Business Billing Plan
-        /// </summary>
-        /// <remarks>
-        /// Sets the current billing plan for a business
-        /// </remarks>
-        public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
         }
 
         /// <summary>

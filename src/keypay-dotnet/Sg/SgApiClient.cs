@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
+        IEmployeeFunction Employee { get; }
         IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         IEmployeeGroupsFunction EmployeeGroups { get; }
         IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
@@ -27,7 +28,6 @@ namespace KeyPayV2.Sg
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
-        IEmployeeFunction Employee { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         IEmployeeBankAccountFunction EmployeeBankAccount { get; }
@@ -69,6 +69,7 @@ namespace KeyPayV2.Sg
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
+            Employee = new EmployeeFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
@@ -86,7 +87,6 @@ namespace KeyPayV2.Sg
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
-            Employee = new EmployeeFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
@@ -125,6 +125,7 @@ namespace KeyPayV2.Sg
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
+        public IEmployeeFunction Employee { get; }
         public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public IEmployeeGroupsFunction EmployeeGroups { get; }
         public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
@@ -142,7 +143,6 @@ namespace KeyPayV2.Sg
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
-        public IEmployeeFunction Employee { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public IEmployeeBankAccountFunction EmployeeBankAccount { get; }

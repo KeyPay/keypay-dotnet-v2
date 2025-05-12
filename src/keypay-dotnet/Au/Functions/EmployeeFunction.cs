@@ -15,6 +15,10 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeFunction
     {
+        AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
+        Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model);
+        Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default);
         void DeleteEmployee(int businessId, int employeeId);
         Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
@@ -33,10 +37,6 @@ namespace KeyPayV2.Au.Functions
         Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
         Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
-        Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model);
-        Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default);
         List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId);
         Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
@@ -77,6 +77,50 @@ namespace KeyPayV2.Au.Functions
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Opening Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets the opening balances for this employee.
+        /// </remarks>
+        public AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId)
+        {
+            return ApiRequest<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Opening Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets the opening balances for this employee.
+        /// </remarks>
+        public Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Opening Balances
+        /// </summary>
+        /// <remarks>
+        /// Sets the opening balances for this employee.
+        /// </remarks>
+        public void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Opening Balances
+        /// </summary>
+        /// <remarks>
+        /// Sets the opening balances for this employee.
+        /// </remarks>
+        public Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// Delete Employee
@@ -274,50 +318,6 @@ namespace KeyPayV2.Au.Functions
         public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets the opening balances for this employee.
-        /// </remarks>
-        public AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId)
-        {
-            return ApiRequest<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets the opening balances for this employee.
-        /// </remarks>
-        public Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Sets the opening balances for this employee.
-        /// </remarks>
-        public void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Sets the opening balances for this employee.
-        /// </remarks>
-        public Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
