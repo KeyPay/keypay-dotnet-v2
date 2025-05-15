@@ -11,6 +11,8 @@ namespace KeyPayV2.Nz.Enums
         FourWeekly,
         Quarterly,
         Annually,
-        HalfMonthly
+        HalfMonthly,
+        BiWeekly,
+        SemiMonthly
     }
 }
