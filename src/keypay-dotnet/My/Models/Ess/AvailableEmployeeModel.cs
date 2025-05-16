@@ -19,5 +19,6 @@ namespace KeyPayV2.My.Models.Ess
         public string ProfileImageUrl { get; set; }
         public string Region { get; set; }
         public bool IsTerminated { get; set; }
+        public bool IsAnonymised { get; set; }
     }
 }
