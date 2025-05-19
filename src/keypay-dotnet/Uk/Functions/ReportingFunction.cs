@@ -49,6 +49,14 @@ namespace KeyPayV2.Uk.Functions
         Task<byte[]> GetHmrcPaymentFileAsync(int businessId, CancellationToken cancellationToken = default);
         byte[] GetHmrcPaymentFile(int businessId, GetHmrcPaymentFileQueryModel request);
         Task<byte[]> GetHmrcPaymentFileAsync(int businessId, GetHmrcPaymentFileQueryModel request, CancellationToken cancellationToken = default);
+        List<P45ReportResponseModel> P45Report(int businessId);
+        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request);
+        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] P45PdfReport(int businessId);
+        Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request);
+        Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default);
         P11dPublishApiResponseModel PublishP11d(int businessId, PublishP11dRequestModel publishP11dRequestModel);
         Task<P11dPublishApiResponseModel> PublishP11dAsync(int businessId, PublishP11dRequestModel publishP11dRequestModel, CancellationToken cancellationToken = default);
         LodgeExbApiResult SubmitExbSubmission(int businessId, ExbRequestApiModel exbModel);
@@ -225,14 +233,6 @@ namespace KeyPayV2.Uk.Functions
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, CancellationToken cancellationToken = default);
         List<TasksReportExportModel> GetTasksByBusinessId(int businessId, GetTasksByBusinessIdQueryModel request);
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default);
-        List<P45ReportResponseModel> P45Report(int businessId);
-        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request);
-        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] P45PdfReport(int businessId);
-        Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request);
-        Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default);
     }
     public class ReportingFunction : BaseFunction, IReportingFunction
     {
@@ -598,6 +598,94 @@ namespace KeyPayV2.Uk.Functions
         public Task<byte[]> GetHmrcPaymentFileAsync(int businessId, GetHmrcPaymentFileQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/hmrcpaymentfile?DateInPayPeriod={request.DateInPayPeriod.ToString("yyyy-MM-ddTHH:mm:ss")}&PaymentPeriod={request.PaymentPeriod}&PayeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public List<P45ReportResponseModel> P45Report(int businessId)
+        {
+            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request)
+        {
+            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public byte[] P45PdfReport(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2384,94 +2472,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TasksReportExportModel>>($"/business/{businessId}/report/tasks?EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&Status={request.Status}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public List<P45ReportResponseModel> P45Report(int businessId)
-        {
-            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request)
-        {
-            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?payRunId={request.PayRunId}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ConvertEnumerableToQueryString("employeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?payRunId={request.PayRunId}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ConvertEnumerableToQueryString("employeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public byte[] P45PdfReport(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf?payRunId={request.PayRunId}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ConvertEnumerableToQueryString("employeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf?payRunId={request.PayRunId}&fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ConvertEnumerableToQueryString("employeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
         }
     }
 }
