@@ -129,6 +129,8 @@ namespace KeyPayV2.Uk.Functions
         Task<UkSmpDataApiResponseModel> CreateStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, UkSmpDataApiModel smp, CancellationToken cancellationToken = default);
         UkSmpDataApiModel GetStatutoryMaternityLeavePeriodDataById(int businessId, int employeeId, int id);
         Task<UkSmpDataApiModel> GetStatutoryMaternityLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel UpdateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, int id, UkSmpDataApiModel smp);
+        Task<UkSmpDataApiResponseModel> UpdateStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, int id, UkSmpDataApiModel smp, CancellationToken cancellationToken = default);
         void DeleteStatutoryMaternityLeaveData(int businessId, int employeeId, int id);
         Task DeleteStatutoryMaternityLeaveDataAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> GetStatutoryMaternityLeaveAttachments(int businessId, int employeeId, int id);
@@ -1302,6 +1304,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkSmpDataApiModel> GetStatutoryMaternityLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Statutory Maternity Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Updates a Statutory Maternity Leave period for an employee
+        /// </remarks>
+        public UkSmpDataApiResponseModel UpdateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, int id, UkSmpDataApiModel smp)
+        {
+            return ApiRequest<UkSmpDataApiResponseModel,UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp/{id}", smp, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Statutory Maternity Leave Period data
+        /// </summary>
+        /// <remarks>
+        /// Updates a Statutory Maternity Leave period for an employee
+        /// </remarks>
+        public Task<UkSmpDataApiResponseModel> UpdateStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, int id, UkSmpDataApiModel smp, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp/{id}", smp, Method.Put, cancellationToken);
         }
 
         /// <summary>
