@@ -6,6 +6,7 @@ namespace KeyPayV2.Uk
 {
     public interface IUkApiClient : IBaseApiClient
     {
+        IAuthenticationFunction Authentication { get; }
         IBrandFunction Brand { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -25,43 +26,12 @@ namespace KeyPayV2.Uk
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
-        IBenefitCategoryFunction BenefitCategory { get; }
-        IReportingDimensionsFunction ReportingDimensions { get; }
-        IEmployeeAccessFunction EmployeeAccess { get; }
-        IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
-        IEmployeeBankAccountFunction EmployeeBankAccount { get; }
-        IEmployeeBenefitCategoryFunction EmployeeBenefitCategory { get; }
-        IEmployeeDocumentFunction EmployeeDocument { get; }
-        IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
-        IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
-        IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
-        IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        ILeaveRequestsFunction LeaveRequests { get; }
-        IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        IEmployeeQualificationsFunction EmployeeQualifications { get; }
-        IAuthenticationFunction Authentication { get; }
-        IEmploymentAgreementFunction EmploymentAgreement { get; }
-        IEmployeeOnboardingFunction EmployeeOnboarding { get; }
-        ILookupDataFunction LookupData { get; }
-        IManagerFunction Manager { get; }
-        IPayCategoryFunction PayCategory { get; }
-        IPayeSchemeFunction PayeScheme { get; }
-        IPayRateTemplateFunction PayRateTemplate { get; }
-        IPayScheduleFunction PaySchedule { get; }
-        IPensionSettingsFunction PensionSettings { get; }
-        IRosterShiftFunction RosterShift { get; }
-        ISubcontractorFunction Subcontractor { get; }
-        ITimesheetsFunction Timesheets { get; }
-        IUnavailabilityFunction Unavailability { get; }
-        IWorkTypeFunction WorkType { get; }
-        IEssFunction Ess { get; }
-        IResellerFunction Reseller { get; }
-        IUserFunction User { get; }
     }
     public class UkApiClient : BaseApiClient, IUkApiClient
     {
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
+            Authentication = new AuthenticationFunction(Api);
             Brand = new BrandFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
@@ -81,40 +51,9 @@ namespace KeyPayV2.Uk
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
-            BenefitCategory = new BenefitCategoryFunction(Api);
-            ReportingDimensions = new ReportingDimensionsFunction(Api);
-            EmployeeAccess = new EmployeeAccessFunction(Api);
-            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
-            EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
-            EmployeeBenefitCategory = new EmployeeBenefitCategoryFunction(Api);
-            EmployeeDocument = new EmployeeDocumentFunction(Api);
-            EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
-            EmployeeReportingDimensionEarningsLineSplit = new EmployeeReportingDimensionEarningsLineSplitFunction(Api);
-            EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
-            EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
-            LeaveRequests = new LeaveRequestsFunction(Api);
-            EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
-            EmployeeQualifications = new EmployeeQualificationsFunction(Api);
-            Authentication = new AuthenticationFunction(Api);
-            EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
-            LookupData = new LookupDataFunction(Api);
-            Manager = new ManagerFunction(Api);
-            PayCategory = new PayCategoryFunction(Api);
-            PayeScheme = new PayeSchemeFunction(Api);
-            PayRateTemplate = new PayRateTemplateFunction(Api);
-            PaySchedule = new PayScheduleFunction(Api);
-            PensionSettings = new PensionSettingsFunction(Api);
-            RosterShift = new RosterShiftFunction(Api);
-            Subcontractor = new SubcontractorFunction(Api);
-            Timesheets = new TimesheetsFunction(Api);
-            Unavailability = new UnavailabilityFunction(Api);
-            WorkType = new WorkTypeFunction(Api);
-            Ess = new EssFunction(Api);
-            Reseller = new ResellerFunction(Api);
-            User = new UserFunction(Api);
         }
 
+        public IAuthenticationFunction Authentication { get; }
         public IBrandFunction Brand { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -134,37 +73,5 @@ namespace KeyPayV2.Uk
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
-        public IBenefitCategoryFunction BenefitCategory { get; }
-        public IReportingDimensionsFunction ReportingDimensions { get; }
-        public IEmployeeAccessFunction EmployeeAccess { get; }
-        public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
-        public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
-        public IEmployeeBenefitCategoryFunction EmployeeBenefitCategory { get; }
-        public IEmployeeDocumentFunction EmployeeDocument { get; }
-        public IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
-        public IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
-        public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
-        public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        public ILeaveRequestsFunction LeaveRequests { get; }
-        public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        public IEmployeeQualificationsFunction EmployeeQualifications { get; }
-        public IAuthenticationFunction Authentication { get; }
-        public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
-        public ILookupDataFunction LookupData { get; }
-        public IManagerFunction Manager { get; }
-        public IPayCategoryFunction PayCategory { get; }
-        public IPayeSchemeFunction PayeScheme { get; }
-        public IPayRateTemplateFunction PayRateTemplate { get; }
-        public IPayScheduleFunction PaySchedule { get; }
-        public IPensionSettingsFunction PensionSettings { get; }
-        public IRosterShiftFunction RosterShift { get; }
-        public ISubcontractorFunction Subcontractor { get; }
-        public ITimesheetsFunction Timesheets { get; }
-        public IUnavailabilityFunction Unavailability { get; }
-        public IWorkTypeFunction WorkType { get; }
-        public IEssFunction Ess { get; }
-        public IResellerFunction Reseller { get; }
-        public IUserFunction User { get; }
     }
 }
