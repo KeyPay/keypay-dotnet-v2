@@ -25,6 +25,10 @@ namespace KeyPayV2.Nz.Functions
         Task<NzLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, NzLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         void DeleteLeaveCategory(int businessId, int id);
         Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        NzBusinessHolidayLeaveSettingsApiDetailModel GetHolidayLeaveSettings(int businessId);
+        Task<NzBusinessHolidayLeaveSettingsApiDetailModel> GetHolidayLeaveSettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        NzLeaveAllowanceModel SetHolidayLeaveSettings(int businessId, NzBusinessHolidayLeaveSettingsApiModel model);
+        Task<NzLeaveAllowanceModel> SetHolidayLeaveSettingsAsync(int businessId, NzBusinessHolidayLeaveSettingsApiModel model, CancellationToken cancellationToken = default);
     }
     public class LeaveCategoriesFunction : BaseFunction, ILeaveCategoriesFunction
     {
@@ -140,6 +144,50 @@ namespace KeyPayV2.Nz.Functions
         public Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/leavecategory/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Holiday Leave Settings
+        /// </summary>
+        /// <remarks>
+        /// Gets the holiday leave settings for the business
+        /// </remarks>
+        public NzBusinessHolidayLeaveSettingsApiDetailModel GetHolidayLeaveSettings(int businessId)
+        {
+            return ApiRequest<NzBusinessHolidayLeaveSettingsApiDetailModel>($"/business/{businessId}/holidayleavesettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Holiday Leave Settings
+        /// </summary>
+        /// <remarks>
+        /// Gets the holiday leave settings for the business
+        /// </remarks>
+        public Task<NzBusinessHolidayLeaveSettingsApiDetailModel> GetHolidayLeaveSettingsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzBusinessHolidayLeaveSettingsApiDetailModel>($"/business/{businessId}/holidayleavesettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Holiday Leave Settings
+        /// </summary>
+        /// <remarks>
+        /// Sets the holiday leave settings for the business
+        /// </remarks>
+        public NzLeaveAllowanceModel SetHolidayLeaveSettings(int businessId, NzBusinessHolidayLeaveSettingsApiModel model)
+        {
+            return ApiRequest<NzLeaveAllowanceModel,NzBusinessHolidayLeaveSettingsApiModel>($"/business/{businessId}/holidayleavesettings", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Set Holiday Leave Settings
+        /// </summary>
+        /// <remarks>
+        /// Sets the holiday leave settings for the business
+        /// </remarks>
+        public Task<NzLeaveAllowanceModel> SetHolidayLeaveSettingsAsync(int businessId, NzBusinessHolidayLeaveSettingsApiModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzLeaveAllowanceModel,NzBusinessHolidayLeaveSettingsApiModel>($"/business/{businessId}/holidayleavesettings", model, Method.Put, cancellationToken);
         }
     }
 }
