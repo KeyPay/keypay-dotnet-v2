@@ -136,6 +136,8 @@ namespace KeyPayV2.My.Enums
         P60DownloadReady,
         PartnerBusinessDeactivationNotification30Days,
         EHDirectBusinessDeactivationNotification30Days,
+        EHDirectBusinessDeactivationNotification10Days,
+        EHDirectBusinessDeactivationNotification1Day,
         RecoverTwoFactorAuthentication,
         AccountRecoverySubmitted,
         ScheduledJournalExportFailed,
