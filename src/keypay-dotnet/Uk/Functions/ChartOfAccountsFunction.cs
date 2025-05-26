@@ -15,6 +15,22 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IChartOfAccountsFunction
     {
+        UkChartOfAccountsModel GetChartOfAccounts(int businessId);
+        Task<UkChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
+        UkChartOfAccountsModel UpdateChartOfAccounts(int businessId, UkChartOfAccountsGroupModel chartOfAccounts);
+        Task<UkChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, UkChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        UkChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId);
+        Task<UkChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
+        UkChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts);
+        Task<UkChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId);
+        Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
+        UkChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
+        Task<UkChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
+        UkChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts);
+        Task<UkChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
+        Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
         List<string> GetJournalAccountTypes(int businessId);
         Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default);
         List<string> GetJournalServiceProviders(int businessId);
@@ -35,26 +51,186 @@ namespace KeyPayV2.Uk.Functions
         Task DeleteAnExistingJournalAccountAsync(int businessId, int id, CancellationToken cancellationToken = default);
         JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request);
         Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default);
-        UkChartOfAccountsModel GetChartOfAccounts(int businessId);
-        Task<UkChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
-        UkChartOfAccountsModel UpdateChartOfAccounts(int businessId, UkChartOfAccountsGroupModel chartOfAccounts);
-        Task<UkChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, UkChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
-        UkChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
-        Task<UkChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
-        UkChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts);
-        Task<UkChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
-        void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
-        Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
-        UkChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId);
-        Task<UkChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
-        UkChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts);
-        Task<UkChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
-        void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId);
-        Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
     }
     public class ChartOfAccountsFunction : BaseFunction, IChartOfAccountsFunction
     {
         public ChartOfAccountsFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the default chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsModel GetChartOfAccounts(int businessId)
+        {
+            return ApiRequest<UkChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the default chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<UkChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the default chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsModel UpdateChartOfAccounts(int businessId, UkChartOfAccountsGroupModel chartOfAccounts)
+        {
+            return ApiRequest<UkChartOfAccountsModel,UkChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the default chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<UkChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, UkChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkChartOfAccountsModel,UkChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the location specific chart of accounts configuration for a given location.
+        /// </remarks>
+        public UkChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
+        {
+            return ApiRequest<UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the location specific chart of accounts configuration for a given location.
+        /// </remarks>
+        public Task<UkChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts)
+        {
+            return ApiRequest<UkChartOfAccountsLocationGroupModel,UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<UkChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkChartOfAccountsLocationGroupModel,UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
+        /// </remarks>
+        public UkChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
+        {
+            return ApiRequest<UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
+        /// </remarks>
+        public Task<UkChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public UkChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts)
+        {
+            return ApiRequest<UkChartOfAccountsEmployingEntityGroupModel,UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<UkChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkChartOfAccountsEmployingEntityGroupModel,UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete, cancellationToken);
+        }
 
         /// <summary>
         /// Get Journal Account Types
@@ -274,182 +450,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the default chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsModel GetChartOfAccounts(int businessId)
-        {
-            return ApiRequest<UkChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the default chart of accounts configuration for the business.
-        /// </remarks>
-        public Task<UkChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the default chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsModel UpdateChartOfAccounts(int businessId, UkChartOfAccountsGroupModel chartOfAccounts)
-        {
-            return ApiRequest<UkChartOfAccountsModel,UkChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post);
-        }
-
-        /// <summary>
-        /// Update Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the default chart of accounts configuration for the business.
-        /// </remarks>
-        public Task<UkChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, UkChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkChartOfAccountsModel,UkChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
-        /// </remarks>
-        public UkChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
-        {
-            return ApiRequest<UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
-        /// </remarks>
-        public Task<UkChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts)
-        {
-            return ApiRequest<UkChartOfAccountsEmployingEntityGroupModel,UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post);
-        }
-
-        /// <summary>
-        /// Update Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task<UkChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, UkChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkChartOfAccountsEmployingEntityGroupModel,UkChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
-        {
-            ApiRequest($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the location specific chart of accounts configuration for a given location.
-        /// </remarks>
-        public UkChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
-        {
-            return ApiRequest<UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the location specific chart of accounts configuration for a given location.
-        /// </remarks>
-        public Task<UkChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public UkChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts)
-        {
-            return ApiRequest<UkChartOfAccountsLocationGroupModel,UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post);
-        }
-
-        /// <summary>
-        /// Update Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task<UkChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, UkChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkChartOfAccountsLocationGroupModel,UkChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
-        {
-            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete, cancellationToken);
         }
     }
 }

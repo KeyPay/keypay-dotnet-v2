@@ -18,6 +18,7 @@ namespace KeyPayV2.Au
         IInvoicesFunction Invoices { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
+        ILocationFunction Location { get; }
         IOtherFunction Other { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
         IPayRunFunction PayRun { get; }
@@ -38,7 +39,6 @@ namespace KeyPayV2.Au
         IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         ILeaveRequestsFunction LeaveRequests { get; }
-        ILocationFunction Location { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
@@ -76,6 +76,7 @@ namespace KeyPayV2.Au
             Invoices = new InvoicesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
+            Location = new LocationFunction(Api);
             Other = new OtherFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
             PayRun = new PayRunFunction(Api);
@@ -96,7 +97,6 @@ namespace KeyPayV2.Au
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
-            Location = new LocationFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmployeeSelfManagedSuperFund = new EmployeeSelfManagedSuperFundFunction(Api);
@@ -131,6 +131,7 @@ namespace KeyPayV2.Au
         public IInvoicesFunction Invoices { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ILocationFunction Location { get; }
         public IOtherFunction Other { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRunFunction PayRun { get; }
@@ -151,7 +152,6 @@ namespace KeyPayV2.Au
         public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public ILeaveRequestsFunction LeaveRequests { get; }
-        public ILocationFunction Location { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }

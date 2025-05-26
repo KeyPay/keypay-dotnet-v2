@@ -15,22 +15,88 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ILocationFunction
     {
+        AuSingleLocationModel GetLocationById(int businessId, int id);
+        Task<AuSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuLocationModel UpdateLocation(int businessId, int id, AuLocationModel location);
+        Task<AuLocationModel> UpdateLocationAsync(int businessId, int id, AuLocationModel location, CancellationToken cancellationToken = default);
+        void DeleteLocation(int businessId, int id);
+        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<AuLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<AuLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<AuLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
         Task<List<AuLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuLocationModel CreateLocation(int businessId, AuLocationModel location);
         Task<AuLocationModel> CreateLocationAsync(int businessId, AuLocationModel location, CancellationToken cancellationToken = default);
-        AuSingleLocationModel GetLocationById(int businessId, int id);
-        Task<AuSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateLocation(int businessId, int id, AuLocationModel location);
-        Task UpdateLocationAsync(int businessId, int id, AuLocationModel location, CancellationToken cancellationToken = default);
-        void DeleteLocation(int businessId, int id);
-        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public AuSingleLocationModel GetLocationById(int businessId, int id)
+        {
+            return ApiRequest<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public Task<AuSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Location
+        /// </summary>
+        /// <remarks>
+        /// Updates the business location with the specified ID.
+        /// </remarks>
+        public AuLocationModel UpdateLocation(int businessId, int id, AuLocationModel location)
+        {
+            return ApiRequest<AuLocationModel,AuLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Location
+        /// </summary>
+        /// <remarks>
+        /// Updates the business location with the specified ID.
+        /// </remarks>
+        public Task<AuLocationModel> UpdateLocationAsync(int businessId, int id, AuLocationModel location, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuLocationModel,AuLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Location
+        /// </summary>
+        /// <remarks>
+        /// Deletes the location with the specified ID.
+        /// </remarks>
+        public void DeleteLocation(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Location
+        /// </summary>
+        /// <remarks>
+        /// Deletes the location with the specified ID.
+        /// </remarks>
+        public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
+        }
 
         /// <summary>
         /// List Employee Locations
@@ -100,72 +166,6 @@ namespace KeyPayV2.Au.Functions
         public Task<AuLocationModel> CreateLocationAsync(int businessId, AuLocationModel location, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuLocationModel,AuLocationModel>($"/business/{businessId}/location", location, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public AuSingleLocationModel GetLocationById(int businessId, int id)
-        {
-            return ApiRequest<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public Task<AuSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Location
-        /// </summary>
-        /// <remarks>
-        /// Updates the business location with the specified ID.
-        /// </remarks>
-        public void UpdateLocation(int businessId, int id, AuLocationModel location)
-        {
-            ApiRequest($"/business/{businessId}/location/{id}", location, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Location
-        /// </summary>
-        /// <remarks>
-        /// Updates the business location with the specified ID.
-        /// </remarks>
-        public Task UpdateLocationAsync(int businessId, int id, AuLocationModel location, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Location
-        /// </summary>
-        /// <remarks>
-        /// Deletes the location with the specified ID.
-        /// </remarks>
-        public void DeleteLocation(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Location
-        /// </summary>
-        /// <remarks>
-        /// Deletes the location with the specified ID.
-        /// </remarks>
-        public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
         }
     }
 }

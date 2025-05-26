@@ -15,22 +15,88 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILocationFunction
     {
+        NzSingleLocationModel GetLocationById(int businessId, int id);
+        Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        NzLocationModel UpdateLocation(int businessId, int id, NzLocationModel location);
+        Task<NzLocationModel> UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default);
+        void DeleteLocation(int businessId, int id);
+        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<NzLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<NzLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<NzLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
         Task<List<NzLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzLocationModel CreateLocation(int businessId, NzLocationModel location);
         Task<NzLocationModel> CreateLocationAsync(int businessId, NzLocationModel location, CancellationToken cancellationToken = default);
-        NzSingleLocationModel GetLocationById(int businessId, int id);
-        Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateLocation(int businessId, int id, NzLocationModel location);
-        Task UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default);
-        void DeleteLocation(int businessId, int id);
-        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public NzSingleLocationModel GetLocationById(int businessId, int id)
+        {
+            return ApiRequest<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Location
+        /// </summary>
+        /// <remarks>
+        /// Updates the business location with the specified ID.
+        /// </remarks>
+        public NzLocationModel UpdateLocation(int businessId, int id, NzLocationModel location)
+        {
+            return ApiRequest<NzLocationModel,NzLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Location
+        /// </summary>
+        /// <remarks>
+        /// Updates the business location with the specified ID.
+        /// </remarks>
+        public Task<NzLocationModel> UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzLocationModel,NzLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Location
+        /// </summary>
+        /// <remarks>
+        /// Deletes the location with the specified ID.
+        /// </remarks>
+        public void DeleteLocation(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Location
+        /// </summary>
+        /// <remarks>
+        /// Deletes the location with the specified ID.
+        /// </remarks>
+        public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
+        }
 
         /// <summary>
         /// List Employee Locations
@@ -100,72 +166,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<NzLocationModel> CreateLocationAsync(int businessId, NzLocationModel location, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NzLocationModel,NzLocationModel>($"/business/{businessId}/location", location, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public NzSingleLocationModel GetLocationById(int businessId, int id)
-        {
-            return ApiRequest<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Location
-        /// </summary>
-        /// <remarks>
-        /// Updates the business location with the specified ID.
-        /// </remarks>
-        public void UpdateLocation(int businessId, int id, NzLocationModel location)
-        {
-            ApiRequest($"/business/{businessId}/location/{id}", location, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Location
-        /// </summary>
-        /// <remarks>
-        /// Updates the business location with the specified ID.
-        /// </remarks>
-        public Task UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Location
-        /// </summary>
-        /// <remarks>
-        /// Deletes the location with the specified ID.
-        /// </remarks>
-        public void DeleteLocation(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Location
-        /// </summary>
-        /// <remarks>
-        /// Deletes the location with the specified ID.
-        /// </remarks>
-        public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace KeyPayV2.My
         IInvoicesFunction Invoices { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
+        ILocationFunction Location { get; }
         IOtherFunction Other { get; }
         IPayRunFunction PayRun { get; }
         IPublicHolidayFunction PublicHoliday { get; }
@@ -37,7 +38,6 @@ namespace KeyPayV2.My
         IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         ILeaveRequestsFunction LeaveRequests { get; }
-        ILocationFunction Location { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IAuthenticationFunction Authentication { get; }
@@ -72,6 +72,7 @@ namespace KeyPayV2.My
             Invoices = new InvoicesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
+            Location = new LocationFunction(Api);
             Other = new OtherFunction(Api);
             PayRun = new PayRunFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
@@ -91,7 +92,6 @@ namespace KeyPayV2.My
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
-            Location = new LocationFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
@@ -123,6 +123,7 @@ namespace KeyPayV2.My
         public IInvoicesFunction Invoices { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ILocationFunction Location { get; }
         public IOtherFunction Other { get; }
         public IPayRunFunction PayRun { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
@@ -142,7 +143,6 @@ namespace KeyPayV2.My
         public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
         public ILeaveRequestsFunction LeaveRequests { get; }
-        public ILocationFunction Location { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IAuthenticationFunction Authentication { get; }
