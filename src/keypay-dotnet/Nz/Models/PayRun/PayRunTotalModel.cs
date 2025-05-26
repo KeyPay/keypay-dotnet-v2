@@ -8,19 +8,7 @@ namespace KeyPayV2.Nz.Models.PayRun
 {
     public class PayRunTotalModel
     {
-        public int Id { get; set; }
-        public decimal TotalHours { get; set; }
-        public decimal GrossEarnings { get; set; }
-        public decimal PreTaxDeductions { get; set; }
-        public decimal TaxableEarnings { get; set; }
-        public decimal PostTaxDeductions { get; set; }
-        public decimal NetEarnings { get; set; }
-        public decimal TotalEmployeeExpenses { get; set; }
-        public decimal TotalEmployerLiabilities { get; set; }
-        public bool IsPublished { get; set; }
-        public int PayRunId { get; set; }
         public string Notes { get; set; }
-        public string Notation { get; set; }
         public decimal PaygWithheld { get; set; }
         public decimal SfssWithheld { get; set; }
         public decimal HelpWithheld { get; set; }
@@ -61,5 +49,17 @@ namespace KeyPayV2.Nz.Models.PayRun
         public decimal SocsoEmployerAmount { get; set; }
         public decimal SocsoEmployeeAmount { get; set; }
         public decimal HrdfAmount { get; set; }
+        public int Id { get; set; }
+        public decimal TotalHours { get; set; }
+        public decimal GrossEarnings { get; set; }
+        public decimal PreTaxDeductions { get; set; }
+        public decimal TaxableEarnings { get; set; }
+        public decimal PostTaxDeductions { get; set; }
+        public decimal NetEarnings { get; set; }
+        public decimal TotalEmployeeExpenses { get; set; }
+        public decimal TotalEmployerLiabilities { get; set; }
+        public bool IsPublished { get; set; }
+        public int PayRunId { get; set; }
+        public string Notation { get; set; }
     }
 }
