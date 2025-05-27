@@ -144,6 +144,9 @@ namespace KeyPayV2.Au.Enums
         AddEmployeeEmployeeOnboarding,
         FeatureUsageReportGenerated,
         NotifyAkahuUserOfFailedPaymentStatus,
+        NotifyUserSsoDetailsChanged,
+        NotifyUserSsoAccessEnabled,
+        NotifyUserSsoAccessDisabled,
         AccountRecoveryRequestApproved,
         AccountRecoveryRequestDeclined
     }
