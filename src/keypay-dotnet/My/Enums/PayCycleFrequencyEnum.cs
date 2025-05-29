@@ -13,6 +13,7 @@ namespace KeyPayV2.My.Enums
         Annually,
         HalfMonthly,
         BiWeekly,
-        SemiMonthly
+        SemiMonthly,
+        Weekly52Or53
     }
 }
