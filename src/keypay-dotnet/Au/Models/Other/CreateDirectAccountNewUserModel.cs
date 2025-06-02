@@ -9,6 +9,7 @@ namespace KeyPayV2.Au.Models.Other
     public class CreateDirectAccountNewUserModel
     {
         public string CreateNewUserSecret { get; set; }
+        public string Password { get; set; }
         public string Username { get; set; }
         public string DisplayName { get; set; }
         public string TimeZone { get; set; }
