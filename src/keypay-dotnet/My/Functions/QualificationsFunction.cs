@@ -9,7 +9,6 @@ using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
 using KeyPayV2.My.Enums;
 using KeyPayV2.My.Models.Common;
-using KeyPayV2.My.Models.Qualifications;
 
 namespace KeyPayV2.My.Functions
 {

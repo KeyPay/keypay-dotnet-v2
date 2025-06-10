@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using KeyPayV2.Nz.Models.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+using KeyPayV2.Nz.Enums;
+
+namespace KeyPayV2.Nz.Models.EmployeeBankAccount
+{
+    public class NzBankAccountModel
+    {
+        public string FullAccountNumber { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BankAccountTypeEnum AccountType { get; set; }
+        public string AccountCode { get; set; }
+        public string AccountParticulars { get; set; }
+        public int Id { get; set; }
+        public int EmployeeId { get; set; }
+        public string Bsb { get; set; }
+        public string AccountName { get; set; }
+        public string AccountNumber { get; set; }
+        public decimal? AllocatedPercentage { get; set; }
+        public decimal? FixedAmount { get; set; }
+        public bool AllocateBalance { get; set; }
+        public bool IsEmployeeEditable { get; set; }
+        public bool CanBeDeleted { get; set; }
+        public string ExternalReferenceId { get; set; }
+    }
+}
