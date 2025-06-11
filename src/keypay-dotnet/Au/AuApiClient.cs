@@ -10,6 +10,7 @@ namespace KeyPayV2.Au
         IBrandFunction Brand { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
+        IContractorFunction Contractor { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
         IEmployeeFunction Employee { get; }
         IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
@@ -68,6 +69,7 @@ namespace KeyPayV2.Au
             Brand = new BrandFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
+            Contractor = new ContractorFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
             Employee = new EmployeeFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
@@ -123,6 +125,7 @@ namespace KeyPayV2.Au
         public IBrandFunction Brand { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
+        public IContractorFunction Contractor { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
         public IEmployeeFunction Employee { get; }
         public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
