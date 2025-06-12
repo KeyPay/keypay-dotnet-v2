@@ -49,10 +49,10 @@ namespace KeyPayV2.My.Functions
         Task SetPayRunNotationAsync(int businessId, int payRunId, PayRunNotationModel model, CancellationToken cancellationToken = default);
         void DeletePayRunNotation(int businessId, int payRunId);
         Task DeletePayRunNotationAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
-        void RemoveEmployeeFromPayRun(int businessId, int employeeId, int payRunId);
-        Task RemoveEmployeeFromPayRunAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         PayRunTotalModel IncludeEmployee(int businessId, int employeeId, int payRunId);
         Task<PayRunTotalModel> IncludeEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        void RemoveEmployeeFromPayRun(int businessId, int employeeId, int payRunId);
+        Task RemoveEmployeeFromPayRunAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         NetToGrossModel NetToGross(int businessId, string payRunId, NetToGrossRequest netToGrossRequest);
         Task<NetToGrossModel> NetToGrossAsync(int businessId, string payRunId, NetToGrossRequest netToGrossRequest, CancellationToken cancellationToken = default);
         PayRunSummaryModel GetPayRunSummary(int businessId, int payRunId);
@@ -509,28 +509,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Remove Employee from Pay Run
-        /// </summary>
-        /// <remarks>
-        /// Removes an employee from a pay run.
-        /// </remarks>
-        public void RemoveEmployeeFromPayRun(int businessId, int employeeId, int payRunId)
-        {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Remove Employee from Pay Run
-        /// </summary>
-        /// <remarks>
-        /// Removes an employee from a pay run.
-        /// </remarks>
-        public Task RemoveEmployeeFromPayRunAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
         /// Include Employee
         /// </summary>
         /// <remarks>
@@ -550,6 +528,28 @@ namespace KeyPayV2.My.Functions
         public Task<PayRunTotalModel> IncludeEmployeeAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PayRunTotalModel>($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Remove Employee from Pay Run
+        /// </summary>
+        /// <remarks>
+        /// Removes an employee from a pay run.
+        /// </remarks>
+        public void RemoveEmployeeFromPayRun(int businessId, int employeeId, int payRunId)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Remove Employee from Pay Run
+        /// </summary>
+        /// <remarks>
+        /// Removes an employee from a pay run.
+        /// </remarks>
+        public Task RemoveEmployeeFromPayRunAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/employee/{employeeId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

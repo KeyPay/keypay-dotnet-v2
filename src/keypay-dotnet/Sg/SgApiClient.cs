@@ -21,7 +21,6 @@ namespace KeyPayV2.Sg
         ILeaveCategoriesFunction LeaveCategories { get; }
         ILocationFunction Location { get; }
         IOtherFunction Other { get; }
-        IPayRunFunction PayRun { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
@@ -29,6 +28,7 @@ namespace KeyPayV2.Sg
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
+        IPayRunFunction PayRun { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -80,7 +80,6 @@ namespace KeyPayV2.Sg
             LeaveCategories = new LeaveCategoriesFunction(Api);
             Location = new LocationFunction(Api);
             Other = new OtherFunction(Api);
-            PayRun = new PayRunFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
@@ -88,6 +87,7 @@ namespace KeyPayV2.Sg
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
+            PayRun = new PayRunFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -136,7 +136,6 @@ namespace KeyPayV2.Sg
         public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILocationFunction Location { get; }
         public IOtherFunction Other { get; }
-        public IPayRunFunction PayRun { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
@@ -144,6 +143,7 @@ namespace KeyPayV2.Sg
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
+        public IPayRunFunction PayRun { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
