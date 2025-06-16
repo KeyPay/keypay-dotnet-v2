@@ -23,13 +23,13 @@ namespace KeyPayV2.Au
         ILocationFunction Location { get; }
         IOtherFunction Other { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
+        IPayRunFunction PayRun { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
-        IPayRunFunction PayRun { get; }
         IAbaSettingsFunction AbaSettings { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
@@ -82,13 +82,13 @@ namespace KeyPayV2.Au
             Location = new LocationFunction(Api);
             Other = new OtherFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
+            PayRun = new PayRunFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
-            PayRun = new PayRunFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
@@ -138,13 +138,13 @@ namespace KeyPayV2.Au
         public ILocationFunction Location { get; }
         public IOtherFunction Other { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
+        public IPayRunFunction PayRun { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
-        public IPayRunFunction PayRun { get; }
         public IAbaSettingsFunction AbaSettings { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
