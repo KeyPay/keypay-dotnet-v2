@@ -9,6 +9,7 @@ namespace KeyPayV2.Uk.Models.Reporting
     public class UkGrossToNetResponseModel
     {
         public decimal Paye { get; set; }
+        public bool IsNetAndTaxableEarningsFixFeatureFlagEnabled { get; set; }
         public decimal NetEarnings { get; set; }
         public decimal TaxableEarnings { get; set; }
         public decimal NIableEarnings { get; set; }
