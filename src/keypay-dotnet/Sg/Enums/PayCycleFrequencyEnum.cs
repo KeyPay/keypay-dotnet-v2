@@ -14,6 +14,7 @@ namespace KeyPayV2.Sg.Enums
         HalfMonthly,
         BiWeekly,
         SemiMonthly,
-        Weekly52Or53
+        Weekly52Or53,
+        OffCycle
     }
 }

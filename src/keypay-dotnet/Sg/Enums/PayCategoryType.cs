@@ -109,6 +109,7 @@ namespace KeyPayV2.Sg.Enums
         RegularPayHourly,
         RegularPayAnnual,
         RetroactivePayHourly,
-        WorkedHolidayPremiumPayDouble
+        WorkedHolidayPremiumPayDouble,
+        VacationPayoutOnTermination
     }
 }
