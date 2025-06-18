@@ -26,5 +26,6 @@ namespace KeyPayV2.Au.Models.Common
         public string Email { get; set; }
         public string ExternalReferenceId { get; set; }
         public int? SuperDetailsDefaultFundId { get; set; }
+        public bool IsMySuper { get; set; }
     }
 }
