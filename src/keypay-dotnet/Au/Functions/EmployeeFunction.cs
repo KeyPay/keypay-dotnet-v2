@@ -15,6 +15,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeFunction
     {
+        List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId);
+        Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
         Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model);
@@ -37,8 +39,6 @@ namespace KeyPayV2.Au.Functions
         Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
         Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId);
-        Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
@@ -77,6 +77,28 @@ namespace KeyPayV2.Au.Functions
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId)
+        {
+            return ApiRequest<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Opening Balances
@@ -318,28 +340,6 @@ namespace KeyPayV2.Au.Functions
         public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId)
-        {
-            return ApiRequest<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -15,6 +15,8 @@ namespace KeyPayV2.My.Functions
 {
     public interface IEmployeeFunction
     {
+        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
+        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         MyOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
         Task<MyOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetOpeningBalances(int businessId, int employeeId, MyOpeningBalancesModel model);
@@ -37,8 +39,6 @@ namespace KeyPayV2.My.Functions
         Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
         Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
-        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<MyWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<MyWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
@@ -75,6 +75,28 @@ namespace KeyPayV2.My.Functions
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Opening Balances
@@ -316,28 +338,6 @@ namespace KeyPayV2.My.Functions
         public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -27,6 +27,8 @@ namespace KeyPayV2.Uk.Functions
         Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void SaveLeaveYearSettings(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel);
         Task SaveLeaveYearSettingsAsync(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel, CancellationToken cancellationToken = default);
+        void SaveOccupationalAbsenceBusinessSettings(int businessId, OccupationalAbsenceBusinessSettings occupationalAbsenceBusinessSettings);
+        Task SaveOccupationalAbsenceBusinessSettingsAsync(int businessId, OccupationalAbsenceBusinessSettings occupationalAbsenceBusinessSettings, CancellationToken cancellationToken = default);
     }
     public class LeaveCategoriesFunction : BaseFunction, ILeaveCategoriesFunction
     {
@@ -158,6 +160,28 @@ namespace KeyPayV2.Uk.Functions
         public Task SaveLeaveYearSettingsAsync(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/leavecategory/saveleaveyearsettings", leaveBusinessSettingsModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Save Occupational Absence Business Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the occupational absence business settings for the business.
+        /// </remarks>
+        public void SaveOccupationalAbsenceBusinessSettings(int businessId, OccupationalAbsenceBusinessSettings occupationalAbsenceBusinessSettings)
+        {
+            ApiRequest($"/business/{businessId}/leavecategory/occupationalabsencebusinesssettings", occupationalAbsenceBusinessSettings, Method.Put);
+        }
+
+        /// <summary>
+        /// Save Occupational Absence Business Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the occupational absence business settings for the business.
+        /// </remarks>
+        public Task SaveOccupationalAbsenceBusinessSettingsAsync(int businessId, OccupationalAbsenceBusinessSettings occupationalAbsenceBusinessSettings, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leavecategory/occupationalabsencebusinesssettings", occupationalAbsenceBusinessSettings, Method.Put, cancellationToken);
         }
     }
 }

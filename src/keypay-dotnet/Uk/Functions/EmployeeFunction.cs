@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IEmployeeFunction
     {
+        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
+        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         UkOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
         Task<UkOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetOpeningBalances(int businessId, int employeeId, UkOpeningBalancesModel model);
@@ -85,8 +87,6 @@ namespace KeyPayV2.Uk.Functions
         Task<List<PeriodOfLeaveModel>> GetOccupationalAbsenceAsync(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request, CancellationToken cancellationToken = default);
         PeriodOfLeaveModel CreateOccupationalAbsence(int businessId, int employeeId, PeriodOfLeaveModel periodOfLeaveModel);
         Task<PeriodOfLeaveModel> CreateOccupationalAbsenceAsync(int businessId, int employeeId, PeriodOfLeaveModel periodOfLeaveModel, CancellationToken cancellationToken = default);
-        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
-        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeePensionContributionPlanSettingsApiModel GetPensionContributionPlan(int businessId, int employeeId);
         Task<EmployeePensionContributionPlanSettingsApiModel> GetPensionContributionPlanAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeePensionContributionPlanSettingsApiModel UpdatePensionContributionPlan(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model);
@@ -231,6 +231,28 @@ namespace KeyPayV2.Uk.Functions
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Opening Balances
@@ -856,28 +878,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<PeriodOfLeaveModel> CreateOccupationalAbsenceAsync(int businessId, int employeeId, PeriodOfLeaveModel periodOfLeaveModel, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PeriodOfLeaveModel,PeriodOfLeaveModel>($"/business/{businessId}/employee/{employeeId}/occupationalabsence", periodOfLeaveModel, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
         }
 
         /// <summary>
