@@ -26,5 +26,6 @@ namespace KeyPayV2.Sg.Models.Business
         public string AlternateCustomerReference { get; set; }
         public int? ValueDateDaysBeforeDatePaid { get; set; }
         public bool? ConfidentialIndicator { get; set; }
+        public bool? EnablePaymentNotifications { get; set; }
     }
 }

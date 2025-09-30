@@ -21,6 +21,10 @@ namespace KeyPayV2.My.Models.Other
         public string IdentityCardNumber { get; set; }
         public string PassportNumber { get; set; }
         public string PassportIssuingCountry { get; set; }
+        public DateTime? PassportExpiry { get; set; }
+        public int? WorkPassType { get; set; }
+        public string WorkPassTypeDescription { get; set; }
+        public bool? ApplyOld11PercentForNonMalaysian { get; set; }
         public int? SocsoScheme { get; set; }
         public string SocsoSchemeDescription { get; set; }
         public string SocialSecurityForeignWorkerNumber { get; set; }

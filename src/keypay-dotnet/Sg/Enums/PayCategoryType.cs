@@ -96,9 +96,9 @@ namespace KeyPayV2.Sg.Enums
         VacationPayoutTimeOff,
         ControlledTips,
         CellPhoneAllowance,
-        Overtime,
+        DoubleOvertime,
         FlexTimeOff,
-        OtherPay,
+        TimeAndHalfOvertime,
         PayInLieuOfNotice,
         PersonalTimeOff,
         WorkedHolidayPremiumPay,
@@ -110,6 +110,7 @@ namespace KeyPayV2.Sg.Enums
         RegularPayAnnual,
         RetroactivePayHourly,
         WorkedHolidayPremiumPayDouble,
-        VacationPayoutOnTermination
+        VacationPayoutOnTermination,
+        VacationPayoutCashOut
     }
 }

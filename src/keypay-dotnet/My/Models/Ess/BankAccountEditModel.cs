@@ -29,5 +29,6 @@ namespace KeyPayV2.My.Models.Ess
         public string BranchCode { get; set; }
         public string MyBankCode { get; set; }
         public string MyOtherBankName { get; set; }
+        public bool IsInstaPayBankAccount { get; set; }
     }
 }

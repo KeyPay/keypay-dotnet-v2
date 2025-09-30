@@ -22,14 +22,18 @@ namespace KeyPayV2.Au
         ILeaveCategoriesFunction LeaveCategories { get; }
         ILocationFunction Location { get; }
         IOtherFunction Other { get; }
+        IPayCategoryFunction PayCategory { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
-        IPayRunFunction PayRun { get; }
+        IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
+        IResellerFunction Reseller { get; }
+        IRosterShiftFunction RosterShift { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
+        IPayRunFunction PayRun { get; }
         IAbaSettingsFunction AbaSettings { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
@@ -49,16 +53,12 @@ namespace KeyPayV2.Au
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
-        IPayCategoryFunction PayCategory { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
-        IPayScheduleFunction PaySchedule { get; }
-        IRosterShiftFunction RosterShift { get; }
         ISuperFundFunction SuperFund { get; }
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
         IWorkTypeFunction WorkType { get; }
         IEssFunction Ess { get; }
-        IResellerFunction Reseller { get; }
         IUserFunction User { get; }
     }
     public class AuApiClient : BaseApiClient, IAuApiClient
@@ -81,14 +81,18 @@ namespace KeyPayV2.Au
             LeaveCategories = new LeaveCategoriesFunction(Api);
             Location = new LocationFunction(Api);
             Other = new OtherFunction(Api);
+            PayCategory = new PayCategoryFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
-            PayRun = new PayRunFunction(Api);
+            PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
+            Reseller = new ResellerFunction(Api);
+            RosterShift = new RosterShiftFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
+            PayRun = new PayRunFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
@@ -108,16 +112,12 @@ namespace KeyPayV2.Au
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
-            PayCategory = new PayCategoryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
-            PaySchedule = new PayScheduleFunction(Api);
-            RosterShift = new RosterShiftFunction(Api);
             SuperFund = new SuperFundFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             WorkType = new WorkTypeFunction(Api);
             Ess = new EssFunction(Api);
-            Reseller = new ResellerFunction(Api);
             User = new UserFunction(Api);
         }
 
@@ -137,14 +137,18 @@ namespace KeyPayV2.Au
         public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILocationFunction Location { get; }
         public IOtherFunction Other { get; }
+        public IPayCategoryFunction PayCategory { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
-        public IPayRunFunction PayRun { get; }
+        public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
+        public IResellerFunction Reseller { get; }
+        public IRosterShiftFunction RosterShift { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
+        public IPayRunFunction PayRun { get; }
         public IAbaSettingsFunction AbaSettings { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
@@ -164,16 +168,12 @@ namespace KeyPayV2.Au
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
-        public IPayCategoryFunction PayCategory { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
-        public IPayScheduleFunction PaySchedule { get; }
-        public IRosterShiftFunction RosterShift { get; }
         public ISuperFundFunction SuperFund { get; }
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
         public IWorkTypeFunction WorkType { get; }
         public IEssFunction Ess { get; }
-        public IResellerFunction Reseller { get; }
         public IUserFunction User { get; }
     }
 }

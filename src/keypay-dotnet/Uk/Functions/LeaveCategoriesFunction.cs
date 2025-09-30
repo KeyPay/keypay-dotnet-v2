@@ -27,6 +27,8 @@ namespace KeyPayV2.Uk.Functions
         Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void SaveLeaveYearSettings(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel);
         Task SaveLeaveYearSettingsAsync(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel, CancellationToken cancellationToken = default);
+        OccupationalAbsenceBusinessSettings GetOccupationalAbsenceBusinessSettings(int businessId);
+        Task<OccupationalAbsenceBusinessSettings> GetOccupationalAbsenceBusinessSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         void SaveOccupationalAbsenceBusinessSettings(int businessId, OccupationalAbsenceBusinessSettings occupationalAbsenceBusinessSettings);
         Task SaveOccupationalAbsenceBusinessSettingsAsync(int businessId, OccupationalAbsenceBusinessSettings occupationalAbsenceBusinessSettings, CancellationToken cancellationToken = default);
     }
@@ -160,6 +162,28 @@ namespace KeyPayV2.Uk.Functions
         public Task SaveLeaveYearSettingsAsync(int businessId, LeaveBusinessSettingsApiModel leaveBusinessSettingsModel, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/leavecategory/saveleaveyearsettings", leaveBusinessSettingsModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Occupational Absence Business Settings
+        /// </summary>
+        /// <remarks>
+        /// Gets the occupational absence business settings for the business.
+        /// </remarks>
+        public OccupationalAbsenceBusinessSettings GetOccupationalAbsenceBusinessSettings(int businessId)
+        {
+            return ApiRequest<OccupationalAbsenceBusinessSettings>($"/business/{businessId}/leavecategory/occupationalabsencebusinesssettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Occupational Absence Business Settings
+        /// </summary>
+        /// <remarks>
+        /// Gets the occupational absence business settings for the business.
+        /// </remarks>
+        public Task<OccupationalAbsenceBusinessSettings> GetOccupationalAbsenceBusinessSettingsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<OccupationalAbsenceBusinessSettings>($"/business/{businessId}/leavecategory/occupationalabsencebusinesssettings", Method.Get, cancellationToken);
         }
 
         /// <summary>

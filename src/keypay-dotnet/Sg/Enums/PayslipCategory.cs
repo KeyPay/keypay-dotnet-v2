@@ -20,6 +20,8 @@ namespace KeyPayV2.Sg.Enums
         StatutoryContributions,
         PayrolledBenefits,
         BenefitsInKindAdjustments,
-        StatutoryDetails
+        StatutoryDetails,
+        CompanyBenefits,
+        CraAdjustments
     }
 }

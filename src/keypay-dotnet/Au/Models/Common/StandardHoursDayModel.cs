@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Au.Models.Employee
+namespace KeyPayV2.Au.Models.Common
 {
     public class StandardHoursDayModel
     {

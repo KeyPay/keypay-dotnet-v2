@@ -8,6 +8,9 @@ namespace KeyPayV2.Uk.Enums
         Weekly,
         Fortnightly,
         Monthly,
+        AdHoc,
+        Initial,
+        PreviousEmployer,
         FourWeekly,
         Quarterly,
         Annually

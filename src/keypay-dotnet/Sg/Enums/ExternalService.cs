@@ -93,6 +93,9 @@ namespace KeyPayV2.Sg.Enums
         Zapier,
         StapledSuperFund,
         Swag,
-        Crezco
+        Crezco,
+        KafkaConsumer,
+        EmployeeLeaveRateCalculationMethodUpload,
+        MoneyMovement
     }
 }

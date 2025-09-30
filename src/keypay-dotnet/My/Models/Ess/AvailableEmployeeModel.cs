@@ -18,6 +18,7 @@ namespace KeyPayV2.My.Models.Ess
         public int DefaultLocationId { get; set; }
         public string ProfileImageUrl { get; set; }
         public string Region { get; set; }
+        public string RegionName { get; set; }
         public bool IsTerminated { get; set; }
         public bool IsAnonymised { get; set; }
     }

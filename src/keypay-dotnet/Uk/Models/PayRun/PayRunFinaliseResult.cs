@@ -42,5 +42,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public DateTime? SubmitToPensionSyncScheduledDateTimeUtc { get; set; }
         public IList<PayRunSuperBatchModel> SuperPayments { get; set; }
         public bool IsFirstFinalisation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PaymentAccountDebitSettingEnum? PaymentAccountDebitSetting { get; set; }
     }
 }

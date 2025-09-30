@@ -209,10 +209,6 @@ namespace KeyPayV2.Uk.Functions
         Task<List<DocumentAcknowledgementsReportExportModel>> DocumentAcknowledgementsReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<DocumentAcknowledgementsReportExportModel> DocumentAcknowledgementsReport(int businessId, DocumentAcknowledgementsReportQueryModel request);
         Task<List<DocumentAcknowledgementsReportExportModel>> DocumentAcknowledgementsReportAsync(int businessId, DocumentAcknowledgementsReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] JournalReport(int businessId);
-        Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] JournalReport(int businessId, JournalReportQueryModel request);
-        Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default);
         byte[] PayRunVarianceReport(int businessId);
         Task<byte[]> PayRunVarianceReportAsync(int businessId, CancellationToken cancellationToken = default);
         byte[] PayRunVarianceReport(int businessId, PayRunVarianceReportQueryModel request);
@@ -2232,50 +2228,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<DocumentAcknowledgementsReportExportModel>> DocumentAcknowledgementsReportAsync(int businessId, DocumentAcknowledgementsReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<DocumentAcknowledgementsReportExportModel>>($"/business/{businessId}/report/documentAcknowledgements?DocumentId={request.DocumentId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&DocumentStatus={request.DocumentStatus}&EmployingEntityId={request.EmployingEntityId}&LocationId={request.LocationId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public byte[] JournalReport(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/journal", Method.Get);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public byte[] JournalReport(int businessId, JournalReportQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -17,6 +17,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public string TaxCodeDisplayName { get; set; }
         public IList<Int32> ReportingDimensionValueIds { get; set; }
         public IDictionary<string,IList<string>> ReportingDimensionValueNames { get; set; }
+        public int EmployeeExpenseRequestId { get; set; }
         public int Id { get; set; }
         public string ExternalId { get; set; }
         public string LocationId { get; set; }

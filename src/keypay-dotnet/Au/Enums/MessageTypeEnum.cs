@@ -138,7 +138,8 @@ namespace KeyPayV2.Au.Enums
         EHDirectBusinessDeactivationNotification30Days,
         EHDirectBusinessDeactivationNotification10Days,
         EHDirectBusinessDeactivationNotification1Day,
-        RecoverTwoFactorAuthentication,
+        RequestAccountRecovery,
+        RequestAccountRecoveryForPartner,
         AccountRecoverySubmitted,
         ScheduledJournalExportFailed,
         AddEmployeeEmployeeOnboarding,
@@ -148,6 +149,13 @@ namespace KeyPayV2.Au.Enums
         NotifyUserSsoAccessEnabled,
         NotifyUserSsoAccessDisabled,
         AccountRecoveryRequestApproved,
-        AccountRecoveryRequestDeclined
+        AccountRecoveryRequestApprovedAndPasskeyReset,
+        AccountRecoveryRequestDeclined,
+        AccountRecoveryRequestForPartnerDeclined,
+        PasskeySetupConfirmation,
+        PasskeyDeletionConfirmation,
+        InactiveUserLogin,
+        NotifyMoneyMovementUserOfFailedCreditPaymentStatus,
+        NotifyMoneyMovementUserOfFailedDebitPaymentStatus
     }
 }

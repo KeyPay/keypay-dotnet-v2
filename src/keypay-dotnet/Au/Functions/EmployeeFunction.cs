@@ -41,10 +41,10 @@ namespace KeyPayV2.Au.Functions
         Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
         List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
-        Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model);
-        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default);
+        AuStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
+        Task<AuStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        AuStandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, AuStandardHoursModel model);
+        Task<AuStandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, AuStandardHoursModel model, CancellationToken cancellationToken = default);
         void SyncEmployeeToQbo(int businessId, int employeeId);
         Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<AuWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
@@ -372,9 +372,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the standard hours for this employee.
         /// </remarks>
-        public StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
+        public AuStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
         {
-            return ApiRequest<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
+            return ApiRequest<AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
         }
 
         /// <summary>
@@ -383,9 +383,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the standard hours for this employee.
         /// </remarks>
-        public Task<StandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<AuStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -394,9 +394,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sets the standard hours for this employee.
         /// </remarks>
-        public StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, StandardHoursModel model)
+        public AuStandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, AuStandardHoursModel model)
         {
-            return ApiRequest<StandardHoursModel,StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
+            return ApiRequest<AuStandardHoursModel,AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
         }
 
         /// <summary>
@@ -405,9 +405,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sets the standard hours for this employee.
         /// </remarks>
-        public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, StandardHoursModel model, CancellationToken cancellationToken = default)
+        public Task<AuStandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, AuStandardHoursModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<StandardHoursModel,StandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
+            return ApiRequestAsync<AuStandardHoursModel,AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
         }
 
         /// <summary>

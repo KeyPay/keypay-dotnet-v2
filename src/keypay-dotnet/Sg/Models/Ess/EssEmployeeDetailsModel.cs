@@ -11,6 +11,7 @@ namespace KeyPayV2.Sg.Models.Ess
     public class EssEmployeeDetailsModel
     {
         public bool TimesheetsReadOnly { get; set; }
+        public bool IsContractor { get; set; }
         public int Id { get; set; }
         public int? TitleId { get; set; }
         public string FirstName { get; set; }

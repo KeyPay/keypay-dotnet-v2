@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace KeyPayV2.My.Enums
 {
-    public enum MyPayCycleFrequencyEnum
+    public enum PaymentAccountDebitSettingEnum
     {
-        Monthly,
-        AdHoc,
-        Initial
+        Manual,
+        Immediate
     }
 }

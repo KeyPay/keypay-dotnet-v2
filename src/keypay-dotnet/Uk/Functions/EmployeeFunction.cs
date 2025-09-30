@@ -115,6 +115,8 @@ namespace KeyPayV2.Uk.Functions
         Task<UkSmpDataApiResponseModel> CreateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, UkShppDataApiModel shpp, CancellationToken cancellationToken = default);
         UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int id);
         Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel UpdateStatutorySharedParentalLeaveData(int businessId, int employeeId, int id, UkShppDataApiModel shpp);
+        Task<UkSmpDataApiResponseModel> UpdateStatutorySharedParentalLeaveDataAsync(int businessId, int employeeId, int id, UkShppDataApiModel shpp, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int id);
         Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int id, int documentId);
@@ -165,6 +167,8 @@ namespace KeyPayV2.Uk.Functions
         Task<UkSpbpDataApiResponseModel> CreateStatutoryParentalBereavementLeavePeriodDataAsync(int businessId, int employeeId, UkSpbpDataApiModel spbp, CancellationToken cancellationToken = default);
         UkSpbpDataApiModel GetStatutoryParentalBereavementLeavePeriodDataById(int businessId, int employeeId, int id);
         Task<UkSpbpDataApiModel> GetStatutoryParentalBereavementLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        UkSpbpDataApiResponseModel UpdateStatutoryParentalBereavementLeaveData(int businessId, int employeeId, int id, UkSpbpDataApiModel spbp);
+        Task<UkSpbpDataApiResponseModel> UpdateStatutoryParentalBereavementLeaveDataAsync(int businessId, int employeeId, int id, UkSpbpDataApiModel spbp, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> GetStatutoryParentalBereavementLeaveAttachments(int businessId, int employeeId, int id);
         Task<List<EmployeeDocumentModel>> GetStatutoryParentalBereavementLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         EmployeeDocumentModel AttachEmployeeDocumentToStatutoryParentalBereavementLeave(int businessId, int employeeId, int id, int documentId);
@@ -1173,6 +1177,28 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Update Statutory Shared Parental Leave data
+        /// </summary>
+        /// <remarks>
+        /// Updates a Statutory Shared Parental Leave period for an employee
+        /// </remarks>
+        public UkSmpDataApiResponseModel UpdateStatutorySharedParentalLeaveData(int businessId, int employeeId, int id, UkShppDataApiModel shpp)
+        {
+            return ApiRequest<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", shpp, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Statutory Shared Parental Leave data
+        /// </summary>
+        /// <remarks>
+        /// Updates a Statutory Shared Parental Leave period for an employee
+        /// </remarks>
+        public Task<UkSmpDataApiResponseModel> UpdateStatutorySharedParentalLeaveDataAsync(int businessId, int employeeId, int id, UkShppDataApiModel shpp, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", shpp, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Statutory Shared Parental Leave Attachments
         /// </summary>
         public List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int id)
@@ -1654,6 +1680,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkSpbpDataApiModel> GetStatutoryParentalBereavementLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Statutory Parental Bereavement Leave data
+        /// </summary>
+        /// <remarks>
+        /// Updates a Parental Bereavement Leave record for an employee
+        /// </remarks>
+        public UkSpbpDataApiResponseModel UpdateStatutoryParentalBereavementLeaveData(int businessId, int employeeId, int id, UkSpbpDataApiModel spbp)
+        {
+            return ApiRequest<UkSpbpDataApiResponseModel,UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp/{id}", spbp, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Statutory Parental Bereavement Leave data
+        /// </summary>
+        /// <remarks>
+        /// Updates a Parental Bereavement Leave record for an employee
+        /// </remarks>
+        public Task<UkSpbpDataApiResponseModel> UpdateStatutoryParentalBereavementLeaveDataAsync(int businessId, int employeeId, int id, UkSpbpDataApiModel spbp, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSpbpDataApiResponseModel,UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp/{id}", spbp, Method.Put, cancellationToken);
         }
 
         /// <summary>

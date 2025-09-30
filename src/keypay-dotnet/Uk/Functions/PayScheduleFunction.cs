@@ -25,10 +25,10 @@ namespace KeyPayV2.Uk.Functions
         Task<UkPayScheduleModel> UpdatePayScheduleAsync(int businessId, int id, UkPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
         void DeletePaySchedule(int businessId, int id);
         Task DeletePayScheduleAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId);
-        Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default);
         PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId);
         Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default);
+        PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId);
+        Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default);
         List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId);
         Task<List<PayScheduleDateForecastResultApiModel>> ListNextPayDatesAsync(int businessId, CancellationToken cancellationToken = default);
     }
@@ -149,28 +149,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Get Next Pay Date
-        /// </summary>
-        /// <remarks>
-        /// Gets the next pay dates for the pay schedule with the specified ID.
-        /// </remarks>
-        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId)
-        {
-            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Next Pay Date
-        /// </summary>
-        /// <remarks>
-        /// Gets the next pay dates for the pay schedule with the specified ID.
-        /// </remarks>
-        public Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Pay Schedule Metadata
         /// </summary>
         /// <remarks>
@@ -190,6 +168,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Next Pay Date
+        /// </summary>
+        /// <remarks>
+        /// Gets the next pay dates for the pay schedule with the specified ID.
+        /// </remarks>
+        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId)
+        {
+            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Next Pay Date
+        /// </summary>
+        /// <remarks>
+        /// Gets the next pay dates for the pay schedule with the specified ID.
+        /// </remarks>
+        public Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -8,6 +8,9 @@ namespace KeyPayV2.Nz.Enums
         Weekly,
         Fortnightly,
         Monthly,
+        AdHoc,
+        Initial,
+        HistoricGrossEarnings,
         HalfMonthly
     }
 }

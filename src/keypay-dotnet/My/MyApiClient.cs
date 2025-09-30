@@ -21,14 +21,18 @@ namespace KeyPayV2.My
         ILeaveCategoriesFunction LeaveCategories { get; }
         ILocationFunction Location { get; }
         IOtherFunction Other { get; }
-        IPayRunFunction PayRun { get; }
+        IPayCategoryFunction PayCategory { get; }
+        IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
+        IResellerFunction Reseller { get; }
+        IRosterShiftFunction RosterShift { get; }
         ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
+        IPayRunFunction PayRun { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -45,15 +49,11 @@ namespace KeyPayV2.My
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
-        IPayCategoryFunction PayCategory { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
-        IPayScheduleFunction PaySchedule { get; }
-        IRosterShiftFunction RosterShift { get; }
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
         IWorkTypeFunction WorkType { get; }
         IEssFunction Ess { get; }
-        IResellerFunction Reseller { get; }
         IUserFunction User { get; }
     }
     public class MyApiClient : BaseApiClient, IMyApiClient
@@ -75,14 +75,18 @@ namespace KeyPayV2.My
             LeaveCategories = new LeaveCategoriesFunction(Api);
             Location = new LocationFunction(Api);
             Other = new OtherFunction(Api);
-            PayRun = new PayRunFunction(Api);
+            PayCategory = new PayCategoryFunction(Api);
+            PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
+            Reseller = new ResellerFunction(Api);
+            RosterShift = new RosterShiftFunction(Api);
             TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
+            PayRun = new PayRunFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -99,15 +103,11 @@ namespace KeyPayV2.My
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
-            PayCategory = new PayCategoryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
-            PaySchedule = new PayScheduleFunction(Api);
-            RosterShift = new RosterShiftFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             WorkType = new WorkTypeFunction(Api);
             Ess = new EssFunction(Api);
-            Reseller = new ResellerFunction(Api);
             User = new UserFunction(Api);
         }
 
@@ -126,14 +126,18 @@ namespace KeyPayV2.My
         public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILocationFunction Location { get; }
         public IOtherFunction Other { get; }
-        public IPayRunFunction PayRun { get; }
+        public IPayCategoryFunction PayCategory { get; }
+        public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
+        public IResellerFunction Reseller { get; }
+        public IRosterShiftFunction RosterShift { get; }
         public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
+        public IPayRunFunction PayRun { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -150,15 +154,11 @@ namespace KeyPayV2.My
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
-        public IPayCategoryFunction PayCategory { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
-        public IPayScheduleFunction PaySchedule { get; }
-        public IRosterShiftFunction RosterShift { get; }
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
         public IWorkTypeFunction WorkType { get; }
         public IEssFunction Ess { get; }
-        public IResellerFunction Reseller { get; }
         public IUserFunction User { get; }
     }
 }

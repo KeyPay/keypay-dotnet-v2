@@ -14,6 +14,7 @@ namespace KeyPayV2.My.Models.Common
         public string BillingPlan { get; set; }
         public string RealmId { get; set; }
         public string ExternalId { get; set; }
+        public string ContactEmail { get; set; }
         public string EmailAddresses { get; set; }
         public string UserIds { get; set; }
         public int NumberOfCompleteEmployees { get; set; }

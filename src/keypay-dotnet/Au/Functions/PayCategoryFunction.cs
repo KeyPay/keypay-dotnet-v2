@@ -15,66 +15,20 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IPayCategoryFunction
     {
-        List<AuPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        AuPayCategoryModel CreatePayCategory(int businessId, AuPayCategoryModel payCategory);
-        Task<AuPayCategoryModel> CreatePayCategoryAsync(int businessId, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         AuPayCategoryModel GetPayCategoryById(int businessId, int id);
         Task<AuPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         AuPayCategoryModel UpdatePayCategory(int businessId, int id, AuPayCategoryModel payCategory);
         Task<AuPayCategoryModel> UpdatePayCategoryAsync(int businessId, int id, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         void DeletePayCategory(int businessId, int id);
         Task DeletePayCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuPayCategoryModel CreatePayCategory(int businessId, AuPayCategoryModel payCategory);
+        Task<AuPayCategoryModel> CreatePayCategoryAsync(int businessId, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default);
+        List<AuPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
     }
     public class PayCategoryFunction : BaseFunction, IPayCategoryFunction
     {
         public PayCategoryFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Pay Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists all the pay categories for the business
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<AuPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Pay Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists all the pay categories for the business
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<AuPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Pay Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay category for the business.
-        /// </remarks>
-        public AuPayCategoryModel CreatePayCategory(int businessId, AuPayCategoryModel payCategory)
-        {
-            return ApiRequest<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Pay Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay category for the business.
-        /// </remarks>
-        public Task<AuPayCategoryModel> CreatePayCategoryAsync(int businessId, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// Get Pay Category by ID
@@ -140,6 +94,52 @@ namespace KeyPayV2.Au.Functions
         public Task DeletePayCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/paycategory/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Pay Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay category for the business.
+        /// </remarks>
+        public AuPayCategoryModel CreatePayCategory(int businessId, AuPayCategoryModel payCategory)
+        {
+            return ApiRequest<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Pay Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay category for the business.
+        /// </remarks>
+        public Task<AuPayCategoryModel> CreatePayCategoryAsync(int businessId, AuPayCategoryModel payCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuPayCategoryModel,AuPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Pay Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all the pay categories for the business
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<AuPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Pay Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all the pay categories for the business
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<AuPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
     }
 }

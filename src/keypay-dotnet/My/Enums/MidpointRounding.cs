@@ -6,6 +6,9 @@ namespace KeyPayV2.My.Enums
     public enum MidpointRounding
     {
         ToEven,
-        AwayFromZero
+        AwayFromZero,
+        ToZero,
+        ToNegativeInfinity,
+        ToPositiveInfinity
     }
 }

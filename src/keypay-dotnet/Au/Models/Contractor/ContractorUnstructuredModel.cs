@@ -1,80 +1,53 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Sg.Models.Common;
+using KeyPayV2.Au.Models.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.Sg.Enums;
+using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Sg.Models.Common
+namespace KeyPayV2.Au.Models.Contractor
 {
-    public class SgUnstructuredEmployeeModel
+    public class ContractorUnstructuredModel
     {
-        public string LegalName { get; set; }
-        public decimal? HoursPerDay { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public AddressTypeEnum ResidentialAddressType { get; set; }
+        public string TaxFileNumber { get; set; }
         public string ResidentialSuburb { get; set; }
         public string ResidentialState { get; set; }
-        public string ResidentialBlockNumber { get; set; }
-        public string ResidentialUnitNumber { get; set; }
-        public string ResidentialLevelNumber { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public AddressTypeEnum? PostalAddressType { get; set; }
         public string PostalSuburb { get; set; }
         public string PostalState { get; set; }
-        public string PostalBlockNumber { get; set; }
-        public string PostalUnitNumber { get; set; }
-        public string PostalLevelNumber { get; set; }
-        public string BankAccount1_BankSwift { get; set; }
-        public string BankAccount1_BranchCode { get; set; }
-        public string BankAccount2_BankSwift { get; set; }
-        public string BankAccount2_BranchCode { get; set; }
-        public string BankAccount3_BankSwift { get; set; }
-        public string BankAccount3_BranchCode { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public IdentityTypeEnum? IdentityType { get; set; }
-        public string NationalRegistrationIdentityNumber { get; set; }
-        public string Ethnicity { get; set; }
-        public string Religion { get; set; }
-        public string LegalStatus { get; set; }
-        public string EmployeeGroup { get; set; }
-        public string Nationality { get; set; }
-        public string CoveredByEmploymentAct { get; set; }
-        public DateTime? ObtainedResidencyDate { get; set; }
-        public DateTime? ObtainedApprovalDate { get; set; }
-        public DateTime? NationalRegistrationIdentityExpiryDate { get; set; }
-        public string ApplyFullCpfRate { get; set; }
-        public bool? ShgExempt { get; set; }
-        public bool? SdlExempt { get; set; }
-        public bool? CpfExempt { get; set; }
-        public string EmployingEntityUen { get; set; }
+        public string EmployingEntityABN { get; set; }
         public string EmployingEntityId { get; set; }
-        public string ResidentialStreetName { get; set; }
-        public string ResidentialAddressLine3 { get; set; }
-        public string PostalStreetName { get; set; }
-        public string PostalAddressLine3 { get; set; }
-        public string EmploymentType { get; set; }
-        public string TieredLeaveTemplate { get; set; }
+        public string BankAccount1_BSB { get; set; }
+        public string BankAccount2_BSB { get; set; }
+        public string BankAccount3_BSB { get; set; }
+        public string SuperFund1_ProductCode { get; set; }
+        public string SuperFund1_FundName { get; set; }
+        public string SuperFund1_MemberNumber { get; set; }
+        public decimal? SuperFund1_AllocatedPercentage { get; set; }
+        public decimal? SuperFund1_FixedAmount { get; set; }
+        public bool? SuperFund1_EmployerNominatedFund { get; set; }
+        public string SuperFund2_ProductCode { get; set; }
+        public string SuperFund2_FundName { get; set; }
+        public string SuperFund2_MemberNumber { get; set; }
+        public decimal? SuperFund2_AllocatedPercentage { get; set; }
+        public decimal? SuperFund2_FixedAmount { get; set; }
+        public bool? SuperFund2_EmployerNominatedFund { get; set; }
+        public string SuperFund3_ProductCode { get; set; }
+        public string SuperFund3_FundName { get; set; }
+        public string SuperFund3_MemberNumber { get; set; }
+        public decimal? SuperFund3_AllocatedPercentage { get; set; }
+        public decimal? SuperFund3_FixedAmount { get; set; }
+        public bool? SuperFund3_EmployerNominatedFund { get; set; }
+        public decimal? HoursPerDay { get; set; }
+        public bool? PostalAddressIsOverseas { get; set; }
+        public bool? ResidentialAddressIsOverseas { get; set; }
         public string TerminationReason { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LeaveAnniversarySetting? LeaveAnniversarySetting { get; set; }
-        public DateTime? LeaveAnniversarySettingDate { get; set; }
-        public string Gender { get; set; }
-        public string HomePhone { get; set; }
-        public string WorkPhone { get; set; }
-        public DateTime? AnniversaryDate { get; set; }
-        public string Tags { get; set; }
-        public string JobTitle { get; set; }
-        public string PaySlipNotificationType { get; set; }
-        public string OverrideTemplateRate { get; set; }
-        public string LeaveTemplate { get; set; }
-        public string PayRateTemplate { get; set; }
-        public string PayConditionRuleSet { get; set; }
-        public string RosteringNotificationChoices { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public LeaveAccrualStartDateType? LeaveAccrualStartDateType { get; set; }
-        public DateTime? LeaveYearStart { get; set; }
+        public string Abn { get; set; }
+        public string TradingName { get; set; }
+        public string RegisteredForGst { get; set; }
+        public decimal? CommissionerInstalmentRate { get; set; }
+        public string TaxCalculation { get; set; }
+        public string PayrollId { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }

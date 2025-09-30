@@ -49,6 +49,8 @@ namespace KeyPayV2.Uk.Functions
         Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
+        DateTime GetTheInitialTaxYear(int businessId);
+        Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
         List<BusinessAction> ListBusinessNotifications(int businessId);
@@ -478,7 +480,7 @@ namespace KeyPayV2.Uk.Functions
         /// Change the tax year
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business. This is the tax year that
+        /// Changes the initial tax year for the current business.
         /// </remarks>
         public void ChangeTheTaxYear(int businessId)
         {
@@ -489,7 +491,7 @@ namespace KeyPayV2.Uk.Functions
         /// Change the tax year
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business. This is the tax year that
+        /// Changes the initial tax year for the current business.
         /// </remarks>
         public Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
         {
@@ -500,7 +502,7 @@ namespace KeyPayV2.Uk.Functions
         /// Change the tax year
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business. This is the tax year that
+        /// Changes the initial tax year for the current business.
         /// </remarks>
         public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
         {
@@ -511,11 +513,33 @@ namespace KeyPayV2.Uk.Functions
         /// Change the tax year
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business. This is the tax year that
+        /// Changes the initial tax year for the current business.
         /// </remarks>
         public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the initial tax year
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the initial tax year for the business.
+        /// </remarks>
+        public DateTime GetTheInitialTaxYear(int businessId)
+        {
+            return ApiRequest<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the initial tax year
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the initial tax year for the business.
+        /// </remarks>
+        public Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get, cancellationToken);
         }
 
         /// <summary>
