@@ -15,8 +15,8 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeGroupsFunction
     {
-        List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId);
+        Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default);
         void CreateEmployeeGroup(int businessId, AuEmployeeGroupModel employeeGroup);
         Task CreateEmployeeGroupAsync(int businessId, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         AuDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
@@ -35,11 +35,10 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the employee groups for the business.
-        /// This operation supports OData queries.
         /// </remarks>
-        public List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
+        public List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId)
         {
-            return ApiRequest<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup", Method.Get);
         }
 
         /// <summary>
@@ -47,11 +46,10 @@ namespace KeyPayV2.Au.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the employee groups for the business.
-        /// This operation supports OData queries.
         /// </remarks>
-        public Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup", Method.Get, cancellationToken);
         }
 
         /// <summary>

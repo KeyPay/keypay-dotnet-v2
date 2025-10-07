@@ -45,8 +45,8 @@ namespace KeyPayV2.Nz.Functions
         Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
         void DismissBusinessNotifications(int businessId, int id);
         Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
-        Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId);
+        Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, CancellationToken cancellationToken = default);
         void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel);
         Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default);
         void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel);
@@ -421,11 +421,10 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         /// <remarks>
         /// Lists all of the users with access to this business, as well as the types of access they each have.
-        /// This operation supports OData queries.
         /// </remarks>
-        public List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null)
+        public List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId)
         {
-            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access", Method.Get);
         }
 
         /// <summary>
@@ -433,11 +432,10 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         /// <remarks>
         /// Lists all of the users with access to this business, as well as the types of access they each have.
-        /// This operation supports OData queries.
         /// </remarks>
-        public Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -15,8 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IEmployeeGroupsFunction
     {
-        List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
-        Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId);
+        Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default);
         void CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup);
         Task CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         SgDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
@@ -35,11 +35,10 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the employee groups for the business.
-        /// This operation supports OData queries.
         /// </remarks>
-        public List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
+        public List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId)
         {
-            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup", Method.Get);
         }
 
         /// <summary>
@@ -47,11 +46,10 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the employee groups for the business.
-        /// This operation supports OData queries.
         /// </remarks>
-        public Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup", Method.Get, cancellationToken);
         }
 
         /// <summary>
