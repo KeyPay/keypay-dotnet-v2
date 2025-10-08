@@ -5,6 +5,7 @@ namespace KeyPayV2.Sg.Enums
 {
     public enum ExternalService
     {
+        FileExport,
         None,
         Saasu,
         Xero,
@@ -14,7 +15,6 @@ namespace KeyPayV2.Sg.Enums
         ClickSuper,
         IntegratedTimesheets,
         FileImport,
-        FileExport,
         QuickBooks,
         Harmony,
         AwardStore,
