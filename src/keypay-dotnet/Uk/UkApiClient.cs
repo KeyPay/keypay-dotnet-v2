@@ -7,6 +7,7 @@ namespace KeyPayV2.Uk
     public interface IUkApiClient : IBaseApiClient
     {
         IAuthenticationFunction Authentication { get; }
+        IBenefitCategoryFunction BenefitCategory { get; }
         IBrandFunction Brand { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -30,7 +31,6 @@ namespace KeyPayV2.Uk
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
         IPayRunFunction PayRun { get; }
-        IBenefitCategoryFunction BenefitCategory { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -63,6 +63,7 @@ namespace KeyPayV2.Uk
         public UkApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Authentication = new AuthenticationFunction(Api);
+            BenefitCategory = new BenefitCategoryFunction(Api);
             Brand = new BrandFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
@@ -86,7 +87,6 @@ namespace KeyPayV2.Uk
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
             PayRun = new PayRunFunction(Api);
-            BenefitCategory = new BenefitCategoryFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -116,6 +116,7 @@ namespace KeyPayV2.Uk
         }
 
         public IAuthenticationFunction Authentication { get; }
+        public IBenefitCategoryFunction BenefitCategory { get; }
         public IBrandFunction Brand { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -139,7 +140,6 @@ namespace KeyPayV2.Uk
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
         public IPayRunFunction PayRun { get; }
-        public IBenefitCategoryFunction BenefitCategory { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }

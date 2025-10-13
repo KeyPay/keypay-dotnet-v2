@@ -5,9 +5,11 @@ namespace KeyPayV2.Nz.Enums
 {
     public enum ExternalService
     {
+        Xero,
+        Harmony,
+        NetSuite,
         None,
         Saasu,
-        Xero,
         MYOB,
         Deputy,
         EmployeeTimePunch,
@@ -16,7 +18,6 @@ namespace KeyPayV2.Nz.Enums
         FileImport,
         FileExport,
         QuickBooks,
-        Harmony,
         AwardStore,
         Attache,
         IntegratedRostering,
@@ -24,7 +25,6 @@ namespace KeyPayV2.Nz.Enums
         API,
         MicroPower,
         RosterLive,
-        NetSuite,
         Kounta,
         TimeAndAttendanceKiosk,
         DetailedFileExport,

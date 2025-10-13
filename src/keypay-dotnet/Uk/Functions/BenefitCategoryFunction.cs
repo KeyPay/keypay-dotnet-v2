@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IBenefitCategoryFunction
     {
+        UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel);
+        Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default);
         List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId);
         Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
         UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model);
@@ -37,6 +39,52 @@ namespace KeyPayV2.Uk.Functions
     public class BenefitCategoryFunction : BaseFunction, IBenefitCategoryFunction
     {
         public BenefitCategoryFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Create Import Benefit Categories
+        /// </summary>
+        /// <remarks>
+        /// Example request:
+        /// {
+        ///   "isPayrollingBenefit": false,
+        ///   "taxYear": 2024,
+        ///   "carryBenefitForward": true,
+        ///   "benefitCategoryType": 13, // OtherItemsNoNic from BenefitCategoryTypeEnum
+        ///   "benefitCategoryName": "Example benefit category",
+        ///   "value": 99.50,
+        ///   "internalBenefitCategoryEnumId": 2, // Other from BenefitCategoryOtherNoNicSubType
+        ///   "description": "Custom benefit description",
+        ///   "fuelType": 1, // For car benefits: DieselMeetingEuroStandards from BenefitCategoryCarFuelType
+        ///   "engineSize": 2 // For car benefits: Between1401And2000 from BenefitCategoryCarEngineSize
+        /// }
+        /// </remarks>
+        public UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel)
+        {
+            return ApiRequest<UkBenefitCategoryEditModel,ImportBenefitCategoryModel>($"/business/{businessId}/import/benefit-categories", importModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Import Benefit Categories
+        /// </summary>
+        /// <remarks>
+        /// Example request:
+        /// {
+        ///   "isPayrollingBenefit": false,
+        ///   "taxYear": 2024,
+        ///   "carryBenefitForward": true,
+        ///   "benefitCategoryType": 13, // OtherItemsNoNic from BenefitCategoryTypeEnum
+        ///   "benefitCategoryName": "Example benefit category",
+        ///   "value": 99.50,
+        ///   "internalBenefitCategoryEnumId": 2, // Other from BenefitCategoryOtherNoNicSubType
+        ///   "description": "Custom benefit description",
+        ///   "fuelType": 1, // For car benefits: DieselMeetingEuroStandards from BenefitCategoryCarFuelType
+        ///   "engineSize": 2 // For car benefits: Between1401And2000 from BenefitCategoryCarEngineSize
+        /// }
+        /// </remarks>
+        public Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkBenefitCategoryEditModel,ImportBenefitCategoryModel>($"/business/{businessId}/import/benefit-categories", importModel, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// List Benefit Categories
