@@ -5,6 +5,7 @@ namespace KeyPayV2.Sg.Enums
 {
     public enum TimesheetLineFilterStatus
     {
+        Any,
         Submitted,
         Approved,
         Rejected,
