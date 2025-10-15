@@ -12,6 +12,7 @@ namespace KeyPayV2.Nz.Models.PayCategory
     {
         public bool IsKiwiSaverExempt { get; set; }
         public bool IncludeInAverageDailyPayDaysPaid { get; set; }
+        public bool IsEmployeeShareScheme { get; set; }
         public bool ExcludeFromAverageEarnings { get; set; }
         public bool ExcludeFromOrdinaryEarnings { get; set; }
         public bool IsAccLevyExempt { get; set; }
