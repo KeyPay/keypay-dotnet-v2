@@ -32,6 +32,7 @@ namespace KeyPayV2.Sg
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
+        IPayRunFunction PayRun { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -48,7 +49,6 @@ namespace KeyPayV2.Sg
         ILeaveRequestsFunction LeaveRequests { get; }
         IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
@@ -91,6 +91,7 @@ namespace KeyPayV2.Sg
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
+            PayRun = new PayRunFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
@@ -107,7 +108,6 @@ namespace KeyPayV2.Sg
             LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeeIrasLumpSum = new EmployeeIrasLumpSumFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
-            PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
@@ -147,6 +147,7 @@ namespace KeyPayV2.Sg
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
+        public IPayRunFunction PayRun { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
@@ -163,7 +164,6 @@ namespace KeyPayV2.Sg
         public ILeaveRequestsFunction LeaveRequests { get; }
         public IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
-        public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
