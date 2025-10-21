@@ -5,7 +5,6 @@ namespace KeyPayV2.Nz.Enums
 {
     public enum ExternalService
     {
-        NetSuite,
         None,
         Saasu,
         Xero,
@@ -25,6 +24,7 @@ namespace KeyPayV2.Nz.Enums
         API,
         MicroPower,
         RosterLive,
+        NetSuite,
         Kounta,
         TimeAndAttendanceKiosk,
         DetailedFileExport,
