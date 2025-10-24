@@ -5,6 +5,7 @@ namespace KeyPayV2.Nz.Enums
 {
     public enum ExternalService
     {
+        Harmony,
         None,
         Saasu,
         Xero,
@@ -16,7 +17,6 @@ namespace KeyPayV2.Nz.Enums
         FileImport,
         FileExport,
         QuickBooks,
-        Harmony,
         AwardStore,
         Attache,
         IntegratedRostering,
