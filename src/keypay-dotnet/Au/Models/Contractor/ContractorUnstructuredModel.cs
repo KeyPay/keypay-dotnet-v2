@@ -48,6 +48,9 @@ namespace KeyPayV2.Au.Models.Contractor
         public decimal? CommissionerInstalmentRate { get; set; }
         public string TaxCalculation { get; set; }
         public string PayrollId { get; set; }
+        public bool? IsExemptFromPayrollTax { get; set; }
+        public decimal? SuperThresholdAmount { get; set; }
+        public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
         public int Id { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
@@ -65,6 +68,8 @@ namespace KeyPayV2.Au.Models.Contractor
         public string PostalPostCode { get; set; }
         public string PostalCountry { get; set; }
         public string EmailAddress { get; set; }
+        public string HomePhone { get; set; }
+        public string WorkPhone { get; set; }
         public string MobilePhone { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
@@ -104,5 +109,9 @@ namespace KeyPayV2.Au.Models.Contractor
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
         public string ReportingDimensionValues { get; set; }
+        public string OverrideTemplateRate { get; set; }
+        public string PayRateTemplate { get; set; }
+        public string PayConditionRuleSet { get; set; }
+        public string Tags { get; set; }
     }
 }

@@ -19,6 +19,8 @@ namespace KeyPayV2.Au.Functions
         Task<List<AuTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuIndividualTimesheetLineModel CreateTimesheetLine(int businessId, AuIndividualTimesheetLineModel request);
         Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        AuIndividualTimesheetLineModel CreateTimesheetLine(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query);
+        Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default);
         AuIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request);
         Task<AuIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         void DeleteTimesheetLine(int businessId, int timesheetLineId);
@@ -78,6 +80,30 @@ namespace KeyPayV2.Au.Functions
         public Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// </remarks>
+        public AuIndividualTimesheetLineModel CreateTimesheetLine(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query)
+        {
+            return ApiRequest<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post);
+        }
+
+        /// <summary>
+        /// Create timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Create an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// </remarks>
+        public Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post, cancellationToken);
         }
 
         /// <summary>

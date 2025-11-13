@@ -15,6 +15,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IEmployeeFunction
     {
+        List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
         Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         NzOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
@@ -45,8 +47,6 @@ namespace KeyPayV2.Nz.Functions
         Task<NzStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, NzStandardHoursModel model);
         Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, NzStandardHoursModel model, CancellationToken cancellationToken = default);
-        List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void ActivateEmployee(int businessId, int employeeId);
         Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
@@ -75,6 +75,30 @@ namespace KeyPayV2.Nz.Functions
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Pay Rates
@@ -406,30 +430,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, NzStandardHoursModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<StandardHoursModel,NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Work Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all the work types for the employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Work Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all the work types for the employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

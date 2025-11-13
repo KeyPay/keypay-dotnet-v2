@@ -17,14 +17,16 @@ namespace KeyPayV2.Uk.Functions
     {
         UkDeductionCategoryModel GetDeductionCategoryById(int businessId, int id);
         Task<UkDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateDeductionCategory(int businessId, int id, UkDeductionCategoryModel deductionCategory);
-        Task UpdateDeductionCategoryAsync(int businessId, int id, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        UkDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, UkDeductionCategoryModel deductionCategory);
+        Task<UkDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         void DeleteDeductionCategory(int businessId, int id);
         Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void CreateDeductionCategory(int businessId, UkDeductionCategoryModel deductionCategory);
-        Task CreateDeductionCategoryAsync(int businessId, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         List<UkDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        UkDeductionCategoryModel CreateDeductionCategory(int businessId, UkDeductionCategoryModel deductionCategory);
+        Task<UkDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        PagedResultModel<UkDeductionCategoryModel> ListDeductionCategoriesWithPagination(int businessId, ODataQuery oDataQuery = null);
+        Task<PagedResultModel<UkDeductionCategoryModel>> ListDeductionCategoriesWithPaginationAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         DeductionCategoryEditModel CreateImportDeductionCategories(int businessId, ImportDeductionCategoryModel importModel);
         Task<DeductionCategoryEditModel> CreateImportDeductionCategoriesAsync(int businessId, ImportDeductionCategoryModel importModel, CancellationToken cancellationToken = default);
     }
@@ -60,9 +62,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the deduction category with the specified ID.
         /// </remarks>
-        public void UpdateDeductionCategory(int businessId, int id, UkDeductionCategoryModel deductionCategory)
+        public UkDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, UkDeductionCategoryModel deductionCategory)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
+            return ApiRequest<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
         }
 
         /// <summary>
@@ -71,9 +73,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates the deduction category with the specified ID.
         /// </remarks>
-        public Task UpdateDeductionCategoryAsync(int businessId, int id, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        public Task<UkDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
+            return ApiRequestAsync<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -99,28 +101,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Create Deduction Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a deduction category for the business.
-        /// </remarks>
-        public void CreateDeductionCategory(int businessId, UkDeductionCategoryModel deductionCategory)
-        {
-            ApiRequest($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Deduction Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a deduction category for the business.
-        /// </remarks>
-        public Task CreateDeductionCategoryAsync(int businessId, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// List Deduction Categories
         /// </summary>
         /// <remarks>
@@ -142,6 +122,52 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<UkDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Deduction Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a deduction category for the business.
+        /// </remarks>
+        public UkDeductionCategoryModel CreateDeductionCategory(int businessId, UkDeductionCategoryModel deductionCategory)
+        {
+            return ApiRequest<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Deduction Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a deduction category for the business.
+        /// </remarks>
+        public Task<UkDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, UkDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkDeductionCategoryModel,UkDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Deduction Categories with Pagination
+        /// </summary>
+        /// <remarks>
+        /// Lists all the deduction categories for the business with pagination.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public PagedResultModel<UkDeductionCategoryModel> ListDeductionCategoriesWithPagination(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<PagedResultModel<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory/paged{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Deduction Categories with Pagination
+        /// </summary>
+        /// <remarks>
+        /// Lists all the deduction categories for the business with pagination.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<PagedResultModel<UkDeductionCategoryModel>> ListDeductionCategoriesWithPaginationAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PagedResultModel<UkDeductionCategoryModel>>($"/business/{businessId}/deductioncategory/paged{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

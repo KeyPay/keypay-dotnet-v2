@@ -85,16 +85,10 @@ namespace KeyPayV2.Au.Models.Common
         public int? EmploymentAgreementId { get; set; }
         public bool? DisableAutoProgression { get; set; }
         public string Gender { get; set; }
-        public string HomePhone { get; set; }
-        public string WorkPhone { get; set; }
         public DateTime? AnniversaryDate { get; set; }
-        public string Tags { get; set; }
         public string JobTitle { get; set; }
         public string PaySlipNotificationType { get; set; }
-        public string OverrideTemplateRate { get; set; }
         public string LeaveTemplate { get; set; }
-        public string PayRateTemplate { get; set; }
-        public string PayConditionRuleSet { get; set; }
         public string RosteringNotificationChoices { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveAccrualStartDateType? LeaveAccrualStartDateType { get; set; }
@@ -116,6 +110,8 @@ namespace KeyPayV2.Au.Models.Common
         public string PostalPostCode { get; set; }
         public string PostalCountry { get; set; }
         public string EmailAddress { get; set; }
+        public string HomePhone { get; set; }
+        public string WorkPhone { get; set; }
         public string MobilePhone { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
@@ -155,5 +151,9 @@ namespace KeyPayV2.Au.Models.Common
         public EmployeeStatusEnum Status { get; set; }
         public DateTime DateCreated { get; set; }
         public string ReportingDimensionValues { get; set; }
+        public string OverrideTemplateRate { get; set; }
+        public string PayRateTemplate { get; set; }
+        public string PayConditionRuleSet { get; set; }
+        public string Tags { get; set; }
     }
 }

@@ -15,10 +15,10 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IWebhookFunction
     {
-        void ListWebHookRegistrations(int businessId);
-        Task ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
-        WebHook RegisterWebHook(int businessId, WebHook webHook);
-        Task<WebHook> RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default);
+        List<WebHook> ListWebHookRegistrations(int businessId);
+        Task<List<WebHook>> ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
+        void RegisterWebHook(int businessId, WebHook webHook);
+        Task RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default);
         void DeleteAllWebHookRegistrations(int businessId);
         Task DeleteAllWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
         WebHook GetWebHookRegistrationById(int businessId, string id);
@@ -42,9 +42,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Returns a collection containing the registered web hook instances for the user.
         /// </remarks>
-        public void ListWebHookRegistrations(int businessId)
+        public List<WebHook> ListWebHookRegistrations(int businessId)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations", Method.Get);
+            return ApiRequest<List<WebHook>>($"/business/{businessId}/webhookregistrations", Method.Get);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Returns a collection containing the registered web hook instances for the user.
         /// </remarks>
-        public Task ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<WebHook>> ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<WebHook>>($"/business/{businessId}/webhookregistrations", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Registers a new web hook.
         /// </remarks>
-        public WebHook RegisterWebHook(int businessId, WebHook webHook)
+        public void RegisterWebHook(int businessId, WebHook webHook)
         {
-            return ApiRequest<WebHook,WebHook>($"/business/{businessId}/webhookregistrations", webHook, Method.Post);
+            ApiRequest($"/business/{businessId}/webhookregistrations", webHook, Method.Post);
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Registers a new web hook.
         /// </remarks>
-        public Task<WebHook> RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default)
+        public Task RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<WebHook,WebHook>($"/business/{businessId}/webhookregistrations", webHook, Method.Post, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations", webHook, Method.Post, cancellationToken);
         }
 
         /// <summary>

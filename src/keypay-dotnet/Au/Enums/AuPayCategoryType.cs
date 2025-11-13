@@ -40,6 +40,10 @@ namespace KeyPayV2.Au.Enums
         PublicHolidayNotWorked,
         UnusedLeavePaymentNormalTermination,
         BackPayment,
-        PaidFamilyAndDomesticViolenceLeave
+        PaidFamilyAndDomesticViolenceLeave,
+        EtpTypeD,
+        EtpTypeN,
+        EtpTypeB,
+        EtpTypeT
     }
 }

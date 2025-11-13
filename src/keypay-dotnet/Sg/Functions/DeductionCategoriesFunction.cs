@@ -17,12 +17,12 @@ namespace KeyPayV2.Sg.Functions
     {
         SgDeductionCategoryModel GetDeductionCategoryById(int businessId, int id);
         Task<SgDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateDeductionCategory(int businessId, int id, SgDeductionCategoryModel deductionCategory);
-        Task UpdateDeductionCategoryAsync(int businessId, int id, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        SgDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, SgDeductionCategoryModel deductionCategory);
+        Task<SgDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         void DeleteDeductionCategory(int businessId, int id);
         Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory);
-        Task CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory);
+        Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         List<SgDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<SgDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
     }
@@ -58,9 +58,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the deduction category with the specified ID.
         /// </remarks>
-        public void UpdateDeductionCategory(int businessId, int id, SgDeductionCategoryModel deductionCategory)
+        public SgDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, SgDeductionCategoryModel deductionCategory)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
+            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the deduction category with the specified ID.
         /// </remarks>
-        public Task UpdateDeductionCategoryAsync(int businessId, int id, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        public Task<SgDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
+            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -102,9 +102,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a deduction category for the business.
         /// </remarks>
-        public void CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory)
+        public SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
+            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
         }
 
         /// <summary>
@@ -113,9 +113,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a deduction category for the business.
         /// </remarks>
-        public Task CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        public Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
+            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>

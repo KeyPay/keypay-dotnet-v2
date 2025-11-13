@@ -15,14 +15,14 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IEmployeeGroupsFunction
     {
-        List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId);
-        Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default);
-        void CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup);
-        Task CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgEmployeeGroupModel CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup);
+        Task<SgEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         SgDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
         Task<SgDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateEmployeeGroup(int businessId, int id, SgEmployeeGroupModel employeeGroup);
-        Task UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        SgEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, SgEmployeeGroupModel employeeGroup);
+        Task<SgEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         void DeleteEmployeeGroup(int businessId, int id);
         Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -35,10 +35,11 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the employee groups for the business.
+        /// This operation supports OData queries.
         /// </remarks>
-        public List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId)
+        public List<SgEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup", Method.Get);
+            return ApiRequest<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -46,10 +47,11 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the employee groups for the business.
+        /// This operation supports OData queries.
         /// </remarks>
-        public Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<SgEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SgEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -58,9 +60,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new employee group for the business.
         /// </remarks>
-        public void CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup)
+        public SgEmployeeGroupModel CreateEmployeeGroup(int businessId, SgEmployeeGroupModel employeeGroup)
         {
-            ApiRequest($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
+            return ApiRequest<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
         }
 
         /// <summary>
@@ -69,9 +71,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new employee group for the business.
         /// </remarks>
-        public Task CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
+        public Task<SgEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
+            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -102,9 +104,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the specified employee group.
         /// </remarks>
-        public void UpdateEmployeeGroup(int businessId, int id, SgEmployeeGroupModel employeeGroup)
+        public SgEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, SgEmployeeGroupModel employeeGroup)
         {
-            ApiRequest($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put);
+            return ApiRequest<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put);
         }
 
         /// <summary>
@@ -113,9 +115,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the specified employee group.
         /// </remarks>
-        public Task UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
+        public Task<SgEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, SgEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put, cancellationToken);
+            return ApiRequestAsync<SgEmployeeGroupModel,SgEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put, cancellationToken);
         }
 
         /// <summary>

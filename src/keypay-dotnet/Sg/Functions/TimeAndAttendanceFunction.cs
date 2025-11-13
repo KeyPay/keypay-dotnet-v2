@@ -15,8 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface ITimeAndAttendanceFunction
     {
-        List<TimeAndAttendanceKioskModel> ListKiosks(int businessId);
-        Task<List<TimeAndAttendanceKioskModel>> ListKiosksAsync(int businessId, CancellationToken cancellationToken = default);
+        List<TimeAndAttendanceKioskModel> ListKiosks(int businessId, ODataQuery oDataQuery = null);
+        Task<List<TimeAndAttendanceKioskModel>> ListKiosksAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         TimeAndAttendanceKioskModel CreateKiosk(int businessId, TimeAndAttendanceKioskModel kiosk);
         Task<TimeAndAttendanceKioskModel> CreateKioskAsync(int businessId, TimeAndAttendanceKioskModel kiosk, CancellationToken cancellationToken = default);
         TimeAndAttendanceKioskModel GetKioskById(int businessId, int id);
@@ -79,10 +79,11 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all kiosks for the specified business.
+        /// This operation supports OData queries.
         /// </remarks>
-        public List<TimeAndAttendanceKioskModel> ListKiosks(int businessId)
+        public List<TimeAndAttendanceKioskModel> ListKiosks(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk", Method.Get);
+            return ApiRequest<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -90,10 +91,11 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all kiosks for the specified business.
+        /// This operation supports OData queries.
         /// </remarks>
-        public Task<List<TimeAndAttendanceKioskModel>> ListKiosksAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<TimeAndAttendanceKioskModel>> ListKiosksAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<TimeAndAttendanceKioskModel>>($"/business/{businessId}/kiosk{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

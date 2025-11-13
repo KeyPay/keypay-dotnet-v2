@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk
         IEmployeeFunction Employee { get; }
         IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         IEmployeeGroupsFunction EmployeeGroups { get; }
+        IEmployeeOnboardingFunction EmployeeOnboarding { get; }
+        IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         IInvoicesFunction Invoices { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
@@ -30,10 +32,10 @@ namespace KeyPayV2.Uk
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
+        IWorkTypeFunction WorkType { get; }
         IPayRunFunction PayRun { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
-        IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         IEmployeeBenefitCategoryFunction EmployeeBenefitCategory { get; }
         IEmployeeDocumentFunction EmployeeDocument { get; }
@@ -45,7 +47,6 @@ namespace KeyPayV2.Uk
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
-        IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayeSchemeFunction PayeScheme { get; }
@@ -54,7 +55,6 @@ namespace KeyPayV2.Uk
         ISubcontractorFunction Subcontractor { get; }
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
-        IWorkTypeFunction WorkType { get; }
         IEssFunction Ess { get; }
         IUserFunction User { get; }
     }
@@ -71,6 +71,8 @@ namespace KeyPayV2.Uk
             Employee = new EmployeeFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
+            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
+            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             Invoices = new InvoicesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
@@ -86,10 +88,10 @@ namespace KeyPayV2.Uk
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
+            WorkType = new WorkTypeFunction(Api);
             PayRun = new PayRunFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
-            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeBenefitCategory = new EmployeeBenefitCategoryFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
@@ -101,7 +103,6 @@ namespace KeyPayV2.Uk
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayeScheme = new PayeSchemeFunction(Api);
@@ -110,7 +111,6 @@ namespace KeyPayV2.Uk
             Subcontractor = new SubcontractorFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
-            WorkType = new WorkTypeFunction(Api);
             Ess = new EssFunction(Api);
             User = new UserFunction(Api);
         }
@@ -124,6 +124,8 @@ namespace KeyPayV2.Uk
         public IEmployeeFunction Employee { get; }
         public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public IEmployeeGroupsFunction EmployeeGroups { get; }
+        public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
+        public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public IInvoicesFunction Invoices { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
@@ -139,10 +141,10 @@ namespace KeyPayV2.Uk
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
+        public IWorkTypeFunction WorkType { get; }
         public IPayRunFunction PayRun { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
-        public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         public IEmployeeBenefitCategoryFunction EmployeeBenefitCategory { get; }
         public IEmployeeDocumentFunction EmployeeDocument { get; }
@@ -154,7 +156,6 @@ namespace KeyPayV2.Uk
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayeSchemeFunction PayeScheme { get; }
@@ -163,7 +164,6 @@ namespace KeyPayV2.Uk
         public ISubcontractorFunction Subcontractor { get; }
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
-        public IWorkTypeFunction WorkType { get; }
         public IEssFunction Ess { get; }
         public IUserFunction User { get; }
     }

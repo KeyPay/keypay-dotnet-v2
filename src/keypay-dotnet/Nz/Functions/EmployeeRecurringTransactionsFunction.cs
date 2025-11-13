@@ -15,16 +15,16 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IEmployeeRecurringTransactionsFunction
     {
-        List<NzAdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId);
-        Task<List<NzAdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        NzAdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, NzAdditionalEarningsInputModel model);
-        Task<NzAdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, NzAdditionalEarningsInputModel model, CancellationToken cancellationToken = default);
         NzAdditionalEarningsModel GetEmployeeAdditionalEarningById(int businessId, int employeeId, long id);
         Task<NzAdditionalEarningsModel> GetEmployeeAdditionalEarningByIdAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
         NzAdditionalEarningsModel UpdateEmployeeAdditionalEarning(int businessId, int employeeId, long id, NzAdditionalEarningsInputModel model);
         Task<NzAdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, NzAdditionalEarningsInputModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id);
         Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
+        List<NzAdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId);
+        Task<List<NzAdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        NzAdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, NzAdditionalEarningsInputModel model);
+        Task<NzAdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, NzAdditionalEarningsInputModel model, CancellationToken cancellationToken = default);
         List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId);
         Task<List<NzEmployeeRecurringDeductionModel>> ListEmployeeDeductionsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         NzEmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, NzEmployeeRecurringDeductionModel model);
@@ -73,50 +73,6 @@ namespace KeyPayV2.Nz.Functions
     public class EmployeeRecurringTransactionsFunction : BaseFunction, IEmployeeRecurringTransactionsFunction
     {
         public EmployeeRecurringTransactionsFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Employee Additional Earnings
-        /// </summary>
-        /// <remarks>
-        /// Lists all the additional earnings for the employee
-        /// </remarks>
-        public List<NzAdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId)
-        {
-            return ApiRequest<List<NzAdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Additional Earnings
-        /// </summary>
-        /// <remarks>
-        /// Lists all the additional earnings for the employee
-        /// </remarks>
-        public Task<List<NzAdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzAdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employee Additional Earning
-        /// </summary>
-        /// <remarks>
-        /// Creates a new additional earning for the employee.
-        /// </remarks>
-        public NzAdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, NzAdditionalEarningsInputModel model)
-        {
-            return ApiRequest<NzAdditionalEarningsModel,NzAdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Additional Earning
-        /// </summary>
-        /// <remarks>
-        /// Creates a new additional earning for the employee.
-        /// </remarks>
-        public Task<NzAdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, NzAdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzAdditionalEarningsModel,NzAdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// Get Employee Additional Earning by ID
@@ -182,6 +138,50 @@ namespace KeyPayV2.Nz.Functions
         public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Additional Earnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all the additional earnings for the employee
+        /// </remarks>
+        public List<NzAdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId)
+        {
+            return ApiRequest<List<NzAdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Additional Earnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all the additional earnings for the employee
+        /// </remarks>
+        public Task<List<NzAdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzAdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Creates a new additional earning for the employee.
+        /// </remarks>
+        public NzAdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, NzAdditionalEarningsInputModel model)
+        {
+            return ApiRequest<NzAdditionalEarningsModel,NzAdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Creates a new additional earning for the employee.
+        /// </remarks>
+        public Task<NzAdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, NzAdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzAdditionalEarningsModel,NzAdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings", model, Method.Post, cancellationToken);
         }
 
         /// <summary>

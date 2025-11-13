@@ -55,6 +55,10 @@ namespace KeyPayV2.Au.Functions
         Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
         byte[] GrossToNetReportAsExcel(int businessId, GrossToNetReportAsExcelQueryModel request);
         Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, GrossToNetReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        byte[] JournalReport(int businessId);
+        Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] JournalReport(int businessId, JournalReportQueryModel request);
+        Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default);
         List<AuPayCategoriesModel> PayCategoriesReport(int businessId);
         Task<List<AuPayCategoriesModel>> PayCategoriesReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<AuPayCategoriesModel> PayCategoriesReport(int businessId, PayCategoriesReportQueryModel request);
@@ -612,6 +616,50 @@ namespace KeyPayV2.Au.Functions
         public Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, GrossToNetReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiByteArrayRequestAsync($"/business/{businessId}/report/grosstonet/xlsx?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public byte[] JournalReport(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/journal", Method.Get);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public byte[] JournalReport(int businessId, JournalReportQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get, cancellationToken);
         }
 
         /// <summary>

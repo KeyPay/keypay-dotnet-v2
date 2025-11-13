@@ -51,8 +51,8 @@ namespace KeyPayV2.Nz.Functions
         Task<byte[]> GetPaySlipFileAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         void Recalculate(int businessId, int payRunId);
         Task RecalculateAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
-        Guid RecalculateAsync(int businessId, int payRunId);
-        Task<Guid> RecalculateAsyncAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        Guid RecalculateBackgroundJob(int businessId, int payRunId);
+        Task<Guid> RecalculateBackgroundJobAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         void SetPayRunNotation(int businessId, int payRunId, PayRunNotationModel model);
         Task SetPayRunNotationAsync(int businessId, int payRunId, PayRunNotationModel model, CancellationToken cancellationToken = default);
         void DeletePayRunNotation(int businessId, int payRunId);
@@ -553,23 +553,23 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Recalculate (Async)
+        /// Recalculate background job
         /// </summary>
         /// <remarks>
         /// Recalculates a pay run asynchronously.
         /// </remarks>
-        public Guid RecalculateAsync(int businessId, int payRunId)
+        public Guid RecalculateBackgroundJob(int businessId, int payRunId)
         {
             return ApiRequest<Guid>($"/business/{businessId}/payrun/{payRunId}/recalculate/async", Method.Post);
         }
 
         /// <summary>
-        /// Recalculate (Async)
+        /// Recalculate background job
         /// </summary>
         /// <remarks>
         /// Recalculates a pay run asynchronously.
         /// </remarks>
-        public Task<Guid> RecalculateAsyncAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        public Task<Guid> RecalculateBackgroundJobAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<Guid>($"/business/{businessId}/payrun/{payRunId}/recalculate/async", Method.Post, cancellationToken);
         }

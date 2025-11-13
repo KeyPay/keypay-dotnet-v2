@@ -15,42 +15,56 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IEmployeeFunction
     {
+        List<UkWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<UkWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
         Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         UkOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
         Task<UkOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetOpeningBalances(int businessId, int employeeId, UkOpeningBalancesModel model);
         Task SetOpeningBalancesAsync(int businessId, int employeeId, UkOpeningBalancesModel model, CancellationToken cancellationToken = default);
+        EmployeePensionContributionPlanSettingsApiModel GetPensionContributionPlan(int businessId, int employeeId);
+        Task<EmployeePensionContributionPlanSettingsApiModel> GetPensionContributionPlanAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeePensionContributionPlanSettingsApiModel UpdatePensionContributionPlan(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model);
+        Task<EmployeePensionContributionPlanSettingsApiModel> UpdatePensionContributionPlanAsync(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model, CancellationToken cancellationToken = default);
+        EmployeePensionContributionPlanSettingsApiModel ForceEnrolment(int businessId, int employeeId);
+        Task<EmployeePensionContributionPlanSettingsApiModel> ForceEnrolmentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        HmrcFormsViewModel GetsHmrcFormsViewModelForEmployee(int businessId, int employeeId);
+        Task<HmrcFormsViewModel> GetsHmrcFormsViewModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        AutoEnrolmentNoticeViewModel SendAutoEnrolmentNotificationToEmployee(int businessId, int employeeId, int noticeId);
+        Task<AutoEnrolmentNoticeViewModel> SendAutoEnrolmentNotificationToEmployeeAsync(int businessId, int employeeId, int noticeId, CancellationToken cancellationToken = default);
+        AutoEnrolmentNoticeModel CreateAutoEnrolmentNotice(int businessId, int employeeId, AutoEnrolmentNoticeModel notice);
+        Task<AutoEnrolmentNoticeModel> CreateAutoEnrolmentNoticeAsync(int businessId, int employeeId, AutoEnrolmentNoticeModel notice, CancellationToken cancellationToken = default);
+        P45ViewModel GetP45ModelForEmployee(int businessId, int employeeId);
+        Task<P45ViewModel> GetP45ModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        P60ViewModel GetP60ModelForEmployee(int businessId, int employeeId, int financialYearEnding);
+        Task<P60ViewModel> GetP60ModelForEmployeeAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default);
+        P45ViewModel SendP45EmailToEmployee(int businessId, int employeeId);
+        Task<P45ViewModel> SendP45EmailToEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        P60GridViewModel NotifyEmployeeByEmailOfP60(int businessId, int employeeId, int noticeId, int financialYearEnding);
+        Task<P60GridViewModel> NotifyEmployeeByEmailOfP60Async(int businessId, int employeeId, int noticeId, int financialYearEnding, CancellationToken cancellationToken = default);
+        byte[] UkHmrcForms_P45Download(int businessId, int employeeId);
+        Task<byte[]> UkHmrcForms_P45DownloadAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        byte[] UkHmrcForms_DownloadAutoEnrolmentNotice(int businessId, int employeeId);
+        Task<byte[]> UkHmrcForms_DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        byte[] UkHmrcForms_DownloadAutoEnrolmentNotice(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request);
+        Task<byte[]> UkHmrcForms_DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request, CancellationToken cancellationToken = default);
+        P45DataResponse UkHmrcForms_P45Data(int businessId, int employeeId);
+        Task<P45DataResponse> UkHmrcForms_P45DataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        byte[] UkHmrcForms_P60DownloadController(int businessId, int employeeId, int financialYearEnding);
+        Task<byte[]> UkHmrcForms_P60DownloadControllerAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default);
+        byte[] DownloadEmployeeP11dForm(int businessId, int employeeId, int taxYear);
+        Task<byte[]> DownloadEmployeeP11dFormAsync(int businessId, int employeeId, int taxYear, CancellationToken cancellationToken = default);
+        YearToDateModel GetYearToDate(int businessId, int employeeId);
+        Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        YearToDateModel GetYearToDate(int businessId, int employeeId, GetYearToDateQueryModel request);
+        Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, GetYearToDateQueryModel request, CancellationToken cancellationToken = default);
         UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, GetEmployeeByExternalIdQueryModel request);
         Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, GetEmployeeByExternalIdQueryModel request, CancellationToken cancellationToken = default);
         void DeleteEmployee(int businessId, int employeeId);
         Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
         Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        HmrcFormsViewModel GetsHmrcFormsViewModelForEmployee(int businessId, int employeeId);
-        Task<HmrcFormsViewModel> GetsHmrcFormsViewModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        AutoEnrolmentNoticeModel CreateAutoEnrolmentNotice(int businessId, int employeeId, AutoEnrolmentNoticeModel notice);
-        Task<AutoEnrolmentNoticeModel> CreateAutoEnrolmentNoticeAsync(int businessId, int employeeId, AutoEnrolmentNoticeModel notice, CancellationToken cancellationToken = default);
-        byte[] UkHmrcForms_DownloadAutoEnrolmentNotice(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request);
-        Task<byte[]> UkHmrcForms_DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request, CancellationToken cancellationToken = default);
-        AutoEnrolmentNoticeViewModel SendAutoEnrolmentNotificationToEmployee(int businessId, int employeeId, int noticeId);
-        Task<AutoEnrolmentNoticeViewModel> SendAutoEnrolmentNotificationToEmployeeAsync(int businessId, int employeeId, int noticeId, CancellationToken cancellationToken = default);
-        P45ViewModel SendP45EmailToEmployee(int businessId, int employeeId);
-        Task<P45ViewModel> SendP45EmailToEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        byte[] DownloadEmployeeP11dForm(int businessId, int employeeId, int taxYear);
-        Task<byte[]> DownloadEmployeeP11dFormAsync(int businessId, int employeeId, int taxYear, CancellationToken cancellationToken = default);
-        P45ViewModel GetP45ModelForEmployee(int businessId, int employeeId);
-        Task<P45ViewModel> GetP45ModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        P45DataResponse UkHmrcForms_P45Data(int businessId, int employeeId);
-        Task<P45DataResponse> UkHmrcForms_P45DataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        byte[] UkHmrcForms_P45Download(int businessId, int employeeId);
-        Task<byte[]> UkHmrcForms_P45DownloadAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        P60ViewModel GetP60ModelForEmployee(int businessId, int employeeId, int financialYearEnding);
-        Task<P60ViewModel> GetP60ModelForEmployeeAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default);
-        P60ViewModel UkHmrcForms_P60DownloadController(int businessId, int employeeId, int financialYearEnding);
-        Task<P60ViewModel> UkHmrcForms_P60DownloadControllerAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default);
-        P60GridViewModel NotifyEmployeeByEmailOfP60(int businessId, int employeeId, int noticeId, int financialYearEnding);
-        Task<P60GridViewModel> NotifyEmployeeByEmailOfP60Async(int businessId, int employeeId, int noticeId, int financialYearEnding, CancellationToken cancellationToken = default);
         void GetEmployeeProfileImage(int businessId, int employeeId);
         Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
@@ -87,12 +101,6 @@ namespace KeyPayV2.Uk.Functions
         Task<List<PeriodOfLeaveModel>> GetOccupationalAbsenceAsync(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request, CancellationToken cancellationToken = default);
         PeriodOfLeaveModel CreateOccupationalAbsence(int businessId, int employeeId, PeriodOfLeaveModel periodOfLeaveModel);
         Task<PeriodOfLeaveModel> CreateOccupationalAbsenceAsync(int businessId, int employeeId, PeriodOfLeaveModel periodOfLeaveModel, CancellationToken cancellationToken = default);
-        EmployeePensionContributionPlanSettingsApiModel GetPensionContributionPlan(int businessId, int employeeId);
-        Task<EmployeePensionContributionPlanSettingsApiModel> GetPensionContributionPlanAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeePensionContributionPlanSettingsApiModel UpdatePensionContributionPlan(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model);
-        Task<EmployeePensionContributionPlanSettingsApiModel> UpdatePensionContributionPlanAsync(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model, CancellationToken cancellationToken = default);
-        EmployeePensionContributionPlanSettingsApiModel ForceEnrolment(int businessId, int employeeId);
-        Task<EmployeePensionContributionPlanSettingsApiModel> ForceEnrolmentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<UkWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<UkWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         StandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
@@ -203,10 +211,6 @@ namespace KeyPayV2.Uk.Functions
         Task DeletePeriodOfLeaveAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default);
         void SyncEmployeeToQbo(int businessId, int employeeId);
         Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<UkWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<UkWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        YearToDateModel GetYearToDate(int businessId, int employeeId, GetYearToDateQueryModel request);
-        Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, GetYearToDateQueryModel request, CancellationToken cancellationToken = default);
         void ActivateEmployee(int businessId, int employeeId);
         Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
@@ -235,6 +239,30 @@ namespace KeyPayV2.Uk.Functions
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<UkWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<UkWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<UkWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Pay Rates
@@ -303,6 +331,282 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get Pension Contribution Plan
+        /// </summary>
+        /// <remarks>
+        /// Get Pension Contribution Plan settings for Employee
+        /// </remarks>
+        public EmployeePensionContributionPlanSettingsApiModel GetPensionContributionPlan(int businessId, int employeeId)
+        {
+            return ApiRequest<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pension Contribution Plan
+        /// </summary>
+        /// <remarks>
+        /// Get Pension Contribution Plan settings for Employee
+        /// </remarks>
+        public Task<EmployeePensionContributionPlanSettingsApiModel> GetPensionContributionPlanAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Pension Contribution Plan
+        /// </summary>
+        /// <remarks>
+        /// Update Pension Contribution Plan settings for Employee
+        /// </remarks>
+        public EmployeePensionContributionPlanSettingsApiModel UpdatePensionContributionPlan(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model)
+        {
+            return ApiRequest<EmployeePensionContributionPlanSettingsApiModel,EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Pension Contribution Plan
+        /// </summary>
+        /// <remarks>
+        /// Update Pension Contribution Plan settings for Employee
+        /// </remarks>
+        public Task<EmployeePensionContributionPlanSettingsApiModel> UpdatePensionContributionPlanAsync(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeePensionContributionPlanSettingsApiModel,EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Force Enrolment
+        /// </summary>
+        /// <remarks>
+        /// Force Enrolment to Pension Contribution Plan for Employee
+        /// </remarks>
+        public EmployeePensionContributionPlanSettingsApiModel ForceEnrolment(int businessId, int employeeId)
+        {
+            return ApiRequest<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension/force", Method.Post);
+        }
+
+        /// <summary>
+        /// Force Enrolment
+        /// </summary>
+        /// <remarks>
+        /// Force Enrolment to Pension Contribution Plan for Employee
+        /// </remarks>
+        public Task<EmployeePensionContributionPlanSettingsApiModel> ForceEnrolmentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension/force", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets hmrc forms view model for employee
+        /// </summary>
+        public HmrcFormsViewModel GetsHmrcFormsViewModelForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<HmrcFormsViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms", Method.Get);
+        }
+
+        /// <summary>
+        /// Gets hmrc forms view model for employee
+        /// </summary>
+        public Task<HmrcFormsViewModel> GetsHmrcFormsViewModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<HmrcFormsViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Send auto-enrolment notification to employee
+        /// </summary>
+        public AutoEnrolmentNoticeViewModel SendAutoEnrolmentNotificationToEmployee(int businessId, int employeeId, int noticeId)
+        {
+            return ApiRequest<AutoEnrolmentNoticeViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/emailautoenrolmentnotice/{noticeId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Send auto-enrolment notification to employee
+        /// </summary>
+        public Task<AutoEnrolmentNoticeViewModel> SendAutoEnrolmentNotificationToEmployeeAsync(int businessId, int employeeId, int noticeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AutoEnrolmentNoticeViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/emailautoenrolmentnotice/{noticeId}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create auto enrolment notice
+        /// </summary>
+        public AutoEnrolmentNoticeModel CreateAutoEnrolmentNotice(int businessId, int employeeId, AutoEnrolmentNoticeModel notice)
+        {
+            return ApiRequest<AutoEnrolmentNoticeModel,AutoEnrolmentNoticeModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/autoenrolmentnotice", notice, Method.Post);
+        }
+
+        /// <summary>
+        /// Create auto enrolment notice
+        /// </summary>
+        public Task<AutoEnrolmentNoticeModel> CreateAutoEnrolmentNoticeAsync(int businessId, int employeeId, AutoEnrolmentNoticeModel notice, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AutoEnrolmentNoticeModel,AutoEnrolmentNoticeModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/autoenrolmentnotice", notice, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P45 model for employee
+        /// </summary>
+        public P45ViewModel GetP45ModelForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45", Method.Get);
+        }
+
+        /// <summary>
+        /// Get P45 model for employee
+        /// </summary>
+        public Task<P45ViewModel> GetP45ModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P60 model for employee
+        /// </summary>
+        public P60ViewModel GetP60ModelForEmployee(int businessId, int employeeId, int financialYearEnding)
+        {
+            return ApiRequest<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60/{financialYearEnding}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get P60 model for employee
+        /// </summary>
+        public Task<P60ViewModel> GetP60ModelForEmployeeAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60/{financialYearEnding}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Send P45-email to employee
+        /// </summary>
+        public P45ViewModel SendP45EmailToEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/mailp45", Method.Post);
+        }
+
+        /// <summary>
+        /// Send P45-email to employee
+        /// </summary>
+        public Task<P45ViewModel> SendP45EmailToEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/mailp45", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Notify employee by email of P60
+        /// </summary>
+        public P60GridViewModel NotifyEmployeeByEmailOfP60(int businessId, int employeeId, int noticeId, int financialYearEnding)
+        {
+            return ApiRequest<P60GridViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60notify/{noticeId}/{financialYearEnding}", Method.Post);
+        }
+
+        /// <summary>
+        /// Notify employee by email of P60
+        /// </summary>
+        public Task<P60GridViewModel> NotifyEmployeeByEmailOfP60Async(int businessId, int employeeId, int noticeId, int financialYearEnding, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<P60GridViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60notify/{noticeId}/{financialYearEnding}", Method.Post, cancellationToken);
+        }
+
+        public byte[] UkHmrcForms_P45Download(int businessId, int employeeId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.Get);
+        }
+
+        public Task<byte[]> UkHmrcForms_P45DownloadAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.Get, cancellationToken);
+        }
+
+        public byte[] UkHmrcForms_DownloadAutoEnrolmentNotice(int businessId, int employeeId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice", Method.Get);
+        }
+
+        public Task<byte[]> UkHmrcForms_DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice", Method.Get, cancellationToken);
+        }
+
+        public byte[] UkHmrcForms_DownloadAutoEnrolmentNotice(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice?id={request.Id}", Method.Get);
+        }
+
+        public Task<byte[]> UkHmrcForms_DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice?id={request.Id}", Method.Get, cancellationToken);
+        }
+
+        public P45DataResponse UkHmrcForms_P45Data(int businessId, int employeeId)
+        {
+            return ApiRequest<P45DataResponse>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45data", Method.Get);
+        }
+
+        public Task<P45DataResponse> UkHmrcForms_P45DataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<P45DataResponse>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45data", Method.Get, cancellationToken);
+        }
+
+        public byte[] UkHmrcForms_P60DownloadController(int businessId, int employeeId, int financialYearEnding)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60download/{financialYearEnding}", Method.Get);
+        }
+
+        public Task<byte[]> UkHmrcForms_P60DownloadControllerAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60download/{financialYearEnding}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Download Employee P11D form
+        /// </summary>
+        public byte[] DownloadEmployeeP11dForm(int businessId, int employeeId, int taxYear)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p11ddownload/{taxYear}", Method.Get);
+        }
+
+        /// <summary>
+        /// Download Employee P11D form
+        /// </summary>
+        public Task<byte[]> DownloadEmployeeP11dFormAsync(int businessId, int employeeId, int taxYear, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p11ddownload/{taxYear}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Year to date
+        /// </summary>
+        public YearToDateModel GetYearToDate(int businessId, int employeeId)
+        {
+            return ApiRequest<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Year to date
+        /// </summary>
+        public Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Year to date
+        /// </summary>
+        public YearToDateModel GetYearToDate(int businessId, int employeeId, GetYearToDateQueryModel request)
+        {
+            return ApiRequest<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Year to date
+        /// </summary>
+        public Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, GetYearToDateQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee By External ID
         /// </summary>
         /// <remarks>
@@ -366,174 +670,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gets hmrc forms view model for employee
-        /// </summary>
-        public HmrcFormsViewModel GetsHmrcFormsViewModelForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<HmrcFormsViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms", Method.Get);
-        }
-
-        /// <summary>
-        /// Gets hmrc forms view model for employee
-        /// </summary>
-        public Task<HmrcFormsViewModel> GetsHmrcFormsViewModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<HmrcFormsViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create auto enrolment notice
-        /// </summary>
-        public AutoEnrolmentNoticeModel CreateAutoEnrolmentNotice(int businessId, int employeeId, AutoEnrolmentNoticeModel notice)
-        {
-            return ApiRequest<AutoEnrolmentNoticeModel,AutoEnrolmentNoticeModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/autoenrolmentnotice", notice, Method.Post);
-        }
-
-        /// <summary>
-        /// Create auto enrolment notice
-        /// </summary>
-        public Task<AutoEnrolmentNoticeModel> CreateAutoEnrolmentNoticeAsync(int businessId, int employeeId, AutoEnrolmentNoticeModel notice, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AutoEnrolmentNoticeModel,AutoEnrolmentNoticeModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/autoenrolmentnotice", notice, Method.Post, cancellationToken);
-        }
-
-        public byte[] UkHmrcForms_DownloadAutoEnrolmentNotice(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice?id={request.Id}", Method.Get);
-        }
-
-        public Task<byte[]> UkHmrcForms_DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice?id={request.Id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Send auto-enrolment notification to employee
-        /// </summary>
-        public AutoEnrolmentNoticeViewModel SendAutoEnrolmentNotificationToEmployee(int businessId, int employeeId, int noticeId)
-        {
-            return ApiRequest<AutoEnrolmentNoticeViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/emailautoenrolmentnotice/{noticeId}", Method.Post);
-        }
-
-        /// <summary>
-        /// Send auto-enrolment notification to employee
-        /// </summary>
-        public Task<AutoEnrolmentNoticeViewModel> SendAutoEnrolmentNotificationToEmployeeAsync(int businessId, int employeeId, int noticeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AutoEnrolmentNoticeViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/emailautoenrolmentnotice/{noticeId}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Send P45-email to employee
-        /// </summary>
-        public P45ViewModel SendP45EmailToEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/mailp45", Method.Post);
-        }
-
-        /// <summary>
-        /// Send P45-email to employee
-        /// </summary>
-        public Task<P45ViewModel> SendP45EmailToEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/mailp45", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Download Employee P11D form
-        /// </summary>
-        public byte[] DownloadEmployeeP11dForm(int businessId, int employeeId, int taxYear)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p11ddownload/{taxYear}", Method.Get);
-        }
-
-        /// <summary>
-        /// Download Employee P11D form
-        /// </summary>
-        public Task<byte[]> DownloadEmployeeP11dFormAsync(int businessId, int employeeId, int taxYear, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p11ddownload/{taxYear}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get P45 model for employee
-        /// </summary>
-        public P45ViewModel GetP45ModelForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45", Method.Get);
-        }
-
-        /// <summary>
-        /// Get P45 model for employee
-        /// </summary>
-        public Task<P45ViewModel> GetP45ModelForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<P45ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45", Method.Get, cancellationToken);
-        }
-
-        public P45DataResponse UkHmrcForms_P45Data(int businessId, int employeeId)
-        {
-            return ApiRequest<P45DataResponse>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45data", Method.Get);
-        }
-
-        public Task<P45DataResponse> UkHmrcForms_P45DataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<P45DataResponse>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45data", Method.Get, cancellationToken);
-        }
-
-        public byte[] UkHmrcForms_P45Download(int businessId, int employeeId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.Get);
-        }
-
-        public Task<byte[]> UkHmrcForms_P45DownloadAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/p45download", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get P60 model for employee
-        /// </summary>
-        public P60ViewModel GetP60ModelForEmployee(int businessId, int employeeId, int financialYearEnding)
-        {
-            return ApiRequest<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60/{financialYearEnding}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get P60 model for employee
-        /// </summary>
-        public Task<P60ViewModel> GetP60ModelForEmployeeAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60/{financialYearEnding}", Method.Get, cancellationToken);
-        }
-
-        public P60ViewModel UkHmrcForms_P60DownloadController(int businessId, int employeeId, int financialYearEnding)
-        {
-            return ApiRequest<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60download/{financialYearEnding}", Method.Get);
-        }
-
-        public Task<P60ViewModel> UkHmrcForms_P60DownloadControllerAsync(int businessId, int employeeId, int financialYearEnding, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<P60ViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60download/{financialYearEnding}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Notify employee by email of P60
-        /// </summary>
-        public P60GridViewModel NotifyEmployeeByEmailOfP60(int businessId, int employeeId, int noticeId, int financialYearEnding)
-        {
-            return ApiRequest<P60GridViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60notify/{noticeId}/{financialYearEnding}", Method.Post);
-        }
-
-        /// <summary>
-        /// Notify employee by email of P60
-        /// </summary>
-        public Task<P60GridViewModel> NotifyEmployeeByEmailOfP60Async(int businessId, int employeeId, int noticeId, int financialYearEnding, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<P60GridViewModel>($"/business/{businessId}/employee/{employeeId}/hmrcforms/p60notify/{noticeId}/{financialYearEnding}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -882,72 +1018,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<PeriodOfLeaveModel> CreateOccupationalAbsenceAsync(int businessId, int employeeId, PeriodOfLeaveModel periodOfLeaveModel, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PeriodOfLeaveModel,PeriodOfLeaveModel>($"/business/{businessId}/employee/{employeeId}/occupationalabsence", periodOfLeaveModel, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Pension Contribution Plan
-        /// </summary>
-        /// <remarks>
-        /// Get Pension Contribution Plan settings for Employee
-        /// </remarks>
-        public EmployeePensionContributionPlanSettingsApiModel GetPensionContributionPlan(int businessId, int employeeId)
-        {
-            return ApiRequest<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pension Contribution Plan
-        /// </summary>
-        /// <remarks>
-        /// Get Pension Contribution Plan settings for Employee
-        /// </remarks>
-        public Task<EmployeePensionContributionPlanSettingsApiModel> GetPensionContributionPlanAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Pension Contribution Plan
-        /// </summary>
-        /// <remarks>
-        /// Update Pension Contribution Plan settings for Employee
-        /// </remarks>
-        public EmployeePensionContributionPlanSettingsApiModel UpdatePensionContributionPlan(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model)
-        {
-            return ApiRequest<EmployeePensionContributionPlanSettingsApiModel,EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Pension Contribution Plan
-        /// </summary>
-        /// <remarks>
-        /// Update Pension Contribution Plan settings for Employee
-        /// </remarks>
-        public Task<EmployeePensionContributionPlanSettingsApiModel> UpdatePensionContributionPlanAsync(int businessId, int employeeId, EmployeePensionContributionPlanSettingsApiModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeePensionContributionPlanSettingsApiModel,EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Force Enrolment
-        /// </summary>
-        /// <remarks>
-        /// Force Enrolment to Pension Contribution Plan for Employee
-        /// </remarks>
-        public EmployeePensionContributionPlanSettingsApiModel ForceEnrolment(int businessId, int employeeId)
-        {
-            return ApiRequest<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension/force", Method.Post);
-        }
-
-        /// <summary>
-        /// Force Enrolment
-        /// </summary>
-        /// <remarks>
-        /// Force Enrolment to Pension Contribution Plan for Employee
-        /// </remarks>
-        public Task<EmployeePensionContributionPlanSettingsApiModel> ForceEnrolmentAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeePensionContributionPlanSettingsApiModel>($"/business/{businessId}/employee/{employeeId}/pension/force", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2028,46 +2098,6 @@ namespace KeyPayV2.Uk.Functions
         public Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Work Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all the work types for the employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<UkWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<UkWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Work Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all the work types for the employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<UkWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Year to date
-        /// </summary>
-        public YearToDateModel GetYearToDate(int businessId, int employeeId, GetYearToDateQueryModel request)
-        {
-            return ApiRequest<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Year to date
-        /// </summary>
-        public Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, GetYearToDateQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -96,6 +96,9 @@ namespace KeyPayV2.Au.Enums
         Crezco,
         KafkaConsumer,
         EmployeeLeaveRateCalculationMethodUpload,
-        MoneyMovement
+        MoneyMovement,
+        PayRunSettingsFlatFileImport,
+        Sage200,
+        RosterCostCalculation
     }
 }

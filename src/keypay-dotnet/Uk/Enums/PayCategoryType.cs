@@ -111,6 +111,10 @@ namespace KeyPayV2.Uk.Enums
         RetroactivePayHourly,
         WorkedHolidayPremiumPayDouble,
         VacationPayoutOnTermination,
-        VacationPayoutCashOut
+        VacationPayoutCashOut,
+        EtpTypeD,
+        EtpTypeN,
+        EtpTypeB,
+        EtpTypeT
     }
 }

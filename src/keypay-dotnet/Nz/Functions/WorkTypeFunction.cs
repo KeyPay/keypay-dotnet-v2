@@ -9,6 +9,7 @@ using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
 using KeyPayV2.Nz.Enums;
 using KeyPayV2.Nz.Models.Common;
+using KeyPayV2.Nz.Models.WorkType;
 
 namespace KeyPayV2.Nz.Functions
 {
@@ -18,10 +19,12 @@ namespace KeyPayV2.Nz.Functions
         Task<List<NzWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzWorkTypeModel CreateWorkType(int businessId, NzWorkTypeModel workType);
         Task<NzWorkTypeModel> CreateWorkTypeAsync(int businessId, NzWorkTypeModel workType, CancellationToken cancellationToken = default);
+        NzWorkTypeModel CreateWorkType(int businessId, NzWorkTypeModel workType, CreateWorkTypeQueryModel request);
+        Task<NzWorkTypeModel> CreateWorkTypeAsync(int businessId, NzWorkTypeModel workType, CreateWorkTypeQueryModel request, CancellationToken cancellationToken = default);
         NzWorkTypeModel GetWorkTypeById(int businessId, int id);
         Task<NzWorkTypeModel> GetWorkTypeByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        NzWorkTypeModel UpdateWorkType(int businessId, int id, NzWorkTypeModel workType);
-        Task<NzWorkTypeModel> UpdateWorkTypeAsync(int businessId, int id, NzWorkTypeModel workType, CancellationToken cancellationToken = default);
+        void UpdateWorkType(int businessId, int id, NzWorkTypeModel workType);
+        Task UpdateWorkTypeAsync(int businessId, int id, NzWorkTypeModel workType, CancellationToken cancellationToken = default);
         void DeleteWorkType(int businessId, int id);
         Task DeleteWorkTypeAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -76,6 +79,28 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Create Work Type
+        /// </summary>
+        /// <remarks>
+        /// Creates a new work type for the business.
+        /// </remarks>
+        public NzWorkTypeModel CreateWorkType(int businessId, NzWorkTypeModel workType, CreateWorkTypeQueryModel request)
+        {
+            return ApiRequest<NzWorkTypeModel,NzWorkTypeModel>($"/business/{businessId}/worktype?applyToAllEmployees={request.ApplyToAllEmployees}", workType, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Work Type
+        /// </summary>
+        /// <remarks>
+        /// Creates a new work type for the business.
+        /// </remarks>
+        public Task<NzWorkTypeModel> CreateWorkTypeAsync(int businessId, NzWorkTypeModel workType, CreateWorkTypeQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzWorkTypeModel,NzWorkTypeModel>($"/business/{businessId}/worktype?applyToAllEmployees={request.ApplyToAllEmployees}", workType, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Work Type by ID
         /// </summary>
         /// <remarks>
@@ -103,9 +128,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the work type with the specified ID.
         /// </remarks>
-        public NzWorkTypeModel UpdateWorkType(int businessId, int id, NzWorkTypeModel workType)
+        public void UpdateWorkType(int businessId, int id, NzWorkTypeModel workType)
         {
-            return ApiRequest<NzWorkTypeModel,NzWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.Put);
+            ApiRequest($"/business/{businessId}/worktype/{id}", workType, Method.Put);
         }
 
         /// <summary>
@@ -114,9 +139,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the work type with the specified ID.
         /// </remarks>
-        public Task<NzWorkTypeModel> UpdateWorkTypeAsync(int businessId, int id, NzWorkTypeModel workType, CancellationToken cancellationToken = default)
+        public Task UpdateWorkTypeAsync(int businessId, int id, NzWorkTypeModel workType, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzWorkTypeModel,NzWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/worktype/{id}", workType, Method.Put, cancellationToken);
         }
 
         /// <summary>

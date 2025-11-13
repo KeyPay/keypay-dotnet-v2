@@ -19,6 +19,10 @@ namespace KeyPayV2.Au.Functions
         Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default);
         List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request);
         Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<WhiteLabelModel> ListWhiteLabels();
+        Task<List<WhiteLabelModel>> ListWhiteLabelsAsync(CancellationToken cancellationToken = default);
+        WhiteLabelModel GetWhiteLabelById(int id);
+        Task<WhiteLabelModel> GetWhiteLabelByIdAsync(int id, CancellationToken cancellationToken = default);
         List<SignupModel> SignupReport(int whitelabelId);
         Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default);
         List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request);
@@ -70,6 +74,50 @@ namespace KeyPayV2.Au.Functions
         public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List White Labels
+        /// </summary>
+        /// <remarks>
+        /// Lists all the white labels to which you have access.
+        /// </remarks>
+        public List<WhiteLabelModel> ListWhiteLabels()
+        {
+            return ApiRequest<List<WhiteLabelModel>>($"/whitelabel", Method.Get);
+        }
+
+        /// <summary>
+        /// List White Labels
+        /// </summary>
+        /// <remarks>
+        /// Lists all the white labels to which you have access.
+        /// </remarks>
+        public Task<List<WhiteLabelModel>> ListWhiteLabelsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<WhiteLabelModel>>($"/whitelabel", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get White Label by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the white label with the specified ID.
+        /// </remarks>
+        public WhiteLabelModel GetWhiteLabelById(int id)
+        {
+            return ApiRequest<WhiteLabelModel>($"/whitelabel/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get White Label by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the white label with the specified ID.
+        /// </remarks>
+        public Task<WhiteLabelModel> GetWhiteLabelByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<WhiteLabelModel>($"/whitelabel/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>

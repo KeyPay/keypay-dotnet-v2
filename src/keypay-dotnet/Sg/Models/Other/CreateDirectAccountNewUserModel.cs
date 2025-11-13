@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Models.Other
     {
         public string CreateNewUserSecret { get; set; }
         public string Password { get; set; }
+        public string ExternalUserSessionReference { get; set; }
         public string Username { get; set; }
         public string DisplayName { get; set; }
         public string TimeZone { get; set; }

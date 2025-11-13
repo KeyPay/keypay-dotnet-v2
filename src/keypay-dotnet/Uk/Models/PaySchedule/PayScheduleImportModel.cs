@@ -18,5 +18,7 @@ namespace KeyPayV2.Uk.Models.PaySchedule
         public string IncludedEmployees { get; set; }
         public List<Int32> Locations { get; set; }
         public string PaySlipMessage { get; set; }
+        public int? PaymentFileId { get; set; }
+        public int? PayeSchemeId { get; set; }
     }
 }

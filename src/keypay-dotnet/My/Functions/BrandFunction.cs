@@ -19,6 +19,10 @@ namespace KeyPayV2.My.Functions
         Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, CancellationToken cancellationToken = default);
         List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request);
         Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
+        List<BrandModel> ListBrandLabels();
+        Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default);
+        BrandModel GetBrandLabelById(int id);
+        Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default);
         List<BusinessTemplateModel> ListBusinessTemplates(string brandId);
         Task<List<BusinessTemplateModel>> ListBusinessTemplatesAsync(string brandId, CancellationToken cancellationToken = default);
         void CancelBusiness(int businessId, string brandId);
@@ -74,6 +78,50 @@ namespace KeyPayV2.My.Functions
         public Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<CommonActiveEmployeesModel>>($"/brand/{brandId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Brand Labels
+        /// </summary>
+        /// <remarks>
+        /// Lists all the brand labels to which you have access.
+        /// </remarks>
+        public List<BrandModel> ListBrandLabels()
+        {
+            return ApiRequest<List<BrandModel>>($"/brand", Method.Get);
+        }
+
+        /// <summary>
+        /// List Brand Labels
+        /// </summary>
+        /// <remarks>
+        /// Lists all the brand labels to which you have access.
+        /// </remarks>
+        public Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BrandModel>>($"/brand", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Brand Label by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the brand label with the specified ID.
+        /// </remarks>
+        public BrandModel GetBrandLabelById(int id)
+        {
+            return ApiRequest<BrandModel>($"/brand/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Brand Label by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the brand label with the specified ID.
+        /// </remarks>
+        public Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BrandModel>($"/brand/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>

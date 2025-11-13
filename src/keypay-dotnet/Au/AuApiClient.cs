@@ -15,6 +15,8 @@ namespace KeyPayV2.Au
         IEmployeeFunction Employee { get; }
         IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         IEmployeeGroupsFunction EmployeeGroups { get; }
+        IEmployeeOnboardingFunction EmployeeOnboarding { get; }
+        IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         IEmployingEntitiesFunction EmployingEntities { get; }
         IInvoicesFunction Invoices { get; }
@@ -33,11 +35,11 @@ namespace KeyPayV2.Au
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
+        IWorkTypeFunction WorkType { get; }
         IPayRunFunction PayRun { get; }
         IAbaSettingsFunction AbaSettings { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
-        IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         IEmployeeDocumentFunction EmployeeDocument { get; }
         IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
@@ -50,14 +52,12 @@ namespace KeyPayV2.Au
         IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
-        IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         ISuperFundFunction SuperFund { get; }
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
-        IWorkTypeFunction WorkType { get; }
         IEssFunction Ess { get; }
         IUserFunction User { get; }
     }
@@ -74,6 +74,8 @@ namespace KeyPayV2.Au
             Employee = new EmployeeFunction(Api);
             EmployeeExpenseCategories = new EmployeeExpenseCategoriesFunction(Api);
             EmployeeGroups = new EmployeeGroupsFunction(Api);
+            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
+            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
             Invoices = new InvoicesFunction(Api);
@@ -92,11 +94,11 @@ namespace KeyPayV2.Au
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
+            WorkType = new WorkTypeFunction(Api);
             PayRun = new PayRunFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
-            EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
             EmployeeEarningsLineSplit = new EmployeeEarningsLineSplitFunction(Api);
@@ -109,14 +111,12 @@ namespace KeyPayV2.Au
             EmployeeSelfManagedSuperFund = new EmployeeSelfManagedSuperFundFunction(Api);
             EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             SuperFund = new SuperFundFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
-            WorkType = new WorkTypeFunction(Api);
             Ess = new EssFunction(Api);
             User = new UserFunction(Api);
         }
@@ -130,6 +130,8 @@ namespace KeyPayV2.Au
         public IEmployeeFunction Employee { get; }
         public IEmployeeExpenseCategoriesFunction EmployeeExpenseCategories { get; }
         public IEmployeeGroupsFunction EmployeeGroups { get; }
+        public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
+        public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public IEmployingEntitiesFunction EmployingEntities { get; }
         public IInvoicesFunction Invoices { get; }
@@ -148,11 +150,11 @@ namespace KeyPayV2.Au
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
+        public IWorkTypeFunction WorkType { get; }
         public IPayRunFunction PayRun { get; }
         public IAbaSettingsFunction AbaSettings { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
-        public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         public IEmployeeDocumentFunction EmployeeDocument { get; }
         public IEmployeeEarningsLineSplitFunction EmployeeEarningsLineSplit { get; }
@@ -165,14 +167,12 @@ namespace KeyPayV2.Au
         public IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         public IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public ISuperFundFunction SuperFund { get; }
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
-        public IWorkTypeFunction WorkType { get; }
         public IEssFunction Ess { get; }
         public IUserFunction User { get; }
     }

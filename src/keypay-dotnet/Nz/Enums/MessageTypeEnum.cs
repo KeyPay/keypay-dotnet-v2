@@ -148,7 +148,6 @@ namespace KeyPayV2.Nz.Enums
         NotifyUserSsoDetailsChanged,
         NotifyUserSsoAccessEnabled,
         NotifyUserSsoAccessDisabled,
-        AccountRecoveryRequestApproved,
         AccountRecoveryRequestApprovedAndPasskeyReset,
         AccountRecoveryRequestDeclined,
         AccountRecoveryRequestForPartnerDeclined,

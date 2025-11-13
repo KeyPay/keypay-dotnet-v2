@@ -17,12 +17,12 @@ namespace KeyPayV2.Nz.Functions
     {
         NzDeductionCategoryModel GetDeductionCategoryById(int businessId, int id);
         Task<NzDeductionCategoryModel> GetDeductionCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateDeductionCategory(int businessId, int id, NzDeductionCategoryModel deductionCategory);
-        Task UpdateDeductionCategoryAsync(int businessId, int id, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        NzDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, NzDeductionCategoryModel deductionCategory);
+        Task<NzDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         void DeleteDeductionCategory(int businessId, int id);
         Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void CreateDeductionCategory(int businessId, NzDeductionCategoryModel deductionCategory);
-        Task CreateDeductionCategoryAsync(int businessId, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
+        NzDeductionCategoryModel CreateDeductionCategory(int businessId, NzDeductionCategoryModel deductionCategory);
+        Task<NzDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         List<NzDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<NzDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
     }
@@ -58,9 +58,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the deduction category with the specified ID.
         /// </remarks>
-        public void UpdateDeductionCategory(int businessId, int id, NzDeductionCategoryModel deductionCategory)
+        public NzDeductionCategoryModel UpdateDeductionCategory(int businessId, int id, NzDeductionCategoryModel deductionCategory)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
+            return ApiRequest<NzDeductionCategoryModel,NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put);
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Updates the deduction category with the specified ID.
         /// </remarks>
-        public Task UpdateDeductionCategoryAsync(int businessId, int id, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        public Task<NzDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
+            return ApiRequestAsync<NzDeductionCategoryModel,NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory/{id}", deductionCategory, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -102,9 +102,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Creates a deduction category for the business.
         /// </remarks>
-        public void CreateDeductionCategory(int businessId, NzDeductionCategoryModel deductionCategory)
+        public NzDeductionCategoryModel CreateDeductionCategory(int businessId, NzDeductionCategoryModel deductionCategory)
         {
-            ApiRequest($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
+            return ApiRequest<NzDeductionCategoryModel,NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
         }
 
         /// <summary>
@@ -113,9 +113,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Creates a deduction category for the business.
         /// </remarks>
-        public Task CreateDeductionCategoryAsync(int businessId, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        public Task<NzDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, NzDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
+            return ApiRequestAsync<NzDeductionCategoryModel,NzDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>

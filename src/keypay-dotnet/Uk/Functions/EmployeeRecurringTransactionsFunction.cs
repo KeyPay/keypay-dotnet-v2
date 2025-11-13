@@ -15,6 +15,16 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IEmployeeRecurringTransactionsFunction
     {
+        List<EmployeeRecurringHmrcAdjustmentModel> ListHmrcAdjustments(int businessId, int employeeId);
+        Task<List<EmployeeRecurringHmrcAdjustmentModel>> ListHmrcAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeRecurringHmrcAdjustmentModel CreateOrUpdateEmployeeHmrcAdjustment(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model);
+        Task<EmployeeRecurringHmrcAdjustmentModel> CreateOrUpdateEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringHmrcAdjustmentModel GetHmrcAdjustmentById(int businessId, int employeeId, int id);
+        Task<EmployeeRecurringHmrcAdjustmentModel> GetHmrcAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void DeleteEmployeeHmrcAdjustment(int businessId, int employeeId, int id);
+        Task DeleteEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringHmrcAdjustmentModel GetEmployeeHmrcAdjustmentByExternalReferenceId(int businessId, int employeeId, string externalReferenceId);
+        Task<EmployeeRecurringHmrcAdjustmentModel> GetEmployeeHmrcAdjustmentByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default);
         List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId);
         Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         AdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, AdditionalEarningsInputModel model);
@@ -57,16 +67,6 @@ namespace KeyPayV2.Uk.Functions
         Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeExpense(int businessId, int employeeId, int id);
         Task DeleteEmployeeExpenseAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringHmrcAdjustmentModel> ListHmrcAdjustments(int businessId, int employeeId);
-        Task<List<EmployeeRecurringHmrcAdjustmentModel>> ListHmrcAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeRecurringHmrcAdjustmentModel CreateOrUpdateEmployeeHmrcAdjustment(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model);
-        Task<EmployeeRecurringHmrcAdjustmentModel> CreateOrUpdateEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model, CancellationToken cancellationToken = default);
-        EmployeeRecurringHmrcAdjustmentModel GetEmployeeHmrcAdjustmentByExternalReferenceId(int businessId, int employeeId, string externalReferenceId);
-        Task<EmployeeRecurringHmrcAdjustmentModel> GetEmployeeHmrcAdjustmentByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default);
-        EmployeeRecurringHmrcAdjustmentModel GetHmrcAdjustmentById(int businessId, int employeeId, int id);
-        Task<EmployeeRecurringHmrcAdjustmentModel> GetHmrcAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        void DeleteEmployeeHmrcAdjustment(int businessId, int employeeId, int id);
-        Task DeleteEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId);
         Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeRecurringTaxAdjustmentModel CreateEmployeeTaxAdjustment(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model);
@@ -83,6 +83,116 @@ namespace KeyPayV2.Uk.Functions
     public class EmployeeRecurringTransactionsFunction : BaseFunction, IEmployeeRecurringTransactionsFunction
     {
         public EmployeeRecurringTransactionsFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// List Hmrc Adjustments
+        /// </summary>
+        /// <remarks>
+        /// List all the HMRC adjustments for the employee
+        /// </remarks>
+        public List<EmployeeRecurringHmrcAdjustmentModel> ListHmrcAdjustments(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringHmrcAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", Method.Get);
+        }
+
+        /// <summary>
+        /// List Hmrc Adjustments
+        /// </summary>
+        /// <remarks>
+        /// List all the HMRC adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringHmrcAdjustmentModel>> ListHmrcAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringHmrcAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Or Update Employee HMRC Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a recurring HMRC adjustment for an employee
+        /// </remarks>
+        public EmployeeRecurringHmrcAdjustmentModel CreateOrUpdateEmployeeHmrcAdjustment(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel,EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Or Update Employee HMRC Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a recurring HMRC adjustment for an employee
+        /// </remarks>
+        public Task<EmployeeRecurringHmrcAdjustmentModel> CreateOrUpdateEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringHmrcAdjustmentModel,EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Hmrc Adjustment By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets a HMRC adjustment by a specific ID
+        /// </remarks>
+        public EmployeeRecurringHmrcAdjustmentModel GetHmrcAdjustmentById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Hmrc Adjustment By Id
+        /// </summary>
+        /// <remarks>
+        /// Gets a HMRC adjustment by a specific ID
+        /// </remarks>
+        public Task<EmployeeRecurringHmrcAdjustmentModel> GetHmrcAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Hmrc Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee HMRC adjustment with the specified ID.
+        /// </remarks>
+        public void DeleteEmployeeHmrcAdjustment(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Hmrc Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee HMRC adjustment with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee HMRC adjustment by External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring HMRC adjustment with the specified external reference ID.
+        /// </remarks>
+        public EmployeeRecurringHmrcAdjustmentModel GetEmployeeHmrcAdjustmentByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
+        {
+            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{externalReferenceId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee HMRC adjustment by External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring HMRC adjustment with the specified external reference ID.
+        /// </remarks>
+        public Task<EmployeeRecurringHmrcAdjustmentModel> GetEmployeeHmrcAdjustmentByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{externalReferenceId}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// List Employee Additional Earnings
@@ -544,116 +654,6 @@ namespace KeyPayV2.Uk.Functions
         public Task DeleteEmployeeExpenseAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Hmrc Adjustments
-        /// </summary>
-        /// <remarks>
-        /// List all the HMRC adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringHmrcAdjustmentModel> ListHmrcAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringHmrcAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", Method.Get);
-        }
-
-        /// <summary>
-        /// List Hmrc Adjustments
-        /// </summary>
-        /// <remarks>
-        /// List all the HMRC adjustments for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringHmrcAdjustmentModel>> ListHmrcAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringHmrcAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Or Update Employee HMRC Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a recurring HMRC adjustment for an employee
-        /// </remarks>
-        public EmployeeRecurringHmrcAdjustmentModel CreateOrUpdateEmployeeHmrcAdjustment(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel,EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Or Update Employee HMRC Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a recurring HMRC adjustment for an employee
-        /// </remarks>
-        public Task<EmployeeRecurringHmrcAdjustmentModel> CreateOrUpdateEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringHmrcAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringHmrcAdjustmentModel,EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee HMRC adjustment by External Reference Id
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring HMRC adjustment with the specified external reference ID.
-        /// </remarks>
-        public EmployeeRecurringHmrcAdjustmentModel GetEmployeeHmrcAdjustmentByExternalReferenceId(int businessId, int employeeId, string externalReferenceId)
-        {
-            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{externalReferenceId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee HMRC adjustment by External Reference Id
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring HMRC adjustment with the specified external reference ID.
-        /// </remarks>
-        public Task<EmployeeRecurringHmrcAdjustmentModel> GetEmployeeHmrcAdjustmentByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{externalReferenceId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Hmrc Adjustment By Id
-        /// </summary>
-        /// <remarks>
-        /// Gets a HMRC adjustment by a specific ID
-        /// </remarks>
-        public EmployeeRecurringHmrcAdjustmentModel GetHmrcAdjustmentById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Hmrc Adjustment By Id
-        /// </summary>
-        /// <remarks>
-        /// Gets a HMRC adjustment by a specific ID
-        /// </remarks>
-        public Task<EmployeeRecurringHmrcAdjustmentModel> GetHmrcAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringHmrcAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee Hmrc Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee HMRC adjustment with the specified ID.
-        /// </remarks>
-        public void DeleteEmployeeHmrcAdjustment(int businessId, int employeeId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee Hmrc Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee HMRC adjustment with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeHmrcAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcadjustment/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
