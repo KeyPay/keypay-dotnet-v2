@@ -155,6 +155,7 @@ namespace KeyPayV2.Nz.Enums
         PasskeyDeletionConfirmation,
         InactiveUserLogin,
         NotifyMoneyMovementUserOfFailedCreditPaymentStatus,
-        NotifyMoneyMovementUserOfFailedDebitPaymentStatus
+        NotifyMoneyMovementUserOfFailedDebitPaymentStatus,
+        TxMonitoringNotification
     }
 }
