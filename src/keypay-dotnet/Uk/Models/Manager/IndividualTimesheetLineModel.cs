@@ -21,6 +21,7 @@ namespace KeyPayV2.Uk.Models.Manager
         public IList<TimesheetBreakModelv3> Breaks { get; set; }
         public string Status { get; set; }
         public decimal? Rate { get; set; }
+        public int? LeaveRequestId { get; set; }
         public int? LeaveCategoryId { get; set; }
         public int? PayCategoryId { get; set; }
         public string ExternalId { get; set; }

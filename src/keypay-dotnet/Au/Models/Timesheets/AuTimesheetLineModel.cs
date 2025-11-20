@@ -38,5 +38,6 @@ namespace KeyPayV2.Au.Models.Timesheets
         public Attachment Attachment { get; set; }
         public string SubmittedByUser { get; set; }
         public IList<Int32> DimensionValueIds { get; set; }
+        public string LeaveRequestId { get; set; }
     }
 }
