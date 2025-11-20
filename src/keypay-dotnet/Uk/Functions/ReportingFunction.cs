@@ -15,48 +15,6 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IReportingFunction
     {
-        UkP32ReportModel GetP32ReportData(int businessId);
-        Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, CancellationToken cancellationToken = default);
-        UkP32ReportModel GetP32ReportData(int businessId, GetP32ReportDataQueryModel request);
-        Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, GetP32ReportDataQueryModel request, CancellationToken cancellationToken = default);
-        UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests);
-        Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, CancellationToken cancellationToken = default);
-        UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request);
-        Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] DownloadP32ReportPdf(int businessId);
-        Task<byte[]> DownloadP32ReportPdfAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] DownloadP32ReportPdf(int businessId, DownloadP32ReportPdfQueryModel request);
-        Task<byte[]> DownloadP32ReportPdfAsync(int businessId, DownloadP32ReportPdfQueryModel request, CancellationToken cancellationToken = default);
-        UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId);
-        Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default);
-        UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId, GetNiDeductionsSummaryReportQueryModel request);
-        Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, GetNiDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default);
-        UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId);
-        Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default);
-        UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId, GetCisDeductionsSummaryReportQueryModel request);
-        Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, GetCisDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default);
-        UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId);
-        Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, CancellationToken cancellationToken = default);
-        UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId, GetApprenticeshipLevySummaryReportQueryModel request);
-        Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, GetApprenticeshipLevySummaryReportQueryModel request, CancellationToken cancellationToken = default);
-        UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId);
-        Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, CancellationToken cancellationToken = default);
-        UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request);
-        Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request, CancellationToken cancellationToken = default);
-        UkP32ReportAdjustmentsModel UpdateP32OpeningBalancesAdjustments(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel);
-        Task<UkP32ReportAdjustmentsModel> UpdateP32OpeningBalancesAdjustmentsAsync(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel, CancellationToken cancellationToken = default);
-        byte[] GetHmrcPaymentFile(int businessId);
-        Task<byte[]> GetHmrcPaymentFileAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] GetHmrcPaymentFile(int businessId, GetHmrcPaymentFileQueryModel request);
-        Task<byte[]> GetHmrcPaymentFileAsync(int businessId, GetHmrcPaymentFileQueryModel request, CancellationToken cancellationToken = default);
-        List<P45ReportResponseModel> P45Report(int businessId);
-        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request);
-        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] P45PdfReport(int businessId);
-        Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request);
-        Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default);
         P11dPublishApiResponseModel PublishP11d(int businessId, PublishP11dRequestModel publishP11dRequestModel);
         Task<P11dPublishApiResponseModel> PublishP11dAsync(int businessId, PublishP11dRequestModel publishP11dRequestModel, CancellationToken cancellationToken = default);
         LodgeExbApiResult SubmitExbSubmission(int businessId, ExbRequestApiModel exbModel);
@@ -233,460 +191,52 @@ namespace KeyPayV2.Uk.Functions
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, CancellationToken cancellationToken = default);
         List<TasksReportExportModel> GetTasksByBusinessId(int businessId, GetTasksByBusinessIdQueryModel request);
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default);
+        UkP32ReportModel GetP32ReportData(int businessId);
+        Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, CancellationToken cancellationToken = default);
+        UkP32ReportModel GetP32ReportData(int businessId, GetP32ReportDataQueryModel request);
+        Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, GetP32ReportDataQueryModel request, CancellationToken cancellationToken = default);
+        UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests);
+        Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, CancellationToken cancellationToken = default);
+        UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request);
+        Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] DownloadP32ReportPdf(int businessId);
+        Task<byte[]> DownloadP32ReportPdfAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] DownloadP32ReportPdf(int businessId, DownloadP32ReportPdfQueryModel request);
+        Task<byte[]> DownloadP32ReportPdfAsync(int businessId, DownloadP32ReportPdfQueryModel request, CancellationToken cancellationToken = default);
+        UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId);
+        Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default);
+        UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId, GetNiDeductionsSummaryReportQueryModel request);
+        Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, GetNiDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default);
+        UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId);
+        Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default);
+        UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId, GetCisDeductionsSummaryReportQueryModel request);
+        Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, GetCisDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default);
+        UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId);
+        Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, CancellationToken cancellationToken = default);
+        UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId, GetApprenticeshipLevySummaryReportQueryModel request);
+        Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, GetApprenticeshipLevySummaryReportQueryModel request, CancellationToken cancellationToken = default);
+        UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId);
+        Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, CancellationToken cancellationToken = default);
+        UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request);
+        Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request, CancellationToken cancellationToken = default);
+        UkP32ReportAdjustmentsModel UpdateP32OpeningBalancesAdjustments(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel);
+        Task<UkP32ReportAdjustmentsModel> UpdateP32OpeningBalancesAdjustmentsAsync(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel, CancellationToken cancellationToken = default);
+        byte[] GetHmrcPaymentFile(int businessId);
+        Task<byte[]> GetHmrcPaymentFileAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] GetHmrcPaymentFile(int businessId, GetHmrcPaymentFileQueryModel request);
+        Task<byte[]> GetHmrcPaymentFileAsync(int businessId, GetHmrcPaymentFileQueryModel request, CancellationToken cancellationToken = default);
+        List<P45ReportResponseModel> P45Report(int businessId);
+        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request);
+        Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] P45PdfReport(int businessId);
+        Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request);
+        Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default);
     }
     public class ReportingFunction : BaseFunction, IReportingFunction
     {
         public ReportingFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get P32 Report data
-        /// </summary>
-        /// <remarks>
-        /// Gets P32 Report data for the financial year
-        /// </remarks>
-        public UkP32ReportModel GetP32ReportData(int businessId)
-        {
-            return ApiRequest<UkP32ReportModel>($"/business/{businessId}/report/p32", Method.Get);
-        }
-
-        /// <summary>
-        /// Get P32 Report data
-        /// </summary>
-        /// <remarks>
-        /// Gets P32 Report data for the financial year
-        /// </remarks>
-        public Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportModel>($"/business/{businessId}/report/p32", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get P32 Report data
-        /// </summary>
-        /// <remarks>
-        /// Gets P32 Report data for the financial year
-        /// </remarks>
-        public UkP32ReportModel GetP32ReportData(int businessId, GetP32ReportDataQueryModel request)
-        {
-            return ApiRequest<UkP32ReportModel>($"/business/{businessId}/report/p32?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get P32 Report data
-        /// </summary>
-        /// <remarks>
-        /// Gets P32 Report data for the financial year
-        /// </remarks>
-        public Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, GetP32ReportDataQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportModel>($"/business/{businessId}/report/p32?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update P32 Report
-        /// </summary>
-        /// <remarks>
-        /// Update P32 Report for the financial year
-        /// </remarks>
-        public UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests)
-        {
-            return ApiRequest<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32", p32Requests, Method.Put);
-        }
-
-        /// <summary>
-        /// Update P32 Report
-        /// </summary>
-        /// <remarks>
-        /// Update P32 Report for the financial year
-        /// </remarks>
-        public Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32", p32Requests, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update P32 Report
-        /// </summary>
-        /// <remarks>
-        /// Update P32 Report for the financial year
-        /// </remarks>
-        public UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request)
-        {
-            return ApiRequest<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", p32Requests, Method.Put);
-        }
-
-        /// <summary>
-        /// Update P32 Report
-        /// </summary>
-        /// <remarks>
-        /// Update P32 Report for the financial year
-        /// </remarks>
-        public Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", p32Requests, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Download P32 Report PDF
-        /// </summary>
-        /// <remarks>
-        /// Downloads P32 Report for the financial year as a PDF
-        /// </remarks>
-        public byte[] DownloadP32ReportPdf(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p32/download/pdf", Method.Get);
-        }
-
-        /// <summary>
-        /// Download P32 Report PDF
-        /// </summary>
-        /// <remarks>
-        /// Downloads P32 Report for the financial year as a PDF
-        /// </remarks>
-        public Task<byte[]> DownloadP32ReportPdfAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/download/pdf", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Download P32 Report PDF
-        /// </summary>
-        /// <remarks>
-        /// Downloads P32 Report for the financial year as a PDF
-        /// </remarks>
-        public byte[] DownloadP32ReportPdf(int businessId, DownloadP32ReportPdfQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p32/download/pdf?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Download P32 Report PDF
-        /// </summary>
-        /// <remarks>
-        /// Downloads P32 Report for the financial year as a PDF
-        /// </remarks>
-        public Task<byte[]> DownloadP32ReportPdfAsync(int businessId, DownloadP32ReportPdfQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/download/pdf?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get NI Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets NI Deductions Summary Report for the financial year
-        /// </remarks>
-        public UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId)
-        {
-            return ApiRequest<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary", Method.Get);
-        }
-
-        /// <summary>
-        /// Get NI Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets NI Deductions Summary Report for the financial year
-        /// </remarks>
-        public Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get NI Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets NI Deductions Summary Report for the financial year
-        /// </remarks>
-        public UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId, GetNiDeductionsSummaryReportQueryModel request)
-        {
-            return ApiRequest<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get NI Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets NI Deductions Summary Report for the financial year
-        /// </remarks>
-        public Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, GetNiDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get CIS Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets CIS Deductions Summary Report for the financial year
-        /// </remarks>
-        public UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId)
-        {
-            return ApiRequest<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary", Method.Get);
-        }
-
-        /// <summary>
-        /// Get CIS Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets CIS Deductions Summary Report for the financial year
-        /// </remarks>
-        public Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get CIS Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets CIS Deductions Summary Report for the financial year
-        /// </remarks>
-        public UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId, GetCisDeductionsSummaryReportQueryModel request)
-        {
-            return ApiRequest<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get CIS Deductions Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets CIS Deductions Summary Report for the financial year
-        /// </remarks>
-        public Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, GetCisDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Apprenticeship Levy Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets Apprenticeship Levy Summary Report for the financial year
-        /// </remarks>
-        public UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId)
-        {
-            return ApiRequest<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Apprenticeship Levy Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets Apprenticeship Levy Summary Report for the financial year
-        /// </remarks>
-        public Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Apprenticeship Levy Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets Apprenticeship Levy Summary Report for the financial year
-        /// </remarks>
-        public UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId, GetApprenticeshipLevySummaryReportQueryModel request)
-        {
-            return ApiRequest<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Apprenticeship Levy Summary Report
-        /// </summary>
-        /// <remarks>
-        /// Gets Apprenticeship Levy Summary Report for the financial year
-        /// </remarks>
-        public Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, GetApprenticeshipLevySummaryReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get P32 Opening Balances Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
-        /// </remarks>
-        public UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId)
-        {
-            return ApiRequest<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", Method.Get);
-        }
-
-        /// <summary>
-        /// Get P32 Opening Balances Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
-        /// </remarks>
-        public Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get P32 Opening Balances Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
-        /// </remarks>
-        public UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request)
-        {
-            return ApiRequest<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments?payeSchemeId={request.PayeSchemeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get P32 Opening Balances Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
-        /// </remarks>
-        public Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments?payeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update P32 Opening Balances Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Update P32 Opening Balances Adjustments for the business' initial tax year using this software.
-        /// </remarks>
-        public UkP32ReportAdjustmentsModel UpdateP32OpeningBalancesAdjustments(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel)
-        {
-            return ApiRequest<UkP32ReportAdjustmentsModel,UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", p32AdjustmentRequestModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update P32 Opening Balances Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Update P32 Opening Balances Adjustments for the business' initial tax year using this software.
-        /// </remarks>
-        public Task<UkP32ReportAdjustmentsModel> UpdateP32OpeningBalancesAdjustmentsAsync(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkP32ReportAdjustmentsModel,UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", p32AdjustmentRequestModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Hmrc Payment File
-        /// </summary>
-        public byte[] GetHmrcPaymentFile(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p32/hmrcpaymentfile", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Hmrc Payment File
-        /// </summary>
-        public Task<byte[]> GetHmrcPaymentFileAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/hmrcpaymentfile", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Hmrc Payment File
-        /// </summary>
-        public byte[] GetHmrcPaymentFile(int businessId, GetHmrcPaymentFileQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p32/hmrcpaymentfile?DateInPayPeriod={request.DateInPayPeriod.ToString("yyyy-MM-ddTHH:mm:ss")}&PaymentPeriod={request.PaymentPeriod}&PayeSchemeId={request.PayeSchemeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Hmrc Payment File
-        /// </summary>
-        public Task<byte[]> GetHmrcPaymentFileAsync(int businessId, GetHmrcPaymentFileQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/hmrcpaymentfile?DateInPayPeriod={request.DateInPayPeriod.ToString("yyyy-MM-ddTHH:mm:ss")}&PaymentPeriod={request.PaymentPeriod}&PayeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public List<P45ReportResponseModel> P45Report(int businessId)
-        {
-            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request)
-        {
-            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report data.
-        /// </remarks>
-        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public byte[] P45PdfReport(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
-        }
-
-        /// <summary>
-        /// P45 PDF Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a P45 report in PDF format.
-        /// </remarks>
-        public Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Publish P11d
@@ -2472,6 +2022,456 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TasksReportExportModel>>($"/business/{businessId}/report/tasks?EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&Status={request.Status}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P32 Report data
+        /// </summary>
+        /// <remarks>
+        /// Gets P32 Report data for the financial year
+        /// </remarks>
+        public UkP32ReportModel GetP32ReportData(int businessId)
+        {
+            return ApiRequest<UkP32ReportModel>($"/business/{businessId}/report/p32", Method.Get);
+        }
+
+        /// <summary>
+        /// Get P32 Report data
+        /// </summary>
+        /// <remarks>
+        /// Gets P32 Report data for the financial year
+        /// </remarks>
+        public Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportModel>($"/business/{businessId}/report/p32", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P32 Report data
+        /// </summary>
+        /// <remarks>
+        /// Gets P32 Report data for the financial year
+        /// </remarks>
+        public UkP32ReportModel GetP32ReportData(int businessId, GetP32ReportDataQueryModel request)
+        {
+            return ApiRequest<UkP32ReportModel>($"/business/{businessId}/report/p32?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get P32 Report data
+        /// </summary>
+        /// <remarks>
+        /// Gets P32 Report data for the financial year
+        /// </remarks>
+        public Task<UkP32ReportModel> GetP32ReportDataAsync(int businessId, GetP32ReportDataQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportModel>($"/business/{businessId}/report/p32?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update P32 Report
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Report for the financial year
+        /// </remarks>
+        public UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests)
+        {
+            return ApiRequest<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32", p32Requests, Method.Put);
+        }
+
+        /// <summary>
+        /// Update P32 Report
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Report for the financial year
+        /// </remarks>
+        public Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32", p32Requests, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update P32 Report
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Report for the financial year
+        /// </remarks>
+        public UkP32ReportModel UpdateP32Report(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request)
+        {
+            return ApiRequest<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", p32Requests, Method.Put);
+        }
+
+        /// <summary>
+        /// Update P32 Report
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Report for the financial year
+        /// </remarks>
+        public Task<UkP32ReportModel> UpdateP32ReportAsync(int businessId, IList<UkP32RequestModel> p32Requests, UpdateP32ReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportModel,IList<UkP32RequestModel>>($"/business/{businessId}/report/p32?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", p32Requests, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Download P32 Report PDF
+        /// </summary>
+        /// <remarks>
+        /// Downloads P32 Report for the financial year as a PDF
+        /// </remarks>
+        public byte[] DownloadP32ReportPdf(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p32/download/pdf", Method.Get);
+        }
+
+        /// <summary>
+        /// Download P32 Report PDF
+        /// </summary>
+        /// <remarks>
+        /// Downloads P32 Report for the financial year as a PDF
+        /// </remarks>
+        public Task<byte[]> DownloadP32ReportPdfAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/download/pdf", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Download P32 Report PDF
+        /// </summary>
+        /// <remarks>
+        /// Downloads P32 Report for the financial year as a PDF
+        /// </remarks>
+        public byte[] DownloadP32ReportPdf(int businessId, DownloadP32ReportPdfQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p32/download/pdf?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Download P32 Report PDF
+        /// </summary>
+        /// <remarks>
+        /// Downloads P32 Report for the financial year as a PDF
+        /// </remarks>
+        public Task<byte[]> DownloadP32ReportPdfAsync(int businessId, DownloadP32ReportPdfQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/download/pdf?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get NI Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets NI Deductions Summary Report for the financial year
+        /// </remarks>
+        public UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId)
+        {
+            return ApiRequest<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary", Method.Get);
+        }
+
+        /// <summary>
+        /// Get NI Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets NI Deductions Summary Report for the financial year
+        /// </remarks>
+        public Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get NI Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets NI Deductions Summary Report for the financial year
+        /// </remarks>
+        public UkNIDeductionsSummaryReportModel GetNiDeductionsSummaryReport(int businessId, GetNiDeductionsSummaryReportQueryModel request)
+        {
+            return ApiRequest<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get NI Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets NI Deductions Summary Report for the financial year
+        /// </remarks>
+        public Task<UkNIDeductionsSummaryReportModel> GetNiDeductionsSummaryReportAsync(int businessId, GetNiDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkNIDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/nideductionssummary?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get CIS Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets CIS Deductions Summary Report for the financial year
+        /// </remarks>
+        public UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId)
+        {
+            return ApiRequest<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary", Method.Get);
+        }
+
+        /// <summary>
+        /// Get CIS Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets CIS Deductions Summary Report for the financial year
+        /// </remarks>
+        public Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get CIS Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets CIS Deductions Summary Report for the financial year
+        /// </remarks>
+        public UkCISDeductionsSummaryReportModel GetCisDeductionsSummaryReport(int businessId, GetCisDeductionsSummaryReportQueryModel request)
+        {
+            return ApiRequest<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get CIS Deductions Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets CIS Deductions Summary Report for the financial year
+        /// </remarks>
+        public Task<UkCISDeductionsSummaryReportModel> GetCisDeductionsSummaryReportAsync(int businessId, GetCisDeductionsSummaryReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkCISDeductionsSummaryReportModel>($"/business/{businessId}/report/p32/cisdeductionssummary?financialYearEnding={request.FinancialYearEnding}&payeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Apprenticeship Levy Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets Apprenticeship Levy Summary Report for the financial year
+        /// </remarks>
+        public UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId)
+        {
+            return ApiRequest<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Apprenticeship Levy Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets Apprenticeship Levy Summary Report for the financial year
+        /// </remarks>
+        public Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Apprenticeship Levy Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets Apprenticeship Levy Summary Report for the financial year
+        /// </remarks>
+        public UkApprenticeshipLevySummaryReportModel GetApprenticeshipLevySummaryReport(int businessId, GetApprenticeshipLevySummaryReportQueryModel request)
+        {
+            return ApiRequest<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Apprenticeship Levy Summary Report
+        /// </summary>
+        /// <remarks>
+        /// Gets Apprenticeship Levy Summary Report for the financial year
+        /// </remarks>
+        public Task<UkApprenticeshipLevySummaryReportModel> GetApprenticeshipLevySummaryReportAsync(int businessId, GetApprenticeshipLevySummaryReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkApprenticeshipLevySummaryReportModel>($"/business/{businessId}/report/p32/apprenticeshiplevy?FinancialYearEnding={request.FinancialYearEnding}&PayeSchemeId={request.PayeSchemeId}&Date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
+        /// </remarks>
+        public UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId)
+        {
+            return ApiRequest<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", Method.Get);
+        }
+
+        /// <summary>
+        /// Get P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
+        /// </remarks>
+        public Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
+        /// </remarks>
+        public UkP32ReportAdjustmentsModel GetP32OpeningBalancesAdjustments(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request)
+        {
+            return ApiRequest<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments?payeSchemeId={request.PayeSchemeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Get P32 Opening Balances Adjustments for the business' initial tax year using this software
+        /// </remarks>
+        public Task<UkP32ReportAdjustmentsModel> GetP32OpeningBalancesAdjustmentsAsync(int businessId, GetP32OpeningBalancesAdjustmentsQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments?payeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Opening Balances Adjustments for the business' initial tax year using this software.
+        /// </remarks>
+        public UkP32ReportAdjustmentsModel UpdateP32OpeningBalancesAdjustments(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel)
+        {
+            return ApiRequest<UkP32ReportAdjustmentsModel,UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", p32AdjustmentRequestModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update P32 Opening Balances Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Update P32 Opening Balances Adjustments for the business' initial tax year using this software.
+        /// </remarks>
+        public Task<UkP32ReportAdjustmentsModel> UpdateP32OpeningBalancesAdjustmentsAsync(int businessId, UkP32ReportAdjustmentsModel p32AdjustmentRequestModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkP32ReportAdjustmentsModel,UkP32ReportAdjustmentsModel>($"/business/{businessId}/report/p32/openingbalancesadjustments", p32AdjustmentRequestModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Hmrc Payment File
+        /// </summary>
+        public byte[] GetHmrcPaymentFile(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p32/hmrcpaymentfile", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Hmrc Payment File
+        /// </summary>
+        public Task<byte[]> GetHmrcPaymentFileAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/hmrcpaymentfile", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Hmrc Payment File
+        /// </summary>
+        public byte[] GetHmrcPaymentFile(int businessId, GetHmrcPaymentFileQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p32/hmrcpaymentfile?DateInPayPeriod={request.DateInPayPeriod.ToString("yyyy-MM-ddTHH:mm:ss")}&PaymentPeriod={request.PaymentPeriod}&PayeSchemeId={request.PayeSchemeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Hmrc Payment File
+        /// </summary>
+        public Task<byte[]> GetHmrcPaymentFileAsync(int businessId, GetHmrcPaymentFileQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p32/hmrcpaymentfile?DateInPayPeriod={request.DateInPayPeriod.ToString("yyyy-MM-ddTHH:mm:ss")}&PaymentPeriod={request.PaymentPeriod}&PayeSchemeId={request.PayeSchemeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public List<P45ReportResponseModel> P45Report(int businessId)
+        {
+            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public List<P45ReportResponseModel> P45Report(int businessId, P45ReportQueryModel request)
+        {
+            return ApiRequest<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report data.
+        /// </remarks>
+        public Task<List<P45ReportResponseModel>> P45ReportAsync(int businessId, P45ReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<P45ReportResponseModel>>($"/business/{businessId}/report/p45?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public byte[] P45PdfReport(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public Task<byte[]> P45PdfReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public byte[] P45PdfReport(int businessId, P45PdfReportQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/p45/pdf?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// P45 PDF Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a P45 report in PDF format.
+        /// </remarks>
+        public Task<byte[]> P45PdfReportAsync(int businessId, P45PdfReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/p45/pdf?PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
         }
     }
 }

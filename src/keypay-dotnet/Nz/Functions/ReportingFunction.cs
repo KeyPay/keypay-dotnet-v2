@@ -15,10 +15,6 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IReportingFunction
     {
-        List<NzCostingReportApiModel> CostingReport(int businessId);
-        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
-        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
         byte[] PayRunAuditReport(int businessId, int payRunId);
         Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         byte[] PayRunAuditReport(int businessId, int payRunId, PayRunAuditReportQueryModel request);
@@ -157,54 +153,14 @@ namespace KeyPayV2.Nz.Functions
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, CancellationToken cancellationToken = default);
         List<TasksReportExportModel> GetTasksByBusinessId(int businessId, GetTasksByBusinessIdQueryModel request);
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default);
+        List<NzCostingReportApiModel> CostingReport(int businessId);
+        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
+        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
     }
     public class ReportingFunction : BaseFunction, IReportingFunction
     {
         public ReportingFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public List<NzCostingReportApiModel> CostingReport(int businessId)
-        {
-            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get);
-        }
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request)
-        {
-            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Pay Run Audit Report
@@ -1698,6 +1654,50 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TasksReportExportModel>>($"/business/{businessId}/report/tasks?EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayScheduleId={request.PayScheduleId}&Status={request.Status}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public List<NzCostingReportApiModel> CostingReport(int businessId)
+        {
+            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request)
+        {
+            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Costing Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a costing report.
+        /// </remarks>
+        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
     }
 }
