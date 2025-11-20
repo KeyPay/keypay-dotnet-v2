@@ -33,6 +33,20 @@ namespace KeyPayV2.Sg.Functions
         Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
         void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
         Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
+        List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model);
+        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default);
+        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request);
+        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetails(int businessId);
+        Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetailsByExternalId();
+        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
+        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
+        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
+        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId);
         Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
@@ -81,16 +95,6 @@ namespace KeyPayV2.Sg.Functions
         Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
         void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
         Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
-        List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
-        Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model);
-        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default);
-        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request);
-        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
-        SgBusinessExportModel GetBusinessDetails(int businessId);
-        Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
-        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
         List<SgGiroBankModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
         Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateNewPaymentFileRecord(int businessId, SgGiroBankModel model);
@@ -101,8 +105,6 @@ namespace KeyPayV2.Sg.Functions
         Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default);
         void DeletePaymentFileRecord(int businessId, int id);
         Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
-        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
@@ -298,6 +300,156 @@ namespace KeyPayV2.Sg.Functions
         public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the businesses associated with the current user.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the businesses associated with the current user.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model)
+        {
+            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request)
+        {
+            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified ID.
+        /// </remarks>
+        public SgBusinessExportModel GetBusinessDetails(int businessId)
+        {
+            return ApiRequest<SgBusinessExportModel>($"/business/{businessId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified ID.
+        /// </remarks>
+        public Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public SgBusinessExportModel GetBusinessDetailsByExternalId()
+        {
+            return ApiRequest<SgBusinessExportModel>($"/business/externalid", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
+        {
+            return ApiRequest<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -829,112 +981,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// List Businesses
-        /// </summary>
-        /// <remarks>
-        /// Lists all the businesses associated with the current user.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Businesses
-        /// </summary>
-        /// <remarks>
-        /// Lists all the businesses associated with the current user.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model)
-        {
-            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request)
-        {
-            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public SgBusinessExportModel GetBusinessDetails(int businessId)
-        {
-            return ApiRequest<SgBusinessExportModel>($"/business/{businessId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
-        {
-            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// List payment files
         /// </summary>
         /// <remarks>
@@ -1044,28 +1090,6 @@ namespace KeyPayV2.Sg.Functions
         public Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
-        {
-            return ApiRequest<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
         }
     }
 }

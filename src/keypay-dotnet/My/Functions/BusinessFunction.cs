@@ -33,6 +33,22 @@ namespace KeyPayV2.My.Functions
         Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
         void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
         Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
+        List<MyBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<MyBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model);
+        Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CancellationToken cancellationToken = default);
+        MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model, CreateNewBusinessQueryModel request);
+        Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
+        MyBusinessExportModel UpdateBusinessDetails(MyEditBusinessDetailsApiModel model);
+        Task<MyBusinessExportModel> UpdateBusinessDetailsAsync(MyEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default);
+        MyBusinessExportModel GetBusinessDetails(int businessId);
+        Task<MyBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        MyBusinessExportModel GetBusinessDetailsByExternalId();
+        Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default);
+        MyBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
+        Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
+        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
+        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId);
         Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
@@ -81,18 +97,6 @@ namespace KeyPayV2.My.Functions
         Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
         void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
         Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
-        List<MyBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
-        Task<List<MyBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        MyBusinessExportModel UpdateBusinessDetails(MyEditBusinessDetailsApiModel model);
-        Task<MyBusinessExportModel> UpdateBusinessDetailsAsync(MyEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default);
-        MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model);
-        Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CancellationToken cancellationToken = default);
-        MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model, CreateNewBusinessQueryModel request);
-        Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
-        MyBusinessExportModel GetBusinessDetails(int businessId);
-        Task<MyBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
-        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
         List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
         Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateNewPaymentFileRecord(int businessId, MyBankDetailsModel model);
@@ -107,8 +111,6 @@ namespace KeyPayV2.My.Functions
         Task<MyBusinessStatutorySettingsModel> GetStatutorySettingsAsync(int businessId, CancellationToken cancellationToken = default);
         MyBusinessStatutorySettingsModel SetStatutorySettings(int businessId, MyBusinessStatutorySettingsModel model);
         Task<MyBusinessStatutorySettingsModel> SetStatutorySettingsAsync(int businessId, MyBusinessStatutorySettingsModel model, CancellationToken cancellationToken = default);
-        MyBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
-        Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
@@ -304,6 +306,178 @@ namespace KeyPayV2.My.Functions
         public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the businesses associated with the current user.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<MyBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<MyBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the businesses associated with the current user.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<MyBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model)
+        {
+            return ApiRequest<MyBusinessExportModel,MyBusinessExportModel>($"/business", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessExportModel,MyBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model, CreateNewBusinessQueryModel request)
+        {
+            return ApiRequest<MyBusinessExportModel,MyBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessExportModel,MyBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Business Details
+        /// </summary>
+        /// <remarks>
+        /// Update some standard business details
+        /// </remarks>
+        public MyBusinessExportModel UpdateBusinessDetails(MyEditBusinessDetailsApiModel model)
+        {
+            return ApiRequest<MyBusinessExportModel,MyEditBusinessDetailsApiModel>($"/business", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Business Details
+        /// </summary>
+        /// <remarks>
+        /// Update some standard business details
+        /// </remarks>
+        public Task<MyBusinessExportModel> UpdateBusinessDetailsAsync(MyEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessExportModel,MyEditBusinessDetailsApiModel>($"/business", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified ID.
+        /// </remarks>
+        public MyBusinessExportModel GetBusinessDetails(int businessId)
+        {
+            return ApiRequest<MyBusinessExportModel>($"/business/{businessId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified ID.
+        /// </remarks>
+        public Task<MyBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public MyBusinessExportModel GetBusinessDetailsByExternalId()
+        {
+            return ApiRequest<MyBusinessExportModel>($"/business/externalid", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessExportModel>($"/business/externalid", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public MyBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
+        {
+            return ApiRequest<MyBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -835,134 +1009,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// List Businesses
-        /// </summary>
-        /// <remarks>
-        /// Lists all the businesses associated with the current user.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<MyBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<MyBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Businesses
-        /// </summary>
-        /// <remarks>
-        /// Lists all the businesses associated with the current user.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<MyBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<MyBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Business Details
-        /// </summary>
-        /// <remarks>
-        /// Update some standard business details
-        /// </remarks>
-        public MyBusinessExportModel UpdateBusinessDetails(MyEditBusinessDetailsApiModel model)
-        {
-            return ApiRequest<MyBusinessExportModel,MyEditBusinessDetailsApiModel>($"/business", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Business Details
-        /// </summary>
-        /// <remarks>
-        /// Update some standard business details
-        /// </remarks>
-        public Task<MyBusinessExportModel> UpdateBusinessDetailsAsync(MyEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessExportModel,MyEditBusinessDetailsApiModel>($"/business", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model)
-        {
-            return ApiRequest<MyBusinessExportModel,MyBusinessExportModel>($"/business", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessExportModel,MyBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public MyBusinessExportModel CreateNewBusiness(MyBusinessExportModel model, CreateNewBusinessQueryModel request)
-        {
-            return ApiRequest<MyBusinessExportModel,MyBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public Task<MyBusinessExportModel> CreateNewBusinessAsync(MyBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessExportModel,MyBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public MyBusinessExportModel GetBusinessDetails(int businessId)
-        {
-            return ApiRequest<MyBusinessExportModel>($"/business/{businessId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public Task<MyBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
-        {
-            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// List payment files
         /// </summary>
         /// <remarks>
@@ -1116,28 +1162,6 @@ namespace KeyPayV2.My.Functions
         public Task<MyBusinessStatutorySettingsModel> SetStatutorySettingsAsync(int businessId, MyBusinessStatutorySettingsModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<MyBusinessStatutorySettingsModel,MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public MyBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
-        {
-            return ApiRequest<MyBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
         }
     }
 }

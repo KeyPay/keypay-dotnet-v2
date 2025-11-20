@@ -23,6 +23,7 @@ namespace KeyPayV2.Au
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
         ILocationFunction Location { get; }
+        ILookupDataFunction LookupData { get; }
         IOtherFunction Other { get; }
         IPayCategoryFunction PayCategory { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
@@ -52,7 +53,6 @@ namespace KeyPayV2.Au
         IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
-        ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         ISuperFundFunction SuperFund { get; }
@@ -82,6 +82,7 @@ namespace KeyPayV2.Au
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
             Location = new LocationFunction(Api);
+            LookupData = new LookupDataFunction(Api);
             Other = new OtherFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
@@ -111,7 +112,6 @@ namespace KeyPayV2.Au
             EmployeeSelfManagedSuperFund = new EmployeeSelfManagedSuperFundFunction(Api);
             EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             SuperFund = new SuperFundFunction(Api);
@@ -138,6 +138,7 @@ namespace KeyPayV2.Au
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILocationFunction Location { get; }
+        public ILookupDataFunction LookupData { get; }
         public IOtherFunction Other { get; }
         public IPayCategoryFunction PayCategory { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
@@ -167,7 +168,6 @@ namespace KeyPayV2.Au
         public IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
         public IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public ISuperFundFunction SuperFund { get; }

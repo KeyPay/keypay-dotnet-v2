@@ -21,6 +21,7 @@ namespace KeyPayV2.Uk
         IInvoicesFunction Invoices { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
+        ILookupDataFunction LookupData { get; }
         IOtherFunction Other { get; }
         IPayCategoryFunction PayCategory { get; }
         IPayScheduleFunction PaySchedule { get; }
@@ -47,7 +48,6 @@ namespace KeyPayV2.Uk
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
-        ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayeSchemeFunction PayeScheme { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
@@ -77,6 +77,7 @@ namespace KeyPayV2.Uk
             Invoices = new InvoicesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
+            LookupData = new LookupDataFunction(Api);
             Other = new OtherFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
@@ -103,7 +104,6 @@ namespace KeyPayV2.Uk
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
-            LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayeScheme = new PayeSchemeFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
@@ -130,6 +130,7 @@ namespace KeyPayV2.Uk
         public IInvoicesFunction Invoices { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ILookupDataFunction LookupData { get; }
         public IOtherFunction Other { get; }
         public IPayCategoryFunction PayCategory { get; }
         public IPayScheduleFunction PaySchedule { get; }
@@ -156,7 +157,6 @@ namespace KeyPayV2.Uk
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
-        public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayeSchemeFunction PayeScheme { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
