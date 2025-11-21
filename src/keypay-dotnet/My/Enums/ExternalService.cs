@@ -99,6 +99,7 @@ namespace KeyPayV2.My.Enums
         MoneyMovement,
         PayRunSettingsFlatFileImport,
         Sage200,
-        RosterCostCalculation
+        RosterCostCalculation,
+        HeroClear
     }
 }
