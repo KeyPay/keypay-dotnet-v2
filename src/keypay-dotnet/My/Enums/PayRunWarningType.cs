@@ -96,11 +96,6 @@ namespace KeyPayV2.My.Enums
         PensionOptoutUnmatched,
         PensionCeaseUnmatched,
         RolledUpHolidayPayAndStatutoryPayWarning,
-        PendingDeductions,
-        IsExemptFromMinimumWageFlagAutomaticallyAppliedFromPayRunDefaults,
-        IsApprenticeFlagAutomaticallyAppliedFromPayRunDefaults,
-        PayCategoryChangeAutomaticallyAppliedFromPayRunDefaults,
-        RateUnitChangeAutomaticallyAppliedFromPayRunDefaults,
-        RateChangeAutomaticallyAppliedFromPayRunDefaults
+        PendingDeductions
     }
 }
