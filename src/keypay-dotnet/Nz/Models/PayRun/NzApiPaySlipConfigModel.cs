@@ -10,5 +10,7 @@ namespace KeyPayV2.Nz.Models.PayRun
     {
         public bool ShowKiwiSaverPercentages { get; set; }
         public bool ShowUnitsWorked { get; set; }
+        public bool ShowRemainingBalanceForDeductions { get; set; }
+        public bool ShowYearToDateAmounts { get; set; }
     }
 }
