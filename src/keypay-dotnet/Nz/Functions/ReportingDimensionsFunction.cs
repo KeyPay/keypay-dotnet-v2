@@ -19,6 +19,12 @@ namespace KeyPayV2.Nz.Functions
         Task<List<ReportingDimensionApiModel>> ListDimensionsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         ReportingDimensionApiModel CreateDimension(int businessId, ReportingDimensionApiModel dimension);
         Task<ReportingDimensionApiModel> CreateDimensionAsync(int businessId, ReportingDimensionApiModel dimension, CancellationToken cancellationToken = default);
+        ReportingDimensionApiModel GetDimensionById(int businessId, int id);
+        Task<ReportingDimensionApiModel> GetDimensionByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        ReportingDimensionApiModel UpdateDimension(int businessId, int id, ReportingDimensionApiModel dimensionModel);
+        Task<ReportingDimensionApiModel> UpdateDimensionAsync(int businessId, int id, ReportingDimensionApiModel dimensionModel, CancellationToken cancellationToken = default);
+        void DeleteDimension(int businessId, int id);
+        Task DeleteDimensionAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<ReportingDimensionValueApiModel> ListDimensionValues(int businessId, int dimensionId, ODataQuery oDataQuery = null);
         Task<List<ReportingDimensionValueApiModel>> ListDimensionValuesAsync(int businessId, int dimensionId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         ReportingDimensionValueApiModel CreateDimensionValue(int businessId, int dimensionId, ReportingDimensionValueApiModel dimensionValue);
@@ -29,12 +35,6 @@ namespace KeyPayV2.Nz.Functions
         Task<ReportingDimensionValueApiModel> UpdateDimensionValueAsync(int businessId, int id, int dimensionId, ReportingDimensionValueApiModel dimensionValueModel, CancellationToken cancellationToken = default);
         void DeleteDimensionValue(int businessId, int id, int dimensionId);
         Task DeleteDimensionValueAsync(int businessId, int id, int dimensionId, CancellationToken cancellationToken = default);
-        ReportingDimensionApiModel GetDimensionById(int businessId, int id);
-        Task<ReportingDimensionApiModel> GetDimensionByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        ReportingDimensionApiModel UpdateDimension(int businessId, int id, ReportingDimensionApiModel dimensionModel);
-        Task<ReportingDimensionApiModel> UpdateDimensionAsync(int businessId, int id, ReportingDimensionApiModel dimensionModel, CancellationToken cancellationToken = default);
-        void DeleteDimension(int businessId, int id);
-        Task DeleteDimensionAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class ReportingDimensionsFunction : BaseFunction, IReportingDimensionsFunction
     {
@@ -84,6 +84,72 @@ namespace KeyPayV2.Nz.Functions
         public Task<ReportingDimensionApiModel> CreateDimensionAsync(int businessId, ReportingDimensionApiModel dimension, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<ReportingDimensionApiModel,ReportingDimensionApiModel>($"/business/{businessId}/dimension", dimension, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Dimension by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the dimension with the specified ID.
+        /// </remarks>
+        public ReportingDimensionApiModel GetDimensionById(int businessId, int id)
+        {
+            return ApiRequest<ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Dimension by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the dimension with the specified ID.
+        /// </remarks>
+        public Task<ReportingDimensionApiModel> GetDimensionByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Dimension
+        /// </summary>
+        /// <remarks>
+        /// Updates the dimension with the specified ID.
+        /// </remarks>
+        public ReportingDimensionApiModel UpdateDimension(int businessId, int id, ReportingDimensionApiModel dimensionModel)
+        {
+            return ApiRequest<ReportingDimensionApiModel,ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", dimensionModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Dimension
+        /// </summary>
+        /// <remarks>
+        /// Updates the dimension with the specified ID.
+        /// </remarks>
+        public Task<ReportingDimensionApiModel> UpdateDimensionAsync(int businessId, int id, ReportingDimensionApiModel dimensionModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ReportingDimensionApiModel,ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", dimensionModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Dimension
+        /// </summary>
+        /// <remarks>
+        /// Deletes the dimension with the specified ID.
+        /// </remarks>
+        public void DeleteDimension(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/dimension/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Dimension
+        /// </summary>
+        /// <remarks>
+        /// Deletes the dimension with the specified ID.
+        /// </remarks>
+        public Task DeleteDimensionAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/dimension/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -196,72 +262,6 @@ namespace KeyPayV2.Nz.Functions
         public Task DeleteDimensionValueAsync(int businessId, int id, int dimensionId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/dimension/{dimensionId}/value/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Dimension by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the dimension with the specified ID.
-        /// </remarks>
-        public ReportingDimensionApiModel GetDimensionById(int businessId, int id)
-        {
-            return ApiRequest<ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Dimension by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the dimension with the specified ID.
-        /// </remarks>
-        public Task<ReportingDimensionApiModel> GetDimensionByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Dimension
-        /// </summary>
-        /// <remarks>
-        /// Updates the dimension with the specified ID.
-        /// </remarks>
-        public ReportingDimensionApiModel UpdateDimension(int businessId, int id, ReportingDimensionApiModel dimensionModel)
-        {
-            return ApiRequest<ReportingDimensionApiModel,ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", dimensionModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Dimension
-        /// </summary>
-        /// <remarks>
-        /// Updates the dimension with the specified ID.
-        /// </remarks>
-        public Task<ReportingDimensionApiModel> UpdateDimensionAsync(int businessId, int id, ReportingDimensionApiModel dimensionModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<ReportingDimensionApiModel,ReportingDimensionApiModel>($"/business/{businessId}/dimension/{id}", dimensionModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Dimension
-        /// </summary>
-        /// <remarks>
-        /// Deletes the dimension with the specified ID.
-        /// </remarks>
-        public void DeleteDimension(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/dimension/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Dimension
-        /// </summary>
-        /// <remarks>
-        /// Deletes the dimension with the specified ID.
-        /// </remarks>
-        public Task DeleteDimensionAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/dimension/{id}", Method.Delete, cancellationToken);
         }
     }
 }

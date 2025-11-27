@@ -26,12 +26,12 @@ namespace KeyPayV2.Nz
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IReportingFunction Reporting { get; }
+        IReportingDimensionsFunction ReportingDimensions { get; }
         IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
         IWhiteLabelFunction WhiteLabel { get; }
         IWorkTypeFunction WorkType { get; }
         IPayRunFunction PayRun { get; }
-        IReportingDimensionsFunction ReportingDimensions { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         IEmployeeDocumentFunction EmployeeDocument { get; }
@@ -75,12 +75,12 @@ namespace KeyPayV2.Nz
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Reporting = new ReportingFunction(Api);
+            ReportingDimensions = new ReportingDimensionsFunction(Api);
             Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
             WorkType = new WorkTypeFunction(Api);
             PayRun = new PayRunFunction(Api);
-            ReportingDimensions = new ReportingDimensionsFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeDocument = new EmployeeDocumentFunction(Api);
@@ -121,12 +121,12 @@ namespace KeyPayV2.Nz
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IReportingFunction Reporting { get; }
+        public IReportingDimensionsFunction ReportingDimensions { get; }
         public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
         public IWorkTypeFunction WorkType { get; }
         public IPayRunFunction PayRun { get; }
-        public IReportingDimensionsFunction ReportingDimensions { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         public IEmployeeDocumentFunction EmployeeDocument { get; }

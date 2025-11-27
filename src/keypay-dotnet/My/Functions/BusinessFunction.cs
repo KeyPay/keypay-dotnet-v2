@@ -39,6 +39,10 @@ namespace KeyPayV2.My.Functions
         Task<MyBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
         void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
         Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
+        MyBusinessStatutorySettingsModel GetStatutorySettings(int businessId);
+        Task<MyBusinessStatutorySettingsModel> GetStatutorySettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        MyBusinessStatutorySettingsModel SetStatutorySettings(int businessId, MyBusinessStatutorySettingsModel model);
+        Task<MyBusinessStatutorySettingsModel> SetStatutorySettingsAsync(int businessId, MyBusinessStatutorySettingsModel model, CancellationToken cancellationToken = default);
         MyBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId);
         Task<MyBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
         MyBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, MyBusinessTimesheetSettingsModel model);
@@ -47,6 +51,16 @@ namespace KeyPayV2.My.Functions
         Task<MyEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         MyEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, MyEmployeePortalSettingsModel model);
         Task<MyEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, MyEmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
+        List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
+        Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        MyBankDetailsModel CreatePaymentFileRecord(int businessId, MyBankDetailsModel model);
+        Task<MyBankDetailsModel> CreatePaymentFileRecordAsync(int businessId, MyBankDetailsModel model, CancellationToken cancellationToken = default);
+        MyBankDetailsModel GetPaymentFileById(int businessId, int id);
+        Task<MyBankDetailsModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdatePaymentFileRecord(int businessId, int id, MyBankDetailsModel model);
+        Task UpdatePaymentFileRecordAsync(int businessId, int id, MyBankDetailsModel model, CancellationToken cancellationToken = default);
+        void DeletePaymentFileRecord(int businessId, int id);
+        Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
         MyEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
         Task<MyEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
         void CreatePayslipConfiguration(int businessId, MyEditBusinessPaySlipApiModel model);
@@ -57,20 +71,6 @@ namespace KeyPayV2.My.Functions
         Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
         void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
         Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
-        List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
-        Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreateNewPaymentFileRecord(int businessId, MyBankDetailsModel model);
-        Task CreateNewPaymentFileRecordAsync(int businessId, MyBankDetailsModel model, CancellationToken cancellationToken = default);
-        MyBankDetailsModel GetPaymentFileById(int businessId, int id);
-        Task<MyBankDetailsModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdatePaymentFileRecord(int businessId, int id, MyBankDetailsModel model);
-        Task UpdatePaymentFileRecordAsync(int businessId, int id, MyBankDetailsModel model, CancellationToken cancellationToken = default);
-        void DeletePaymentFileRecord(int businessId, int id);
-        Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        MyBusinessStatutorySettingsModel GetStatutorySettings(int businessId);
-        Task<MyBusinessStatutorySettingsModel> GetStatutorySettingsAsync(int businessId, CancellationToken cancellationToken = default);
-        MyBusinessStatutorySettingsModel SetStatutorySettings(int businessId, MyBusinessStatutorySettingsModel model);
-        Task<MyBusinessStatutorySettingsModel> SetStatutorySettingsAsync(int businessId, MyBusinessStatutorySettingsModel model, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
@@ -331,6 +331,50 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
+        /// Get Statutory Settings
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Settings for the business
+        /// </remarks>
+        public MyBusinessStatutorySettingsModel GetStatutorySettings(int businessId)
+        {
+            return ApiRequest<MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Statutory Settings
+        /// </summary>
+        /// <remarks>
+        /// Gets the Statutory Settings for the business
+        /// </remarks>
+        public Task<MyBusinessStatutorySettingsModel> GetStatutorySettingsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Statutory Settings
+        /// </summary>
+        /// <remarks>
+        /// Sets the Statutory Settings for the business
+        /// </remarks>
+        public MyBusinessStatutorySettingsModel SetStatutorySettings(int businessId, MyBusinessStatutorySettingsModel model)
+        {
+            return ApiRequest<MyBusinessStatutorySettingsModel,MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Statutory Settings
+        /// </summary>
+        /// <remarks>
+        /// Sets the Statutory Settings for the business
+        /// </remarks>
+        public Task<MyBusinessStatutorySettingsModel> SetStatutorySettingsAsync(int businessId, MyBusinessStatutorySettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBusinessStatutorySettingsModel,MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Get the timesheet settings for the business
         /// </summary>
         public MyBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId)
@@ -404,6 +448,118 @@ namespace KeyPayV2.My.Functions
         public Task<MyEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, MyEmployeePortalSettingsModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<MyEmployeePortalSettingsModel,MyEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List payment files
+        /// </summary>
+        /// <remarks>
+        /// Retrieves all the payment files associated with the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<MyBankDetailsModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List payment files
+        /// </summary>
+        /// <remarks>
+        /// Retrieves all the payment files associated with the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyBankDetailsModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create payment file record
+        /// </summary>
+        /// <remarks>
+        /// Creates a new payment file record for the business.
+        /// </remarks>
+        public MyBankDetailsModel CreatePaymentFileRecord(int businessId, MyBankDetailsModel model)
+        {
+            return ApiRequest<MyBankDetailsModel,MyBankDetailsModel>($"/business/{businessId}/paymentfiles", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create payment file record
+        /// </summary>
+        /// <remarks>
+        /// Creates a new payment file record for the business.
+        /// </remarks>
+        public Task<MyBankDetailsModel> CreatePaymentFileRecordAsync(int businessId, MyBankDetailsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBankDetailsModel,MyBankDetailsModel>($"/business/{businessId}/paymentfiles", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get payment file by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the payment file with the specified ID.
+        /// </remarks>
+        public MyBankDetailsModel GetPaymentFileById(int businessId, int id)
+        {
+            return ApiRequest<MyBankDetailsModel>($"/business/{businessId}/paymentfiles/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get payment file by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the payment file with the specified ID.
+        /// </remarks>
+        public Task<MyBankDetailsModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyBankDetailsModel>($"/business/{businessId}/paymentfiles/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update payment file record
+        /// </summary>
+        /// <remarks>
+        /// Updates the payment file record with the specified ID.
+        /// </remarks>
+        public void UpdatePaymentFileRecord(int businessId, int id, MyBankDetailsModel model)
+        {
+            ApiRequest($"/business/{businessId}/paymentfiles/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update payment file record
+        /// </summary>
+        /// <remarks>
+        /// Updates the payment file record with the specified ID.
+        /// </remarks>
+        public Task UpdatePaymentFileRecordAsync(int businessId, int id, MyBankDetailsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete payment file record
+        /// </summary>
+        /// <remarks>
+        /// Deletes the payment file record with the specified ID.
+        /// </remarks>
+        public void DeletePaymentFileRecord(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/paymentfiles/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete payment file record
+        /// </summary>
+        /// <remarks>
+        /// Deletes the payment file record with the specified ID.
+        /// </remarks>
+        public Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -520,162 +676,6 @@ namespace KeyPayV2.My.Functions
         public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List payment files
-        /// </summary>
-        /// <remarks>
-        /// Retrieves all the payment files associated with the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<MyBankDetailsModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<MyBankDetailsModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List payment files
-        /// </summary>
-        /// <remarks>
-        /// Retrieves all the payment files associated with the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<MyBankDetailsModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<MyBankDetailsModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create new payment file record
-        /// </summary>
-        /// <remarks>
-        /// Creates a new payment file record for the business.
-        /// </remarks>
-        public void CreateNewPaymentFileRecord(int businessId, MyBankDetailsModel model)
-        {
-            ApiRequest($"/business/{businessId}/paymentfiles", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create new payment file record
-        /// </summary>
-        /// <remarks>
-        /// Creates a new payment file record for the business.
-        /// </remarks>
-        public Task CreateNewPaymentFileRecordAsync(int businessId, MyBankDetailsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get payment file by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the payment file with the specified ID.
-        /// </remarks>
-        public MyBankDetailsModel GetPaymentFileById(int businessId, int id)
-        {
-            return ApiRequest<MyBankDetailsModel>($"/business/{businessId}/paymentfiles/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get payment file by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the payment file with the specified ID.
-        /// </remarks>
-        public Task<MyBankDetailsModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBankDetailsModel>($"/business/{businessId}/paymentfiles/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update payment file record
-        /// </summary>
-        /// <remarks>
-        /// Updates the payment file record with the specified ID.
-        /// </remarks>
-        public void UpdatePaymentFileRecord(int businessId, int id, MyBankDetailsModel model)
-        {
-            ApiRequest($"/business/{businessId}/paymentfiles/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update payment file record
-        /// </summary>
-        /// <remarks>
-        /// Updates the payment file record with the specified ID.
-        /// </remarks>
-        public Task UpdatePaymentFileRecordAsync(int businessId, int id, MyBankDetailsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete payment file record
-        /// </summary>
-        /// <remarks>
-        /// Deletes the payment file record with the specified ID.
-        /// </remarks>
-        public void DeletePaymentFileRecord(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/paymentfiles/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete payment file record
-        /// </summary>
-        /// <remarks>
-        /// Deletes the payment file record with the specified ID.
-        /// </remarks>
-        public Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Statutory Settings
-        /// </summary>
-        /// <remarks>
-        /// Gets the Statutory Settings for the business
-        /// </remarks>
-        public MyBusinessStatutorySettingsModel GetStatutorySettings(int businessId)
-        {
-            return ApiRequest<MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Statutory Settings
-        /// </summary>
-        /// <remarks>
-        /// Gets the Statutory Settings for the business
-        /// </remarks>
-        public Task<MyBusinessStatutorySettingsModel> GetStatutorySettingsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Statutory Settings
-        /// </summary>
-        /// <remarks>
-        /// Sets the Statutory Settings for the business
-        /// </remarks>
-        public MyBusinessStatutorySettingsModel SetStatutorySettings(int businessId, MyBusinessStatutorySettingsModel model)
-        {
-            return ApiRequest<MyBusinessStatutorySettingsModel,MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Statutory Settings
-        /// </summary>
-        /// <remarks>
-        /// Sets the Statutory Settings for the business
-        /// </remarks>
-        public Task<MyBusinessStatutorySettingsModel> SetStatutorySettingsAsync(int businessId, MyBusinessStatutorySettingsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyBusinessStatutorySettingsModel,MyBusinessStatutorySettingsModel>($"/business/{businessId}/statutorysettings", model, Method.Post, cancellationToken);
         }
     }
 }
