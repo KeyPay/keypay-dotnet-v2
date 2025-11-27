@@ -58,6 +58,7 @@ namespace KeyPayV2.Sg.Models.Ess
         public EmployeeDetailsEditMode EditMode { get; set; }
         public bool CanEdit { get; set; }
         public string TagsString { get; set; }
+        public IList<String> Tags { get; set; }
         public IList<String> AllTags { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeTimesheetSetting TimesheetSetting { get; set; }
