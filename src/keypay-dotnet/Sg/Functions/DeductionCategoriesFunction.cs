@@ -21,10 +21,10 @@ namespace KeyPayV2.Sg.Functions
         Task<SgDeductionCategoryModel> UpdateDeductionCategoryAsync(int businessId, int id, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         void DeleteDeductionCategory(int businessId, int id);
         Task DeleteDeductionCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory);
-        Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
         List<SgDeductionCategoryModel> ListDeductionCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<SgDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory);
+        Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default);
     }
     public class DeductionCategoriesFunction : BaseFunction, IDeductionCategoriesFunction
     {
@@ -97,28 +97,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Create Deduction Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a deduction category for the business.
-        /// </remarks>
-        public SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory)
-        {
-            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Deduction Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a deduction category for the business.
-        /// </remarks>
-        public Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// List Deduction Categories
         /// </summary>
         /// <remarks>
@@ -140,6 +118,28 @@ namespace KeyPayV2.Sg.Functions
         public Task<List<SgDeductionCategoryModel>> ListDeductionCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgDeductionCategoryModel>>($"/business/{businessId}/deductioncategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Deduction Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a deduction category for the business.
+        /// </remarks>
+        public SgDeductionCategoryModel CreateDeductionCategory(int businessId, SgDeductionCategoryModel deductionCategory)
+        {
+            return ApiRequest<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Deduction Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a deduction category for the business.
+        /// </remarks>
+        public Task<SgDeductionCategoryModel> CreateDeductionCategoryAsync(int businessId, SgDeductionCategoryModel deductionCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgDeductionCategoryModel,SgDeductionCategoryModel>($"/business/{businessId}/deductioncategory", deductionCategory, Method.Post, cancellationToken);
         }
     }
 }

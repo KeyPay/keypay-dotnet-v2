@@ -16,9 +16,7 @@ namespace KeyPayV2.Nz
         IEmployeeGroupsFunction EmployeeGroups { get; }
         IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
-        IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         IEmployingEntitiesFunction EmployingEntities { get; }
-        IInvoicesFunction Invoices { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
         ILocationFunction Location { get; }
@@ -27,12 +25,9 @@ namespace KeyPayV2.Nz
         IPayCategoryFunction PayCategory { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
-        IQualificationsFunction Qualifications { get; }
         IReportingFunction Reporting { get; }
         IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
-        ITimeAndAttendanceFunction TimeAndAttendance { get; }
-        IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
         IWorkTypeFunction WorkType { get; }
         IPayRunFunction PayRun { get; }
@@ -48,6 +43,7 @@ namespace KeyPayV2.Nz
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
+        ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IManagerFunction Manager { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         ITimesheetsFunction Timesheets { get; }
@@ -69,9 +65,7 @@ namespace KeyPayV2.Nz
             EmployeeGroups = new EmployeeGroupsFunction(Api);
             EmployeeOnboarding = new EmployeeOnboardingFunction(Api);
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
-            EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
-            Invoices = new InvoicesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
             Location = new LocationFunction(Api);
@@ -80,12 +74,9 @@ namespace KeyPayV2.Nz
             PayCategory = new PayCategoryFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
-            Qualifications = new QualificationsFunction(Api);
             Reporting = new ReportingFunction(Api);
             Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
-            TimeAndAttendance = new TimeAndAttendanceFunction(Api);
-            Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
             WorkType = new WorkTypeFunction(Api);
             PayRun = new PayRunFunction(Api);
@@ -101,6 +92,7 @@ namespace KeyPayV2.Nz
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
+            TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Manager = new ManagerFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             Timesheets = new TimesheetsFunction(Api);
@@ -119,9 +111,7 @@ namespace KeyPayV2.Nz
         public IEmployeeGroupsFunction EmployeeGroups { get; }
         public IEmployeeOnboardingFunction EmployeeOnboarding { get; }
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
-        public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public IEmployingEntitiesFunction EmployingEntities { get; }
-        public IInvoicesFunction Invoices { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
         public ILocationFunction Location { get; }
@@ -130,12 +120,9 @@ namespace KeyPayV2.Nz
         public IPayCategoryFunction PayCategory { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
-        public IQualificationsFunction Qualifications { get; }
         public IReportingFunction Reporting { get; }
         public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
-        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
-        public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
         public IWorkTypeFunction WorkType { get; }
         public IPayRunFunction PayRun { get; }
@@ -151,6 +138,7 @@ namespace KeyPayV2.Nz
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
+        public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IManagerFunction Manager { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public ITimesheetsFunction Timesheets { get; }

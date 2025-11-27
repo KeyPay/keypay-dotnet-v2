@@ -15,6 +15,8 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IPayScheduleFunction
     {
+        void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel);
+        Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default);
         List<UkPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null);
         Task<List<UkPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkPayScheduleModel CreatePaySchedule(int businessId, UkPayScheduleModel paySchedule);
@@ -27,8 +29,6 @@ namespace KeyPayV2.Uk.Functions
         Task DeletePayScheduleAsync(int businessId, int id, CancellationToken cancellationToken = default);
         PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId);
         Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default);
-        void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel);
-        Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default);
         PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId);
         Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default);
         List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId);
@@ -37,6 +37,56 @@ namespace KeyPayV2.Uk.Functions
     public class PayScheduleFunction : BaseFunction, IPayScheduleFunction
     {
         public PayScheduleFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Import a new pay schedule.
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay schedule for the business by importing from external data.
+        /// The pay schedule defines how frequently employees are paid and related configuration.
+        /// Example request body:
+        /// {
+        ///   "name": "Weekly Pay Schedule",
+        ///   "frequency": "Weekly",
+        ///   "includedEmployees": "All",
+        ///   "monthlyPaymentMode": false,
+        ///   "proRataCalculations": true,
+        ///   "unitType": "Days per year",
+        ///   "unit": 260,
+        ///   "qualifyingDays": "Working days",
+        ///   "locations": [1, 2, 3],
+        ///   "paySlipMessage": "Custom message for pay slips"
+        /// }
+        /// </remarks>
+        public void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel)
+        {
+            ApiRequest($"/business/{businessId}/import/pay-schedule", importModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Import a new pay schedule.
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay schedule for the business by importing from external data.
+        /// The pay schedule defines how frequently employees are paid and related configuration.
+        /// Example request body:
+        /// {
+        ///   "name": "Weekly Pay Schedule",
+        ///   "frequency": "Weekly",
+        ///   "includedEmployees": "All",
+        ///   "monthlyPaymentMode": false,
+        ///   "proRataCalculations": true,
+        ///   "unitType": "Days per year",
+        ///   "unit": 260,
+        ///   "qualifyingDays": "Working days",
+        ///   "locations": [1, 2, 3],
+        ///   "paySlipMessage": "Custom message for pay slips"
+        /// }
+        /// </remarks>
+        public Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/import/pay-schedule", importModel, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// List Pay Schedules
@@ -170,56 +220,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PayScheduleMetaDataModel>($"/business/{businessId}/payschedule/metadata", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Import a new pay schedule.
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay schedule for the business by importing from external data.
-        /// The pay schedule defines how frequently employees are paid and related configuration.
-        /// Example request body:
-        /// {
-        ///   "name": "Weekly Pay Schedule",
-        ///   "frequency": "Weekly",
-        ///   "includedEmployees": "All",
-        ///   "monthlyPaymentMode": false,
-        ///   "proRataCalculations": true,
-        ///   "unitType": "Days per year",
-        ///   "unit": 260,
-        ///   "qualifyingDays": "Working days",
-        ///   "locations": [1, 2, 3],
-        ///   "paySlipMessage": "Custom message for pay slips"
-        /// }
-        /// </remarks>
-        public void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel)
-        {
-            ApiRequest($"/business/{businessId}/import/pay-schedule", importModel, Method.Post);
-        }
-
-        /// <summary>
-        /// Import a new pay schedule.
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay schedule for the business by importing from external data.
-        /// The pay schedule defines how frequently employees are paid and related configuration.
-        /// Example request body:
-        /// {
-        ///   "name": "Weekly Pay Schedule",
-        ///   "frequency": "Weekly",
-        ///   "includedEmployees": "All",
-        ///   "monthlyPaymentMode": false,
-        ///   "proRataCalculations": true,
-        ///   "unitType": "Days per year",
-        ///   "unit": 260,
-        ///   "qualifyingDays": "Working days",
-        ///   "locations": [1, 2, 3],
-        ///   "paySlipMessage": "Custom message for pay slips"
-        /// }
-        /// </remarks>
-        public Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/import/pay-schedule", importModel, Method.Post, cancellationToken);
         }
 
         /// <summary>

@@ -15,8 +15,6 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IOtherFunction
     {
-        LeaveAccrualRuleModel RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategory(int businessId, int leaveCategoryId);
-        Task<LeaveAccrualRuleModel> RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategoryAsync(int businessId, int leaveCategoryId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
@@ -27,22 +25,6 @@ namespace KeyPayV2.Uk.Functions
     public class OtherFunction : BaseFunction, IOtherFunction
     {
         public OtherFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// retrieves the leave accrual rule associated with the leave category
-        /// </summary>
-        public LeaveAccrualRuleModel RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategory(int businessId, int leaveCategoryId)
-        {
-            return ApiRequest<LeaveAccrualRuleModel>($"/business/{businessId}/leavecategory/{leaveCategoryId}/LeaveAccrualRule", Method.Get);
-        }
-
-        /// <summary>
-        /// retrieves the leave accrual rule associated with the leave category
-        /// </summary>
-        public Task<LeaveAccrualRuleModel> RetrievesTheLeaveAccrualRuleAssociatedWithTheLeaveCategoryAsync(int businessId, int leaveCategoryId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<LeaveAccrualRuleModel>($"/business/{businessId}/leavecategory/{leaveCategoryId}/LeaveAccrualRule", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Get Payment Files by Finalised Pay Run Id
