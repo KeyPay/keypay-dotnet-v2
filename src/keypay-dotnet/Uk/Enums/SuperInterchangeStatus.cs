@@ -22,6 +22,10 @@ namespace KeyPayV2.Uk.Enums
         Refunded,
         Cancelling,
         Paid,
-        PaymentFailed
+        PaymentFailed,
+        HeroClearProcessing,
+        HeroClearFundsDispersed,
+        HeroClearSubmittedAllFunds,
+        HeroClearInsufficientFunds
     }
 }
