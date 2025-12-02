@@ -15,6 +15,10 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IAuthenticationFunction
     {
+        AttemptAccountRecoveryResponseModel RequestAccountRecoveryForMobileApp(AttemptAccountRecoveryRequestModel model);
+        Task<AttemptAccountRecoveryResponseModel> RequestAccountRecoveryForMobileAppAsync(AttemptAccountRecoveryRequestModel model, CancellationToken cancellationToken = default);
+        GetUserBrandAssociationsResponseModel GetUserBrandAssociationsForMobileApp(MobileAccountRecoveryValidationModel model);
+        Task<GetUserBrandAssociationsResponseModel> GetUserBrandAssociationsForMobileAppAsync(MobileAccountRecoveryValidationModel model, CancellationToken cancellationToken = default);
         void OauthToken();
         Task OauthTokenAsync(CancellationToken cancellationToken = default);
         SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model);
@@ -27,6 +31,50 @@ namespace KeyPayV2.Nz.Functions
     public class AuthenticationFunction : BaseFunction, IAuthenticationFunction
     {
         public AuthenticationFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Request Account Recovery for Mobile App
+        /// </summary>
+        /// <remarks>
+        /// Initiates an account recovery request for mobile app users. This endpoint is specifically designed for the EH Work App.
+        /// </remarks>
+        public AttemptAccountRecoveryResponseModel RequestAccountRecoveryForMobileApp(AttemptAccountRecoveryRequestModel model)
+        {
+            return ApiRequest<AttemptAccountRecoveryResponseModel,AttemptAccountRecoveryRequestModel>($"/mobileaccountrecovery/attempt", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Request Account Recovery for Mobile App
+        /// </summary>
+        /// <remarks>
+        /// Initiates an account recovery request for mobile app users. This endpoint is specifically designed for the EH Work App.
+        /// </remarks>
+        public Task<AttemptAccountRecoveryResponseModel> RequestAccountRecoveryForMobileAppAsync(AttemptAccountRecoveryRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AttemptAccountRecoveryResponseModel,AttemptAccountRecoveryRequestModel>($"/mobileaccountrecovery/attempt", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get User Brand Associations for Mobile App
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get all brands associated with the user after authenticating with encrypted 2FA token
+        /// </remarks>
+        public GetUserBrandAssociationsResponseModel GetUserBrandAssociationsForMobileApp(MobileAccountRecoveryValidationModel model)
+        {
+            return ApiRequest<GetUserBrandAssociationsResponseModel,MobileAccountRecoveryValidationModel>($"/mobileaccountrecovery/userbrandassociations", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Get User Brand Associations for Mobile App
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get all brands associated with the user after authenticating with encrypted 2FA token
+        /// </remarks>
+        public Task<GetUserBrandAssociationsResponseModel> GetUserBrandAssociationsForMobileAppAsync(MobileAccountRecoveryValidationModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<GetUserBrandAssociationsResponseModel,MobileAccountRecoveryValidationModel>($"/mobileaccountrecovery/userbrandassociations", model, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// OAuth Token
