@@ -19,14 +19,15 @@ namespace KeyPayV2.Uk
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
+        ILeaveRequestsFunction LeaveRequests { get; }
         ILookupDataFunction LookupData { get; }
         IOtherFunction Other { get; }
         IPayCategoryFunction PayCategory { get; }
+        IPayeSchemeFunction PayeScheme { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IReportingFunction Reporting { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
-        IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
@@ -39,14 +40,12 @@ namespace KeyPayV2.Uk
         IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        ILeaveRequestsFunction LeaveRequests { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
         IManagerFunction Manager { get; }
-        IPayeSchemeFunction PayeScheme { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         IPensionSettingsFunction PensionSettings { get; }
         ISubcontractorFunction Subcontractor { get; }
@@ -71,14 +70,15 @@ namespace KeyPayV2.Uk
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
+            LeaveRequests = new LeaveRequestsFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Other = new OtherFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
+            PayeScheme = new PayeSchemeFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Reporting = new ReportingFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
-            Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             User = new UserFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
@@ -91,14 +91,12 @@ namespace KeyPayV2.Uk
             EmployeeReportingDimensionEarningsLineSplit = new EmployeeReportingDimensionEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
-            LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
             Manager = new ManagerFunction(Api);
-            PayeScheme = new PayeSchemeFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PensionSettings = new PensionSettingsFunction(Api);
             Subcontractor = new SubcontractorFunction(Api);
@@ -120,14 +118,15 @@ namespace KeyPayV2.Uk
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ILeaveRequestsFunction LeaveRequests { get; }
         public ILookupDataFunction LookupData { get; }
         public IOtherFunction Other { get; }
         public IPayCategoryFunction PayCategory { get; }
+        public IPayeSchemeFunction PayeScheme { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IReportingFunction Reporting { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
-        public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
         public IUserFunction User { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
@@ -140,14 +139,12 @@ namespace KeyPayV2.Uk
         public IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        public ILeaveRequestsFunction LeaveRequests { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
         public IManagerFunction Manager { get; }
-        public IPayeSchemeFunction PayeScheme { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public IPensionSettingsFunction PensionSettings { get; }
         public ISubcontractorFunction Subcontractor { get; }

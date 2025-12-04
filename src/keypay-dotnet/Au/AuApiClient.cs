@@ -20,6 +20,7 @@ namespace KeyPayV2.Au
         IEmployingEntitiesFunction EmployingEntities { get; }
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveCategoriesFunction LeaveCategories { get; }
+        ILeaveRequestsFunction LeaveRequests { get; }
         ILocationFunction Location { get; }
         ILookupDataFunction LookupData { get; }
         IOtherFunction Other { get; }
@@ -29,7 +30,6 @@ namespace KeyPayV2.Au
         IPublicHolidayFunction PublicHoliday { get; }
         IReportingFunction Reporting { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
-        IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
         IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
@@ -42,7 +42,6 @@ namespace KeyPayV2.Au
         IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        ILeaveRequestsFunction LeaveRequests { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
@@ -75,6 +74,7 @@ namespace KeyPayV2.Au
             EmployingEntities = new EmployingEntitiesFunction(Api);
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveCategories = new LeaveCategoriesFunction(Api);
+            LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
             LookupData = new LookupDataFunction(Api);
             Other = new OtherFunction(Api);
@@ -84,7 +84,6 @@ namespace KeyPayV2.Au
             PublicHoliday = new PublicHolidayFunction(Api);
             Reporting = new ReportingFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
-            Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             User = new UserFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
@@ -97,7 +96,6 @@ namespace KeyPayV2.Au
             EmployeeReportingDimensionEarningsLineSplit = new EmployeeReportingDimensionEarningsLineSplitFunction(Api);
             EmployeeExpenseRequest = new EmployeeExpenseRequestFunction(Api);
             EmployeeLeaveAllowances = new EmployeeLeaveAllowancesFunction(Api);
-            LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
@@ -127,6 +125,7 @@ namespace KeyPayV2.Au
         public IEmployingEntitiesFunction EmployingEntities { get; }
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveCategoriesFunction LeaveCategories { get; }
+        public ILeaveRequestsFunction LeaveRequests { get; }
         public ILocationFunction Location { get; }
         public ILookupDataFunction LookupData { get; }
         public IOtherFunction Other { get; }
@@ -136,7 +135,6 @@ namespace KeyPayV2.Au
         public IPublicHolidayFunction PublicHoliday { get; }
         public IReportingFunction Reporting { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
-        public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
         public IUserFunction User { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
@@ -149,7 +147,6 @@ namespace KeyPayV2.Au
         public IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         public IEmployeeExpenseRequestFunction EmployeeExpenseRequest { get; }
         public IEmployeeLeaveAllowancesFunction EmployeeLeaveAllowances { get; }
-        public ILeaveRequestsFunction LeaveRequests { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
