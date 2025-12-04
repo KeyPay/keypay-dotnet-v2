@@ -15,6 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IPayRunFunction
     {
+        List<PayRunTotalModel> ListPayRunTotalsForEmployee(int businessId, int employeeId);
+        Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         PayRunFinaliseResult FinalisePayRun(int businessId, int payRunId, FinalisePayRunOptions options);
         Task<PayRunFinaliseResult> FinalisePayRunAsync(int businessId, int payRunId, FinalisePayRunOptions options, CancellationToken cancellationToken = default);
         JournalExportResult ExportJournalsForAPayRunUsingTheExportpayrunjournalcommand(int businessId, int payRunId);
@@ -163,12 +165,32 @@ namespace KeyPayV2.Sg.Functions
         Task UnlockPayRunAsync(int businessId, int payRunId, PayRunUnlockRequest request, CancellationToken cancellationToken = default);
         void SetUiUnlockEnabled(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request);
         Task SetUiUnlockEnabledAsync(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request, CancellationToken cancellationToken = default);
-        List<PayRunTotalModel> ListPayRunTotalsForEmployee(int businessId, int employeeId);
-        Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
     }
     public class PayRunFunction : BaseFunction, IPayRunFunction
     {
         public PayRunFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// List Pay Run Totals for Employee
+        /// </summary>
+        /// <remarks>
+        /// Lists all the pay run totals for the employee with the specified ID.
+        /// </remarks>
+        public List<PayRunTotalModel> ListPayRunTotalsForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<List<PayRunTotalModel>>($"/business/{businessId}/employee/{employeeId}/payruntotals", Method.Get);
+        }
+
+        /// <summary>
+        /// List Pay Run Totals for Employee
+        /// </summary>
+        /// <remarks>
+        /// Lists all the pay run totals for the employee with the specified ID.
+        /// </remarks>
+        public Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<PayRunTotalModel>>($"/business/{businessId}/employee/{employeeId}/payruntotals", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Finalise Pay Run
@@ -1796,28 +1818,6 @@ namespace KeyPayV2.Sg.Functions
         public Task SetUiUnlockEnabledAsync(int businessId, int payRunId, SetPayRunUIUnlockStateRequest request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/setuiunlockstate", request, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Pay Run Totals for Employee
-        /// </summary>
-        /// <remarks>
-        /// Lists all the pay run totals for the employee with the specified ID.
-        /// </remarks>
-        public List<PayRunTotalModel> ListPayRunTotalsForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<List<PayRunTotalModel>>($"/business/{businessId}/employee/{employeeId}/payruntotals", Method.Get);
-        }
-
-        /// <summary>
-        /// List Pay Run Totals for Employee
-        /// </summary>
-        /// <remarks>
-        /// Lists all the pay run totals for the employee with the specified ID.
-        /// </remarks>
-        public Task<List<PayRunTotalModel>> ListPayRunTotalsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<PayRunTotalModel>>($"/business/{businessId}/employee/{employeeId}/payruntotals", Method.Get, cancellationToken);
         }
     }
 }

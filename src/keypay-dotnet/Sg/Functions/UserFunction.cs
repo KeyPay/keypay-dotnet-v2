@@ -17,10 +17,10 @@ namespace KeyPayV2.Sg.Functions
     {
         UserModel GetUserDetails();
         Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default);
-        UserUpdatedModel UpdateUser(UpdateUserModel model);
-        Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default);
         NewUserCreatedModel CreateNewUser(NewUserModel model);
         Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default);
+        UserUpdatedModel UpdateUser(UpdateUserModel model);
+        Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default);
     }
     public class UserFunction : BaseFunction, IUserFunction
     {
@@ -49,6 +49,32 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Create New User
+        /// </summary>
+        /// <remarks>
+        /// Creates a new user and sends an email to inform the user.
+        /// In order to make sure that the correct brand details are included in the email, be sure to `POST` the API request to `https://{yourbrand}.yourpayroll.com.au`.
+        /// To prevent sending of the new user email, set `apiOnly` to `true` in the request.
+        /// </remarks>
+        public NewUserCreatedModel CreateNewUser(NewUserModel model)
+        {
+            return ApiRequest<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New User
+        /// </summary>
+        /// <remarks>
+        /// Creates a new user and sends an email to inform the user.
+        /// In order to make sure that the correct brand details are included in the email, be sure to `POST` the API request to `https://{yourbrand}.yourpayroll.com.au`.
+        /// To prevent sending of the new user email, set `apiOnly` to `true` in the request.
+        /// </remarks>
+        public Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Update User
         /// </summary>
         /// <remarks>
@@ -72,32 +98,6 @@ namespace KeyPayV2.Sg.Functions
         public Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UserUpdatedModel,UpdateUserModel>($"/user", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New User
-        /// </summary>
-        /// <remarks>
-        /// Creates a new user and sends an email to inform the user.
-        /// In order to make sure that the correct brand details are included in the email, be sure to `POST` the API request to `https://{yourbrand}.yourpayroll.com.au`.<br />
-        /// To prevent sending of the new user email, set `apiOnly` to `true` in the request.
-        /// </remarks>
-        public NewUserCreatedModel CreateNewUser(NewUserModel model)
-        {
-            return ApiRequest<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New User
-        /// </summary>
-        /// <remarks>
-        /// Creates a new user and sends an email to inform the user.
-        /// In order to make sure that the correct brand details are included in the email, be sure to `POST` the API request to `https://{yourbrand}.yourpayroll.com.au`.<br />
-        /// To prevent sending of the new user email, set `apiOnly` to `true` in the request.
-        /// </remarks>
-        public Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post, cancellationToken);
         }
     }
 }

@@ -30,9 +30,9 @@ namespace KeyPayV2.Sg
         IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
         ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
+        IUserFunction User { get; }
         IWhiteLabelFunction WhiteLabel { get; }
         IWorkTypeFunction WorkType { get; }
-        IPayRunFunction PayRun { get; }
         IEmployeeAccessFunction EmployeeAccess { get; }
         IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         IEmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
@@ -47,6 +47,7 @@ namespace KeyPayV2.Sg
         ILeaveRequestsFunction LeaveRequests { get; }
         IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
+        IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
@@ -55,7 +56,6 @@ namespace KeyPayV2.Sg
         ITimesheetsFunction Timesheets { get; }
         IUnavailabilityFunction Unavailability { get; }
         IEssFunction Ess { get; }
-        IUserFunction User { get; }
     }
     public class SgApiClient : BaseApiClient, ISgApiClient
     {
@@ -85,9 +85,9 @@ namespace KeyPayV2.Sg
             Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
+            User = new UserFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
             WorkType = new WorkTypeFunction(Api);
-            PayRun = new PayRunFunction(Api);
             EmployeeAccess = new EmployeeAccessFunction(Api);
             EmployeeBankAccount = new EmployeeBankAccountFunction(Api);
             EmployeeBenefitsInKind = new EmployeeBenefitsInKindFunction(Api);
@@ -102,6 +102,7 @@ namespace KeyPayV2.Sg
             LeaveRequests = new LeaveRequestsFunction(Api);
             EmployeeIrasLumpSum = new EmployeeIrasLumpSumFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
+            PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
@@ -110,7 +111,6 @@ namespace KeyPayV2.Sg
             Timesheets = new TimesheetsFunction(Api);
             Unavailability = new UnavailabilityFunction(Api);
             Ess = new EssFunction(Api);
-            User = new UserFunction(Api);
         }
 
         public IAuthenticationFunction Authentication { get; }
@@ -137,9 +137,9 @@ namespace KeyPayV2.Sg
         public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
+        public IUserFunction User { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
         public IWorkTypeFunction WorkType { get; }
-        public IPayRunFunction PayRun { get; }
         public IEmployeeAccessFunction EmployeeAccess { get; }
         public IEmployeeBankAccountFunction EmployeeBankAccount { get; }
         public IEmployeeBenefitsInKindFunction EmployeeBenefitsInKind { get; }
@@ -154,6 +154,7 @@ namespace KeyPayV2.Sg
         public ILeaveRequestsFunction LeaveRequests { get; }
         public IEmployeeIrasLumpSumFunction EmployeeIrasLumpSum { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
+        public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
@@ -162,6 +163,5 @@ namespace KeyPayV2.Sg
         public ITimesheetsFunction Timesheets { get; }
         public IUnavailabilityFunction Unavailability { get; }
         public IEssFunction Ess { get; }
-        public IUserFunction User { get; }
     }
 }
