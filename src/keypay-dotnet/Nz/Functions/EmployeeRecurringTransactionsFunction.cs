@@ -15,6 +15,8 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IEmployeeRecurringTransactionsFunction
     {
+        List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds);
+        Task<List<NzEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default);
         NzAdditionalEarningsModel GetEmployeeAdditionalEarningById(int businessId, int employeeId, long id);
         Task<NzAdditionalEarningsModel> GetEmployeeAdditionalEarningByIdAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
         NzAdditionalEarningsModel UpdateEmployeeAdditionalEarning(int businessId, int employeeId, long id, NzAdditionalEarningsInputModel model);
@@ -67,12 +69,32 @@ namespace KeyPayV2.Nz.Functions
         Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeTaxAdjustment(int businessId, int employeeId, int id);
         Task DeleteEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds);
-        Task<List<NzEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default);
     }
     public class EmployeeRecurringTransactionsFunction : BaseFunction, IEmployeeRecurringTransactionsFunction
     {
         public EmployeeRecurringTransactionsFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// List Employee Deductions By External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions that have a matching external reference ID
+        /// </remarks>
+        public List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
+        {
+            return ApiRequest<List<NzEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post);
+        }
+
+        /// <summary>
+        /// List Employee Deductions By External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions that have a matching external reference ID
+        /// </remarks>
+        public Task<List<NzEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// Get Employee Additional Earning by ID
@@ -644,28 +666,6 @@ namespace KeyPayV2.Nz.Functions
         public Task DeleteEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Deductions By External Reference Id
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee deductions that have a matching external reference ID
-        /// </remarks>
-        public List<NzEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
-        {
-            return ApiRequest<List<NzEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post);
-        }
-
-        /// <summary>
-        /// List Employee Deductions By External Reference Id
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee deductions that have a matching external reference ID
-        /// </remarks>
-        public Task<List<NzEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post, cancellationToken);
         }
     }
 }

@@ -8,12 +8,7 @@ namespace KeyPayV2.Uk.Enums
         NotSet,
         Fixed,
         PercentageGross,
-        PercentageOTE,
-        PercentageStudentLoan,
         PercentageNet,
-        Tiered,
-        Custom,
-        PercentageSuperannuation,
-        PercentageCompensation
+        Tiered
     }
 }
