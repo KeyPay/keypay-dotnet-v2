@@ -15,12 +15,10 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface ILeaveAllowanceFunction
     {
-        Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForAllEmployees(int businessId);
-        Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
-        List<LeaveAllowanceApiModel> SetLeaveAllowances(int businessId, LeaveAllowancesRequest request);
-        Task<List<LeaveAllowanceApiModel>> SetLeaveAllowancesAsync(int businessId, LeaveAllowancesRequest request, CancellationToken cancellationToken = default);
-        Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId);
-        Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId);
+        Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
+        Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
         List<UkLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
         Task<List<UkLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate);
@@ -33,79 +31,59 @@ namespace KeyPayV2.Uk.Functions
         Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void ReapplyLeaveAllowanceTemplate(int businessId, int id);
         Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId);
-        Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
-        Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
+        Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForAllEmployees(int businessId);
+        Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<LeaveAllowanceApiModel> SetLeaveAllowances(int businessId, LeaveAllowancesRequest request);
+        Task<List<LeaveAllowanceApiModel>> SetLeaveAllowancesAsync(int businessId, LeaveAllowancesRequest request, CancellationToken cancellationToken = default);
+        Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId);
+        Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
     }
     public class LeaveAllowanceFunction : BaseFunction, ILeaveAllowanceFunction
     {
         public LeaveAllowanceFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// Get Leave Allowances for All Employees
+        /// Get Leave Allowance Template for Employee
         /// </summary>
         /// <remarks>
-        /// Gets the leave allowances for all employees in the business
+        /// Gets the current leave allowance template for the specified employee
         /// </remarks>
-        public Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForAllEmployees(int businessId)
+        public UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
         {
-            return ApiRequest<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances", Method.Get);
+            return ApiRequest<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get);
         }
 
         /// <summary>
-        /// Get Leave Allowances for All Employees
+        /// Get Leave Allowance Template for Employee
         /// </summary>
         /// <remarks>
-        /// Gets the leave allowances for all employees in the business
+        /// Gets the current leave allowance template for the specified employee
         /// </remarks>
-        public Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Set Leave Allowances
+        /// Assign Leave Allowance Template
         /// </summary>
         /// <remarks>
-        /// Sets the leave allowances for the specified employees (dictionary keyed by employee ID).
+        /// Assigns employee to existing leave allowance template
         /// </remarks>
-        public List<LeaveAllowanceApiModel> SetLeaveAllowances(int businessId, LeaveAllowancesRequest request)
+        public void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId)
         {
-            return ApiRequest<List<LeaveAllowanceApiModel>,LeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.Put);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post);
         }
 
         /// <summary>
-        /// Set Leave Allowances
+        /// Assign Leave Allowance Template
         /// </summary>
         /// <remarks>
-        /// Sets the leave allowances for the specified employees (dictionary keyed by employee ID).
+        /// Assigns employee to existing leave allowance template
         /// </remarks>
-        public Task<List<LeaveAllowanceApiModel>> SetLeaveAllowancesAsync(int businessId, LeaveAllowancesRequest request, CancellationToken cancellationToken = default)
+        public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LeaveAllowanceApiModel>,LeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Leave Allowances for Employee
-        /// </summary>
-        /// <remarks>
-        /// Get leave Allowances for a single employee
-        /// </remarks>
-        public Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Leave Allowances for Employee
-        /// </summary>
-        /// <remarks>
-        /// Get leave Allowances for a single employee
-        /// </remarks>
-        public Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -243,47 +221,69 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Get Leave Allowance Template for Employee
+        /// Get Leave Allowances for All Employees
         /// </summary>
         /// <remarks>
-        /// Gets the current leave allowance template for the specified employee
+        /// Gets the leave allowances for all employees in the business
         /// </remarks>
-        public UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateForEmployee(int businessId, int employeeId)
+        public Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForAllEmployees(int businessId)
         {
-            return ApiRequest<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get);
+            return ApiRequest<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances", Method.Get);
         }
 
         /// <summary>
-        /// Get Leave Allowance Template for Employee
+        /// Get Leave Allowances for All Employees
         /// </summary>
         /// <remarks>
-        /// Gets the current leave allowance template for the specified employee
+        /// Gets the leave allowances for all employees in the business
         /// </remarks>
-        public Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate", Method.Get, cancellationToken);
+            return ApiRequestAsync<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Assign Leave Allowance Template
+        /// Set Leave Allowances
         /// </summary>
         /// <remarks>
-        /// Assigns employee to existing leave allowance template
+        /// Sets the leave allowances for the specified employees (dictionary keyed by employee ID).
         /// </remarks>
-        public void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId)
+        public List<LeaveAllowanceApiModel> SetLeaveAllowances(int businessId, LeaveAllowancesRequest request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post);
+            return ApiRequest<List<LeaveAllowanceApiModel>,LeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.Put);
         }
 
         /// <summary>
-        /// Assign Leave Allowance Template
+        /// Set Leave Allowances
         /// </summary>
         /// <remarks>
-        /// Assigns employee to existing leave allowance template
+        /// Sets the leave allowances for the specified employees (dictionary keyed by employee ID).
         /// </remarks>
-        public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
+        public Task<List<LeaveAllowanceApiModel>> SetLeaveAllowancesAsync(int businessId, LeaveAllowancesRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post, cancellationToken);
+            return ApiRequestAsync<List<LeaveAllowanceApiModel>,LeaveAllowancesRequest>($"/business/{businessId}/leaveallowances", request, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Leave Allowances for Employee
+        /// </summary>
+        /// <remarks>
+        /// Get leave Allowances for a single employee
+        /// </remarks>
+        public Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Leave Allowances for Employee
+        /// </summary>
+        /// <remarks>
+        /// Get leave Allowances for a single employee
+        /// </remarks>
+        public Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get, cancellationToken);
         }
     }
 }

@@ -19,12 +19,12 @@ namespace KeyPayV2.My.Functions
         Task<List<PayRateScheduleModel>> ListPayRateAdjustmentScheduleAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         PayRateScheduleModel CreatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, PayRateScheduleModel model);
         Task<PayRateScheduleModel> CreatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, PayRateScheduleModel model, CancellationToken cancellationToken = default);
-        PayRateScheduleModel UpdatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id, PayRateScheduleModel model);
-        Task<PayRateScheduleModel> UpdatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, PayRateScheduleModel model, CancellationToken cancellationToken = default);
-        void DeletePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id);
-        Task DeletePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        PayRateScheduleModel GetPayRateAdjustmentScheduleRecordById(int businessId, int employeeId, int recordId);
-        Task<PayRateScheduleModel> GetPayRateAdjustmentScheduleRecordByIdAsync(int businessId, int employeeId, int recordId, CancellationToken cancellationToken = default);
+        PayRateScheduleModel GetPayRateAdjustmentScheduleRecordById(int businessId, int employeeId, int payRateScheduleId);
+        Task<PayRateScheduleModel> GetPayRateAdjustmentScheduleRecordByIdAsync(int businessId, int employeeId, int payRateScheduleId, CancellationToken cancellationToken = default);
+        PayRateScheduleModel UpdatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int payRateScheduleId, PayRateScheduleModel model);
+        Task<PayRateScheduleModel> UpdatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int payRateScheduleId, PayRateScheduleModel model, CancellationToken cancellationToken = default);
+        void DeletePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int payRateScheduleId);
+        Task DeletePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int payRateScheduleId, CancellationToken cancellationToken = default);
     }
     public class EmployeePayRateScheduleFunction : BaseFunction, IEmployeePayRateScheduleFunction
     {
@@ -75,47 +75,14 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Update pay rate adjustment schedule record
+        /// Get pay rate adjustment schedule record by ID
         /// </summary>
         /// <remarks>
-        /// Updates the employee's pay rate adjustment schedule record with the specified ID.
+        /// Gets pay rate adjustment schedule record for this employee with the specified ID.
         /// </remarks>
-        public PayRateScheduleModel UpdatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id, PayRateScheduleModel model)
+        public PayRateScheduleModel GetPayRateAdjustmentScheduleRecordById(int businessId, int employeeId, int payRateScheduleId)
         {
-            return ApiRequest<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update pay rate adjustment schedule record
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's pay rate adjustment schedule record with the specified ID.
-        /// </remarks>
-        public Task<PayRateScheduleModel> UpdatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, PayRateScheduleModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete pay rate adjustment schedule record
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's pay rate adjustment schedule record with the specified ID.
-        /// </remarks>
-        public void DeletePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete pay rate adjustment schedule record
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's pay rate adjustment schedule record with the specified ID.
-        /// </remarks>
-        public Task DeletePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payrateschedule/{id}", Method.Delete, cancellationToken);
+            return ApiRequest<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{payRateScheduleId}", Method.Get);
         }
 
         /// <summary>
@@ -124,20 +91,53 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Gets pay rate adjustment schedule record for this employee with the specified ID.
         /// </remarks>
-        public PayRateScheduleModel GetPayRateAdjustmentScheduleRecordById(int businessId, int employeeId, int recordId)
+        public Task<PayRateScheduleModel> GetPayRateAdjustmentScheduleRecordByIdAsync(int businessId, int employeeId, int payRateScheduleId, CancellationToken cancellationToken = default)
         {
-            return ApiRequest<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{recordId}", Method.Get);
+            return ApiRequestAsync<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{payRateScheduleId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Get pay rate adjustment schedule record by ID
+        /// Update pay rate adjustment schedule record
         /// </summary>
         /// <remarks>
-        /// Gets pay rate adjustment schedule record for this employee with the specified ID.
+        /// Updates the employee's pay rate adjustment schedule record with the specified ID.
         /// </remarks>
-        public Task<PayRateScheduleModel> GetPayRateAdjustmentScheduleRecordByIdAsync(int businessId, int employeeId, int recordId, CancellationToken cancellationToken = default)
+        public PayRateScheduleModel UpdatePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int payRateScheduleId, PayRateScheduleModel model)
         {
-            return ApiRequestAsync<PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{recordId}", Method.Get, cancellationToken);
+            return ApiRequest<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{payRateScheduleId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update pay rate adjustment schedule record
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's pay rate adjustment schedule record with the specified ID.
+        /// </remarks>
+        public Task<PayRateScheduleModel> UpdatePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int payRateScheduleId, PayRateScheduleModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PayRateScheduleModel,PayRateScheduleModel>($"/business/{businessId}/employee/{employeeId}/payrateschedule/{payRateScheduleId}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete pay rate adjustment schedule record
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's pay rate adjustment schedule record with the specified ID.
+        /// </remarks>
+        public void DeletePayRateAdjustmentScheduleRecord(int businessId, int employeeId, int payRateScheduleId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/payrateschedule/{payRateScheduleId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete pay rate adjustment schedule record
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's pay rate adjustment schedule record with the specified ID.
+        /// </remarks>
+        public Task DeletePayRateAdjustmentScheduleRecordAsync(int businessId, int employeeId, int payRateScheduleId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payrateschedule/{payRateScheduleId}", Method.Delete, cancellationToken);
         }
     }
 }

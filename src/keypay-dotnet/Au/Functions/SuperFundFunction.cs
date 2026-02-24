@@ -17,8 +17,8 @@ namespace KeyPayV2.Au.Functions
     {
         List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, ODataQuery oDataQuery = null);
         Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreateSelfManagedSuperFund(int businessId, SelfManagedSuperFundModel fund);
-        Task CreateSelfManagedSuperFundAsync(int businessId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
+        SelfManagedSuperFundModel CreateSelfManagedSuperFund(int businessId, SelfManagedSuperFundModel fund);
+        Task<SelfManagedSuperFundModel> CreateSelfManagedSuperFundAsync(int businessId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
         SelfManagedSuperFundModel GetSelfManagedSuperFundById(int businessId, int id);
         Task<SelfManagedSuperFundModel> GetSelfManagedSuperFundByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void UpdateSelfManagedSuperFund(int businessId, int id, SelfManagedSuperFundModel fund);
@@ -62,9 +62,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new self managed super fund for the business.
         /// </remarks>
-        public void CreateSelfManagedSuperFund(int businessId, SelfManagedSuperFundModel fund)
+        public SelfManagedSuperFundModel CreateSelfManagedSuperFund(int businessId, SelfManagedSuperFundModel fund)
         {
-            ApiRequest($"/business/{businessId}/selfmanagedsuperfund", fund, Method.Post);
+            return ApiRequest<SelfManagedSuperFundModel,SelfManagedSuperFundModel>($"/business/{businessId}/selfmanagedsuperfund", fund, Method.Post);
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new self managed super fund for the business.
         /// </remarks>
-        public Task CreateSelfManagedSuperFundAsync(int businessId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
+        public Task<SelfManagedSuperFundModel> CreateSelfManagedSuperFundAsync(int businessId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/selfmanagedsuperfund", fund, Method.Post, cancellationToken);
+            return ApiRequestAsync<SelfManagedSuperFundModel,SelfManagedSuperFundModel>($"/business/{businessId}/selfmanagedsuperfund", fund, Method.Post, cancellationToken);
         }
 
         /// <summary>

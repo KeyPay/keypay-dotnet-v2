@@ -5,17 +5,17 @@
 		<RootNamespace>KeyPayV2</RootNamespace>
 		<AssemblyName>KeyPayV2</AssemblyName>
 	    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>3.0.0.439</AssemblyVersion>
-    <FileVersion>3.0.0.439</FileVersion>
+    <AssemblyVersion>3.0.0.556</AssemblyVersion>
+    <FileVersion>3.0.0.556</FileVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/keypay/keypay-dotnet-v2</PackageProjectUrl>
     <PackageIcon>keypay.png</PackageIcon>
     <RepositoryUrl>https://github.com/keypay/keypay-dotnet-v2</RepositoryUrl>
     <PackageTags>keypay yourpayroll api payroll</PackageTags>
     <PackageReleaseNotes>KeyPay API dotnet client v2</PackageReleaseNotes>
-    <Copyright>Copyright 2025</Copyright>
+    <Copyright>Copyright 2026</Copyright>
     <Description>A .NET library for the KeyPay API</Description>
-    <Version>3.0.0.439</Version>
+    <Version>3.0.0.556</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="keypay.png" Pack="true" PackagePath="\"/>

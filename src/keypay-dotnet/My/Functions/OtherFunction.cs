@@ -15,20 +15,46 @@ namespace KeyPayV2.My.Functions
 {
     public interface IOtherFunction
     {
+        MyEssStatutoryDetailsModel MyEssStatutoryDetails_Get(int employeeId);
+        Task<MyEssStatutoryDetailsModel> MyEssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<MyBankModel> ListBanks();
+        Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
         NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
         Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
-        List<MyBankModel> ListBanks();
-        Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default);
-        MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId);
-        Task<MyEssStatutoryDetailsModel> EssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
         public OtherFunction(ApiRequestExecutor api) : base(api) {}
+
+        public MyEssStatutoryDetailsModel MyEssStatutoryDetails_Get(int employeeId)
+        {
+            return ApiRequest<MyEssStatutoryDetailsModel>($"/ess/{employeeId}/statutorydetails", Method.Get);
+        }
+
+        public Task<MyEssStatutoryDetailsModel> MyEssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyEssStatutoryDetailsModel>($"/ess/{employeeId}/statutorydetails", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List banks
+        /// </summary>
+        public List<MyBankModel> ListBanks()
+        {
+            return ApiRequest<List<MyBankModel>>($"/bank", Method.Get);
+        }
+
+        /// <summary>
+        /// List banks
+        /// </summary>
+        public Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyBankModel>>($"/bank", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Payment Files by Finalised Pay Run Id
@@ -88,32 +114,6 @@ namespace KeyPayV2.My.Functions
         public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List banks
-        /// </summary>
-        public List<MyBankModel> ListBanks()
-        {
-            return ApiRequest<List<MyBankModel>>($"/bank", Method.Get);
-        }
-
-        /// <summary>
-        /// List banks
-        /// </summary>
-        public Task<List<MyBankModel>> ListBanksAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<MyBankModel>>($"/bank", Method.Get, cancellationToken);
-        }
-
-        public MyEssStatutoryDetailsModel EssStatutoryDetails_Get(int employeeId)
-        {
-            return ApiRequest<MyEssStatutoryDetailsModel>($"/ess/{employeeId}/statutorydetails", Method.Get);
-        }
-
-        public Task<MyEssStatutoryDetailsModel> EssStatutoryDetails_GetAsync(int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MyEssStatutoryDetailsModel>($"/ess/{employeeId}/statutorydetails", Method.Get, cancellationToken);
         }
     }
 }

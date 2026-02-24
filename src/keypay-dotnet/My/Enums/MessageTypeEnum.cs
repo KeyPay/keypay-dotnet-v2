@@ -109,6 +109,7 @@ namespace KeyPayV2.My.Enums
         EmployeeSelfSetupReminder,
         EmployeeOnboardingP45Uploaded,
         BusinessAccessGranted,
+        MagicTokenCreated,
         InitiateEmployeeOnboardingWithContract,
         SignatoryContract,
         WorkEligibilityExpiringNotification,
@@ -124,7 +125,6 @@ namespace KeyPayV2.My.Enums
         EmailAddressConfirmChanged,
         RecoveryEmailAddressChanged,
         RecoveryEmailAddressConfirmChanged,
-        FraudProtectionCheckResult,
         SuspiciousLogin,
         ImpossibleTravelLogin,
         PaymentApprovalNotification,
@@ -156,6 +156,8 @@ namespace KeyPayV2.My.Enums
         InactiveUserLogin,
         NotifyMoneyMovementUserOfFailedCreditPaymentStatus,
         NotifyMoneyMovementUserOfFailedDebitPaymentStatus,
-        TxMonitoringNotification
+        TxMonitoringNotification,
+        NotifyBusinessSsoDisabled,
+        NotifyBusinessSsoDisabledDueToBillableActivities
     }
 }

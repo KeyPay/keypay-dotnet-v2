@@ -9,6 +9,9 @@ namespace KeyPayV2.Au.Enums
         ForeignEmployment,
         InboundAssignee,
         LabourHire,
-        OtherSpecifiedPayments
+        OtherSpecifiedPayments,
+        SalaryAndWages,
+        WorkingHolidayMaker,
+        SeasonalWorker
     }
 }

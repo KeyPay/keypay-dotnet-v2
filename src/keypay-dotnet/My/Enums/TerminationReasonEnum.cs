@@ -5,6 +5,7 @@ namespace KeyPayV2.My.Enums
 {
     public enum TerminationReasonEnum
     {
+        None,
         VoluntaryCessation,
         IllHealth,
         Deceased,

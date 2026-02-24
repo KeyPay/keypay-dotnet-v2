@@ -23,8 +23,8 @@ namespace KeyPayV2.My.Functions
         Task<UnavailabilityModel> CreateUnavailabilityAsync(int businessId, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default);
         UnavailabilityModel GetUnavailabilityById(int businessId, int id);
         Task<UnavailabilityModel> GetUnavailabilityByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel);
-        Task UpdateUnavailabilityAsync(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default);
+        UnavailabilityModel UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel);
+        Task<UnavailabilityModel> UpdateUnavailabilityAsync(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default);
         void DeleteUnavailability(int businessId, int id);
         Task DeleteUnavailabilityAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -62,7 +62,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<UnavailabilityModel> ListUnavailabilities(int businessId, ListUnavailabilitiesQueryModel request)
         {
-            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employeeId={request.EmployeeId}&defaultLocationId={request.DefaultLocationId}", Method.Get);
+            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&EmployeeId={request.EmployeeId}&DefaultLocationId={request.DefaultLocationId}", Method.Get);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<UnavailabilityModel>> ListUnavailabilitiesAsync(int businessId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&employeeId={request.EmployeeId}&defaultLocationId={request.DefaultLocationId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&EmployeeId={request.EmployeeId}&DefaultLocationId={request.DefaultLocationId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -126,9 +126,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Updates the unavailability with the specified ID.
         /// </remarks>
-        public void UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel)
+        public UnavailabilityModel UpdateUnavailability(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel)
         {
-            ApiRequest($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.Put);
+            return ApiRequest<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.Put);
         }
 
         /// <summary>
@@ -137,9 +137,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Updates the unavailability with the specified ID.
         /// </remarks>
-        public Task UpdateUnavailabilityAsync(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default)
+        public Task<UnavailabilityModel> UpdateUnavailabilityAsync(int businessId, int id, UnavailabilitySaveModel unavailabilitySaveModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.Put, cancellationToken);
+            return ApiRequestAsync<UnavailabilityModel,UnavailabilitySaveModel>($"/business/{businessId}/unavailability/{id}", unavailabilitySaveModel, Method.Put, cancellationToken);
         }
 
         /// <summary>

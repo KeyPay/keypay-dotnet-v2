@@ -9,7 +9,6 @@ using KeyPayV2.Common;
 using KeyPayV2.Common.Models;
 using KeyPayV2.Au.Enums;
 using KeyPayV2.Au.Models.Common;
-using KeyPayV2.Au.Models.WorkType;
 
 namespace KeyPayV2.Au.Functions
 {
@@ -19,12 +18,10 @@ namespace KeyPayV2.Au.Functions
         Task<List<AuWorkTypeModel>> ListWorkTypesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuWorkTypeModel CreateWorkType(int businessId, AuWorkTypeModel workType);
         Task<AuWorkTypeModel> CreateWorkTypeAsync(int businessId, AuWorkTypeModel workType, CancellationToken cancellationToken = default);
-        AuWorkTypeModel CreateWorkType(int businessId, AuWorkTypeModel workType, CreateWorkTypeQueryModel request);
-        Task<AuWorkTypeModel> CreateWorkTypeAsync(int businessId, AuWorkTypeModel workType, CreateWorkTypeQueryModel request, CancellationToken cancellationToken = default);
         AuWorkTypeModel GetWorkTypeById(int businessId, int id);
         Task<AuWorkTypeModel> GetWorkTypeByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateWorkType(int businessId, int id, AuWorkTypeModel workType);
-        Task UpdateWorkTypeAsync(int businessId, int id, AuWorkTypeModel workType, CancellationToken cancellationToken = default);
+        AuWorkTypeModel UpdateWorkType(int businessId, int id, AuWorkTypeModel workType);
+        Task<AuWorkTypeModel> UpdateWorkTypeAsync(int businessId, int id, AuWorkTypeModel workType, CancellationToken cancellationToken = default);
         void DeleteWorkType(int businessId, int id);
         Task DeleteWorkTypeAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -79,28 +76,6 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Create Work Type
-        /// </summary>
-        /// <remarks>
-        /// Creates a new work type for the business.
-        /// </remarks>
-        public AuWorkTypeModel CreateWorkType(int businessId, AuWorkTypeModel workType, CreateWorkTypeQueryModel request)
-        {
-            return ApiRequest<AuWorkTypeModel,AuWorkTypeModel>($"/business/{businessId}/worktype?applyToAllEmployees={request.ApplyToAllEmployees}", workType, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Work Type
-        /// </summary>
-        /// <remarks>
-        /// Creates a new work type for the business.
-        /// </remarks>
-        public Task<AuWorkTypeModel> CreateWorkTypeAsync(int businessId, AuWorkTypeModel workType, CreateWorkTypeQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuWorkTypeModel,AuWorkTypeModel>($"/business/{businessId}/worktype?applyToAllEmployees={request.ApplyToAllEmployees}", workType, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Work Type by ID
         /// </summary>
         /// <remarks>
@@ -128,9 +103,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the work type with the specified ID.
         /// </remarks>
-        public void UpdateWorkType(int businessId, int id, AuWorkTypeModel workType)
+        public AuWorkTypeModel UpdateWorkType(int businessId, int id, AuWorkTypeModel workType)
         {
-            ApiRequest($"/business/{businessId}/worktype/{id}", workType, Method.Put);
+            return ApiRequest<AuWorkTypeModel,AuWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.Put);
         }
 
         /// <summary>
@@ -139,9 +114,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the work type with the specified ID.
         /// </remarks>
-        public Task UpdateWorkTypeAsync(int businessId, int id, AuWorkTypeModel workType, CancellationToken cancellationToken = default)
+        public Task<AuWorkTypeModel> UpdateWorkTypeAsync(int businessId, int id, AuWorkTypeModel workType, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/worktype/{id}", workType, Method.Put, cancellationToken);
+            return ApiRequestAsync<AuWorkTypeModel,AuWorkTypeModel>($"/business/{businessId}/worktype/{id}", workType, Method.Put, cancellationToken);
         }
 
         /// <summary>

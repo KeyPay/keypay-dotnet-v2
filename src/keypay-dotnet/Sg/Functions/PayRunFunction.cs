@@ -83,14 +83,18 @@ namespace KeyPayV2.Sg.Functions
         Task<SgPayRunDeductionResponse> GetDeductionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         SgPayRunDetailsModel GetPayRunDetails(int businessId, int payRunId);
         Task<SgPayRunDetailsModel> GetPayRunDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
-        SgPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId);
-        Task<SgPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        SgPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ODataQuery oDataQuery = null);
+        Task<SgPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null);
+        Task<SgPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateEarningsLines(int businessId, int payRunId, SgSubmitPayRunEarningsLineRequest request);
         Task CreateEarningsLinesAsync(int businessId, int payRunId, SgSubmitPayRunEarningsLineRequest request, CancellationToken cancellationToken = default);
         void DeleteEarningsLine(int businessId, int payRunId, DeleteEarningsLineQueryModel request);
         Task DeleteEarningsLineAsync(int businessId, int payRunId, DeleteEarningsLineQueryModel request, CancellationToken cancellationToken = default);
-        SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId);
-        Task<SgPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId, ODataQuery oDataQuery = null);
+        Task<SgPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId, GetEarningsLinesByEmployeeIdQueryModel request, ODataQuery oDataQuery = null);
+        Task<SgPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetEarningsLinesByEmployeeIdQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         Dictionary<String,SgApiPaySlipModel> ListPaySlipData(int businessId, int payRunId);
         Task<Dictionary<String,SgApiPaySlipModel>> ListPaySlipDataAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         Dictionary<String,SgApiPaySlipModel> ListPaySlipData(int businessId, int payRunId, ListPaySlipDataQueryModel request);
@@ -921,10 +925,11 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the earnings lines for a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public SgPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId)
+        public SgPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines", Method.Get);
+            return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -932,10 +937,35 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Lists all the earnings lines for a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<SgPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        public Task<SgPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines", Method.Get, cancellationToken);
+            return ApiRequestAsync<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Earnings Lines
+        /// </summary>
+        /// <remarks>
+        /// Lists all the earnings lines for a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public SgPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Earnings Lines
+        /// </summary>
+        /// <remarks>
+        /// Lists all the earnings lines for a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<SgPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -987,10 +1017,11 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Gets all the earnings lines for a specific employee in a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId)
+        public SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}", Method.Get);
+            return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -998,10 +1029,35 @@ namespace KeyPayV2.Sg.Functions
         /// </summary>
         /// <remarks>
         /// Gets all the earnings lines for a specific employee in a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<SgPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
+        public Task<SgPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Earnings Lines by Employee ID
+        /// </summary>
+        /// <remarks>
+        /// Gets all the earnings lines for a specific employee in a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public SgPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId, GetEarningsLinesByEmployeeIdQueryModel request, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Earnings Lines by Employee ID
+        /// </summary>
+        /// <remarks>
+        /// Gets all the earnings lines for a specific employee in a pay run.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<SgPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetEarningsLinesByEmployeeIdQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

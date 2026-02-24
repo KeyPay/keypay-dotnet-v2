@@ -29,5 +29,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public decimal? SmpAdjust { get; set; }
         public string Notes { get; set; }
         public bool DoNotMakeSalarySacrificeDeductions { get; set; }
+        public bool BypassElevenWeekRule { get; set; }
     }
 }

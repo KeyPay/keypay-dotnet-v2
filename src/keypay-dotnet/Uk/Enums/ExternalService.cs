@@ -100,6 +100,8 @@ namespace KeyPayV2.Uk.Enums
         PayRunSettingsFlatFileImport,
         Sage200,
         RosterCostCalculation,
-        HeroClear
+        HeroClear,
+        BrightPay,
+        EmployeeLeaveYearStartDatesImport
     }
 }

@@ -20,6 +20,9 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal EmployeePensionContribution { get; set; }
         public decimal EmployerNic { get; set; }
         public decimal EmployeeNic { get; set; }
+        public decimal TotalTerminationPayment { get; set; }
+        public decimal TerminationPayment { get; set; }
+        public decimal TerminationPaymentExemptions { get; set; }
         public decimal TotalGrossPlusPensionsAndNic { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }

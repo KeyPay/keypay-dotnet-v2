@@ -15,46 +15,46 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IEmployeeFunction
     {
-        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
-        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        NzOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
-        Task<NzOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void SetOpeningBalances(int businessId, int employeeId, NzOpeningBalancesModel model);
-        Task SetOpeningBalancesAsync(int businessId, int employeeId, NzOpeningBalancesModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployee(int businessId, int employeeId);
-        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
-        Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void GetEmployeeProfileImage(int businessId, int employeeId);
-        Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        byte[] GetEmployeeProfileImage(int businessId, int employeeId);
+        Task<byte[]> GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int businessId, int employeeId);
         Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
+        Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<NzWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<NzWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, NzStandardHoursModel model);
+        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, NzStandardHoursModel model, CancellationToken cancellationToken = default);
+        NzStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
+        Task<NzStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId);
         Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request);
         Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
-        List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId);
-        Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
-        Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        List<NzWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<NzWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        NzStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
-        Task<NzStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, NzStandardHoursModel model);
-        Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, NzStandardHoursModel model, CancellationToken cancellationToken = default);
+        NzOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
+        Task<NzOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetOpeningBalances(int businessId, int employeeId, NzOpeningBalancesModel model);
+        Task SetOpeningBalancesAsync(int businessId, int employeeId, NzOpeningBalancesModel model, CancellationToken cancellationToken = default);
         void ActivateEmployee(int businessId, int employeeId);
         Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
         Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
+        Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void GrantKioskAccess(int businessId, int employeeId);
         Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void RevokeKioskAccess(int businessId, int employeeId);
         Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId);
+        Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
+        Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
+        void DeleteEmployee(int businessId, int employeeId);
+        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<NzUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
         Task<List<NzUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<NzUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
@@ -77,137 +77,14 @@ namespace KeyPayV2.Nz.Functions
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// Get Pay Rates
+        /// Get Employee Profile Image
         /// </summary>
         /// <remarks>
-        /// Gets the pay rates for this employee.
+        /// Returns the file content for the employee's current profile image.
         /// </remarks>
-        public List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId)
+        public byte[] GetEmployeeProfileImage(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pay Rates
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay rates for this employee.
-        /// </remarks>
-        public Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Work Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all the work types for the employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Work Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all the work types for the employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets the opening balances for this employee.
-        /// </remarks>
-        public NzOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId)
-        {
-            return ApiRequest<NzOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets the opening balances for this employee.
-        /// </remarks>
-        public Task<NzOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Sets the opening balances for this employee.
-        /// </remarks>
-        public void SetOpeningBalances(int businessId, int employeeId, NzOpeningBalancesModel model)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Opening Balances
-        /// </summary>
-        /// <remarks>
-        /// Sets the opening balances for this employee.
-        /// </remarks>
-        public Task SetOpeningBalancesAsync(int businessId, int employeeId, NzOpeningBalancesModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public void DeleteEmployee(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee basic details by ID
-        /// </summary>
-        /// <remarks>
-        /// returns the basic employee details for the specified employee
-        /// </remarks>
-        public EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId)
-        {
-            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee basic details by ID
-        /// </summary>
-        /// <remarks>
-        /// returns the basic employee details for the specified employee
-        /// </remarks>
-        public Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get, cancellationToken);
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/image", Method.Get);
         }
 
         /// <summary>
@@ -216,20 +93,9 @@ namespace KeyPayV2.Nz.Functions
         /// <remarks>
         /// Returns the file content for the employee's current profile image.
         /// </remarks>
-        public void GetEmployeeProfileImage(int businessId, int employeeId)
+        public Task<byte[]> GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/image", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Returns the file content for the employee's current profile image.
-        /// </remarks>
-        public Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Get, cancellationToken);
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -277,6 +143,120 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Rates
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay rates for this employee.
+        /// </remarks>
+        public Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Shift Conditions
+        /// </summary>
+        /// <remarks>
+        /// Lists all the shift conditions for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<NzWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Shift Conditions
+        /// </summary>
+        /// <remarks>
+        /// Lists all the shift conditions for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<NzWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Sets the standard hours for this employee.
+        /// </remarks>
+        public StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, NzStandardHoursModel model)
+        {
+            return ApiRequest<StandardHoursModel,NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Set standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Sets the standard hours for this employee.
+        /// </remarks>
+        public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, NzStandardHoursModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<StandardHoursModel,NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the standard hours for this employee.
+        /// </remarks>
+        public NzStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
+        }
+
+        /// <summary>
+        /// Get standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the standard hours for this employee.
+        /// </remarks>
+        public Task<NzStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<NzWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Work Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all the work types for the employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<NzWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/worktype{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Leave Balances
         /// </summary>
         /// <remarks>
@@ -321,115 +301,47 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get Employee Notes
+        /// Get Opening Balances
         /// </summary>
         /// <remarks>
-        /// Gets the notes for the specified employee.
+        /// Gets the opening balances for this employee.
         /// </remarks>
-        public List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId)
+        public NzOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId)
         {
-            return ApiRequest<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get);
+            return ApiRequest<NzOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get);
         }
 
         /// <summary>
-        /// Get Employee Notes
+        /// Get Opening Balances
         /// </summary>
         /// <remarks>
-        /// Gets the notes for the specified employee.
+        /// Gets the opening balances for this employee.
         /// </remarks>
-        public Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<NzOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get, cancellationToken);
+            return ApiRequestAsync<NzOpeningBalancesModel>($"/business/{businessId}/employee/{employeeId}/openingbalances", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Set Employee Notes
+        /// Set Opening Balances
         /// </summary>
         /// <remarks>
-        /// Sets the notes for the specified employee.
+        /// Sets the opening balances for this employee.
         /// </remarks>
-        public void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model)
+        public void SetOpeningBalances(int businessId, int employeeId, NzOpeningBalancesModel model)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post);
         }
 
         /// <summary>
-        /// Set Employee Notes
+        /// Set Opening Balances
         /// </summary>
         /// <remarks>
-        /// Sets the notes for the specified employee.
+        /// Sets the opening balances for this employee.
         /// </remarks>
-        public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
+        public Task SetOpeningBalancesAsync(int businessId, int employeeId, NzOpeningBalancesModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Shift Conditions
-        /// </summary>
-        /// <remarks>
-        /// Lists all the shift conditions for this employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<NzWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Shift Conditions
-        /// </summary>
-        /// <remarks>
-        /// Lists all the shift conditions for this employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<NzWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the standard hours for this employee.
-        /// </remarks>
-        public NzStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
-        }
-
-        /// <summary>
-        /// Get standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the standard hours for this employee.
-        /// </remarks>
-        public Task<NzStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Sets the standard hours for this employee.
-        /// </remarks>
-        public StandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, NzStandardHoursModel model)
-        {
-            return ApiRequest<StandardHoursModel,NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Set standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Sets the standard hours for this employee.
-        /// </remarks>
-        public Task<StandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, NzStandardHoursModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<StandardHoursModel,NzStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/openingbalances", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -481,6 +393,28 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// Get Employee basic details by ID
+        /// </summary>
+        /// <remarks>
+        /// returns the basic employee details for the specified employee
+        /// </remarks>
+        public EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId)
+        {
+            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee basic details by ID
+        /// </summary>
+        /// <remarks>
+        /// returns the basic employee details for the specified employee
+        /// </remarks>
+        public Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Grant Kiosk Access
         /// </summary>
         /// <remarks>
@@ -522,6 +456,72 @@ namespace KeyPayV2.Nz.Functions
         public Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/revokekioskaccess/{employeeId}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets the notes for the specified employee.
+        /// </remarks>
+        public List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets the notes for the specified employee.
+        /// </remarks>
+        public Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Sets the notes for the specified employee.
+        /// </remarks>
+        public void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Sets the notes for the specified employee.
+        /// </remarks>
+        public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public void DeleteEmployee(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

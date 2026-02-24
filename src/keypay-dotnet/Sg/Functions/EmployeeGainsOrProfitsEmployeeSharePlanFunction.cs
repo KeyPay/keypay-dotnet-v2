@@ -15,64 +15,20 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IEmployeeGainsOrProfitsEmployeeSharePlanFunction
     {
-        List<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlans(int businessId, int employeeId);
-        Task<List<SgGainsOrProfitsEmployeeSharePlanModel>> GetGainsOrProfitsEmployeeSharePlansAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void CreateGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model);
-        Task CreateGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model, CancellationToken cancellationToken = default);
         SgGainsOrProfitsEmployeeSharePlanModel GetGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id);
         Task<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        void UpdateAnExistingGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request);
-        Task UpdateAnExistingGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request, CancellationToken cancellationToken = default);
+        SgGainsOrProfitsEmployeeSharePlanModel UpdateAnExistingGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request);
+        Task<SgGainsOrProfitsEmployeeSharePlanModel> UpdateAnExistingGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request, CancellationToken cancellationToken = default);
         void DeleteGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id);
         Task DeleteGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        List<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlans(int businessId, int employeeId);
+        Task<List<SgGainsOrProfitsEmployeeSharePlanModel>> GetGainsOrProfitsEmployeeSharePlansAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        SgGainsOrProfitsEmployeeSharePlanModel CreateGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model);
+        Task<SgGainsOrProfitsEmployeeSharePlanModel> CreateGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model, CancellationToken cancellationToken = default);
     }
     public class EmployeeGainsOrProfitsEmployeeSharePlanFunction : BaseFunction, IEmployeeGainsOrProfitsEmployeeSharePlanFunction
     {
         public EmployeeGainsOrProfitsEmployeeSharePlanFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get Gains or profits employee share plans
-        /// </summary>
-        /// <remarks>
-        /// Gets the gains or profits employee share plans for the specified employee
-        /// </remarks>
-        public List<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlans(int businessId, int employeeId)
-        {
-            return ApiRequest<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Gains or profits employee share plans
-        /// </summary>
-        /// <remarks>
-        /// Gets the gains or profits employee share plans for the specified employee
-        /// </remarks>
-        public Task<List<SgGainsOrProfitsEmployeeSharePlanModel>> GetGainsOrProfitsEmployeeSharePlansAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Gains or profits employee share plan
-        /// </summary>
-        /// <remarks>
-        /// Creates a new gains or profits employee share plan
-        /// </remarks>
-        public void CreateGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Gains or profits employee share plan
-        /// </summary>
-        /// <remarks>
-        /// Creates a new gains or profits employee share plan
-        /// </remarks>
-        public Task CreateGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", model, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// Get Gains or profits employee share plan
@@ -102,9 +58,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Update an existing gains or profits employee share plan.
         /// </remarks>
-        public void UpdateAnExistingGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request)
+        public SgGainsOrProfitsEmployeeSharePlanModel UpdateAnExistingGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", request, Method.Put);
+            return ApiRequest<SgGainsOrProfitsEmployeeSharePlanModel,SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", request, Method.Put);
         }
 
         /// <summary>
@@ -113,9 +69,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Update an existing gains or profits employee share plan.
         /// </remarks>
-        public Task UpdateAnExistingGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request, CancellationToken cancellationToken = default)
+        public Task<SgGainsOrProfitsEmployeeSharePlanModel> UpdateAnExistingGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, SgGainsOrProfitsEmployeeSharePlanModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", request, Method.Put, cancellationToken);
+            return ApiRequestAsync<SgGainsOrProfitsEmployeeSharePlanModel,SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -138,6 +94,50 @@ namespace KeyPayV2.Sg.Functions
         public Task DeleteGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Gains or profits employee share plans
+        /// </summary>
+        /// <remarks>
+        /// Gets the gains or profits employee share plans for the specified employee
+        /// </remarks>
+        public List<SgGainsOrProfitsEmployeeSharePlanModel> GetGainsOrProfitsEmployeeSharePlans(int businessId, int employeeId)
+        {
+            return ApiRequest<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Gains or profits employee share plans
+        /// </summary>
+        /// <remarks>
+        /// Gets the gains or profits employee share plans for the specified employee
+        /// </remarks>
+        public Task<List<SgGainsOrProfitsEmployeeSharePlanModel>> GetGainsOrProfitsEmployeeSharePlansAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgGainsOrProfitsEmployeeSharePlanModel>>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Gains or profits employee share plan
+        /// </summary>
+        /// <remarks>
+        /// Creates a new gains or profits employee share plan
+        /// </remarks>
+        public SgGainsOrProfitsEmployeeSharePlanModel CreateGainsOrProfitsEmployeeSharePlan(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model)
+        {
+            return ApiRequest<SgGainsOrProfitsEmployeeSharePlanModel,SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Gains or profits employee share plan
+        /// </summary>
+        /// <remarks>
+        /// Creates a new gains or profits employee share plan
+        /// </remarks>
+        public Task<SgGainsOrProfitsEmployeeSharePlanModel> CreateGainsOrProfitsEmployeeSharePlanAsync(int businessId, int employeeId, SgGainsOrProfitsEmployeeSharePlanModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgGainsOrProfitsEmployeeSharePlanModel,SgGainsOrProfitsEmployeeSharePlanModel>($"/business/{businessId}/employee/{employeeId}/gainsorprofitsemployeeshareplan", model, Method.Post, cancellationToken);
         }
     }
 }

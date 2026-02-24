@@ -17,12 +17,12 @@ namespace KeyPayV2.My.Functions
     {
         List<DimensionEarningsLineSplitApiModel> GetEmployeeDimensionEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<DimensionEarningsLineSplitApiModel>> GetEmployeeDimensionEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void UpdateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model);
-        Task UpdateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default);
-        void CreateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model);
-        Task CreateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default);
-        void GetEmployeeDimensionEarningsLineSplitById(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null);
-        Task GetEmployeeDimensionEarningsLineSplitByIdAsync(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        DimensionEarningsLineSplitApiModel CreateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model);
+        Task<DimensionEarningsLineSplitApiModel> CreateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default);
+        DimensionEarningsLineSplitApiModel UpdateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model);
+        Task<DimensionEarningsLineSplitApiModel> UpdateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default);
+        DimensionEarningsLineSplitApiModel GetEmployeeDimensionEarningsLineSplitById(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null);
+        Task<DimensionEarningsLineSplitApiModel> GetEmployeeDimensionEarningsLineSplitByIdAsync(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void DeleteDimensionEarningsLineSplit(int businessId, int employeeId, int dimensionId, int dimensionValueId);
         Task DeleteDimensionEarningsLineSplitAsync(int businessId, int employeeId, int dimensionId, int dimensionValueId, CancellationToken cancellationToken = default);
     }
@@ -55,25 +55,14 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Update Dimension Earnings Line Split
+        /// Create Dimension Earnings Line Split
         /// </summary>
         /// <remarks>
-        /// Updates a dimension earnings line split by matching against existing reporting dimension values
+        /// Creates a dimension earnings line split for a specific employee
         /// </remarks>
-        public void UpdateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model)
+        public DimensionEarningsLineSplitApiModel CreateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Dimension Earnings Line Split
-        /// </summary>
-        /// <remarks>
-        /// Updates a dimension earnings line split by matching against existing reporting dimension values
-        /// </remarks>
-        public Task UpdateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Put, cancellationToken);
+            return ApiRequest<DimensionEarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Post);
         }
 
         /// <summary>
@@ -82,20 +71,31 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Creates a dimension earnings line split for a specific employee
         /// </remarks>
-        public void CreateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model)
+        public Task<DimensionEarningsLineSplitApiModel> CreateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Post);
+            return ApiRequestAsync<DimensionEarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
-        /// Create Dimension Earnings Line Split
+        /// Update Dimension Earnings Line Split
         /// </summary>
         /// <remarks>
-        /// Creates a dimension earnings line split for a specific employee
+        /// Updates a dimension earnings line split by matching against existing reporting dimension values
         /// </remarks>
-        public Task CreateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default)
+        public DimensionEarningsLineSplitApiModel UpdateDimensionEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel model)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Post, cancellationToken);
+            return ApiRequest<DimensionEarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Dimension Earnings Line Split
+        /// </summary>
+        /// <remarks>
+        /// Updates a dimension earnings line split by matching against existing reporting dimension values
+        /// </remarks>
+        public Task<DimensionEarningsLineSplitApiModel> UpdateDimensionEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DimensionEarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace KeyPayV2.My.Functions
         /// Lists all the dimension earnings line splits for this employee.
         /// This operation supports OData queries.
         /// </remarks>
-        public void GetEmployeeDimensionEarningsLineSplitById(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null)
+        public DimensionEarningsLineSplitApiModel GetEmployeeDimensionEarningsLineSplitById(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension/{dimensionId}/value/{dimensionValueId}", Method.Get);
+            return ApiRequest<DimensionEarningsLineSplitApiModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension/{dimensionId}/value/{dimensionValueId}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
@@ -117,9 +117,9 @@ namespace KeyPayV2.My.Functions
         /// Lists all the dimension earnings line splits for this employee.
         /// This operation supports OData queries.
         /// </remarks>
-        public Task GetEmployeeDimensionEarningsLineSplitByIdAsync(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<DimensionEarningsLineSplitApiModel> GetEmployeeDimensionEarningsLineSplitByIdAsync(int businessId, int employeeId, int dimensionId, int dimensionValueId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension/{dimensionId}/value/{dimensionValueId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<DimensionEarningsLineSplitApiModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/dimension/{dimensionId}/value/{dimensionValueId}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

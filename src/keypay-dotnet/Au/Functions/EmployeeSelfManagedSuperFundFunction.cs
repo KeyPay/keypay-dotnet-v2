@@ -16,8 +16,8 @@ namespace KeyPayV2.Au.Functions
     {
         List<SelfManagedSuperFundModel> ListSelfManagedSuperFunds(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<SelfManagedSuperFundModel>> ListSelfManagedSuperFundsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreateEmployeeSelfManagedSuperFund(int businessId, int employeeId, SelfManagedSuperFundModel fund);
-        Task CreateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
+        SelfManagedSuperFundModel CreateEmployeeSelfManagedSuperFund(int businessId, int employeeId, SelfManagedSuperFundModel fund);
+        Task<SelfManagedSuperFundModel> CreateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
         SelfManagedSuperFundModel GetEmployeeSelfManagedSuperFundById(int businessId, int employeeId, int id);
         Task<SelfManagedSuperFundModel> GetEmployeeSelfManagedSuperFundByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         void UpdateEmployeeSelfManagedSuperFund(int businessId, int employeeId, int id, SelfManagedSuperFundModel fund);
@@ -58,9 +58,9 @@ namespace KeyPayV2.Au.Functions
         /// Create a new self managed super fund for the employee. 
         /// To update existing self managed super funds, please use the PUT method.
         /// </remarks>
-        public void CreateEmployeeSelfManagedSuperFund(int businessId, int employeeId, SelfManagedSuperFundModel fund)
+        public SelfManagedSuperFundModel CreateEmployeeSelfManagedSuperFund(int businessId, int employeeId, SelfManagedSuperFundModel fund)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.Post);
+            return ApiRequest<SelfManagedSuperFundModel,SelfManagedSuperFundModel>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.Post);
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace KeyPayV2.Au.Functions
         /// Create a new self managed super fund for the employee. 
         /// To update existing self managed super funds, please use the PUT method.
         /// </remarks>
-        public Task CreateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
+        public Task<SelfManagedSuperFundModel> CreateEmployeeSelfManagedSuperFundAsync(int businessId, int employeeId, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.Post, cancellationToken);
+            return ApiRequestAsync<SelfManagedSuperFundModel,SelfManagedSuperFundModel>($"/business/{businessId}/employee/{employeeId}/selfmanagedsuperfund", fund, Method.Post, cancellationToken);
         }
 
         /// <summary>

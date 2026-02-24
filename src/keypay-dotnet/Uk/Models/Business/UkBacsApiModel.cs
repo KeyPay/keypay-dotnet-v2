@@ -17,6 +17,7 @@ namespace KeyPayV2.Uk.Models.Business
         public string SortCode { get; set; }
         public string AccountNumber { get; set; }
         public string AccountName { get; set; }
+        public string ContraIdentification { get; set; }
         public string LodgementReference { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PaymentFilePaymentAdditionalContent PaymentAdditionalContent { get; set; }

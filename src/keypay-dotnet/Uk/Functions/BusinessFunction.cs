@@ -15,14 +15,20 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IBusinessFunction
     {
-        void ChangeTheTaxYear(int businessId);
-        Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
-        void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
-        Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
-        DateTime GetTheInitialTaxYear(int businessId);
-        Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
-        List<TagViewModel> ListTheBusinessTags(int businessId);
-        Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
+        HmrcSettingsResponseModel GetHmrcSettings(int businessId);
+        Task<HmrcSettingsResponseModel> GetHmrcSettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model);
+        Task<HmrcSettingsResponseModel> UpdateHmrcSettingsAsync(int businessId, HmrcSettingsRequestModel model, CancellationToken cancellationToken = default);
+        HmrcSettingsResponseModel SimpleUpdateEmployerHmrcSettings(int businessId, SimpleHmrcSettingsRequestModel model);
+        Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default);
+        HmrcSettingsResponseModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId);
+        Task<HmrcSettingsResponseModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default);
+        UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId);
+        Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId, GetEmploymentAllowanceSettingsQueryModel request);
+        Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, GetEmploymentAllowanceSettingsQueryModel request, CancellationToken cancellationToken = default);
+        UkEmploymentAllowanceModel UpdateEmploymentAllowanceSettings(int businessId, UkEmploymentAllowanceModel model);
+        Task<UkEmploymentAllowanceModel> UpdateEmploymentAllowanceSettingsAsync(int businessId, UkEmploymentAllowanceModel model, CancellationToken cancellationToken = default);
         List<UkBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
         Task<List<UkBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkBusinessExportModel CreateNewBusiness(UkBusinessExportModel model);
@@ -41,6 +47,12 @@ namespace KeyPayV2.Uk.Functions
         Task<List<DateRangeModel>> GetListOfFinancialYearsAsync(int businessId, CancellationToken cancellationToken = default);
         void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
         Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
+        UkBusinessLeaveSettingsModel GetTheLeaveSettingsForTheBusiness(int businessId);
+        Task<UkBusinessLeaveSettingsModel> GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
+        UkBusinessLeaveSettingsModel UpdateTheLeaveSettingsForTheBusiness(int businessId, UkBusinessLeaveSettingsModel model);
+        Task<UkBusinessLeaveSettingsModel> UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, UkBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default);
+        List<UkSmpApiRowModel> GetAllStatutoryMaternityLeaveData(int businessId);
+        Task<List<UkSmpApiRowModel>> GetAllStatutoryMaternityLeaveDataAsync(int businessId, CancellationToken cancellationToken = default);
         UkBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId);
         Task<UkBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
         UkBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, UkBusinessTimesheetSettingsModel model);
@@ -71,6 +83,46 @@ namespace KeyPayV2.Uk.Functions
         Task<UkBillingPlanResponseModel> GetBusinessBillingPlansAsync(int businessId, CancellationToken cancellationToken = default);
         void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
         Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
+        List<BusinessAction> ListBusinessNotifications(int businessId);
+        Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
+        void DismissBusinessNotifications(int businessId, int id);
+        Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
+        Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel);
+        Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default);
+        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel);
+        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, CancellationToken cancellationToken = default);
+        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request);
+        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default);
+        void RevokeBusinessAccess(int businessId);
+        Task RevokeBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default);
+        void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request);
+        Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        BusinessAccessModel GetUserBusinessAccess(int businessId);
+        Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default);
+        BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request);
+        Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        List<DocumentModel> ListBusinessDocumentDetails(int businessId);
+        Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file);
+        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default);
+        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request);
+        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default);
+        DocumentModel GetBusinessDocumentDetails(int businessId, int id);
+        Task<DocumentModel> GetBusinessDocumentDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        DocumentModel UpdateBusinessDocumentPermissions(int businessId, int id, UpdateDocumentPermissionsModel model);
+        Task<DocumentModel> UpdateBusinessDocumentPermissionsAsync(int businessId, int id, UpdateDocumentPermissionsModel model, CancellationToken cancellationToken = default);
+        void DeleteBusinessDocument(int businessId, int id);
+        Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        DocumentFile GetBusinessDocumentContent(int businessId, int id);
+        Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        EntitlementsModel ListEntitlements(int businessId);
+        Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
+        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
+        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
+        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
         List<UkBacsApiModel> ListBacsSettings(int businessId);
         Task<List<UkBacsApiModel>> ListBacsSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         UkBacsApiModel CreateBacsSettingsRecord(int businessId, UkBacsApiModel model);
@@ -81,115 +133,177 @@ namespace KeyPayV2.Uk.Functions
         Task<UkBacsApiModel> UpdateBacsSettingsRecordAsync(int businessId, int id, UkBacsApiModel model, CancellationToken cancellationToken = default);
         void DeleteBacsSettingsRecord(int businessId, int id);
         Task DeleteBacsSettingsRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void ChangeTheTaxYear(int businessId);
+        Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
+        void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
+        Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
+        DateTime GetTheInitialTaxYear(int businessId);
+        Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
+        List<TagViewModel> ListTheBusinessTags(int businessId);
+        Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
         DownloadableFile TemplateFor52WeekData(int businessId);
         Task<DownloadableFile> TemplateFor52WeekDataAsync(int businessId, CancellationToken cancellationToken = default);
         Import52WeekDataResult Import52WeekData(int businessId);
         Task<Import52WeekDataResult> Import52WeekDataAsync(int businessId, CancellationToken cancellationToken = default);
         FileImportResult Query52WeekDataImportStatus(int businessId, Query52WeekDataImportStatusQueryModel request);
         Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, Query52WeekDataImportStatusQueryModel request, CancellationToken cancellationToken = default);
-        HmrcSettingsResponseModel GetHmrcSettings(int businessId);
-        Task<HmrcSettingsResponseModel> GetHmrcSettingsAsync(int businessId, CancellationToken cancellationToken = default);
-        HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model);
-        Task<HmrcSettingsResponseModel> UpdateHmrcSettingsAsync(int businessId, HmrcSettingsRequestModel model, CancellationToken cancellationToken = default);
-        UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId, GetEmploymentAllowanceSettingsQueryModel request);
-        Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, GetEmploymentAllowanceSettingsQueryModel request, CancellationToken cancellationToken = default);
-        UkEmploymentAllowanceModel UpdateEmploymentAllowanceSettings(int businessId, UkEmploymentAllowanceModel model);
-        Task<UkEmploymentAllowanceModel> UpdateEmploymentAllowanceSettingsAsync(int businessId, UkEmploymentAllowanceModel model, CancellationToken cancellationToken = default);
-        HmrcSettingsRequestModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId);
-        Task<HmrcSettingsRequestModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default);
-        HmrcSettingsResponseModel SimpleUpdateEmployerHmrcSettings(int businessId, SimpleHmrcSettingsRequestModel model);
-        Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default);
-        void GetTheLeaveSettingsForTheBusiness(int businessId);
-        Task GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
-        void UpdateTheLeaveSettingsForTheBusiness(int businessId, UkBusinessLeaveSettingsModel model);
-        Task UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, UkBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default);
-        List<UkSmpApiRowModel> GetAllStatutoryMaternityLeaveData(int businessId);
-        Task<List<UkSmpApiRowModel>> GetAllStatutoryMaternityLeaveDataAsync(int businessId, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
         public BusinessFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// Change the tax year
+        /// Get HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Gets the HMRC Settings for the business.
         /// </remarks>
-        public void ChangeTheTaxYear(int businessId)
+        public HmrcSettingsResponseModel GetHmrcSettings(int businessId)
         {
-            ApiRequest($"/business/{businessId}/initialfinancialyear", Method.Post);
+            return ApiRequest<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.Get);
         }
 
         /// <summary>
-        /// Change the tax year
+        /// Get HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Gets the HMRC Settings for the business.
         /// </remarks>
-        public Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<HmrcSettingsResponseModel> GetHmrcSettingsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear", Method.Post, cancellationToken);
+            return ApiRequestAsync<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Change the tax year
+        /// Update HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Updates the HMRC Settings for the business.
         /// </remarks>
-        public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
+        public HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model)
         {
-            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post);
+            return ApiRequest<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.Put);
         }
 
         /// <summary>
-        /// Change the tax year
+        /// Update HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Updates the HMRC Settings for the business.
         /// </remarks>
-        public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
+        public Task<HmrcSettingsResponseModel> UpdateHmrcSettingsAsync(int businessId, HmrcSettingsRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+            return ApiRequestAsync<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
-        /// Get the initial tax year
+        /// Simple Update Employer HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Retrieves the initial tax year for the business.
+        /// Updates a subset of the HMRC Settings for the business.
         /// </remarks>
-        public DateTime GetTheInitialTaxYear(int businessId)
+        public HmrcSettingsResponseModel SimpleUpdateEmployerHmrcSettings(int businessId, SimpleHmrcSettingsRequestModel model)
         {
-            return ApiRequest<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get);
+            return ApiRequest<HmrcSettingsResponseModel,SimpleHmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/simple-update", model, Method.Put);
         }
 
         /// <summary>
-        /// Get the initial tax year
+        /// Simple Update Employer HMRC Settings
         /// </summary>
         /// <remarks>
-        /// Retrieves the initial tax year for the business.
+        /// Updates a subset of the HMRC Settings for the business.
         /// </remarks>
-        public Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get, cancellationToken);
+            return ApiRequestAsync<HmrcSettingsResponseModel,SimpleHmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/simple-update", model, Method.Put, cancellationToken);
+        }
+
+        public HmrcSettingsResponseModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId)
+        {
+            return ApiRequest<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete);
+        }
+
+        public Task<HmrcSettingsResponseModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete, cancellationToken);
         }
 
         /// <summary>
-        /// List the Business tags
+        /// Get Employment Allowance Settings
         /// </summary>
-        public List<TagViewModel> ListTheBusinessTags(int businessId)
+        /// <remarks>
+        /// Get employment allowance settings for the business.
+        /// </remarks>
+        public UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId)
         {
-            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get);
+            return ApiRequest<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", Method.Get);
         }
 
         /// <summary>
-        /// List the Business tags
+        /// Get Employment Allowance Settings
         /// </summary>
-        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
+        /// <remarks>
+        /// Get employment allowance settings for the business.
+        /// </remarks>
+        public Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employment Allowance Settings
+        /// </summary>
+        /// <remarks>
+        /// Get employment allowance settings for the business.
+        /// </remarks>
+        public UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId, GetEmploymentAllowanceSettingsQueryModel request)
+        {
+            return ApiRequest<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employment Allowance Settings
+        /// </summary>
+        /// <remarks>
+        /// Get employment allowance settings for the business.
+        /// </remarks>
+        public Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, GetEmploymentAllowanceSettingsQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employment Allowance Settings
+        /// </summary>
+        /// <remarks>
+        /// Update employment allowance settings for the business.
+        /// A new effective date can be set each tax year, otherwise the effective date reverts to the start of the tax year.
+        /// State aid sectors:
+        /// - Agriculture
+        /// - FisheriesAndAquaculture
+        /// - RoadTransport
+        /// - Industrial
+        /// </remarks>
+        public UkEmploymentAllowanceModel UpdateEmploymentAllowanceSettings(int businessId, UkEmploymentAllowanceModel model)
+        {
+            return ApiRequest<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employment Allowance Settings
+        /// </summary>
+        /// <remarks>
+        /// Update employment allowance settings for the business.
+        /// A new effective date can be set each tax year, otherwise the effective date reverts to the start of the tax year.
+        /// State aid sectors:
+        /// - Agriculture
+        /// - FisheriesAndAquaculture
+        /// - RoadTransport
+        /// - Industrial
+        /// </remarks>
+        public Task<UkEmploymentAllowanceModel> UpdateEmploymentAllowanceSettingsAsync(int businessId, UkEmploymentAllowanceModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -378,6 +492,60 @@ namespace KeyPayV2.Uk.Functions
         public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the leave settings for the business
+        /// </summary>
+        public UkBusinessLeaveSettingsModel GetTheLeaveSettingsForTheBusiness(int businessId)
+        {
+            return ApiRequest<UkBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the leave settings for the business
+        /// </summary>
+        public Task<UkBusinessLeaveSettingsModel> GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update the leave settings for the business
+        /// </summary>
+        public UkBusinessLeaveSettingsModel UpdateTheLeaveSettingsForTheBusiness(int businessId, UkBusinessLeaveSettingsModel model)
+        {
+            return ApiRequest<UkBusinessLeaveSettingsModel,UkBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update the leave settings for the business
+        /// </summary>
+        public Task<UkBusinessLeaveSettingsModel> UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, UkBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkBusinessLeaveSettingsModel,UkBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get All Statutory Maternity Leave Data
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the SMP data for a business
+        /// </remarks>
+        public List<UkSmpApiRowModel> GetAllStatutoryMaternityLeaveData(int businessId)
+        {
+            return ApiRequest<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.Get);
+        }
+
+        /// <summary>
+        /// Get All Statutory Maternity Leave Data
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the SMP data for a business
+        /// </remarks>
+        public Task<List<UkSmpApiRowModel>> GetAllStatutoryMaternityLeaveDataAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -709,6 +877,452 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// List Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// </remarks>
+        public List<BusinessAction> ListBusinessNotifications(int businessId)
+        {
+            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get);
+        }
+
+        /// <summary>
+        /// List Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// </remarks>
+        public Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dismiss Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Dismisses a business notification, so that it won't be shown again.
+        /// </remarks>
+        public void DismissBusinessNotifications(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete);
+        }
+
+        /// <summary>
+        /// Dismiss Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Dismisses a business notification, so that it won't be shown again.
+        /// </remarks>
+        public Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// List All Business Access Users
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the users with access to this business, as well as the types of access they each have.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List All Business Access Users
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the users with access to this business, as well as the types of access they each have.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Assign Business Access
+        /// </summary>
+        /// <remarks>
+        /// Assigns business access to a name/email.
+        /// </remarks>
+        public void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel)
+        {
+            ApiRequest($"/business/{businessId}/access", viewModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Assign Business Access
+        /// </summary>
+        /// <remarks>
+        /// Assigns business access to a name/email.
+        /// </remarks>
+        public Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update details of an associated user
+        /// </summary>
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel)
+        {
+            ApiRequest($"/business/{businessId}/access", viewModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update details of an associated user
+        /// </summary>
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update details of an associated user
+        /// </summary>
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update details of an associated user
+        /// </summary>
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Revoke Business Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes a user's access to the business.
+        /// </remarks>
+        public void RevokeBusinessAccess(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/access", Method.Delete);
+        }
+
+        /// <summary>
+        /// Revoke Business Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes a user's access to the business.
+        /// </remarks>
+        public Task RevokeBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/access", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Revoke Business Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes a user's access to the business.
+        /// </remarks>
+        public void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/access?email={request.Email}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Revoke Business Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes a user's access to the business.
+        /// </remarks>
+        public Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get User Business Access
+        /// </summary>
+        /// <remarks>
+        /// Returns the business access assigned to the user with the specified email address.
+        /// </remarks>
+        public BusinessAccessModel GetUserBusinessAccess(int businessId)
+        {
+            return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user", Method.Get);
+        }
+
+        /// <summary>
+        /// Get User Business Access
+        /// </summary>
+        /// <remarks>
+        /// Returns the business access assigned to the user with the specified email address.
+        /// </remarks>
+        public Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BusinessAccessModel>($"/business/{businessId}/access/user", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get User Business Access
+        /// </summary>
+        /// <remarks>
+        /// Returns the business access assigned to the user with the specified email address.
+        /// </remarks>
+        public BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request)
+        {
+            return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get User Business Access
+        /// </summary>
+        /// <remarks>
+        /// Returns the business access assigned to the user with the specified email address.
+        /// </remarks>
+        public Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Business Document Details
+        /// </summary>
+        /// <remarks>
+        /// Lists the details for all of the documents in the business.
+        /// </remarks>
+        public List<DocumentModel> ListBusinessDocumentDetails(int businessId)
+        {
+            return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document", Method.Get);
+        }
+
+        /// <summary>
+        /// List Business Document Details
+        /// </summary>
+        /// <remarks>
+        /// Lists the details for all of the documents in the business.
+        /// </remarks>
+        public Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<DocumentModel>>($"/business/{businessId}/document", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file)
+        {
+            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request)
+        {
+            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Document Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the specified business document.
+        /// </remarks>
+        public DocumentModel GetBusinessDocumentDetails(int businessId, int id)
+        {
+            return ApiRequest<DocumentModel>($"/business/{businessId}/document/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Document Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the specified business document.
+        /// </remarks>
+        public Task<DocumentModel> GetBusinessDocumentDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DocumentModel>($"/business/{businessId}/document/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Business Document Permissions
+        /// </summary>
+        /// <remarks>
+        /// Updates permissions for the business document with the specified ID.
+        /// </remarks>
+        public DocumentModel UpdateBusinessDocumentPermissions(int businessId, int id, UpdateDocumentPermissionsModel model)
+        {
+            return ApiRequest<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Business Document Permissions
+        /// </summary>
+        /// <remarks>
+        /// Updates permissions for the business document with the specified ID.
+        /// </remarks>
+        public Task<DocumentModel> UpdateBusinessDocumentPermissionsAsync(int businessId, int id, UpdateDocumentPermissionsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Business Document
+        /// </summary>
+        /// <remarks>
+        /// Deletes the business document with the specified ID.
+        /// </remarks>
+        public void DeleteBusinessDocument(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/document/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Business Document
+        /// </summary>
+        /// <remarks>
+        /// Deletes the business document with the specified ID.
+        /// </remarks>
+        public Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/document/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Document Content
+        /// </summary>
+        /// <remarks>
+        /// Gets the file content for the business document with the specified ID.
+        /// </remarks>
+        public DocumentFile GetBusinessDocumentContent(int businessId, int id)
+        {
+            return ApiRequest<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Document Content
+        /// </summary>
+        /// <remarks>
+        /// Gets the file content for the business document with the specified ID.
+        /// </remarks>
+        public Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Entitlements
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the entitlements for the business.
+        /// </remarks>
+        public EntitlementsModel ListEntitlements(int businessId)
+        {
+            return ApiRequest<EntitlementsModel>($"/business/{businessId}/entitlements", Method.Get);
+        }
+
+        /// <summary>
+        /// List Entitlements
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the entitlements for the business.
+        /// </remarks>
+        public Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EntitlementsModel>($"/business/{businessId}/entitlements", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Gets the rounding rules for the business.
+        /// </remarks>
+        public TimesheetRoundingRulesModel GetRoundingRules(int businessId)
+        {
+            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Gets the rounding rules for the business.
+        /// </remarks>
+        public Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Sets the rounding rules for the business.
+        /// </remarks>
+        public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
+        {
+            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Sets the rounding rules for the business.
+        /// </remarks>
+        public Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// List BACS Settings
         /// </summary>
         /// <remarks>
@@ -819,6 +1433,88 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business.
+        /// </remarks>
+        public void ChangeTheTaxYear(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/initialfinancialyear", Method.Post);
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business.
+        /// </remarks>
+        public Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business.
+        /// </remarks>
+        public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post);
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business.
+        /// </remarks>
+        public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the initial tax year
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the initial tax year for the business.
+        /// </remarks>
+        public DateTime GetTheInitialTaxYear(int businessId)
+        {
+            return ApiRequest<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the initial tax year
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the initial tax year for the business.
+        /// </remarks>
+        public Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public List<TagViewModel> ListTheBusinessTags(int businessId)
+        {
+            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Template for 52 Week Data
         /// </summary>
         /// <remarks>
@@ -882,192 +1578,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, Query52WeekDataImportStatusQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery?longRunningJobId={request.LongRunningJobId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get HMRC Settings
-        /// </summary>
-        /// <remarks>
-        /// Gets the HMRC Settings for the business.
-        /// </remarks>
-        public HmrcSettingsResponseModel GetHmrcSettings(int businessId)
-        {
-            return ApiRequest<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.Get);
-        }
-
-        /// <summary>
-        /// Get HMRC Settings
-        /// </summary>
-        /// <remarks>
-        /// Gets the HMRC Settings for the business.
-        /// </remarks>
-        public Task<HmrcSettingsResponseModel> GetHmrcSettingsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<HmrcSettingsResponseModel>($"/business/{businessId}/hmrcsettings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update HMRC Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates the HMRC Settings for the business.
-        /// </remarks>
-        public HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model)
-        {
-            return ApiRequest<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update HMRC Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates the HMRC Settings for the business.
-        /// </remarks>
-        public Task<HmrcSettingsResponseModel> UpdateHmrcSettingsAsync(int businessId, HmrcSettingsRequestModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<HmrcSettingsResponseModel,HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employment Allowance Settings
-        /// </summary>
-        /// <remarks>
-        /// Get employment allowance settings for the business.
-        /// </remarks>
-        public UkEmploymentAllowanceModel GetEmploymentAllowanceSettings(int businessId, GetEmploymentAllowanceSettingsQueryModel request)
-        {
-            return ApiRequest<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employment Allowance Settings
-        /// </summary>
-        /// <remarks>
-        /// Get employment allowance settings for the business.
-        /// </remarks>
-        public Task<UkEmploymentAllowanceModel> GetEmploymentAllowanceSettingsAsync(int businessId, GetEmploymentAllowanceSettingsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance?financialYearEnding={request.FinancialYearEnding}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employment Allowance Settings
-        /// </summary>
-        /// <remarks>
-        /// Update employment allowance settings for the business.
-        /// A new effective date can be set each tax year, otherwise the effective date reverts to the start of the tax year.
-        /// State aid sectors:
-        /// - Agriculture
-        /// - FisheriesAndAquaculture
-        /// - RoadTransport
-        /// - Industrial
-        /// </remarks>
-        public UkEmploymentAllowanceModel UpdateEmploymentAllowanceSettings(int businessId, UkEmploymentAllowanceModel model)
-        {
-            return ApiRequest<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employment Allowance Settings
-        /// </summary>
-        /// <remarks>
-        /// Update employment allowance settings for the business.
-        /// A new effective date can be set each tax year, otherwise the effective date reverts to the start of the tax year.
-        /// State aid sectors:
-        /// - Agriculture
-        /// - FisheriesAndAquaculture
-        /// - RoadTransport
-        /// - Industrial
-        /// </remarks>
-        public Task<UkEmploymentAllowanceModel> UpdateEmploymentAllowanceSettingsAsync(int businessId, UkEmploymentAllowanceModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkEmploymentAllowanceModel,UkEmploymentAllowanceModel>($"/business/{businessId}/hmrcsettings/employmentallowance", model, Method.Put, cancellationToken);
-        }
-
-        public HmrcSettingsRequestModel HmrcSettings_DeleteHmrcPaymentReminder(int businessId)
-        {
-            return ApiRequest<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete);
-        }
-
-        public Task<HmrcSettingsRequestModel> HmrcSettings_DeleteHmrcPaymentReminderAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<HmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/hmrcpaymentreminder", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Simple Update Employer HMRC Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates a subset of the HMRC Settings for the business.
-        /// </remarks>
-        public HmrcSettingsResponseModel SimpleUpdateEmployerHmrcSettings(int businessId, SimpleHmrcSettingsRequestModel model)
-        {
-            return ApiRequest<HmrcSettingsResponseModel,SimpleHmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/simple-update", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Simple Update Employer HMRC Settings
-        /// </summary>
-        /// <remarks>
-        /// Updates a subset of the HMRC Settings for the business.
-        /// </remarks>
-        public Task<HmrcSettingsResponseModel> SimpleUpdateEmployerHmrcSettingsAsync(int businessId, SimpleHmrcSettingsRequestModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<HmrcSettingsResponseModel,SimpleHmrcSettingsRequestModel>($"/business/{businessId}/hmrcsettings/simple-update", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get the leave settings for the business
-        /// </summary>
-        public void GetTheLeaveSettingsForTheBusiness(int businessId)
-        {
-            ApiRequest($"/business/{businessId}/leavesettings", Method.Get);
-        }
-
-        /// <summary>
-        /// Get the leave settings for the business
-        /// </summary>
-        public Task GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/leavesettings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update the leave settings for the business
-        /// </summary>
-        public void UpdateTheLeaveSettingsForTheBusiness(int businessId, UkBusinessLeaveSettingsModel model)
-        {
-            ApiRequest($"/business/{businessId}/leavesettings", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update the leave settings for the business
-        /// </summary>
-        public Task UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, UkBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/leavesettings", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get All Statutory Maternity Leave Data
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the SMP data for a business
-        /// </remarks>
-        public List<UkSmpApiRowModel> GetAllStatutoryMaternityLeaveData(int businessId)
-        {
-            return ApiRequest<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.Get);
-        }
-
-        /// <summary>
-        /// Get All Statutory Maternity Leave Data
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the SMP data for a business
-        /// </remarks>
-        public Task<List<UkSmpApiRowModel>> GetAllStatutoryMaternityLeaveDataAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkSmpApiRowModel>>($"/business/{businessId}/statutorypay", Method.Get, cancellationToken);
         }
     }
 }

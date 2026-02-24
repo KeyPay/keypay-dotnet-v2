@@ -17,12 +17,12 @@ namespace KeyPayV2.My.Functions
     {
         List<PayRateTemplateExportModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
         Task<List<PayRateTemplateExportModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        PayRateTemplateExportModel CreatePayRateTemplate(int businessId, PayRateTemplateExportModel payRateTemplate);
-        Task<PayRateTemplateExportModel> CreatePayRateTemplateAsync(int businessId, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
+        void CreatePayRateTemplate(int businessId, PayRateTemplateExportModel payRateTemplate);
+        Task CreatePayRateTemplateAsync(int businessId, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
         PayRateTemplateExportModel GetPayRateTemplateById(int businessId, int id);
         Task<PayRateTemplateExportModel> GetPayRateTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        PayRateTemplateExportModel UpdatePayRateTemplate(int businessId, int id, PayRateTemplateExportModel payRateTemplate);
-        Task<PayRateTemplateExportModel> UpdatePayRateTemplateAsync(int businessId, int id, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
+        void UpdatePayRateTemplate(int businessId, int id, PayRateTemplateExportModel payRateTemplate);
+        Task UpdatePayRateTemplateAsync(int businessId, int id, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default);
         void DeletePayRateTemplate(int businessId, int id);
         Task DeletePayRateTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -60,9 +60,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Creates a new pay rate template for the business.
         /// </remarks>
-        public PayRateTemplateExportModel CreatePayRateTemplate(int businessId, PayRateTemplateExportModel payRateTemplate)
+        public void CreatePayRateTemplate(int businessId, PayRateTemplateExportModel payRateTemplate)
         {
-            return ApiRequest<PayRateTemplateExportModel,PayRateTemplateExportModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post);
+            ApiRequest($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post);
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Creates a new pay rate template for the business.
         /// </remarks>
-        public Task<PayRateTemplateExportModel> CreatePayRateTemplateAsync(int businessId, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default)
+        public Task CreatePayRateTemplateAsync(int businessId, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRateTemplateExportModel,PayRateTemplateExportModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Updates the pay rate template with the specified ID.
         /// </remarks>
-        public PayRateTemplateExportModel UpdatePayRateTemplate(int businessId, int id, PayRateTemplateExportModel payRateTemplate)
+        public void UpdatePayRateTemplate(int businessId, int id, PayRateTemplateExportModel payRateTemplate)
         {
-            return ApiRequest<PayRateTemplateExportModel,PayRateTemplateExportModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put);
+            ApiRequest($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put);
         }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace KeyPayV2.My.Functions
         /// <remarks>
         /// Updates the pay rate template with the specified ID.
         /// </remarks>
-        public Task<PayRateTemplateExportModel> UpdatePayRateTemplateAsync(int businessId, int id, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default)
+        public Task UpdatePayRateTemplateAsync(int businessId, int id, PayRateTemplateExportModel payRateTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayRateTemplateExportModel,PayRateTemplateExportModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put, cancellationToken);
         }
 
         /// <summary>

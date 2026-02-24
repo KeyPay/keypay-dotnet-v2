@@ -8,6 +8,10 @@ namespace KeyPayV2.Au.Enums
         O,
         P,
         R,
-        S
+        S,
+        D,
+        N,
+        B,
+        T
     }
 }

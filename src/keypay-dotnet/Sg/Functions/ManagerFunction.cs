@@ -15,6 +15,12 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IManagerFunction
     {
+        byte[] GetEmployeeProfileImage(int businessId, int employeeId);
+        Task<byte[]> GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
+        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeProfileImage(int businessId, int employeeId);
+        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DownloadDocument(int businessId, int employeeId, int documentId);
         Task DownloadDocumentAsync(int businessId, int employeeId, int documentId, CancellationToken cancellationToken = default);
         ManagerExpenseRequestModel CreateExpenseRequest(int businessId, int employeeId, ExpenseRequestEditModel expenseRequest);
@@ -77,12 +83,6 @@ namespace KeyPayV2.Sg.Functions
         Task<SgTimesheetReferenceData> GetTimesheetReferenceDataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         ManagerDashboardModel GetDashboard(int businessId);
         Task<ManagerDashboardModel> GetDashboardAsync(int businessId, CancellationToken cancellationToken = default);
-        void GetEmployeeProfileImage(int businessId, int employeeId);
-        Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
-        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void DeleteEmployeeProfileImage(int businessId, int employeeId);
-        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<LocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<LocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void InitiateEmployeeSelfSetup(int businessId, SgInitiateEmployeeOnboardingApiModel model);
@@ -225,6 +225,72 @@ namespace KeyPayV2.Sg.Functions
     public class ManagerFunction : BaseFunction, IManagerFunction
     {
         public ManagerFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Returns the file content for the employee's current profile image.
+        /// </remarks>
+        public byte[] GetEmployeeProfileImage(int businessId, int employeeId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Returns the file content for the employee's current profile image.
+        /// </remarks>
+        public Task<byte[]> GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId)
+        {
+            return ApiRequest<ProfileImageMetadata>($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Post);
+        }
+
+        /// <summary>
+        /// Set Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ProfileImageMetadata>($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Delete's the employee's profile image.
+        /// </remarks>
+        public void DeleteEmployeeProfileImage(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Delete's the employee's profile image.
+        /// </remarks>
+        public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Delete, cancellationToken);
+        }
 
         /// <summary>
         /// Download Document
@@ -912,72 +978,6 @@ namespace KeyPayV2.Sg.Functions
         public Task<ManagerDashboardModel> GetDashboardAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<ManagerDashboardModel>($"/business/{businessId}/manager/dashboard", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Returns the file content for the employee's current profile image.
-        /// </remarks>
-        public void GetEmployeeProfileImage(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Returns the file content for the employee's current profile image.
-        /// </remarks>
-        public Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId)
-        {
-            return ApiRequest<ProfileImageMetadata>($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Post);
-        }
-
-        /// <summary>
-        /// Set Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<ProfileImageMetadata>($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Delete's the employee's profile image.
-        /// </remarks>
-        public void DeleteEmployeeProfileImage(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Delete's the employee's profile image.
-        /// </remarks>
-        public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Delete, cancellationToken);
         }
 
         /// <summary>

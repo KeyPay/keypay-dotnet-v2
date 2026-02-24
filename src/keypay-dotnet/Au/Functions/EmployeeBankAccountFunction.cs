@@ -21,10 +21,10 @@ namespace KeyPayV2.Au.Functions
         Task<AuSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, AuBankAccountModel model, CancellationToken cancellationToken = default);
         AuBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId);
         Task<AuBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model);
+        Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model, CancellationToken cancellationToken = default);
         AuSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId);
         Task<AuSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
-        AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, AuBankAccountModel model);
-        Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int id, AuBankAccountModel model, CancellationToken cancellationToken = default);
     }
     public class EmployeeBankAccountFunction : BaseFunction, IEmployeeBankAccountFunction
     {
@@ -97,6 +97,28 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Update Bank Account
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's bank account with the specified ID.
+        /// </remarks>
+        public AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model)
+        {
+            return ApiRequest<AuSaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Bank Account
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's bank account with the specified ID.
+        /// </remarks>
+        public Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuSaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Bank Account
         /// </summary>
         /// <remarks>
@@ -116,28 +138,6 @@ namespace KeyPayV2.Au.Functions
         public Task<AuSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Bank Account
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's bank account with the specified ID.
-        /// </remarks>
-        public AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int id, AuBankAccountModel model)
-        {
-            return ApiRequest<AuSaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Bank Account
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's bank account with the specified ID.
-        /// </remarks>
-        public Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int id, AuBankAccountModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuSaveBankAccountResponseModel,AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{id}", model, Method.Put, cancellationToken);
         }
     }
 }

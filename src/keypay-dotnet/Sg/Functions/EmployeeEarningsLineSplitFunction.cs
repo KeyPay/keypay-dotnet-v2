@@ -17,12 +17,12 @@ namespace KeyPayV2.Sg.Functions
     {
         List<EarningsLineSplitApiModel> GetEmployeeLocationEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<EarningsLineSplitApiModel>> GetEmployeeLocationEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit);
-        Task CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
+        EarningsLineSplitApiModel CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit);
+        Task<EarningsLineSplitApiModel> CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
         EarningsLineSplitApiModel GetEarningsLineSplitByLocationId(int businessId, int employeeId, int locationId);
         Task<EarningsLineSplitApiModel> GetEarningsLineSplitByLocationIdAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default);
-        void UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit);
-        Task UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
+        EarningsLineSplitApiModel UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit);
+        Task<EarningsLineSplitApiModel> UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
         void DeleteEarningsLineSplit(int businessId, int employeeId, int locationId);
         Task DeleteEarningsLineSplitAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default);
     }
@@ -60,9 +60,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new earnings line split for the employee.
         /// </remarks>
-        public void CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit)
+        public EarningsLineSplitApiModel CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.Post);
+            return ApiRequest<EarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.Post);
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Creates a new earnings line split for the employee.
         /// </remarks>
-        public Task CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
+        public Task<EarningsLineSplitApiModel> CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.Post, cancellationToken);
+            return ApiRequestAsync<EarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit", earningsLineSplit, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the employee's earnings line split for the specified location ID.
         /// </remarks>
-        public void UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit)
+        public EarningsLineSplitApiModel UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put);
+            return ApiRequest<EarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put);
         }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Updates the employee's earnings line split for the specified location ID.
         /// </remarks>
-        public Task UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
+        public Task<EarningsLineSplitApiModel> UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put, cancellationToken);
+            return ApiRequestAsync<EarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put, cancellationToken);
         }
 
         /// <summary>

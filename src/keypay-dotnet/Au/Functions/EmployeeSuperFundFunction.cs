@@ -18,12 +18,12 @@ namespace KeyPayV2.Au.Functions
         Task<List<SuperFundModel>> ListSuperFundsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         SaveSuperFundResponseModel CreateSuperFund(int businessId, int employeeId, SaveSuperFundModel model);
         Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int businessId, int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default);
-        SaveSuperFundResponseModel UpdateSuperFund(int businessId, int employeeId, int id, SaveSuperFundModel model);
-        Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int businessId, int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default);
         SaveSuperFundResponseModel DeleteSuperFund(int businessId, int employeeId, int superfundId);
         Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int businessId, int employeeId, int superfundId, CancellationToken cancellationToken = default);
         SuperFundModel GetSuperFundById(int businessId, int employeeId, int superFundId);
         Task<SuperFundModel> GetSuperFundByIdAsync(int businessId, int employeeId, int superFundId, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel UpdateSuperFund(int businessId, int employeeId, int superFundId, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int businessId, int employeeId, int superFundId, SaveSuperFundModel model, CancellationToken cancellationToken = default);
     }
     public class EmployeeSuperFundFunction : BaseFunction, IEmployeeSuperFundFunction
     {
@@ -74,28 +74,6 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Update Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's super fund with the specified ID.
-        /// </remarks>
-        public SaveSuperFundResponseModel UpdateSuperFund(int businessId, int employeeId, int id, SaveSuperFundModel model)
-        {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's super fund with the specified ID.
-        /// </remarks>
-        public Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int businessId, int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Delete Super Fund
         /// </summary>
         /// <remarks>
@@ -137,6 +115,28 @@ namespace KeyPayV2.Au.Functions
         public Task<SuperFundModel> GetSuperFundByIdAsync(int businessId, int employeeId, int superFundId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<SuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's super fund with the specified ID.
+        /// </remarks>
+        public SaveSuperFundResponseModel UpdateSuperFund(int businessId, int employeeId, int superFundId, SaveSuperFundModel model)
+        {
+            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's super fund with the specified ID.
+        /// </remarks>
+        public Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int businessId, int employeeId, int superFundId, SaveSuperFundModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/business/{businessId}/employee/{employeeId}/superfund/{superFundId}", model, Method.Put, cancellationToken);
         }
     }
 }

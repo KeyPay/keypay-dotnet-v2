@@ -21,16 +21,16 @@ namespace KeyPayV2.Nz.Functions
         Task<NzIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         NzIndividualTimesheetLineModel CreateTimesheetLine(int businessId, NzIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query);
         Task<NzIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, NzIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default);
-        void GetTimesheetLine(int businessId, int timesheetLineId);
-        Task GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
+        NzSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request);
+        Task<NzSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        NzSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, NzSubmitTimesheetsRequest request);
+        Task<NzSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
         NzIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request);
         Task<NzIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, NzIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         void DeleteTimesheetLine(int businessId, int timesheetLineId);
         Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
-        NzSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, NzSubmitTimesheetsRequest request);
-        Task<NzSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
-        NzSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request);
-        Task<NzSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        NzIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId);
+        Task<NzIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
     }
     public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
@@ -109,25 +109,57 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get timesheet line
+        /// Bulk Insert Timesheets
         /// </summary>
         /// <remarks>
-        /// Get an individual timesheet line
+        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
+        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
+        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
-        public void GetTimesheetLine(int businessId, int timesheetLineId)
+        public NzSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
+            return ApiRequest<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post);
         }
 
         /// <summary>
-        /// Get timesheet line
+        /// Bulk Insert Timesheets
         /// </summary>
         /// <remarks>
-        /// Get an individual timesheet line
+        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
+        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
+        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
-        public Task GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
+        public Task<NzSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update/Replace timesheets
+        /// </summary>
+        /// <remarks>
+        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
+        /// for the specified employees within the specified time period
+        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// </remarks>
+        public NzSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, NzSubmitTimesheetsRequest request)
+        {
+            return ApiRequest<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put);
+        }
+
+        /// <summary>
+        /// Update/Replace timesheets
+        /// </summary>
+        /// <remarks>
+        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
+        /// for the specified employees within the specified time period
+        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// </remarks>
+        public Task<NzSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -179,57 +211,25 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Update/Replace timesheets
+        /// Get timesheet line
         /// </summary>
         /// <remarks>
-        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
-        /// for the specified employees within the specified time period
-        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// Get an individual timesheet line
         /// </remarks>
-        public NzSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, NzSubmitTimesheetsRequest request)
+        public NzIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId)
         {
-            return ApiRequest<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put);
+            return ApiRequest<NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
         }
 
         /// <summary>
-        /// Update/Replace timesheets
+        /// Get timesheet line
         /// </summary>
         /// <remarks>
-        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
-        /// for the specified employees within the specified time period
-        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// Get an individual timesheet line
         /// </remarks>
-        public Task<NzSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
+        public Task<NzIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Bulk Insert Timesheets
-        /// </summary>
-        /// <remarks>
-        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
-        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
-        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
-        /// </remarks>
-        public NzSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, NzSubmitTimesheetsRequest request)
-        {
-            return ApiRequest<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post);
-        }
-
-        /// <summary>
-        /// Bulk Insert Timesheets
-        /// </summary>
-        /// <remarks>
-        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
-        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
-        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
-        /// </remarks>
-        public Task<NzSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, NzSubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzSubmitTimesheetsResponse,NzSubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
         }
     }
 }

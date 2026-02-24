@@ -15,6 +15,8 @@ namespace KeyPayV2.Nz.Models.LeaveAllowance
         public NzLeaveAllowanceUnitType? UnitType { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveUnitTypeEnum? LeaveUnitType { get; set; }
+        public bool IsDefaultAnniversaryDateOverridden { get; set; }
+        public DateTime? DefaultAnniversaryDate { get; set; }
         public int LeaveCategoryId { get; set; }
         public string LeaveCategoryName { get; set; }
         public decimal? Units { get; set; }

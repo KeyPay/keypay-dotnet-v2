@@ -63,6 +63,10 @@ namespace KeyPayV2.Nz.Models.Common
         public int? TaxCodeDeclaration_IncomeBand { get; set; }
         public bool? TaxCodeDeclaration_IsNonDisclosed { get; set; }
         public decimal? TaxCodeDeclaration_ElectedExtraPayRate { get; set; }
+        public DateTime? AnnualLeaveYearStart { get; set; }
+        public bool? IsUsingDefaultAnniversaryDate { get; set; }
+        public DateTime? SickLeaveYearStart { get; set; }
+        public DateTime? FamilyViolenceLeaveYearStart { get; set; }
         public string Gender { get; set; }
         public DateTime? AnniversaryDate { get; set; }
         public string JobTitle { get; set; }

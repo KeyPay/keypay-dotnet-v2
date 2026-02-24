@@ -21,16 +21,16 @@ namespace KeyPayV2.My.Functions
         Task<MyIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, MyIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         MyIndividualTimesheetLineModel CreateTimesheetLine(int businessId, MyIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query);
         Task<MyIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, MyIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default);
-        void GetTimesheetLine(int businessId, int timesheetLineId);
-        Task GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
+        MySubmitTimesheetsResponse BulkInsertTimesheets(int businessId, MySubmitTimesheetsRequest request);
+        Task<MySubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        MySubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, MySubmitTimesheetsRequest request);
+        Task<MySubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
         MyIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, MyIndividualTimesheetLineModel request);
         Task<MyIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, MyIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         void DeleteTimesheetLine(int businessId, int timesheetLineId);
         Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
-        MySubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, MySubmitTimesheetsRequest request);
-        Task<MySubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
-        MySubmitTimesheetsResponse BulkInsertTimesheets(int businessId, MySubmitTimesheetsRequest request);
-        Task<MySubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
+        MyIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId);
+        Task<MyIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
     }
     public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
@@ -109,25 +109,57 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Get timesheet line
+        /// Bulk Insert Timesheets
         /// </summary>
         /// <remarks>
-        /// Get an individual timesheet line
+        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
+        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
+        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
-        public void GetTimesheetLine(int businessId, int timesheetLineId)
+        public MySubmitTimesheetsResponse BulkInsertTimesheets(int businessId, MySubmitTimesheetsRequest request)
         {
-            ApiRequest($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
+            return ApiRequest<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post);
         }
 
         /// <summary>
-        /// Get timesheet line
+        /// Bulk Insert Timesheets
         /// </summary>
         /// <remarks>
-        /// Get an individual timesheet line
+        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
+        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
+        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
         /// </remarks>
-        public Task GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
+        public Task<MySubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update/Replace timesheets
+        /// </summary>
+        /// <remarks>
+        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
+        /// for the specified employees within the specified time period
+        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// </remarks>
+        public MySubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, MySubmitTimesheetsRequest request)
+        {
+            return ApiRequest<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put);
+        }
+
+        /// <summary>
+        /// Update/Replace timesheets
+        /// </summary>
+        /// <remarks>
+        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
+        /// for the specified employees within the specified time period
+        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// </remarks>
+        public Task<MySubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -179,57 +211,25 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Update/Replace timesheets
+        /// Get timesheet line
         /// </summary>
         /// <remarks>
-        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
-        /// for the specified employees within the specified time period
-        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// Get an individual timesheet line
         /// </remarks>
-        public MySubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, MySubmitTimesheetsRequest request)
+        public MyIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId)
         {
-            return ApiRequest<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put);
+            return ApiRequest<MyIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
         }
 
         /// <summary>
-        /// Update/Replace timesheets
+        /// Get timesheet line
         /// </summary>
         /// <remarks>
-        /// Performs the same action as 'Bulk Insert Timesheets', but any existing timesheets
-        /// for the specified employees within the specified time period
-        /// (StartTime - EndTime) will be replaced with the timesheets specified.
+        /// Get an individual timesheet line
         /// </remarks>
-        public Task<MySubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
+        public Task<MyIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Bulk Insert Timesheets
-        /// </summary>
-        /// <remarks>
-        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
-        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
-        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
-        /// </remarks>
-        public MySubmitTimesheetsResponse BulkInsertTimesheets(int businessId, MySubmitTimesheetsRequest request)
-        {
-            return ApiRequest<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post);
-        }
-
-        /// <summary>
-        /// Bulk Insert Timesheets
-        /// </summary>
-        /// <remarks>
-        /// Adds timesheets for the specified business. This will not replace any existing timesheets.
-        /// The timesheets should be grouped by their associated employee IDs, with the key for the timesheet array
-        /// being the employee ID. For a Standard Employee ID Type, make sure the employee ID is an integer.
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
-        /// </remarks>
-        public Task<MySubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, MySubmitTimesheetsRequest request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<MySubmitTimesheetsResponse,MySubmitTimesheetsRequest>($"/business/{businessId}/timesheet/bulk", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<MyIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
         }
     }
 }

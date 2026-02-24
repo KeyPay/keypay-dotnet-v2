@@ -17,8 +17,10 @@ namespace KeyPayV2.Au.Functions
     {
         List<EmployeeQualificationModel> GetQualificationsForEmployee(int businessId, int employeeId);
         Task<List<EmployeeQualificationModel>> GetQualificationsForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationRequest qualification);
-        Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationRequest qualification, CancellationToken cancellationToken = default);
+        EmployeeQualificationModel AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationRequest qualification);
+        Task<EmployeeQualificationModel> AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationRequest qualification, CancellationToken cancellationToken = default);
+        void DeleteEmployeeQualification(int businessId, int employeeId);
+        Task DeleteEmployeeQualificationAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeQualification(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request);
         Task DeleteEmployeeQualificationAsync(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request, CancellationToken cancellationToken = default);
         EmployeeQualificationModel GetQualificationDetails(int businessId, int employeeId, int id);
@@ -29,12 +31,12 @@ namespace KeyPayV2.Au.Functions
         Task<List<EmployeeQualificationDocumentModel>> CreateEmployeeQualificationDocumentAsync(int businessId, int employeeId, FileUploadModel file, int qualificationId, CancellationToken cancellationToken = default);
         List<EmployeeQualificationDocumentModel> CreateEmployeeQualificationDocument(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request);
         Task<List<EmployeeQualificationDocumentModel>> CreateEmployeeQualificationDocumentAsync(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request, CancellationToken cancellationToken = default);
-        EmployeeQualificationDocumentModel GetQualificationDocumentById(int businessId, int employeeId, int id, int qualificationId);
-        Task<EmployeeQualificationDocumentModel> GetQualificationDocumentByIdAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default);
-        void DeleteEmployeeQualificationDocument(int businessId, int employeeId, int id, int qualificationId);
-        Task DeleteEmployeeQualificationDocumentAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default);
-        DocumentFile GetQualificationDocumentFile(int businessId, int employeeId, int id, int qualificationId);
-        Task<DocumentFile> GetQualificationDocumentFileAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default);
+        EmployeeQualificationDocumentModel GetQualificationDocumentById(int businessId, int employeeId, int qualificationId, int employeeDocumentId);
+        Task<EmployeeQualificationDocumentModel> GetQualificationDocumentByIdAsync(int businessId, int employeeId, int qualificationId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeQualificationDocument(int businessId, int employeeId, int qualificationId, int employeeDocumentId);
+        Task DeleteEmployeeQualificationDocumentAsync(int businessId, int employeeId, int qualificationId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        DocumentFile GetQualificationDocumentFile(int businessId, int employeeId, int qualificationId, int employeeDocumentId);
+        Task<DocumentFile> GetQualificationDocumentFileAsync(int businessId, int employeeId, int qualificationId, int employeeDocumentId, CancellationToken cancellationToken = default);
     }
     public class EmployeeQualificationsFunction : BaseFunction, IEmployeeQualificationsFunction
     {
@@ -68,9 +70,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Adds or updates a qualification for an employee.
         /// </remarks>
-        public void AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationRequest qualification)
+        public EmployeeQualificationModel AddUpdateEmployeeQualification(int businessId, int employeeId, EmployeeQualificationRequest qualification)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification", qualification, Method.Post);
+            return ApiRequest<EmployeeQualificationModel,EmployeeQualificationRequest>($"/business/{businessId}/employee/{employeeId}/qualification", qualification, Method.Post);
         }
 
         /// <summary>
@@ -79,9 +81,31 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Adds or updates a qualification for an employee.
         /// </remarks>
-        public Task AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationRequest qualification, CancellationToken cancellationToken = default)
+        public Task<EmployeeQualificationModel> AddUpdateEmployeeQualificationAsync(int businessId, int employeeId, EmployeeQualificationRequest qualification, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification", qualification, Method.Post, cancellationToken);
+            return ApiRequestAsync<EmployeeQualificationModel,EmployeeQualificationRequest>($"/business/{businessId}/employee/{employeeId}/qualification", qualification, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
+        /// </remarks>
+        public void DeleteEmployeeQualification(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Qualification
+        /// </summary>
+        /// <remarks>
+        /// Deletes an employee qualification. Denotes that the employee is no longer qualified for the specified qualification.
+        /// </remarks>
+        public Task DeleteEmployeeQualificationAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -200,9 +224,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the details for a qualification document by ID.
         /// </remarks>
-        public EmployeeQualificationDocumentModel GetQualificationDocumentById(int businessId, int employeeId, int id, int qualificationId)
+        public EmployeeQualificationDocumentModel GetQualificationDocumentById(int businessId, int employeeId, int qualificationId, int employeeDocumentId)
         {
-            return ApiRequest<EmployeeQualificationDocumentModel>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{id}", Method.Get);
+            return ApiRequest<EmployeeQualificationDocumentModel>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{employeeDocumentId}", Method.Get);
         }
 
         /// <summary>
@@ -211,9 +235,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the details for a qualification document by ID.
         /// </remarks>
-        public Task<EmployeeQualificationDocumentModel> GetQualificationDocumentByIdAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default)
+        public Task<EmployeeQualificationDocumentModel> GetQualificationDocumentByIdAsync(int businessId, int employeeId, int qualificationId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeQualificationDocumentModel>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{id}", Method.Get, cancellationToken);
+            return ApiRequestAsync<EmployeeQualificationDocumentModel>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{employeeDocumentId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -222,9 +246,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Deletes a specific employee qualification document.
         /// </remarks>
-        public void DeleteEmployeeQualificationDocument(int businessId, int employeeId, int id, int qualificationId)
+        public void DeleteEmployeeQualificationDocument(int businessId, int employeeId, int qualificationId, int employeeDocumentId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{employeeDocumentId}", Method.Delete);
         }
 
         /// <summary>
@@ -233,9 +257,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Deletes a specific employee qualification document.
         /// </remarks>
-        public Task DeleteEmployeeQualificationDocumentAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default)
+        public Task DeleteEmployeeQualificationDocumentAsync(int businessId, int employeeId, int qualificationId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{employeeDocumentId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -244,9 +268,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the file for an employee qualification document by ID.
         /// </remarks>
-        public DocumentFile GetQualificationDocumentFile(int businessId, int employeeId, int id, int qualificationId)
+        public DocumentFile GetQualificationDocumentFile(int businessId, int employeeId, int qualificationId, int employeeDocumentId)
         {
-            return ApiRequest<DocumentFile>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{id}/content", Method.Get);
+            return ApiRequest<DocumentFile>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{employeeDocumentId}/content", Method.Get);
         }
 
         /// <summary>
@@ -255,9 +279,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets the file for an employee qualification document by ID.
         /// </remarks>
-        public Task<DocumentFile> GetQualificationDocumentFileAsync(int businessId, int employeeId, int id, int qualificationId, CancellationToken cancellationToken = default)
+        public Task<DocumentFile> GetQualificationDocumentFileAsync(int businessId, int employeeId, int qualificationId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{id}/content", Method.Get, cancellationToken);
+            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document/{employeeDocumentId}/content", Method.Get, cancellationToken);
         }
     }
 }

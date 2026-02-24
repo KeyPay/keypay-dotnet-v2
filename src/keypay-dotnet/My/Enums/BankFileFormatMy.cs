@@ -21,6 +21,7 @@ namespace KeyPayV2.My.Enums
         EAmPayday,
         UnitedOverseas,
         StandardCharteredS2B,
-        IslamBulkPayment
+        IslamBulkPayment,
+        AffinBankAutopay
     }
 }

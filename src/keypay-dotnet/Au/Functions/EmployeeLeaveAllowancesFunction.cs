@@ -16,8 +16,8 @@ namespace KeyPayV2.Au.Functions
     {
         List<AuLeaveAllowanceModel> GetLeaveAllowances(int businessId, int employeeId);
         Task<List<AuLeaveAllowanceModel>> GetLeaveAllowancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void SetLeaveAllowances(int businessId, int employeeId, IList<AuLeaveAllowanceModel> leaveAllowances);
-        Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<AuLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default);
+        void SetLeaveAllowances(int businessId, int employeeId, IEnumerable<AuLeaveAllowanceModel> leaveAllowances);
+        Task SetLeaveAllowancesAsync(int businessId, int employeeId, IEnumerable<AuLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default);
     }
     public class EmployeeLeaveAllowancesFunction : BaseFunction, IEmployeeLeaveAllowancesFunction
     {
@@ -51,7 +51,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sets the leave allowances for the specified employee
         /// </remarks>
-        public void SetLeaveAllowances(int businessId, int employeeId, IList<AuLeaveAllowanceModel> leaveAllowances)
+        public void SetLeaveAllowances(int businessId, int employeeId, IEnumerable<AuLeaveAllowanceModel> leaveAllowances)
         {
             ApiRequest($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.Put);
         }
@@ -62,7 +62,7 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Sets the leave allowances for the specified employee
         /// </remarks>
-        public Task SetLeaveAllowancesAsync(int businessId, int employeeId, IList<AuLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default)
+        public Task SetLeaveAllowancesAsync(int businessId, int employeeId, IEnumerable<AuLeaveAllowanceModel> leaveAllowances, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowances", leaveAllowances, Method.Put, cancellationToken);
         }

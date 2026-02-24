@@ -15,48 +15,48 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeFunction
     {
+        byte[] GetEmployeeProfileImage(int businessId, int employeeId);
+        Task<byte[]> GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
+        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void DeleteEmployeeProfileImage(int businessId, int employeeId);
+        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        AuStandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, AuStandardHoursModel model);
+        Task<AuStandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, AuStandardHoursModel model, CancellationToken cancellationToken = default);
+        AuStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
+        Task<AuStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request);
+        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
         List<AuEmployeePayRateModel> GetPayRates(int businessId, int employeeId);
         Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<AuWorkTypeModel> GetEmployeeWorkTypes(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<AuWorkTypeModel>> GetEmployeeWorkTypesAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
         Task<AuOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetOpeningBalances(int businessId, int employeeId, AuOpeningBalancesModel model);
         Task SetOpeningBalancesAsync(int businessId, int employeeId, AuOpeningBalancesModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployee(int businessId, int employeeId);
-        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
-        Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void GetEmployeeProfileImage(int businessId, int employeeId);
-        Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId);
-        Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void DeleteEmployeeProfileImage(int businessId, int employeeId);
-        Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId);
-        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request);
-        Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default);
-        List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId);
-        Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
-        Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        AuStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId);
-        Task<AuStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        AuStandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, AuStandardHoursModel model);
-        Task<AuStandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, AuStandardHoursModel model, CancellationToken cancellationToken = default);
-        void SyncEmployeeToQbo(int businessId, int employeeId);
-        Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void ActivateEmployee(int businessId, int employeeId);
         Task ActivateEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<EmployeeDetailsModel> ListBasicDetailsForEmployees(int businessId, ODataQuery oDataQuery = null);
         Task<List<EmployeeDetailsModel>> ListBasicDetailsForEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId);
+        Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void GrantKioskAccess(int businessId, int employeeId);
         Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void RevokeKioskAccess(int businessId, int employeeId);
         Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId);
+        Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
+        Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
+        void DeleteEmployee(int businessId, int employeeId);
+        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void SyncEmployeeToQbo(int businessId, int employeeId);
+        Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<AuUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
         Task<List<AuUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<AuUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
@@ -79,6 +79,160 @@ namespace KeyPayV2.Au.Functions
         public EmployeeFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
+        /// Get Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Returns the file content for the employee's current profile image.
+        /// </remarks>
+        public byte[] GetEmployeeProfileImage(int businessId, int employeeId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/image", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Returns the file content for the employee's current profile image.
+        /// </remarks>
+        public Task<byte[]> GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId)
+        {
+            return ApiRequest<ProfileImageMetadata>($"/business/{businessId}/employee/{employeeId}/image", Method.Post);
+        }
+
+        /// <summary>
+        /// Set Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ProfileImageMetadata>($"/business/{businessId}/employee/{employeeId}/image", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Delete's the employee's profile image.
+        /// </remarks>
+        public void DeleteEmployeeProfileImage(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/image", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Profile Image
+        /// </summary>
+        /// <remarks>
+        /// Delete's the employee's profile image.
+        /// </remarks>
+        public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Sets the standard hours for this employee.
+        /// </remarks>
+        public AuStandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, AuStandardHoursModel model)
+        {
+            return ApiRequest<AuStandardHoursModel,AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Set standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Sets the standard hours for this employee.
+        /// </remarks>
+        public Task<AuStandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, AuStandardHoursModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuStandardHoursModel,AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the standard hours for this employee.
+        /// </remarks>
+        public AuStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
+        {
+            return ApiRequest<AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
+        }
+
+        /// <summary>
+        /// Get standard hours for employee
+        /// </summary>
+        /// <remarks>
+        /// Gets the standard hours for this employee.
+        /// </remarks>
+        public Task<AuStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets leave balances for this employee.
+        /// </remarks>
+        public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId)
+        {
+            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets leave balances for this employee.
+        /// </remarks>
+        public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets leave balances for this employee.
+        /// </remarks>
+        public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request)
+        {
+            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Leave Balances
+        /// </summary>
+        /// <remarks>
+        /// Gets leave balances for this employee.
+        /// </remarks>
+        public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Pay Rates
         /// </summary>
         /// <remarks>
@@ -98,6 +252,30 @@ namespace KeyPayV2.Au.Functions
         public Task<List<AuEmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<AuEmployeePayRateModel>>($"/business/{businessId}/employee/{employeeId}/payrate", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Shift Conditions
+        /// </summary>
+        /// <remarks>
+        /// Lists all the shift conditions for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Shift Conditions
+        /// </summary>
+        /// <remarks>
+        /// Lists all the shift conditions for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -169,294 +347,6 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public void DeleteEmployee(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee basic details by ID
-        /// </summary>
-        /// <remarks>
-        /// returns the basic employee details for the specified employee
-        /// </remarks>
-        public EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId)
-        {
-            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee basic details by ID
-        /// </summary>
-        /// <remarks>
-        /// returns the basic employee details for the specified employee
-        /// </remarks>
-        public Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Returns the file content for the employee's current profile image.
-        /// </remarks>
-        public void GetEmployeeProfileImage(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/image", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Returns the file content for the employee's current profile image.
-        /// </remarks>
-        public Task GetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public ProfileImageMetadata SetEmployeeProfileImage(int businessId, int employeeId)
-        {
-            return ApiRequest<ProfileImageMetadata>($"/business/{businessId}/employee/{employeeId}/image", Method.Post);
-        }
-
-        /// <summary>
-        /// Set Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Uploads a new employee profile image. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<ProfileImageMetadata>($"/business/{businessId}/employee/{employeeId}/image", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Delete's the employee's profile image.
-        /// </remarks>
-        public void DeleteEmployeeProfileImage(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/image", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee Profile Image
-        /// </summary>
-        /// <remarks>
-        /// Delete's the employee's profile image.
-        /// </remarks>
-        public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Leave Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets leave balances for this employee.
-        /// </remarks>
-        public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId)
-        {
-            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Leave Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets leave balances for this employee.
-        /// </remarks>
-        public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Leave Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets leave balances for this employee.
-        /// </remarks>
-        public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request)
-        {
-            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Leave Balances
-        /// </summary>
-        /// <remarks>
-        /// Gets leave balances for this employee.
-        /// </remarks>
-        public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Notes
-        /// </summary>
-        /// <remarks>
-        /// Gets the notes for the specified employee.
-        /// </remarks>
-        public List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Notes
-        /// </summary>
-        /// <remarks>
-        /// Gets the notes for the specified employee.
-        /// </remarks>
-        public Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Employee Notes
-        /// </summary>
-        /// <remarks>
-        /// Sets the notes for the specified employee.
-        /// </remarks>
-        public void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Employee Notes
-        /// </summary>
-        /// <remarks>
-        /// Sets the notes for the specified employee.
-        /// </remarks>
-        public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Shift Conditions
-        /// </summary>
-        /// <remarks>
-        /// Lists all the shift conditions for this employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<AuWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Shift Conditions
-        /// </summary>
-        /// <remarks>
-        /// Lists all the shift conditions for this employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<AuWorkTypeModel>> GetEmployeeShiftConditionsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuWorkTypeModel>>($"/business/{businessId}/employee/{employeeId}/shiftcondition{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the standard hours for this employee.
-        /// </remarks>
-        public AuStandardHoursModel GetStandardHoursForEmployee(int businessId, int employeeId)
-        {
-            return ApiRequest<AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get);
-        }
-
-        /// <summary>
-        /// Get standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Gets the standard hours for this employee.
-        /// </remarks>
-        public Task<AuStandardHoursModel> GetStandardHoursForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Sets the standard hours for this employee.
-        /// </remarks>
-        public AuStandardHoursModel SetStandardHoursForEmployee(int businessId, int employeeId, AuStandardHoursModel model)
-        {
-            return ApiRequest<AuStandardHoursModel,AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Set standard hours for employee
-        /// </summary>
-        /// <remarks>
-        /// Sets the standard hours for this employee.
-        /// </remarks>
-        public Task<AuStandardHoursModel> SetStandardHoursForEmployeeAsync(int businessId, int employeeId, AuStandardHoursModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuStandardHoursModel,AuStandardHoursModel>($"/business/{businessId}/employee/{employeeId}/standardhours", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Sync Employee to QBO
-        /// </summary>
-        /// <remarks>
-        /// Syncs an employee record to QBO.
-        /// </remarks>
-        public void SyncEmployeeToQbo(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post);
-        }
-
-        /// <summary>
-        /// Sync Employee to QBO
-        /// </summary>
-        /// <remarks>
-        /// Syncs an employee record to QBO.
-        /// </remarks>
-        public Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Activate Employee
         /// </summary>
         /// <remarks>
@@ -505,6 +395,28 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Employee basic details by ID
+        /// </summary>
+        /// <remarks>
+        /// returns the basic employee details for the specified employee
+        /// </remarks>
+        public EmployeeDetailsModel GetEmployeeBasicDetailsById(int businessId, int employeeId)
+        {
+            return ApiRequest<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee basic details by ID
+        /// </summary>
+        /// <remarks>
+        /// returns the basic employee details for the specified employee
+        /// </remarks>
+        public Task<EmployeeDetailsModel> GetEmployeeBasicDetailsByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDetailsModel>($"/business/{businessId}/employee/{employeeId}/details", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Grant Kiosk Access
         /// </summary>
         /// <remarks>
@@ -546,6 +458,94 @@ namespace KeyPayV2.Au.Functions
         public Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/revokekioskaccess/{employeeId}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets the notes for the specified employee.
+        /// </remarks>
+        public List<EmployeeNoteModel> GetEmployeeNotes(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Gets the notes for the specified employee.
+        /// </remarks>
+        public Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeNoteModel>>($"/business/{businessId}/employee/{employeeId}/notes", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Sets the notes for the specified employee.
+        /// </remarks>
+        public void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Employee Notes
+        /// </summary>
+        /// <remarks>
+        /// Sets the notes for the specified employee.
+        /// </remarks>
+        public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public void DeleteEmployee(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Sync Employee to QBO
+        /// </summary>
+        /// <remarks>
+        /// Syncs an employee record to QBO.
+        /// </remarks>
+        public void SyncEmployeeToQbo(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post);
+        }
+
+        /// <summary>
+        /// Sync Employee to QBO
+        /// </summary>
+        /// <remarks>
+        /// Syncs an employee record to QBO.
+        /// </remarks>
+        public Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post, cancellationToken);
         }
 
         /// <summary>

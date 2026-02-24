@@ -61,6 +61,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public DateTime? FreeportQualifyingEndDate { get; set; }
         public DateTime? VeteransQualifyingEndDate { get; set; }
         public DateTime? InvestmentQualifyingEndDate { get; set; }
+        public decimal? PreviousEmployerTaxablePay { get; set; }
+        public decimal? PreviousEmployerTaxWithheld { get; set; }
         public string WorkplacePostcode { get; set; }
         public int? HrOrganisationId { get; set; }
     }

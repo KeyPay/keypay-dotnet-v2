@@ -11,6 +11,7 @@ namespace KeyPayV2.Nz.Models.LeaveAllowance
     public class NzLeaveAllowanceTemplateModel
     {
         public IList<NzLeaveAllowanceTemplateLeaveCategoryApiModel> LeaveCategories { get; set; }
+        public bool IsDefaultAnniversaryDateEnabled { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string ExternalId { get; set; }

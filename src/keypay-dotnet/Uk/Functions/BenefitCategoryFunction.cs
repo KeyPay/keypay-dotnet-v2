@@ -17,18 +17,18 @@ namespace KeyPayV2.Uk.Functions
     {
         UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel);
         Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default);
-        List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId);
-        Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
-        UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model);
-        Task<UkUpdateBenefitCategoryResult> UpdateBenefitCategoryAsync(int businessId, UkBenefitCategoryReadModel model, CancellationToken cancellationToken = default);
-        UkBenefitCategoryReadModel CreateBenefitCategory(int businessId, UkBenefitCategoryEditModel model);
-        Task<UkBenefitCategoryReadModel> CreateBenefitCategoryAsync(int businessId, UkBenefitCategoryEditModel model, CancellationToken cancellationToken = default);
         UkBenefitCategoryReadModel GetBenefitCategoryById(int businessId, int id);
         Task<UkBenefitCategoryReadModel> GetBenefitCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void DeleteBenefitCategory(int businessId, int id);
         Task DeleteBenefitCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        CreateMultipleBenefitCategoriesResult UkBenefitCategory_CreateMultiple(int businessId, List<UkBenefitCategoryEditModel> model);
-        Task<CreateMultipleBenefitCategoriesResult> UkBenefitCategory_CreateMultipleAsync(int businessId, List<UkBenefitCategoryEditModel> model, CancellationToken cancellationToken = default);
+        List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId);
+        Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
+        UkBenefitCategoryReadModel CreateBenefitCategory(int businessId, UkBenefitCategoryEditModel model);
+        Task<UkBenefitCategoryReadModel> CreateBenefitCategoryAsync(int businessId, UkBenefitCategoryEditModel model, CancellationToken cancellationToken = default);
+        UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model);
+        Task<UkUpdateBenefitCategoryResult> UpdateBenefitCategoryAsync(int businessId, UkBenefitCategoryReadModel model, CancellationToken cancellationToken = default);
+        CreateMultipleBenefitCategoriesResult CreateBenefitCategories(int businessId, List<UkBenefitCategoryEditModel> model);
+        Task<CreateMultipleBenefitCategoriesResult> CreateBenefitCategoriesAsync(int businessId, List<UkBenefitCategoryEditModel> model, CancellationToken cancellationToken = default);
         UkBenefitCategoriesProcessingOptions GetProcessingOptions(int businessId);
         Task<UkBenefitCategoriesProcessingOptions> GetProcessingOptionsAsync(int businessId, CancellationToken cancellationToken = default);
         void SetProcessingOptions(int businessId, SaveBenefitCategoriesProcessingOptionsModel model);
@@ -87,72 +87,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// List Benefit Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists the benefit categories
-        /// </remarks>
-        public List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId)
-        {
-            return ApiRequest<List<UkBenefitCategoryReadModel>>($"/business/{businessId}/benefitcategory", Method.Get);
-        }
-
-        /// <summary>
-        /// List Benefit Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists the benefit categories
-        /// </remarks>
-        public Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkBenefitCategoryReadModel>>($"/business/{businessId}/benefitcategory", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Benefit Category
-        /// </summary>
-        /// <remarks>
-        /// Updates a benefit category
-        /// </remarks>
-        public UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model)
-        {
-            return ApiRequest<UkUpdateBenefitCategoryResult,UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Benefit Category
-        /// </summary>
-        /// <remarks>
-        /// Updates a benefit category
-        /// </remarks>
-        public Task<UkUpdateBenefitCategoryResult> UpdateBenefitCategoryAsync(int businessId, UkBenefitCategoryReadModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUpdateBenefitCategoryResult,UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create benefit category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new benefit category
-        /// </remarks>
-        public UkBenefitCategoryReadModel CreateBenefitCategory(int businessId, UkBenefitCategoryEditModel model)
-        {
-            return ApiRequest<UkBenefitCategoryReadModel,UkBenefitCategoryEditModel>($"/business/{businessId}/benefitcategory", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create benefit category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new benefit category
-        /// </remarks>
-        public Task<UkBenefitCategoryReadModel> CreateBenefitCategoryAsync(int businessId, UkBenefitCategoryEditModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkBenefitCategoryReadModel,UkBenefitCategoryEditModel>($"/business/{businessId}/benefitcategory", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Benefit Category by ID
         /// </summary>
         /// <remarks>
@@ -196,12 +130,90 @@ namespace KeyPayV2.Uk.Functions
             return ApiRequestAsync($"/business/{businessId}/benefitcategory/{id}", Method.Delete, cancellationToken);
         }
 
-        public CreateMultipleBenefitCategoriesResult UkBenefitCategory_CreateMultiple(int businessId, List<UkBenefitCategoryEditModel> model)
+        /// <summary>
+        /// List Benefit Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists the benefit categories
+        /// </remarks>
+        public List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId)
+        {
+            return ApiRequest<List<UkBenefitCategoryReadModel>>($"/business/{businessId}/benefitcategory", Method.Get);
+        }
+
+        /// <summary>
+        /// List Benefit Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists the benefit categories
+        /// </remarks>
+        public Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkBenefitCategoryReadModel>>($"/business/{businessId}/benefitcategory", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create benefit category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new benefit category
+        /// </remarks>
+        public UkBenefitCategoryReadModel CreateBenefitCategory(int businessId, UkBenefitCategoryEditModel model)
+        {
+            return ApiRequest<UkBenefitCategoryReadModel,UkBenefitCategoryEditModel>($"/business/{businessId}/benefitcategory", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create benefit category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new benefit category
+        /// </remarks>
+        public Task<UkBenefitCategoryReadModel> CreateBenefitCategoryAsync(int businessId, UkBenefitCategoryEditModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkBenefitCategoryReadModel,UkBenefitCategoryEditModel>($"/business/{businessId}/benefitcategory", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Benefit Category
+        /// </summary>
+        /// <remarks>
+        /// Updates a benefit category
+        /// </remarks>
+        public UkUpdateBenefitCategoryResult UpdateBenefitCategory(int businessId, UkBenefitCategoryReadModel model)
+        {
+            return ApiRequest<UkUpdateBenefitCategoryResult,UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Benefit Category
+        /// </summary>
+        /// <remarks>
+        /// Updates a benefit category
+        /// </remarks>
+        public Task<UkUpdateBenefitCategoryResult> UpdateBenefitCategoryAsync(int businessId, UkBenefitCategoryReadModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUpdateBenefitCategoryResult,UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create benefit categories
+        /// </summary>
+        /// <remarks>
+        /// Creates multiple new benefit categories
+        /// </remarks>
+        public CreateMultipleBenefitCategoriesResult CreateBenefitCategories(int businessId, List<UkBenefitCategoryEditModel> model)
         {
             return ApiRequest<CreateMultipleBenefitCategoriesResult,List<UkBenefitCategoryEditModel>>($"/business/{businessId}/benefitcategory/multiple", model, Method.Post);
         }
 
-        public Task<CreateMultipleBenefitCategoriesResult> UkBenefitCategory_CreateMultipleAsync(int businessId, List<UkBenefitCategoryEditModel> model, CancellationToken cancellationToken = default)
+        /// <summary>
+        /// Create benefit categories
+        /// </summary>
+        /// <remarks>
+        /// Creates multiple new benefit categories
+        /// </remarks>
+        public Task<CreateMultipleBenefitCategoriesResult> CreateBenefitCategoriesAsync(int businessId, List<UkBenefitCategoryEditModel> model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<CreateMultipleBenefitCategoriesResult,List<UkBenefitCategoryEditModel>>($"/business/{businessId}/benefitcategory/multiple", model, Method.Post, cancellationToken);
         }

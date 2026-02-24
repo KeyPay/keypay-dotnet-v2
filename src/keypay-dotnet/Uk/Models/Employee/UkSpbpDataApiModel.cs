@@ -27,5 +27,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public DoNotPaySpbpReasonEnum? DoNotPayReason { get; set; }
         public decimal? SpbpAdjust { get; set; }
         public string Notes { get; set; }
+        public bool IsEmployedInNorthernIreland { get; set; }
+        public bool IsMiscarriage { get; set; }
+        public string EmployeeWorkplacePostcodeNorthernIreland { get; set; }
     }
 }

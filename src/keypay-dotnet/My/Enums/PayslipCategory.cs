@@ -22,6 +22,8 @@ namespace KeyPayV2.My.Enums
         BenefitsInKindAdjustments,
         StatutoryDetails,
         CompanyBenefits,
-        CraAdjustments
+        CraAdjustments,
+        TaxableGrossEarnings,
+        NonTaxableEarnings
     }
 }

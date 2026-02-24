@@ -18,5 +18,6 @@ namespace KeyPayV2.Nz.Models.DeductionCategories
         public ExternalService Source { get; set; }
         public string ExternalId { get; set; }
         public bool IsSystem { get; set; }
+        public bool? InUse { get; set; }
     }
 }
