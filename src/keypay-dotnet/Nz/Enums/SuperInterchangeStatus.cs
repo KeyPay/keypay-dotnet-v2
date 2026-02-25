@@ -24,7 +24,7 @@ namespace KeyPayV2.Nz.Enums
         Paid,
         PaymentFailed,
         HeroClearProcessing,
-        HeroClearFundsDispersed,
+        HeroClearFundsDisbursed,
         HeroClearSubmittedAllFunds,
         HeroClearInsufficientFunds,
         HeroClearSubmittedWithErrors,
