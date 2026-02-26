@@ -21,6 +21,8 @@ namespace KeyPayV2.Uk.Functions
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int businessId, int employeeId);
         Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<UkAvailableBusinessModel> ListBusinesses();
+        Task<List<UkAvailableBusinessModel>> ListBusinessesAsync(CancellationToken cancellationToken = default);
         void DownloadDocument(int businessId, int employeeId, int documentId);
         Task DownloadDocumentAsync(int businessId, int employeeId, int documentId, CancellationToken cancellationToken = default);
         ManagerExpenseRequestModel CreateExpenseRequest(int businessId, int employeeId, ExpenseRequestEditModel expenseRequest);
@@ -219,8 +221,6 @@ namespace KeyPayV2.Uk.Functions
         Task<List<ManagerTimesheetEmployeeModel>> ListTimesheetEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
         List<LocationModel> ListTimesheetLocations(int businessId);
         Task<List<LocationModel>> ListTimesheetLocationsAsync(int businessId, CancellationToken cancellationToken = default);
-        List<UkAvailableBusinessModel> ListBusinesses();
-        Task<List<UkAvailableBusinessModel>> ListBusinessesAsync(CancellationToken cancellationToken = default);
     }
     public class ManagerFunction : BaseFunction, IManagerFunction
     {
@@ -290,6 +290,28 @@ namespace KeyPayV2.Uk.Functions
         public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/manager/employee/{employeeId}/image", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Returns all the businesses the user can access.
+        /// </remarks>
+        public List<UkAvailableBusinessModel> ListBusinesses()
+        {
+            return ApiRequest<List<UkAvailableBusinessModel>>($"/manager/security/businesses", Method.Get);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Returns all the businesses the user can access.
+        /// </remarks>
+        public Task<List<UkAvailableBusinessModel>> ListBusinessesAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkAvailableBusinessModel>>($"/manager/security/businesses", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2518,28 +2540,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<LocationModel>> ListTimesheetLocationsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<LocationModel>>($"/business/{businessId}/manager/timesheet/locations", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Businesses
-        /// </summary>
-        /// <remarks>
-        /// Returns all the businesses the user can access.
-        /// </remarks>
-        public List<UkAvailableBusinessModel> ListBusinesses()
-        {
-            return ApiRequest<List<UkAvailableBusinessModel>>($"/manager/security/businesses", Method.Get);
-        }
-
-        /// <summary>
-        /// List Businesses
-        /// </summary>
-        /// <remarks>
-        /// Returns all the businesses the user can access.
-        /// </remarks>
-        public Task<List<UkAvailableBusinessModel>> ListBusinessesAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkAvailableBusinessModel>>($"/manager/security/businesses", Method.Get, cancellationToken);
         }
     }
 }
