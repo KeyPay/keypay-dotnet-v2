@@ -44,7 +44,6 @@ namespace KeyPayV2.Nz
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
-        IReportingFunction Reporting { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
@@ -55,6 +54,7 @@ namespace KeyPayV2.Nz
         IWebhookFunction Webhook { get; }
         IWhiteLabelFunction WhiteLabel { get; }
         IWorkTypeFunction WorkType { get; }
+        IReportingFunction Reporting { get; }
     }
     public class NzApiClient : BaseApiClient, INzApiClient
     {
@@ -98,7 +98,6 @@ namespace KeyPayV2.Nz
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
-            Reporting = new ReportingFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
@@ -109,6 +108,7 @@ namespace KeyPayV2.Nz
             Webhook = new WebhookFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
             WorkType = new WorkTypeFunction(Api);
+            Reporting = new ReportingFunction(Api);
         }
 
         public IAuthenticationFunction Authentication { get; }
@@ -149,7 +149,6 @@ namespace KeyPayV2.Nz
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
-        public IReportingFunction Reporting { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
@@ -160,5 +159,6 @@ namespace KeyPayV2.Nz
         public IWebhookFunction Webhook { get; }
         public IWhiteLabelFunction WhiteLabel { get; }
         public IWorkTypeFunction WorkType { get; }
+        public IReportingFunction Reporting { get; }
     }
 }

@@ -17,6 +17,10 @@ namespace KeyPayV2.Au.Functions
     {
         List<PaygPaymentSummaryModel> ListPaymentSummaries(int businessId, int financialYearEnding, ODataQuery oDataQuery = null);
         Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding);
+        Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
+        PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request);
+        Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request, CancellationToken cancellationToken = default);
         void PublishPaymentSummaries(int businessId, int financialYearEnding);
         Task PublishPaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
         void PublishPaymentSummaries(int businessId, int financialYearEnding, PublishPaymentSummariesQueryModel request);
@@ -25,10 +29,6 @@ namespace KeyPayV2.Au.Functions
         Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
         void UnpublishPaymentSummaries(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request);
         Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request, CancellationToken cancellationToken = default);
-        PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding);
-        Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default);
-        PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request);
-        Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request, CancellationToken cancellationToken = default);
     }
     public class PaymentSummaryFunction : BaseFunction, IPaymentSummaryFunction
     {
@@ -56,6 +56,50 @@ namespace KeyPayV2.Au.Functions
         public Task<List<PaygPaymentSummaryModel>> ListPaymentSummariesAsync(int businessId, int financialYearEnding, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<PaygPaymentSummaryModel>>($"/business/{businessId}/paymentsummary/{financialYearEnding}{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Generate Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
+        /// </remarks>
+        public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding)
+        {
+            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Put);
+        }
+
+        /// <summary>
+        /// Generate Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
+        /// </remarks>
+        public Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Generate Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
+        /// </remarks>
+        public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request)
+        {
+            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Put);
+        }
+
+        /// <summary>
+        /// Generate Payment Summaries
+        /// </summary>
+        /// <remarks>
+        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
+        /// </remarks>
+        public Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -144,50 +188,6 @@ namespace KeyPayV2.Au.Functions
         public Task UnpublishPaymentSummariesAsync(int businessId, int financialYearEnding, UnpublishPaymentSummariesQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Generate Payment Summaries
-        /// </summary>
-        /// <remarks>
-        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
-        /// </remarks>
-        public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding)
-        {
-            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Put);
-        }
-
-        /// <summary>
-        /// Generate Payment Summaries
-        /// </summary>
-        /// <remarks>
-        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
-        /// </remarks>
-        public Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}", Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Generate Payment Summaries
-        /// </summary>
-        /// <remarks>
-        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
-        /// </remarks>
-        public PaygPaymentSummaryModel GeneratePaymentSummaries(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request)
-        {
-            return ApiRequest<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Put);
-        }
-
-        /// <summary>
-        /// Generate Payment Summaries
-        /// </summary>
-        /// <remarks>
-        /// Generates (or regenerates) payment summaries for the specified financial year/business. Only unpublished payment summaries will be regenerated.
-        /// </remarks>
-        public Task<PaygPaymentSummaryModel> GeneratePaymentSummariesAsync(int businessId, int financialYearEnding, GeneratePaymentSummariesQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PaygPaymentSummaryModel>($"/business/{businessId}/paymentsummary/{financialYearEnding}?employeeId={request.EmployeeId}&employingEntityId={request.EmployingEntityId}&locationId={request.LocationId}", Method.Put, cancellationToken);
         }
     }
 }

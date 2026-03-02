@@ -41,13 +41,11 @@ namespace KeyPayV2.Au
         IOtherFunction Other { get; }
         IPayCategoryFunction PayCategory { get; }
         IPayConditionFunction PayCondition { get; }
-        IPaymentSummaryFunction PaymentSummary { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         IPayRunFunction PayRun { get; }
         IPayScheduleFunction PaySchedule { get; }
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
-        IReportingFunction Reporting { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
         IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
@@ -62,6 +60,8 @@ namespace KeyPayV2.Au
         IWorkTypeFunction WorkType { get; }
         IAbaSettingsFunction AbaSettings { get; }
         IEmployeeSuperFundFunction EmployeeSuperFund { get; }
+        IPaymentSummaryFunction PaymentSummary { get; }
+        IReportingFunction Reporting { get; }
     }
     public class AuApiClient : BaseApiClient, IAuApiClient
     {
@@ -102,13 +102,11 @@ namespace KeyPayV2.Au
             Other = new OtherFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
             PayCondition = new PayConditionFunction(Api);
-            PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PayRun = new PayRunFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
-            Reporting = new ReportingFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
             Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
@@ -123,6 +121,8 @@ namespace KeyPayV2.Au
             WorkType = new WorkTypeFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
             EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
+            PaymentSummary = new PaymentSummaryFunction(Api);
+            Reporting = new ReportingFunction(Api);
         }
 
         public IAuthenticationFunction Authentication { get; }
@@ -160,13 +160,11 @@ namespace KeyPayV2.Au
         public IOtherFunction Other { get; }
         public IPayCategoryFunction PayCategory { get; }
         public IPayConditionFunction PayCondition { get; }
-        public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public IPayRunFunction PayRun { get; }
         public IPayScheduleFunction PaySchedule { get; }
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
-        public IReportingFunction Reporting { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
         public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
@@ -181,5 +179,7 @@ namespace KeyPayV2.Au
         public IWorkTypeFunction WorkType { get; }
         public IAbaSettingsFunction AbaSettings { get; }
         public IEmployeeSuperFundFunction EmployeeSuperFund { get; }
+        public IPaymentSummaryFunction PaymentSummary { get; }
+        public IReportingFunction Reporting { get; }
     }
 }
