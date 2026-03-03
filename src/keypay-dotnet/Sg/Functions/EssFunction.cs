@@ -77,10 +77,10 @@ namespace KeyPayV2.Sg.Functions
         Task<List<SgEssRosterShiftModel>> ListRosterShiftsAsync(int employeeId, CancellationToken cancellationToken = default);
         List<SgEssRosterShiftModel> ListRosterShifts(int employeeId, ListRosterShiftsQueryModel request);
         Task<List<SgEssRosterShiftModel>> ListRosterShiftsAsync(int employeeId, ListRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
-        SgEssRosterShiftModel GetRosterShiftById(int employeeId, int shiftId);
-        Task<SgEssRosterShiftModel> GetRosterShiftByIdAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
-        SgAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int shiftId);
-        Task<SgAcceptRosterShiftResponseModel> AcceptRosterShiftAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        SgEssRosterShiftModel GetRosterShiftById(int employeeId, int rosterShiftId);
+        Task<SgEssRosterShiftModel> GetRosterShiftByIdAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default);
+        SgAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int rosterShiftId);
+        Task<SgAcceptRosterShiftResponseModel> AcceptRosterShiftAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default);
         SgAcceptRosterShiftsResponseModel BulkAcceptRosterShifts(int employeeId, EssBulkAcceptRosterShiftsModel model);
         Task<SgAcceptRosterShiftsResponseModel> BulkAcceptRosterShiftsAsync(int employeeId, EssBulkAcceptRosterShiftsModel model, CancellationToken cancellationToken = default);
         EssRosterShiftCountModel BulkDeclineRosterShifts(int employeeId, EssBulkDeclineRosterShiftsModel model);
@@ -89,8 +89,8 @@ namespace KeyPayV2.Sg.Functions
         Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int employeeId, CancellationToken cancellationToken = default);
         List<SgEssRosterShiftModel> FindNearbyRosterShifts(int employeeId, FindNearbyRosterShiftsQueryModel request);
         Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
-        EssRosterShiftCountModel DeclineRosterShift(int employeeId, int shiftId, EssDeclineRosterShiftModel model);
-        Task<EssRosterShiftCountModel> DeclineRosterShiftAsync(int employeeId, int shiftId, EssDeclineRosterShiftModel model, CancellationToken cancellationToken = default);
+        EssRosterShiftCountModel DeclineRosterShift(int employeeId, int rosterShiftId, EssDeclineRosterShiftModel model);
+        Task<EssRosterShiftCountModel> DeclineRosterShiftAsync(int employeeId, int rosterShiftId, EssDeclineRosterShiftModel model, CancellationToken cancellationToken = default);
         SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId);
         Task<SgRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int employeeId, CancellationToken cancellationToken = default);
         SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
@@ -99,16 +99,16 @@ namespace KeyPayV2.Sg.Functions
         Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int employeeId, CancellationToken cancellationToken = default);
         SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
         Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default);
-        List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int shiftId);
-        Task<List<EssShiftSwapCandidate>> EmployeesEligibleForShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int rosterShiftId);
+        Task<List<EssShiftSwapCandidate>> EmployeesEligibleForShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default);
         SgEssRosterShiftActionResponse ProposeShiftSwap(int employeeId, SwapShiftModel model);
         Task<SgEssRosterShiftActionResponse> ProposeShiftSwapAsync(int employeeId, SwapShiftModel model, CancellationToken cancellationToken = default);
-        SgEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int shiftId);
-        Task<SgEssRosterShiftActionResponse> CancelShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
-        SgEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int shiftId);
-        Task<SgEssRosterShiftActionResponse> AcceptShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
-        SgEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int shiftId);
-        Task<SgEssRosterShiftActionResponse> DeclineShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default);
+        SgEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int rosterShiftId);
+        Task<SgEssRosterShiftActionResponse> CancelShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default);
+        SgEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int rosterShiftId);
+        Task<SgEssRosterShiftActionResponse> AcceptShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default);
+        SgEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int rosterShiftId);
+        Task<SgEssRosterShiftActionResponse> DeclineShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default);
         SgEssBulkRosterShiftActionResponse BulkAcceptRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model);
         Task<SgEssBulkRosterShiftActionResponse> BulkAcceptRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default);
         SgEssBulkRosterShiftActionResponse BulkDeclineRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model);
@@ -928,9 +928,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the roster shift with the specified ID (as long as it is assigned to this employee).
         /// </remarks>
-        public SgEssRosterShiftModel GetRosterShiftById(int employeeId, int shiftId)
+        public SgEssRosterShiftModel GetRosterShiftById(int employeeId, int rosterShiftId)
         {
-            return ApiRequest<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}", Method.Get);
+            return ApiRequest<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{rosterShiftId}", Method.Get);
         }
 
         /// <summary>
@@ -939,9 +939,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Gets the roster shift with the specified ID (as long as it is assigned to this employee).
         /// </remarks>
-        public Task<SgEssRosterShiftModel> GetRosterShiftByIdAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        public Task<SgEssRosterShiftModel> GetRosterShiftByIdAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftModel>($"/ess/{employeeId}/shift/{rosterShiftId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -950,9 +950,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accepts the roster shift with the specified ID.
         /// </remarks>
-        public SgAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int shiftId)
+        public SgAcceptRosterShiftResponseModel AcceptRosterShift(int employeeId, int rosterShiftId)
         {
-            return ApiRequest<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.Post);
+            return ApiRequest<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{rosterShiftId}/accept", Method.Post);
         }
 
         /// <summary>
@@ -961,9 +961,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accepts the roster shift with the specified ID.
         /// </remarks>
-        public Task<SgAcceptRosterShiftResponseModel> AcceptRosterShiftAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        public Task<SgAcceptRosterShiftResponseModel> AcceptRosterShiftAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{shiftId}/accept", Method.Post, cancellationToken);
+            return ApiRequestAsync<SgAcceptRosterShiftResponseModel>($"/ess/{employeeId}/shift/{rosterShiftId}/accept", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1060,9 +1060,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Declines the roster shift with the specified ID.
         /// </remarks>
-        public EssRosterShiftCountModel DeclineRosterShift(int employeeId, int shiftId, EssDeclineRosterShiftModel model)
+        public EssRosterShiftCountModel DeclineRosterShift(int employeeId, int rosterShiftId, EssDeclineRosterShiftModel model)
         {
-            return ApiRequest<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.Post);
+            return ApiRequest<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{rosterShiftId}/decline", model, Method.Post);
         }
 
         /// <summary>
@@ -1071,9 +1071,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Declines the roster shift with the specified ID.
         /// </remarks>
-        public Task<EssRosterShiftCountModel> DeclineRosterShiftAsync(int employeeId, int shiftId, EssDeclineRosterShiftModel model, CancellationToken cancellationToken = default)
+        public Task<EssRosterShiftCountModel> DeclineRosterShiftAsync(int employeeId, int rosterShiftId, EssDeclineRosterShiftModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{shiftId}/decline", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<EssRosterShiftCountModel,EssDeclineRosterShiftModel>($"/ess/{employeeId}/shift/{rosterShiftId}/decline", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1198,9 +1198,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// List the employees that are eligible for a shift swap
         /// </remarks>
-        public List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int shiftId)
+        public List<EssShiftSwapCandidate> EmployeesEligibleForShiftSwap(int employeeId, int rosterShiftId)
         {
-            return ApiRequest<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates", Method.Get);
+            return ApiRequest<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/candidates", Method.Get);
         }
 
         /// <summary>
@@ -1209,9 +1209,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// List the employees that are eligible for a shift swap
         /// </remarks>
-        public Task<List<EssShiftSwapCandidate>> EmployeesEligibleForShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        public Task<List<EssShiftSwapCandidate>> EmployeesEligibleForShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{shiftId}/swap/candidates", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EssShiftSwapCandidate>>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/candidates", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1242,9 +1242,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Cancel a shift swap
         /// </remarks>
-        public SgEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int shiftId)
+        public SgEssRosterShiftActionResponse CancelShiftSwap(int employeeId, int rosterShiftId)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.Post);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/cancel", Method.Post);
         }
 
         /// <summary>
@@ -1253,9 +1253,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Cancel a shift swap
         /// </remarks>
-        public Task<SgEssRosterShiftActionResponse> CancelShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        public Task<SgEssRosterShiftActionResponse> CancelShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/cancel", Method.Post, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/cancel", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1264,9 +1264,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accept a shift swap
         /// </remarks>
-        public SgEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int shiftId)
+        public SgEssRosterShiftActionResponse AcceptShiftSwap(int employeeId, int rosterShiftId)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.Post);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/accept", Method.Post);
         }
 
         /// <summary>
@@ -1275,9 +1275,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Accept a shift swap
         /// </remarks>
-        public Task<SgEssRosterShiftActionResponse> AcceptShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        public Task<SgEssRosterShiftActionResponse> AcceptShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/accept", Method.Post, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/accept", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1286,9 +1286,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Decline a shift swap
         /// </remarks>
-        public SgEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int shiftId)
+        public SgEssRosterShiftActionResponse DeclineShiftSwap(int employeeId, int rosterShiftId)
         {
-            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.Post);
+            return ApiRequest<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/decline", Method.Post);
         }
 
         /// <summary>
@@ -1297,9 +1297,9 @@ namespace KeyPayV2.Sg.Functions
         /// <remarks>
         /// Decline a shift swap
         /// </remarks>
-        public Task<SgEssRosterShiftActionResponse> DeclineShiftSwapAsync(int employeeId, int shiftId, CancellationToken cancellationToken = default)
+        public Task<SgEssRosterShiftActionResponse> DeclineShiftSwapAsync(int employeeId, int rosterShiftId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{shiftId}/swap/decline", Method.Post, cancellationToken);
+            return ApiRequestAsync<SgEssRosterShiftActionResponse>($"/ess/{employeeId}/shift/{rosterShiftId}/swap/decline", Method.Post, cancellationToken);
         }
 
         /// <summary>
