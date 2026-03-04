@@ -158,6 +158,7 @@ namespace KeyPayV2.Nz.Enums
         NotifyMoneyMovementUserOfFailedDebitPaymentStatus,
         TxMonitoringNotification,
         NotifyBusinessSsoDisabled,
-        NotifyBusinessSsoDisabledDueToBillableActivities
+        NotifyBusinessSsoDisabledDueToBillableActivities,
+        HeroClearSuperBatchPayIdNotification
     }
 }
