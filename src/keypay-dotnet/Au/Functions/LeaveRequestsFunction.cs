@@ -21,10 +21,10 @@ namespace KeyPayV2.Au.Functions
         Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
         List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
-        Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
         Task<HourLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
+        void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
+        Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId);
         Task<HourLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
         void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, HourLeaveRequestModel model);
@@ -35,6 +35,8 @@ namespace KeyPayV2.Au.Functions
         Task<HourLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline);
         Task<HourLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default);
+        HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId);
+        Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request);
         Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default);
     }
@@ -111,28 +113,6 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Update Leave Request
-        /// </summary>
-        /// <remarks>
-        /// Updates the leave request with the specified ID.
-        /// </remarks>
-        public void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Leave Request
-        /// </summary>
-        /// <remarks>
-        /// Updates the leave request with the specified ID.
-        /// </remarks>
-        public Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Create Leave Request
         /// </summary>
         /// <remarks>
@@ -152,6 +132,28 @@ namespace KeyPayV2.Au.Functions
         public Task<HourLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<HourLeaveRequestResponseModel,HourLeaveRequestModel>($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Leave Request
+        /// </summary>
+        /// <remarks>
+        /// Updates the leave request with the specified ID.
+        /// </remarks>
+        public void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Leave Request
+        /// </summary>
+        /// <remarks>
+        /// Updates the leave request with the specified ID.
+        /// </remarks>
+        public Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -262,6 +264,28 @@ namespace KeyPayV2.Au.Functions
         public Task<HourLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<HourLeaveRequestResponseModel,DeclineLeaveRequest>($"/business/{businessId}/employee/{employeeId}/leaverequest/{leaveRequestId}/decline", decline, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Estimate Leave Hours
+        /// </summary>
+        /// <remarks>
+        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// </remarks>
+        public HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId)
+        {
+            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate", Method.Get);
+        }
+
+        /// <summary>
+        /// Estimate Leave Hours
+        /// </summary>
+        /// <remarks>
+        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// </remarks>
+        public Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate", Method.Get, cancellationToken);
         }
 
         /// <summary>
