@@ -10,6 +10,8 @@ namespace KeyPayV2.Au.Models.Business
 {
     public class AuEditBusinessDetailsApiModel
     {
+        public string Suburb { get; set; }
+        public string State { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DayOfWeek EndOfWeek { get; set; }
         public string Abn { get; set; }
