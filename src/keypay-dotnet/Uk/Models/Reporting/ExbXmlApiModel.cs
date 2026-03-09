@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Models.Reporting
     public class ExbXmlApiModel
     {
         public int TaxYearEnding { get; set; }
+        public int? PayeSchemeId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExbSubmissionType ExbSubmissionType { get; set; }
     }
