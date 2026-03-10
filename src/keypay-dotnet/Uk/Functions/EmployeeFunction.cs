@@ -79,14 +79,14 @@ namespace KeyPayV2.Uk.Functions
         Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default);
         UkSmpDataApiResponseModel CreateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, UkSncpDataApiModel sncp);
         Task<UkSmpDataApiResponseModel> CreateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default);
-        UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int id);
-        Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        UkSmpDataApiResponseModel UpdateStatutorySharedParentalLeaveData(int businessId, int employeeId, int id, UkShppDataApiModel shpp);
-        Task<UkSmpDataApiResponseModel> UpdateStatutorySharedParentalLeaveDataAsync(int businessId, int employeeId, int id, UkShppDataApiModel shpp, CancellationToken cancellationToken = default);
-        UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodDataById(int businessId, int employeeId, int id);
-        Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        UkSmpDataApiResponseModel UpdateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, int id, UkSncpDataApiModel sncp);
-        Task<UkSmpDataApiResponseModel> UpdateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, int id, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default);
+        UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId);
+        Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel UpdateStatutorySharedParentalLeaveData(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkShppDataApiModel shpp);
+        Task<UkSmpDataApiResponseModel> UpdateStatutorySharedParentalLeaveDataAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkShppDataApiModel shpp, CancellationToken cancellationToken = default);
+        UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodDataById(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId);
+        Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataByIdAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default);
+        UkSmpDataApiResponseModel UpdateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkSncpDataApiModel sncp);
+        Task<UkSmpDataApiResponseModel> UpdateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default);
         UkSppDataApiModel GetStatutoryPaternityLeavePeriodData(int businessId, int employeeId);
         Task<UkSppDataApiModel> GetStatutoryPaternityLeavePeriodDataAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         UkSppDataApiModel GetStatutoryPaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryPaternityLeavePeriodDataQueryModel request);
@@ -143,28 +143,28 @@ namespace KeyPayV2.Uk.Functions
         Task<UkSspApiModel> GetStatutorySickPayByIdAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default);
         void DeletePeriodOfLeave(int businessId, int employeeId, int periodOfLeaveId);
         Task DeletePeriodOfLeaveAsync(int businessId, int employeeId, int periodOfLeaveId, CancellationToken cancellationToken = default);
-        List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int id);
-        Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployeeDocumentModel> GetStatutoryNeonatalLeaveAttachments(int businessId, int employeeId, int id);
-        Task<List<EmployeeDocumentModel>> GetStatutoryNeonatalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId);
+        Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> GetStatutoryNeonatalLeaveAttachments(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId);
+        Task<List<EmployeeDocumentModel>> GetStatutoryNeonatalLeaveAttachmentsAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> GetStatutoryMaternityLeaveAttachments(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId);
         Task<List<EmployeeDocumentModel>> GetStatutoryMaternityLeaveAttachmentsAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default);
-        EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int id, int employeeDocumentId);
-        Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default);
-        void UnattachEmployeeDocumentFromStatutorySharedParentalLeave(int businessId, int employeeId, int id, int employeeDocumentId);
-        Task UnattachEmployeeDocumentFromStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default);
-        EmployeeDocumentModel AttachEmployeeDocumentToStatutoryNeonatalLeave(int businessId, int employeeId, int id, int employeeDocumentId);
-        Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default);
-        void UnattachEmployeeDocumentFromStatutoryNeonatalLeave(int businessId, int employeeId, int id, int employeeDocumentId);
-        Task UnattachEmployeeDocumentFromStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId);
+        Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        void UnattachEmployeeDocumentFromStatutorySharedParentalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId);
+        Task UnattachEmployeeDocumentFromStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel AttachEmployeeDocumentToStatutoryNeonatalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId);
+        Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        void UnattachEmployeeDocumentFromStatutoryNeonatalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId);
+        Task UnattachEmployeeDocumentFromStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default);
         EmployeeDocumentModel AttachEmployeeDocumentToStatutoryMaternityLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId);
         Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryMaternityLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default);
         void UnattachEmployeeDocumentFromStatutoryMaternityLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId);
         Task UnattachEmployeeDocumentFromStatutoryMaternityLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default);
-        void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int id);
-        Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request);
-        Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default);
+        void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId);
+        Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default);
+        void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, PauseStatutoryNeonatalCareLeaveQueryModel request);
+        Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> GetStatutoryPaternityLeaveAttachments(int businessId, int employeeId, int id);
         Task<List<EmployeeDocumentModel>> GetStatutoryPaternityLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         EmployeeDocumentModel AttachEmployeeDocumentToStatutoryPaternityLeave(int businessId, int employeeId, int id, int employeeDocumentId);
@@ -922,9 +922,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the Statutory Shared Parental Leave period data for a specific employee
         /// </remarks>
-        public UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int id)
+        public UkShppDataApiModel GetStatutorySharedParentalLeavePeriodDataById(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId)
         {
-            return ApiRequest<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", Method.Get);
+            return ApiRequest<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}", Method.Get);
         }
 
         /// <summary>
@@ -933,9 +933,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the Statutory Shared Parental Leave period data for a specific employee
         /// </remarks>
-        public Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataByIdAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -944,9 +944,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates a Statutory Shared Parental Leave period for an employee
         /// </remarks>
-        public UkSmpDataApiResponseModel UpdateStatutorySharedParentalLeaveData(int businessId, int employeeId, int id, UkShppDataApiModel shpp)
+        public UkSmpDataApiResponseModel UpdateStatutorySharedParentalLeaveData(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkShppDataApiModel shpp)
         {
-            return ApiRequest<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", shpp, Method.Put);
+            return ApiRequest<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}", shpp, Method.Put);
         }
 
         /// <summary>
@@ -955,9 +955,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates a Statutory Shared Parental Leave period for an employee
         /// </remarks>
-        public Task<UkSmpDataApiResponseModel> UpdateStatutorySharedParentalLeaveDataAsync(int businessId, int employeeId, int id, UkShppDataApiModel shpp, CancellationToken cancellationToken = default)
+        public Task<UkSmpDataApiResponseModel> UpdateStatutorySharedParentalLeaveDataAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkShppDataApiModel shpp, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}", shpp, Method.Put, cancellationToken);
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}", shpp, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -966,9 +966,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the Statutory Neonatal Leave period data for a specific employee
         /// </remarks>
-        public UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodDataById(int businessId, int employeeId, int id)
+        public UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodDataById(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId)
         {
-            return ApiRequest<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}", Method.Get);
+            return ApiRequest<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}", Method.Get);
         }
 
         /// <summary>
@@ -977,9 +977,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Gets the Statutory Neonatal Leave period data for a specific employee
         /// </remarks>
-        public Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataByIdAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -988,9 +988,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates a Statutory Neonatal Leave period for an employee
         /// </remarks>
-        public UkSmpDataApiResponseModel UpdateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, int id, UkSncpDataApiModel sncp)
+        public UkSmpDataApiResponseModel UpdateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkSncpDataApiModel sncp)
         {
-            return ApiRequest<UkSmpDataApiResponseModel,UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}", sncp, Method.Put);
+            return ApiRequest<UkSmpDataApiResponseModel,UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}", sncp, Method.Put);
         }
 
         /// <summary>
@@ -999,9 +999,9 @@ namespace KeyPayV2.Uk.Functions
         /// <remarks>
         /// Updates a Statutory Neonatal Leave period for an employee
         /// </remarks>
-        public Task<UkSmpDataApiResponseModel> UpdateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, int id, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default)
+        public Task<UkSmpDataApiResponseModel> UpdateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, UkSncpDataApiModel sncp, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSmpDataApiResponseModel,UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}", sncp, Method.Put, cancellationToken);
+            return ApiRequestAsync<UkSmpDataApiResponseModel,UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}", sncp, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -1611,33 +1611,33 @@ namespace KeyPayV2.Uk.Functions
         /// <summary>
         /// Get Statutory Shared Parental Leave Attachments
         /// </summary>
-        public List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int id)
+        public List<EmployeeDocumentModel> GetStatutorySharedParentalLeaveAttachments(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId)
         {
-            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/attachments", Method.Get);
+            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}/attachments", Method.Get);
         }
 
         /// <summary>
         /// Get Statutory Shared Parental Leave Attachments
         /// </summary>
-        public Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeDocumentModel>> GetStatutorySharedParentalLeaveAttachmentsAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/attachments", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}/attachments", Method.Get, cancellationToken);
         }
 
         /// <summary>
         /// Get Statutory Neonatal Leave Attachments
         /// </summary>
-        public List<EmployeeDocumentModel> GetStatutoryNeonatalLeaveAttachments(int businessId, int employeeId, int id)
+        public List<EmployeeDocumentModel> GetStatutoryNeonatalLeaveAttachments(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId)
         {
-            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/attachments", Method.Get);
+            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/attachments", Method.Get);
         }
 
         /// <summary>
         /// Get Statutory Neonatal Leave Attachments
         /// </summary>
-        public Task<List<EmployeeDocumentModel>> GetStatutoryNeonatalLeaveAttachmentsAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeDocumentModel>> GetStatutoryNeonatalLeaveAttachmentsAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/attachments", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/attachments", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1659,65 +1659,65 @@ namespace KeyPayV2.Uk.Functions
         /// <summary>
         /// Attach Employee Document to Statutory Shared Parental Leave
         /// </summary>
-        public EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int id, int employeeDocumentId)
+        public EmployeeDocumentModel AttachEmployeeDocumentToStatutorySharedParentalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId)
         {
-            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{employeeDocumentId}", Method.Put);
+            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Put);
         }
 
         /// <summary>
         /// Attach Employee Document to Statutory Shared Parental Leave
         /// </summary>
-        public Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default)
+        public Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{employeeDocumentId}", Method.Put, cancellationToken);
+            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Put, cancellationToken);
         }
 
         /// <summary>
         /// Unattach Employee Document from Statutory Shared Parental Leave
         /// </summary>
-        public void UnattachEmployeeDocumentFromStatutorySharedParentalLeave(int businessId, int employeeId, int id, int employeeDocumentId)
+        public void UnattachEmployeeDocumentFromStatutorySharedParentalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{employeeDocumentId}", Method.Delete);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Delete);
         }
 
         /// <summary>
         /// Unattach Employee Document from Statutory Shared Parental Leave
         /// </summary>
-        public Task UnattachEmployeeDocumentFromStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default)
+        public Task UnattachEmployeeDocumentFromStatutorySharedParentalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{id}/employeedocument/{employeeDocumentId}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
         /// Attach Employee Document to Statutory Neonatal Leave
         /// </summary>
-        public EmployeeDocumentModel AttachEmployeeDocumentToStatutoryNeonatalLeave(int businessId, int employeeId, int id, int employeeDocumentId)
+        public EmployeeDocumentModel AttachEmployeeDocumentToStatutoryNeonatalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId)
         {
-            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{employeeDocumentId}", Method.Put);
+            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Put);
         }
 
         /// <summary>
         /// Attach Employee Document to Statutory Neonatal Leave
         /// </summary>
-        public Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default)
+        public Task<EmployeeDocumentModel> AttachEmployeeDocumentToStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{employeeDocumentId}", Method.Put, cancellationToken);
+            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Put, cancellationToken);
         }
 
         /// <summary>
         /// Unattach Employee Document from Statutory Neonatal Leave
         /// </summary>
-        public void UnattachEmployeeDocumentFromStatutoryNeonatalLeave(int businessId, int employeeId, int id, int employeeDocumentId)
+        public void UnattachEmployeeDocumentFromStatutoryNeonatalLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{employeeDocumentId}", Method.Delete);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Delete);
         }
 
         /// <summary>
         /// Unattach Employee Document from Statutory Neonatal Leave
         /// </summary>
-        public Task UnattachEmployeeDocumentFromStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int id, int employeeDocumentId, CancellationToken cancellationToken = default)
+        public Task UnattachEmployeeDocumentFromStatutoryNeonatalLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/employeedocument/{employeeDocumentId}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/employeedocument/{employeeDocumentId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1755,33 +1755,33 @@ namespace KeyPayV2.Uk.Functions
         /// <summary>
         /// Pause Statutory Neonatal Care Leave
         /// </summary>
-        public void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int id)
+        public void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/paused", Method.Put);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused", Method.Put);
         }
 
         /// <summary>
         /// Pause Statutory Neonatal Care Leave
         /// </summary>
-        public Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/paused", Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused", Method.Put, cancellationToken);
         }
 
         /// <summary>
         /// Pause Statutory Neonatal Care Leave
         /// </summary>
-        public void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request)
+        public void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, PauseStatutoryNeonatalCareLeaveQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/paused?isPaused={request.IsPaused}", Method.Put);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused?isPaused={request.IsPaused}", Method.Put);
         }
 
         /// <summary>
         /// Pause Statutory Neonatal Care Leave
         /// </summary>
-        public Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int id, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default)
+        public Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{id}/paused?isPaused={request.IsPaused}", Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused?isPaused={request.IsPaused}", Method.Put, cancellationToken);
         }
 
         /// <summary>
