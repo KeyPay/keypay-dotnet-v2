@@ -7,7 +7,6 @@ namespace KeyPayV2.Au
     public interface IAuApiClient : IBaseApiClient
     {
         IAuthenticationFunction Authentication { get; }
-        IBrandFunction Brand { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IContractorFunction Contractor { get; }
@@ -47,7 +46,6 @@ namespace KeyPayV2.Au
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
-        IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
         ISuperFundFunction SuperFund { get; }
         ITieredLongServiceLeaveFunction TieredLongServiceLeave { get; }
@@ -56,10 +54,12 @@ namespace KeyPayV2.Au
         IUnavailabilityFunction Unavailability { get; }
         IUserFunction User { get; }
         IWebhookFunction Webhook { get; }
-        IWhiteLabelFunction WhiteLabel { get; }
         IWorkTypeFunction WorkType { get; }
         IAbaSettingsFunction AbaSettings { get; }
         IEmployeeSuperFundFunction EmployeeSuperFund { get; }
+        IBrandFunction Brand { get; }
+        IResellerFunction Reseller { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
         IReportingFunction Reporting { get; }
     }
@@ -68,7 +68,6 @@ namespace KeyPayV2.Au
         public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Authentication = new AuthenticationFunction(Api);
-            Brand = new BrandFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             Contractor = new ContractorFunction(Api);
@@ -108,7 +107,6 @@ namespace KeyPayV2.Au
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
-            Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             SuperFund = new SuperFundFunction(Api);
             TieredLongServiceLeave = new TieredLongServiceLeaveFunction(Api);
@@ -117,16 +115,17 @@ namespace KeyPayV2.Au
             Unavailability = new UnavailabilityFunction(Api);
             User = new UserFunction(Api);
             Webhook = new WebhookFunction(Api);
-            WhiteLabel = new WhiteLabelFunction(Api);
             WorkType = new WorkTypeFunction(Api);
             AbaSettings = new AbaSettingsFunction(Api);
             EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
+            Brand = new BrandFunction(Api);
+            Reseller = new ResellerFunction(Api);
+            WhiteLabel = new WhiteLabelFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
             Reporting = new ReportingFunction(Api);
         }
 
         public IAuthenticationFunction Authentication { get; }
-        public IBrandFunction Brand { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IContractorFunction Contractor { get; }
@@ -166,7 +165,6 @@ namespace KeyPayV2.Au
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
-        public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ISuperFundFunction SuperFund { get; }
         public ITieredLongServiceLeaveFunction TieredLongServiceLeave { get; }
@@ -175,10 +173,12 @@ namespace KeyPayV2.Au
         public IUnavailabilityFunction Unavailability { get; }
         public IUserFunction User { get; }
         public IWebhookFunction Webhook { get; }
-        public IWhiteLabelFunction WhiteLabel { get; }
         public IWorkTypeFunction WorkType { get; }
         public IAbaSettingsFunction AbaSettings { get; }
         public IEmployeeSuperFundFunction EmployeeSuperFund { get; }
+        public IBrandFunction Brand { get; }
+        public IResellerFunction Reseller { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
         public IReportingFunction Reporting { get; }
     }

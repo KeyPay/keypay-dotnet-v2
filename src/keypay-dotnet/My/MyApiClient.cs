@@ -7,7 +7,6 @@ namespace KeyPayV2.My
     public interface IMyApiClient : IBaseApiClient
     {
         IAuthenticationFunction Authentication { get; }
-        IBrandFunction Brand { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IDeductionCategoriesFunction DeductionCategories { get; }
@@ -45,7 +44,6 @@ namespace KeyPayV2.My
         IPublicHolidayFunction PublicHoliday { get; }
         IQualificationsFunction Qualifications { get; }
         IReportingDimensionsFunction ReportingDimensions { get; }
-        IResellerFunction Reseller { get; }
         IRosterShiftFunction RosterShift { get; }
         ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         ITimeAndAttendanceFunction TimeAndAttendance { get; }
@@ -53,8 +51,10 @@ namespace KeyPayV2.My
         IUnavailabilityFunction Unavailability { get; }
         IUserFunction User { get; }
         IWebhookFunction Webhook { get; }
-        IWhiteLabelFunction WhiteLabel { get; }
         IWorkTypeFunction WorkType { get; }
+        IBrandFunction Brand { get; }
+        IResellerFunction Reseller { get; }
+        IWhiteLabelFunction WhiteLabel { get; }
         IReportingFunction Reporting { get; }
     }
     public class MyApiClient : BaseApiClient, IMyApiClient
@@ -62,7 +62,6 @@ namespace KeyPayV2.My
         public MyApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
             Authentication = new AuthenticationFunction(Api);
-            Brand = new BrandFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             DeductionCategories = new DeductionCategoriesFunction(Api);
@@ -100,7 +99,6 @@ namespace KeyPayV2.My
             PublicHoliday = new PublicHolidayFunction(Api);
             Qualifications = new QualificationsFunction(Api);
             ReportingDimensions = new ReportingDimensionsFunction(Api);
-            Reseller = new ResellerFunction(Api);
             RosterShift = new RosterShiftFunction(Api);
             TieredLeaveAllowance = new TieredLeaveAllowanceFunction(Api);
             TimeAndAttendance = new TimeAndAttendanceFunction(Api);
@@ -108,13 +106,14 @@ namespace KeyPayV2.My
             Unavailability = new UnavailabilityFunction(Api);
             User = new UserFunction(Api);
             Webhook = new WebhookFunction(Api);
-            WhiteLabel = new WhiteLabelFunction(Api);
             WorkType = new WorkTypeFunction(Api);
+            Brand = new BrandFunction(Api);
+            Reseller = new ResellerFunction(Api);
+            WhiteLabel = new WhiteLabelFunction(Api);
             Reporting = new ReportingFunction(Api);
         }
 
         public IAuthenticationFunction Authentication { get; }
-        public IBrandFunction Brand { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IDeductionCategoriesFunction DeductionCategories { get; }
@@ -152,7 +151,6 @@ namespace KeyPayV2.My
         public IPublicHolidayFunction PublicHoliday { get; }
         public IQualificationsFunction Qualifications { get; }
         public IReportingDimensionsFunction ReportingDimensions { get; }
-        public IResellerFunction Reseller { get; }
         public IRosterShiftFunction RosterShift { get; }
         public ITieredLeaveAllowanceFunction TieredLeaveAllowance { get; }
         public ITimeAndAttendanceFunction TimeAndAttendance { get; }
@@ -160,8 +158,10 @@ namespace KeyPayV2.My
         public IUnavailabilityFunction Unavailability { get; }
         public IUserFunction User { get; }
         public IWebhookFunction Webhook { get; }
-        public IWhiteLabelFunction WhiteLabel { get; }
         public IWorkTypeFunction WorkType { get; }
+        public IBrandFunction Brand { get; }
+        public IResellerFunction Reseller { get; }
+        public IWhiteLabelFunction WhiteLabel { get; }
         public IReportingFunction Reporting { get; }
     }
 }
