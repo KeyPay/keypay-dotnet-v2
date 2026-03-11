@@ -39,6 +39,7 @@ namespace KeyPayV2.Uk.Enums
         SelfManagedSuperFunds,
         CisSubcontractor,
         ContractorTaxDetails,
-        TaxDeclaration
+        TaxDeclaration,
+        PayConditionComparison
     }
 }
