@@ -35,6 +35,9 @@ namespace KeyPayV2.Nz.Models.Common
         public string KiwiSaver_EnrollmentStatus { get; set; }
         public string KiwiSaver_IneligibilityReason { get; set; }
         public bool? KiwiSaver_PreviouslyReported { get; set; }
+        public bool? KiwiSaver_RateReduction_ApplyingRateReduction { get; set; }
+        public DateTime? KiwiSaver_RateReduction_FromDate { get; set; }
+        public DateTime? KiwiSaver_RateReduction_ToDate { get; set; }
         public string EmployingEntityNZBN { get; set; }
         public string EmployingEntityId { get; set; }
         public bool? PostalAddressIsOverseas { get; set; }
@@ -63,10 +66,6 @@ namespace KeyPayV2.Nz.Models.Common
         public int? TaxCodeDeclaration_IncomeBand { get; set; }
         public bool? TaxCodeDeclaration_IsNonDisclosed { get; set; }
         public decimal? TaxCodeDeclaration_ElectedExtraPayRate { get; set; }
-        public DateTime? AnnualLeaveYearStart { get; set; }
-        public bool? IsUsingDefaultAnniversaryDate { get; set; }
-        public DateTime? SickLeaveYearStart { get; set; }
-        public DateTime? FamilyViolenceLeaveYearStart { get; set; }
         public string Gender { get; set; }
         public DateTime? AnniversaryDate { get; set; }
         public string JobTitle { get; set; }

@@ -17,8 +17,8 @@ namespace KeyPayV2.Au.Functions
     {
         List<BusinessAbaModel> ListAbaSettings(int businessId, ODataQuery oDataQuery = null);
         Task<List<BusinessAbaModel>> ListAbaSettingsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails);
-        Task CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default);
+        BusinessAbaModel CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails);
+        Task<BusinessAbaModel> CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default);
         BusinessAbaModel GetAbaSettingsRecordById(int businessId, int id);
         Task<BusinessAbaModel> GetAbaSettingsRecordByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void UpdateAbaSettingsRecord(int businessId, int id, BusinessAbaModel abaDetails);
@@ -60,9 +60,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new ABA settings record for the business.
         /// </remarks>
-        public void CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails)
+        public BusinessAbaModel CreateAbaSettingsRecord(int businessId, BusinessAbaModel abaDetails)
         {
-            ApiRequest($"/business/{businessId}/aba", abaDetails, Method.Post);
+            return ApiRequest<BusinessAbaModel,BusinessAbaModel>($"/business/{businessId}/aba", abaDetails, Method.Post);
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new ABA settings record for the business.
         /// </remarks>
-        public Task CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default)
+        public Task<BusinessAbaModel> CreateAbaSettingsRecordAsync(int businessId, BusinessAbaModel abaDetails, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/aba", abaDetails, Method.Post, cancellationToken);
+            return ApiRequestAsync<BusinessAbaModel,BusinessAbaModel>($"/business/{businessId}/aba", abaDetails, Method.Post, cancellationToken);
         }
 
         /// <summary>

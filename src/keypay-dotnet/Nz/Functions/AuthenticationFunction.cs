@@ -104,7 +104,7 @@ namespace KeyPayV2.Nz.Functions
         /// OAuth Token
         /// </summary>
         /// <remarks>
-        /// See the guide on <a href="http://api.keypay.com.au/guides/OAuth2">OAuth2 authentication</a> for more details.
+        /// See the guide on <a href="http://api.keypay.com.au/guides/OAuth2.html">OAuth2 authentication</a> for more details.
         /// </remarks>
         public void OauthToken()
         {
@@ -115,7 +115,7 @@ namespace KeyPayV2.Nz.Functions
         /// OAuth Token
         /// </summary>
         /// <remarks>
-        /// See the guide on <a href="http://api.keypay.com.au/guides/OAuth2">OAuth2 authentication</a> for more details.
+        /// See the guide on <a href="http://api.keypay.com.au/guides/OAuth2.html">OAuth2 authentication</a> for more details.
         /// </remarks>
         public Task OauthTokenAsync(CancellationToken cancellationToken = default)
         {

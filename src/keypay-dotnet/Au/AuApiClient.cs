@@ -6,6 +6,7 @@ namespace KeyPayV2.Au
 {
     public interface IAuApiClient : IBaseApiClient
     {
+        IAbaSettingsFunction AbaSettings { get; }
         IAuthenticationFunction Authentication { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -26,6 +27,7 @@ namespace KeyPayV2.Au
         IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
+        IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         IEmployingEntitiesFunction EmployingEntities { get; }
         IEmploymentAgreementFunction EmploymentAgreement { get; }
@@ -55,8 +57,6 @@ namespace KeyPayV2.Au
         IUserFunction User { get; }
         IWebhookFunction Webhook { get; }
         IWorkTypeFunction WorkType { get; }
-        IAbaSettingsFunction AbaSettings { get; }
-        IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         IBrandFunction Brand { get; }
         IResellerFunction Reseller { get; }
         IWhiteLabelFunction WhiteLabel { get; }
@@ -67,6 +67,7 @@ namespace KeyPayV2.Au
     {
         public AuApiClient(string baseUrl, AuthenticationDetails authenticationDetails, string userAgent = null) : base(baseUrl, authenticationDetails, userAgent)
         {
+            AbaSettings = new AbaSettingsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
@@ -87,6 +88,7 @@ namespace KeyPayV2.Au
             EmployeeRecurringTransactions = new EmployeeRecurringTransactionsFunction(Api);
             EmployeeReportingDimensionEarningsLineSplit = new EmployeeReportingDimensionEarningsLineSplitFunction(Api);
             EmployeeSelfManagedSuperFund = new EmployeeSelfManagedSuperFundFunction(Api);
+            EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
             EmployerLiabilityCategories = new EmployerLiabilityCategoriesFunction(Api);
             EmployingEntities = new EmployingEntitiesFunction(Api);
             EmploymentAgreement = new EmploymentAgreementFunction(Api);
@@ -116,8 +118,6 @@ namespace KeyPayV2.Au
             User = new UserFunction(Api);
             Webhook = new WebhookFunction(Api);
             WorkType = new WorkTypeFunction(Api);
-            AbaSettings = new AbaSettingsFunction(Api);
-            EmployeeSuperFund = new EmployeeSuperFundFunction(Api);
             Brand = new BrandFunction(Api);
             Reseller = new ResellerFunction(Api);
             WhiteLabel = new WhiteLabelFunction(Api);
@@ -125,6 +125,7 @@ namespace KeyPayV2.Au
             Reporting = new ReportingFunction(Api);
         }
 
+        public IAbaSettingsFunction AbaSettings { get; }
         public IAuthenticationFunction Authentication { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
@@ -145,6 +146,7 @@ namespace KeyPayV2.Au
         public IEmployeeRecurringTransactionsFunction EmployeeRecurringTransactions { get; }
         public IEmployeeReportingDimensionEarningsLineSplitFunction EmployeeReportingDimensionEarningsLineSplit { get; }
         public IEmployeeSelfManagedSuperFundFunction EmployeeSelfManagedSuperFund { get; }
+        public IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         public IEmployerLiabilityCategoriesFunction EmployerLiabilityCategories { get; }
         public IEmployingEntitiesFunction EmployingEntities { get; }
         public IEmploymentAgreementFunction EmploymentAgreement { get; }
@@ -174,8 +176,6 @@ namespace KeyPayV2.Au
         public IUserFunction User { get; }
         public IWebhookFunction Webhook { get; }
         public IWorkTypeFunction WorkType { get; }
-        public IAbaSettingsFunction AbaSettings { get; }
-        public IEmployeeSuperFundFunction EmployeeSuperFund { get; }
         public IBrandFunction Brand { get; }
         public IResellerFunction Reseller { get; }
         public IWhiteLabelFunction WhiteLabel { get; }

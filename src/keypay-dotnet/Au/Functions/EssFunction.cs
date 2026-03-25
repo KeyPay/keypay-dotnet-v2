@@ -151,6 +151,20 @@ namespace KeyPayV2.Au.Functions
         Task<AuEssBulkRosterShiftActionResponse> BulkDeclineRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default);
         AuEssBulkRosterShiftActionResponse BulkCancelRosterShiftSwaps(int employeeId, EssBulkRosterShiftSwapModel model);
         Task<AuEssBulkRosterShiftActionResponse> BulkCancelRosterShiftSwapsAsync(int employeeId, EssBulkRosterShiftSwapModel model, CancellationToken cancellationToken = default);
+        List<SuperFundModel> ListSuperFunds(int employeeId);
+        Task<List<SuperFundModel>> ListSuperFundsAsync(int employeeId, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel CreateSuperFund(int employeeId, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default);
+        SuperFundModel GetSuperFundById(int employeeId, int superFundId);
+        Task<SuperFundModel> GetSuperFundByIdAsync(int employeeId, int superFundId, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel UpdateSuperFund(int employeeId, int id, SaveSuperFundModel model);
+        Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default);
+        SaveSuperFundResponseModel DeleteSuperFund(int employeeId, int superfundId);
+        Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int employeeId, int superfundId, CancellationToken cancellationToken = default);
+        List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId);
+        Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, CancellationToken cancellationToken = default);
+        List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId, AuEssSuperFund_ProductSearchQueryModel request);
+        Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, AuEssSuperFund_ProductSearchQueryModel request, CancellationToken cancellationToken = default);
         AuTimeAndAttendanceLookupDataModel GetLookupData(int employeeId);
         Task<AuTimeAndAttendanceLookupDataModel> GetLookupDataAsync(int employeeId, CancellationToken cancellationToken = default);
         KioskEmployeeModel ClockInEmployee(int employeeId, AuClockOnModel model);
@@ -187,6 +201,10 @@ namespace KeyPayV2.Au.Functions
         Task<List<AvailableEmployeeModel>> GetEmployeesAsync(CancellationToken cancellationToken = default);
         void RecoverForgottenPassword(RecoverPasswordModel model);
         Task RecoverForgottenPasswordAsync(RecoverPasswordModel model, CancellationToken cancellationToken = default);
+        void RegisterDeviceToken(DeviceTokenModel model);
+        Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
+        void UnregisterDeviceToken(DeviceTokenModel model);
+        Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
         List<EmployeeExpensePaymentSummaryModel> GetExpensePaymentSummary(int employeeId);
         Task<List<EmployeeExpensePaymentSummaryModel>> GetExpensePaymentSummaryAsync(int employeeId, CancellationToken cancellationToken = default);
         List<ExpenseCategoryResponseModel> GetExpenseCategories(int employeeId);
@@ -251,22 +269,6 @@ namespace KeyPayV2.Au.Functions
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int employeeId);
         Task DeleteEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
-        List<SuperFundModel> ListSuperFunds(int employeeId);
-        Task<List<SuperFundModel>> ListSuperFundsAsync(int employeeId, CancellationToken cancellationToken = default);
-        SaveSuperFundResponseModel CreateSuperFund(int employeeId, SaveSuperFundModel model);
-        Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default);
-        SaveSuperFundResponseModel UpdateSuperFund(int employeeId, int id, SaveSuperFundModel model);
-        Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default);
-        SaveSuperFundResponseModel DeleteSuperFund(int employeeId, int superfundId);
-        Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int employeeId, int superfundId, CancellationToken cancellationToken = default);
-        SuperFundModel GetSuperFundById(int employeeId, int superFundId);
-        Task<SuperFundModel> GetSuperFundByIdAsync(int employeeId, int superFundId, CancellationToken cancellationToken = default);
-        List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId, AuEssSuperFund_ProductSearchQueryModel request);
-        Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, AuEssSuperFund_ProductSearchQueryModel request, CancellationToken cancellationToken = default);
-        void RegisterDeviceToken(DeviceTokenModel model);
-        Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
-        void UnregisterDeviceToken(DeviceTokenModel model);
-        Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
     }
     public class EssFunction : BaseFunction, IEssFunction
     {
@@ -1803,6 +1805,136 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// List Super Funds
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the super funds for this employee.
+        /// </remarks>
+        public List<SuperFundModel> ListSuperFunds(int employeeId)
+        {
+            return ApiRequest<List<SuperFundModel>>($"/ess/{employeeId}/superfunds", Method.Get);
+        }
+
+        /// <summary>
+        /// List Super Funds
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the super funds for this employee.
+        /// </remarks>
+        public Task<List<SuperFundModel>> ListSuperFundsAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SuperFundModel>>($"/ess/{employeeId}/superfunds", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Creates a new super fund for the employee.
+        /// </remarks>
+        public SaveSuperFundResponseModel CreateSuperFund(int employeeId, SaveSuperFundModel model)
+        {
+            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Creates a new super fund for the employee.
+        /// </remarks>
+        public Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Super Fund by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the super fund for this employee with the specified ID.
+        /// </remarks>
+        public SuperFundModel GetSuperFundById(int employeeId, int superFundId)
+        {
+            return ApiRequest<SuperFundModel>($"/ess/{employeeId}/superfunds/{superFundId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Super Fund by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the super fund for this employee with the specified ID.
+        /// </remarks>
+        public Task<SuperFundModel> GetSuperFundByIdAsync(int employeeId, int superFundId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SuperFundModel>($"/ess/{employeeId}/superfunds/{superFundId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's super fund with the specified ID.
+        /// </remarks>
+        public SaveSuperFundResponseModel UpdateSuperFund(int employeeId, int id, SaveSuperFundModel model)
+        {
+            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's super fund with the specified ID.
+        /// </remarks>
+        public Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's super fund with the specified ID.
+        /// </remarks>
+        public SaveSuperFundResponseModel DeleteSuperFund(int employeeId, int superfundId)
+        {
+            return ApiRequest<SaveSuperFundResponseModel>($"/ess/{employeeId}/superfunds/{superfundId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Super Fund
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's super fund with the specified ID.
+        /// </remarks>
+        public Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int employeeId, int superfundId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SaveSuperFundResponseModel>($"/ess/{employeeId}/superfunds/{superfundId}", Method.Delete, cancellationToken);
+        }
+
+        public List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId)
+        {
+            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch", Method.Get);
+        }
+
+        public Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch", Method.Get, cancellationToken);
+        }
+
+        public List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId, AuEssSuperFund_ProductSearchQueryModel request)
+        {
+            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get);
+        }
+
+        public Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, AuEssSuperFund_ProductSearchQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Lookup Data
         /// </summary>
         /// <remarks>
@@ -2202,6 +2334,50 @@ namespace KeyPayV2.Au.Functions
         public Task RecoverForgottenPasswordAsync(RecoverPasswordModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/ess/security/forgottenpassword", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Register Device Token
+        /// </summary>
+        /// <remarks>
+        /// Registers a device token.
+        /// </remarks>
+        public void RegisterDeviceToken(DeviceTokenModel model)
+        {
+            ApiRequest($"/ess/devicetoken/register", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Register Device Token
+        /// </summary>
+        /// <remarks>
+        /// Registers a device token.
+        /// </remarks>
+        public Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/devicetoken/register", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unregister Device Token
+        /// </summary>
+        /// <remarks>
+        /// Unregisters a device token.
+        /// </remarks>
+        public void UnregisterDeviceToken(DeviceTokenModel model)
+        {
+            ApiRequest($"/ess/devicetoken/unregister", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Unregister Device Token
+        /// </summary>
+        /// <remarks>
+        /// Unregisters a device token.
+        /// </remarks>
+        public Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/devicetoken/unregister", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -2912,170 +3088,6 @@ namespace KeyPayV2.Au.Functions
         public Task DeleteEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/ess/{employeeId}/profileimage", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Super Funds
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the super funds for this employee.
-        /// </remarks>
-        public List<SuperFundModel> ListSuperFunds(int employeeId)
-        {
-            return ApiRequest<List<SuperFundModel>>($"/ess/{employeeId}/superfunds", Method.Get);
-        }
-
-        /// <summary>
-        /// List Super Funds
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the super funds for this employee.
-        /// </remarks>
-        public Task<List<SuperFundModel>> ListSuperFundsAsync(int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SuperFundModel>>($"/ess/{employeeId}/superfunds", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Creates a new super fund for the employee.
-        /// </remarks>
-        public SaveSuperFundResponseModel CreateSuperFund(int employeeId, SaveSuperFundModel model)
-        {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Creates a new super fund for the employee.
-        /// </remarks>
-        public Task<SaveSuperFundResponseModel> CreateSuperFundAsync(int employeeId, SaveSuperFundModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's super fund with the specified ID.
-        /// </remarks>
-        public SaveSuperFundResponseModel UpdateSuperFund(int employeeId, int id, SaveSuperFundModel model)
-        {
-            return ApiRequest<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's super fund with the specified ID.
-        /// </remarks>
-        public Task<SaveSuperFundResponseModel> UpdateSuperFundAsync(int employeeId, int id, SaveSuperFundModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SaveSuperFundResponseModel,SaveSuperFundModel>($"/ess/{employeeId}/superfunds/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's super fund with the specified ID.
-        /// </remarks>
-        public SaveSuperFundResponseModel DeleteSuperFund(int employeeId, int superfundId)
-        {
-            return ApiRequest<SaveSuperFundResponseModel>($"/ess/{employeeId}/superfunds/{superfundId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Super Fund
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's super fund with the specified ID.
-        /// </remarks>
-        public Task<SaveSuperFundResponseModel> DeleteSuperFundAsync(int employeeId, int superfundId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SaveSuperFundResponseModel>($"/ess/{employeeId}/superfunds/{superfundId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Super Fund by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the super fund for this employee with the specified ID.
-        /// </remarks>
-        public SuperFundModel GetSuperFundById(int employeeId, int superFundId)
-        {
-            return ApiRequest<SuperFundModel>($"/ess/{employeeId}/superfunds/{superFundId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Super Fund by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the super fund for this employee with the specified ID.
-        /// </remarks>
-        public Task<SuperFundModel> GetSuperFundByIdAsync(int employeeId, int superFundId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SuperFundModel>($"/ess/{employeeId}/superfunds/{superFundId}", Method.Get, cancellationToken);
-        }
-
-        public List<SuperProductEditModel> AuEssSuperFund_ProductSearch(int employeeId, AuEssSuperFund_ProductSearchQueryModel request)
-        {
-            return ApiRequest<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get);
-        }
-
-        public Task<List<SuperProductEditModel>> AuEssSuperFund_ProductSearchAsync(int employeeId, AuEssSuperFund_ProductSearchQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SuperProductEditModel>>($"/ess/{employeeId}/superfunds/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Register Device Token
-        /// </summary>
-        /// <remarks>
-        /// Registers a device token.
-        /// </remarks>
-        public void RegisterDeviceToken(DeviceTokenModel model)
-        {
-            ApiRequest($"/ess/devicetoken/register", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Register Device Token
-        /// </summary>
-        /// <remarks>
-        /// Registers a device token.
-        /// </remarks>
-        public Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/ess/devicetoken/register", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Unregister Device Token
-        /// </summary>
-        /// <remarks>
-        /// Unregisters a device token.
-        /// </remarks>
-        public void UnregisterDeviceToken(DeviceTokenModel model)
-        {
-            ApiRequest($"/ess/devicetoken/unregister", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Unregister Device Token
-        /// </summary>
-        /// <remarks>
-        /// Unregisters a device token.
-        /// </remarks>
-        public Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/ess/devicetoken/unregister", model, Method.Post, cancellationToken);
         }
     }
 }

@@ -15,6 +15,14 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IBusinessFunction
     {
+        BusinessAtoSupplierModel GetAtoDetails(int businessId);
+        Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model);
+        Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default);
+        AuStpRegistrationModel GetStpRegistrationDetails(int businessId);
+        Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel);
+        Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default);
         List<AuBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
         Task<List<AuBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuBusinessExportModel CreateNewBusiness(AuBusinessExportModel model);
@@ -101,18 +109,98 @@ namespace KeyPayV2.Au.Functions
         Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
-        BusinessAtoSupplierModel GetAtoDetails(int businessId);
-        Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model);
-        Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default);
-        AuStpRegistrationModel GetStpRegistrationDetails(int businessId);
-        Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel);
-        Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
         public BusinessFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO details for the business.
+        /// </remarks>
+        public BusinessAtoSupplierModel GetAtoDetails(int businessId)
+        {
+            return ApiRequest<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get);
+        }
+
+        /// <summary>
+        /// Get ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO details for the business.
+        /// </remarks>
+        public Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Sets the ATO details for the business.
+        /// </remarks>
+        public BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
+        {
+            return ApiRequest<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Sets the ATO details for the business.
+        /// </remarks>
+        public Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO settings already applied for this business
+        /// </remarks>
+        public AuStpRegistrationModel GetStpRegistrationDetails(int businessId)
+        {
+            return ApiRequest<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get);
+        }
+
+        /// <summary>
+        /// Get STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO settings already applied for this business
+        /// </remarks>
+        public Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Apply STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Registers the business for STP using the ATO settings supplied
+        /// </remarks>
+        public AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel)
+        {
+            return ApiRequest<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Apply STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Registers the business for STP using the ATO settings supplied
+        /// </remarks>
+        public Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post, cancellationToken);
+        }
 
         /// <summary>
         /// List Businesses
@@ -1036,94 +1124,6 @@ namespace KeyPayV2.Au.Functions
         public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO details for the business.
-        /// </remarks>
-        public BusinessAtoSupplierModel GetAtoDetails(int businessId)
-        {
-            return ApiRequest<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get);
-        }
-
-        /// <summary>
-        /// Get ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO details for the business.
-        /// </remarks>
-        public Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Sets the ATO details for the business.
-        /// </remarks>
-        public BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
-        {
-            return ApiRequest<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Sets the ATO details for the business.
-        /// </remarks>
-        public Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO settings already applied for this business
-        /// </remarks>
-        public AuStpRegistrationModel GetStpRegistrationDetails(int businessId)
-        {
-            return ApiRequest<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get);
-        }
-
-        /// <summary>
-        /// Get STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO settings already applied for this business
-        /// </remarks>
-        public Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Apply STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Registers the business for STP using the ATO settings supplied
-        /// </remarks>
-        public AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel)
-        {
-            return ApiRequest<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post);
-        }
-
-        /// <summary>
-        /// Apply STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Registers the business for STP using the ATO settings supplied
-        /// </remarks>
-        public Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post, cancellationToken);
         }
     }
 }

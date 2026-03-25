@@ -179,6 +179,10 @@ namespace KeyPayV2.Sg.Functions
         Task<List<AvailableEmployeeModel>> GetEmployeesAsync(CancellationToken cancellationToken = default);
         void RecoverForgottenPassword(RecoverPasswordModel model);
         Task RecoverForgottenPasswordAsync(RecoverPasswordModel model, CancellationToken cancellationToken = default);
+        void RegisterDeviceToken(DeviceTokenModel model);
+        Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
+        void UnregisterDeviceToken(DeviceTokenModel model);
+        Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
         List<EmployeeExpensePaymentSummaryModel> GetExpensePaymentSummary(int employeeId);
         Task<List<EmployeeExpensePaymentSummaryModel>> GetExpensePaymentSummaryAsync(int employeeId, CancellationToken cancellationToken = default);
         List<ExpenseCategoryResponseModel> GetExpenseCategories(int employeeId);
@@ -243,10 +247,6 @@ namespace KeyPayV2.Sg.Functions
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int employeeId);
         Task DeleteEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default);
-        void RegisterDeviceToken(DeviceTokenModel model);
-        Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
-        void UnregisterDeviceToken(DeviceTokenModel model);
-        Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default);
     }
     public class EssFunction : BaseFunction, IEssFunction
     {
@@ -2085,6 +2085,50 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Register Device Token
+        /// </summary>
+        /// <remarks>
+        /// Registers a device token.
+        /// </remarks>
+        public void RegisterDeviceToken(DeviceTokenModel model)
+        {
+            ApiRequest($"/ess/devicetoken/register", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Register Device Token
+        /// </summary>
+        /// <remarks>
+        /// Registers a device token.
+        /// </remarks>
+        public Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/devicetoken/register", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unregister Device Token
+        /// </summary>
+        /// <remarks>
+        /// Unregisters a device token.
+        /// </remarks>
+        public void UnregisterDeviceToken(DeviceTokenModel model)
+        {
+            ApiRequest($"/ess/devicetoken/unregister", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Unregister Device Token
+        /// </summary>
+        /// <remarks>
+        /// Unregisters a device token.
+        /// </remarks>
+        public Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/ess/devicetoken/unregister", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Expense Payment Summary
         /// </summary>
         /// <remarks>
@@ -2792,50 +2836,6 @@ namespace KeyPayV2.Sg.Functions
         public Task DeleteEmployeeProfileImageAsync(int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/ess/{employeeId}/profileimage", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Register Device Token
-        /// </summary>
-        /// <remarks>
-        /// Registers a device token.
-        /// </remarks>
-        public void RegisterDeviceToken(DeviceTokenModel model)
-        {
-            ApiRequest($"/ess/devicetoken/register", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Register Device Token
-        /// </summary>
-        /// <remarks>
-        /// Registers a device token.
-        /// </remarks>
-        public Task RegisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/ess/devicetoken/register", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Unregister Device Token
-        /// </summary>
-        /// <remarks>
-        /// Unregisters a device token.
-        /// </remarks>
-        public void UnregisterDeviceToken(DeviceTokenModel model)
-        {
-            ApiRequest($"/ess/devicetoken/unregister", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Unregister Device Token
-        /// </summary>
-        /// <remarks>
-        /// Unregisters a device token.
-        /// </remarks>
-        public Task UnregisterDeviceTokenAsync(DeviceTokenModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/ess/devicetoken/unregister", model, Method.Post, cancellationToken);
         }
     }
 }

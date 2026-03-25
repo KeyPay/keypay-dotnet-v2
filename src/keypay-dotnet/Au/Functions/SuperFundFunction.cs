@@ -23,10 +23,12 @@ namespace KeyPayV2.Au.Functions
         Task<SelfManagedSuperFundModel> GetSelfManagedSuperFundByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void UpdateSelfManagedSuperFund(int businessId, int id, SelfManagedSuperFundModel fund);
         Task UpdateSelfManagedSuperFundAsync(int businessId, int id, SelfManagedSuperFundModel fund, CancellationToken cancellationToken = default);
-        List<AuSmsfElectronicServiceAddressModel> ListElectronicServiceAddresses(int businessId);
-        Task<List<AuSmsfElectronicServiceAddressModel>> ListElectronicServiceAddressesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<SuperProductEditModel> SearchSuperFunds(int businessId);
+        Task<List<SuperProductEditModel>> SearchSuperFundsAsync(int businessId, CancellationToken cancellationToken = default);
         List<SuperProductEditModel> SearchSuperFunds(int businessId, SearchSuperFundsQueryModel request);
         Task<List<SuperProductEditModel>> SearchSuperFundsAsync(int businessId, SearchSuperFundsQueryModel request, CancellationToken cancellationToken = default);
+        List<AuSmsfElectronicServiceAddressModel> ListElectronicServiceAddresses(int businessId);
+        Task<List<AuSmsfElectronicServiceAddressModel>> ListElectronicServiceAddressesAsync(int businessId, CancellationToken cancellationToken = default);
     }
     public class SuperFundFunction : BaseFunction, ISuperFundFunction
     {
@@ -123,25 +125,25 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// List Electronic Service Addresses
+        /// Search Super Funds
         /// </summary>
         /// <remarks>
-        /// Electronic Service Addresses for Self Managed Super Funds
+        /// Search for super funds based on a string, search by defaults to All
         /// </remarks>
-        public List<AuSmsfElectronicServiceAddressModel> ListElectronicServiceAddresses(int businessId)
+        public List<SuperProductEditModel> SearchSuperFunds(int businessId)
         {
-            return ApiRequest<List<AuSmsfElectronicServiceAddressModel>>($"/business/{businessId}/superfund/electronicserviceaddress", Method.Get);
+            return ApiRequest<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch", Method.Get);
         }
 
         /// <summary>
-        /// List Electronic Service Addresses
+        /// Search Super Funds
         /// </summary>
         /// <remarks>
-        /// Electronic Service Addresses for Self Managed Super Funds
+        /// Search for super funds based on a string, search by defaults to All
         /// </remarks>
-        public Task<List<AuSmsfElectronicServiceAddressModel>> ListElectronicServiceAddressesAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<SuperProductEditModel>> SearchSuperFundsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuSmsfElectronicServiceAddressModel>>($"/business/{businessId}/superfund/electronicserviceaddress", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -164,6 +166,28 @@ namespace KeyPayV2.Au.Functions
         public Task<List<SuperProductEditModel>> SearchSuperFundsAsync(int businessId, SearchSuperFundsQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Electronic Service Addresses
+        /// </summary>
+        /// <remarks>
+        /// Electronic Service Addresses for Self Managed Super Funds
+        /// </remarks>
+        public List<AuSmsfElectronicServiceAddressModel> ListElectronicServiceAddresses(int businessId)
+        {
+            return ApiRequest<List<AuSmsfElectronicServiceAddressModel>>($"/business/{businessId}/superfund/electronicserviceaddress", Method.Get);
+        }
+
+        /// <summary>
+        /// List Electronic Service Addresses
+        /// </summary>
+        /// <remarks>
+        /// Electronic Service Addresses for Self Managed Super Funds
+        /// </remarks>
+        public Task<List<AuSmsfElectronicServiceAddressModel>> ListElectronicServiceAddressesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuSmsfElectronicServiceAddressModel>>($"/business/{businessId}/superfund/electronicserviceaddress", Method.Get, cancellationToken);
         }
     }
 }

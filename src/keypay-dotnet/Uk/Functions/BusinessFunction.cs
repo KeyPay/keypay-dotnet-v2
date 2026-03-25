@@ -15,6 +15,14 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IBusinessFunction
     {
+        Import52WeekDataResult Import52WeekData(int businessId, byte[] file);
+        Task<Import52WeekDataResult> Import52WeekDataAsync(int businessId, byte[] file, CancellationToken cancellationToken = default);
+        FileImportResult Query52WeekDataImportStatus(int businessId);
+        Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, CancellationToken cancellationToken = default);
+        FileImportResult Query52WeekDataImportStatus(int businessId, Query52WeekDataImportStatusQueryModel request);
+        Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, Query52WeekDataImportStatusQueryModel request, CancellationToken cancellationToken = default);
+        DownloadableFile TemplateFor52WeekData(int businessId);
+        Task<DownloadableFile> TemplateFor52WeekDataAsync(int businessId, CancellationToken cancellationToken = default);
         HmrcSettingsResponseModel GetHmrcSettings(int businessId);
         Task<HmrcSettingsResponseModel> GetHmrcSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         HmrcSettingsResponseModel UpdateHmrcSettings(int businessId, HmrcSettingsRequestModel model);
@@ -141,16 +149,98 @@ namespace KeyPayV2.Uk.Functions
         Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
-        DownloadableFile TemplateFor52WeekData(int businessId);
-        Task<DownloadableFile> TemplateFor52WeekDataAsync(int businessId, CancellationToken cancellationToken = default);
-        Import52WeekDataResult Import52WeekData(int businessId);
-        Task<Import52WeekDataResult> Import52WeekDataAsync(int businessId, CancellationToken cancellationToken = default);
-        FileImportResult Query52WeekDataImportStatus(int businessId, Query52WeekDataImportStatusQueryModel request);
-        Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, Query52WeekDataImportStatusQueryModel request, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
         public BusinessFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Import 52 Week Data
+        /// </summary>
+        /// <remarks>
+        /// Imports 52 week data for a business
+        /// </remarks>
+        public Import52WeekDataResult Import52WeekData(int businessId, byte[] file)
+        {
+            return ApiRequest<Import52WeekDataResult>($"/business/{businessId}/dataimport/import52weekdata", Method.Post);
+        }
+
+        /// <summary>
+        /// Import 52 Week Data
+        /// </summary>
+        /// <remarks>
+        /// Imports 52 week data for a business
+        /// </remarks>
+        public Task<Import52WeekDataResult> Import52WeekDataAsync(int businessId, byte[] file, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<Import52WeekDataResult>($"/business/{businessId}/dataimport/import52weekdata", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Query 52 Week Data Import Status
+        /// </summary>
+        /// <remarks>
+        /// This will allow you to query the status of the job you queued when calling the import52weekdata endpoint.
+        /// </remarks>
+        public FileImportResult Query52WeekDataImportStatus(int businessId)
+        {
+            return ApiRequest<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery", Method.Get);
+        }
+
+        /// <summary>
+        /// Query 52 Week Data Import Status
+        /// </summary>
+        /// <remarks>
+        /// This will allow you to query the status of the job you queued when calling the import52weekdata endpoint.
+        /// </remarks>
+        public Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Query 52 Week Data Import Status
+        /// </summary>
+        /// <remarks>
+        /// This will allow you to query the status of the job you queued when calling the import52weekdata endpoint.
+        /// </remarks>
+        public FileImportResult Query52WeekDataImportStatus(int businessId, Query52WeekDataImportStatusQueryModel request)
+        {
+            return ApiRequest<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery?longRunningJobId={request.LongRunningJobId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Query 52 Week Data Import Status
+        /// </summary>
+        /// <remarks>
+        /// This will allow you to query the status of the job you queued when calling the import52weekdata endpoint.
+        /// </remarks>
+        public Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, Query52WeekDataImportStatusQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery?longRunningJobId={request.LongRunningJobId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Template for 52 Week Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the 52 week data template for a business
+        /// </remarks>
+        public DownloadableFile TemplateFor52WeekData(int businessId)
+        {
+            return ApiRequest<DownloadableFile>($"/business/{businessId}/dataimport/52weekdatatemplate", Method.Get);
+        }
+
+        /// <summary>
+        /// Template for 52 Week Data
+        /// </summary>
+        /// <remarks>
+        /// Gets the 52 week data template for a business
+        /// </remarks>
+        public Task<DownloadableFile> TemplateFor52WeekDataAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<DownloadableFile>($"/business/{businessId}/dataimport/52weekdatatemplate", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get HMRC Settings
@@ -1512,72 +1602,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Template for 52 Week Data
-        /// </summary>
-        /// <remarks>
-        /// Gets the 52 week data template for a business
-        /// </remarks>
-        public DownloadableFile TemplateFor52WeekData(int businessId)
-        {
-            return ApiRequest<DownloadableFile>($"/business/{businessId}/dataimport/52weekdatatemplate", Method.Get);
-        }
-
-        /// <summary>
-        /// Template for 52 Week Data
-        /// </summary>
-        /// <remarks>
-        /// Gets the 52 week data template for a business
-        /// </remarks>
-        public Task<DownloadableFile> TemplateFor52WeekDataAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<DownloadableFile>($"/business/{businessId}/dataimport/52weekdatatemplate", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Import 52 Week Data
-        /// </summary>
-        /// <remarks>
-        /// Imports 52 week data for a business
-        /// </remarks>
-        public Import52WeekDataResult Import52WeekData(int businessId)
-        {
-            return ApiRequest<Import52WeekDataResult>($"/business/{businessId}/dataimport/import52weekdata", Method.Post);
-        }
-
-        /// <summary>
-        /// Import 52 Week Data
-        /// </summary>
-        /// <remarks>
-        /// Imports 52 week data for a business
-        /// </remarks>
-        public Task<Import52WeekDataResult> Import52WeekDataAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<Import52WeekDataResult>($"/business/{businessId}/dataimport/import52weekdata", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Query 52 Week Data Import Status
-        /// </summary>
-        /// <remarks>
-        /// This will allow you to query the status of the job you queued when calling the import52weekdata endpoint.
-        /// </remarks>
-        public FileImportResult Query52WeekDataImportStatus(int businessId, Query52WeekDataImportStatusQueryModel request)
-        {
-            return ApiRequest<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery?longRunningJobId={request.LongRunningJobId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Query 52 Week Data Import Status
-        /// </summary>
-        /// <remarks>
-        /// This will allow you to query the status of the job you queued when calling the import52weekdata endpoint.
-        /// </remarks>
-        public Task<FileImportResult> Query52WeekDataImportStatusAsync(int businessId, Query52WeekDataImportStatusQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<FileImportResult>($"/business/{businessId}/dataimport/import52weekdataquery?longRunningJobId={request.LongRunningJobId}", Method.Get, cancellationToken);
         }
     }
 }

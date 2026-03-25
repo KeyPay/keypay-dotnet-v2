@@ -108,6 +108,7 @@ namespace KeyPayV2.Uk.Enums
         EmployeeIrregularEmploymentReport,
         StatsNzQesReport,
         IrdReconciliationReport,
+        PayConditionComparisonReport,
         CasualConversionReport
     }
 }

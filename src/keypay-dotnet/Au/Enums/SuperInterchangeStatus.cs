@@ -29,6 +29,7 @@ namespace KeyPayV2.Au.Enums
         HeroClearInsufficientFunds,
         HeroClearSubmittedWithErrors,
         HeroClearUploadPassed,
-        HeroClearUploadFailed
+        HeroClearUploadFailed,
+        HeroClearCancelled
     }
 }

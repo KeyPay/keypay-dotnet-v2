@@ -108,6 +108,7 @@ namespace KeyPayV2.Au.Enums
         EmployeeIrregularEmploymentReport,
         StatsNzQesReport,
         IrdReconciliationReport,
+        PayConditionComparisonReport,
         CasualConversionReport
     }
 }

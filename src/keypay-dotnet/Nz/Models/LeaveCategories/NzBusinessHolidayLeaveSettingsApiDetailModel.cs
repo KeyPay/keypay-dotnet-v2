@@ -15,6 +15,7 @@ namespace KeyPayV2.Nz.Models.LeaveCategories
         public int? AlternativeHolidayLeaveCategoryId { get; set; }
         public int? LeaveWithoutPayLeaveCategoryId { get; set; }
         public bool Use12MonthsForMonthlyEmployeesDailyRateCalc { get; set; }
+        public bool UseHigherOfRdpOrAdpForAdpMethod { get; set; }
         public int? DefaultIrregularWorkPatternPeriod { get; set; }
     }
 }
