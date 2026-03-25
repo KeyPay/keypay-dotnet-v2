@@ -17,12 +17,12 @@ namespace KeyPayV2.Au.Functions
     {
         List<ContractorSimpleModel> ListContractors(int businessId);
         Task<List<ContractorSimpleModel>> ListContractorsAsync(int businessId, CancellationToken cancellationToken = default);
-        void CreateOrUpdateContractor(int businessId, AuContractorUnstructuredModel model);
-        Task CreateOrUpdateContractorAsync(int businessId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default);
-        void GetContractorByIdentifier(int businessId, int contractorId);
-        Task GetContractorByIdentifierAsync(int businessId, int contractorId, CancellationToken cancellationToken = default);
-        void UpdateContractor(int businessId, int contractorId, AuContractorUnstructuredModel model);
-        Task UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default);
+        AuContractorUnstructuredModel CreateOrUpdateContractor(int businessId, AuContractorUnstructuredModel model);
+        Task<AuContractorUnstructuredModel> CreateOrUpdateContractorAsync(int businessId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default);
+        AuContractorUnstructuredModel GetContractorByIdentifier(int businessId, int contractorId);
+        Task<AuContractorUnstructuredModel> GetContractorByIdentifierAsync(int businessId, int contractorId, CancellationToken cancellationToken = default);
+        AuContractorUnstructuredModel UpdateContractor(int businessId, int contractorId, AuContractorUnstructuredModel model);
+        Task<AuContractorUnstructuredModel> UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default);
         void DeactivateContractor(int businessId, int contractorId, DeactivateContractorModel deactivateContractorModel);
         Task DeactivateContractorAsync(int businessId, int contractorId, DeactivateContractorModel deactivateContractorModel, CancellationToken cancellationToken = default);
     }
@@ -63,9 +63,9 @@ namespace KeyPayV2.Au.Functions
         ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
         ///             </p>
         /// </remarks>
-        public void CreateOrUpdateContractor(int businessId, AuContractorUnstructuredModel model)
+        public AuContractorUnstructuredModel CreateOrUpdateContractor(int businessId, AuContractorUnstructuredModel model)
         {
-            ApiRequest($"/business/{businessId}/contractor", model, Method.Post);
+            return ApiRequest<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor", model, Method.Post);
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace KeyPayV2.Au.Functions
         ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
         ///             </p>
         /// </remarks>
-        public Task CreateOrUpdateContractorAsync(int businessId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default)
+        public Task<AuContractorUnstructuredModel> CreateOrUpdateContractorAsync(int businessId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/contractor", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets contractor details with the specified identifier
         /// </remarks>
-        public void GetContractorByIdentifier(int businessId, int contractorId)
+        public AuContractorUnstructuredModel GetContractorByIdentifier(int businessId, int contractorId)
         {
-            ApiRequest($"/business/{businessId}/contractor/{contractorId}", Method.Get);
+            return ApiRequest<AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", Method.Get);
         }
 
         /// <summary>
@@ -101,25 +101,25 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Gets contractor details with the specified identifier
         /// </remarks>
-        public Task GetContractorByIdentifierAsync(int businessId, int contractorId, CancellationToken cancellationToken = default)
+        public Task<AuContractorUnstructuredModel> GetContractorByIdentifierAsync(int businessId, int contractorId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/contractor/{contractorId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
         /// Update contractor
         /// </summary>
-        public void UpdateContractor(int businessId, int contractorId, AuContractorUnstructuredModel model)
+        public AuContractorUnstructuredModel UpdateContractor(int businessId, int contractorId, AuContractorUnstructuredModel model)
         {
-            ApiRequest($"/business/{businessId}/contractor/{contractorId}", model, Method.Put);
+            return ApiRequest<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", model, Method.Put);
         }
 
         /// <summary>
         /// Update contractor
         /// </summary>
-        public Task UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default)
+        public Task<AuContractorUnstructuredModel> UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/contractor/{contractorId}", model, Method.Put, cancellationToken);
+            return ApiRequestAsync<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
