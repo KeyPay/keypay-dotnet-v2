@@ -5,9 +5,9 @@ namespace KeyPayV2.Sg.Enums
 {
     public enum ExternalService
     {
-        Xero,
         None,
         Saasu,
+        Xero,
         MYOB,
         Deputy,
         EmployeeTimePunch,
