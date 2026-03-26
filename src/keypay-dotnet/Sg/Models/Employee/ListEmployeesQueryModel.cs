@@ -10,5 +10,6 @@ namespace KeyPayV2.Sg.Models.Employee
     {
         public int? PayScheduleId { get; set; }
         public int? LocationId { get; set; }
+        public string Options { get; set; }
     }
 }

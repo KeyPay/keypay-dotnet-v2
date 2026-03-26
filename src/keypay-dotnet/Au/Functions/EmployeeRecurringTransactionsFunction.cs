@@ -29,6 +29,16 @@ namespace KeyPayV2.Au.Functions
         Task DeleteEmployeeDeductionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         AuEmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId);
         Task<AuEmployeeRecurringDeductionModel> GetEmployeeDeductionByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default);
+        List<EmployeeRecurringSuperAdjustmentModel> ListEmployeeSuperAdjustments(int businessId, int employeeId);
+        Task<List<EmployeeRecurringSuperAdjustmentModel>> ListEmployeeSuperAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        EmployeeRecurringSuperAdjustmentModel CreateEmployeeSuperAdjustment(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model);
+        Task<EmployeeRecurringSuperAdjustmentModel> CreateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringSuperAdjustmentModel GetEmployeeSuperAdjustmentById(int businessId, int employeeId, int id);
+        Task<EmployeeRecurringSuperAdjustmentModel> GetEmployeeSuperAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringSuperAdjustmentModel UpdateEmployeeSuperAdjustment(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model);
+        Task<EmployeeRecurringSuperAdjustmentModel> UpdateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default);
+        void DeleteEmployeeSuperAdjustment(int businessId, int employeeId, int id);
+        Task DeleteEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId);
         Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeRecurringExpenseModel CreateEmployeeExpense(int businessId, int employeeId, EmployeeRecurringExpenseModel model);
@@ -69,16 +79,6 @@ namespace KeyPayV2.Au.Functions
         Task<AdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id);
         Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringSuperAdjustmentModel> ListEmployeeSuperAdjustments(int businessId, int employeeId);
-        Task<List<EmployeeRecurringSuperAdjustmentModel>> ListEmployeeSuperAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeRecurringSuperAdjustmentModel CreateEmployeeSuperAdjustment(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model);
-        Task<EmployeeRecurringSuperAdjustmentModel> CreateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default);
-        EmployeeRecurringSuperAdjustmentModel GetEmployeeSuperAdjustmentById(int businessId, int employeeId, int id);
-        Task<EmployeeRecurringSuperAdjustmentModel> GetEmployeeSuperAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        EmployeeRecurringSuperAdjustmentModel UpdateEmployeeSuperAdjustment(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model);
-        Task<EmployeeRecurringSuperAdjustmentModel> UpdateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployeeSuperAdjustment(int businessId, int employeeId, int id);
-        Task DeleteEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
     }
     public class EmployeeRecurringTransactionsFunction : BaseFunction, IEmployeeRecurringTransactionsFunction
     {
@@ -236,6 +236,116 @@ namespace KeyPayV2.Au.Functions
         public Task<AuEmployeeRecurringDeductionModel> GetEmployeeDeductionByExternalReferenceIdAsync(int businessId, int employeeId, string externalReferenceId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuEmployeeRecurringDeductionModel>($"/business/{businessId}/employee/{employeeId}/deduction/{externalReferenceId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Super Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee super adjustments for the employee
+        /// </remarks>
+        public List<EmployeeRecurringSuperAdjustmentModel> ListEmployeeSuperAdjustments(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Super Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee super adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringSuperAdjustmentModel>> ListEmployeeSuperAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring super adjustment for the employee.
+        /// </remarks>
+        public EmployeeRecurringSuperAdjustmentModel CreateEmployeeSuperAdjustment(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring super adjustment for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringSuperAdjustmentModel> CreateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Super Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringSuperAdjustmentModel GetEmployeeSuperAdjustmentById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Super Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringSuperAdjustmentModel> GetEmployeeSuperAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringSuperAdjustmentModel UpdateEmployeeSuperAdjustment(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringSuperAdjustmentModel> UpdateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public void DeleteEmployeeSuperAdjustment(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Super Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's recurring super adjustment with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -676,116 +786,6 @@ namespace KeyPayV2.Au.Functions
         public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Super Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee super adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringSuperAdjustmentModel> ListEmployeeSuperAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Super Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee super adjustments for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringSuperAdjustmentModel>> ListEmployeeSuperAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringSuperAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/superadjustment", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring super adjustment for the employee.
-        /// </remarks>
-        public EmployeeRecurringSuperAdjustmentModel CreateEmployeeSuperAdjustment(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring super adjustment for the employee.
-        /// </remarks>
-        public Task<EmployeeRecurringSuperAdjustmentModel> CreateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Super Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring super adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringSuperAdjustmentModel GetEmployeeSuperAdjustmentById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Super Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring super adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringSuperAdjustmentModel> GetEmployeeSuperAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring super adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringSuperAdjustmentModel UpdateEmployeeSuperAdjustment(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring super adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringSuperAdjustmentModel> UpdateEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringSuperAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringSuperAdjustmentModel,EmployeeRecurringSuperAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee recurring super adjustment with the specified ID.
-        /// </remarks>
-        public void DeleteEmployeeSuperAdjustment(int businessId, int employeeId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee Super Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee recurring super adjustment with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeSuperAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/superadjustment/{id}", Method.Delete, cancellationToken);
         }
     }
 }

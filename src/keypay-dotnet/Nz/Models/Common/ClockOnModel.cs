@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Au.Models.Common;
+using KeyPayV2.Nz.Models.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.Au.Enums;
+using KeyPayV2.Nz.Enums;
 
-namespace KeyPayV2.Au.Models.Common
+namespace KeyPayV2.Nz.Models.Common
 {
-    public class AuClockOnModel
+    public class ClockOnModel
     {
         public int? LocationId { get; set; }
         public int? ClassificationId { get; set; }

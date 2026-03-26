@@ -21,6 +21,26 @@ namespace KeyPayV2.Uk.Functions
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int businessId, int employeeId);
         Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void ListEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
+        Task ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId);
+        Task<UkUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId, CreateOrUpdateEmployeeQueryModel request);
+        Task<UkUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId);
+        Task<UkUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel UpdateEmployee(int businessId, int employeeId, UkUnstructuredEmployeeModel model);
+        Task<UkUnstructuredEmployeeModel> UpdateEmployeeAsync(int businessId, int employeeId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
+        Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId);
+        Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, CancellationToken cancellationToken = default);
+        UkUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
+        Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default);
+        void DeleteEmployee(int businessId, int employeeId);
+        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
         Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<UkWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
@@ -241,28 +261,6 @@ namespace KeyPayV2.Uk.Functions
         Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
         Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, GetEmployeeByExternalIdQueryModel request);
-        Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, GetEmployeeByExternalIdQueryModel request, CancellationToken cancellationToken = default);
-        void DeleteEmployee(int businessId, int employeeId);
-        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void SyncEmployeeToQbo(int businessId, int employeeId);
-        Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
-        Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model);
-        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
-        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request);
-        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
-        UkUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId);
-        Task<UkUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, UkUnstructuredEmployeeModel model);
-        Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
-        UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
-        Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
-        UkUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
-        Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default);
     }
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
@@ -332,6 +330,348 @@ namespace KeyPayV2.Uk.Functions
         public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public void ListEmployees(int businessId, ODataQuery oDataQuery = null)
+        {
+            ApiRequest($"/business/{businessId}/employee/unstructured", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/unstructured", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public void ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
+        {
+            ApiRequest($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
+        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
+        ///             TaxCode and TaxCalculationMethod.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
+        /// </remarks>
+        public UkUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", Method.Post);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
+        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
+        ///             TaxCode and TaxCalculationMethod.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
+        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
+        ///             TaxCode and TaxCalculationMethod.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
+        /// </remarks>
+        public UkUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId, CreateOrUpdateEmployeeQueryModel request)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?model={request.Model}&matchType={request.MatchType}", Method.Post);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
+        ///             be updated. Otherwise a new employee will be created. 
+        ///             </p>
+        /// <p>
+        ///             MatchType parameter values:
+        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
+        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
+        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
+        ///                 </li></list></p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
+        ///             TaxCode and TaxCalculationMethod.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// <p>Bypassing address validation:</p>
+        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
+        /// <ol>
+        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
+        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
+        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
+        /// </ol>
+        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?model={request.Model}&matchType={request.MatchType}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified ID.
+        /// </remarks>
+        public UkUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified ID.
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee with the specified ID.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// <p>Bypassing address validation:</p><p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p><ol><li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li><li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li><li>Now you can enter your address unrestricted in the normal fields.</li></ol><p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
+        /// </remarks>
+        public UkUnstructuredEmployeeModel UpdateEmployee(int businessId, int employeeId, UkUnstructuredEmployeeModel model)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee with the specified ID.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// <p>Bypassing address validation:</p><p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p><ol><li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li><li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li><li>Now you can enter your address unrestricted in the normal fields.</li></ol><p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> UpdateEmployeeAsync(int businessId, int employeeId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By External Reference ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external reference ID.
+        /// </remarks>
+        public UkUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source)
+        {
+            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By External Reference ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external reference ID.
+        /// </remarks>
+        public Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public void DeleteEmployee(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -2448,370 +2788,6 @@ namespace KeyPayV2.Uk.Functions
         public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By External ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external ID.
-        /// </remarks>
-        public UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, GetEmployeeByExternalIdQueryModel request)
-        {
-            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee?externalId={request.ExternalId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By External ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external ID.
-        /// </remarks>
-        public Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, GetEmployeeByExternalIdQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee?externalId={request.ExternalId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public void DeleteEmployee(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Sync Employee to QBO
-        /// </summary>
-        /// <remarks>
-        /// Syncs an employee record to QBO.
-        /// </remarks>
-        public void SyncEmployeeToQbo(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post);
-        }
-
-        /// <summary>
-        /// Sync Employee to QBO
-        /// </summary>
-        /// <remarks>
-        /// Syncs an employee record to QBO.
-        /// </remarks>
-        public Task SyncEmployeeToQboAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/synctoqbo", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
-        ///             be updated. Otherwise a new employee will be created. 
-        ///             </p>
-        /// <p>
-        ///             MatchType parameter values:
-        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
-        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
-        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
-        ///                 </li></list></p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
-        ///             TaxCode and TaxCalculationMethod.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// <p>Bypassing address validation:</p>
-        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
-        /// <ol>
-        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
-        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
-        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
-        /// </ol>
-        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
-        /// </remarks>
-        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model)
-        {
-            return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
-        ///             be updated. Otherwise a new employee will be created. 
-        ///             </p>
-        /// <p>
-        ///             MatchType parameter values:
-        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
-        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
-        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
-        ///                 </li></list></p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
-        ///             TaxCode and TaxCalculationMethod.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// <p>Bypassing address validation:</p>
-        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
-        /// <ol>
-        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
-        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
-        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
-        /// </ol>
-        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
-        /// </remarks>
-        public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
-        ///             be updated. Otherwise a new employee will be created. 
-        ///             </p>
-        /// <p>
-        ///             MatchType parameter values:
-        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
-        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
-        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
-        ///                 </li></list></p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
-        ///             TaxCode and TaxCalculationMethod.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// <p>Bypassing address validation:</p>
-        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
-        /// <ol>
-        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
-        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
-        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
-        /// </ol>
-        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
-        /// </remarks>
-        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
-        {
-            return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed or an existing employee is matched (according to the matchType parameter), it will
-        ///             be updated. Otherwise a new employee will be created. 
-        ///             </p>
-        /// <p>
-        ///             MatchType parameter values:
-        ///             <list><li>Standard (default): attempts to match an existing employee - first, based on the external ID,
-        ///                     then on Payroll ID, then National Insurance number and finally on first name + surname + date of birth + gender 
-        ///                 </li><li>None: do not attempt to match an existing employee (create a new one)
-        ///                 </li></list></p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employeeStatement, NationalInsuranceNumber, NationalInsuranceCategory, NationalInsuranceCalculationMethod,
-        ///             TaxCode and TaxCalculationMethod.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth and Address Details)</li><li>National Insurance Record</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Pension Details</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// <p>Bypassing address validation:</p>
-        /// <p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p>
-        /// <ol>
-        ///   <li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li>
-        ///   <li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li>
-        ///   <li>Now you can enter your address unrestricted in the normal fields.</li>
-        /// </ol>
-        /// <p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
-        /// </remarks>
-        public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified ID.
-        /// </remarks>
-        public UkUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId)
-        {
-            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified ID.
-        /// </remarks>
-        public Task<UkUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee with the specified ID.
-        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
-        /// <p>Bypassing address validation:</p><p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p><ol><li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li><li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li><li>Now you can enter your address unrestricted in the normal fields.</li></ol><p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
-        /// </remarks>
-        public EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, UkUnstructuredEmployeeModel model)
-        {
-            return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee with the specified ID.
-        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
-        /// <p>Bypassing address validation:</p><p>By default we validate addresses when they are entered. If for any reason you want to skip this validation, please follow the steps below.</p><ol><li>Set "ResidentialAddressIsOverseas" and "PostalAddressIsOverseas" to "true" (this needs to be a boolean in a string).</li><li>Set "ResidentialCountry" and "PostalCountry" to the country of the address (e.g. United Kingdom)</li><li>Now you can enter your address unrestricted in the normal fields.</li></ol><p>Please note that when ResidentialAddressIsOverseas is set to "true", ResidentialCountry <b>must</b> be set and likewise with PostalAddressIsOverseas and PostalCountry.</p>
-        /// </remarks>
-        public Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, UkUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By External ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external ID.
-        /// </remarks>
-        public UkUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId)
-        {
-            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By External ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external ID.
-        /// </remarks>
-        public Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By External Reference ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external reference ID.
-        /// </remarks>
-        public UkUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source)
-        {
-            return ApiRequest<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By External Reference ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external reference ID.
-        /// </remarks>
-        public Task<UkUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get, cancellationToken);
         }
     }
 }

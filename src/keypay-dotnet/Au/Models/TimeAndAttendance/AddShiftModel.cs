@@ -1,20 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.Nz.Models.Common;
+using KeyPayV2.Au.Models.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.Nz.Enums;
+using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Nz.Models.Manager
+namespace KeyPayV2.Au.Models.TimeAndAttendance
 {
-    public class ClockOnModel
+    public class AddShiftModel
     {
         public int? LocationId { get; set; }
         public int? ClassificationId { get; set; }
         public int? WorkTypeId { get; set; }
         public IList<Int32> ShiftConditionIds { get; set; }
         public string Note { get; set; }
+        public DateTime RecordedStartTimeUtc { get; set; }
+        public DateTime RecordedEndTimeUtc { get; set; }
+        public List<ShiftBreakModel> Breaks { get; set; }
         public IList<Int32> DimensionValueIds { get; set; }
         public int? EmployeeId { get; set; }
         public decimal? Latitude { get; set; }

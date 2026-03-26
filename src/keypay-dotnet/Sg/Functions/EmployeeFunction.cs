@@ -21,6 +21,24 @@ namespace KeyPayV2.Sg.Functions
         Task<ProfileImageMetadata> SetEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeProfileImage(int businessId, int employeeId);
         Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void ListEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
+        Task ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId);
+        Task<SgUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId, CreateOrUpdateEmployeeQueryModel request);
+        Task<SgUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId);
+        Task<SgUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel UpdateEmployee(int businessId, int employeeId, SgUnstructuredEmployeeModel model);
+        Task<SgUnstructuredEmployeeModel> UpdateEmployeeAsync(int businessId, int employeeId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
+        Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
+        SgUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
+        Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default);
+        void DeleteEmployee(int businessId, int employeeId);
+        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<EmployeePayRateModel> GetPayRates(int businessId, int employeeId);
         Task<List<EmployeePayRateModel>> GetPayRatesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<SgWorkTypeModel> GetEmployeeShiftConditions(int businessId, int employeeId, ODataQuery oDataQuery = null);
@@ -53,24 +71,6 @@ namespace KeyPayV2.Sg.Functions
         Task<List<EmployeeNoteModel>> GetEmployeeNotesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetEmployeeNotes(int businessId, int employeeId, CreateEmployeeNoteModel model);
         Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployee(int businessId, int employeeId);
-        Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
-        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
-        Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model);
-        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
-        EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request);
-        Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
-        SgUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId);
-        Task<SgUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, SgUnstructuredEmployeeModel model);
-        Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
-        SgUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
-        Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
-        SgUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
-        Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default);
     }
     public class EmployeeFunction : BaseFunction, IEmployeeFunction
     {
@@ -140,6 +140,272 @@ namespace KeyPayV2.Sg.Functions
         public Task DeleteEmployeeProfileImageAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/image", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public void ListEmployees(int businessId, ODataQuery oDataQuery = null)
+        {
+            ApiRequest($"/business/{businessId}/employee/unstructured", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/unstructured", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public void ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
+        {
+            ApiRequest($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>
+        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
+        /// </p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
+        ///             </p>
+        /// <p>
+        ///             NOTE: the MatchType parameter currently has no effect
+        ///             </p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// </remarks>
+        public SgUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", Method.Post);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
+        ///             </p>
+        /// <p>
+        ///             NOTE: the MatchType parameter currently has no effect
+        ///             </p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// </remarks>
+        public Task<SgUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
+        ///             </p>
+        /// <p>
+        ///             NOTE: the MatchType parameter currently has no effect
+        ///             </p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// </remarks>
+        public SgUnstructuredEmployeeModel CreateOrUpdateEmployee(int businessId, CreateOrUpdateEmployeeQueryModel request)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?model={request.Model}&matchType={request.MatchType}", Method.Post);
+        }
+
+        /// <summary>
+        /// Create or Update Employee
+        /// </summary>
+        /// <remarks>
+        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
+        ///             </p>
+        /// <p>
+        ///             NOTE: the MatchType parameter currently has no effect
+        ///             </p>
+        /// <p>
+        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
+        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.
+        ///             For an employee record to be considered 'Complete' the following groups of data are required:
+        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
+        /// <p>
+        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
+        ///             </p>
+        /// </remarks>
+        public Task<SgUnstructuredEmployeeModel> CreateOrUpdateEmployeeAsync(int businessId, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?model={request.Model}&matchType={request.MatchType}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified ID.
+        /// </remarks>
+        public SgUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified ID.
+        /// </remarks>
+        public Task<SgUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee with the specified ID.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// </remarks>
+        public SgUnstructuredEmployeeModel UpdateEmployee(int businessId, int employeeId, SgUnstructuredEmployeeModel model)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee with the specified ID.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
+        /// </remarks>
+        public Task<SgUnstructuredEmployeeModel> UpdateEmployeeAsync(int businessId, int employeeId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgUnstructuredEmployeeModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public SgUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By External ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external ID.
+        /// </remarks>
+        public Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee By External Reference ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external reference ID.
+        /// </remarks>
+        public SgUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source)
+        {
+            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee By External Reference ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee with the specified external reference ID.
+        /// </remarks>
+        public Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public void DeleteEmployee(int businessId, int employeeId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -500,272 +766,6 @@ namespace KeyPayV2.Sg.Functions
         public Task SetEmployeeNotesAsync(int businessId, int employeeId, CreateEmployeeNoteModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/notes", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public void DeleteEmployee(int businessId, int employeeId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<SgUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<SgUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SgUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?payScheduleId={request.PayScheduleId}&locationId={request.LocationId}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
-        ///             </p>
-        /// <p>
-        ///             NOTE: the MatchType parameter currently has no effect
-        ///             </p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// </remarks>
-        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model)
-        {
-            return ApiRequest<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
-        ///             </p>
-        /// <p>
-        ///             NOTE: the MatchType parameter currently has no effect
-        ///             </p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// </remarks>
-        public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
-        ///             </p>
-        /// <p>
-        ///             NOTE: the MatchType parameter currently has no effect
-        ///             </p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// </remarks>
-        public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
-        {
-            return ApiRequest<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create or Update Employee
-        /// </summary>
-        /// <remarks>
-        /// <p>If an ID is passed, the existing employee will be updated, otherwise a new employee will be created.
-        ///             </p>
-        /// <p>
-        ///             NOTE: the MatchType parameter currently has no effect
-        ///             </p>
-        /// <p>
-        ///             An employee may be created with a status of 'Incomplete' by specifying at least the minimum fields;
-        ///             firstName, surname, startDate, employmentType, address details, gender, legalStatus, nationality, coveredByEmploymentAct.<br />
-        ///             For an employee record to be considered 'Complete' the following groups of data are required:
-        ///               <list><li>Basic Details (Name, Start Date, Date of Birth, Gender and Address Details)</li><li>Pay Run Defaults (Default Pay Category, Pay Cycle and Location)</li><li>Locations (at least one)</li><li>Bank Account/s (at least one)</li><li>Statutory Details (including Nationality, Legal Status)</li></list></p>
-        /// <p>
-        ///             If reporting dimensions are enabled for the business, add primary reporting dimension values using "|" as a separator between values.
-        ///             </p>
-        /// </remarks>
-        public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, SgUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified ID.
-        /// </remarks>
-        public SgUnstructuredEmployeeModel GetEmployeeById(int businessId, int employeeId)
-        {
-            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified ID.
-        /// </remarks>
-        public Task<SgUnstructuredEmployeeModel> GetEmployeeByIdAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee with the specified ID.
-        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
-        /// </remarks>
-        public EmployeeUpdateResponseModel UpdateEmployee(int businessId, int employeeId, SgUnstructuredEmployeeModel model)
-        {
-            return ApiRequest<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee with the specified ID.
-        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
-        /// To update a field provide the new value, to specifically clear a value use the string "(clear)".
-        /// </remarks>
-        public Task<EmployeeUpdateResponseModel> UpdateEmployeeAsync(int businessId, int employeeId, SgUnstructuredEmployeeModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/{employeeId}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By External ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external ID.
-        /// </remarks>
-        public SgUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId)
-        {
-            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By External ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external ID.
-        /// </remarks>
-        public Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalid/{externalId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee By External Reference ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external reference ID.
-        /// </remarks>
-        public SgUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source)
-        {
-            return ApiRequest<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee By External Reference ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee with the specified external reference ID.
-        /// </remarks>
-        public Task<SgUnstructuredEmployeeModel> GetEmployeeByExternalReferenceIdAsync(int businessId, string externalReferenceId, ExternalService source, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured/externalreferenceid/{externalReferenceId}/{source}", Method.Get, cancellationToken);
         }
     }
 }

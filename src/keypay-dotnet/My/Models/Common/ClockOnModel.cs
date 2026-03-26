@@ -6,9 +6,9 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using KeyPayV2.My.Enums;
 
-namespace KeyPayV2.My.Models.TimeAndAttendance
+namespace KeyPayV2.My.Models.Common
 {
-    public class AuClockOnModel
+    public class ClockOnModel
     {
         public int? LocationId { get; set; }
         public int? ClassificationId { get; set; }

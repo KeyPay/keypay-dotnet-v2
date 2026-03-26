@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
-using KeyPayV2.My.Models.Common;
+using KeyPayV2.Nz.Models.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
-using KeyPayV2.My.Enums;
+using KeyPayV2.Nz.Enums;
 
-namespace KeyPayV2.My.Models.TimeAndAttendance
+namespace KeyPayV2.Nz.Models.TimeAndAttendance
 {
-    public class AuAddShiftModel
+    public class AddShiftModel
     {
         public int? LocationId { get; set; }
         public int? ClassificationId { get; set; }
