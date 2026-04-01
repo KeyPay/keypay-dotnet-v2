@@ -8,6 +8,7 @@ namespace KeyPayV2.Au
     {
         IAbaSettingsFunction AbaSettings { get; }
         IAuthenticationFunction Authentication { get; }
+        IAwardFunction Award { get; }
         IBusinessFunction Business { get; }
         IChartOfAccountsFunction ChartOfAccounts { get; }
         IContractorFunction Contractor { get; }
@@ -69,6 +70,7 @@ namespace KeyPayV2.Au
         {
             AbaSettings = new AbaSettingsFunction(Api);
             Authentication = new AuthenticationFunction(Api);
+            Award = new AwardFunction(Api);
             Business = new BusinessFunction(Api);
             ChartOfAccounts = new ChartOfAccountsFunction(Api);
             Contractor = new ContractorFunction(Api);
@@ -127,6 +129,7 @@ namespace KeyPayV2.Au
 
         public IAbaSettingsFunction AbaSettings { get; }
         public IAuthenticationFunction Authentication { get; }
+        public IAwardFunction Award { get; }
         public IBusinessFunction Business { get; }
         public IChartOfAccountsFunction ChartOfAccounts { get; }
         public IContractorFunction Contractor { get; }
