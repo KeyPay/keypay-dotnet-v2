@@ -21,5 +21,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public NationalInsuranceBackCalculationViewModel NationalInsuranceBackCalculation { get; set; }
         public bool HasNationalInsuranceBackCalculation { get; set; }
         public List<HmrcNoticeModel> HmrcNotices { get; set; }
+        public bool HasActiveP6 { get; set; }
+        public decimal? OriginalP45TaxablePay { get; set; }
+        public decimal? OriginalP45TaxWithheld { get; set; }
     }
 }

@@ -15,90 +15,24 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILookupDataFunction
     {
-        List<NameIdPair> ListReportTypes();
-        Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default);
-        List<NameIdPair> ListEmployeeGroupPermissionTypes();
-        Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default);
-        List<NameIdPair> ListTimeZoneTypes();
-        Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default);
         List<NameIdPair> ListTimeZoneTypes(int businessId);
         Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default);
         List<NameIdPair> ListCountries();
         Task<List<NameIdPair>> ListCountriesAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListEmployeeGroupPermissionTypes();
+        Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default);
         List<string> ListGenderOptions();
         Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default);
         List<string> ListIndustryOptions();
         Task<List<string>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListReportTypes();
+        Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListTimeZoneTypes();
+        Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default);
     }
     public class LookupDataFunction : BaseFunction, ILookupDataFunction
     {
         public LookupDataFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Report Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the report types.
-        /// </remarks>
-        public List<NameIdPair> ListReportTypes()
-        {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/reports", Method.Get);
-        }
-
-        /// <summary>
-        /// List Report Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the report types.
-        /// </remarks>
-        public Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/reports", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Group Permission Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the employee group permission types.
-        /// </remarks>
-        public List<NameIdPair> ListEmployeeGroupPermissionTypes()
-        {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Group Permission Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the employee group permission types.
-        /// </remarks>
-        public Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Time Zone Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the time zone types.
-        /// </remarks>
-        public List<NameIdPair> ListTimeZoneTypes()
-        {
-            return ApiRequest<List<NameIdPair>>($"/lookupdata/timezones", Method.Get);
-        }
-
-        /// <summary>
-        /// List Time Zone Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the time zone types.
-        /// </remarks>
-        public Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/timezones", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// List Time Zone Types
@@ -139,6 +73,28 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// List Employee Group Permission Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the employee group permission types.
+        /// </remarks>
+        public List<NameIdPair> ListEmployeeGroupPermissionTypes()
+        {
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Group Permission Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the employee group permission types.
+        /// </remarks>
+        public Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// List gender options
         /// </summary>
         public List<string> ListGenderOptions()
@@ -168,6 +124,50 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<string>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<string>>($"/lookupdata/industries", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Report Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the report types.
+        /// </remarks>
+        public List<NameIdPair> ListReportTypes()
+        {
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/reports", Method.Get);
+        }
+
+        /// <summary>
+        /// List Report Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the report types.
+        /// </remarks>
+        public Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/reports", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Time Zone Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the time zone types.
+        /// </remarks>
+        public List<NameIdPair> ListTimeZoneTypes()
+        {
+            return ApiRequest<List<NameIdPair>>($"/lookupdata/timezones", Method.Get);
+        }
+
+        /// <summary>
+        /// List Time Zone Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the time zone types.
+        /// </remarks>
+        public Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/timezones", Method.Get, cancellationToken);
         }
     }
 }

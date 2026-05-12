@@ -4,10 +4,10 @@ using System.Net.Http;
 using KeyPayV2.Uk.Models.Common;
 using KeyPayV2.Uk.Enums;
 
-namespace KeyPayV2.Uk.Models.Employee
+namespace KeyPayV2.Uk.Models.Business
 {
-    public class UkHmrcForms_DownloadAutoEnrolmentNoticeQueryModel
+    public class ListTheBusinessTagsQueryModel
     {
-        public int? Id { get; set; }
+        public string AwardName { get; set; }
     }
 }

@@ -19,6 +19,8 @@ namespace KeyPayV2.Uk.Functions
         Task<List<PensionSchemeApiModel>> ListPensionSchemesAsync(int businessId, CancellationToken cancellationToken = default);
         PensionSchemeApiModel CreatePensionScheme(int businessId, PensionSchemeApiModel model);
         Task<PensionSchemeApiModel> CreatePensionSchemeAsync(int businessId, PensionSchemeApiModel model, CancellationToken cancellationToken = default);
+        PensionSchemeStagingModel SetPensionSchemeDates(int businessId, PensionSchemeStagingModel model);
+        Task<PensionSchemeStagingModel> SetPensionSchemeDatesAsync(int businessId, PensionSchemeStagingModel model, CancellationToken cancellationToken = default);
         PensionSchemeApiModel GetPensionScheme(int businessId, int id);
         Task<PensionSchemeApiModel> GetPensionSchemeAsync(int businessId, int id, CancellationToken cancellationToken = default);
         PensionSchemeApiModel UpdatePensionScheme(int businessId, int id, PensionSchemeApiModel model);
@@ -33,8 +35,6 @@ namespace KeyPayV2.Uk.Functions
         Task<PensionSchemeContributionPlanApiModel> UpdatePensionSchemeContributionPlanAsync(int businessId, int schemeId, int planId, PensionSchemeContributionPlanApiModel contributionPlan, CancellationToken cancellationToken = default);
         PensionSchemeContributionPlanApiModel GetPensionSchemeContributionPlan(int businessId, int schemeId, int planId);
         Task<PensionSchemeContributionPlanApiModel> GetPensionSchemeContributionPlanAsync(int businessId, int schemeId, int planId, CancellationToken cancellationToken = default);
-        PensionSchemeStagingModel SetPensionSchemeDates(int businessId, PensionSchemeStagingModel model);
-        Task<PensionSchemeStagingModel> SetPensionSchemeDatesAsync(int businessId, PensionSchemeStagingModel model, CancellationToken cancellationToken = default);
     }
     public class PensionSettingsFunction : BaseFunction, IPensionSettingsFunction
     {
@@ -82,6 +82,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<PensionSchemeApiModel> CreatePensionSchemeAsync(int businessId, PensionSchemeApiModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PensionSchemeApiModel,PensionSchemeApiModel>($"/business/{businessId}/pensionscheme", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Pension Scheme Dates
+        /// </summary>
+        /// <remarks>
+        /// Save auto enrollment staging and re-enrolment dates for business
+        /// </remarks>
+        public PensionSchemeStagingModel SetPensionSchemeDates(int businessId, PensionSchemeStagingModel model)
+        {
+            return ApiRequest<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Pension Scheme Dates
+        /// </summary>
+        /// <remarks>
+        /// Save auto enrollment staging and re-enrolment dates for business
+        /// </remarks>
+        public Task<PensionSchemeStagingModel> SetPensionSchemeDatesAsync(int businessId, PensionSchemeStagingModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -236,28 +258,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<PensionSchemeContributionPlanApiModel> GetPensionSchemeContributionPlanAsync(int businessId, int schemeId, int planId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PensionSchemeContributionPlanApiModel>($"/business/{businessId}/pensionscheme/{schemeId}/plan/{planId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Pension Scheme Dates
-        /// </summary>
-        /// <remarks>
-        /// Save auto enrollment staging and re-enrolment dates for business
-        /// </remarks>
-        public PensionSchemeStagingModel SetPensionSchemeDates(int businessId, PensionSchemeStagingModel model)
-        {
-            return ApiRequest<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Pension Scheme Dates
-        /// </summary>
-        /// <remarks>
-        /// Save auto enrollment staging and re-enrolment dates for business
-        /// </remarks>
-        public Task<PensionSchemeStagingModel> SetPensionSchemeDatesAsync(int businessId, PensionSchemeStagingModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PensionSchemeStagingModel,PensionSchemeStagingModel>($"/business/{businessId}/pensionscheme/dates", model, Method.Post, cancellationToken);
         }
     }
 }

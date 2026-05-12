@@ -6,7 +6,7 @@ using KeyPayV2.Au.Enums;
 
 namespace KeyPayV2.Au.Models.Ess
 {
-    public class AuEssSuperFund_ProductSearchQueryModel
+    public class SearchSuperFundProductsQueryModel
     {
         public string Term { get; set; }
         public SuperFundSearchBy SearchBy { get; set; }

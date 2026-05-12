@@ -15,88 +15,22 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface ILocationFunction
     {
-        SgSingleLocationModel GetLocationById(int businessId, int id);
-        Task<SgSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        SgLocationModel UpdateLocation(int businessId, int id, SgLocationModel location);
-        Task<SgLocationModel> UpdateLocationAsync(int businessId, int id, SgLocationModel location, CancellationToken cancellationToken = default);
-        void DeleteLocation(int businessId, int id);
-        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<SgLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<SgLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<SgLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
         Task<List<SgLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         SgLocationModel CreateLocation(int businessId, SgLocationModel location);
         Task<SgLocationModel> CreateLocationAsync(int businessId, SgLocationModel location, CancellationToken cancellationToken = default);
+        SgSingleLocationModel GetLocationById(int businessId, int id);
+        Task<SgSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        SgLocationModel UpdateLocation(int businessId, int id, SgLocationModel location);
+        Task<SgLocationModel> UpdateLocationAsync(int businessId, int id, SgLocationModel location, CancellationToken cancellationToken = default);
+        void DeleteLocation(int businessId, int id);
+        Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public SgSingleLocationModel GetLocationById(int businessId, int id)
-        {
-            return ApiRequest<SgSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public Task<SgSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Location
-        /// </summary>
-        /// <remarks>
-        /// Updates the business location with the specified ID.
-        /// </remarks>
-        public SgLocationModel UpdateLocation(int businessId, int id, SgLocationModel location)
-        {
-            return ApiRequest<SgLocationModel,SgLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Location
-        /// </summary>
-        /// <remarks>
-        /// Updates the business location with the specified ID.
-        /// </remarks>
-        public Task<SgLocationModel> UpdateLocationAsync(int businessId, int id, SgLocationModel location, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgLocationModel,SgLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Location
-        /// </summary>
-        /// <remarks>
-        /// Deletes the location with the specified ID.
-        /// </remarks>
-        public void DeleteLocation(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Location
-        /// </summary>
-        /// <remarks>
-        /// Deletes the location with the specified ID.
-        /// </remarks>
-        public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
-        }
 
         /// <summary>
         /// List Employee Locations
@@ -166,6 +100,72 @@ namespace KeyPayV2.Sg.Functions
         public Task<SgLocationModel> CreateLocationAsync(int businessId, SgLocationModel location, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<SgLocationModel,SgLocationModel>($"/business/{businessId}/location", location, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public SgSingleLocationModel GetLocationById(int businessId, int id)
+        {
+            return ApiRequest<SgSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public Task<SgSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Location
+        /// </summary>
+        /// <remarks>
+        /// Updates the business location with the specified ID.
+        /// </remarks>
+        public SgLocationModel UpdateLocation(int businessId, int id, SgLocationModel location)
+        {
+            return ApiRequest<SgLocationModel,SgLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Location
+        /// </summary>
+        /// <remarks>
+        /// Updates the business location with the specified ID.
+        /// </remarks>
+        public Task<SgLocationModel> UpdateLocationAsync(int businessId, int id, SgLocationModel location, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgLocationModel,SgLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Location
+        /// </summary>
+        /// <remarks>
+        /// Deletes the location with the specified ID.
+        /// </remarks>
+        public void DeleteLocation(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/location/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Location
+        /// </summary>
+        /// <remarks>
+        /// Deletes the location with the specified ID.
+        /// </remarks>
+        public Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/location/{id}", Method.Delete, cancellationToken);
         }
     }
 }

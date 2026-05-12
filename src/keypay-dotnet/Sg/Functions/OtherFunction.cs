@@ -17,18 +17,18 @@ namespace KeyPayV2.Sg.Functions
     {
         List<GiroBankModel> ListBanks();
         Task<List<GiroBankModel>> ListBanksAsync(CancellationToken cancellationToken = default);
-        GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request);
-        Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default);
         GiroBankBranchModel GetSpecificBankBranchDetails(GetSpecificBankBranchDetailsQueryModel request);
         Task<GiroBankBranchModel> GetSpecificBankBranchDetailsAsync(GetSpecificBankBranchDetailsQueryModel request, CancellationToken cancellationToken = default);
-        List<GiroBankBranchModel> SgBank_Branches(SgBank_BranchesQueryModel request);
-        Task<List<GiroBankBranchModel>> SgBank_BranchesAsync(SgBank_BranchesQueryModel request, CancellationToken cancellationToken = default);
-        NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
-        Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
+        List<GiroBankBranchModel> ListBankBranches(ListBankBranchesQueryModel request);
+        Task<List<GiroBankBranchModel>> ListBankBranchesAsync(ListBankBranchesQueryModel request, CancellationToken cancellationToken = default);
+        GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request);
+        Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
+        Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
@@ -57,28 +57,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Specific Bank Details
-        /// </summary>
-        /// <remarks>
-        /// Search for bank based on a Bank Swift
-        /// </remarks>
-        public GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request)
-        {
-            return ApiRequest<GiroBankModel>($"/bank/details?BankSwift={request.BankSwift}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Specific Bank Details
-        /// </summary>
-        /// <remarks>
-        /// Search for bank based on a Bank Swift
-        /// </remarks>
-        public Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<GiroBankModel>($"/bank/details?BankSwift={request.BankSwift}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Specific Bank Branch Details
         /// </summary>
         /// <remarks>
@@ -100,30 +78,48 @@ namespace KeyPayV2.Sg.Functions
             return ApiRequestAsync<GiroBankBranchModel>($"/bank/branch?BankSwift={request.BankSwift}&BranchCode={request.BranchCode}&AccountNumber={request.AccountNumber}", Method.Get, cancellationToken);
         }
 
-        public List<GiroBankBranchModel> SgBank_Branches(SgBank_BranchesQueryModel request)
+        /// <summary>
+        /// List Bank Branches
+        /// </summary>
+        /// <remarks>
+        /// Lists bank branches matching the specified filter criteria.
+        /// </remarks>
+        public List<GiroBankBranchModel> ListBankBranches(ListBankBranchesQueryModel request)
         {
             return ApiRequest<List<GiroBankBranchModel>>($"/bank/branches?BankSwift={request.BankSwift}&AccountNumber={request.AccountNumber}", Method.Get);
         }
 
-        public Task<List<GiroBankBranchModel>> SgBank_BranchesAsync(SgBank_BranchesQueryModel request, CancellationToken cancellationToken = default)
+        /// <summary>
+        /// List Bank Branches
+        /// </summary>
+        /// <remarks>
+        /// Lists bank branches matching the specified filter criteria.
+        /// </remarks>
+        public Task<List<GiroBankBranchModel>> ListBankBranchesAsync(ListBankBranchesQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<GiroBankBranchModel>>($"/bank/branches?BankSwift={request.BankSwift}&AccountNumber={request.AccountNumber}", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Create a new direct billing user
+        /// Get Specific Bank Details
         /// </summary>
-        public NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model)
+        /// <remarks>
+        /// Search for bank based on a Bank Swift
+        /// </remarks>
+        public GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request)
         {
-            return ApiRequest<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post);
+            return ApiRequest<GiroBankModel>($"/bank/details?BankSwift={request.BankSwift}", Method.Get);
         }
 
         /// <summary>
-        /// Create a new direct billing user
+        /// Get Specific Bank Details
         /// </summary>
-        public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
+        /// <remarks>
+        /// Search for bank based on a Bank Swift
+        /// </remarks>
+        public Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<GiroBankModel>($"/bank/details?BankSwift={request.BankSwift}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -168,6 +164,22 @@ namespace KeyPayV2.Sg.Functions
         public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model)
+        {
+            return ApiRequest<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
         }
     }
 }

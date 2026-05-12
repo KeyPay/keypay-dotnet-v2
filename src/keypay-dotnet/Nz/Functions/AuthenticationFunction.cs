@@ -15,12 +15,12 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IAuthenticationFunction
     {
-        SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model);
-        Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
-        SingleSignOnResponseModel SingleSignOn(int businessId, SingleSignOnRequestModel model);
-        Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
         SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model);
         Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, int employeeId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
+        SingleSignOnResponseModel SingleSignOn(int businessId, SingleSignOnRequestModel model);
+        Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
+        SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model);
+        Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
         void OauthToken();
         Task OauthTokenAsync(CancellationToken cancellationToken = default);
     }
@@ -35,9 +35,9 @@ namespace KeyPayV2.Nz.Functions
         /// Request for SSO URL that provides authenticated access to KeyPay.
         /// See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
-        public SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model)
+        public SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model)
         {
-            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.Post);
+            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.Post);
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace KeyPayV2.Nz.Functions
         /// Request for SSO URL that provides authenticated access to KeyPay.
         /// See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
-        public Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
+        public Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, int employeeId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace KeyPayV2.Nz.Functions
         /// Request for SSO URL that provides authenticated access to KeyPay.
         /// See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
-        public SingleSignOnResponseModel SingleSignOn(int businessId, int employeeId, SingleSignOnRequestModel model)
+        public SingleSignOnResponseModel SingleSignOn(SingleSignOnRequestModel model)
         {
-            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.Post);
+            return ApiRequest<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.Post);
         }
 
         /// <summary>
@@ -95,9 +95,9 @@ namespace KeyPayV2.Nz.Functions
         /// Request for SSO URL that provides authenticated access to KeyPay.
         /// See the guide on <a href="http://api.keypay.com.au/guides/SSO">SSO Requests</a> for more details.
         /// </remarks>
-        public Task<SingleSignOnResponseModel> SingleSignOnAsync(int businessId, int employeeId, SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
+        public Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/business/{businessId}/employee/{employeeId}/singlesignon", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<SingleSignOnResponseModel,SingleSignOnRequestModel>($"/singlesignon", model, Method.Post, cancellationToken);
         }
 
         /// <summary>

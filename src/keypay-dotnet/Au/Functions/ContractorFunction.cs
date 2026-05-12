@@ -109,6 +109,11 @@ namespace KeyPayV2.Au.Functions
         /// <summary>
         /// Update contractor
         /// </summary>
+        /// <remarks>
+        /// Updates the contractor with the specified identifier.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)" or "0".
+        /// </remarks>
         public AuContractorUnstructuredModel UpdateContractor(int businessId, int contractorId, AuContractorUnstructuredModel model)
         {
             return ApiRequest<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", model, Method.Put);
@@ -117,6 +122,11 @@ namespace KeyPayV2.Au.Functions
         /// <summary>
         /// Update contractor
         /// </summary>
+        /// <remarks>
+        /// Updates the contractor with the specified identifier.
+        /// Only fields to be updated need be specified. Fields left unspecified or null will not be changed.
+        /// To update a field provide the new value, to specifically clear a value use the string "(clear)" or "0".
+        /// </remarks>
         public Task<AuContractorUnstructuredModel> UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", model, Method.Put, cancellationToken);

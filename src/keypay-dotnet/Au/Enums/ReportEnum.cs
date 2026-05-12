@@ -109,6 +109,7 @@ namespace KeyPayV2.Au.Enums
         StatsNzQesReport,
         IrdReconciliationReport,
         PayConditionComparisonReport,
-        CasualConversionReport
+        CasualConversionReport,
+        HeroClearCterReport
     }
 }

@@ -21,14 +21,14 @@ namespace KeyPayV2.Sg.Functions
         Task<EmployeeExpenseCategoryModel> CreateEmployeeExpenseCategoryAsync(int businessId, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default);
         PagedResultModel<EmployeeExpenseCategoryModel> ListEmployeeExpenseCategoriesWithPagination(int businessId, ODataQuery oDataQuery = null);
         Task<PagedResultModel<EmployeeExpenseCategoryModel>> ListEmployeeExpenseCategoriesWithPaginationAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<JournalServiceTaxCode> GetTaxCodes(int businessId);
+        Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int businessId, CancellationToken cancellationToken = default);
         EmployeeExpenseCategoryModel GetEmployeeExpenseCategoryById(int businessId, int id);
         Task<EmployeeExpenseCategoryModel> GetEmployeeExpenseCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void UpdateEmployeeExpenseCategory(int businessId, int id, EmployeeExpenseCategoryModel employeeExpenseCategory);
         Task UpdateEmployeeExpenseCategoryAsync(int businessId, int id, EmployeeExpenseCategoryModel employeeExpenseCategory, CancellationToken cancellationToken = default);
         void DeleteEmployeeExpenseCategory(int businessId, int id);
         Task DeleteEmployeeExpenseCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        List<JournalServiceTaxCode> GetTaxCodes(int businessId);
-        Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int businessId, CancellationToken cancellationToken = default);
     }
     public class EmployeeExpenseCategoriesFunction : BaseFunction, IEmployeeExpenseCategoriesFunction
     {
@@ -105,6 +105,28 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Get Tax Codes
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of the business' tax codes.
+        /// </remarks>
+        public List<JournalServiceTaxCode> GetTaxCodes(int businessId)
+        {
+            return ApiRequest<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Tax Codes
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of the business' tax codes.
+        /// </remarks>
+        public Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Employee Expense Category by ID
         /// </summary>
         /// <remarks>
@@ -168,28 +190,6 @@ namespace KeyPayV2.Sg.Functions
         public Task DeleteEmployeeExpenseCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employeeexpensecategory/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Tax Codes
-        /// </summary>
-        /// <remarks>
-        /// Gets a list of the business' tax codes.
-        /// </remarks>
-        public List<JournalServiceTaxCode> GetTaxCodes(int businessId)
-        {
-            return ApiRequest<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Tax Codes
-        /// </summary>
-        /// <remarks>
-        /// Gets a list of the business' tax codes.
-        /// </remarks>
-        public Task<List<JournalServiceTaxCode>> GetTaxCodesAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<JournalServiceTaxCode>>($"/business/{businessId}/employeeexpensecategory/taxcodes", Method.Get, cancellationToken);
         }
     }
 }

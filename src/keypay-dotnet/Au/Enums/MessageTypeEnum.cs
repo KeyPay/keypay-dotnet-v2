@@ -159,6 +159,13 @@ namespace KeyPayV2.Au.Enums
         TxMonitoringNotification,
         NotifyBusinessSsoDisabled,
         NotifyBusinessSsoDisabledDueToBillableActivities,
-        HeroClearSuperBatchPayIdNotification
+        HeroClearSuperBatchPayIdNotification,
+        NotifyBusinessSsoCertExpiring60Days,
+        NotifyBusinessSsoCertExpiring30Days,
+        NotifyBusinessSsoCertExpiring7Days,
+        NotifyBusinessSsoCertExpired,
+        NotifyBusinessDualSsoCertExpired,
+        PasswordReset,
+        PayrollAccessProvisioned
     }
 }

@@ -15,265 +15,111 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IChartOfAccountsFunction
     {
-        AuChartOfAccountsModel GetChartOfAccounts(int businessId);
-        Task<AuChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
-        AuChartOfAccountsModel UpdateChartOfAccounts(int businessId, AuChartOfAccountsGroupModel chartOfAccounts);
-        Task<AuChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, AuChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
-        AuChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId);
-        Task<AuChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
-        AuChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts);
-        Task<AuChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
-        void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId);
-        Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
-        AuChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
-        Task<AuChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
-        AuChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts);
-        Task<AuChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
-        void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
-        Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
-        List<string> GetJournalAccountTypes(int businessId);
-        Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default);
-        List<string> GetJournalServiceProviders(int businessId);
-        Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default);
-        JournalServiceProviderModel GetJournalServiceProvider(int businessId);
-        Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default);
-        JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model);
-        Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default);
         List<JournalAccountModel> GetJournalAccounts(int businessId);
         Task<List<JournalAccountModel>> GetJournalAccountsAsync(int businessId, CancellationToken cancellationToken = default);
         JournalAccountModel CreateANewJournalAccount(int businessId, JournalAccountModel request);
         Task<JournalAccountModel> CreateANewJournalAccountAsync(int businessId, JournalAccountModel request, CancellationToken cancellationToken = default);
+        JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request);
+        Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default);
+        JournalServiceProviderModel GetJournalServiceProvider(int businessId);
+        Task<JournalServiceProviderModel> GetJournalServiceProviderAsync(int businessId, CancellationToken cancellationToken = default);
+        JournalServiceProviderModel UpdateJournalServiceProvider(int businessId, JournalServiceProviderModel model);
+        Task<JournalServiceProviderModel> UpdateJournalServiceProviderAsync(int businessId, JournalServiceProviderModel model, CancellationToken cancellationToken = default);
+        List<string> GetJournalServiceProviders(int businessId);
+        Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default);
+        List<string> GetJournalAccountTypes(int businessId);
+        Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default);
         JournalAccountModel GetJournalAccountById(int businessId, int id);
         Task<JournalAccountModel> GetJournalAccountByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         JournalAccountModel UpdateAnExistingJournalAccount(int businessId, int id, JournalAccountModel request);
         Task<JournalAccountModel> UpdateAnExistingJournalAccountAsync(int businessId, int id, JournalAccountModel request, CancellationToken cancellationToken = default);
         void DeleteAnExistingJournalAccount(int businessId, int id);
         Task DeleteAnExistingJournalAccountAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request);
-        Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default);
+        AuChartOfAccountsModel GetChartOfAccounts(int businessId);
+        Task<AuChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsModel UpdateChartOfAccounts(int businessId, AuChartOfAccountsGroupModel chartOfAccounts);
+        Task<AuChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, AuChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        AuChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
+        Task<AuChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts);
+        Task<AuChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId);
+        Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId);
+        Task<AuChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
+        AuChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts);
+        Task<AuChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default);
+        void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId);
+        Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default);
     }
     public class ChartOfAccountsFunction : BaseFunction, IChartOfAccountsFunction
     {
         public ChartOfAccountsFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// Get Chart of Accounts
+        /// Get Journal Accounts
         /// </summary>
         /// <remarks>
-        /// Gets the default chart of accounts configuration for the business.
+        /// Gets the list of available journal accounts for the business.
         /// </remarks>
-        public AuChartOfAccountsModel GetChartOfAccounts(int businessId)
+        public List<JournalAccountModel> GetJournalAccounts(int businessId)
         {
-            return ApiRequest<AuChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get);
+            return ApiRequest<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.Get);
         }
 
         /// <summary>
-        /// Get Chart of Accounts
+        /// Get Journal Accounts
         /// </summary>
         /// <remarks>
-        /// Gets the default chart of accounts configuration for the business.
+        /// Gets the list of available journal accounts for the business.
         /// </remarks>
-        public Task<AuChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<JournalAccountModel>> GetJournalAccountsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Update Chart of Accounts
+        /// Create a new Journal Account
         /// </summary>
         /// <remarks>
-        /// Updates the default chart of accounts configuration for the business.
+        /// Create a new journal account for the Business.
         /// </remarks>
-        public AuChartOfAccountsModel UpdateChartOfAccounts(int businessId, AuChartOfAccountsGroupModel chartOfAccounts)
+        public JournalAccountModel CreateANewJournalAccount(int businessId, JournalAccountModel request)
         {
-            return ApiRequest<AuChartOfAccountsModel,AuChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post);
+            return ApiRequest<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.Post);
         }
 
         /// <summary>
-        /// Update Chart of Accounts
+        /// Create a new Journal Account
         /// </summary>
         /// <remarks>
-        /// Updates the default chart of accounts configuration for the business.
+        /// Create a new journal account for the Business.
         /// </remarks>
-        public Task<AuChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, AuChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        public Task<JournalAccountModel> CreateANewJournalAccountAsync(int businessId, JournalAccountModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuChartOfAccountsModel,AuChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post, cancellationToken);
+            return ApiRequestAsync<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
-        /// Get Location Specific Chart of Accounts
+        /// Bulk insert Journal Accounts
         /// </summary>
         /// <remarks>
-        /// Gets the location specific chart of accounts configuration for a given location.
+        /// Create new journal accounts for the Business. This will not replace any existing journal accounts.
         /// </remarks>
-        public AuChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
+        public JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request)
         {
-            return ApiRequest<AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get);
+            return ApiRequest<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post);
         }
 
         /// <summary>
-        /// Get Location Specific Chart of Accounts
+        /// Bulk insert Journal Accounts
         /// </summary>
         /// <remarks>
-        /// Gets the location specific chart of accounts configuration for a given location.
+        /// Create new journal accounts for the Business. This will not replace any existing journal accounts.
         /// </remarks>
-        public Task<AuChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
+        public Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public AuChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts)
-        {
-            return ApiRequest<AuChartOfAccountsLocationGroupModel,AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post);
-        }
-
-        /// <summary>
-        /// Update Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task<AuChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuChartOfAccountsLocationGroupModel,AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
-        {
-            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Location Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a location specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
-        /// </remarks>
-        public AuChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
-        {
-            return ApiRequest<AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
-        /// </remarks>
-        public Task<AuChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public AuChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts)
-        {
-            return ApiRequest<AuChartOfAccountsEmployingEntityGroupModel,AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post);
-        }
-
-        /// <summary>
-        /// Update Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Updates the employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task<AuChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuChartOfAccountsEmployingEntityGroupModel,AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
-        {
-            ApiRequest($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employing Entity Specific Chart of Accounts
-        /// </summary>
-        /// <remarks>
-        /// Deletes a employingEntity specific chart of accounts configuration for the business.
-        /// </remarks>
-        public Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Journal Account Types
-        /// </summary>
-        /// <remarks>
-        /// Gets the reference list of Journal Account Types.
-        /// </remarks>
-        public List<string> GetJournalAccountTypes(int businessId)
-        {
-            return ApiRequest<List<string>>($"/business/{businessId}/accounts/types", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Journal Account Types
-        /// </summary>
-        /// <remarks>
-        /// Gets the reference list of Journal Account Types.
-        /// </remarks>
-        public Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/types", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Journal Service providers
-        /// </summary>
-        /// <remarks>
-        /// Gets the Journal Service providers that can be configured via the API.
-        /// </remarks>
-        public List<string> GetJournalServiceProviders(int businessId)
-        {
-            return ApiRequest<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Journal Service providers
-        /// </summary>
-        /// <remarks>
-        /// Gets the Journal Service providers that can be configured via the API.
-        /// </remarks>
-        public Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get, cancellationToken);
+            return ApiRequestAsync<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -321,47 +167,47 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get Journal Accounts
+        /// Get Journal Service providers
         /// </summary>
         /// <remarks>
-        /// Gets the list of available journal accounts for the business.
+        /// Gets the Journal Service providers that can be configured via the API.
         /// </remarks>
-        public List<JournalAccountModel> GetJournalAccounts(int businessId)
+        public List<string> GetJournalServiceProviders(int businessId)
         {
-            return ApiRequest<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.Get);
+            return ApiRequest<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get);
         }
 
         /// <summary>
-        /// Get Journal Accounts
+        /// Get Journal Service providers
         /// </summary>
         /// <remarks>
-        /// Gets the list of available journal accounts for the business.
+        /// Gets the Journal Service providers that can be configured via the API.
         /// </remarks>
-        public Task<List<JournalAccountModel>> GetJournalAccountsAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<string>> GetJournalServiceProvidersAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<JournalAccountModel>>($"/business/{businessId}/accounts", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/journalservices", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Create a new Journal Account
+        /// Get Journal Account Types
         /// </summary>
         /// <remarks>
-        /// Create a new journal account for the Business.
+        /// Gets the reference list of Journal Account Types.
         /// </remarks>
-        public JournalAccountModel CreateANewJournalAccount(int businessId, JournalAccountModel request)
+        public List<string> GetJournalAccountTypes(int businessId)
         {
-            return ApiRequest<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.Post);
+            return ApiRequest<List<string>>($"/business/{businessId}/accounts/types", Method.Get);
         }
 
         /// <summary>
-        /// Create a new Journal Account
+        /// Get Journal Account Types
         /// </summary>
         /// <remarks>
-        /// Create a new journal account for the Business.
+        /// Gets the reference list of Journal Account Types.
         /// </remarks>
-        public Task<JournalAccountModel> CreateANewJournalAccountAsync(int businessId, JournalAccountModel request, CancellationToken cancellationToken = default)
+        public Task<List<string>> GetJournalAccountTypesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalAccountModel,JournalAccountModel>($"/business/{businessId}/accounts", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<List<string>>($"/business/{businessId}/accounts/types", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -431,25 +277,179 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Bulk insert Journal Accounts
+        /// Get Chart of Accounts
         /// </summary>
         /// <remarks>
-        /// Create new journal accounts for the Business. This will not replace any existing journal accounts.
+        /// Gets the default chart of accounts configuration for the business.
         /// </remarks>
-        public JournalAccountBulkCreateModel BulkInsertJournalAccounts(int businessId, List<JournalAccountModel> request)
+        public AuChartOfAccountsModel GetChartOfAccounts(int businessId)
         {
-            return ApiRequest<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post);
+            return ApiRequest<AuChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get);
         }
 
         /// <summary>
-        /// Bulk insert Journal Accounts
+        /// Get Chart of Accounts
         /// </summary>
         /// <remarks>
-        /// Create new journal accounts for the Business. This will not replace any existing journal accounts.
+        /// Gets the default chart of accounts configuration for the business.
         /// </remarks>
-        public Task<JournalAccountBulkCreateModel> BulkInsertJournalAccountsAsync(int businessId, List<JournalAccountModel> request, CancellationToken cancellationToken = default)
+        public Task<AuChartOfAccountsModel> GetChartOfAccountsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<JournalAccountBulkCreateModel,List<JournalAccountModel>>($"/business/{businessId}/accounts/bulk", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<AuChartOfAccountsModel>($"/business/{businessId}/chartofaccounts", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the default chart of accounts configuration for the business.
+        /// </remarks>
+        public AuChartOfAccountsModel UpdateChartOfAccounts(int businessId, AuChartOfAccountsGroupModel chartOfAccounts)
+        {
+            return ApiRequest<AuChartOfAccountsModel,AuChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the default chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<AuChartOfAccountsModel> UpdateChartOfAccountsAsync(int businessId, AuChartOfAccountsGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuChartOfAccountsModel,AuChartOfAccountsGroupModel>($"/business/{businessId}/chartofaccounts", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
+        /// </remarks>
+        public AuChartOfAccountsEmployingEntityGroupModel GetEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
+        {
+            return ApiRequest<AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the employingEntity specific chart of accounts configuration for a given employingEntity.
+        /// </remarks>
+        public Task<AuChartOfAccountsEmployingEntityGroupModel> GetEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public AuChartOfAccountsEmployingEntityGroupModel UpdateEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts)
+        {
+            return ApiRequest<AuChartOfAccountsEmployingEntityGroupModel,AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<AuChartOfAccountsEmployingEntityGroupModel> UpdateEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, AuChartOfAccountsEmployingEntityGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuChartOfAccountsEmployingEntityGroupModel,AuChartOfAccountsEmployingEntityGroupModel>($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public void DeleteEmployingEntitySpecificChartOfAccounts(int businessId, int employingEntityId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employing Entity Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a employingEntity specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task DeleteEmployingEntitySpecificChartOfAccountsAsync(int businessId, int employingEntityId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/employingEntity/{employingEntityId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the location specific chart of accounts configuration for a given location.
+        /// </remarks>
+        public AuChartOfAccountsLocationGroupModel GetLocationSpecificChartOfAccounts(int businessId, int locationId)
+        {
+            return ApiRequest<AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Gets the location specific chart of accounts configuration for a given location.
+        /// </remarks>
+        public Task<AuChartOfAccountsLocationGroupModel> GetLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public AuChartOfAccountsLocationGroupModel UpdateLocationSpecificChartOfAccounts(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts)
+        {
+            return ApiRequest<AuChartOfAccountsLocationGroupModel,AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Updates the location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task<AuChartOfAccountsLocationGroupModel> UpdateLocationSpecificChartOfAccountsAsync(int businessId, int locationId, AuChartOfAccountsLocationGroupModel chartOfAccounts, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuChartOfAccountsLocationGroupModel,AuChartOfAccountsLocationGroupModel>($"/business/{businessId}/chartofaccounts/location/{locationId}", chartOfAccounts, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public void DeleteLocationSpecificChartOfAccounts(int businessId, int locationId)
+        {
+            ApiRequest($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Location Specific Chart of Accounts
+        /// </summary>
+        /// <remarks>
+        /// Deletes a location specific chart of accounts configuration for the business.
+        /// </remarks>
+        public Task DeleteLocationSpecificChartOfAccountsAsync(int businessId, int locationId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/chartofaccounts/location/{locationId}", Method.Delete, cancellationToken);
         }
     }
 }

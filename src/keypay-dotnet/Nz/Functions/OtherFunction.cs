@@ -19,12 +19,12 @@ namespace KeyPayV2.Nz.Functions
         Task<NzBusinessAdvancedSettingsModel> GetBusinessAdvancedSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         NzBusinessAdvancedSettingsModel UpdateBusinessAdvancedSettings(int businessId, NzBusinessAdvancedSettingsModel model);
         Task<NzBusinessAdvancedSettingsModel> UpdateBusinessAdvancedSettingsAsync(int businessId, NzBusinessAdvancedSettingsModel model, CancellationToken cancellationToken = default);
-        NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
-        Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request);
         Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model);
+        Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default);
     }
     public class OtherFunction : BaseFunction, IOtherFunction
     {
@@ -60,22 +60,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<NzBusinessAdvancedSettingsModel> UpdateBusinessAdvancedSettingsAsync(int businessId, NzBusinessAdvancedSettingsModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NzBusinessAdvancedSettingsModel,NzBusinessAdvancedSettingsModel>($"/business/{businessId}/advanced", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create a new direct billing user
-        /// </summary>
-        public NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model)
-        {
-            return ApiRequest<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create a new direct billing user
-        /// </summary>
-        public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -120,6 +104,22 @@ namespace KeyPayV2.Nz.Functions
         public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public NewUserCreatedModel CreateANewDirectBillingUser(CreateDirectAccountNewUserModel model)
+        {
+            return ApiRequest<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create a new direct billing user
+        /// </summary>
+        public Task<NewUserCreatedModel> CreateANewDirectBillingUserAsync(CreateDirectAccountNewUserModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NewUserCreatedModel,CreateDirectAccountNewUserModel>($"/user/create-direct-account", model, Method.Post, cancellationToken);
         }
     }
 }

@@ -10,5 +10,8 @@ namespace KeyPayV2.My.Models.Business
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Source { get; set; }
+        public int? AwardId { get; set; }
+        public string AwardName { get; set; }
     }
 }

@@ -15,16 +15,16 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ILeaveRequestsFunction
     {
-        List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId);
-        Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default);
-        List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request);
-        Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
         List<HourLeaveRequestResponseModel> GetLeaveRequestsForEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
         Task<List<HourLeaveRequestResponseModel>> GetLeaveRequestsForEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel CreateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
         Task<HourLeaveRequestResponseModel> CreateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
         void UpdateLeaveRequest(int businessId, int employeeId, HourLeaveRequestModel model);
         Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default);
+        HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId);
+        Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request);
+        Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel GetLeaveRequestById(int businessId, int employeeId, int leaveRequestId);
         Task<HourLeaveRequestResponseModel> GetLeaveRequestByIdAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
         void UpdateLeaveRequest(int businessId, int employeeId, int leaveRequestId, HourLeaveRequestModel model);
@@ -35,58 +35,14 @@ namespace KeyPayV2.Au.Functions
         Task<HourLeaveRequestResponseModel> ApproveLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, CancellationToken cancellationToken = default);
         HourLeaveRequestResponseModel DeclineLeaveRequest(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline);
         Task<HourLeaveRequestResponseModel> DeclineLeaveRequestAsync(int businessId, int employeeId, int leaveRequestId, DeclineLeaveRequest decline, CancellationToken cancellationToken = default);
-        HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId);
-        Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request);
-        Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default);
+        List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId);
+        Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request);
+        Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default);
     }
     public class LeaveRequestsFunction : BaseFunction, ILeaveRequestsFunction
     {
         public LeaveRequestsFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Leave Requests
-        /// </summary>
-        /// <remarks>
-        /// Lists all the leave requests for the business.
-        /// </remarks>
-        public List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId)
-        {
-            return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest", Method.Get);
-        }
-
-        /// <summary>
-        /// List Leave Requests
-        /// </summary>
-        /// <remarks>
-        /// Lists all the leave requests for the business.
-        /// </remarks>
-        public Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Leave Requests
-        /// </summary>
-        /// <remarks>
-        /// Lists all the leave requests for the business.
-        /// </remarks>
-        public List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request)
-        {
-            return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Leave Requests
-        /// </summary>
-        /// <remarks>
-        /// Lists all the leave requests for the business.
-        /// </remarks>
-        public Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Get Leave Requests for Employee
@@ -154,6 +110,50 @@ namespace KeyPayV2.Au.Functions
         public Task UpdateLeaveRequestAsync(int businessId, int employeeId, HourLeaveRequestModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaverequest", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Estimate Leave Hours
+        /// </summary>
+        /// <remarks>
+        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// </remarks>
+        public HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId)
+        {
+            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate", Method.Get);
+        }
+
+        /// <summary>
+        /// Estimate Leave Hours
+        /// </summary>
+        /// <remarks>
+        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// </remarks>
+        public Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Estimate Leave Hours
+        /// </summary>
+        /// <remarks>
+        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// </remarks>
+        public HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request)
+        {
+            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Estimate Leave Hours
+        /// </summary>
+        /// <remarks>
+        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// </remarks>
+        public Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -267,47 +267,47 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Estimate Leave Hours
+        /// List Leave Requests
         /// </summary>
         /// <remarks>
-        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// Lists all the leave requests for the business.
         /// </remarks>
-        public HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId)
+        public List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId)
         {
-            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate", Method.Get);
+            return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest", Method.Get);
         }
 
         /// <summary>
-        /// Estimate Leave Hours
+        /// List Leave Requests
         /// </summary>
         /// <remarks>
-        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// Lists all the leave requests for the business.
         /// </remarks>
-        public Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Estimate Leave Hours
+        /// List Leave Requests
         /// </summary>
         /// <remarks>
-        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// Lists all the leave requests for the business.
         /// </remarks>
-        public HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request)
+        public List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request)
         {
-            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get);
+            return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get);
         }
 
         /// <summary>
-        /// Estimate Leave Hours
+        /// List Leave Requests
         /// </summary>
         /// <remarks>
-        /// Estimates the leave hours required for a leave request between fromDate and toDate.
+        /// Lists all the leave requests for the business.
         /// </remarks>
-        public Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get, cancellationToken);
         }
     }
 }

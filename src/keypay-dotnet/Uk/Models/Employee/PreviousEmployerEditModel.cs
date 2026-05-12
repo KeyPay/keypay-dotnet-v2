@@ -23,5 +23,8 @@ namespace KeyPayV2.Uk.Models.Employee
         public string TaxCode { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ExternalService? Source { get; set; }
+        public bool HasActiveP6 { get; set; }
+        public decimal? OriginalP45TaxablePay { get; set; }
+        public decimal? OriginalP45TaxWithheld { get; set; }
     }
 }

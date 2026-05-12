@@ -29,14 +29,14 @@ namespace KeyPayV2.Sg.Functions
         Task<List<SgLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         SgLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate);
         Task<SgLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        void ReapplyLeaveAllowanceTemplate(int businessId, int id);
+        Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
         SgLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id);
         Task<SgLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         SgLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate);
         Task<SgLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, SgLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
         void DeleteLeaveAllowanceTemplate(int businessId, int id);
         Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void ReapplyLeaveAllowanceTemplate(int businessId, int id);
-        Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LeaveAllowanceFunction : BaseFunction, ILeaveAllowanceFunction
     {
@@ -199,6 +199,28 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post);
+        }
+
+        /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Leave Allowance Template by ID
         /// </summary>
         /// <remarks>
@@ -262,28 +284,6 @@ namespace KeyPayV2.Sg.Functions
         public Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Reapply Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Reapply the leave allowance template with the specified ID.
-        /// </remarks>
-        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post);
-        }
-
-        /// <summary>
-        /// Reapply Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Reapply the leave allowance template with the specified ID.
-        /// </remarks>
-        public Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post, cancellationToken);
         }
     }
 }

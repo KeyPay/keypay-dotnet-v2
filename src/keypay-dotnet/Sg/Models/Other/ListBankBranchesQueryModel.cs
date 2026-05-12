@@ -6,7 +6,7 @@ using KeyPayV2.Sg.Enums;
 
 namespace KeyPayV2.Sg.Models.Other
 {
-    public class SgBank_BranchesQueryModel
+    public class ListBankBranchesQueryModel
     {
         public string BankSwift { get; set; }
         public string AccountNumber { get; set; }

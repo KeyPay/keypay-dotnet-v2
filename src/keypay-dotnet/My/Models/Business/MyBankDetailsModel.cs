@@ -29,5 +29,6 @@ namespace KeyPayV2.My.Models.Business
         public bool? EncryptAndSign { get; set; }
         public PgpKeyEditModel BankPublicKey { get; set; }
         public PgpKeyPairEditModel ClientKeyPair { get; set; }
+        public PgpKeyPairEditModel PendingForRotationClientKeyPair { get; set; }
     }
 }

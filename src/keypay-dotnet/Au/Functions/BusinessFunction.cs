@@ -15,56 +15,20 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IBusinessFunction
     {
-        BusinessAtoSupplierModel GetAtoDetails(int businessId);
-        Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model);
-        Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default);
-        AuStpRegistrationModel GetStpRegistrationDetails(int businessId);
-        Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel);
-        Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default);
         List<AuBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
         Task<List<AuBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuBusinessExportModel CreateNewBusiness(AuBusinessExportModel model);
         Task<AuBusinessExportModel> CreateNewBusinessAsync(AuBusinessExportModel model, CancellationToken cancellationToken = default);
         AuBusinessExportModel CreateNewBusiness(AuBusinessExportModel model, CreateNewBusinessQueryModel request);
         Task<AuBusinessExportModel> CreateNewBusinessAsync(AuBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
-        AuBusinessExportModel GetBusinessDetails(int businessId);
-        Task<AuBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        AuBusinessExportModel UpdateBusinessDetails(int businessId, AuEditBusinessDetailsApiModel model);
-        Task<AuBusinessExportModel> UpdateBusinessDetailsAsync(int businessId, AuEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default);
         AuBusinessExportModel GetBusinessDetailsByExternalId();
         Task<AuBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default);
         AuBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
         Task<AuBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
-        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
-        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
-        AuBusinessLeaveSettingsModel GetTheLeaveSettingsForTheBusiness(int businessId);
-        Task<AuBusinessLeaveSettingsModel> GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
-        AuBusinessLeaveSettingsModel UpdateTheLeaveSettingsForTheBusiness(int businessId, AuBusinessLeaveSettingsModel model);
-        Task<AuBusinessLeaveSettingsModel> UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, AuBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default);
-        AuBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId);
-        Task<AuBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
-        AuBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, AuBusinessTimesheetSettingsModel model);
-        Task<AuBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, AuBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default);
-        AuEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
-        Task<AuEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
-        AuEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, AuEmployeePortalSettingsModel model);
-        Task<AuEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, AuEmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
-        AuEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
-        Task<AuEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
-        void CreatePayslipConfiguration(int businessId, AuEditBusinessPaySlipApiModel model);
-        Task CreatePayslipConfigurationAsync(int businessId, AuEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default);
-        List<AuBillingPlanResponseModel> ListBillingPlans(int businessId);
-        Task<List<AuBillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default);
-        AuBillingPlanResponseModel GetBusinessBillingPlan(int businessId);
-        Task<AuBillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
-        void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
-        Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
-        List<BusinessAction> ListBusinessNotifications(int businessId);
-        Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
-        void DismissBusinessNotifications(int businessId, int id);
-        Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuBusinessExportModel GetBusinessDetails(int businessId);
+        Task<AuBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        AuBusinessExportModel UpdateBusinessDetails(int businessId, AuEditBusinessDetailsApiModel model);
+        Task<AuBusinessExportModel> UpdateBusinessDetailsAsync(int businessId, AuEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default);
         List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
         Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel);
@@ -81,6 +45,14 @@ namespace KeyPayV2.Au.Functions
         Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default);
         BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request);
         Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        List<BusinessAction> ListBusinessNotifications(int businessId);
+        Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
+        void DismissBusinessNotifications(int businessId, int id);
+        Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        BusinessAtoSupplierModel GetAtoDetails(int businessId);
+        Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model);
+        Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default);
         List<DocumentModel> ListBusinessDocumentDetails(int businessId);
         Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default);
         List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file);
@@ -95,112 +67,54 @@ namespace KeyPayV2.Au.Functions
         Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default);
         DocumentFile GetBusinessDocumentContent(int businessId, int id);
         Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
+        Task<AuEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
+        AuEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, AuEmployeePortalSettingsModel model);
+        Task<AuEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, AuEmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
         EntitlementsModel ListEntitlements(int businessId);
         Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
-        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
-        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
-        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
-        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId);
         Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
         void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
         Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
         DateTime GetTheInitialTaxYear(int businessId);
         Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
+        AuBusinessLeaveSettingsModel GetTheLeaveSettingsForTheBusiness(int businessId);
+        Task<AuBusinessLeaveSettingsModel> GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
+        AuBusinessLeaveSettingsModel UpdateTheLeaveSettingsForTheBusiness(int businessId, AuBusinessLeaveSettingsModel model);
+        Task<AuBusinessLeaveSettingsModel> UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, AuBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default);
+        AuEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
+        Task<AuEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
+        void CreatePayslipConfiguration(int businessId, AuEditBusinessPaySlipApiModel model);
+        Task CreatePayslipConfigurationAsync(int businessId, AuEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default);
+        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
+        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
+        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
+        AuStpRegistrationModel GetStpRegistrationDetails(int businessId);
+        Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel);
+        Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default);
+        List<AuBillingPlanResponseModel> ListBillingPlans(int businessId);
+        Task<List<AuBillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default);
+        AuBillingPlanResponseModel GetBusinessBillingPlan(int businessId);
+        Task<AuBillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
+        void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
+        Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<TagViewModel> ListTheBusinessTags(int businessId, ListTheBusinessTagsQueryModel request);
+        Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, ListTheBusinessTagsQueryModel request, CancellationToken cancellationToken = default);
+        AuBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId);
+        Task<AuBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
+        AuBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, AuBusinessTimesheetSettingsModel model);
+        Task<AuBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, AuBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default);
+        void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
+        Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
         public BusinessFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO details for the business.
-        /// </remarks>
-        public BusinessAtoSupplierModel GetAtoDetails(int businessId)
-        {
-            return ApiRequest<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get);
-        }
-
-        /// <summary>
-        /// Get ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO details for the business.
-        /// </remarks>
-        public Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Sets the ATO details for the business.
-        /// </remarks>
-        public BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
-        {
-            return ApiRequest<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set ATO Details
-        /// </summary>
-        /// <remarks>
-        /// Sets the ATO details for the business.
-        /// </remarks>
-        public Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO settings already applied for this business
-        /// </remarks>
-        public AuStpRegistrationModel GetStpRegistrationDetails(int businessId)
-        {
-            return ApiRequest<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get);
-        }
-
-        /// <summary>
-        /// Get STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the ATO settings already applied for this business
-        /// </remarks>
-        public Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Apply STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Registers the business for STP using the ATO settings supplied
-        /// </remarks>
-        public AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel)
-        {
-            return ApiRequest<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post);
-        }
-
-        /// <summary>
-        /// Apply STP Registration Details
-        /// </summary>
-        /// <remarks>
-        /// Registers the business for STP using the ATO settings supplied
-        /// </remarks>
-        public Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// List Businesses
@@ -271,50 +185,6 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public AuBusinessExportModel GetBusinessDetails(int businessId)
-        {
-            return ApiRequest<AuBusinessExportModel>($"/business/{businessId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public Task<AuBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Business Details
-        /// </summary>
-        /// <remarks>
-        /// Update some standard business details
-        /// </remarks>
-        public AuBusinessExportModel UpdateBusinessDetails(int businessId, AuEditBusinessDetailsApiModel model)
-        {
-            return ApiRequest<AuBusinessExportModel,AuEditBusinessDetailsApiModel>($"/business/{businessId}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Business Details
-        /// </summary>
-        /// <remarks>
-        /// Update some standard business details
-        /// </remarks>
-        public Task<AuBusinessExportModel> UpdateBusinessDetailsAsync(int businessId, AuEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBusinessExportModel,AuEditBusinessDetailsApiModel>($"/business/{businessId}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Business Details by External ID
         /// </summary>
         /// <remarks>
@@ -359,287 +229,47 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
-        {
-            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get the leave settings for the business
-        /// </summary>
-        public AuBusinessLeaveSettingsModel GetTheLeaveSettingsForTheBusiness(int businessId)
-        {
-            return ApiRequest<AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", Method.Get);
-        }
-
-        /// <summary>
-        /// Get the leave settings for the business
-        /// </summary>
-        public Task<AuBusinessLeaveSettingsModel> GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update the leave settings for the business
-        /// </summary>
-        public AuBusinessLeaveSettingsModel UpdateTheLeaveSettingsForTheBusiness(int businessId, AuBusinessLeaveSettingsModel model)
-        {
-            return ApiRequest<AuBusinessLeaveSettingsModel,AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update the leave settings for the business
-        /// </summary>
-        public Task<AuBusinessLeaveSettingsModel> UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, AuBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBusinessLeaveSettingsModel,AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get the timesheet settings for the business
-        /// </summary>
-        public AuBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId)
-        {
-            return ApiRequest<AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get);
-        }
-
-        /// <summary>
-        /// Get the timesheet settings for the business
-        /// </summary>
-        public Task<AuBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update the timesheet settings for the business
-        /// </summary>
-        public AuBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, AuBusinessTimesheetSettingsModel model)
-        {
-            return ApiRequest<AuBusinessTimesheetSettingsModel,AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update the timesheet settings for the business
-        /// </summary>
-        public Task<AuBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, AuBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBusinessTimesheetSettingsModel,AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Portal Settings
+        /// Get Business Details
         /// </summary>
         /// <remarks>
-        /// Updates the business employee portal settings
+        /// Retrieves the details of the business with the specified ID.
         /// </remarks>
-        public AuEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
+        public AuBusinessExportModel GetBusinessDetails(int businessId)
         {
-            return ApiRequest<AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get);
+            return ApiRequest<AuBusinessExportModel>($"/business/{businessId}", Method.Get);
         }
 
         /// <summary>
-        /// Get Employee Portal Settings
+        /// Get Business Details
         /// </summary>
         /// <remarks>
-        /// Updates the business employee portal settings
+        /// Retrieves the details of the business with the specified ID.
         /// </remarks>
-        public Task<AuEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<AuBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Update Employee Portal Settings
+        /// Update Business Details
         /// </summary>
         /// <remarks>
-        /// Updates the business employee portal settings
+        /// Update some standard business details
         /// </remarks>
-        public AuEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, AuEmployeePortalSettingsModel model)
+        public AuBusinessExportModel UpdateBusinessDetails(int businessId, AuEditBusinessDetailsApiModel model)
         {
-            return ApiRequest<AuEmployeePortalSettingsModel,AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post);
+            return ApiRequest<AuBusinessExportModel,AuEditBusinessDetailsApiModel>($"/business/{businessId}", model, Method.Put);
         }
 
         /// <summary>
-        /// Update Employee Portal Settings
+        /// Update Business Details
         /// </summary>
         /// <remarks>
-        /// Updates the business employee portal settings
+        /// Update some standard business details
         /// </remarks>
-        public Task<AuEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, AuEmployeePortalSettingsModel model, CancellationToken cancellationToken = default)
+        public Task<AuBusinessExportModel> UpdateBusinessDetailsAsync(int businessId, AuEditBusinessDetailsApiModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuEmployeePortalSettingsModel,AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get payslip configuration
-        /// </summary>
-        /// <remarks>
-        /// Gets the payslip configuration for the specified business ID.
-        /// </remarks>
-        public AuEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
-        {
-            return ApiRequest<AuEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get);
-        }
-
-        /// <summary>
-        /// Get payslip configuration
-        /// </summary>
-        /// <remarks>
-        /// Gets the payslip configuration for the specified business ID.
-        /// </remarks>
-        public Task<AuEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create payslip configuration
-        /// </summary>
-        /// <remarks>
-        /// Creates the payslip configuration for the specified business ID.
-        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
-        /// An example of what you would populate the EmailBodyMessage field with would be:
-        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
-        /// </remarks>
-        public void CreatePayslipConfiguration(int businessId, AuEditBusinessPaySlipApiModel model)
-        {
-            ApiRequest($"/business/{businessId}/payslip", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create payslip configuration
-        /// </summary>
-        /// <remarks>
-        /// Creates the payslip configuration for the specified business ID.
-        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
-        /// An example of what you would populate the EmailBodyMessage field with would be:
-        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
-        /// </remarks>
-        public Task CreatePayslipConfigurationAsync(int businessId, AuEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Billing Plans
-        /// </summary>
-        /// <remarks>
-        /// Lists all the billing plans available for the current business.
-        /// </remarks>
-        public List<AuBillingPlanResponseModel> ListBillingPlans(int businessId)
-        {
-            return ApiRequest<List<AuBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
-        }
-
-        /// <summary>
-        /// List Billing Plans
-        /// </summary>
-        /// <remarks>
-        /// Lists all the billing plans available for the current business.
-        /// </remarks>
-        public Task<List<AuBillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Billing PLan
-        /// </summary>
-        /// <remarks>
-        /// Get the current billing plan for the business.
-        /// </remarks>
-        public AuBillingPlanResponseModel GetBusinessBillingPlan(int businessId)
-        {
-            return ApiRequest<AuBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Billing PLan
-        /// </summary>
-        /// <remarks>
-        /// Get the current billing plan for the business.
-        /// </remarks>
-        public Task<AuBillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Business Billing Plan
-        /// </summary>
-        /// <remarks>
-        /// Sets the current billing plan for a business
-        /// </remarks>
-        public void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model)
-        {
-            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Business Billing Plan
-        /// </summary>
-        /// <remarks>
-        /// Sets the current billing plan for a business
-        /// </remarks>
-        public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Business Notifications
-        /// </summary>
-        /// <remarks>
-        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
-        /// </remarks>
-        public List<BusinessAction> ListBusinessNotifications(int businessId)
-        {
-            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get);
-        }
-
-        /// <summary>
-        /// List Business Notifications
-        /// </summary>
-        /// <remarks>
-        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
-        /// </remarks>
-        public Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Dismiss Business Notifications
-        /// </summary>
-        /// <remarks>
-        /// Dismisses a business notification, so that it won't be shown again.
-        /// </remarks>
-        public void DismissBusinessNotifications(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete);
-        }
-
-        /// <summary>
-        /// Dismiss Business Notifications
-        /// </summary>
-        /// <remarks>
-        /// Dismisses a business notification, so that it won't be shown again.
-        /// </remarks>
-        public Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete, cancellationToken);
+            return ApiRequestAsync<AuBusinessExportModel,AuEditBusinessDetailsApiModel>($"/business/{businessId}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -825,6 +455,94 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// List Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// </remarks>
+        public List<BusinessAction> ListBusinessNotifications(int businessId)
+        {
+            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get);
+        }
+
+        /// <summary>
+        /// List Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// </remarks>
+        public Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Dismiss Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Dismisses a business notification, so that it won't be shown again.
+        /// </remarks>
+        public void DismissBusinessNotifications(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete);
+        }
+
+        /// <summary>
+        /// Dismiss Business Notifications
+        /// </summary>
+        /// <remarks>
+        /// Dismisses a business notification, so that it won't be shown again.
+        /// </remarks>
+        public Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO details for the business.
+        /// </remarks>
+        public BusinessAtoSupplierModel GetAtoDetails(int businessId)
+        {
+            return ApiRequest<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get);
+        }
+
+        /// <summary>
+        /// Get ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO details for the business.
+        /// </remarks>
+        public Task<BusinessAtoSupplierModel> GetAtoDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BusinessAtoSupplierModel>($"/business/{businessId}/ato", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Sets the ATO details for the business.
+        /// </remarks>
+        public BusinessAtoSupplierModel SetAtoDetails(int businessId, BusinessAtoSupplierModel model)
+        {
+            return ApiRequest<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set ATO Details
+        /// </summary>
+        /// <remarks>
+        /// Sets the ATO details for the business.
+        /// </remarks>
+        public Task<BusinessAtoSupplierModel> SetAtoDetailsAsync(int businessId, BusinessAtoSupplierModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BusinessAtoSupplierModel,BusinessAtoSupplierModel>($"/business/{businessId}/ato", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// List Business Document Details
         /// </summary>
         /// <remarks>
@@ -979,6 +697,50 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public AuEmployeePortalSettingsModel GetEmployeePortalSettings(int businessId)
+        {
+            return ApiRequest<AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public Task<AuEmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public AuEmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, AuEmployeePortalSettingsModel model)
+        {
+            return ApiRequest<AuEmployeePortalSettingsModel,AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Update Employee Portal Settings
+        /// </summary>
+        /// <remarks>
+        /// Updates the business employee portal settings
+        /// </remarks>
+        public Task<AuEmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, AuEmployeePortalSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEmployeePortalSettingsModel,AuEmployeePortalSettingsModel>($"/business/{businessId}/employeeportalsettings", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// List Entitlements
         /// </summary>
         /// <remarks>
@@ -998,50 +760,6 @@ namespace KeyPayV2.Au.Functions
         public Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<EntitlementsModel>($"/business/{businessId}/entitlements", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Rounding Rules
-        /// </summary>
-        /// <remarks>
-        /// Gets the rounding rules for the business.
-        /// </remarks>
-        public TimesheetRoundingRulesModel GetRoundingRules(int businessId)
-        {
-            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Rounding Rules
-        /// </summary>
-        /// <remarks>
-        /// Gets the rounding rules for the business.
-        /// </remarks>
-        public Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Set Rounding Rules
-        /// </summary>
-        /// <remarks>
-        /// Sets the rounding rules for the business.
-        /// </remarks>
-        public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
-        {
-            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.Post);
-        }
-
-        /// <summary>
-        /// Set Rounding Rules
-        /// </summary>
-        /// <remarks>
-        /// Sets the rounding rules for the business.
-        /// </remarks>
-        public Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -1111,6 +829,242 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
+        /// Get the leave settings for the business
+        /// </summary>
+        public AuBusinessLeaveSettingsModel GetTheLeaveSettingsForTheBusiness(int businessId)
+        {
+            return ApiRequest<AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the leave settings for the business
+        /// </summary>
+        public Task<AuBusinessLeaveSettingsModel> GetTheLeaveSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update the leave settings for the business
+        /// </summary>
+        public AuBusinessLeaveSettingsModel UpdateTheLeaveSettingsForTheBusiness(int businessId, AuBusinessLeaveSettingsModel model)
+        {
+            return ApiRequest<AuBusinessLeaveSettingsModel,AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update the leave settings for the business
+        /// </summary>
+        public Task<AuBusinessLeaveSettingsModel> UpdateTheLeaveSettingsForTheBusinessAsync(int businessId, AuBusinessLeaveSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuBusinessLeaveSettingsModel,AuBusinessLeaveSettingsModel>($"/business/{businessId}/leavesettings", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public AuEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
+        {
+            return ApiRequest<AuEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public Task<AuEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Creates the payslip configuration for the specified business ID.
+        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
+        /// An example of what you would populate the EmailBodyMessage field with would be:
+        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
+        /// </remarks>
+        public void CreatePayslipConfiguration(int businessId, AuEditBusinessPaySlipApiModel model)
+        {
+            ApiRequest($"/business/{businessId}/payslip", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Creates the payslip configuration for the specified business ID.
+        /// ShowLineNotes field must be enabled in order to enable the ShowLocationInLineNotes field.
+        /// An example of what you would populate the EmailBodyMessage field with would be:
+        /// <p>Hi {{FirstName}},</p><p>{{BusinessName}} has just processed your pay and a new pay slip is available.</p><p>Regards {{BusinessName}}</p>
+        /// </remarks>
+        public Task CreatePayslipConfigurationAsync(int businessId, AuEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payslip", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Gets the rounding rules for the business.
+        /// </remarks>
+        public TimesheetRoundingRulesModel GetRoundingRules(int businessId)
+        {
+            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Gets the rounding rules for the business.
+        /// </remarks>
+        public Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Sets the rounding rules for the business.
+        /// </remarks>
+        public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
+        {
+            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Rounding Rules
+        /// </summary>
+        /// <remarks>
+        /// Sets the rounding rules for the business.
+        /// </remarks>
+        public Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO settings already applied for this business
+        /// </remarks>
+        public AuStpRegistrationModel GetStpRegistrationDetails(int businessId)
+        {
+            return ApiRequest<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get);
+        }
+
+        /// <summary>
+        /// Get STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the ATO settings already applied for this business
+        /// </remarks>
+        public Task<AuStpRegistrationModel> GetStpRegistrationDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuStpRegistrationModel>($"/business/{businessId}/stpregister", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Apply STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Registers the business for STP using the ATO settings supplied
+        /// </remarks>
+        public AuStpRegistrationModel ApplyStpRegistrationDetails(int businessId, AuStpRegistrationModel stpRegistrationModel)
+        {
+            return ApiRequest<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Apply STP Registration Details
+        /// </summary>
+        /// <remarks>
+        /// Registers the business for STP using the ATO settings supplied
+        /// </remarks>
+        public Task<AuStpRegistrationModel> ApplyStpRegistrationDetailsAsync(int businessId, AuStpRegistrationModel stpRegistrationModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuStpRegistrationModel,AuStpRegistrationModel>($"/business/{businessId}/stpregister", stpRegistrationModel, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Billing Plans
+        /// </summary>
+        /// <remarks>
+        /// Lists all the billing plans available for the current business.
+        /// </remarks>
+        public List<AuBillingPlanResponseModel> ListBillingPlans(int businessId)
+        {
+            return ApiRequest<List<AuBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
+        }
+
+        /// <summary>
+        /// List Billing Plans
+        /// </summary>
+        /// <remarks>
+        /// Lists all the billing plans available for the current business.
+        /// </remarks>
+        public Task<List<AuBillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuBillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Billing PLan
+        /// </summary>
+        /// <remarks>
+        /// Get the current billing plan for the business.
+        /// </remarks>
+        public AuBillingPlanResponseModel GetBusinessBillingPlan(int businessId)
+        {
+            return ApiRequest<AuBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Billing PLan
+        /// </summary>
+        /// <remarks>
+        /// Get the current billing plan for the business.
+        /// </remarks>
+        public Task<AuBillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuBillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Business Billing Plan
+        /// </summary>
+        /// <remarks>
+        /// Sets the current billing plan for a business
+        /// </remarks>
+        public void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model)
+        {
+            ApiRequest($"/business/{businessId}/subscription/setbillingplan", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Business Billing Plan
+        /// </summary>
+        /// <remarks>
+        /// Sets the current billing plan for a business
+        /// </remarks>
+        public Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/subscription/setbillingplan", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// List the Business tags
         /// </summary>
         public List<TagViewModel> ListTheBusinessTags(int businessId)
@@ -1124,6 +1078,70 @@ namespace KeyPayV2.Au.Functions
         public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public List<TagViewModel> ListTheBusinessTags(int businessId, ListTheBusinessTagsQueryModel request)
+        {
+            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, ListTheBusinessTagsQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the timesheet settings for the business
+        /// </summary>
+        public AuBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId)
+        {
+            return ApiRequest<AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the timesheet settings for the business
+        /// </summary>
+        public Task<AuBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update the timesheet settings for the business
+        /// </summary>
+        public AuBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, AuBusinessTimesheetSettingsModel model)
+        {
+            return ApiRequest<AuBusinessTimesheetSettingsModel,AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update the timesheet settings for the business
+        /// </summary>
+        public Task<AuBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, AuBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuBusinessTimesheetSettingsModel,AuBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
         }
     }
 }

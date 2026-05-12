@@ -15,12 +15,6 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IBenefitCategoryFunction
     {
-        UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel);
-        Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default);
-        UkBenefitCategoryReadModel GetBenefitCategoryById(int businessId, int id);
-        Task<UkBenefitCategoryReadModel> GetBenefitCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void DeleteBenefitCategory(int businessId, int id);
-        Task DeleteBenefitCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<UkBenefitCategoryReadModel> ListBenefitCategories(int businessId);
         Task<List<UkBenefitCategoryReadModel>> ListBenefitCategoriesAsync(int businessId, CancellationToken cancellationToken = default);
         UkBenefitCategoryReadModel CreateBenefitCategory(int businessId, UkBenefitCategoryEditModel model);
@@ -35,100 +29,16 @@ namespace KeyPayV2.Uk.Functions
         Task SetProcessingOptionsAsync(int businessId, SaveBenefitCategoriesProcessingOptionsModel model, CancellationToken cancellationToken = default);
         List<BenefitCategoryRegisteredFromTaxYearOption> GetRegisteredFromTaxYearOptions(int businessId);
         Task<List<BenefitCategoryRegisteredFromTaxYearOption>> GetRegisteredFromTaxYearOptionsAsync(int businessId, CancellationToken cancellationToken = default);
+        UkBenefitCategoryReadModel GetBenefitCategoryById(int businessId, int id);
+        Task<UkBenefitCategoryReadModel> GetBenefitCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void DeleteBenefitCategory(int businessId, int id);
+        Task DeleteBenefitCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel);
+        Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default);
     }
     public class BenefitCategoryFunction : BaseFunction, IBenefitCategoryFunction
     {
         public BenefitCategoryFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Create Import Benefit Categories
-        /// </summary>
-        /// <remarks>
-        /// Example request:
-        /// {
-        ///   "isPayrollingBenefit": false,
-        ///   "taxYear": 2024,
-        ///   "carryBenefitForward": true,
-        ///   "benefitCategoryType": 13, // OtherItemsNoNic from BenefitCategoryTypeEnum
-        ///   "benefitCategoryName": "Example benefit category",
-        ///   "value": 99.50,
-        ///   "internalBenefitCategoryEnumId": 2, // Other from BenefitCategoryOtherNoNicSubType
-        ///   "description": "Custom benefit description",
-        ///   "fuelType": 1, // For car benefits: DieselMeetingEuroStandards from BenefitCategoryCarFuelType
-        ///   "engineSize": 2 // For car benefits: Between1401And2000 from BenefitCategoryCarEngineSize
-        /// }
-        /// </remarks>
-        public UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel)
-        {
-            return ApiRequest<UkBenefitCategoryEditModel,ImportBenefitCategoryModel>($"/business/{businessId}/import/benefit-categories", importModel, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Import Benefit Categories
-        /// </summary>
-        /// <remarks>
-        /// Example request:
-        /// {
-        ///   "isPayrollingBenefit": false,
-        ///   "taxYear": 2024,
-        ///   "carryBenefitForward": true,
-        ///   "benefitCategoryType": 13, // OtherItemsNoNic from BenefitCategoryTypeEnum
-        ///   "benefitCategoryName": "Example benefit category",
-        ///   "value": 99.50,
-        ///   "internalBenefitCategoryEnumId": 2, // Other from BenefitCategoryOtherNoNicSubType
-        ///   "description": "Custom benefit description",
-        ///   "fuelType": 1, // For car benefits: DieselMeetingEuroStandards from BenefitCategoryCarFuelType
-        ///   "engineSize": 2 // For car benefits: Between1401And2000 from BenefitCategoryCarEngineSize
-        /// }
-        /// </remarks>
-        public Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkBenefitCategoryEditModel,ImportBenefitCategoryModel>($"/business/{businessId}/import/benefit-categories", importModel, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Benefit Category by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the benefit category with the specified ID
-        /// </remarks>
-        public UkBenefitCategoryReadModel GetBenefitCategoryById(int businessId, int id)
-        {
-            return ApiRequest<UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Benefit Category by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the benefit category with the specified ID
-        /// </remarks>
-        public Task<UkBenefitCategoryReadModel> GetBenefitCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete benefit category
-        /// </summary>
-        /// <remarks>
-        /// Deletes the benefit category with the specified ID
-        /// </remarks>
-        public void DeleteBenefitCategory(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/benefitcategory/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete benefit category
-        /// </summary>
-        /// <remarks>
-        /// Deletes the benefit category with the specified ID
-        /// </remarks>
-        public Task DeleteBenefitCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/benefitcategory/{id}", Method.Delete, cancellationToken);
-        }
 
         /// <summary>
         /// List Benefit Categories
@@ -276,6 +186,96 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<BenefitCategoryRegisteredFromTaxYearOption>> GetRegisteredFromTaxYearOptionsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<BenefitCategoryRegisteredFromTaxYearOption>>($"/business/{businessId}/benefitcategory/registeredfromtaxyearoptions", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Benefit Category by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the benefit category with the specified ID
+        /// </remarks>
+        public UkBenefitCategoryReadModel GetBenefitCategoryById(int businessId, int id)
+        {
+            return ApiRequest<UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Benefit Category by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the benefit category with the specified ID
+        /// </remarks>
+        public Task<UkBenefitCategoryReadModel> GetBenefitCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkBenefitCategoryReadModel>($"/business/{businessId}/benefitcategory/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete benefit category
+        /// </summary>
+        /// <remarks>
+        /// Deletes the benefit category with the specified ID
+        /// </remarks>
+        public void DeleteBenefitCategory(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/benefitcategory/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete benefit category
+        /// </summary>
+        /// <remarks>
+        /// Deletes the benefit category with the specified ID
+        /// </remarks>
+        public Task DeleteBenefitCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/benefitcategory/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Import Benefit Categories
+        /// </summary>
+        /// <remarks>
+        /// Example request:
+        /// {
+        ///   "isPayrollingBenefit": false,
+        ///   "taxYear": 2024,
+        ///   "carryBenefitForward": true,
+        ///   "benefitCategoryType": 13, // OtherItemsNoNic from BenefitCategoryTypeEnum
+        ///   "benefitCategoryName": "Example benefit category",
+        ///   "value": 99.50,
+        ///   "internalBenefitCategoryEnumId": 2, // Other from BenefitCategoryOtherNoNicSubType
+        ///   "description": "Custom benefit description",
+        ///   "fuelType": 1, // For car benefits: DieselMeetingEuroStandards from BenefitCategoryCarFuelType
+        ///   "engineSize": 2 // For car benefits: Between1401And2000 from BenefitCategoryCarEngineSize
+        /// }
+        /// </remarks>
+        public UkBenefitCategoryEditModel CreateImportBenefitCategories(int businessId, ImportBenefitCategoryModel importModel)
+        {
+            return ApiRequest<UkBenefitCategoryEditModel,ImportBenefitCategoryModel>($"/business/{businessId}/import/benefit-categories", importModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Import Benefit Categories
+        /// </summary>
+        /// <remarks>
+        /// Example request:
+        /// {
+        ///   "isPayrollingBenefit": false,
+        ///   "taxYear": 2024,
+        ///   "carryBenefitForward": true,
+        ///   "benefitCategoryType": 13, // OtherItemsNoNic from BenefitCategoryTypeEnum
+        ///   "benefitCategoryName": "Example benefit category",
+        ///   "value": 99.50,
+        ///   "internalBenefitCategoryEnumId": 2, // Other from BenefitCategoryOtherNoNicSubType
+        ///   "description": "Custom benefit description",
+        ///   "fuelType": 1, // For car benefits: DieselMeetingEuroStandards from BenefitCategoryCarFuelType
+        ///   "engineSize": 2 // For car benefits: Between1401And2000 from BenefitCategoryCarEngineSize
+        /// }
+        /// </remarks>
+        public Task<UkBenefitCategoryEditModel> CreateImportBenefitCategoriesAsync(int businessId, ImportBenefitCategoryModel importModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkBenefitCategoryEditModel,ImportBenefitCategoryModel>($"/business/{businessId}/import/benefit-categories", importModel, Method.Post, cancellationToken);
         }
     }
 }

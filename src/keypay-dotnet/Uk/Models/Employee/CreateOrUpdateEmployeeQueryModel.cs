@@ -8,7 +8,6 @@ namespace KeyPayV2.Uk.Models.Employee
 {
     public class CreateOrUpdateEmployeeQueryModel
     {
-        public string Model { get; set; }
         public EmployeeMatchType MatchType { get; set; }
     }
 }

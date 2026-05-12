@@ -26,10 +26,13 @@ namespace KeyPayV2.Uk.Enums
         HeroClearProcessing,
         HeroClearFundsDisbursed,
         HeroClearSubmittedAllFunds,
-        HeroClearInsufficientFunds,
+        HeroClearFundingFailed,
         HeroClearSubmittedWithErrors,
         HeroClearUploadPassed,
         HeroClearUploadFailed,
-        HeroClearCancelled
+        HeroClearCancelled,
+        HeroClearAwaitingApproval,
+        HeroClearPaymentApproved,
+        HeroClearPaymentRejected
     }
 }

@@ -13,6 +13,7 @@ namespace KeyPayV2.Nz.Models.Manager
         public bool IsUnitBasedWorkType { get; set; }
         public string UnitType { get; set; }
         public IList<NzEmploymentTypeEnum> EmploymentTypes { get; set; }
+        public bool ApplyingPieceRate { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int? PayCategoryId { get; set; }

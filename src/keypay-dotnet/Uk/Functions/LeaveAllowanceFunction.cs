@@ -19,24 +19,24 @@ namespace KeyPayV2.Uk.Functions
         Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void AssignLeaveAllowanceTemplate(int businessId, int employeeId, int leaveAllowanceTemplateId);
         Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default);
-        List<UkLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        UkLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate);
-        Task<UkLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
-        UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id);
-        Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        UkLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate);
-        Task<UkLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
-        void DeleteLeaveAllowanceTemplate(int businessId, int id);
-        Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void ReapplyLeaveAllowanceTemplate(int businessId, int id);
-        Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
         Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForAllEmployees(int businessId);
         Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForAllEmployeesAsync(int businessId, CancellationToken cancellationToken = default);
         List<LeaveAllowanceApiModel> SetLeaveAllowances(int businessId, LeaveAllowancesRequest request);
         Task<List<LeaveAllowanceApiModel>> SetLeaveAllowancesAsync(int businessId, LeaveAllowancesRequest request, CancellationToken cancellationToken = default);
         Dictionary<string, IList<LeaveAllowanceApiModel>> GetLeaveAllowancesForEmployee(int businessId, int employeeId);
         Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<UkLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<UkLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        UkLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate);
+        Task<UkLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        void ReapplyLeaveAllowanceTemplate(int businessId, int id);
+        Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id);
+        Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        UkLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate);
+        Task<UkLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default);
+        void DeleteLeaveAllowanceTemplate(int businessId, int id);
+        Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LeaveAllowanceFunction : BaseFunction, ILeaveAllowanceFunction
     {
@@ -84,140 +84,6 @@ namespace KeyPayV2.Uk.Functions
         public Task AssignLeaveAllowanceTemplateAsync(int businessId, int employeeId, int leaveAllowanceTemplateId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/leaveallowancetemplate/assign/{leaveAllowanceTemplateId}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Leave Allowance Templates
-        /// </summary>
-        /// <remarks>
-        /// Lists all the leave allowance templates for this business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<UkLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<UkLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Leave Allowance Templates
-        /// </summary>
-        /// <remarks>
-        /// Lists all the leave allowance templates for this business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<UkLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Creates a new leave allowance template for the business.
-        /// </remarks>
-        public UkLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate)
-        {
-            return ApiRequest<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Creates a new leave allowance template for the business.
-        /// </remarks>
-        public Task<UkLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Leave Allowance Template by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the leave allowance template with the specified ID.
-        /// </remarks>
-        public UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id)
-        {
-            return ApiRequest<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Leave Allowance Template by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the leave allowance template with the specified ID.
-        /// </remarks>
-        public Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Updates the leave allowance template with the specified ID.
-        /// </remarks>
-        public UkLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate)
-        {
-            return ApiRequest<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Updates the leave allowance template with the specified ID.
-        /// </remarks>
-        public Task<UkLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Deletes the leave allowance template with the specified ID.
-        /// </remarks>
-        public void DeleteLeaveAllowanceTemplate(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Deletes the leave allowance template with the specified ID.
-        /// </remarks>
-        public Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Reapply Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Reapply the leave allowance template with the specified ID.
-        /// </remarks>
-        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post);
-        }
-
-        /// <summary>
-        /// Reapply Leave Allowance Template
-        /// </summary>
-        /// <remarks>
-        /// Reapply the leave allowance template with the specified ID.
-        /// </remarks>
-        public Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -284,6 +150,140 @@ namespace KeyPayV2.Uk.Functions
         public Task<Dictionary<string, IList<LeaveAllowanceApiModel>>> GetLeaveAllowancesForEmployeeAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<Dictionary<string, IList<LeaveAllowanceApiModel>>>($"/business/{businessId}/leaveallowances/{employeeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Leave Allowance Templates
+        /// </summary>
+        /// <remarks>
+        /// Lists all the leave allowance templates for this business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<UkLeaveAllowanceTemplateModel> ListLeaveAllowanceTemplates(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<UkLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Leave Allowance Templates
+        /// </summary>
+        /// <remarks>
+        /// Lists all the leave allowance templates for this business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<UkLeaveAllowanceTemplateModel>> ListLeaveAllowanceTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkLeaveAllowanceTemplateModel>>($"/business/{businessId}/leaveallowancetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Creates a new leave allowance template for the business.
+        /// </remarks>
+        public UkLeaveAllowanceTemplateModel CreateLeaveAllowanceTemplate(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate)
+        {
+            return ApiRequest<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Creates a new leave allowance template for the business.
+        /// </remarks>
+        public Task<UkLeaveAllowanceTemplateModel> CreateLeaveAllowanceTemplateAsync(int businessId, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate", leaveAllowanceTemplate, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public void ReapplyLeaveAllowanceTemplate(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post);
+        }
+
+        /// <summary>
+        /// Reapply Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Reapply the leave allowance template with the specified ID.
+        /// </remarks>
+        public Task ReapplyLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/reapply/{id}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Leave Allowance Template by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the leave allowance template with the specified ID.
+        /// </remarks>
+        public UkLeaveAllowanceTemplateModel GetLeaveAllowanceTemplateById(int businessId, int id)
+        {
+            return ApiRequest<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Leave Allowance Template by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the leave allowance template with the specified ID.
+        /// </remarks>
+        public Task<UkLeaveAllowanceTemplateModel> GetLeaveAllowanceTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Updates the leave allowance template with the specified ID.
+        /// </remarks>
+        public UkLeaveAllowanceTemplateModel UpdateLeaveAllowanceTemplate(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate)
+        {
+            return ApiRequest<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Updates the leave allowance template with the specified ID.
+        /// </remarks>
+        public Task<UkLeaveAllowanceTemplateModel> UpdateLeaveAllowanceTemplateAsync(int businessId, int id, UkLeaveAllowanceTemplateModel leaveAllowanceTemplate, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkLeaveAllowanceTemplateModel,UkLeaveAllowanceTemplateModel>($"/business/{businessId}/leaveallowancetemplate/{id}", leaveAllowanceTemplate, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Deletes the leave allowance template with the specified ID.
+        /// </remarks>
+        public void DeleteLeaveAllowanceTemplate(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Leave Allowance Template
+        /// </summary>
+        /// <remarks>
+        /// Deletes the leave allowance template with the specified ID.
+        /// </remarks>
+        public Task DeleteLeaveAllowanceTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/leaveallowancetemplate/{id}", Method.Delete, cancellationToken);
         }
     }
 }

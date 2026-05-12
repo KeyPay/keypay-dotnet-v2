@@ -15,14 +15,14 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IWhiteLabelFunction
     {
-        List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId);
-        Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default);
-        List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request);
-        Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
         List<WhiteLabelModel> ListWhiteLabels();
         Task<List<WhiteLabelModel>> ListWhiteLabelsAsync(CancellationToken cancellationToken = default);
         WhiteLabelModel GetWhiteLabelById(int id);
         Task<WhiteLabelModel> GetWhiteLabelByIdAsync(int id, CancellationToken cancellationToken = default);
+        List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId);
+        Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default);
+        List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request);
+        Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default);
         List<SignupModel> SignupReport(int whitelabelId);
         Task<List<SignupModel>> SignupReportAsync(int whitelabelId, CancellationToken cancellationToken = default);
         List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request);
@@ -31,50 +31,6 @@ namespace KeyPayV2.Au.Functions
     public class WhiteLabelFunction : BaseFunction, IWhiteLabelFunction
     {
         public WhiteLabelFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Active Employees Report
-        /// </summary>
-        /// <remarks>
-        /// White Label Active Employees Report
-        /// </remarks>
-        public List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId)
-        {
-            return ApiRequest<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees", Method.Get);
-        }
-
-        /// <summary>
-        /// Active Employees Report
-        /// </summary>
-        /// <remarks>
-        /// White Label Active Employees Report
-        /// </remarks>
-        public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Active Employees Report
-        /// </summary>
-        /// <remarks>
-        /// White Label Active Employees Report
-        /// </remarks>
-        public List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request)
-        {
-            return ApiRequest<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Active Employees Report
-        /// </summary>
-        /// <remarks>
-        /// White Label Active Employees Report
-        /// </remarks>
-        public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// List White Labels
@@ -118,6 +74,50 @@ namespace KeyPayV2.Au.Functions
         public Task<WhiteLabelModel> GetWhiteLabelByIdAsync(int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<WhiteLabelModel>($"/whitelabel/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Active Employees Report
+        /// </summary>
+        /// <remarks>
+        /// White Label Active Employees Report
+        /// </remarks>
+        public List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId)
+        {
+            return ApiRequest<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees", Method.Get);
+        }
+
+        /// <summary>
+        /// Active Employees Report
+        /// </summary>
+        /// <remarks>
+        /// White Label Active Employees Report
+        /// </remarks>
+        public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Active Employees Report
+        /// </summary>
+        /// <remarks>
+        /// White Label Active Employees Report
+        /// </remarks>
+        public List<AuActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request)
+        {
+            return ApiRequest<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Active Employees Report
+        /// </summary>
+        /// <remarks>
+        /// White Label Active Employees Report
+        /// </remarks>
+        public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
 
         /// <summary>

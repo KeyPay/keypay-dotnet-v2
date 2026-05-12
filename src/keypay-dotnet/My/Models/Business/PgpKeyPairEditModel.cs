@@ -11,6 +11,5 @@ namespace KeyPayV2.My.Models.Business
         public int Id { get; set; }
         public int BusinessId { get; set; }
         public PgpKeyEditModel PublicKey { get; set; }
-        public PgpKeyEditModel PrivateKey { get; set; }
     }
 }

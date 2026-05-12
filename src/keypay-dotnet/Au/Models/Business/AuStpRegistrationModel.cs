@@ -32,6 +32,8 @@ namespace KeyPayV2.Au.Models.Business
         [JsonConverter(typeof(StringEnumConverter))]
         public AtoIntegrationOption AtoIntegrationOption { get; set; }
         public string SbrSoftwareId { get; set; }
+        public string SbrSoftwareProvider { get; set; }
+        public string SignatoryName { get; set; }
         public bool SbrEnabled { get; set; }
         public bool SingleTouchPayrollEnabled { get; set; }
     }

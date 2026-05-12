@@ -12,6 +12,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public bool IncludeCosts { get; set; }
         public IList<TimesheetLineStatusType> Statuses { get; set; }
         public int? WorkTypeId { get; set; }
+        public bool IncludeBreakTimes { get; set; }
         public int PayScheduleId { get; set; }
         public bool IncludePostTaxDeductions { get; set; }
         public DateTime FromDate { get; set; }

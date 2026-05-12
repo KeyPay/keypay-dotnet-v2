@@ -19,12 +19,12 @@ namespace KeyPayV2.Uk.Functions
         Task<List<UkPayConditionRuleSetApiModel>> ListPayConditionRuleSetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         UkPayConditionRuleSetApiModel CreatePayConditionRuleSet(int businessId, CreateUpdatePayConditionRuleSetRequest request);
         Task<UkPayConditionRuleSetApiModel> CreatePayConditionRuleSetAsync(int businessId, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
+        UkPayConditionRuleSetApiModel ClonePayConditionRuleSet(int businessId, ClonePayConditionRuleSetRequest request);
+        Task<UkPayConditionRuleSetApiModel> ClonePayConditionRuleSetAsync(int businessId, ClonePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
         UkPayConditionRuleSetApiModel GetPayConditionRuleSetById(int businessId, int id);
         Task<UkPayConditionRuleSetApiModel> GetPayConditionRuleSetByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         UkPayConditionRuleSetApiModel UpdatePayConditionRuleSet(int businessId, int id, CreateUpdatePayConditionRuleSetRequest request);
         Task<UkPayConditionRuleSetApiModel> UpdatePayConditionRuleSetAsync(int businessId, int id, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
-        UkPayConditionRuleSetApiModel ClonePayConditionRuleSet(int businessId, ClonePayConditionRuleSetRequest request);
-        Task<UkPayConditionRuleSetApiModel> ClonePayConditionRuleSetAsync(int businessId, ClonePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
     }
     public class PayConditionFunction : BaseFunction, IPayConditionFunction
     {
@@ -77,6 +77,30 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Clone Pay Condition Rule Set
+        /// </summary>
+        /// <remarks>
+        /// Clones an existing pay condition rule set. The cloned rule set will have the same rules and settings as the original,
+        /// but will not be associated with any award package. If no name is provided, the name will be '{original name} - Copy'.
+        /// </remarks>
+        public UkPayConditionRuleSetApiModel ClonePayConditionRuleSet(int businessId, ClonePayConditionRuleSetRequest request)
+        {
+            return ApiRequest<UkPayConditionRuleSetApiModel,ClonePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset/clone", request, Method.Post);
+        }
+
+        /// <summary>
+        /// Clone Pay Condition Rule Set
+        /// </summary>
+        /// <remarks>
+        /// Clones an existing pay condition rule set. The cloned rule set will have the same rules and settings as the original,
+        /// but will not be associated with any award package. If no name is provided, the name will be '{original name} - Copy'.
+        /// </remarks>
+        public Task<UkPayConditionRuleSetApiModel> ClonePayConditionRuleSetAsync(int businessId, ClonePayConditionRuleSetRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkPayConditionRuleSetApiModel,ClonePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset/clone", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
         /// Get Pay Condition Rule Set by ID
         /// </summary>
         /// <remarks>
@@ -118,30 +142,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkPayConditionRuleSetApiModel> UpdatePayConditionRuleSetAsync(int businessId, int id, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkPayConditionRuleSetApiModel,CreateUpdatePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset/{id}", request, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Clone Pay Condition Rule Set
-        /// </summary>
-        /// <remarks>
-        /// Clones an existing pay condition rule set. The cloned rule set will have the same rules and settings as the original,
-        /// but will not be associated with any award package. If no name is provided, the name will be '{original name} - Copy'.
-        /// </remarks>
-        public UkPayConditionRuleSetApiModel ClonePayConditionRuleSet(int businessId, ClonePayConditionRuleSetRequest request)
-        {
-            return ApiRequest<UkPayConditionRuleSetApiModel,ClonePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset/clone", request, Method.Post);
-        }
-
-        /// <summary>
-        /// Clone Pay Condition Rule Set
-        /// </summary>
-        /// <remarks>
-        /// Clones an existing pay condition rule set. The cloned rule set will have the same rules and settings as the original,
-        /// but will not be associated with any award package. If no name is provided, the name will be '{original name} - Copy'.
-        /// </remarks>
-        public Task<UkPayConditionRuleSetApiModel> ClonePayConditionRuleSetAsync(int businessId, ClonePayConditionRuleSetRequest request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkPayConditionRuleSetApiModel,ClonePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset/clone", request, Method.Post, cancellationToken);
         }
     }
 }

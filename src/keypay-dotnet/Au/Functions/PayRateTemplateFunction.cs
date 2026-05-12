@@ -17,12 +17,12 @@ namespace KeyPayV2.Au.Functions
     {
         List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
         Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate);
-        Task CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
+        AuPayRateTemplateModel CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate);
+        Task<AuPayRateTemplateModel> CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
         AuPayRateTemplateModel GetPayRateTemplateById(int businessId, int id);
         Task<AuPayRateTemplateModel> GetPayRateTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate);
-        Task UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
+        AuPayRateTemplateModel UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate);
+        Task<AuPayRateTemplateModel> UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
         void DeletePayRateTemplate(int businessId, int id);
         Task DeletePayRateTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -60,9 +60,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new pay rate template for the business.
         /// </remarks>
-        public void CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate)
+        public AuPayRateTemplateModel CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate)
         {
-            ApiRequest($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post);
+            return ApiRequest<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post);
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Creates a new pay rate template for the business.
         /// </remarks>
-        public Task CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
+        public Task<AuPayRateTemplateModel> CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post, cancellationToken);
+            return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate", payRateTemplate, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the pay rate template with the specified ID.
         /// </remarks>
-        public void UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate)
+        public AuPayRateTemplateModel UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate)
         {
-            ApiRequest($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put);
+            return ApiRequest<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put);
         }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace KeyPayV2.Au.Functions
         /// <remarks>
         /// Updates the pay rate template with the specified ID.
         /// </remarks>
-        public Task UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
+        public Task<AuPayRateTemplateModel> UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put, cancellationToken);
+            return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put, cancellationToken);
         }
 
         /// <summary>

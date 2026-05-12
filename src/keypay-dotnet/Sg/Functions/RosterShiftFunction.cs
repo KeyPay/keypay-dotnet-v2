@@ -23,24 +23,24 @@ namespace KeyPayV2.Sg.Functions
         Task<SgEssRosterShiftModel> CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
         SgEssRosterShiftModel CreateRosterShift(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request);
         Task<SgEssRosterShiftModel> CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
-        void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
-        Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
-        List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId);
-        Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
-        Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
-        SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId);
-        Task<SgRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
-        Task<SgRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId);
         Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
         Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId);
+        Task<SgRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        SgRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
+        Task<SgRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId);
+        Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
+        Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
         SgEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel);
         Task<SgEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
         SgEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
         Task<SgEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
+        Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
     }
     public class RosterShiftFunction : BaseFunction, IRosterShiftFunction
     {
@@ -143,69 +143,59 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Stub Shift Timesheets
+        /// Find Matching Clock Off Roster Shift
         /// </summary>
         /// <remarks>
-        /// Generates timesheets for the roster shift with the specified ID.
+        /// If a roster shift exists that could match for this employee to clock off at this time
+        /// given kiosk settings for shift matching, returns that shift.
+        /// Otherwise, the Shift result will be null.
+        /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model)
+        public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId)
         {
-            ApiRequest($"/business/{businessId}/rostershift/{rosterShiftId}/stub", model, Method.Post);
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff", Method.Get);
         }
 
         /// <summary>
-        /// Stub Shift Timesheets
+        /// Find Matching Clock Off Roster Shift
         /// </summary>
         /// <remarks>
-        /// Generates timesheets for the roster shift with the specified ID.
+        /// If a roster shift exists that could match for this employee to clock off at this time
+        /// given kiosk settings for shift matching, returns that shift.
+        /// Otherwise, the Shift result will be null.
+        /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default)
+        public Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/rostershift/{rosterShiftId}/stub", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Find Nearby Roster Shifts
+        /// Find Matching Clock Off Roster Shift
         /// </summary>
         /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
+        /// If a roster shift exists that could match for this employee to clock off at this time
+        /// given kiosk settings for shift matching, returns that shift.
+        /// Otherwise, the Shift result will be null.
+        /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId)
+        public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
         {
-            return ApiRequest<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get);
+            return ApiRequest<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
-        /// Find Nearby Roster Shifts
+        /// Find Matching Clock Off Roster Shift
         /// </summary>
         /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
+        /// If a roster shift exists that could match for this employee to clock off at this time
+        /// given kiosk settings for shift matching, returns that shift.
+        /// Otherwise, the Shift result will be null.
+        /// Note that if the time matches a shift exactly, the Shift result will also be null.
         /// </remarks>
-        public Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Find Nearby Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
-        /// </remarks>
-        public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
-        {
-            return ApiRequest<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Find Nearby Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
-        /// </remarks>
-        public Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -265,59 +255,47 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Find Matching Clock Off Roster Shift
+        /// Find Nearby Roster Shifts
         /// </summary>
         /// <remarks>
-        /// If a roster shift exists that could match for this employee to clock off at this time
-        /// given kiosk settings for shift matching, returns that shift.
-        /// Otherwise, the Shift result will be null.
-        /// Note that if the time matches a shift exactly, the Shift result will also be null.
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
         /// </remarks>
-        public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId)
+        public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId)
         {
-            return ApiRequest<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff", Method.Get);
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get);
         }
 
         /// <summary>
-        /// Find Matching Clock Off Roster Shift
+        /// Find Nearby Roster Shifts
         /// </summary>
         /// <remarks>
-        /// If a roster shift exists that could match for this employee to clock off at this time
-        /// given kiosk settings for shift matching, returns that shift.
-        /// Otherwise, the Shift result will be null.
-        /// Note that if the time matches a shift exactly, the Shift result will also be null.
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
         /// </remarks>
-        public Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Find Matching Clock Off Roster Shift
+        /// Find Nearby Roster Shifts
         /// </summary>
         /// <remarks>
-        /// If a roster shift exists that could match for this employee to clock off at this time
-        /// given kiosk settings for shift matching, returns that shift.
-        /// Otherwise, the Shift result will be null.
-        /// Note that if the time matches a shift exactly, the Shift result will also be null.
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
         /// </remarks>
-        public SgRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
+        public List<SgEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
         {
-            return ApiRequest<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
         }
 
         /// <summary>
-        /// Find Matching Clock Off Roster Shift
+        /// Find Nearby Roster Shifts
         /// </summary>
         /// <remarks>
-        /// If a roster shift exists that could match for this employee to clock off at this time
-        /// given kiosk settings for shift matching, returns that shift.
-        /// Otherwise, the Shift result will be null.
-        /// Note that if the time matches a shift exactly, the Shift result will also be null.
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
         /// </remarks>
-        public Task<SgRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<SgEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SgEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -362,6 +340,28 @@ namespace KeyPayV2.Sg.Functions
         public Task<SgEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<SgEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Stub Shift Timesheets
+        /// </summary>
+        /// <remarks>
+        /// Generates timesheets for the roster shift with the specified ID.
+        /// </remarks>
+        public void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model)
+        {
+            ApiRequest($"/business/{businessId}/rostershift/{rosterShiftId}/stub", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Stub Shift Timesheets
+        /// </summary>
+        /// <remarks>
+        /// Generates timesheets for the roster shift with the specified ID.
+        /// </remarks>
+        public Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/rostershift/{rosterShiftId}/stub", model, Method.Post, cancellationToken);
         }
     }
 }

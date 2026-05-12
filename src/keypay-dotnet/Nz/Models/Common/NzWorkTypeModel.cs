@@ -11,6 +11,7 @@ namespace KeyPayV2.Nz.Models.Common
     public class NzWorkTypeModel
     {
         public IList<NzEmploymentTypeEnum> EmploymentTypes { get; set; }
+        public bool ApplyingPieceRate { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int? PayCategoryId { get; set; }

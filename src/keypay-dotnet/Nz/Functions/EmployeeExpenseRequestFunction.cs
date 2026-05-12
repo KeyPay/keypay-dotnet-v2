@@ -27,10 +27,10 @@ namespace KeyPayV2.Nz.Functions
         Task DeleteExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
         void ApproveExpenseRequest(int businessId, int employeeId, int expenseRequestId);
         Task ApproveExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
-        void DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, string reason);
-        Task DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, string reason, CancellationToken cancellationToken = default);
         AttachmentModel UploadAttachmentToExpenseRequest(int businessId, int employeeId, int expenseRequestId);
         Task<AttachmentModel> UploadAttachmentToExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, string reason);
+        Task DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, string reason, CancellationToken cancellationToken = default);
     }
     public class EmployeeExpenseRequestFunction : BaseFunction, IEmployeeExpenseRequestFunction
     {
@@ -171,30 +171,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Decline Expense Request
-        /// </summary>
-        /// <remarks>
-        /// Declines the expense request with the specified ID. The request body should just be a string, enclosed in double quotes, for the Decline Reason. Do not encase in {}
-        /// eg. "Not a valid expense request"
-        /// </remarks>
-        public void DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, string reason)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.Post);
-        }
-
-        /// <summary>
-        /// Decline Expense Request
-        /// </summary>
-        /// <remarks>
-        /// Declines the expense request with the specified ID. The request body should just be a string, enclosed in double quotes, for the Decline Reason. Do not encase in {}
-        /// eg. "Not a valid expense request"
-        /// </remarks>
-        public Task DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, string reason, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Upload Attachment to Expense Request
         /// </summary>
         /// <remarks>
@@ -216,6 +192,30 @@ namespace KeyPayV2.Nz.Functions
         public Task<AttachmentModel> UploadAttachmentToExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AttachmentModel>($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/attachment", Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Decline Expense Request
+        /// </summary>
+        /// <remarks>
+        /// Declines the expense request with the specified ID. The request body should just be a string, enclosed in double quotes, for the Decline Reason. Do not encase in {}
+        /// eg. "Not a valid expense request"
+        /// </remarks>
+        public void DeclineExpenseRequest(int businessId, int employeeId, int expenseRequestId, string reason)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.Post);
+        }
+
+        /// <summary>
+        /// Decline Expense Request
+        /// </summary>
+        /// <remarks>
+        /// Declines the expense request with the specified ID. The request body should just be a string, enclosed in double quotes, for the Decline Reason. Do not encase in {}
+        /// eg. "Not a valid expense request"
+        /// </remarks>
+        public Task DeclineExpenseRequestAsync(int businessId, int employeeId, int expenseRequestId, string reason, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/expenserequest/{expenseRequestId}/decline", reason, Method.Post, cancellationToken);
         }
     }
 }

@@ -102,6 +102,7 @@ namespace KeyPayV2.Nz.Enums
         RosterCostCalculation,
         HeroClear,
         BrightPay,
-        EmployeeLeaveYearStartDatesImport
+        EmployeeLeaveYearStartDatesImport,
+        PayConditionComparisonUpload
     }
 }

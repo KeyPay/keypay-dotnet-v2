@@ -82,7 +82,7 @@ namespace KeyPayV2.Common
         protected T ApiFileRequest<T>(string url, FileUploadModel file, Method method) where T : new()
         {
             var req = new RestRequest(url, method);
-            req.AddFile(file.FileName, file.File, file.FileName);
+            req.AddFile("file", file.File, file.FileName);
             var result = Api.Execute<T>(req);
             return result;
         }
@@ -90,7 +90,7 @@ namespace KeyPayV2.Common
         protected Task<T> ApiFileRequestAsync<T>(string url, FileUploadModel file, Method method, CancellationToken cancellationToken) where T : new()
         {
             var req = new RestRequest(url, method);
-            req.AddFile(file.FileName, file.File, file.FileName);
+            req.AddFile("file", file.File, file.FileName);
             return Api.ExecuteAsync<T>(req, cancellationToken);
         }
 
@@ -99,7 +99,7 @@ namespace KeyPayV2.Common
             var req = new RestRequest(url, method);
             foreach (var file in files)
             {
-                req.AddFile(file.FileName, file.File, file.FileName);
+                req.AddFile("file", file.File, file.FileName);
             }
             var result = Api.Execute<T>(req);
             return result;
