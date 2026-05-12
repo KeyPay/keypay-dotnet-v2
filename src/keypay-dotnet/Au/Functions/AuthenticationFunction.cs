@@ -23,6 +23,8 @@ namespace KeyPayV2.Au.Functions
         Task<SingleSignOnResponseModel> SingleSignOnAsync(SingleSignOnRequestModel model, CancellationToken cancellationToken = default);
         void OauthToken();
         Task OauthTokenAsync(CancellationToken cancellationToken = default);
+        void RevokeOauth2TokenRfc7009(string token);
+        Task RevokeOauth2TokenRfc7009Async(string token, CancellationToken cancellationToken = default);
     }
     public class AuthenticationFunction : BaseFunction, IAuthenticationFunction
     {
@@ -120,6 +122,30 @@ namespace KeyPayV2.Au.Functions
         public Task OauthTokenAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/oauth/token", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Revoke OAuth2 Token (RFC 7009)
+        /// </summary>
+        /// <remarks>
+        /// Invalidates all active OAuth2 tokens for the user associated with the provided token.
+        /// Returns HTTP 200 regardless of token validity, per RFC 7009.
+        /// </remarks>
+        public void RevokeOauth2TokenRfc7009(string token)
+        {
+            ApiRequest($"/oauth/token/revoke", Method.Post);
+        }
+
+        /// <summary>
+        /// Revoke OAuth2 Token (RFC 7009)
+        /// </summary>
+        /// <remarks>
+        /// Invalidates all active OAuth2 tokens for the user associated with the provided token.
+        /// Returns HTTP 200 regardless of token validity, per RFC 7009.
+        /// </remarks>
+        public Task RevokeOauth2TokenRfc7009Async(string token, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/oauth/token/revoke", Method.Post, cancellationToken);
         }
     }
 }
