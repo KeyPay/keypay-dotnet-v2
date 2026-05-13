@@ -16,6 +16,7 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
         public string ExternalId { get; set; }
         public string Source { get; set; }
         public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
+        public decimal? MaximumAnnualSuperContributionsBase { get; set; }
         public bool ReapplyToLinkedEmployees { get; set; }
     }
 }

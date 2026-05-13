@@ -96,6 +96,10 @@ namespace KeyPayV2.Uk.Enums
         PensionOptoutUnmatched,
         PensionCeaseUnmatched,
         RolledUpHolidayPayAndStatutoryPayWarning,
-        PendingDeductions
+        PendingDeductions,
+        NegativeQualifyingEarnings,
+        Under18WithQualifyingEarnings,
+        SuperGuaranteeShortfall,
+        EmployeeHasOverriddenQuarterlyMcb
     }
 }

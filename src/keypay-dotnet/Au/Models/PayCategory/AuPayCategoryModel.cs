@@ -21,6 +21,7 @@ namespace KeyPayV2.Au.Models.PayCategory
         public int? AwardId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AuPayCategoryType PayCategoryType { get; set; }
+        public bool ExcludeFromQualifyingEarnings { get; set; }
         public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }

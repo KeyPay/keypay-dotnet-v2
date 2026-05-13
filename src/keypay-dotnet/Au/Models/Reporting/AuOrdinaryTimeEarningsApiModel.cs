@@ -10,6 +10,7 @@ namespace KeyPayV2.Au.Models.Reporting
     {
         public decimal Super { get; set; }
         public decimal SuperPercentageOfEarnings { get; set; }
+        public decimal? QualifyingEarnings { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }

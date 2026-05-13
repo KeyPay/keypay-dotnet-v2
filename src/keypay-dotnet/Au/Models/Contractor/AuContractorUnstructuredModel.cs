@@ -45,6 +45,7 @@ namespace KeyPayV2.Au.Models.Contractor
         public string TaxCalculation { get; set; }
         public decimal? SuperThresholdAmount { get; set; }
         public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
+        public decimal? MaximumAnnualSuperContributionsBase { get; set; }
         public decimal? HoursPerDay { get; set; }
         public bool? PostalAddressIsOverseas { get; set; }
         public bool? ResidentialAddressIsOverseas { get; set; }
