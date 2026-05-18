@@ -26,5 +26,9 @@ namespace KeyPayV2.Uk.Models.Employee
         public bool HasActiveP6 { get; set; }
         public decimal? OriginalP45TaxablePay { get; set; }
         public decimal? OriginalP45TaxWithheld { get; set; }
+        public decimal? NewTotalPreviousPay { get; set; }
+        public decimal? NewTotalPreviousTax { get; set; }
+        public DateTime? DateApplied { get; set; }
+        public bool HasSupersededP45 { get; set; }
     }
 }
