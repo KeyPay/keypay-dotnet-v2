@@ -169,6 +169,7 @@ namespace KeyPayV2.Au.Enums
         PayrollAccessProvisioned,
         SenderNameEarlyReminder2Month,
         SenderNameEarlyReminder1Month,
-        SenderNameUrgentReminder14Day
+        SenderNameUrgentReminder14Day,
+        NotifyContractorOfT4ASlipIssued
     }
 }
