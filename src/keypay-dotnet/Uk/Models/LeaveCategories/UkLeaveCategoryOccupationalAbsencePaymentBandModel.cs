@@ -8,7 +8,7 @@ using KeyPayV2.Uk.Enums;
 
 namespace KeyPayV2.Uk.Models.LeaveCategories
 {
-    public class UkLeaveCategoryUkOccupationalAbsencePaymentBandModel
+    public class UkLeaveCategoryOccupationalAbsencePaymentBandModel
     {
         public int PaymentBandIndex { get; set; }
         public decimal Rate { get; set; }
