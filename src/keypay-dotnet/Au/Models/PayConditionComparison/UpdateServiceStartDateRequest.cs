@@ -6,12 +6,12 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Au.Models.PayCondition
+namespace KeyPayV2.Au.Models.PayConditionComparison
 {
-    public class InitialServiceDateResponse
+    public class UpdateServiceStartDateRequest
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public ComparisonStartDateType ServiceStartDateType { get; set; }
+        public ComparisonStartDateType? ServiceStartDateType { get; set; }
         public DateTime? ServiceStartDate { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace KeyPayV2.Au
         ILeaveAllowanceFunction LeaveAllowance { get; }
         ILeaveRequestsFunction LeaveRequests { get; }
         ILocationFunction Location { get; }
-        IPayConditionFunction PayCondition { get; }
+        IPayConditionComparisonFunction PayConditionComparison { get; }
         IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         IPayRunFunction PayRun { get; }
         IEmployeeQualificationsFunction EmployeeQualifications { get; }
@@ -45,6 +45,7 @@ namespace KeyPayV2.Au
         ILookupDataFunction LookupData { get; }
         IManagerFunction Manager { get; }
         IPayCategoryFunction PayCategory { get; }
+        IPayConditionFunction PayCondition { get; }
         IPaymentSummaryFunction PaymentSummary { get; }
         IPayRateTemplateFunction PayRateTemplate { get; }
         IPayScheduleFunction PaySchedule { get; }
@@ -88,7 +89,7 @@ namespace KeyPayV2.Au
             LeaveAllowance = new LeaveAllowanceFunction(Api);
             LeaveRequests = new LeaveRequestsFunction(Api);
             Location = new LocationFunction(Api);
-            PayCondition = new PayConditionFunction(Api);
+            PayConditionComparison = new PayConditionComparisonFunction(Api);
             EmployeePayRateSchedule = new EmployeePayRateScheduleFunction(Api);
             PayRun = new PayRunFunction(Api);
             EmployeeQualifications = new EmployeeQualificationsFunction(Api);
@@ -106,6 +107,7 @@ namespace KeyPayV2.Au
             LookupData = new LookupDataFunction(Api);
             Manager = new ManagerFunction(Api);
             PayCategory = new PayCategoryFunction(Api);
+            PayCondition = new PayConditionFunction(Api);
             PaymentSummary = new PaymentSummaryFunction(Api);
             PayRateTemplate = new PayRateTemplateFunction(Api);
             PaySchedule = new PayScheduleFunction(Api);
@@ -146,7 +148,7 @@ namespace KeyPayV2.Au
         public ILeaveAllowanceFunction LeaveAllowance { get; }
         public ILeaveRequestsFunction LeaveRequests { get; }
         public ILocationFunction Location { get; }
-        public IPayConditionFunction PayCondition { get; }
+        public IPayConditionComparisonFunction PayConditionComparison { get; }
         public IEmployeePayRateScheduleFunction EmployeePayRateSchedule { get; }
         public IPayRunFunction PayRun { get; }
         public IEmployeeQualificationsFunction EmployeeQualifications { get; }
@@ -164,6 +166,7 @@ namespace KeyPayV2.Au
         public ILookupDataFunction LookupData { get; }
         public IManagerFunction Manager { get; }
         public IPayCategoryFunction PayCategory { get; }
+        public IPayConditionFunction PayCondition { get; }
         public IPaymentSummaryFunction PaymentSummary { get; }
         public IPayRateTemplateFunction PayRateTemplate { get; }
         public IPayScheduleFunction PaySchedule { get; }

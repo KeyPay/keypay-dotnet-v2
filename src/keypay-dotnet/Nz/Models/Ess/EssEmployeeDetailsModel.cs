@@ -60,6 +60,7 @@ namespace KeyPayV2.Nz.Models.Ess
         public string TagsString { get; set; }
         public IList<String> Tags { get; set; }
         public IList<String> AllTags { get; set; }
+        public IList<TagGroupModel> TagGroups { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeTimesheetSetting TimesheetSetting { get; set; }
         public bool CanDelete { get; set; }

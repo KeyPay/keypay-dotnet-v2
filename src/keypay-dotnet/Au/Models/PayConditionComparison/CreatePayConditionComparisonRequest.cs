@@ -6,17 +6,15 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
 
-namespace KeyPayV2.Au.Models.PayCondition
+namespace KeyPayV2.Au.Models.PayConditionComparison
 {
-    public class PayConditionComparisonApiModel
+    public class CreatePayConditionComparisonRequest
     {
-        public int Id { get; set; }
         public int AwardPackageId { get; set; }
-        public IdAndName BusinessAwardPackage { get; set; }
-        public IdAndName EmploymentAgreement { get; set; }
+        public int EmploymentAgreementId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public ComparisonStartDateType ComparisonStartDateType { get; set; }
+        public ComparisonStartDateType? ComparisonStartDateType { get; set; }
         public DateTime? ComparisonStartDate { get; set; }
-        public List<AwardTagDto> Tags { get; set; }
+        public List<Int32> TagIds { get; set; }
     }
 }
