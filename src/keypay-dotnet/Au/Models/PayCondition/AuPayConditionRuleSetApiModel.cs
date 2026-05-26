@@ -12,6 +12,7 @@ namespace KeyPayV2.Au.Models.PayCondition
     {
         public int? BusinessAwardPackageId { get; set; }
         public string BusinessAwardPackageName { get; set; }
+        public IList<PayConditionRuleSetPeriodApiModel> Periods { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
