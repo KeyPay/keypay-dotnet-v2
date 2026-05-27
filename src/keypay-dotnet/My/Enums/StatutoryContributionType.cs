@@ -11,6 +11,7 @@ namespace KeyPayV2.My.Enums
         EmployeeSocso,
         EmployerEis,
         EmployeeEis,
-        EmployerHrdf
+        EmployerHrdf,
+        EmployeeSkbbkSocso
     }
 }
