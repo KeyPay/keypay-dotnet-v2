@@ -115,6 +115,11 @@ namespace KeyPayV2.Sg.Enums
         EtpTypeD,
         EtpTypeN,
         EtpTypeB,
-        EtpTypeT
+        EtpTypeT,
+        CaContractorFeesForServices,
+        CaContractorSelfEmployedCommissions,
+        CaContractorLumpSumPayments,
+        CaContractorOtherIncome,
+        CaContractorPension
     }
 }
