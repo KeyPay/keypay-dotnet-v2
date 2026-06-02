@@ -175,6 +175,10 @@ namespace KeyPayV2.Uk.Enums
         SenderNameEarlyReminder2Month,
         SenderNameEarlyReminder1Month,
         SenderNameUrgentReminder14Day,
-        NotifyContractorOfT4ASlipIssued
+        NotifyContractorOfT4ASlipIssued,
+        SapInactivityWarningStaff,
+        SapInactivityWarningManager,
+        SapInactivityRevocationStaff,
+        SapInactivityRevocationManager
     }
 }
