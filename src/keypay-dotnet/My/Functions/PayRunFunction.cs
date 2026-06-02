@@ -53,6 +53,8 @@ namespace KeyPayV2.My.Functions
         Task DeleteDeductionAsync(int businessId, int payRunId, DeleteDeductionQueryModel request, CancellationToken cancellationToken = default);
         MyPayRunDeductionResponse GetDeductionsByEmployeeId(int businessId, int employeeId, int payRunId);
         Task<MyPayRunDeductionResponse> GetDeductionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
+        MyPayRunDetailsModel GetPayRunDetails(int businessId, int payRunId);
+        Task<MyPayRunDetailsModel> GetPayRunDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         MyPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ODataQuery oDataQuery = null);
         Task<MyPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         MyPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null);
@@ -560,6 +562,28 @@ namespace KeyPayV2.My.Functions
         public Task<MyPayRunDeductionResponse> GetDeductionsByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<MyPayRunDeductionResponse>($"/business/{businessId}/payrun/{payRunId}/deductions/{employeeId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Pay Run Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the specified pay run.
+        /// </remarks>
+        public MyPayRunDetailsModel GetPayRunDetails(int businessId, int payRunId)
+        {
+            return ApiRequest<MyPayRunDetailsModel>($"/business/{businessId}/payrun/{payRunId}/details", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Run Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the specified pay run.
+        /// </remarks>
+        public Task<MyPayRunDetailsModel> GetPayRunDetailsAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<MyPayRunDetailsModel>($"/business/{businessId}/payrun/{payRunId}/details", Method.Get, cancellationToken);
         }
 
         /// <summary>
