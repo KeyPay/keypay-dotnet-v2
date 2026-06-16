@@ -11,5 +11,6 @@ namespace KeyPayV2.Au.Models.Employee
         public int Id { get; set; }
         public string Status { get; set; }
         public string DetailedStatus { get; set; }
+        public string OperationType { get; set; }
     }
 }
