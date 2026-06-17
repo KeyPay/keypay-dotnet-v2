@@ -14,6 +14,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public decimal Sfss { get; set; }
         public decimal Help { get; set; }
         public decimal Payg { get; set; }
+        public decimal? QualifyingEarningsOverride { get; set; }
         public string PayCategoryId { get; set; }
         public string PayCategoryName { get; set; }
         public decimal Units { get; set; }

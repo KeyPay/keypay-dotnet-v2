@@ -129,6 +129,10 @@ namespace KeyPayV2.Au.Functions
         Task<AuApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         AuApiPaySlipModel GetPaySlipDataByEmployeeId(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request);
         Task<AuApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request, CancellationToken cancellationToken = default);
+        void SetQualifyingEarningsOverride(int businessId, int employeeId, int payRunId, AuQualifyingEarningsModel model);
+        Task SetQualifyingEarningsOverrideAsync(int businessId, int employeeId, int payRunId, AuQualifyingEarningsModel model, CancellationToken cancellationToken = default);
+        void ClearQualifyingEarningsOverride(int businessId, int employeeId, int payRunId);
+        Task ClearQualifyingEarningsOverrideAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default);
         void Recalculate(int businessId, int payRunId);
         Task RecalculateAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
         Guid RecalculateBackgroundJob(int businessId, int payRunId);
@@ -1420,6 +1424,50 @@ namespace KeyPayV2.Au.Functions
         public Task<AuApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuApiPaySlipModel>($"/business/{businessId}/payrun/{payRunId}/payslips/{employeeId}?showAllData={request.ShowAllData}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Qualifying Earnings Override
+        /// </summary>
+        /// <remarks>
+        /// Sets the qualifying earnings override for an employee in a pay run.
+        /// </remarks>
+        public void SetQualifyingEarningsOverride(int businessId, int employeeId, int payRunId, AuQualifyingEarningsModel model)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/qualifyingearnings/{employeeId}", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Set Qualifying Earnings Override
+        /// </summary>
+        /// <remarks>
+        /// Sets the qualifying earnings override for an employee in a pay run.
+        /// </remarks>
+        public Task SetQualifyingEarningsOverrideAsync(int businessId, int employeeId, int payRunId, AuQualifyingEarningsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/qualifyingearnings/{employeeId}", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Clear Qualifying Earnings Override
+        /// </summary>
+        /// <remarks>
+        /// Clears the qualifying earnings override for an employee in a pay run.
+        /// </remarks>
+        public void ClearQualifyingEarningsOverride(int businessId, int employeeId, int payRunId)
+        {
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/qualifyingearnings/{employeeId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Clear Qualifying Earnings Override
+        /// </summary>
+        /// <remarks>
+        /// Clears the qualifying earnings override for an employee in a pay run.
+        /// </remarks>
+        public Task ClearQualifyingEarningsOverrideAsync(int businessId, int employeeId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/qualifyingearnings/{employeeId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

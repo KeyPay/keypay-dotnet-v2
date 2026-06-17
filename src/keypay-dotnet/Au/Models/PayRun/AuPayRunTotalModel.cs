@@ -13,6 +13,7 @@ namespace KeyPayV2.Au.Models.PayRun
         public decimal HelpWithheld { get; set; }
         public decimal SuperContribution { get; set; }
         public decimal EmployerContribution { get; set; }
+        public decimal? QualifyingEarningsOverride { get; set; }
         public int Id { get; set; }
         public decimal TotalHours { get; set; }
         public decimal GrossEarnings { get; set; }
