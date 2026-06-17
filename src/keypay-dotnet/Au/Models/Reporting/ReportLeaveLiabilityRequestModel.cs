@@ -22,5 +22,6 @@ namespace KeyPayV2.Au.Models.Reporting
         public List<Int32> LeaveTypeIds { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public LeaveReportDisplayEnum? GroupBy { get; set; }
+        public int PayScheduleId { get; set; }
     }
 }

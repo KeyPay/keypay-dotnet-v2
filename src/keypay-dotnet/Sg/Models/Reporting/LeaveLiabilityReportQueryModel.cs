@@ -18,5 +18,6 @@ namespace KeyPayV2.Sg.Models.Reporting
         public int? PayRunId { get; set; }
         public List<Int32> LeaveTypeIds { get; set; }
         public LeaveReportDisplayEnum? GroupBy { get; set; }
+        public int PayScheduleId { get; set; }
     }
 }

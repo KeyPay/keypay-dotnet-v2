@@ -8,7 +8,6 @@ namespace KeyPayV2.Nz.Models.Reporting
 {
     public class LeaveLiabilityReportQueryModel
     {
-        public int PayScheduleId { get; set; }
         public IList<Int32> EmployeeIds { get; set; }
         public Guid? JobId { get; set; }
         public DateTypeEnum FilterType { get; set; }
@@ -20,5 +19,6 @@ namespace KeyPayV2.Nz.Models.Reporting
         public int? PayRunId { get; set; }
         public List<Int32> LeaveTypeIds { get; set; }
         public LeaveReportDisplayEnum? GroupBy { get; set; }
+        public int PayScheduleId { get; set; }
     }
 }

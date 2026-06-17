@@ -19,6 +19,8 @@ namespace KeyPayV2.Nz.Models.PayCategory
         public bool IsParentalLeave { get; set; }
         public bool IsGstExempt { get; set; }
         public bool IsSuperannuationFund { get; set; }
+        public bool RemunerateAtRdpForAdpMethod { get; set; }
+        public bool RemunerateAtAdpForAdpMethod { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public NzPayCategoryType PayCategoryType { get; set; }
         public int Id { get; set; }
