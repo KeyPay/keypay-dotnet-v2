@@ -10,6 +10,7 @@ namespace KeyPayV2.Sg.Enums
         Approved,
         Rejected,
         Processed,
-        AnyExceptRejected
+        AnyExceptRejected,
+        ApprovedOrProcessed
     }
 }
