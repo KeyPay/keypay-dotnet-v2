@@ -25,6 +25,8 @@ namespace KeyPayV2.Uk.Models.PayRun
         public int? LodgementRecordId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public PensionAssessmentStatusEnum? AutoEnrolmentPensionAssessmentStatus { get; set; }
+        public string FpsLateReason { get; set; }
+        public bool IsLateSubmission { get; set; }
         public int Id { get; set; }
         public string EmployeeName { get; set; }
         public decimal TotalHours { get; set; }
