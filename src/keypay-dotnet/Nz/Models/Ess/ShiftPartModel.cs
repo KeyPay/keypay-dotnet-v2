@@ -18,6 +18,7 @@ namespace KeyPayV2.Nz.Models.Ess
         public int PayCategoryId { get; set; }
         public decimal Cost { get; set; }
         public decimal? RateMultiplier { get; set; }
+        public NominalPayCategory AllocationPayCategory { get; set; }
         public decimal BaseRate { get; set; }
         public decimal CalculatedRate { get; set; }
         public string DisplayDuration { get; set; }
