@@ -120,6 +120,7 @@ namespace KeyPayV2.Sg.Enums
         CaContractorSelfEmployedCommissions,
         CaContractorLumpSumPayments,
         CaContractorOtherIncome,
-        CaContractorPension
+        CaContractorPension,
+        EtpSuperableLumpSumD
     }
 }

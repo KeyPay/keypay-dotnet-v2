@@ -100,6 +100,7 @@ namespace KeyPayV2.Uk.Enums
         NegativeQualifyingEarnings,
         Under18WithQualifyingEarnings,
         SuperGuaranteeShortfall,
-        EmployeeHasOverriddenQuarterlyMcb
+        EmployeeHasOverriddenQuarterlyMcb,
+        PilonMissingFromRedundancy
     }
 }

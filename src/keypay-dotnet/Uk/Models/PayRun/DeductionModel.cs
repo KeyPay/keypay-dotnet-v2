@@ -23,6 +23,7 @@ namespace KeyPayV2.Uk.Models.PayRun
         public string PayToSuperFundMemberNumber { get; set; }
         public string PayTo { get; set; }
         public int? AdditionalData { get; set; }
+        public bool ExcludeFromQualifyingEarnings { get; set; }
         public int Id { get; set; }
         public string ExternalId { get; set; }
         public string LocationId { get; set; }
