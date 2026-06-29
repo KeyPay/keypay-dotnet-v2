@@ -35,6 +35,7 @@ namespace KeyPayV2.Uk.Enums
         TFSA,
         RRSPRestricted,
         RRSPNonRestricted,
-        Custom
+        Custom,
+        DPSP
     }
 }
