@@ -16,5 +16,6 @@ namespace KeyPayV2.Au.Models.PayRun
         public SuperClearingHouseEnum? ClearingHouse { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public SuperInterchangeStatus? Status { get; set; }
+        public bool? HasPayoutExclusions { get; set; }
     }
 }

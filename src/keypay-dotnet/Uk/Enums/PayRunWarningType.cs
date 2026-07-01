@@ -101,6 +101,9 @@ namespace KeyPayV2.Uk.Enums
         Under18WithQualifyingEarnings,
         SuperGuaranteeShortfall,
         EmployeeHasOverriddenQuarterlyMcb,
-        PilonMissingFromRedundancy
+        PilonMissingFromRedundancy,
+        SuperMemberVerificationDetailsMismatch,
+        SuperMemberVerificationFundLevel,
+        SuperMemberVerificationIncomplete
     }
 }

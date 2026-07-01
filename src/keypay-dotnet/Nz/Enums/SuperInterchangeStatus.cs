@@ -33,6 +33,9 @@ namespace KeyPayV2.Nz.Enums
         HeroClearCancelled,
         HeroClearAwaitingApproval,
         HeroClearPaymentApproved,
-        HeroClearPaymentRejected
+        HeroClearPaymentRejected,
+        HeroClearPayoutCompleted,
+        HeroClearPayoutPartiallyCompleted,
+        HeroClearPayoutFailed
     }
 }
