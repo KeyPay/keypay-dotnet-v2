@@ -44,5 +44,6 @@ namespace KeyPayV2.Au.Models.PayRun
         public DateTime? SubmitToPensionSyncDateTime { get; set; }
         public bool SaveChangesToDefaultSettings { get; set; }
         public bool FromPayRunAutomation { get; set; }
+        public string UserTimeZone { get; set; }
     }
 }
