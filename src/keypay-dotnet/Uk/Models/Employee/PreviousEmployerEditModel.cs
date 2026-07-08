@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Uk.Models.Common;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json;
 using KeyPayV2.Uk.Enums;
 
 namespace KeyPayV2.Uk.Models.Employee
@@ -21,14 +19,15 @@ namespace KeyPayV2.Uk.Models.Employee
         public string TaxPeriodFrequency { get; set; }
         public int? TaxPeriodNumber { get; set; }
         public string TaxCode { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ExternalService? Source { get; set; }
         public bool HasActiveP6 { get; set; }
+        public bool IsP6ActiveSource { get; set; }
+        public bool IsManualOverrideActiveSource { get; set; }
         public decimal? OriginalP45TaxablePay { get; set; }
         public decimal? OriginalP45TaxWithheld { get; set; }
         public decimal? NewTotalPreviousPay { get; set; }
         public decimal? NewTotalPreviousTax { get; set; }
         public DateTime? DateApplied { get; set; }
         public bool HasSupersededP45 { get; set; }
+        public string P6TaxCode { get; set; }
     }
 }

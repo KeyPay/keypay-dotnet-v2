@@ -52,8 +52,6 @@ namespace KeyPayV2.Uk.Models.Employee
         public SecondmentType? SecondmentType { get; set; }
         public bool? EuropeanEconomicAreaCitizen { get; set; }
         public bool? OccupationalPension { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ExternalService? Source { get; set; }
         public long NotNoticeSequenceNumber { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public EmployeeTypeEnum? EmployeeType { get; set; }
