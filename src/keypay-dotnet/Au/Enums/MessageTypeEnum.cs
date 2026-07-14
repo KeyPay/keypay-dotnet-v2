@@ -175,6 +175,7 @@ namespace KeyPayV2.Au.Enums
         SenderNameEarlyReminder2Month,
         SenderNameEarlyReminder1Month,
         SenderNameUrgentReminder14Day,
+        AuEaPayRateAutoProgressionChanged,
         NotifyContractorOfT4ASlipIssued,
         SapInactivityWarningStaff,
         SapInactivityWarningManager,

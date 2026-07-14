@@ -104,6 +104,7 @@ namespace KeyPayV2.Nz.Enums
         PilonMissingFromRedundancy,
         SuperMemberVerificationDetailsMismatch,
         SuperMemberVerificationFundLevel,
-        SuperMemberVerificationIncomplete
+        SuperMemberVerificationIncomplete,
+        EmployeeExceeded5000KmThreshold
     }
 }

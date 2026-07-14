@@ -104,6 +104,7 @@ namespace KeyPayV2.Sg.Enums
         PilonMissingFromRedundancy,
         SuperMemberVerificationDetailsMismatch,
         SuperMemberVerificationFundLevel,
-        SuperMemberVerificationIncomplete
+        SuperMemberVerificationIncomplete,
+        EmployeeExceeded5000KmThreshold
     }
 }

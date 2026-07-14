@@ -32,5 +32,7 @@ namespace KeyPayV2.My.Models.PayCategory
         public KeyPayV2.My.Enums.MidpointRounding? RoundingMethod { get; set; }
         public bool HideUnitsOnPaySlip { get; set; }
         public bool IsPrimary { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PayCategoryQueueStatusEnum QueueStatus { get; set; }
     }
 }
