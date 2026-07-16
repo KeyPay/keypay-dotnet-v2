@@ -15,12 +15,88 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IAwardFunction
     {
+        List<AwardStatusModel> ListAwards(int businessId);
+        Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AwardStatusModel> ListAwards(int businessId, ListAwardsQueryModel request);
+        Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, ListAwardsQueryModel request, CancellationToken cancellationToken = default);
+        List<InstalledAwardModel> ListInstalledAwards(int businessId);
+        Task<List<InstalledAwardModel>> ListInstalledAwardsAsync(int businessId, CancellationToken cancellationToken = default);
         AwardInstallResponse InstallAward(int businessId, int awardId, AwardInstallRequest request);
         Task<AwardInstallResponse> InstallAwardAsync(int businessId, int awardId, AwardInstallRequest request, CancellationToken cancellationToken = default);
     }
     public class AwardFunction : BaseFunction, IAwardFunction
     {
         public AwardFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// List Awards
+        /// </summary>
+        /// <remarks>
+        /// Returns all awards available to the business with their current status.
+        /// Use the optional status filter to narrow results (e.g. OutOfDate).
+        /// </remarks>
+        public List<AwardStatusModel> ListAwards(int businessId)
+        {
+            return ApiRequest<List<AwardStatusModel>>($"/business/{businessId}/award", Method.Get);
+        }
+
+        /// <summary>
+        /// List Awards
+        /// </summary>
+        /// <remarks>
+        /// Returns all awards available to the business with their current status.
+        /// Use the optional status filter to narrow results (e.g. OutOfDate).
+        /// </remarks>
+        public Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AwardStatusModel>>($"/business/{businessId}/award", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Awards
+        /// </summary>
+        /// <remarks>
+        /// Returns all awards available to the business with their current status.
+        /// Use the optional status filter to narrow results (e.g. OutOfDate).
+        /// </remarks>
+        public List<AwardStatusModel> ListAwards(int businessId, ListAwardsQueryModel request)
+        {
+            return ApiRequest<List<AwardStatusModel>>($"/business/{businessId}/award?status={request.Status}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Awards
+        /// </summary>
+        /// <remarks>
+        /// Returns all awards available to the business with their current status.
+        /// Use the optional status filter to narrow results (e.g. OutOfDate).
+        /// </remarks>
+        public Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, ListAwardsQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AwardStatusModel>>($"/business/{businessId}/award?status={request.Status}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Installed Awards
+        /// </summary>
+        /// <remarks>
+        /// Returns the awards currently installed on the business.
+        /// </remarks>
+        public List<InstalledAwardModel> ListInstalledAwards(int businessId)
+        {
+            return ApiRequest<List<InstalledAwardModel>>($"/business/{businessId}/award/installed", Method.Get);
+        }
+
+        /// <summary>
+        /// List Installed Awards
+        /// </summary>
+        /// <remarks>
+        /// Returns the awards currently installed on the business.
+        /// </remarks>
+        public Task<List<InstalledAwardModel>> ListInstalledAwardsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<InstalledAwardModel>>($"/business/{businessId}/award/installed", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Install Award
