@@ -121,6 +121,8 @@ namespace KeyPayV2.Uk.Enums
         CaContractorLumpSumPayments,
         CaContractorOtherIncome,
         CaContractorPension,
-        EtpSuperableLumpSumD
+        EtpSuperableLumpSumD,
+        EtpSuperableTypeRTaxable,
+        EtpSuperableTypeRTaxFree
     }
 }

@@ -11,7 +11,7 @@ namespace KeyPayV2.Au.Models.Business
     public class AuEditBusinessPaySlipApiModel
     {
         [JsonConverter(typeof(StringEnumConverter))]
-        public PaySlipSuperContributionProcessingFrequencyTextOption SuperContributionProcessingFrequencyTextOption { get; set; }
+        public PaySlipSuperContributionProcessingFrequencyTextOption? SuperContributionProcessingFrequencyTextOption { get; set; }
         public bool ShowClassification { get; set; }
         public bool ShowBasePayRate { get; set; }
         public bool ShowEmployeeId { get; set; }

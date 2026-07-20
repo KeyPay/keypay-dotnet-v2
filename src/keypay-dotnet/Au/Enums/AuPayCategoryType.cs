@@ -45,6 +45,8 @@ namespace KeyPayV2.Au.Enums
         EtpTypeN,
         EtpTypeB,
         EtpTypeT,
-        EtpSuperableLumpSumD
+        EtpSuperableLumpSumD,
+        EtpSuperableTypeRTaxable,
+        EtpSuperableTypeRTaxFree
     }
 }
