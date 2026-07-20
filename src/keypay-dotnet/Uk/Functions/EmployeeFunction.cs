@@ -109,6 +109,8 @@ namespace KeyPayV2.Uk.Functions
         Task<List<PeriodOfLeaveModel>> GetOccupationalAbsenceAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<PeriodOfLeaveModel> GetOccupationalAbsence(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request);
         Task<List<PeriodOfLeaveModel>> GetOccupationalAbsenceAsync(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request, CancellationToken cancellationToken = default);
+        PeriodOfLeaveModel UpdateOccupationalAbsence(int businessId, int employeeId, int id, PeriodOfLeaveModel periodOfLeaveModel);
+        Task<PeriodOfLeaveModel> UpdateOccupationalAbsenceAsync(int businessId, int employeeId, int id, PeriodOfLeaveModel periodOfLeaveModel, CancellationToken cancellationToken = default);
         UkOpeningBalancesModel GetOpeningBalances(int businessId, int employeeId);
         Task<UkOpeningBalancesModel> GetOpeningBalancesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void SetOpeningBalances(int businessId, int employeeId, UkOpeningBalancesModel model);
@@ -1322,6 +1324,22 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<PeriodOfLeaveModel>> GetOccupationalAbsenceAsync(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<PeriodOfLeaveModel>>($"/business/{businessId}/employee/{employeeId}/occupationalabsence?earliestStartDate={request.EarliestStartDate.ToString("yyyy-MM-ddTHH:mm:ss")}&latestStartDate={request.LatestStartDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Occupational Absence
+        /// </summary>
+        public PeriodOfLeaveModel UpdateOccupationalAbsence(int businessId, int employeeId, int id, PeriodOfLeaveModel periodOfLeaveModel)
+        {
+            return ApiRequest<PeriodOfLeaveModel,PeriodOfLeaveModel>($"/business/{businessId}/employee/{employeeId}/occupationalabsence/{id}", periodOfLeaveModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Occupational Absence
+        /// </summary>
+        public Task<PeriodOfLeaveModel> UpdateOccupationalAbsenceAsync(int businessId, int employeeId, int id, PeriodOfLeaveModel periodOfLeaveModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PeriodOfLeaveModel,PeriodOfLeaveModel>($"/business/{businessId}/employee/{employeeId}/occupationalabsence/{id}", periodOfLeaveModel, Method.Put, cancellationToken);
         }
 
         /// <summary>

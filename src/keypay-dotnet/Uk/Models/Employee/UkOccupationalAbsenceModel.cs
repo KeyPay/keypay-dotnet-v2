@@ -36,5 +36,7 @@ namespace KeyPayV2.Uk.Models.Employee
         public int? OverriddenServiceBandId { get; set; }
         public bool MaximumEntitlementReached { get; set; }
         public bool EntitlementFullyExhausted { get; set; }
+        public IList<OspPayPercentByDayModel> PayPercentByDay { get; set; }
+        public bool? SspEnabled { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace KeyPayV2.Uk.Models.Employee
     {
         public EmployeeNationalInsuranceRecordModel NationalInsuranceRecord { get; set; }
         public PreviousEmployerEditModel PreviousEmployer { get; set; }
+        public List<UkP45EntryEditModel> P45Entries { get; set; }
     }
 }

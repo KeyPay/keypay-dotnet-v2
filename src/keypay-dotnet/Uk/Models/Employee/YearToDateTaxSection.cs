@@ -9,6 +9,7 @@ namespace KeyPayV2.Uk.Models.Employee
     public class YearToDateTaxSection
     {
         public decimal? PrevAmount { get; set; }
+        public string PrevAmountSource { get; set; }
         public string Name { get; set; }
         public decimal Amount { get; set; }
         public YearToDateComponent[] Components { get; set; }
