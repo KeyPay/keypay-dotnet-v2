@@ -133,6 +133,18 @@ namespace KeyPayV2.Au.Functions
         Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
         byte[] GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request);
         Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        List<AuQualifyingEarningsReportExportModel> QualifyingEarningsReport(int businessId);
+        Task<List<AuQualifyingEarningsReportExportModel>> QualifyingEarningsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuQualifyingEarningsReportExportModel> QualifyingEarningsReport(int businessId, QualifyingEarningsReportQueryModel request);
+        Task<List<AuQualifyingEarningsReportExportModel>> QualifyingEarningsReportAsync(int businessId, QualifyingEarningsReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] QualifyingEarningsReportAsCsv(int businessId);
+        Task<byte[]> QualifyingEarningsReportAsCsvAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] QualifyingEarningsReportAsCsv(int businessId, QualifyingEarningsReportAsCsvQueryModel request);
+        Task<byte[]> QualifyingEarningsReportAsCsvAsync(int businessId, QualifyingEarningsReportAsCsvQueryModel request, CancellationToken cancellationToken = default);
+        byte[] QualifyingEarningsReportAsExcel(int businessId);
+        Task<byte[]> QualifyingEarningsReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] QualifyingEarningsReportAsExcel(int businessId, QualifyingEarningsReportAsExcelQueryModel request);
+        Task<byte[]> QualifyingEarningsReportAsExcelAsync(int businessId, QualifyingEarningsReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
         List<AuRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId);
         Task<List<AuRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<AuRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId, RosterVsTimesheetComparisonReportQueryModel request);
@@ -1462,6 +1474,150 @@ namespace KeyPayV2.Au.Functions
         public Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiByteArrayRequestAsync($"/business/{businessId}/report/payslip?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a JSON record list.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public List<AuQualifyingEarningsReportExportModel> QualifyingEarningsReport(int businessId)
+        {
+            return ApiRequest<List<AuQualifyingEarningsReportExportModel>>($"/business/{businessId}/report/qualifyingearnings", Method.Get);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a JSON record list.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public Task<List<AuQualifyingEarningsReportExportModel>> QualifyingEarningsReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuQualifyingEarningsReportExportModel>>($"/business/{businessId}/report/qualifyingearnings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a JSON record list.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public List<AuQualifyingEarningsReportExportModel> QualifyingEarningsReport(int businessId, QualifyingEarningsReportQueryModel request)
+        {
+            return ApiRequest<List<AuQualifyingEarningsReportExportModel>>($"/business/{businessId}/report/qualifyingearnings?PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a JSON record list.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public Task<List<AuQualifyingEarningsReportExportModel>> QualifyingEarningsReportAsync(int businessId, QualifyingEarningsReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuQualifyingEarningsReportExportModel>>($"/business/{businessId}/report/qualifyingearnings?PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as CSV
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a CSV file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public byte[] QualifyingEarningsReportAsCsv(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/qualifyingearnings/csv", Method.Get);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as CSV
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a CSV file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public Task<byte[]> QualifyingEarningsReportAsCsvAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/qualifyingearnings/csv", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as CSV
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a CSV file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public byte[] QualifyingEarningsReportAsCsv(int businessId, QualifyingEarningsReportAsCsvQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/qualifyingearnings/csv?PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as CSV
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as a CSV file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public Task<byte[]> QualifyingEarningsReportAsCsvAsync(int businessId, QualifyingEarningsReportAsCsvQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/qualifyingearnings/csv?PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as an Excel (.xlsx) file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public byte[] QualifyingEarningsReportAsExcel(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/qualifyingearnings/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as an Excel (.xlsx) file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public Task<byte[]> QualifyingEarningsReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/qualifyingearnings/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as an Excel (.xlsx) file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public byte[] QualifyingEarningsReportAsExcel(int businessId, QualifyingEarningsReportAsExcelQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/qualifyingearnings/xlsx?PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get);
+        }
+
+        /// <summary>
+        /// Qualifying Earnings Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a qualifying earnings report as an Excel (.xlsx) file.
+        /// Supports draft and finalised pay runs via the `PayRunId` parameter.
+        /// </remarks>
+        public Task<byte[]> QualifyingEarningsReportAsExcelAsync(int businessId, QualifyingEarningsReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/qualifyingearnings/xlsx?PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}", Method.Get, cancellationToken);
         }
 
         /// <summary>

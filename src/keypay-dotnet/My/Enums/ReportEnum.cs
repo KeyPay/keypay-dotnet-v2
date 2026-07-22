@@ -109,6 +109,7 @@ namespace KeyPayV2.My.Enums
         StatsNzQesReport,
         IrdReconciliationReport,
         PayConditionComparisonReport,
+        QualifyingEarningsReport,
         CasualConversionReport,
         HeroClearCterReport
     }
