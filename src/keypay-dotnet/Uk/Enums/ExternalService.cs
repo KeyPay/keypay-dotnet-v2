@@ -103,6 +103,7 @@ namespace KeyPayV2.Uk.Enums
         HeroClear,
         BrightPay,
         EmployeeLeaveYearStartDatesImport,
-        PayConditionComparisonUpload
+        PayConditionComparisonUpload,
+        GlobalMoneyMovement
     }
 }
