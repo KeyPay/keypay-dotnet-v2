@@ -15,38 +15,16 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IUserFunction
     {
-        UserModel GetUserDetails();
-        Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default);
         NewUserCreatedModel CreateNewUser(NewUserModel model);
         Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default);
+        UserModel GetUserDetails();
+        Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default);
         UserUpdatedModel UpdateUser(UpdateUserModel model);
         Task<UserUpdatedModel> UpdateUserAsync(UpdateUserModel model, CancellationToken cancellationToken = default);
     }
     public class UserFunction : BaseFunction, IUserFunction
     {
         public UserFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get User Details
-        /// </summary>
-        /// <remarks>
-        /// Gets details about the user.
-        /// </remarks>
-        public UserModel GetUserDetails()
-        {
-            return ApiRequest<UserModel>($"/user", Method.Get);
-        }
-
-        /// <summary>
-        /// Get User Details
-        /// </summary>
-        /// <remarks>
-        /// Gets details about the user.
-        /// </remarks>
-        public Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UserModel>($"/user", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create New User
@@ -72,6 +50,28 @@ namespace KeyPayV2.Au.Functions
         public Task<NewUserCreatedModel> CreateNewUserAsync(NewUserModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NewUserCreatedModel,NewUserModel>($"/user", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get User Details
+        /// </summary>
+        /// <remarks>
+        /// Gets details about the user.
+        /// </remarks>
+        public UserModel GetUserDetails()
+        {
+            return ApiRequest<UserModel>($"/user", Method.Get);
+        }
+
+        /// <summary>
+        /// Get User Details
+        /// </summary>
+        /// <remarks>
+        /// Gets details about the user.
+        /// </remarks>
+        public Task<UserModel> GetUserDetailsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UserModel>($"/user", Method.Get, cancellationToken);
         }
 
         /// <summary>

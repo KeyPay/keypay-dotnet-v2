@@ -21,16 +21,16 @@ namespace KeyPayV2.My.Functions
         Task<List<PublicHolidayModel>> GetPublicHolidaysForYearAsync(int businessId, GetPublicHolidaysForYearQueryModel request, CancellationToken cancellationToken = default);
         PublicHolidayModel AddAPublicHoliday(int businessId, PublicHolidayModel publicHoliday);
         Task<PublicHolidayModel> AddAPublicHolidayAsync(int businessId, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default);
+        PublicHolidayModel GetPublicHolidayDetails(int businessId, int id);
+        Task<PublicHolidayModel> GetPublicHolidayDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void DeletePublicHoliday(int businessId, int id);
+        Task DeletePublicHolidayAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void DeletePublicHolidayByDate(int businessId);
         Task DeletePublicHolidayByDateAsync(int businessId, CancellationToken cancellationToken = default);
         void DeletePublicHolidayByDate(int businessId, DeletePublicHolidayByDateQueryModel request);
         Task DeletePublicHolidayByDateAsync(int businessId, DeletePublicHolidayByDateQueryModel request, CancellationToken cancellationToken = default);
-        PublicHolidayModel GetPublicHolidayDetails(int businessId, int id);
-        Task<PublicHolidayModel> GetPublicHolidayDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void UpdatePublicHoliday(int businessId, int id, PublicHolidayModel publicHoliday);
         Task UpdatePublicHolidayAsync(int businessId, int id, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default);
-        void DeletePublicHoliday(int businessId, int id);
-        Task DeletePublicHolidayAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class PublicHolidayFunction : BaseFunction, IPublicHolidayFunction
     {
@@ -103,6 +103,50 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
+        /// Get Public Holiday Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for a public holiday with a specific ID
+        /// </remarks>
+        public PublicHolidayModel GetPublicHolidayDetails(int businessId, int id)
+        {
+            return ApiRequest<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Public Holiday Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for a public holiday with a specific ID
+        /// </remarks>
+        public Task<PublicHolidayModel> GetPublicHolidayDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Public Holiday
+        /// </summary>
+        /// <remarks>
+        /// Deletes the public holiday with the specified ID.
+        /// </remarks>
+        public void DeletePublicHoliday(int businessId, int id)
+        {
+            ApiRequest($"/business/{businessId}/publicholiday/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Public Holiday
+        /// </summary>
+        /// <remarks>
+        /// Deletes the public holiday with the specified ID.
+        /// </remarks>
+        public Task DeletePublicHolidayAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/publicholiday/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Public Holiday by Date
         /// </summary>
         /// <remarks>
@@ -147,28 +191,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Get Public Holiday Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for a public holiday with a specific ID
-        /// </remarks>
-        public PublicHolidayModel GetPublicHolidayDetails(int businessId, int id)
-        {
-            return ApiRequest<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Public Holiday Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for a public holiday with a specific ID
-        /// </remarks>
-        public Task<PublicHolidayModel> GetPublicHolidayDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<PublicHolidayModel>($"/business/{businessId}/publicholiday/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Update Public Holiday
         /// </summary>
         /// <remarks>
@@ -188,28 +210,6 @@ namespace KeyPayV2.My.Functions
         public Task UpdatePublicHolidayAsync(int businessId, int id, PublicHolidayModel publicHoliday, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/publicholiday/{id}", publicHoliday, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Public Holiday
-        /// </summary>
-        /// <remarks>
-        /// Deletes the public holiday with the specified ID.
-        /// </remarks>
-        public void DeletePublicHoliday(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/publicholiday/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Public Holiday
-        /// </summary>
-        /// <remarks>
-        /// Deletes the public holiday with the specified ID.
-        /// </remarks>
-        public Task DeletePublicHolidayAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/publicholiday/{id}", Method.Delete, cancellationToken);
         }
     }
 }

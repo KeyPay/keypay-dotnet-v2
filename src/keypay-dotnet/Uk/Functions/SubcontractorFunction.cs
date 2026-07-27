@@ -15,36 +15,14 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface ISubcontractorFunction
     {
-        UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel);
-        Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default);
         UkSubcontractorPaymentDetailsModel SaveSubcontractorPaymentDetails(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model);
         Task<UkSubcontractorPaymentDetailsModel> SaveSubcontractorPaymentDetailsAsync(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model, CancellationToken cancellationToken = default);
+        UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel);
+        Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default);
     }
     public class SubcontractorFunction : BaseFunction, ISubcontractorFunction
     {
         public SubcontractorFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Create subcontractor
-        /// </summary>
-        /// <remarks>
-        /// Creates a new subcontractor
-        /// </remarks>
-        public UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel)
-        {
-            return ApiRequest<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", createModel, Method.Post);
-        }
-
-        /// <summary>
-        /// Create subcontractor
-        /// </summary>
-        /// <remarks>
-        /// Creates a new subcontractor
-        /// </remarks>
-        public Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", createModel, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// Save subcontractor payment details
@@ -66,6 +44,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkSubcontractorPaymentDetailsModel> SaveSubcontractorPaymentDetailsAsync(int businessId, int subcontractorId, UkSaveSubcontractorPaymentDetailsModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkSubcontractorPaymentDetailsModel,UkSaveSubcontractorPaymentDetailsModel>($"/business/{businessId}/subcontractor/{subcontractorId}/paymentdetails", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create subcontractor
+        /// </summary>
+        /// <remarks>
+        /// Creates a new subcontractor
+        /// </remarks>
+        public UkSubcontractorReadModel CreateSubcontractor(int businessId, UkSubcontractorCreateModel createModel)
+        {
+            return ApiRequest<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", createModel, Method.Post);
+        }
+
+        /// <summary>
+        /// Create subcontractor
+        /// </summary>
+        /// <remarks>
+        /// Creates a new subcontractor
+        /// </remarks>
+        public Task<UkSubcontractorReadModel> CreateSubcontractorAsync(int businessId, UkSubcontractorCreateModel createModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkSubcontractorReadModel,UkSubcontractorCreateModel>($"/business/{businessId}/subcontractor", createModel, Method.Post, cancellationToken);
         }
     }
 }

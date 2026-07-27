@@ -15,44 +15,20 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IPayRateTemplateFunction
     {
-        List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuPayRateTemplateModel CreatePayRateTemplate(int businessId, AuPayRateTemplateModel payRateTemplate);
         Task<AuPayRateTemplateModel> CreatePayRateTemplateAsync(int businessId, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
         AuPayRateTemplateModel GetPayRateTemplateById(int businessId, int id);
         Task<AuPayRateTemplateModel> GetPayRateTemplateByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         AuPayRateTemplateModel UpdatePayRateTemplate(int businessId, int id, AuPayRateTemplateModel payRateTemplate);
         Task<AuPayRateTemplateModel> UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default);
+        List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void DeletePayRateTemplate(int businessId, int id);
         Task DeletePayRateTemplateAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class PayRateTemplateFunction : BaseFunction, IPayRateTemplateFunction
     {
         public PayRateTemplateFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Pay Rate Templates
-        /// </summary>
-        /// <remarks>
-        /// Lists all the pay rate templates for the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Pay Rate Templates
-        /// </summary>
-        /// <remarks>
-        /// Lists all the pay rate templates for the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create Pay Rate Template
@@ -118,6 +94,30 @@ namespace KeyPayV2.Au.Functions
         public Task<AuPayRateTemplateModel> UpdatePayRateTemplateAsync(int businessId, int id, AuPayRateTemplateModel payRateTemplate, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuPayRateTemplateModel,AuPayRateTemplateModel>($"/business/{businessId}/payratetemplate/{id}", payRateTemplate, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Pay Rate Templates
+        /// </summary>
+        /// <remarks>
+        /// Lists all the pay rate templates for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<AuPayRateTemplateModel> ListPayRateTemplates(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Pay Rate Templates
+        /// </summary>
+        /// <remarks>
+        /// Lists all the pay rate templates for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<AuPayRateTemplateModel>> ListPayRateTemplatesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuPayRateTemplateModel>>($"/business/{businessId}/payratetemplate{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

@@ -15,46 +15,22 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILocationFunction
     {
-        List<NzLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<NzLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<NzLocationModel> ListBusinessLocations(int businessId, ODataQuery oDataQuery = null);
         Task<List<NzLocationModel>> ListBusinessLocationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<NzLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<NzLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzLocationModel CreateLocation(int businessId, NzLocationModel location);
         Task<NzLocationModel> CreateLocationAsync(int businessId, NzLocationModel location, CancellationToken cancellationToken = default);
-        NzSingleLocationModel GetLocationById(int businessId, int id);
-        Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         NzLocationModel UpdateLocation(int businessId, int id, NzLocationModel location);
         Task<NzLocationModel> UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default);
+        NzSingleLocationModel GetLocationById(int businessId, int id);
+        Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         void DeleteLocation(int businessId, int id);
         Task DeleteLocationAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LocationFunction : BaseFunction, ILocationFunction
     {
         public LocationFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Employee Locations
-        /// </summary>
-        /// <remarks>
-        /// Lists all the locations for an employee.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<NzLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<NzLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Locations
-        /// </summary>
-        /// <remarks>
-        /// Lists all the locations for an employee.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<NzLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// List Business Locations
@@ -81,6 +57,30 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
+        /// List Employee Locations
+        /// </summary>
+        /// <remarks>
+        /// Lists all the locations for an employee.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<NzLocationModel> ListEmployeeLocations(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<NzLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Locations
+        /// </summary>
+        /// <remarks>
+        /// Lists all the locations for an employee.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<NzLocationModel>> ListEmployeeLocationsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzLocationModel>>($"/business/{businessId}/employee/{employeeId}/location{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
         /// Create Location
         /// </summary>
         /// <remarks>
@@ -103,28 +103,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public NzSingleLocationModel GetLocationById(int businessId, int id)
-        {
-            return ApiRequest<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Location By Id
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the location with the specified ID.
-        /// </remarks>
-        public Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Update Location
         /// </summary>
         /// <remarks>
@@ -144,6 +122,28 @@ namespace KeyPayV2.Nz.Functions
         public Task<NzLocationModel> UpdateLocationAsync(int businessId, int id, NzLocationModel location, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NzLocationModel,NzLocationModel>($"/business/{businessId}/location/{id}", location, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public NzSingleLocationModel GetLocationById(int businessId, int id)
+        {
+            return ApiRequest<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Location By Id
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the location with the specified ID.
+        /// </remarks>
+        public Task<NzSingleLocationModel> GetLocationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzSingleLocationModel>($"/business/{businessId}/location/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>

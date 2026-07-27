@@ -15,6 +15,10 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IRosterShiftFunction
     {
+        List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId);
+        Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
+        Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
         List<UkRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId);
         Task<List<UkRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default);
         List<UkRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request);
@@ -23,6 +27,10 @@ namespace KeyPayV2.Uk.Functions
         Task<UkEssRosterShiftModel> CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
         UkEssRosterShiftModel CreateRosterShift(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request);
         Task<UkEssRosterShiftModel> CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel);
+        Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
+        UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
+        Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         UkRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId);
         Task<UkRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         UkRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
@@ -31,20 +39,56 @@ namespace KeyPayV2.Uk.Functions
         Task<UkRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         UkRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request);
         Task<UkRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default);
-        List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId);
-        Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
-        Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
-        UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel);
-        Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
-        UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
-        Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
         Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
     }
     public class RosterShiftFunction : BaseFunction, IRosterShiftFunction
     {
         public RosterShiftFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Find Nearby Roster Shifts
+        /// </summary>
+        /// <remarks>
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
+        /// </remarks>
+        public List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId)
+        {
+            return ApiRequest<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get);
+        }
+
+        /// <summary>
+        /// Find Nearby Roster Shifts
+        /// </summary>
+        /// <remarks>
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
+        /// </remarks>
+        public Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Find Nearby Roster Shifts
+        /// </summary>
+        /// <remarks>
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
+        /// </remarks>
+        public List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
+        {
+            return ApiRequest<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Find Nearby Roster Shifts
+        /// </summary>
+        /// <remarks>
+        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
+        /// </remarks>
+        public Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Roster Shifts
@@ -140,6 +184,50 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkEssRosterShiftModel> CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift?publish={request.Publish}", shiftModel, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel)
+        {
+            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
+        {
+            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -252,94 +340,6 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockon?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Find Nearby Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
-        /// </remarks>
-        public List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId)
-        {
-            return ApiRequest<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get);
-        }
-
-        /// <summary>
-        /// Find Nearby Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
-        /// </remarks>
-        public Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Find Nearby Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
-        /// </remarks>
-        public List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
-        {
-            return ApiRequest<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Find Nearby Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Finds any of the employee's roster shifts that are nearby to the specified local time.
-        /// </remarks>
-        public Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update roster shift
-        /// </summary>
-        /// <remarks>
-        /// Update an individual roster shift
-        /// </remarks>
-        public UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel)
-        {
-            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update roster shift
-        /// </summary>
-        /// <remarks>
-        /// Update an individual roster shift
-        /// </remarks>
-        public Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update roster shift
-        /// </summary>
-        /// <remarks>
-        /// Update an individual roster shift
-        /// </remarks>
-        public UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
-        {
-            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update roster shift
-        /// </summary>
-        /// <remarks>
-        /// Update an individual roster shift
-        /// </remarks>
-        public Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
         }
 
         /// <summary>

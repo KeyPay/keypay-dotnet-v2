@@ -15,42 +15,20 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IContractorFunction
     {
-        List<ContractorSimpleModel> ListContractors(int businessId);
-        Task<List<ContractorSimpleModel>> ListContractorsAsync(int businessId, CancellationToken cancellationToken = default);
         AuContractorUnstructuredModel CreateOrUpdateContractor(int businessId, AuContractorUnstructuredModel model);
         Task<AuContractorUnstructuredModel> CreateOrUpdateContractorAsync(int businessId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default);
         AuContractorUnstructuredModel GetContractorByIdentifier(int businessId, int contractorId);
         Task<AuContractorUnstructuredModel> GetContractorByIdentifierAsync(int businessId, int contractorId, CancellationToken cancellationToken = default);
         AuContractorUnstructuredModel UpdateContractor(int businessId, int contractorId, AuContractorUnstructuredModel model);
         Task<AuContractorUnstructuredModel> UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default);
+        List<ContractorSimpleModel> ListContractors(int businessId);
+        Task<List<ContractorSimpleModel>> ListContractorsAsync(int businessId, CancellationToken cancellationToken = default);
         void DeactivateContractor(int businessId, int contractorId, DeactivateContractorModel deactivateContractorModel);
         Task DeactivateContractorAsync(int businessId, int contractorId, DeactivateContractorModel deactivateContractorModel, CancellationToken cancellationToken = default);
     }
     public class ContractorFunction : BaseFunction, IContractorFunction
     {
         public ContractorFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List contractors
-        /// </summary>
-        /// <remarks>
-        /// List active contractors for the business.
-        /// </remarks>
-        public List<ContractorSimpleModel> ListContractors(int businessId)
-        {
-            return ApiRequest<List<ContractorSimpleModel>>($"/business/{businessId}/contractor", Method.Get);
-        }
-
-        /// <summary>
-        /// List contractors
-        /// </summary>
-        /// <remarks>
-        /// List active contractors for the business.
-        /// </remarks>
-        public Task<List<ContractorSimpleModel>> ListContractorsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<ContractorSimpleModel>>($"/business/{businessId}/contractor", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create or update contractor
@@ -130,6 +108,28 @@ namespace KeyPayV2.Au.Functions
         public Task<AuContractorUnstructuredModel> UpdateContractorAsync(int businessId, int contractorId, AuContractorUnstructuredModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuContractorUnstructuredModel,AuContractorUnstructuredModel>($"/business/{businessId}/contractor/{contractorId}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// List contractors
+        /// </summary>
+        /// <remarks>
+        /// List active contractors for the business.
+        /// </remarks>
+        public List<ContractorSimpleModel> ListContractors(int businessId)
+        {
+            return ApiRequest<List<ContractorSimpleModel>>($"/business/{businessId}/contractor", Method.Get);
+        }
+
+        /// <summary>
+        /// List contractors
+        /// </summary>
+        /// <remarks>
+        /// List active contractors for the business.
+        /// </remarks>
+        public Task<List<ContractorSimpleModel>> ListContractorsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<ContractorSimpleModel>>($"/business/{businessId}/contractor", Method.Get, cancellationToken);
         }
 
         /// <summary>

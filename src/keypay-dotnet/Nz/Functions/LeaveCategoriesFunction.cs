@@ -15,12 +15,12 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILeaveCategoriesFunction
     {
+        List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzBusinessHolidayLeaveSettingsApiDetailModel GetHolidayLeaveSettings(int businessId);
         Task<NzBusinessHolidayLeaveSettingsApiDetailModel> GetHolidayLeaveSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         NzBusinessHolidayLeaveSettingsApiDetailModel SetHolidayLeaveSettings(int businessId, NzBusinessHolidayLeaveSettingsApiModel model);
         Task<NzBusinessHolidayLeaveSettingsApiDetailModel> SetHolidayLeaveSettingsAsync(int businessId, NzBusinessHolidayLeaveSettingsApiModel model, CancellationToken cancellationToken = default);
-        List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         NzLeaveCategoryModel CreateLeaveCategory(int businessId, NzLeaveCategoryModel leaveCategory);
         Task<NzLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, NzLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         NzLeaveCategoryModel GetLeaveCategoryById(int businessId, int id);
@@ -33,6 +33,30 @@ namespace KeyPayV2.Nz.Functions
     public class LeaveCategoriesFunction : BaseFunction, ILeaveCategoriesFunction
     {
         public LeaveCategoriesFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// List Leave Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the leave categories for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Leave Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the leave categories for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Holiday Leave Settings
@@ -76,30 +100,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<NzBusinessHolidayLeaveSettingsApiDetailModel> SetHolidayLeaveSettingsAsync(int businessId, NzBusinessHolidayLeaveSettingsApiModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NzBusinessHolidayLeaveSettingsApiDetailModel,NzBusinessHolidayLeaveSettingsApiModel>($"/business/{businessId}/holidayleavesettings", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Leave Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the leave categories for the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<NzLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Leave Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the leave categories for the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<NzLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

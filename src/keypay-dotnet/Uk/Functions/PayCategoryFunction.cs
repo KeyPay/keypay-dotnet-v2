@@ -15,10 +15,10 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IPayCategoryFunction
     {
-        UkPayCategoryModel CreatePayCategory(int businessId, UkPayCategoryModel payCategory);
-        Task<UkPayCategoryModel> CreatePayCategoryAsync(int businessId, UkPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         List<UkPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<UkPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        UkPayCategoryModel CreatePayCategory(int businessId, UkPayCategoryModel payCategory);
+        Task<UkPayCategoryModel> CreatePayCategoryAsync(int businessId, UkPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         UkPayCategoryModel GetPayCategoryById(int businessId, int id);
         Task<UkPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         UkPayCategoryModel UpdatePayCategory(int businessId, int id, UkPayCategoryModel payCategory);
@@ -29,28 +29,6 @@ namespace KeyPayV2.Uk.Functions
     public class PayCategoryFunction : BaseFunction, IPayCategoryFunction
     {
         public PayCategoryFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Create Pay Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay category for the business.
-        /// </remarks>
-        public UkPayCategoryModel CreatePayCategory(int businessId, UkPayCategoryModel payCategory)
-        {
-            return ApiRequest<UkPayCategoryModel,UkPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Pay Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay category for the business.
-        /// </remarks>
-        public Task<UkPayCategoryModel> CreatePayCategoryAsync(int businessId, UkPayCategoryModel payCategory, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkPayCategoryModel,UkPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// List Pay Categories
@@ -74,6 +52,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<List<UkPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<UkPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Pay Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay category for the business.
+        /// </remarks>
+        public UkPayCategoryModel CreatePayCategory(int businessId, UkPayCategoryModel payCategory)
+        {
+            return ApiRequest<UkPayCategoryModel,UkPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Pay Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay category for the business.
+        /// </remarks>
+        public Task<UkPayCategoryModel> CreatePayCategoryAsync(int businessId, UkPayCategoryModel payCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkPayCategoryModel,UkPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>

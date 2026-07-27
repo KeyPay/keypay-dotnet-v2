@@ -15,30 +15,30 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IEmployeeDocumentFunction
     {
-        List<EmployeeDocumentModel> ListEmployeeDocuments(int businessId, int employeeId);
-        Task<List<EmployeeDocumentModel>> ListEmployeeDocumentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        DocumentFile GetEmployeeDocumentContent(int businessId, int employeeId, int employeeDocumentId);
+        Task<DocumentFile> GetEmployeeDocumentContentAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel GetEmployeeDocumentDetails(int businessId, int employeeId, int employeeDocumentId);
+        Task<EmployeeDocumentModel> GetEmployeeDocumentDetailsAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        EmployeeDocumentModel UpdateEmployeeDocumentPermissions(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model);
+        Task<EmployeeDocumentModel> UpdateEmployeeDocumentPermissionsAsync(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file);
         Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CancellationToken cancellationToken = default);
         List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request);
         Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default);
-        EmployeeDocumentModel UpdateEmployeeDocumentPermissions(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model);
-        Task<EmployeeDocumentModel> UpdateEmployeeDocumentPermissionsAsync(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model, CancellationToken cancellationToken = default);
-        EmployeeDocumentModel GetEmployeeDocumentDetails(int businessId, int employeeId, int employeeDocumentId);
-        Task<EmployeeDocumentModel> GetEmployeeDocumentDetailsAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default);
+        List<EmployeeDocumentModel> ListEmployeeDocuments(int businessId, int employeeId);
+        Task<List<EmployeeDocumentModel>> ListEmployeeDocumentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void DeleteEmployeeDocument(int businessId, int employeeId, int employeeDocumentId);
         Task DeleteEmployeeDocumentAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default);
-        DocumentFile GetEmployeeDocumentContent(int businessId, int employeeId, int employeeDocumentId);
-        Task<DocumentFile> GetEmployeeDocumentContentAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default);
         void LinkEmployeeDocumentToExpenseRequest(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId);
         Task LinkEmployeeDocumentToExpenseRequestAsync(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId, CancellationToken cancellationToken = default);
-        void UnlinkEmployeeDocumentFromExpenseRequest(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId);
-        Task UnlinkEmployeeDocumentFromExpenseRequestAsync(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId, CancellationToken cancellationToken = default);
         void LinkEmployeeDocumentToLeaveRequest(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId);
         Task LinkEmployeeDocumentToLeaveRequestAsync(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId, CancellationToken cancellationToken = default);
-        void UnlinkEmployeeDocumentFromLeaveRequest(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId);
-        Task UnlinkEmployeeDocumentFromLeaveRequestAsync(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId, CancellationToken cancellationToken = default);
         void LinkEmployeeDocumentToTimesheet(int businessId, int employeeId, int employeeDocumentId, int timesheetLineId);
         Task LinkEmployeeDocumentToTimesheetAsync(int businessId, int employeeId, int employeeDocumentId, int timesheetLineId, CancellationToken cancellationToken = default);
+        void UnlinkEmployeeDocumentFromExpenseRequest(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId);
+        Task UnlinkEmployeeDocumentFromExpenseRequestAsync(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId, CancellationToken cancellationToken = default);
+        void UnlinkEmployeeDocumentFromLeaveRequest(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId);
+        Task UnlinkEmployeeDocumentFromLeaveRequestAsync(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId, CancellationToken cancellationToken = default);
         void UnlinkEmployeeDocumentFromTimesheet(int businessId, int employeeId, int employeeDocumentId, int timesheetLineId);
         Task UnlinkEmployeeDocumentFromTimesheetAsync(int businessId, int employeeId, int employeeDocumentId, int timesheetLineId, CancellationToken cancellationToken = default);
     }
@@ -47,25 +47,69 @@ namespace KeyPayV2.Uk.Functions
         public EmployeeDocumentFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// List Employee Documents
+        /// Get Employee Document Content
         /// </summary>
         /// <remarks>
-        /// Lists all the documents for this employee.
+        /// Get the file content for the employee document with the specified ID.
         /// </remarks>
-        public List<EmployeeDocumentModel> ListEmployeeDocuments(int businessId, int employeeId)
+        public DocumentFile GetEmployeeDocumentContent(int businessId, int employeeId, int employeeDocumentId)
         {
-            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.Get);
+            return ApiRequest<DocumentFile>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/content", Method.Get);
         }
 
         /// <summary>
-        /// List Employee Documents
+        /// Get Employee Document Content
         /// </summary>
         /// <remarks>
-        /// Lists all the documents for this employee.
+        /// Get the file content for the employee document with the specified ID.
         /// </remarks>
-        public Task<List<EmployeeDocumentModel>> ListEmployeeDocumentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<DocumentFile> GetEmployeeDocumentContentAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.Get, cancellationToken);
+            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/content", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Document Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the employee document with the specified ID.
+        /// </remarks>
+        public EmployeeDocumentModel GetEmployeeDocumentDetails(int businessId, int employeeId, int employeeDocumentId)
+        {
+            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Document Details
+        /// </summary>
+        /// <remarks>
+        /// Gets the details for the employee document with the specified ID.
+        /// </remarks>
+        public Task<EmployeeDocumentModel> GetEmployeeDocumentDetailsAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Document Permissions
+        /// </summary>
+        /// <remarks>
+        /// Updates permissions for the employee document with the specified ID.
+        /// </remarks>
+        public EmployeeDocumentModel UpdateEmployeeDocumentPermissions(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model)
+        {
+            return ApiRequest<EmployeeDocumentModel,UpdateEmployeeDocumentPermissionsModel>($"/business/{businessId}/employee/{employeeId}/document", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Document Permissions
+        /// </summary>
+        /// <remarks>
+        /// Updates permissions for the employee document with the specified ID.
+        /// </remarks>
+        public Task<EmployeeDocumentModel> UpdateEmployeeDocumentPermissionsAsync(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeDocumentModel,UpdateEmployeeDocumentPermissionsModel>($"/business/{businessId}/employee/{employeeId}/document", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -113,47 +157,25 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Update Employee Document Permissions
+        /// List Employee Documents
         /// </summary>
         /// <remarks>
-        /// Updates permissions for the employee document with the specified ID.
+        /// Lists all the documents for this employee.
         /// </remarks>
-        public EmployeeDocumentModel UpdateEmployeeDocumentPermissions(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model)
+        public List<EmployeeDocumentModel> ListEmployeeDocuments(int businessId, int employeeId)
         {
-            return ApiRequest<EmployeeDocumentModel,UpdateEmployeeDocumentPermissionsModel>($"/business/{businessId}/employee/{employeeId}/document", model, Method.Put);
+            return ApiRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.Get);
         }
 
         /// <summary>
-        /// Update Employee Document Permissions
+        /// List Employee Documents
         /// </summary>
         /// <remarks>
-        /// Updates permissions for the employee document with the specified ID.
+        /// Lists all the documents for this employee.
         /// </remarks>
-        public Task<EmployeeDocumentModel> UpdateEmployeeDocumentPermissionsAsync(int businessId, int employeeId, UpdateEmployeeDocumentPermissionsModel model, CancellationToken cancellationToken = default)
+        public Task<List<EmployeeDocumentModel>> ListEmployeeDocumentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeDocumentModel,UpdateEmployeeDocumentPermissionsModel>($"/business/{businessId}/employee/{employeeId}/document", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Document Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the employee document with the specified ID.
-        /// </remarks>
-        public EmployeeDocumentModel GetEmployeeDocumentDetails(int businessId, int employeeId, int employeeDocumentId)
-        {
-            return ApiRequest<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Document Details
-        /// </summary>
-        /// <remarks>
-        /// Gets the details for the employee document with the specified ID.
-        /// </remarks>
-        public Task<EmployeeDocumentModel> GetEmployeeDocumentDetailsAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeDocumentModel>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -179,28 +201,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Get Employee Document Content
-        /// </summary>
-        /// <remarks>
-        /// Get the file content for the employee document with the specified ID.
-        /// </remarks>
-        public DocumentFile GetEmployeeDocumentContent(int businessId, int employeeId, int employeeDocumentId)
-        {
-            return ApiRequest<DocumentFile>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/content", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Document Content
-        /// </summary>
-        /// <remarks>
-        /// Get the file content for the employee document with the specified ID.
-        /// </remarks>
-        public Task<DocumentFile> GetEmployeeDocumentContentAsync(int businessId, int employeeId, int employeeDocumentId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/content", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Link Employee Document to Expense Request
         /// </summary>
         /// <remarks>
@@ -220,28 +220,6 @@ namespace KeyPayV2.Uk.Functions
         public Task LinkEmployeeDocumentToExpenseRequestAsync(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/expense/{expenseRequestId}", Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Unlink Employee Document from Expense Request
-        /// </summary>
-        /// <remarks>
-        /// If the specified employee document is attached to the specified expense request, unattach it.
-        /// </remarks>
-        public void UnlinkEmployeeDocumentFromExpenseRequest(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/expense/{expenseRequestId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Unlink Employee Document from Expense Request
-        /// </summary>
-        /// <remarks>
-        /// If the specified employee document is attached to the specified expense request, unattach it.
-        /// </remarks>
-        public Task UnlinkEmployeeDocumentFromExpenseRequestAsync(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/expense/{expenseRequestId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -267,28 +245,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Unlink Employee Document from Leave Request
-        /// </summary>
-        /// <remarks>
-        /// If the specified employee document is attached to the specified leave request, unattach it.
-        /// </remarks>
-        public void UnlinkEmployeeDocumentFromLeaveRequest(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/leave/{leaveRequestId}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Unlink Employee Document from Leave Request
-        /// </summary>
-        /// <remarks>
-        /// If the specified employee document is attached to the specified leave request, unattach it.
-        /// </remarks>
-        public Task UnlinkEmployeeDocumentFromLeaveRequestAsync(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/leave/{leaveRequestId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
         /// Link Employee Document to Timesheet
         /// </summary>
         /// <remarks>
@@ -308,6 +264,50 @@ namespace KeyPayV2.Uk.Functions
         public Task LinkEmployeeDocumentToTimesheetAsync(int businessId, int employeeId, int employeeDocumentId, int timesheetLineId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/timesheet/{timesheetLineId}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unlink Employee Document from Expense Request
+        /// </summary>
+        /// <remarks>
+        /// If the specified employee document is attached to the specified expense request, unattach it.
+        /// </remarks>
+        public void UnlinkEmployeeDocumentFromExpenseRequest(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/expense/{expenseRequestId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Unlink Employee Document from Expense Request
+        /// </summary>
+        /// <remarks>
+        /// If the specified employee document is attached to the specified expense request, unattach it.
+        /// </remarks>
+        public Task UnlinkEmployeeDocumentFromExpenseRequestAsync(int businessId, int employeeId, int employeeDocumentId, int expenseRequestId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/expense/{expenseRequestId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Unlink Employee Document from Leave Request
+        /// </summary>
+        /// <remarks>
+        /// If the specified employee document is attached to the specified leave request, unattach it.
+        /// </remarks>
+        public void UnlinkEmployeeDocumentFromLeaveRequest(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/leave/{leaveRequestId}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Unlink Employee Document from Leave Request
+        /// </summary>
+        /// <remarks>
+        /// If the specified employee document is attached to the specified leave request, unattach it.
+        /// </remarks>
+        public Task UnlinkEmployeeDocumentFromLeaveRequestAsync(int businessId, int employeeId, int employeeDocumentId, int leaveRequestId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/document/{employeeDocumentId}/leave/{leaveRequestId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

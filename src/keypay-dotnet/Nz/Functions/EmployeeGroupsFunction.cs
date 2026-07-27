@@ -17,10 +17,10 @@ namespace KeyPayV2.Nz.Functions
     {
         List<NzEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
         Task<List<NzEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        NzEmployeeGroupModel CreateEmployeeGroup(int businessId, NzEmployeeGroupModel employeeGroup);
-        Task<NzEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         NzDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
         Task<NzDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        NzEmployeeGroupModel CreateEmployeeGroup(int businessId, NzEmployeeGroupModel employeeGroup);
+        Task<NzEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         NzEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, NzEmployeeGroupModel employeeGroup);
         Task<NzEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         void DeleteEmployeeGroup(int businessId, int id);
@@ -55,28 +55,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Create Employee Group
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee group for the business.
-        /// </remarks>
-        public NzEmployeeGroupModel CreateEmployeeGroup(int businessId, NzEmployeeGroupModel employeeGroup)
-        {
-            return ApiRequest<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Group
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee group for the business.
-        /// </remarks>
-        public Task<NzEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Employee Group by ID
         /// </summary>
         /// <remarks>
@@ -96,6 +74,28 @@ namespace KeyPayV2.Nz.Functions
         public Task<NzDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NzDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee group for the business.
+        /// </remarks>
+        public NzEmployeeGroupModel CreateEmployeeGroup(int businessId, NzEmployeeGroupModel employeeGroup)
+        {
+            return ApiRequest<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee group for the business.
+        /// </remarks>
+        public Task<NzEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, NzEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzEmployeeGroupModel,NzEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
         }
 
         /// <summary>

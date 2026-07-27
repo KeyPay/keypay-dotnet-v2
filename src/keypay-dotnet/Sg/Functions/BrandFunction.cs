@@ -15,12 +15,12 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IBrandFunction
     {
+        BrandModel GetBrandLabelById(int id);
+        Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default);
         List<BrandModel> ListBrandLabels();
         Task<List<BrandModel>> ListBrandLabelsAsync(CancellationToken cancellationToken = default);
         List<BusinessTemplateModel> ListBusinessTemplates(string brandId);
         Task<List<BusinessTemplateModel>> ListBusinessTemplatesAsync(string brandId, CancellationToken cancellationToken = default);
-        void CancelBusiness(int businessId, string brandId);
-        Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default);
         List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId);
         Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, CancellationToken cancellationToken = default);
         List<CommonActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request);
@@ -29,12 +29,34 @@ namespace KeyPayV2.Sg.Functions
         Task<List<SignupModel>> SignupReportAsync(int brandId, CancellationToken cancellationToken = default);
         List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request);
         Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default);
-        BrandModel GetBrandLabelById(int id);
-        Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default);
+        void CancelBusiness(int businessId, string brandId);
+        Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default);
     }
     public class BrandFunction : BaseFunction, IBrandFunction
     {
         public BrandFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Brand Label by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the brand label with the specified ID.
+        /// </remarks>
+        public BrandModel GetBrandLabelById(int id)
+        {
+            return ApiRequest<BrandModel>($"/brand/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Brand Label by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the brand label with the specified ID.
+        /// </remarks>
+        public Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<BrandModel>($"/brand/{id}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// List Brand Labels
@@ -72,30 +94,6 @@ namespace KeyPayV2.Sg.Functions
         public Task<List<BusinessTemplateModel>> ListBusinessTemplatesAsync(string brandId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<BusinessTemplateModel>>($"/brand/{brandId}/business-templates", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Cancel Business
-        /// </summary>
-        /// <remarks>
-        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
-        /// This endpoint is for brand users only.
-        /// </remarks>
-        public void CancelBusiness(int businessId, string brandId)
-        {
-            ApiRequest($"/brand/{brandId}/business/{businessId}/cancel", Method.Delete);
-        }
-
-        /// <summary>
-        /// Cancel Business
-        /// </summary>
-        /// <remarks>
-        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
-        /// This endpoint is for brand users only.
-        /// </remarks>
-        public Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/brand/{brandId}/business/{businessId}/cancel", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -187,25 +185,27 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Brand Label by ID
+        /// Cancel Business
         /// </summary>
         /// <remarks>
-        /// Gets the brand label with the specified ID.
+        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
+        /// This endpoint is for brand users only.
         /// </remarks>
-        public BrandModel GetBrandLabelById(int id)
+        public void CancelBusiness(int businessId, string brandId)
         {
-            return ApiRequest<BrandModel>($"/brand/{id}", Method.Get);
+            ApiRequest($"/brand/{brandId}/business/{businessId}/cancel", Method.Delete);
         }
 
         /// <summary>
-        /// Get Brand Label by ID
+        /// Cancel Business
         /// </summary>
         /// <remarks>
-        /// Gets the brand label with the specified ID.
+        /// Delete all pay runs and employees. Disassociates users who have access to other businesses or brands. Deactivates users only associated with this business.
+        /// This endpoint is for brand users only.
         /// </remarks>
-        public Task<BrandModel> GetBrandLabelByIdAsync(int id, CancellationToken cancellationToken = default)
+        public Task CancelBusinessAsync(int businessId, string brandId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<BrandModel>($"/brand/{id}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/brand/{brandId}/business/{businessId}/cancel", Method.Delete, cancellationToken);
         }
     }
 }

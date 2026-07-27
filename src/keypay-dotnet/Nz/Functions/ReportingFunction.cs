@@ -19,22 +19,10 @@ namespace KeyPayV2.Nz.Functions
         Task<List<BirthdayReportExportModel>> BirthdayReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<BirthdayReportExportModel> BirthdayReport(int businessId, BirthdayReportQueryModel request);
         Task<List<BirthdayReportExportModel>> BirthdayReportAsync(int businessId, BirthdayReportQueryModel request, CancellationToken cancellationToken = default);
-        List<NzCostingReportApiModel> CostingReport(int businessId);
-        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
-        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
         List<DeductionsReportExportModel> DeductionsReport(int businessId);
         Task<List<DeductionsReportExportModel>> DeductionsReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<DeductionsReportExportModel> DeductionsReport(int businessId, DeductionsReportQueryModel request);
         Task<List<DeductionsReportExportModel>> DeductionsReportAsync(int businessId, DeductionsReportQueryModel request, CancellationToken cancellationToken = default);
-        List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId);
-        Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId, DetailedActivityReportQueryModel request);
-        Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, DetailedActivityReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] DetailedActivityReportAsExcel(int businessId);
-        Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] DetailedActivityReportAsExcel(int businessId, DetailedActivityReportAsExcelQueryModel request);
-        Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, DetailedActivityReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
         List<DocumentAcknowledgementsReportExportModel> DocumentAcknowledgementsReport(int businessId);
         Task<List<DocumentAcknowledgementsReportExportModel>> DocumentAcknowledgementsReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<DocumentAcknowledgementsReportExportModel> DocumentAcknowledgementsReport(int businessId, DocumentAcknowledgementsReportQueryModel request);
@@ -43,56 +31,32 @@ namespace KeyPayV2.Nz.Functions
         Task<List<EmployeeDetailsAuditReportApiModel>> EmployeeAuditReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<EmployeeDetailsAuditReportApiModel> EmployeeAuditReport(int businessId, EmployeeAuditReportQueryModel request);
         Task<List<EmployeeDetailsAuditReportApiModel>> EmployeeAuditReportAsync(int businessId, EmployeeAuditReportQueryModel request, CancellationToken cancellationToken = default);
-        void EmployeeAuditExcelReport(int businessId);
-        Task EmployeeAuditExcelReportAsync(int businessId, CancellationToken cancellationToken = default);
-        void EmployeeAuditExcelReport(int businessId, EmployeeAuditExcelReportQueryModel request);
-        Task EmployeeAuditExcelReportAsync(int businessId, EmployeeAuditExcelReportQueryModel request, CancellationToken cancellationToken = default);
-        List<dynamic> EmployeeDetailsReport(int businessId);
-        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportQueryModel request);
-        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportQueryModel request, CancellationToken cancellationToken = default);
-        List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportRequestModel model);
-        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportRequestModel model, CancellationToken cancellationToken = default);
         List<EmployeeDetailsReportField> EmployeeDetailsReportFields(int businessId);
         Task<List<EmployeeDetailsReportField>> EmployeeDetailsReportFieldsAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzGrossToNetResponseModel> GrossToNetReport(int businessId);
-        Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzGrossToNetResponseModel> GrossToNetReport(int businessId, GrossToNetReportQueryModel request);
-        Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, GrossToNetReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] GrossToNetReportAsExcel(int businessId);
-        Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] GrossToNetReportAsExcel(int businessId, GrossToNetReportAsExcelQueryModel request);
-        Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, GrossToNetReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
-        byte[] JournalReport(int businessId);
-        Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] JournalReport(int businessId, JournalReportQueryModel request);
-        Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default);
         List<KiwiSaverReportExportModel> KiwisaverReport(int businessId);
         Task<List<KiwiSaverReportExportModel>> KiwisaverReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<KiwiSaverReportExportModel> KiwisaverReport(int businessId, KiwisaverReportQueryModel request);
         Task<List<KiwiSaverReportExportModel>> KiwisaverReportAsync(int businessId, KiwisaverReportQueryModel request, CancellationToken cancellationToken = default);
-        void KiwisaverReportAsExcel(int businessId);
-        Task KiwisaverReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
-        void KiwisaverReportAsExcel(int businessId, KiwisaverReportAsExcelQueryModel request);
-        Task KiwisaverReportAsExcelAsync(int businessId, KiwisaverReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
-        List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId);
-        Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId, LeaveBalancesReportQueryModel request);
-        Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, LeaveBalancesReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] LeaveBalancesReportAsExcel(int businessId);
-        Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] LeaveBalancesReportAsExcel(int businessId, LeaveBalancesReportAsExcelQueryModel request);
-        Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, LeaveBalancesReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
         List<LeaveLiabilityExportModel> LeaveLiabilityReport(int businessId);
         Task<List<LeaveLiabilityExportModel>> LeaveLiabilityReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<LeaveLiabilityExportModel> LeaveLiabilityReport(int businessId, LeaveLiabilityReportQueryModel request);
         Task<List<LeaveLiabilityExportModel>> LeaveLiabilityReportAsync(int businessId, LeaveLiabilityReportQueryModel request, CancellationToken cancellationToken = default);
-        ReportLeaveLiabilityPreparationResponse PrepareLeaveLiabilityReport(int businessId, ReportLeaveLiabilityRequestModel request);
-        Task<ReportLeaveLiabilityPreparationResponse> PrepareLeaveLiabilityReportAsync(int businessId, ReportLeaveLiabilityRequestModel request, CancellationToken cancellationToken = default);
-        byte[] LeaveLiabilityReportAsExcel(int businessId);
-        Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] LeaveLiabilityReportAsExcel(int businessId, LeaveLiabilityReportAsExcelQueryModel request);
-        Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, LeaveLiabilityReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        List<NzCostingReportApiModel> CostingReport(int businessId);
+        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request);
+        Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default);
+        List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId);
+        Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId, DetailedActivityReportQueryModel request);
+        Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, DetailedActivityReportQueryModel request, CancellationToken cancellationToken = default);
+        List<NzGrossToNetResponseModel> GrossToNetReport(int businessId);
+        Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzGrossToNetResponseModel> GrossToNetReport(int businessId, GrossToNetReportQueryModel request);
+        Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, GrossToNetReportQueryModel request, CancellationToken cancellationToken = default);
+        List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId);
+        Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId, LeaveBalancesReportQueryModel request);
+        Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, LeaveBalancesReportQueryModel request, CancellationToken cancellationToken = default);
         List<NzOrdinaryTimeEarningsApiModel> OrdinaryTimeEarningsReport(int businessId);
         Task<List<NzOrdinaryTimeEarningsApiModel>> OrdinaryTimeEarningsReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<NzOrdinaryTimeEarningsApiModel> OrdinaryTimeEarningsReport(int businessId, OrdinaryTimeEarningsReportQueryModel request);
@@ -101,38 +65,26 @@ namespace KeyPayV2.Nz.Functions
         Task<List<NzPayCategoriesModel>> PayCategoriesReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<NzPayCategoriesModel> PayCategoriesReport(int businessId, PayCategoriesReportQueryModel request);
         Task<List<NzPayCategoriesModel>> PayCategoriesReportAsync(int businessId, PayCategoriesReportQueryModel request, CancellationToken cancellationToken = default);
-        List<PayeReportExportModel> PayeReport(int businessId);
-        Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<PayeReportExportModel> PayeReport(int businessId, PayeReportQueryModel request);
-        Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, PayeReportQueryModel request, CancellationToken cancellationToken = default);
-        List<NzPaymentHistoryModel> EmployeePaymentHistoryReport(int businessId);
-        Task<List<NzPaymentHistoryModel>> EmployeePaymentHistoryReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzPaymentHistoryModel> EmployeePaymentHistoryReport(int businessId, EmployeePaymentHistoryReportQueryModel request);
-        Task<List<NzPaymentHistoryModel>> EmployeePaymentHistoryReportAsync(int businessId, EmployeePaymentHistoryReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] EmployeePaymentHistoryReportAsExcel(int businessId);
-        Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] EmployeePaymentHistoryReportAsExcel(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request);
-        Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
-        byte[] PayRunAuditReport(int businessId, int payRunId);
-        Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
-        byte[] PayRunAuditReport(int businessId, int payRunId, PayRunAuditReportQueryModel request);
-        Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, PayRunAuditReportQueryModel request, CancellationToken cancellationToken = default);
         List<NzPayRunInclusionExportModel> PayRunInclusionsReport(int businessId);
         Task<List<NzPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<NzPayRunInclusionExportModel> PayRunInclusionsReport(int businessId, PayRunInclusionsReportQueryModel request);
         Task<List<NzPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, PayRunInclusionsReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] PayRunVarianceReport(int businessId);
-        Task<byte[]> PayRunVarianceReportAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] PayRunVarianceReport(int businessId, PayRunVarianceReportQueryModel request);
-        Task<byte[]> PayRunVarianceReportAsync(int businessId, PayRunVarianceReportQueryModel request, CancellationToken cancellationToken = default);
-        byte[] GetPaySlipsByFinalisedPayRunId(int businessId);
-        Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
-        byte[] GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request);
-        Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        List<NzPaymentHistoryModel> EmployeePaymentHistoryReport(int businessId);
+        Task<List<NzPaymentHistoryModel>> EmployeePaymentHistoryReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzPaymentHistoryModel> EmployeePaymentHistoryReport(int businessId, EmployeePaymentHistoryReportQueryModel request);
+        Task<List<NzPaymentHistoryModel>> EmployeePaymentHistoryReportAsync(int businessId, EmployeePaymentHistoryReportQueryModel request, CancellationToken cancellationToken = default);
         List<NzRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId);
         Task<List<NzRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, CancellationToken cancellationToken = default);
         List<NzRosterTimesheetComparisonReportExportModel> RosterVsTimesheetComparisonReport(int businessId, RosterVsTimesheetComparisonReportQueryModel request);
         Task<List<NzRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, RosterVsTimesheetComparisonReportQueryModel request, CancellationToken cancellationToken = default);
+        List<NzTimesheetExportModel> TimesheetReport(int businessId);
+        Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<NzTimesheetExportModel> TimesheetReport(int businessId, TimesheetReportQueryModel request);
+        Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, TimesheetReportQueryModel request, CancellationToken cancellationToken = default);
+        List<PayeReportExportModel> PayeReport(int businessId);
+        Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<PayeReportExportModel> PayeReport(int businessId, PayeReportQueryModel request);
+        Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, PayeReportQueryModel request, CancellationToken cancellationToken = default);
         List<ShiftSwappingReportExportModel> GetShiftSwappingReportByBusinessId(int businessId);
         Task<List<ShiftSwappingReportExportModel>> GetShiftSwappingReportByBusinessIdAsync(int businessId, CancellationToken cancellationToken = default);
         List<ShiftSwappingReportExportModel> GetShiftSwappingReportByBusinessId(int businessId, GetShiftSwappingReportByBusinessIdQueryModel request);
@@ -141,10 +93,58 @@ namespace KeyPayV2.Nz.Functions
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, CancellationToken cancellationToken = default);
         List<TasksReportExportModel> GetTasksByBusinessId(int businessId, GetTasksByBusinessIdQueryModel request);
         Task<List<TasksReportExportModel>> GetTasksByBusinessIdAsync(int businessId, GetTasksByBusinessIdQueryModel request, CancellationToken cancellationToken = default);
-        List<NzTimesheetExportModel> TimesheetReport(int businessId);
-        Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, CancellationToken cancellationToken = default);
-        List<NzTimesheetExportModel> TimesheetReport(int businessId, TimesheetReportQueryModel request);
-        Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, TimesheetReportQueryModel request, CancellationToken cancellationToken = default);
+        List<dynamic> EmployeeDetailsReport(int businessId);
+        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, CancellationToken cancellationToken = default);
+        List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportQueryModel request);
+        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportQueryModel request, CancellationToken cancellationToken = default);
+        List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportRequestModel model);
+        Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportRequestModel model, CancellationToken cancellationToken = default);
+        ReportLeaveLiabilityPreparationResponse PrepareLeaveLiabilityReport(int businessId, ReportLeaveLiabilityRequestModel request);
+        Task<ReportLeaveLiabilityPreparationResponse> PrepareLeaveLiabilityReportAsync(int businessId, ReportLeaveLiabilityRequestModel request, CancellationToken cancellationToken = default);
+        byte[] DetailedActivityReportAsExcel(int businessId);
+        Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] DetailedActivityReportAsExcel(int businessId, DetailedActivityReportAsExcelQueryModel request);
+        Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, DetailedActivityReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        byte[] EmployeePaymentHistoryReportAsExcel(int businessId);
+        Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] EmployeePaymentHistoryReportAsExcel(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request);
+        Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        byte[] GetPaySlipsByFinalisedPayRunId(int businessId);
+        Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request);
+        Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default);
+        byte[] GrossToNetReportAsExcel(int businessId);
+        Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] GrossToNetReportAsExcel(int businessId, GrossToNetReportAsExcelQueryModel request);
+        Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, GrossToNetReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        byte[] JournalReport(int businessId);
+        Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] JournalReport(int businessId, JournalReportQueryModel request);
+        Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] LeaveBalancesReportAsExcel(int businessId);
+        Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] LeaveBalancesReportAsExcel(int businessId, LeaveBalancesReportAsExcelQueryModel request);
+        Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, LeaveBalancesReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        byte[] LeaveLiabilityReportAsExcel(int businessId);
+        Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] LeaveLiabilityReportAsExcel(int businessId, LeaveLiabilityReportAsExcelQueryModel request);
+        Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, LeaveLiabilityReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
+        byte[] PayRunAuditReport(int businessId, int payRunId);
+        Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, CancellationToken cancellationToken = default);
+        byte[] PayRunAuditReport(int businessId, int payRunId, PayRunAuditReportQueryModel request);
+        Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, PayRunAuditReportQueryModel request, CancellationToken cancellationToken = default);
+        byte[] PayRunVarianceReport(int businessId);
+        Task<byte[]> PayRunVarianceReportAsync(int businessId, CancellationToken cancellationToken = default);
+        byte[] PayRunVarianceReport(int businessId, PayRunVarianceReportQueryModel request);
+        Task<byte[]> PayRunVarianceReportAsync(int businessId, PayRunVarianceReportQueryModel request, CancellationToken cancellationToken = default);
+        void EmployeeAuditExcelReport(int businessId);
+        Task EmployeeAuditExcelReportAsync(int businessId, CancellationToken cancellationToken = default);
+        void EmployeeAuditExcelReport(int businessId, EmployeeAuditExcelReportQueryModel request);
+        Task EmployeeAuditExcelReportAsync(int businessId, EmployeeAuditExcelReportQueryModel request, CancellationToken cancellationToken = default);
+        void KiwisaverReportAsExcel(int businessId);
+        Task KiwisaverReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default);
+        void KiwisaverReportAsExcel(int businessId, KiwisaverReportAsExcelQueryModel request);
+        Task KiwisaverReportAsExcelAsync(int businessId, KiwisaverReportAsExcelQueryModel request, CancellationToken cancellationToken = default);
     }
     public class ReportingFunction : BaseFunction, IReportingFunction
     {
@@ -195,50 +195,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public List<NzCostingReportApiModel> CostingReport(int businessId)
-        {
-            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get);
-        }
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request)
-        {
-            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Costing Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a costing report.
-        /// </remarks>
-        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Deductions Report
         /// </summary>
         /// <remarks>
@@ -280,94 +236,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<DeductionsReportExportModel>> DeductionsReportAsync(int businessId, DeductionsReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<DeductionsReportExportModel>>($"/business/{businessId}/report/deductions?EmployeeId={request.EmployeeId}&DeductionCategoryId={request.DeductionCategoryId}&DisableRollupReporting={request.DisableRollupReporting}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a detailed activity report.
-        /// </remarks>
-        public List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId)
-        {
-            return ApiRequest<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity", Method.Get);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a detailed activity report.
-        /// </remarks>
-        public Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a detailed activity report.
-        /// </remarks>
-        public List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId, DetailedActivityReportQueryModel request)
-        {
-            return ApiRequest<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity?PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a detailed activity report.
-        /// </remarks>
-        public Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, DetailedActivityReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity?PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Detailed Activity Report as an Excel file.
-        /// </remarks>
-        public byte[] DetailedActivityReportAsExcel(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/detailedactivity/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Detailed Activity Report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/detailedactivity/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Detailed Activity Report as an Excel file.
-        /// </remarks>
-        public byte[] DetailedActivityReportAsExcel(int businessId, DetailedActivityReportAsExcelQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/detailedactivity/xlsx?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&GroupBy={request.GroupBy}&FilterType={request.FilterType}&PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("LocationsIds", request.LocationsIds?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&ShowLocationTotalsOnly={request.ShowLocationTotalsOnly}&IncludeEmployeePayRunBreakdown={request.IncludeEmployeePayRunBreakdown}", Method.Get);
-        }
-
-        /// <summary>
-        /// Detailed Activity Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Detailed Activity Report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, DetailedActivityReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/detailedactivity/xlsx?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&GroupBy={request.GroupBy}&FilterType={request.FilterType}&PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("LocationsIds", request.LocationsIds?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&ShowLocationTotalsOnly={request.ShowLocationTotalsOnly}&IncludeEmployeePayRunBreakdown={request.IncludeEmployeePayRunBreakdown}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -459,116 +327,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Employee Audit excel Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an Employee Audit excel Report.
-        /// </remarks>
-        public void EmployeeAuditExcelReport(int businessId)
-        {
-            ApiRequest($"/business/{businessId}/report/employeeaudit/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Employee Audit excel Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an Employee Audit excel Report.
-        /// </remarks>
-        public Task EmployeeAuditExcelReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/report/employeeaudit/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Employee Audit excel Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an Employee Audit excel Report.
-        /// </remarks>
-        public void EmployeeAuditExcelReport(int businessId, EmployeeAuditExcelReportQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/report/employeeaudit/xlsx?EmployeeId={request.EmployeeId}&Section={request.Section}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Employee Audit excel Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an Employee Audit excel Report.
-        /// </remarks>
-        public Task EmployeeAuditExcelReportAsync(int businessId, EmployeeAuditExcelReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/report/employeeaudit/xlsx?EmployeeId={request.EmployeeId}&Section={request.Section}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Employee Details Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee details report.
-        /// </remarks>
-        public List<dynamic> EmployeeDetailsReport(int businessId)
-        {
-            return ApiRequest<List<dynamic>>($"/business/{businessId}/report/employeedetails", Method.Get);
-        }
-
-        /// <summary>
-        /// Employee Details Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee details report.
-        /// </remarks>
-        public Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<dynamic>>($"/business/{businessId}/report/employeedetails", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Employee Details Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee details report.
-        /// </remarks>
-        public List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportQueryModel request)
-        {
-            return ApiRequest<List<dynamic>>($"/business/{businessId}/report/employeedetails{ConvertEnumerableToQueryString("selectedColumns", request.SelectedColumns?.Select(x => x.ToString()))}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}&includeActive={request.IncludeActive}&includeInactive={request.IncludeInactive}", Method.Get);
-        }
-
-        /// <summary>
-        /// Employee Details Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee details report.
-        /// </remarks>
-        public Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<dynamic>>($"/business/{businessId}/report/employeedetails{ConvertEnumerableToQueryString("selectedColumns", request.SelectedColumns?.Select(x => x.ToString()))}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}&includeActive={request.IncludeActive}&includeInactive={request.IncludeInactive}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Employee Details Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee details report.
-        /// </remarks>
-        public List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportRequestModel model)
-        {
-            return ApiRequest<List<dynamic>,EmployeeDetailsReportRequestModel>($"/business/{businessId}/report/employeedetails", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Employee Details Report
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee details report.
-        /// </remarks>
-        public Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportRequestModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<dynamic>,EmployeeDetailsReportRequestModel>($"/business/{businessId}/report/employeedetails", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Employee Details Report Fields
         /// </summary>
         /// <remarks>
@@ -588,138 +346,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<EmployeeDetailsReportField>> EmployeeDetailsReportFieldsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<EmployeeDetailsReportField>>($"/business/{businessId}/report/employeedetails/fields", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gross To Net Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report.
-        /// </remarks>
-        public List<NzGrossToNetResponseModel> GrossToNetReport(int businessId)
-        {
-            return ApiRequest<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet", Method.Get);
-        }
-
-        /// <summary>
-        /// Gross To Net Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report.
-        /// </remarks>
-        public Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gross To Net Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report.
-        /// </remarks>
-        public List<NzGrossToNetResponseModel> GrossToNetReport(int businessId, GrossToNetReportQueryModel request)
-        {
-            return ApiRequest<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Gross To Net Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report.
-        /// </remarks>
-        public Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, GrossToNetReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gross To Net Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report as an Excel file.
-        /// </remarks>
-        public byte[] GrossToNetReportAsExcel(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/grosstonet/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Gross To Net Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/grosstonet/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gross To Net Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report as an Excel file.
-        /// </remarks>
-        public byte[] GrossToNetReportAsExcel(int businessId, GrossToNetReportAsExcelQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/grosstonet/xlsx?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Gross To Net Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Gross To Net Report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, GrossToNetReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/grosstonet/xlsx?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public byte[] JournalReport(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/journal", Method.Get);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public byte[] JournalReport(int businessId, JournalReportQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get);
-        }
-
-        /// <summary>
-        /// Journal Report
-        /// </summary>
-        /// <remarks>
-        /// Gets the journal for a finalised pay run with the specified Id.
-        /// </remarks>
-        public Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -767,138 +393,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// KiwiSaver Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a KiwiSaver Report as an Excel file.
-        /// </remarks>
-        public void KiwisaverReportAsExcel(int businessId)
-        {
-            ApiRequest($"/business/{businessId}/report/kiwisaver/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// KiwiSaver Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a KiwiSaver Report as an Excel file.
-        /// </remarks>
-        public Task KiwisaverReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/report/kiwisaver/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// KiwiSaver Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a KiwiSaver Report as an Excel file.
-        /// </remarks>
-        public void KiwisaverReportAsExcel(int businessId, KiwisaverReportAsExcelQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/report/kiwisaver/xlsx?FilterType={request.FilterType}&PayScheduleId={request.PayScheduleId}&EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// KiwiSaver Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a KiwiSaver Report as an Excel file.
-        /// </remarks>
-        public Task KiwisaverReportAsExcelAsync(int businessId, KiwisaverReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/report/kiwisaver/xlsx?FilterType={request.FilterType}&PayScheduleId={request.PayScheduleId}&EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Leave Balances Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a leave balances report.
-        /// </remarks>
-        public List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId)
-        {
-            return ApiRequest<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances", Method.Get);
-        }
-
-        /// <summary>
-        /// Leave Balances Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a leave balances report.
-        /// </remarks>
-        public Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Leave Balances Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a leave balances report.
-        /// </remarks>
-        public List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId, LeaveBalancesReportQueryModel request)
-        {
-            return ApiRequest<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances?PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&LocationId={request.LocationId}&LeaveTypeId={request.LeaveTypeId}&GroupBy={request.GroupBy}&EmployingEntityId={request.EmployingEntityId}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
-        }
-
-        /// <summary>
-        /// Leave Balances Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a leave balances report.
-        /// </remarks>
-        public Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, LeaveBalancesReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances?PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&LocationId={request.LocationId}&LeaveTypeId={request.LeaveTypeId}&GroupBy={request.GroupBy}&EmployingEntityId={request.EmployingEntityId}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Leave Balances Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Leave Balances Report as an Excel file.
-        /// </remarks>
-        public byte[] LeaveBalancesReportAsExcel(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/leavebalances/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Leave Balances Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Leave Balances Report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leavebalances/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Leave Balances Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Leave Balances Report as an Excel file.
-        /// </remarks>
-        public byte[] LeaveBalancesReportAsExcel(int businessId, LeaveBalancesReportAsExcelQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/leavebalances/xlsx?FilterType={request.FilterType}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayRunId={request.PayRunId}&GroupBy={request.GroupBy}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("LeaveTypeIds", request.LeaveTypeIds?.Select(x => x.ToString()))}&EmployingEntityId={request.EmployingEntityId}&HideLeaveValues={request.HideLeaveValues}", Method.Get);
-        }
-
-        /// <summary>
-        /// Leave Balances Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates a Leave Balances Report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, LeaveBalancesReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leavebalances/xlsx?FilterType={request.FilterType}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayRunId={request.PayRunId}&GroupBy={request.GroupBy}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("LeaveTypeIds", request.LeaveTypeIds?.Select(x => x.ToString()))}&EmployingEntityId={request.EmployingEntityId}&HideLeaveValues={request.HideLeaveValues}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Leave Liability Report
         /// </summary>
         /// <remarks>
@@ -943,69 +437,179 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Prepare Leave Liability report
+        /// Costing Report
         /// </summary>
         /// <remarks>
-        /// Prepare Leave Liability Report job.
+        /// Generates a costing report.
         /// </remarks>
-        public ReportLeaveLiabilityPreparationResponse PrepareLeaveLiabilityReport(int businessId, ReportLeaveLiabilityRequestModel request)
+        public List<NzCostingReportApiModel> CostingReport(int businessId)
         {
-            return ApiRequest<ReportLeaveLiabilityPreparationResponse,ReportLeaveLiabilityRequestModel>($"/business/{businessId}/report/leaveliability/preparation", request, Method.Post);
+            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get);
         }
 
         /// <summary>
-        /// Prepare Leave Liability report
+        /// Costing Report
         /// </summary>
         /// <remarks>
-        /// Prepare Leave Liability Report job.
+        /// Generates a costing report.
         /// </remarks>
-        public Task<ReportLeaveLiabilityPreparationResponse> PrepareLeaveLiabilityReportAsync(int businessId, ReportLeaveLiabilityRequestModel request, CancellationToken cancellationToken = default)
+        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<ReportLeaveLiabilityPreparationResponse,ReportLeaveLiabilityRequestModel>($"/business/{businessId}/report/leaveliability/preparation", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Leave Liability report as Excel
+        /// Costing Report
         /// </summary>
         /// <remarks>
-        /// Generates a Leave Liability Report as an Excel file.
+        /// Generates a costing report.
         /// </remarks>
-        public byte[] LeaveLiabilityReportAsExcel(int businessId)
+        public List<NzCostingReportApiModel> CostingReport(int businessId, CostingReportQueryModel request)
         {
-            return ApiByteArrayRequest($"/business/{businessId}/report/leaveliability/xlsx", Method.Get);
+            return ApiRequest<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
         }
 
         /// <summary>
-        /// Leave Liability report as Excel
+        /// Costing Report
         /// </summary>
         /// <remarks>
-        /// Generates a Leave Liability Report as an Excel file.
+        /// Generates a costing report.
         /// </remarks>
-        public Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<NzCostingReportApiModel>> CostingReportAsync(int businessId, CostingReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leaveliability/xlsx", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzCostingReportApiModel>>($"/business/{businessId}/report/costing?ShowZeroPayCategories={request.ShowZeroPayCategories}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Leave Liability report as Excel
+        /// Detailed Activity Report
         /// </summary>
         /// <remarks>
-        /// Generates a Leave Liability Report as an Excel file.
+        /// Generates a detailed activity report.
         /// </remarks>
-        public byte[] LeaveLiabilityReportAsExcel(int businessId, LeaveLiabilityReportAsExcelQueryModel request)
+        public List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId)
         {
-            return ApiByteArrayRequest($"/business/{businessId}/report/leaveliability/xlsx?jobId={request.JobId}", Method.Get);
+            return ApiRequest<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity", Method.Get);
         }
 
         /// <summary>
-        /// Leave Liability report as Excel
+        /// Detailed Activity Report
         /// </summary>
         /// <remarks>
-        /// Generates a Leave Liability Report as an Excel file.
+        /// Generates a detailed activity report.
         /// </remarks>
-        public Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, LeaveLiabilityReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leaveliability/xlsx?jobId={request.JobId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Detailed Activity Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a detailed activity report.
+        /// </remarks>
+        public List<NzDetailedActivityReportExportModel> DetailedActivityReport(int businessId, DetailedActivityReportQueryModel request)
+        {
+            return ApiRequest<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity?PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Detailed Activity Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a detailed activity report.
+        /// </remarks>
+        public Task<List<NzDetailedActivityReportExportModel>> DetailedActivityReportAsync(int businessId, DetailedActivityReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzDetailedActivityReportExportModel>>($"/business/{businessId}/report/detailedactivity?PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gross To Net Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report.
+        /// </remarks>
+        public List<NzGrossToNetResponseModel> GrossToNetReport(int businessId)
+        {
+            return ApiRequest<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet", Method.Get);
+        }
+
+        /// <summary>
+        /// Gross To Net Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report.
+        /// </remarks>
+        public Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gross To Net Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report.
+        /// </remarks>
+        public List<NzGrossToNetResponseModel> GrossToNetReport(int businessId, GrossToNetReportQueryModel request)
+        {
+            return ApiRequest<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Gross To Net Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report.
+        /// </remarks>
+        public Task<List<NzGrossToNetResponseModel>> GrossToNetReportAsync(int businessId, GrossToNetReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzGrossToNetResponseModel>>($"/business/{businessId}/report/grosstonet?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Leave Balances Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a leave balances report.
+        /// </remarks>
+        public List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId)
+        {
+            return ApiRequest<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances", Method.Get);
+        }
+
+        /// <summary>
+        /// Leave Balances Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a leave balances report.
+        /// </remarks>
+        public Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Leave Balances Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a leave balances report.
+        /// </remarks>
+        public List<NzLeaveBalancesExportModel> LeaveBalancesReport(int businessId, LeaveBalancesReportQueryModel request)
+        {
+            return ApiRequest<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances?PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&LocationId={request.LocationId}&LeaveTypeId={request.LeaveTypeId}&GroupBy={request.GroupBy}&EmployingEntityId={request.EmployingEntityId}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+        }
+
+        /// <summary>
+        /// Leave Balances Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a leave balances report.
+        /// </remarks>
+        public Task<List<NzLeaveBalancesExportModel>> LeaveBalancesReportAsync(int businessId, LeaveBalancesReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzLeaveBalancesExportModel>>($"/business/{businessId}/report/leavebalances?PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&LocationId={request.LocationId}&LeaveTypeId={request.LeaveTypeId}&GroupBy={request.GroupBy}&EmployingEntityId={request.EmployingEntityId}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1097,47 +701,47 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// PAYE Report
+        /// Pay Run Inclusions Report
         /// </summary>
         /// <remarks>
-        /// Generates a PAYE report.
+        /// Generates a pay run inclusions report.
         /// </remarks>
-        public List<PayeReportExportModel> PayeReport(int businessId)
+        public List<NzPayRunInclusionExportModel> PayRunInclusionsReport(int businessId)
         {
-            return ApiRequest<List<PayeReportExportModel>>($"/business/{businessId}/report/paye", Method.Get);
+            return ApiRequest<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions", Method.Get);
         }
 
         /// <summary>
-        /// PAYE Report
+        /// Pay Run Inclusions Report
         /// </summary>
         /// <remarks>
-        /// Generates a PAYE report.
+        /// Generates a pay run inclusions report.
         /// </remarks>
-        public Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<NzPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PayeReportExportModel>>($"/business/{businessId}/report/paye", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// PAYE Report
+        /// Pay Run Inclusions Report
         /// </summary>
         /// <remarks>
-        /// Generates a PAYE report.
+        /// Generates a pay run inclusions report.
         /// </remarks>
-        public List<PayeReportExportModel> PayeReport(int businessId, PayeReportQueryModel request)
+        public List<NzPayRunInclusionExportModel> PayRunInclusionsReport(int businessId, PayRunInclusionsReportQueryModel request)
         {
-            return ApiRequest<List<PayeReportExportModel>>($"/business/{businessId}/report/paye?State={request.State}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiRequest<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions?EmployeeId={request.EmployeeId}&Status={request.Status}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
         }
 
         /// <summary>
-        /// PAYE Report
+        /// Pay Run Inclusions Report
         /// </summary>
         /// <remarks>
-        /// Generates a PAYE report.
+        /// Generates a pay run inclusions report.
         /// </remarks>
-        public Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, PayeReportQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<NzPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, PayRunInclusionsReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PayeReportExportModel>>($"/business/{businessId}/report/paye?State={request.State}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions?EmployeeId={request.EmployeeId}&Status={request.Status}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1185,226 +789,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Employee Payment History Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee payment history report as an Excel file.
-        /// </remarks>
-        public byte[] EmployeePaymentHistoryReportAsExcel(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/paymenthistory/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Employee Payment History Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee payment history report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/paymenthistory/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Employee Payment History Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee payment history report as an Excel file.
-        /// </remarks>
-        public byte[] EmployeePaymentHistoryReportAsExcel(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/paymenthistory/xlsx?FilterType={request.FilterType}&PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Employee Payment History Report as Excel
-        /// </summary>
-        /// <remarks>
-        /// Generates an employee payment history report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/paymenthistory/xlsx?FilterType={request.FilterType}&PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Pay Run Audit Report
-        /// </summary>
-        /// <remarks>
-        /// Pay run audit report
-        /// </remarks>
-        public byte[] PayRunAuditReport(int businessId, int payRunId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Pay Run Audit Report
-        /// </summary>
-        /// <remarks>
-        /// Pay run audit report
-        /// </remarks>
-        public Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Pay Run Audit Report
-        /// </summary>
-        /// <remarks>
-        /// Pay run audit report
-        /// </remarks>
-        public byte[] PayRunAuditReport(int businessId, int payRunId, PayRunAuditReportQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx?SingleEmployeeWorksheet={request.SingleEmployeeWorksheet}&ShowAllSummaryDetails={request.ShowAllSummaryDetails}&ShowAllEmployeeDetails={request.ShowAllEmployeeDetails}", Method.Get);
-        }
-
-        /// <summary>
-        /// Pay Run Audit Report
-        /// </summary>
-        /// <remarks>
-        /// Pay run audit report
-        /// </remarks>
-        public Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, PayRunAuditReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx?SingleEmployeeWorksheet={request.SingleEmployeeWorksheet}&ShowAllSummaryDetails={request.ShowAllSummaryDetails}&ShowAllEmployeeDetails={request.ShowAllEmployeeDetails}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Pay Run Inclusions Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run inclusions report.
-        /// </remarks>
-        public List<NzPayRunInclusionExportModel> PayRunInclusionsReport(int businessId)
-        {
-            return ApiRequest<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions", Method.Get);
-        }
-
-        /// <summary>
-        /// Pay Run Inclusions Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run inclusions report.
-        /// </remarks>
-        public Task<List<NzPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Pay Run Inclusions Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run inclusions report.
-        /// </remarks>
-        public List<NzPayRunInclusionExportModel> PayRunInclusionsReport(int businessId, PayRunInclusionsReportQueryModel request)
-        {
-            return ApiRequest<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions?EmployeeId={request.EmployeeId}&Status={request.Status}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Pay Run Inclusions Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run inclusions report.
-        /// </remarks>
-        public Task<List<NzPayRunInclusionExportModel>> PayRunInclusionsReportAsync(int businessId, PayRunInclusionsReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NzPayRunInclusionExportModel>>($"/business/{businessId}/report/payruninclusions?EmployeeId={request.EmployeeId}&Status={request.Status}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Pay Run Variance Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run variance report as an Excel file.
-        /// </remarks>
-        public byte[] PayRunVarianceReport(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/payrunvariance/xlsx", Method.Get);
-        }
-
-        /// <summary>
-        /// Pay Run Variance Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run variance report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> PayRunVarianceReportAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunvariance/xlsx", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Pay Run Variance Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run variance report as an Excel file.
-        /// </remarks>
-        public byte[] PayRunVarianceReport(int businessId, PayRunVarianceReportQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/payrunvariance/xlsx?PayRunId1={request.PayRunId1}&PayRunId2={request.PayRunId2}&PayPeriodFrom1={(request.PayPeriodFrom1.HasValue ? request.PayPeriodFrom1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo1={(request.PayPeriodTo1.HasValue ? request.PayPeriodTo1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodFrom2={(request.PayPeriodFrom2.HasValue ? request.PayPeriodFrom2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo2={(request.PayPeriodTo2.HasValue ? request.PayPeriodTo2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ComparisonType={request.ComparisonType}&HighlightVariancePercentage={request.HighlightVariancePercentage}&OnlyShowVariances={request.OnlyShowVariances}", Method.Get);
-        }
-
-        /// <summary>
-        /// Pay Run Variance Report
-        /// </summary>
-        /// <remarks>
-        /// Generates a pay run variance report as an Excel file.
-        /// </remarks>
-        public Task<byte[]> PayRunVarianceReportAsync(int businessId, PayRunVarianceReportQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunvariance/xlsx?PayRunId1={request.PayRunId1}&PayRunId2={request.PayRunId2}&PayPeriodFrom1={(request.PayPeriodFrom1.HasValue ? request.PayPeriodFrom1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo1={(request.PayPeriodTo1.HasValue ? request.PayPeriodTo1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodFrom2={(request.PayPeriodFrom2.HasValue ? request.PayPeriodFrom2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo2={(request.PayPeriodTo2.HasValue ? request.PayPeriodTo2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ComparisonType={request.ComparisonType}&HighlightVariancePercentage={request.HighlightVariancePercentage}&OnlyShowVariances={request.OnlyShowVariances}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Pay Slips by Finalised Pay Run Id
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay slips for a finalised pay run with the specified Id.
-        /// </remarks>
-        public byte[] GetPaySlipsByFinalisedPayRunId(int businessId)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/payslip", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pay Slips by Finalised Pay Run Id
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay slips for a finalised pay run with the specified Id.
-        /// </remarks>
-        public Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payslip", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Pay Slips by Finalised Pay Run Id
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay slips for a finalised pay run with the specified Id.
-        /// </remarks>
-        public byte[] GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/report/payslip?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Pay Slips by Finalised Pay Run Id
-        /// </summary>
-        /// <remarks>
-        /// Gets the pay slips for a finalised pay run with the specified Id.
-        /// </remarks>
-        public Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payslip?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Roster vs Timesheet Comparison Report
         /// </summary>
         /// <remarks>
@@ -1446,6 +830,94 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<NzRosterTimesheetComparisonReportExportModel>> RosterVsTimesheetComparisonReportAsync(int businessId, RosterVsTimesheetComparisonReportQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzRosterTimesheetComparisonReportExportModel>>($"/business/{businessId}/report/rostertimesheetcomparison?EmploymentTypeId={request.EmploymentTypeId}&EmployeeId={request.EmployeeId}&IncludeCosts={request.IncludeCosts}{ConvertEnumerableToQueryString("TimesheetStatuses", request.TimesheetStatuses?.Select(x => x.ToString()))}&WorkTypeId={request.WorkTypeId}&RosterLocationId={request.RosterLocationId}&TimesheetLocationId={request.TimesheetLocationId}{ConvertEnumerableToQueryString("RosterStatuses", request.RosterStatuses?.Select(x => x.ToString()))}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Timesheet Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a timesheet report.
+        /// </remarks>
+        public List<NzTimesheetExportModel> TimesheetReport(int businessId)
+        {
+            return ApiRequest<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet", Method.Get);
+        }
+
+        /// <summary>
+        /// Timesheet Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a timesheet report.
+        /// </remarks>
+        public Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Timesheet Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a timesheet report.
+        /// </remarks>
+        public List<NzTimesheetExportModel> TimesheetReport(int businessId, TimesheetReportQueryModel request)
+        {
+            return ApiRequest<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet?EmployeeId={request.EmployeeId}&IncludeCosts={request.IncludeCosts}{ConvertEnumerableToQueryString("Statuses", request.Statuses?.Select(x => x.ToString()))}&WorkTypeId={request.WorkTypeId}&IncludeBreakTimes={request.IncludeBreakTimes}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Timesheet Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a timesheet report.
+        /// </remarks>
+        public Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, TimesheetReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet?EmployeeId={request.EmployeeId}&IncludeCosts={request.IncludeCosts}{ConvertEnumerableToQueryString("Statuses", request.Statuses?.Select(x => x.ToString()))}&WorkTypeId={request.WorkTypeId}&IncludeBreakTimes={request.IncludeBreakTimes}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// PAYE Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a PAYE report.
+        /// </remarks>
+        public List<PayeReportExportModel> PayeReport(int businessId)
+        {
+            return ApiRequest<List<PayeReportExportModel>>($"/business/{businessId}/report/paye", Method.Get);
+        }
+
+        /// <summary>
+        /// PAYE Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a PAYE report.
+        /// </remarks>
+        public Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<PayeReportExportModel>>($"/business/{businessId}/report/paye", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// PAYE Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a PAYE report.
+        /// </remarks>
+        public List<PayeReportExportModel> PayeReport(int businessId, PayeReportQueryModel request)
+        {
+            return ApiRequest<List<PayeReportExportModel>>($"/business/{businessId}/report/paye?State={request.State}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// PAYE Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a PAYE report.
+        /// </remarks>
+        public Task<List<PayeReportExportModel>> PayeReportAsync(int businessId, PayeReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<PayeReportExportModel>>($"/business/{businessId}/report/paye?State={request.State}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1513,47 +985,575 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Timesheet Report
+        /// Employee Details Report
         /// </summary>
         /// <remarks>
-        /// Generates a timesheet report.
+        /// Generates an employee details report.
         /// </remarks>
-        public List<NzTimesheetExportModel> TimesheetReport(int businessId)
+        public List<dynamic> EmployeeDetailsReport(int businessId)
         {
-            return ApiRequest<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet", Method.Get);
+            return ApiRequest<List<dynamic>>($"/business/{businessId}/report/employeedetails", Method.Get);
         }
 
         /// <summary>
-        /// Timesheet Report
+        /// Employee Details Report
         /// </summary>
         /// <remarks>
-        /// Generates a timesheet report.
+        /// Generates an employee details report.
         /// </remarks>
-        public Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<dynamic>>($"/business/{businessId}/report/employeedetails", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Timesheet Report
+        /// Employee Details Report
         /// </summary>
         /// <remarks>
-        /// Generates a timesheet report.
+        /// Generates an employee details report.
         /// </remarks>
-        public List<NzTimesheetExportModel> TimesheetReport(int businessId, TimesheetReportQueryModel request)
+        public List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportQueryModel request)
         {
-            return ApiRequest<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet?EmployeeId={request.EmployeeId}&IncludeCosts={request.IncludeCosts}{ConvertEnumerableToQueryString("Statuses", request.Statuses?.Select(x => x.ToString()))}&WorkTypeId={request.WorkTypeId}&IncludeBreakTimes={request.IncludeBreakTimes}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiRequest<List<dynamic>>($"/business/{businessId}/report/employeedetails{ConvertEnumerableToQueryString("selectedColumns", request.SelectedColumns?.Select(x => x.ToString()))}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}&includeActive={request.IncludeActive}&includeInactive={request.IncludeInactive}", Method.Get);
         }
 
         /// <summary>
-        /// Timesheet Report
+        /// Employee Details Report
         /// </summary>
         /// <remarks>
-        /// Generates a timesheet report.
+        /// Generates an employee details report.
         /// </remarks>
-        public Task<List<NzTimesheetExportModel>> TimesheetReportAsync(int businessId, TimesheetReportQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzTimesheetExportModel>>($"/business/{businessId}/report/timesheet?EmployeeId={request.EmployeeId}&IncludeCosts={request.IncludeCosts}{ConvertEnumerableToQueryString("Statuses", request.Statuses?.Select(x => x.ToString()))}&WorkTypeId={request.WorkTypeId}&IncludeBreakTimes={request.IncludeBreakTimes}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<dynamic>>($"/business/{businessId}/report/employeedetails{ConvertEnumerableToQueryString("selectedColumns", request.SelectedColumns?.Select(x => x.ToString()))}&locationId={request.LocationId}&employingEntityId={request.EmployingEntityId}&includeActive={request.IncludeActive}&includeInactive={request.IncludeInactive}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Employee Details Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an employee details report.
+        /// </remarks>
+        public List<dynamic> EmployeeDetailsReport(int businessId, EmployeeDetailsReportRequestModel model)
+        {
+            return ApiRequest<List<dynamic>,EmployeeDetailsReportRequestModel>($"/business/{businessId}/report/employeedetails", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Employee Details Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an employee details report.
+        /// </remarks>
+        public Task<List<dynamic>> EmployeeDetailsReportAsync(int businessId, EmployeeDetailsReportRequestModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<dynamic>,EmployeeDetailsReportRequestModel>($"/business/{businessId}/report/employeedetails", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Prepare Leave Liability report
+        /// </summary>
+        /// <remarks>
+        /// Prepare Leave Liability Report job.
+        /// </remarks>
+        public ReportLeaveLiabilityPreparationResponse PrepareLeaveLiabilityReport(int businessId, ReportLeaveLiabilityRequestModel request)
+        {
+            return ApiRequest<ReportLeaveLiabilityPreparationResponse,ReportLeaveLiabilityRequestModel>($"/business/{businessId}/report/leaveliability/preparation", request, Method.Post);
+        }
+
+        /// <summary>
+        /// Prepare Leave Liability report
+        /// </summary>
+        /// <remarks>
+        /// Prepare Leave Liability Report job.
+        /// </remarks>
+        public Task<ReportLeaveLiabilityPreparationResponse> PrepareLeaveLiabilityReportAsync(int businessId, ReportLeaveLiabilityRequestModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<ReportLeaveLiabilityPreparationResponse,ReportLeaveLiabilityRequestModel>($"/business/{businessId}/report/leaveliability/preparation", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Detailed Activity Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Detailed Activity Report as an Excel file.
+        /// </remarks>
+        public byte[] DetailedActivityReportAsExcel(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/detailedactivity/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Detailed Activity Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Detailed Activity Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/detailedactivity/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Detailed Activity Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Detailed Activity Report as an Excel file.
+        /// </remarks>
+        public byte[] DetailedActivityReportAsExcel(int businessId, DetailedActivityReportAsExcelQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/detailedactivity/xlsx?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&GroupBy={request.GroupBy}&FilterType={request.FilterType}&PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("LocationsIds", request.LocationsIds?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&ShowLocationTotalsOnly={request.ShowLocationTotalsOnly}&IncludeEmployeePayRunBreakdown={request.IncludeEmployeePayRunBreakdown}", Method.Get);
+        }
+
+        /// <summary>
+        /// Detailed Activity Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Detailed Activity Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> DetailedActivityReportAsExcelAsync(int businessId, DetailedActivityReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/detailedactivity/xlsx?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&GroupBy={request.GroupBy}&FilterType={request.FilterType}&PayRunId={request.PayRunId}&PayScheduleId={request.PayScheduleId}{ConvertEnumerableToQueryString("LocationsIds", request.LocationsIds?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("EmployeeIds", request.EmployeeIds?.Select(x => x.ToString()))}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&ShowLocationTotalsOnly={request.ShowLocationTotalsOnly}&IncludeEmployeePayRunBreakdown={request.IncludeEmployeePayRunBreakdown}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Employee Payment History Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates an employee payment history report as an Excel file.
+        /// </remarks>
+        public byte[] EmployeePaymentHistoryReportAsExcel(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/paymenthistory/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Employee Payment History Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates an employee payment history report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/paymenthistory/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Employee Payment History Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates an employee payment history report as an Excel file.
+        /// </remarks>
+        public byte[] EmployeePaymentHistoryReportAsExcel(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/paymenthistory/xlsx?FilterType={request.FilterType}&PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Employee Payment History Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates an employee payment history report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> EmployeePaymentHistoryReportAsExcelAsync(int businessId, EmployeePaymentHistoryReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/paymenthistory/xlsx?FilterType={request.FilterType}&PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Pay Slips by Finalised Pay Run Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay slips for a finalised pay run with the specified Id.
+        /// </remarks>
+        public byte[] GetPaySlipsByFinalisedPayRunId(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/payslip", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Slips by Finalised Pay Run Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay slips for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payslip", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Pay Slips by Finalised Pay Run Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay slips for a finalised pay run with the specified Id.
+        /// </remarks>
+        public byte[] GetPaySlipsByFinalisedPayRunId(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/payslip?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Pay Slips by Finalised Pay Run Id
+        /// </summary>
+        /// <remarks>
+        /// Gets the pay slips for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task<byte[]> GetPaySlipsByFinalisedPayRunIdAsync(int businessId, GetPaySlipsByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payslip?PayRunId={request.PayRunId}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gross To Net Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report as an Excel file.
+        /// </remarks>
+        public byte[] GrossToNetReportAsExcel(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/grosstonet/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Gross To Net Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/grosstonet/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gross To Net Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report as an Excel file.
+        /// </remarks>
+        public byte[] GrossToNetReportAsExcel(int businessId, GrossToNetReportAsExcelQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/grosstonet/xlsx?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Gross To Net Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Gross To Net Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> GrossToNetReportAsExcelAsync(int businessId, GrossToNetReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/grosstonet/xlsx?EmployeeId={request.EmployeeId}{ConvertEnumerableToQueryString("PayCategoryIds", request.PayCategoryIds?.Select(x => x.ToString()))}&GroupBy={request.GroupBy}&PayRunId={request.PayRunId}&FilterType={request.FilterType}&IncludeExpenses={request.IncludeExpenses}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public byte[] JournalReport(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/journal", Method.Get);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task<byte[]> JournalReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public byte[] JournalReport(int businessId, JournalReportQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get);
+        }
+
+        /// <summary>
+        /// Journal Report
+        /// </summary>
+        /// <remarks>
+        /// Gets the journal for a finalised pay run with the specified Id.
+        /// </remarks>
+        public Task<byte[]> JournalReportAsync(int businessId, JournalReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/journal?PayRunId={request.PayRunId}&JournalView={request.JournalView}&JournalService={request.JournalService}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Leave Balances Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Balances Report as an Excel file.
+        /// </remarks>
+        public byte[] LeaveBalancesReportAsExcel(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/leavebalances/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Leave Balances Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Balances Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leavebalances/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Leave Balances Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Balances Report as an Excel file.
+        /// </remarks>
+        public byte[] LeaveBalancesReportAsExcel(int businessId, LeaveBalancesReportAsExcelQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/leavebalances/xlsx?FilterType={request.FilterType}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayRunId={request.PayRunId}&GroupBy={request.GroupBy}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("LeaveTypeIds", request.LeaveTypeIds?.Select(x => x.ToString()))}&EmployingEntityId={request.EmployingEntityId}&HideLeaveValues={request.HideLeaveValues}", Method.Get);
+        }
+
+        /// <summary>
+        /// Leave Balances Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Balances Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> LeaveBalancesReportAsExcelAsync(int businessId, LeaveBalancesReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leavebalances/xlsx?FilterType={request.FilterType}&AsAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayRunId={request.PayRunId}&GroupBy={request.GroupBy}&LocationId={request.LocationId}{ConvertEnumerableToQueryString("LeaveTypeIds", request.LeaveTypeIds?.Select(x => x.ToString()))}&EmployingEntityId={request.EmployingEntityId}&HideLeaveValues={request.HideLeaveValues}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Leave Liability report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Liability Report as an Excel file.
+        /// </remarks>
+        public byte[] LeaveLiabilityReportAsExcel(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/leaveliability/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Leave Liability report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Liability Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leaveliability/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Leave Liability report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Liability Report as an Excel file.
+        /// </remarks>
+        public byte[] LeaveLiabilityReportAsExcel(int businessId, LeaveLiabilityReportAsExcelQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/leaveliability/xlsx?jobId={request.JobId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Leave Liability report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a Leave Liability Report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> LeaveLiabilityReportAsExcelAsync(int businessId, LeaveLiabilityReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/leaveliability/xlsx?jobId={request.JobId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Pay Run Audit Report
+        /// </summary>
+        /// <remarks>
+        /// Pay run audit report
+        /// </remarks>
+        public byte[] PayRunAuditReport(int businessId, int payRunId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Pay Run Audit Report
+        /// </summary>
+        /// <remarks>
+        /// Pay run audit report
+        /// </remarks>
+        public Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Pay Run Audit Report
+        /// </summary>
+        /// <remarks>
+        /// Pay run audit report
+        /// </remarks>
+        public byte[] PayRunAuditReport(int businessId, int payRunId, PayRunAuditReportQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx?SingleEmployeeWorksheet={request.SingleEmployeeWorksheet}&ShowAllSummaryDetails={request.ShowAllSummaryDetails}&ShowAllEmployeeDetails={request.ShowAllEmployeeDetails}", Method.Get);
+        }
+
+        /// <summary>
+        /// Pay Run Audit Report
+        /// </summary>
+        /// <remarks>
+        /// Pay run audit report
+        /// </remarks>
+        public Task<byte[]> PayRunAuditReportAsync(int businessId, int payRunId, PayRunAuditReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunaudit/{payRunId}/xlsx?SingleEmployeeWorksheet={request.SingleEmployeeWorksheet}&ShowAllSummaryDetails={request.ShowAllSummaryDetails}&ShowAllEmployeeDetails={request.ShowAllEmployeeDetails}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Pay Run Variance Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a pay run variance report as an Excel file.
+        /// </remarks>
+        public byte[] PayRunVarianceReport(int businessId)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/payrunvariance/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Pay Run Variance Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a pay run variance report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> PayRunVarianceReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunvariance/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Pay Run Variance Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a pay run variance report as an Excel file.
+        /// </remarks>
+        public byte[] PayRunVarianceReport(int businessId, PayRunVarianceReportQueryModel request)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/report/payrunvariance/xlsx?PayRunId1={request.PayRunId1}&PayRunId2={request.PayRunId2}&PayPeriodFrom1={(request.PayPeriodFrom1.HasValue ? request.PayPeriodFrom1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo1={(request.PayPeriodTo1.HasValue ? request.PayPeriodTo1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodFrom2={(request.PayPeriodFrom2.HasValue ? request.PayPeriodFrom2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo2={(request.PayPeriodTo2.HasValue ? request.PayPeriodTo2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ComparisonType={request.ComparisonType}&HighlightVariancePercentage={request.HighlightVariancePercentage}&OnlyShowVariances={request.OnlyShowVariances}", Method.Get);
+        }
+
+        /// <summary>
+        /// Pay Run Variance Report
+        /// </summary>
+        /// <remarks>
+        /// Generates a pay run variance report as an Excel file.
+        /// </remarks>
+        public Task<byte[]> PayRunVarianceReportAsync(int businessId, PayRunVarianceReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/report/payrunvariance/xlsx?PayRunId1={request.PayRunId1}&PayRunId2={request.PayRunId2}&PayPeriodFrom1={(request.PayPeriodFrom1.HasValue ? request.PayPeriodFrom1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo1={(request.PayPeriodTo1.HasValue ? request.PayPeriodTo1.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodFrom2={(request.PayPeriodFrom2.HasValue ? request.PayPeriodFrom2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&PayPeriodTo2={(request.PayPeriodTo2.HasValue ? request.PayPeriodTo2.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ComparisonType={request.ComparisonType}&HighlightVariancePercentage={request.HighlightVariancePercentage}&OnlyShowVariances={request.OnlyShowVariances}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Employee Audit excel Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an Employee Audit excel Report.
+        /// </remarks>
+        public void EmployeeAuditExcelReport(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/report/employeeaudit/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// Employee Audit excel Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an Employee Audit excel Report.
+        /// </remarks>
+        public Task EmployeeAuditExcelReportAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/report/employeeaudit/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Employee Audit excel Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an Employee Audit excel Report.
+        /// </remarks>
+        public void EmployeeAuditExcelReport(int businessId, EmployeeAuditExcelReportQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/report/employeeaudit/xlsx?EmployeeId={request.EmployeeId}&Section={request.Section}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Employee Audit excel Report
+        /// </summary>
+        /// <remarks>
+        /// Generates an Employee Audit excel Report.
+        /// </remarks>
+        public Task EmployeeAuditExcelReportAsync(int businessId, EmployeeAuditExcelReportQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/report/employeeaudit/xlsx?EmployeeId={request.EmployeeId}&Section={request.Section}&PayScheduleId={request.PayScheduleId}&IncludePostTaxDeductions={request.IncludePostTaxDeductions}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// KiwiSaver Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a KiwiSaver Report as an Excel file.
+        /// </remarks>
+        public void KiwisaverReportAsExcel(int businessId)
+        {
+            ApiRequest($"/business/{businessId}/report/kiwisaver/xlsx", Method.Get);
+        }
+
+        /// <summary>
+        /// KiwiSaver Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a KiwiSaver Report as an Excel file.
+        /// </remarks>
+        public Task KiwisaverReportAsExcelAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/report/kiwisaver/xlsx", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// KiwiSaver Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a KiwiSaver Report as an Excel file.
+        /// </remarks>
+        public void KiwisaverReportAsExcel(int businessId, KiwisaverReportAsExcelQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/report/kiwisaver/xlsx?FilterType={request.FilterType}&PayScheduleId={request.PayScheduleId}&EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+        }
+
+        /// <summary>
+        /// KiwiSaver Report as Excel
+        /// </summary>
+        /// <remarks>
+        /// Generates a KiwiSaver Report as an Excel file.
+        /// </remarks>
+        public Task KiwisaverReportAsExcelAsync(int businessId, KiwisaverReportAsExcelQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/report/kiwisaver/xlsx?FilterType={request.FilterType}&PayScheduleId={request.PayScheduleId}&EmployeeId={request.EmployeeId}&PayRunId={request.PayRunId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
         }
     }
 }

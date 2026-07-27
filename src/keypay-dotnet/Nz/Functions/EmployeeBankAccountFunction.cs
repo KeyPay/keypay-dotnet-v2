@@ -17,14 +17,14 @@ namespace KeyPayV2.Nz.Functions
     {
         List<NzBankAccountModel> ListBankAccounts(int businessId, int employeeId);
         Task<List<NzBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        NzSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, NzBankAccountModel model);
-        Task<NzSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, NzBankAccountModel model, CancellationToken cancellationToken = default);
         NzBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId);
         Task<NzBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
-        NzSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model);
-        Task<NzSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model, CancellationToken cancellationToken = default);
+        NzSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, NzBankAccountModel model);
+        Task<NzSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, NzBankAccountModel model, CancellationToken cancellationToken = default);
         NzSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId);
         Task<NzSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        NzSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model);
+        Task<NzSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model, CancellationToken cancellationToken = default);
     }
     public class EmployeeBankAccountFunction : BaseFunction, IEmployeeBankAccountFunction
     {
@@ -53,28 +53,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Create Bank Account
-        /// </summary>
-        /// <remarks>
-        /// Creates a new bank account for the employee.
-        /// </remarks>
-        public NzSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, NzBankAccountModel model)
-        {
-            return ApiRequest<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Bank Account
-        /// </summary>
-        /// <remarks>
-        /// Creates a new bank account for the employee.
-        /// </remarks>
-        public Task<NzSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, NzBankAccountModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Bank Account by ID
         /// </summary>
         /// <remarks>
@@ -97,25 +75,25 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Update Bank Account
+        /// Create Bank Account
         /// </summary>
         /// <remarks>
-        /// Updates the employee's bank account with the specified ID.
+        /// Creates a new bank account for the employee.
         /// </remarks>
-        public NzSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model)
+        public NzSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, NzBankAccountModel model)
         {
-            return ApiRequest<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", model, Method.Put);
+            return ApiRequest<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.Post);
         }
 
         /// <summary>
-        /// Update Bank Account
+        /// Create Bank Account
         /// </summary>
         /// <remarks>
-        /// Updates the employee's bank account with the specified ID.
+        /// Creates a new bank account for the employee.
         /// </remarks>
-        public Task<NzSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model, CancellationToken cancellationToken = default)
+        public Task<NzSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, NzBankAccountModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", model, Method.Put, cancellationToken);
+            return ApiRequestAsync<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -138,6 +116,28 @@ namespace KeyPayV2.Nz.Functions
         public Task<NzSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<NzSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Bank Account
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's bank account with the specified ID.
+        /// </remarks>
+        public NzSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model)
+        {
+            return ApiRequest<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Bank Account
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's bank account with the specified ID.
+        /// </remarks>
+        public Task<NzSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, NzBankAccountModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzSaveBankAccountResponseModel,NzBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", model, Method.Put, cancellationToken);
         }
     }
 }

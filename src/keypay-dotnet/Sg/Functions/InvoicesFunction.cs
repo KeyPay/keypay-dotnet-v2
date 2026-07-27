@@ -15,30 +15,30 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IInvoicesFunction
     {
+        InvoiceModel GetBrandInvoiceById(int id, int brandId);
+        Task<InvoiceModel> GetBrandInvoiceByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
+        InvoiceModel GetBusinessInvoiceById(int businessId, int id);
+        Task<InvoiceModel> GetBusinessInvoiceByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        InvoiceModel GetResellerInvoiceById(int resellerId, int id);
+        Task<InvoiceModel> GetResellerInvoiceByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default);
         List<InvoiceModel> GetBrandInvoices(int brandId);
         Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, CancellationToken cancellationToken = default);
         List<InvoiceModel> GetBrandInvoices(int brandId, GetBrandInvoicesQueryModel request);
         Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, GetBrandInvoicesQueryModel request, CancellationToken cancellationToken = default);
-        InvoiceModel GetBrandInvoiceById(int id, int brandId);
-        Task<InvoiceModel> GetBrandInvoiceByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
-        byte[] GetBrandInvoiceExcelById(int id, int brandId);
-        Task<byte[]> GetBrandInvoiceExcelByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
-        byte[] GetBrandInvoicePdfById(int id, int brandId);
-        Task<byte[]> GetBrandInvoicePdfByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
         List<InvoiceModel> GetBusinessInvoices(int businessId);
         Task<List<InvoiceModel>> GetBusinessInvoicesAsync(int businessId, CancellationToken cancellationToken = default);
         List<InvoiceModel> GetBusinessInvoices(int businessId, GetBusinessInvoicesQueryModel request);
         Task<List<InvoiceModel>> GetBusinessInvoicesAsync(int businessId, GetBusinessInvoicesQueryModel request, CancellationToken cancellationToken = default);
-        InvoiceModel GetBusinessInvoiceById(int businessId, int id);
-        Task<InvoiceModel> GetBusinessInvoiceByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        byte[] GetBusinessInvoicePdfById(int businessId, int id);
-        Task<byte[]> GetBusinessInvoicePdfByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<InvoiceModel> GetResellerInvoices(int? resellerId);
         Task<List<InvoiceModel>> GetResellerInvoicesAsync(int? resellerId, CancellationToken cancellationToken = default);
         List<InvoiceModel> GetResellerInvoices(int? resellerId, GetResellerInvoicesQueryModel request);
         Task<List<InvoiceModel>> GetResellerInvoicesAsync(int? resellerId, GetResellerInvoicesQueryModel request, CancellationToken cancellationToken = default);
-        InvoiceModel GetResellerInvoiceById(int resellerId, int id);
-        Task<InvoiceModel> GetResellerInvoiceByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default);
+        byte[] GetBrandInvoiceExcelById(int id, int brandId);
+        Task<byte[]> GetBrandInvoiceExcelByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
+        byte[] GetBrandInvoicePdfById(int id, int brandId);
+        Task<byte[]> GetBrandInvoicePdfByIdAsync(int id, int brandId, CancellationToken cancellationToken = default);
+        byte[] GetBusinessInvoicePdfById(int businessId, int id);
+        Task<byte[]> GetBusinessInvoicePdfByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         byte[] GetResellerInvoiceExcelById(int resellerId, int id);
         Task<byte[]> GetResellerInvoiceExcelByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default);
         byte[] GetResellerInvoicePdfById(int resellerId, int id);
@@ -47,6 +47,72 @@ namespace KeyPayV2.Sg.Functions
     public class InvoicesFunction : BaseFunction, IInvoicesFunction
     {
         public InvoicesFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Brand Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice with the specified ID.
+        /// </remarks>
+        public InvoiceModel GetBrandInvoiceById(int id, int brandId)
+        {
+            return ApiRequest<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Brand Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice with the specified ID.
+        /// </remarks>
+        public Task<InvoiceModel> GetBrandInvoiceByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Business invoice with the specified ID.
+        /// </remarks>
+        public InvoiceModel GetBusinessInvoiceById(int businessId, int id)
+        {
+            return ApiRequest<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Business invoice with the specified ID.
+        /// </remarks>
+        public Task<InvoiceModel> GetBusinessInvoiceByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Reseller Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Reseller invoice with the specified ID.
+        /// </remarks>
+        public InvoiceModel GetResellerInvoiceById(int resellerId, int id)
+        {
+            return ApiRequest<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Reseller Invoice By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Reseller invoice with the specified ID.
+        /// </remarks>
+        public Task<InvoiceModel> GetResellerInvoiceByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Brand Invoices
@@ -90,72 +156,6 @@ namespace KeyPayV2.Sg.Functions
         public Task<List<InvoiceModel>> GetBrandInvoicesAsync(int brandId, GetBrandInvoicesQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<InvoiceModel>>($"/brand/{brandId}/Invoice?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Brand Invoice By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Brand invoice with the specified ID.
-        /// </remarks>
-        public InvoiceModel GetBrandInvoiceById(int id, int brandId)
-        {
-            return ApiRequest<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Brand Invoice By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Brand invoice with the specified ID.
-        /// </remarks>
-        public Task<InvoiceModel> GetBrandInvoiceByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<InvoiceModel>($"/brand/{brandId}/Invoice/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Brand Invoice Excel By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Brand invoice Excel with the specified ID.
-        /// </remarks>
-        public byte[] GetBrandInvoiceExcelById(int id, int brandId)
-        {
-            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/excel", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Brand Invoice Excel By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Brand invoice Excel with the specified ID.
-        /// </remarks>
-        public Task<byte[]> GetBrandInvoiceExcelByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/excel", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Brand Invoice PDF By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Brand invoice PDF with the specified ID.
-        /// </remarks>
-        public byte[] GetBrandInvoicePdfById(int id, int brandId)
-        {
-            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/pdf", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Brand Invoice PDF By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Brand invoice PDF with the specified ID.
-        /// </remarks>
-        public Task<byte[]> GetBrandInvoicePdfByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -203,50 +203,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Business Invoice By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Business invoice with the specified ID.
-        /// </remarks>
-        public InvoiceModel GetBusinessInvoiceById(int businessId, int id)
-        {
-            return ApiRequest<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Invoice By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Business invoice with the specified ID.
-        /// </remarks>
-        public Task<InvoiceModel> GetBusinessInvoiceByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<InvoiceModel>($"/business/{businessId}/Invoice/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Invoice PDF By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Business invoice with the specified ID.
-        /// </remarks>
-        public byte[] GetBusinessInvoicePdfById(int businessId, int id)
-        {
-            return ApiByteArrayRequest($"/business/{businessId}/Invoice/{id}/pdf", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Invoice PDF By ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the Business invoice with the specified ID.
-        /// </remarks>
-        public Task<byte[]> GetBusinessInvoicePdfByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Reseller Invoices
         /// </summary>
         /// <remarks>
@@ -291,25 +247,69 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Reseller Invoice By ID
+        /// Get Brand Invoice Excel By ID
         /// </summary>
         /// <remarks>
-        /// Gets the Reseller invoice with the specified ID.
+        /// Gets the Brand invoice Excel with the specified ID.
         /// </remarks>
-        public InvoiceModel GetResellerInvoiceById(int resellerId, int id)
+        public byte[] GetBrandInvoiceExcelById(int id, int brandId)
         {
-            return ApiRequest<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.Get);
+            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/excel", Method.Get);
         }
 
         /// <summary>
-        /// Get Reseller Invoice By ID
+        /// Get Brand Invoice Excel By ID
         /// </summary>
         /// <remarks>
-        /// Gets the Reseller invoice with the specified ID.
+        /// Gets the Brand invoice Excel with the specified ID.
         /// </remarks>
-        public Task<InvoiceModel> GetResellerInvoiceByIdAsync(int resellerId, int id, CancellationToken cancellationToken = default)
+        public Task<byte[]> GetBrandInvoiceExcelByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<InvoiceModel>($"/reseller/{resellerId}/Invoice/{id}", Method.Get, cancellationToken);
+            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/excel", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Brand Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice PDF with the specified ID.
+        /// </remarks>
+        public byte[] GetBrandInvoicePdfById(int id, int brandId)
+        {
+            return ApiByteArrayRequest($"/brand/{brandId}/Invoice/{id}/pdf", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Brand Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Brand invoice PDF with the specified ID.
+        /// </remarks>
+        public Task<byte[]> GetBrandInvoicePdfByIdAsync(int id, int brandId, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/brand/{brandId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Business invoice with the specified ID.
+        /// </remarks>
+        public byte[] GetBusinessInvoicePdfById(int businessId, int id)
+        {
+            return ApiByteArrayRequest($"/business/{businessId}/Invoice/{id}/pdf", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Invoice PDF By ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the Business invoice with the specified ID.
+        /// </remarks>
+        public Task<byte[]> GetBusinessInvoicePdfByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiByteArrayRequestAsync($"/business/{businessId}/Invoice/{id}/pdf", Method.Get, cancellationToken);
         }
 
         /// <summary>

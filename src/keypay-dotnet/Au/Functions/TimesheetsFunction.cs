@@ -15,50 +15,26 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ITimesheetsFunction
     {
-        List<AuTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuIndividualTimesheetLineModel CreateTimesheetLine(int businessId, AuIndividualTimesheetLineModel request);
         Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         AuIndividualTimesheetLineModel CreateTimesheetLine(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query);
         Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default);
+        AuIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId);
+        Task<AuIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
+        AuIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request);
+        Task<AuIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         AuSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, AuSubmitTimesheetsRequest request);
         Task<AuSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, AuSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
         AuSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, AuSubmitTimesheetsRequest request);
         Task<AuSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, AuSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
-        AuIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request);
-        Task<AuIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
+        List<AuTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void DeleteTimesheetLine(int businessId, int timesheetLineId);
         Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
-        AuIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId);
-        Task<AuIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
     }
     public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
         public TimesheetsFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get Business Timesheets
-        /// </summary>
-        /// <remarks>
-        /// Retrieves all timesheets for the specified business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<AuTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<AuTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Timesheets
-        /// </summary>
-        /// <remarks>
-        /// Retrieves all timesheets for the specified business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<AuTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create timesheet line
@@ -106,6 +82,52 @@ namespace KeyPayV2.Au.Functions
         public Task<AuIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, AuIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Get an individual timesheet line
+        /// </remarks>
+        public AuIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId)
+        {
+            return ApiRequest<AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Get an individual timesheet line
+        /// </remarks>
+        public Task<AuIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// </remarks>
+        public AuIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request)
+        {
+            return ApiRequest<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put);
+        }
+
+        /// <summary>
+        /// Update timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// </remarks>
+        public Task<AuIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -163,27 +185,27 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Update timesheet line
+        /// Get Business Timesheets
         /// </summary>
         /// <remarks>
-        /// Update an individual timesheet line
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// Retrieves all timesheets for the specified business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public AuIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request)
+        public List<AuTimesheetLineModel> GetBusinessTimesheets(int businessId, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put);
+            return ApiRequest<List<AuTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
-        /// Update timesheet line
+        /// Get Business Timesheets
         /// </summary>
         /// <remarks>
-        /// Update an individual timesheet line
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// Retrieves all timesheets for the specified business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
-        public Task<AuIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, AuIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
+        public Task<List<AuTimesheetLineModel>> GetBusinessTimesheetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuIndividualTimesheetLineModel,AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put, cancellationToken);
+            return ApiRequestAsync<List<AuTimesheetLineModel>>($"/business/{businessId}/timesheet{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -208,28 +230,6 @@ namespace KeyPayV2.Au.Functions
         public Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get timesheet line
-        /// </summary>
-        /// <remarks>
-        /// Get an individual timesheet line
-        /// </remarks>
-        public AuIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId)
-        {
-            return ApiRequest<AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get timesheet line
-        /// </summary>
-        /// <remarks>
-        /// Get an individual timesheet line
-        /// </remarks>
-        public Task<AuIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
         }
     }
 }

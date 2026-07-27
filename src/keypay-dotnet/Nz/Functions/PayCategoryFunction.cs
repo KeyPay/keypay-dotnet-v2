@@ -15,10 +15,10 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IPayCategoryFunction
     {
-        NzPayCategoryModel CreatePayCategory(int businessId, NzPayCategoryModel payCategory);
-        Task<NzPayCategoryModel> CreatePayCategoryAsync(int businessId, NzPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         List<NzPayCategoryModel> ListPayCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<NzPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        NzPayCategoryModel CreatePayCategory(int businessId, NzPayCategoryModel payCategory);
+        Task<NzPayCategoryModel> CreatePayCategoryAsync(int businessId, NzPayCategoryModel payCategory, CancellationToken cancellationToken = default);
         NzPayCategoryModel GetPayCategoryById(int businessId, int id);
         Task<NzPayCategoryModel> GetPayCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         NzPayCategoryModel UpdatePayCategory(int businessId, int id, NzPayCategoryModel payCategory);
@@ -29,28 +29,6 @@ namespace KeyPayV2.Nz.Functions
     public class PayCategoryFunction : BaseFunction, IPayCategoryFunction
     {
         public PayCategoryFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Create Pay Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay category for the business.
-        /// </remarks>
-        public NzPayCategoryModel CreatePayCategory(int businessId, NzPayCategoryModel payCategory)
-        {
-            return ApiRequest<NzPayCategoryModel,NzPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Pay Category
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay category for the business.
-        /// </remarks>
-        public Task<NzPayCategoryModel> CreatePayCategoryAsync(int businessId, NzPayCategoryModel payCategory, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<NzPayCategoryModel,NzPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
-        }
 
         /// <summary>
         /// List Pay Categories
@@ -74,6 +52,28 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<NzPayCategoryModel>> ListPayCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NzPayCategoryModel>>($"/business/{businessId}/paycategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Pay Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay category for the business.
+        /// </remarks>
+        public NzPayCategoryModel CreatePayCategory(int businessId, NzPayCategoryModel payCategory)
+        {
+            return ApiRequest<NzPayCategoryModel,NzPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Pay Category
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay category for the business.
+        /// </remarks>
+        public Task<NzPayCategoryModel> CreatePayCategoryAsync(int businessId, NzPayCategoryModel payCategory, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<NzPayCategoryModel,NzPayCategoryModel>($"/business/{businessId}/paycategory", payCategory, Method.Post, cancellationToken);
         }
 
         /// <summary>

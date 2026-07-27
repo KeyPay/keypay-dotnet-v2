@@ -15,18 +15,40 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IAwardFunction
     {
+        AwardInstallResponse InstallAward(int businessId, int awardId, AwardInstallRequest request);
+        Task<AwardInstallResponse> InstallAwardAsync(int businessId, int awardId, AwardInstallRequest request, CancellationToken cancellationToken = default);
         List<AwardStatusModel> ListAwards(int businessId);
         Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, CancellationToken cancellationToken = default);
         List<AwardStatusModel> ListAwards(int businessId, ListAwardsQueryModel request);
         Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, ListAwardsQueryModel request, CancellationToken cancellationToken = default);
         List<InstalledAwardModel> ListInstalledAwards(int businessId);
         Task<List<InstalledAwardModel>> ListInstalledAwardsAsync(int businessId, CancellationToken cancellationToken = default);
-        AwardInstallResponse InstallAward(int businessId, int awardId, AwardInstallRequest request);
-        Task<AwardInstallResponse> InstallAwardAsync(int businessId, int awardId, AwardInstallRequest request, CancellationToken cancellationToken = default);
     }
     public class AwardFunction : BaseFunction, IAwardFunction
     {
         public AwardFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Install Award
+        /// </summary>
+        /// <remarks>
+        /// Installs an award for the specified business. This operation is asynchronous and returns a job ID that can be used to track the installation progress.
+        /// </remarks>
+        public AwardInstallResponse InstallAward(int businessId, int awardId, AwardInstallRequest request)
+        {
+            return ApiRequest<AwardInstallResponse,AwardInstallRequest>($"/business/{businessId}/award/{awardId}/install", request, Method.Put);
+        }
+
+        /// <summary>
+        /// Install Award
+        /// </summary>
+        /// <remarks>
+        /// Installs an award for the specified business. This operation is asynchronous and returns a job ID that can be used to track the installation progress.
+        /// </remarks>
+        public Task<AwardInstallResponse> InstallAwardAsync(int businessId, int awardId, AwardInstallRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AwardInstallResponse,AwardInstallRequest>($"/business/{businessId}/award/{awardId}/install", request, Method.Put, cancellationToken);
+        }
 
         /// <summary>
         /// List Awards
@@ -96,28 +118,6 @@ namespace KeyPayV2.Au.Functions
         public Task<List<InstalledAwardModel>> ListInstalledAwardsAsync(int businessId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<InstalledAwardModel>>($"/business/{businessId}/award/installed", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Install Award
-        /// </summary>
-        /// <remarks>
-        /// Installs an award for the specified business. This operation is asynchronous and returns a job ID that can be used to track the installation progress.
-        /// </remarks>
-        public AwardInstallResponse InstallAward(int businessId, int awardId, AwardInstallRequest request)
-        {
-            return ApiRequest<AwardInstallResponse,AwardInstallRequest>($"/business/{businessId}/award/{awardId}/install", request, Method.Put);
-        }
-
-        /// <summary>
-        /// Install Award
-        /// </summary>
-        /// <remarks>
-        /// Installs an award for the specified business. This operation is asynchronous and returns a job ID that can be used to track the installation progress.
-        /// </remarks>
-        public Task<AwardInstallResponse> InstallAwardAsync(int businessId, int awardId, AwardInstallRequest request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AwardInstallResponse,AwardInstallRequest>($"/business/{businessId}/award/{awardId}/install", request, Method.Put, cancellationToken);
         }
     }
 }

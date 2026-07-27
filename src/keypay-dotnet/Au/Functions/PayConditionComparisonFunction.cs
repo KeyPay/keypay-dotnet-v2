@@ -15,20 +15,42 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IPayConditionComparisonFunction
     {
+        InitialServiceDateResponse GetInitialServiceDate(int businessId, int employeeId);
+        Task<InitialServiceDateResponse> GetInitialServiceDateAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<PayConditionComparisonApiModel> GetEmployeePayConditionComparisons(int businessId, int employeeId);
         Task<List<PayConditionComparisonApiModel>> GetEmployeePayConditionComparisonsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         PayConditionComparisonApiModel CreatePayConditionComparison(int businessId, int employeeId, CreatePayConditionComparisonRequest request);
         Task<PayConditionComparisonApiModel> CreatePayConditionComparisonAsync(int businessId, int employeeId, CreatePayConditionComparisonRequest request, CancellationToken cancellationToken = default);
-        InitialServiceDateResponse GetInitialServiceDate(int businessId, int employeeId);
-        Task<InitialServiceDateResponse> GetInitialServiceDateAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void UpdateInitialServiceDate(int businessId, int employeeId, UpdateServiceStartDateRequest request);
-        Task UpdateInitialServiceDateAsync(int businessId, int employeeId, UpdateServiceStartDateRequest request, CancellationToken cancellationToken = default);
         void DeletePayConditionComparison(int businessId, int employeeId, int id);
         Task DeletePayConditionComparisonAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void UpdateInitialServiceDate(int businessId, int employeeId, UpdateServiceStartDateRequest request);
+        Task UpdateInitialServiceDateAsync(int businessId, int employeeId, UpdateServiceStartDateRequest request, CancellationToken cancellationToken = default);
     }
     public class PayConditionComparisonFunction : BaseFunction, IPayConditionComparisonFunction
     {
         public PayConditionComparisonFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Initial Service Date
+        /// </summary>
+        /// <remarks>
+        /// Gets the initial service date for the specified employee's pay condition comparison.
+        /// </remarks>
+        public InitialServiceDateResponse GetInitialServiceDate(int businessId, int employeeId)
+        {
+            return ApiRequest<InitialServiceDateResponse>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/initialservicedate", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Initial Service Date
+        /// </summary>
+        /// <remarks>
+        /// Gets the initial service date for the specified employee's pay condition comparison.
+        /// </remarks>
+        public Task<InitialServiceDateResponse> GetInitialServiceDateAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<InitialServiceDateResponse>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/initialservicedate", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Employee Pay Condition Comparisons
@@ -75,25 +97,25 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get Initial Service Date
+        /// Delete Pay Condition Comparison
         /// </summary>
         /// <remarks>
-        /// Gets the initial service date for the specified employee's pay condition comparison.
+        /// Deletes the pay condition comparison with the specified ID for the specified employee.
         /// </remarks>
-        public InitialServiceDateResponse GetInitialServiceDate(int businessId, int employeeId)
+        public void DeletePayConditionComparison(int businessId, int employeeId, int id)
         {
-            return ApiRequest<InitialServiceDateResponse>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/initialservicedate", Method.Get);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/{id}", Method.Delete);
         }
 
         /// <summary>
-        /// Get Initial Service Date
+        /// Delete Pay Condition Comparison
         /// </summary>
         /// <remarks>
-        /// Gets the initial service date for the specified employee's pay condition comparison.
+        /// Deletes the pay condition comparison with the specified ID for the specified employee.
         /// </remarks>
-        public Task<InitialServiceDateResponse> GetInitialServiceDateAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task DeletePayConditionComparisonAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<InitialServiceDateResponse>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/initialservicedate", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -116,28 +138,6 @@ namespace KeyPayV2.Au.Functions
         public Task UpdateInitialServiceDateAsync(int businessId, int employeeId, UpdateServiceStartDateRequest request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/initialservicedate", request, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Pay Condition Comparison
-        /// </summary>
-        /// <remarks>
-        /// Deletes the pay condition comparison with the specified ID for the specified employee.
-        /// </remarks>
-        public void DeletePayConditionComparison(int businessId, int employeeId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Pay Condition Comparison
-        /// </summary>
-        /// <remarks>
-        /// Deletes the pay condition comparison with the specified ID for the specified employee.
-        /// </remarks>
-        public Task DeletePayConditionComparisonAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/{id}", Method.Delete, cancellationToken);
         }
     }
 }

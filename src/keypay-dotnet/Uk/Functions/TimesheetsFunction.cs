@@ -21,16 +21,16 @@ namespace KeyPayV2.Uk.Functions
         Task<UkIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         UkIndividualTimesheetLineModel CreateTimesheetLine(int businessId, UkIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query);
         Task<UkIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, UkIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default);
+        UkIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId);
+        Task<UkIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
+        UkIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request);
+        Task<UkIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         UkSubmitTimesheetsResponse BulkInsertTimesheets(int businessId, UkSubmitTimesheetsRequest request);
         Task<UkSubmitTimesheetsResponse> BulkInsertTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
         UkSubmitTimesheetsResponse UpdateReplaceTimesheets(int businessId, UkSubmitTimesheetsRequest request);
         Task<UkSubmitTimesheetsResponse> UpdateReplaceTimesheetsAsync(int businessId, UkSubmitTimesheetsRequest request, CancellationToken cancellationToken = default);
-        UkIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request);
-        Task<UkIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default);
         void DeleteTimesheetLine(int businessId, int timesheetLineId);
         Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
-        UkIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId);
-        Task<UkIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default);
     }
     public class TimesheetsFunction : BaseFunction, ITimesheetsFunction
     {
@@ -109,6 +109,52 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
+        /// Get timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Get an individual timesheet line
+        /// </remarks>
+        public UkIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId)
+        {
+            return ApiRequest<UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Get an individual timesheet line
+        /// </remarks>
+        public Task<UkIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// </remarks>
+        public UkIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request)
+        {
+            return ApiRequest<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put);
+        }
+
+        /// <summary>
+        /// Update timesheet line
+        /// </summary>
+        /// <remarks>
+        /// Update an individual timesheet line
+        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
+        /// </remarks>
+        public Task<UkIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
         /// Bulk Insert Timesheets
         /// </summary>
         /// <remarks>
@@ -163,30 +209,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Update timesheet line
-        /// </summary>
-        /// <remarks>
-        /// Update an individual timesheet line
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
-        /// </remarks>
-        public UkIndividualTimesheetLineModel UpdateTimesheetLine(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request)
-        {
-            return ApiRequest<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put);
-        }
-
-        /// <summary>
-        /// Update timesheet line
-        /// </summary>
-        /// <remarks>
-        /// Update an individual timesheet line
-        /// IMPORTANT NOTICE: If units are specified the start and end time will be changed to midnight
-        /// </remarks>
-        public Task<UkIndividualTimesheetLineModel> UpdateTimesheetLineAsync(int businessId, int timesheetLineId, UkIndividualTimesheetLineModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkIndividualTimesheetLineModel,UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", request, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Delete timesheet line
         /// </summary>
         /// <remarks>
@@ -208,28 +230,6 @@ namespace KeyPayV2.Uk.Functions
         public Task DeleteTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get timesheet line
-        /// </summary>
-        /// <remarks>
-        /// Get an individual timesheet line
-        /// </remarks>
-        public UkIndividualTimesheetLineModel GetTimesheetLine(int businessId, int timesheetLineId)
-        {
-            return ApiRequest<UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get timesheet line
-        /// </summary>
-        /// <remarks>
-        /// Get an individual timesheet line
-        /// </remarks>
-        public Task<UkIndividualTimesheetLineModel> GetTimesheetLineAsync(int businessId, int timesheetLineId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkIndividualTimesheetLineModel>($"/business/{businessId}/timesheet/{timesheetLineId}", Method.Get, cancellationToken);
         }
     }
 }

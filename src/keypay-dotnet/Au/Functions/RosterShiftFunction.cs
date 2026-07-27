@@ -15,14 +15,14 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IRosterShiftFunction
     {
-        List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId);
-        Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default);
-        List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request);
-        Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
         AuEssRosterShiftModel CreateRosterShift(int businessId, AuRosterShiftEditModel shiftModel);
         Task<AuEssRosterShiftModel> CreateRosterShiftAsync(int businessId, AuRosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
         AuEssRosterShiftModel CreateRosterShift(int businessId, AuRosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request);
         Task<AuEssRosterShiftModel> CreateRosterShiftAsync(int businessId, AuRosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel);
+        Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
+        AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
+        Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
         AuRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId);
         Task<AuRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         AuRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request);
@@ -35,68 +35,16 @@ namespace KeyPayV2.Au.Functions
         Task<List<AuEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<AuEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request);
         Task<List<AuEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
-        AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel);
-        Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, CancellationToken cancellationToken = default);
-        AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request);
-        Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default);
+        List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId);
+        Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request);
+        Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default);
         void StubShiftTimesheets(int businessId, int rosterShiftId, StubRosterShiftViewModel model);
         Task StubShiftTimesheetsAsync(int businessId, int rosterShiftId, StubRosterShiftViewModel model, CancellationToken cancellationToken = default);
     }
     public class RosterShiftFunction : BaseFunction, IRosterShiftFunction
     {
         public RosterShiftFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
-        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
-        /// or specify SelectAllRoles = true.
-        /// </remarks>
-        public List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId)
-        {
-            return ApiRequest<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
-        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
-        /// or specify SelectAllRoles = true.
-        /// </remarks>
-        public Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
-        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
-        /// or specify SelectAllRoles = true.
-        /// </remarks>
-        public List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
-        {
-            return ApiRequest<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ShiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployeeGroupId={request.EmployeeGroupId}&UnassignedShiftsOnly={request.UnassignedShiftsOnly}&SelectAllRoles={request.SelectAllRoles}&ExcludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&PageSize={request.PageSize}&CurrentPage={request.CurrentPage}&IncludeWarnings={request.IncludeWarnings}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Roster Shifts
-        /// </summary>
-        /// <remarks>
-        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
-        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
-        /// or specify SelectAllRoles = true.
-        /// </remarks>
-        public Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ShiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployeeGroupId={request.EmployeeGroupId}&UnassignedShiftsOnly={request.UnassignedShiftsOnly}&SelectAllRoles={request.SelectAllRoles}&ExcludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&PageSize={request.PageSize}&CurrentPage={request.CurrentPage}&IncludeWarnings={request.IncludeWarnings}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create roster shift
@@ -140,6 +88,50 @@ namespace KeyPayV2.Au.Functions
         public Task<AuEssRosterShiftModel> CreateRosterShiftAsync(int businessId, AuRosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift?publish={request.Publish}", shiftModel, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel)
+        {
+            return ApiRequest<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
+        {
+            return ApiRequest<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
+        }
+
+        /// <summary>
+        /// Update roster shift
+        /// </summary>
+        /// <remarks>
+        /// Update an individual roster shift
+        /// </remarks>
+        public Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -299,47 +291,55 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Update roster shift
+        /// Get Roster Shifts
         /// </summary>
         /// <remarks>
-        /// Update an individual roster shift
+        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
+        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
+        /// or specify SelectAllRoles = true.
         /// </remarks>
-        public AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel)
+        public List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId)
         {
-            return ApiRequest<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put);
+            return ApiRequest<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift", Method.Get);
         }
 
         /// <summary>
-        /// Update roster shift
+        /// Get Roster Shifts
         /// </summary>
         /// <remarks>
-        /// Update an individual roster shift
+        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
+        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
+        /// or specify SelectAllRoles = true.
         /// </remarks>
-        public Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, CancellationToken cancellationToken = default)
+        public Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}", shiftModel, Method.Put, cancellationToken);
+            return ApiRequestAsync<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Update roster shift
+        /// Get Roster Shifts
         /// </summary>
         /// <remarks>
-        /// Update an individual roster shift
+        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
+        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
+        /// or specify SelectAllRoles = true.
         /// </remarks>
-        public AuEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
+        public List<AuRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
+            return ApiRequest<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ShiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployeeGroupId={request.EmployeeGroupId}&UnassignedShiftsOnly={request.UnassignedShiftsOnly}&SelectAllRoles={request.SelectAllRoles}&ExcludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&PageSize={request.PageSize}&CurrentPage={request.CurrentPage}&IncludeWarnings={request.IncludeWarnings}", Method.Get);
         }
 
         /// <summary>
-        /// Update roster shift
+        /// Get Roster Shifts
         /// </summary>
         /// <remarks>
-        /// Update an individual roster shift
+        /// Gets roster shifts, optionally filtered by a number of parameters. Query parameters 'fromDate' and 'toDate' are required.
+        /// NOTE: By default, only shifts with no role assigned are returned. To return shifts with roles, either specify some SelectedRoles,
+        /// or specify SelectAllRoles = true.
         /// </remarks>
-        public Task<AuEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, AuRosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<AuRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuEssRosterShiftModel,AuRosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
+            return ApiRequestAsync<List<AuRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ShiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployeeGroupId={request.EmployeeGroupId}&UnassignedShiftsOnly={request.UnassignedShiftsOnly}&SelectAllRoles={request.SelectAllRoles}&ExcludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&PageSize={request.PageSize}&CurrentPage={request.CurrentPage}&IncludeWarnings={request.IncludeWarnings}", Method.Get, cancellationToken);
         }
 
         /// <summary>

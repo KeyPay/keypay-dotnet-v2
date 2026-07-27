@@ -16,14 +16,14 @@ namespace KeyPayV2.My.Functions
     {
         List<QualificationModel> ListQualifications(int businessId, ODataQuery oDataQuery = null);
         Task<List<QualificationModel>> ListQualificationsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void CreateQualification(int businessId, QualificationModel qualification);
-        Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default);
         QualificationModel GetQualificationById(int businessId, int id);
         Task<QualificationModel> GetQualificationByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateQualification(int businessId, int id, QualificationModel qualification);
-        Task UpdateQualificationAsync(int businessId, int id, QualificationModel qualification, CancellationToken cancellationToken = default);
+        void CreateQualification(int businessId, QualificationModel qualification);
+        Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default);
         void DeleteQualification(int businessId, int id);
         Task DeleteQualificationAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateQualification(int businessId, int id, QualificationModel qualification);
+        Task UpdateQualificationAsync(int businessId, int id, QualificationModel qualification, CancellationToken cancellationToken = default);
     }
     public class QualificationsFunction : BaseFunction, IQualificationsFunction
     {
@@ -54,28 +54,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Create Qualification
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee qualification for the business.
-        /// </remarks>
-        public void CreateQualification(int businessId, QualificationModel qualification)
-        {
-            ApiRequest($"/business/{businessId}/qualification", qualification, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Qualification
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee qualification for the business.
-        /// </remarks>
-        public Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/qualification", qualification, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Qualification by ID
         /// </summary>
         /// <remarks>
@@ -98,25 +76,25 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Update Qualification
+        /// Create Qualification
         /// </summary>
         /// <remarks>
-        /// Updates the qualification with the specified ID.
+        /// Creates a new employee qualification for the business.
         /// </remarks>
-        public void UpdateQualification(int businessId, int id, QualificationModel qualification)
+        public void CreateQualification(int businessId, QualificationModel qualification)
         {
-            ApiRequest($"/business/{businessId}/qualification/{id}", qualification, Method.Put);
+            ApiRequest($"/business/{businessId}/qualification", qualification, Method.Post);
         }
 
         /// <summary>
-        /// Update Qualification
+        /// Create Qualification
         /// </summary>
         /// <remarks>
-        /// Updates the qualification with the specified ID.
+        /// Creates a new employee qualification for the business.
         /// </remarks>
-        public Task UpdateQualificationAsync(int businessId, int id, QualificationModel qualification, CancellationToken cancellationToken = default)
+        public Task CreateQualificationAsync(int businessId, QualificationModel qualification, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/qualification/{id}", qualification, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/qualification", qualification, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -139,6 +117,28 @@ namespace KeyPayV2.My.Functions
         public Task DeleteQualificationAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/qualification/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Qualification
+        /// </summary>
+        /// <remarks>
+        /// Updates the qualification with the specified ID.
+        /// </remarks>
+        public void UpdateQualification(int businessId, int id, QualificationModel qualification)
+        {
+            ApiRequest($"/business/{businessId}/qualification/{id}", qualification, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Qualification
+        /// </summary>
+        /// <remarks>
+        /// Updates the qualification with the specified ID.
+        /// </remarks>
+        public Task UpdateQualificationAsync(int businessId, int id, QualificationModel qualification, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/qualification/{id}", qualification, Method.Put, cancellationToken);
         }
     }
 }

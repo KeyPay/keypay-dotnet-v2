@@ -15,44 +15,20 @@ namespace KeyPayV2.My.Functions
 {
     public interface IEmployeeEarningsLineSplitFunction
     {
-        List<EarningsLineSplitApiModel> GetEmployeeLocationEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<EarningsLineSplitApiModel>> GetEmployeeLocationEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         EarningsLineSplitApiModel CreateEarningsLineSplit(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit);
         Task<EarningsLineSplitApiModel> CreateEarningsLineSplitAsync(int businessId, int employeeId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
         EarningsLineSplitApiModel GetEarningsLineSplitByLocationId(int businessId, int employeeId, int locationId);
         Task<EarningsLineSplitApiModel> GetEarningsLineSplitByLocationIdAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default);
         EarningsLineSplitApiModel UpdateEarningsLineSplit(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit);
         Task<EarningsLineSplitApiModel> UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default);
+        List<EarningsLineSplitApiModel> GetEmployeeLocationEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<EarningsLineSplitApiModel>> GetEmployeeLocationEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void DeleteEarningsLineSplit(int businessId, int employeeId, int locationId);
         Task DeleteEarningsLineSplitAsync(int businessId, int employeeId, int locationId, CancellationToken cancellationToken = default);
     }
     public class EmployeeEarningsLineSplitFunction : BaseFunction, IEmployeeEarningsLineSplitFunction
     {
         public EmployeeEarningsLineSplitFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// Get Employee location earnings line splits
-        /// </summary>
-        /// <remarks>
-        /// Lists all the location earnings line splits for this employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<EarningsLineSplitApiModel> GetEmployeeLocationEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee location earnings line splits
-        /// </summary>
-        /// <remarks>
-        /// Lists all the location earnings line splits for this employee.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<EarningsLineSplitApiModel>> GetEmployeeLocationEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create Earnings line split
@@ -118,6 +94,30 @@ namespace KeyPayV2.My.Functions
         public Task<EarningsLineSplitApiModel> UpdateEarningsLineSplitAsync(int businessId, int employeeId, int locationId, EarningsLineSplitEditModel earningsLineSplit, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<EarningsLineSplitApiModel,EarningsLineSplitEditModel>($"/business/{businessId}/employee/{employeeId}/earningslinesplit/{locationId}", earningsLineSplit, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee location earnings line splits
+        /// </summary>
+        /// <remarks>
+        /// Lists all the location earnings line splits for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<EarningsLineSplitApiModel> GetEmployeeLocationEarningsLineSplits(int businessId, int employeeId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee location earnings line splits
+        /// </summary>
+        /// <remarks>
+        /// Lists all the location earnings line splits for this employee.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<EarningsLineSplitApiModel>> GetEmployeeLocationEarningsLineSplitsAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EarningsLineSplitApiModel>>($"/business/{businessId}/employee/{employeeId}/earningslinesplit{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

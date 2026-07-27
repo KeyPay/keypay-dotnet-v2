@@ -15,30 +15,66 @@ namespace KeyPayV2.My.Functions
 {
     public interface IEmployeeRecurringTransactionsFunction
     {
-        List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds);
-        Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default);
-        List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId);
-        Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         AdditionalEarningsModel CreateEmployeeAdditionalEarning(int businessId, int employeeId, AdditionalEarningsInputModel model);
         Task<AdditionalEarningsModel> CreateEmployeeAdditionalEarningAsync(int businessId, int employeeId, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default);
         AdditionalEarningsModel GetEmployeeAdditionalEarningById(int businessId, int employeeId, long id);
         Task<AdditionalEarningsModel> GetEmployeeAdditionalEarningByIdAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
         AdditionalEarningsModel UpdateEmployeeAdditionalEarning(int businessId, int employeeId, long id, AdditionalEarningsInputModel model);
         Task<AdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id);
-        Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringBenefitsInKindAdjustmentModel> ListEmployeeBenefitsInKindAdjustments(int businessId, int employeeId);
-        Task<List<EmployeeRecurringBenefitsInKindAdjustmentModel>> ListEmployeeBenefitsInKindAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeRecurringBenefitsInKindAdjustmentModel CreateEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, EmployeeRecurringBenefitsInKindAdjustmentModel model);
         Task<EmployeeRecurringBenefitsInKindAdjustmentModel> CreateEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringBenefitsInKindAdjustmentModel model, CancellationToken cancellationToken = default);
         EmployeeRecurringBenefitsInKindAdjustmentModel GetEmployeeBenefitsInKindAdjustmentById(int businessId, int employeeId, int id);
         Task<EmployeeRecurringBenefitsInKindAdjustmentModel> GetEmployeeBenefitsInKindAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         EmployeeRecurringBenefitsInKindAdjustmentModel UpdateEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id, EmployeeRecurringBenefitsInKindAdjustmentModel model);
         Task<EmployeeRecurringBenefitsInKindAdjustmentModel> UpdateEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringBenefitsInKindAdjustmentModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id);
-        Task DeleteEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringExpenseModel CreateEmployeeExpense(int businessId, int employeeId, EmployeeRecurringExpenseModel model);
+        Task<EmployeeRecurringExpenseModel> CreateEmployeeExpenseAsync(int businessId, int employeeId, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringExpenseModel GetEmployeeExpenseById(int businessId, int employeeId, int id);
+        Task<EmployeeRecurringExpenseModel> GetEmployeeExpenseByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringExpenseModel UpdateEmployeeExpense(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model);
+        Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringStatutoryContributionAdjustmentModel CreateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model);
+        Task<EmployeeRecurringStatutoryContributionAdjustmentModel> CreateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringStatutoryContributionAdjustmentModel GetEmployeeStatutoryContributionAdjustmentById(int businessId, int employeeId, int id);
+        Task<EmployeeRecurringStatutoryContributionAdjustmentModel> GetEmployeeStatutoryContributionAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringStatutoryContributionAdjustmentModel UpdateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model);
+        Task<EmployeeRecurringStatutoryContributionAdjustmentModel> UpdateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringTaxAdjustmentModel CreateEmployeeTaxAdjustment(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model);
+        Task<EmployeeRecurringTaxAdjustmentModel> CreateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringTaxAdjustmentModel GetEmployeeTaxAdjustmentById(int businessId, int employeeId, int id);
+        Task<EmployeeRecurringTaxAdjustmentModel> GetEmployeeTaxAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringTaxAdjustmentModel UpdateEmployeeTaxAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model);
+        Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringTaxReliefAdjustmentModel CreateEmployeeTaxReliefAdjustment(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model);
+        Task<EmployeeRecurringTaxReliefAdjustmentModel> CreateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployeeRecurringTaxReliefAdjustmentModel GetEmployeeTaxReliefAdjustmentById(int businessId, int employeeId, int id);
+        Task<EmployeeRecurringTaxReliefAdjustmentModel> GetEmployeeTaxReliefAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployeeRecurringTaxReliefAdjustmentModel UpdateEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model);
+        Task<EmployeeRecurringTaxReliefAdjustmentModel> UpdateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default);
+        EmployerRecurringLiabilityModel CreateEmployerLiability(int businessId, int employeeId, EmployerRecurringLiabilityModel model);
+        Task<EmployerRecurringLiabilityModel> CreateEmployerLiabilityAsync(int businessId, int employeeId, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default);
+        EmployerRecurringLiabilityModel GetEmployerLiabilityById(int businessId, int employeeId, int id);
+        Task<EmployerRecurringLiabilityModel> GetEmployerLiabilityByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        EmployerRecurringLiabilityModel UpdateEmployerLiability(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model);
+        Task<EmployerRecurringLiabilityModel> UpdateEmployerLiabilityAsync(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default);
+        List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId);
+        Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeRecurringBenefitsInKindAdjustmentModel> ListEmployeeBenefitsInKindAdjustments(int businessId, int employeeId);
+        Task<List<EmployeeRecurringBenefitsInKindAdjustmentModel>> ListEmployeeBenefitsInKindAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId);
+        Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeRecurringStatutoryContributionAdjustmentModel> ListEmployeeStatutoryContributionAdjustments(int businessId, int employeeId);
+        Task<List<EmployeeRecurringStatutoryContributionAdjustmentModel>> ListEmployeeStatutoryContributionAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId);
+        Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployeeRecurringTaxReliefAdjustmentModel> ListEmployeeTaxReliefAdjustments(int businessId, int employeeId);
+        Task<List<EmployeeRecurringTaxReliefAdjustmentModel>> ListEmployeeTaxReliefAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<EmployerRecurringLiabilityModel> ListEmployerLiabilities(int businessId, int employeeId);
+        Task<List<EmployerRecurringLiabilityModel>> ListEmployerLiabilitiesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductions(int businessId, int employeeId);
         Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds);
+        Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default);
         MyEmployeeRecurringDeductionModel CreateEmployeeDeduction(int businessId, int employeeId, MyEmployeeRecurringDeductionModel model);
         Task<MyEmployeeRecurringDeductionModel> CreateEmployeeDeductionAsync(int businessId, int employeeId, MyEmployeeRecurringDeductionModel model, CancellationToken cancellationToken = default);
         MyEmployeeRecurringDeductionModel GetEmployeeDeductionByExternalReferenceId(int businessId, int employeeId, string externalReferenceId);
@@ -47,106 +83,26 @@ namespace KeyPayV2.My.Functions
         Task<MyEmployeeRecurringDeductionModel> GetEmployeeDeductionByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         MyEmployeeRecurringDeductionModel UpdateEmployeeDeduction(int businessId, int employeeId, int id, MyEmployeeRecurringDeductionModel model);
         Task<MyEmployeeRecurringDeductionModel> UpdateEmployeeDeductionAsync(int businessId, int employeeId, int id, MyEmployeeRecurringDeductionModel model, CancellationToken cancellationToken = default);
+        void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id);
+        Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default);
+        void DeleteEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id);
+        Task DeleteEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         void DeleteEmployeeDeduction(int businessId, int employeeId, int id);
         Task DeleteEmployeeDeductionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployerRecurringLiabilityModel> ListEmployerLiabilities(int businessId, int employeeId);
-        Task<List<EmployerRecurringLiabilityModel>> ListEmployerLiabilitiesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployerRecurringLiabilityModel CreateEmployerLiability(int businessId, int employeeId, EmployerRecurringLiabilityModel model);
-        Task<EmployerRecurringLiabilityModel> CreateEmployerLiabilityAsync(int businessId, int employeeId, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default);
-        EmployerRecurringLiabilityModel GetEmployerLiabilityById(int businessId, int employeeId, int id);
-        Task<EmployerRecurringLiabilityModel> GetEmployerLiabilityByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        EmployerRecurringLiabilityModel UpdateEmployerLiability(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model);
-        Task<EmployerRecurringLiabilityModel> UpdateEmployerLiabilityAsync(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default);
-        void DeleteEmployerLiability(int businessId, int employeeId, int id);
-        Task DeleteEmployerLiabilityAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId);
-        Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeRecurringExpenseModel CreateEmployeeExpense(int businessId, int employeeId, EmployeeRecurringExpenseModel model);
-        Task<EmployeeRecurringExpenseModel> CreateEmployeeExpenseAsync(int businessId, int employeeId, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default);
-        EmployeeRecurringExpenseModel GetEmployeeExpenseById(int businessId, int employeeId, int id);
-        Task<EmployeeRecurringExpenseModel> GetEmployeeExpenseByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        EmployeeRecurringExpenseModel UpdateEmployeeExpense(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model);
-        Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeExpense(int businessId, int employeeId, int id);
         Task DeleteEmployeeExpenseAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringStatutoryContributionAdjustmentModel> ListEmployeeStatutoryContributionAdjustments(int businessId, int employeeId);
-        Task<List<EmployeeRecurringStatutoryContributionAdjustmentModel>> ListEmployeeStatutoryContributionAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeRecurringStatutoryContributionAdjustmentModel CreateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model);
-        Task<EmployeeRecurringStatutoryContributionAdjustmentModel> CreateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default);
-        EmployeeRecurringStatutoryContributionAdjustmentModel GetEmployeeStatutoryContributionAdjustmentById(int businessId, int employeeId, int id);
-        Task<EmployeeRecurringStatutoryContributionAdjustmentModel> GetEmployeeStatutoryContributionAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        EmployeeRecurringStatutoryContributionAdjustmentModel UpdateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model);
-        Task<EmployeeRecurringStatutoryContributionAdjustmentModel> UpdateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id);
         Task DeleteEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId);
-        Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeRecurringTaxAdjustmentModel CreateEmployeeTaxAdjustment(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model);
-        Task<EmployeeRecurringTaxAdjustmentModel> CreateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default);
-        EmployeeRecurringTaxAdjustmentModel GetEmployeeTaxAdjustmentById(int businessId, int employeeId, int id);
-        Task<EmployeeRecurringTaxAdjustmentModel> GetEmployeeTaxAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        EmployeeRecurringTaxAdjustmentModel UpdateEmployeeTaxAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model);
-        Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeTaxAdjustment(int businessId, int employeeId, int id);
         Task DeleteEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        List<EmployeeRecurringTaxReliefAdjustmentModel> ListEmployeeTaxReliefAdjustments(int businessId, int employeeId);
-        Task<List<EmployeeRecurringTaxReliefAdjustmentModel>> ListEmployeeTaxReliefAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        EmployeeRecurringTaxReliefAdjustmentModel CreateEmployeeTaxReliefAdjustment(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model);
-        Task<EmployeeRecurringTaxReliefAdjustmentModel> CreateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default);
-        EmployeeRecurringTaxReliefAdjustmentModel GetEmployeeTaxReliefAdjustmentById(int businessId, int employeeId, int id);
-        Task<EmployeeRecurringTaxReliefAdjustmentModel> GetEmployeeTaxReliefAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
-        EmployeeRecurringTaxReliefAdjustmentModel UpdateEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model);
-        Task<EmployeeRecurringTaxReliefAdjustmentModel> UpdateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default);
         void DeleteEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id);
         Task DeleteEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
+        void DeleteEmployerLiability(int businessId, int employeeId, int id);
+        Task DeleteEmployerLiabilityAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
     }
     public class EmployeeRecurringTransactionsFunction : BaseFunction, IEmployeeRecurringTransactionsFunction
     {
         public EmployeeRecurringTransactionsFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Employee Deductions By External Reference Id
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee deductions that have a matching external reference ID
-        /// </remarks>
-        public List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
-        {
-            return ApiRequest<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post);
-        }
-
-        /// <summary>
-        /// List Employee Deductions By External Reference Id
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee deductions that have a matching external reference ID
-        /// </remarks>
-        public Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Additional Earnings
-        /// </summary>
-        /// <remarks>
-        /// Lists all the additional earnings for the employee
-        /// </remarks>
-        public List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId)
-        {
-            return ApiRequest<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Additional Earnings
-        /// </summary>
-        /// <remarks>
-        /// Lists all the additional earnings for the employee
-        /// </remarks>
-        public Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create Employee Additional Earning
@@ -212,50 +168,6 @@ namespace KeyPayV2.My.Functions
         public Task<AdditionalEarningsModel> UpdateEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, AdditionalEarningsInputModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AdditionalEarningsModel,AdditionalEarningsInputModel>($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employee Additional Earning
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's additional earning with the specified ID.
-        /// </remarks>
-        public void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employee Additional Earning
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employee's additional earning with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Benefits In Kind Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee benefits in kind adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringBenefitsInKindAdjustmentModel> ListEmployeeBenefitsInKindAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Benefits In Kind Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee benefits in kind adjustments for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringBenefitsInKindAdjustmentModel>> ListEmployeeBenefitsInKindAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -325,25 +237,487 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// Delete Employee Benefits In Kind Adjustment
+        /// Create Employee Expense
         /// </summary>
         /// <remarks>
-        /// Deletes the employee's recurring benefits in kind adjustment with the specified ID.
+        /// Creates a new recurring expense for the employee.
         /// </remarks>
-        public void DeleteEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id)
+        public EmployeeRecurringExpenseModel CreateEmployeeExpense(int businessId, int employeeId, EmployeeRecurringExpenseModel model)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Delete);
+            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.Post);
         }
 
         /// <summary>
-        /// Delete Employee Benefits In Kind Adjustment
+        /// Create Employee Expense
         /// </summary>
         /// <remarks>
-        /// Deletes the employee's recurring benefits in kind adjustment with the specified ID.
+        /// Creates a new recurring expense for the employee.
         /// </remarks>
-        public Task DeleteEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        public Task<EmployeeRecurringExpenseModel> CreateEmployeeExpenseAsync(int businessId, int employeeId, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Expense by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring expense with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringExpenseModel GetEmployeeExpenseById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Expense by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring expense with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringExpenseModel> GetEmployeeExpenseByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Expense
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring expense with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringExpenseModel UpdateEmployeeExpense(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model)
+        {
+            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Expense
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring expense with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Statutory Contribution Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring statutory contribution adjustment for the employee.
+        /// </remarks>
+        public EmployeeRecurringStatutoryContributionAdjustmentModel CreateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Statutory Contribution Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring statutory contribution adjustment for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> CreateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Statutory Contribution Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring statutory contribution adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringStatutoryContributionAdjustmentModel GetEmployeeStatutoryContributionAdjustmentById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Statutory Contribution Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring statutory contribution adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> GetEmployeeStatutoryContributionAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Statutory Contribution Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring statutory contribution adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringStatutoryContributionAdjustmentModel UpdateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Statutory Contribution Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring statutory contribution adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> UpdateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring tax adjustment for the employee.
+        /// </remarks>
+        public EmployeeRecurringTaxAdjustmentModel CreateEmployeeTaxAdjustment(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring tax adjustment for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxAdjustmentModel> CreateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Tax Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringTaxAdjustmentModel GetEmployeeTaxAdjustmentById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Tax Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxAdjustmentModel> GetEmployeeTaxAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringTaxAdjustmentModel UpdateEmployeeTaxAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Tax Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring tax adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Tax Relief Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring tax relief adjustment for the employee.
+        /// </remarks>
+        public EmployeeRecurringTaxReliefAdjustmentModel CreateEmployeeTaxReliefAdjustment(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Tax Relief Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring tax relief adjustment for the employee.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxReliefAdjustmentModel> CreateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Tax Relief Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring tax relief adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringTaxReliefAdjustmentModel GetEmployeeTaxReliefAdjustmentById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Tax Relief Adjustment by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring tax relief adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxReliefAdjustmentModel> GetEmployeeTaxReliefAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employee Tax Relief Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring tax relief adjustment with the specified ID.
+        /// </remarks>
+        public EmployeeRecurringTaxReliefAdjustmentModel UpdateEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model)
+        {
+            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employee Tax Relief Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring tax relief adjustment with the specified ID.
+        /// </remarks>
+        public Task<EmployeeRecurringTaxReliefAdjustmentModel> UpdateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring employer liability for the employee.
+        /// </remarks>
+        public EmployerRecurringLiabilityModel CreateEmployerLiability(int businessId, int employeeId, EmployerRecurringLiabilityModel model)
+        {
+            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Creates a new recurring employer liability for the employee.
+        /// </remarks>
+        public Task<EmployerRecurringLiabilityModel> CreateEmployerLiabilityAsync(int businessId, int employeeId, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employer liability by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring employer liabilities with the specified ID.
+        /// </remarks>
+        public EmployerRecurringLiabilityModel GetEmployerLiabilityById(int businessId, int employeeId, int id)
+        {
+            return ApiRequest<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employer liability by ID
+        /// </summary>
+        /// <remarks>
+        /// Gets the employee's recurring employer liabilities with the specified ID.
+        /// </remarks>
+        public Task<EmployerRecurringLiabilityModel> GetEmployerLiabilityByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring employer liability with the specified ID.
+        /// </remarks>
+        public EmployerRecurringLiabilityModel UpdateEmployerLiability(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model)
+        {
+            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Updates the employee's recurring employer liability with the specified ID.
+        /// </remarks>
+        public Task<EmployerRecurringLiabilityModel> UpdateEmployerLiabilityAsync(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Additional Earnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all the additional earnings for the employee
+        /// </remarks>
+        public List<AdditionalEarningsModel> ListEmployeeAdditionalEarnings(int businessId, int employeeId)
+        {
+            return ApiRequest<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Additional Earnings
+        /// </summary>
+        /// <remarks>
+        /// Lists all the additional earnings for the employee
+        /// </remarks>
+        public Task<List<AdditionalEarningsModel>> ListEmployeeAdditionalEarningsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AdditionalEarningsModel>>($"/business/{businessId}/employee/{employeeId}/additional-earnings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Benefits In Kind Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee benefits in kind adjustments for the employee
+        /// </remarks>
+        public List<EmployeeRecurringBenefitsInKindAdjustmentModel> ListEmployeeBenefitsInKindAdjustments(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Benefits In Kind Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee benefits in kind adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringBenefitsInKindAdjustmentModel>> ListEmployeeBenefitsInKindAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringBenefitsInKindAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Expenses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee expenses for the employee
+        /// </remarks>
+        public List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Expenses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee expenses for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Statutory Contribution Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee statutory contribution adjustments for the employee
+        /// </remarks>
+        public List<EmployeeRecurringStatutoryContributionAdjustmentModel> ListEmployeeStatutoryContributionAdjustments(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Statutory Contribution Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee statutory contribution adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringStatutoryContributionAdjustmentModel>> ListEmployeeStatutoryContributionAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Tax Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee tax adjustments for the employee
+        /// </remarks>
+        public List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Tax Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee tax adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Tax Relief Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee tax relief adjustments for the employee
+        /// </remarks>
+        public List<EmployeeRecurringTaxReliefAdjustmentModel> ListEmployeeTaxReliefAdjustments(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Tax Relief Adjustments
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee tax relief adjustments for the employee
+        /// </remarks>
+        public Task<List<EmployeeRecurringTaxReliefAdjustmentModel>> ListEmployeeTaxReliefAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employer liabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employer liabilities for the employee
+        /// </remarks>
+        public List<EmployerRecurringLiabilityModel> ListEmployerLiabilities(int businessId, int employeeId)
+        {
+            return ApiRequest<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employer liabilities
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employer liabilities for the employee
+        /// </remarks>
+        public Task<List<EmployerRecurringLiabilityModel>> ListEmployerLiabilitiesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -366,6 +740,28 @@ namespace KeyPayV2.My.Functions
         public Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>>($"/business/{businessId}/employee/{employeeId}/deduction", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Deductions By External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions that have a matching external reference ID
+        /// </remarks>
+        public List<MyEmployeeRecurringDeductionModel> ListEmployeeDeductionsByExternalReferenceId(int businessId, IList<String> externalReferenceIds)
+        {
+            return ApiRequest<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post);
+        }
+
+        /// <summary>
+        /// List Employee Deductions By External Reference Id
+        /// </summary>
+        /// <remarks>
+        /// Lists all the recurring employee deductions that have a matching external reference ID
+        /// </remarks>
+        public Task<List<MyEmployeeRecurringDeductionModel>> ListEmployeeDeductionsByExternalReferenceIdAsync(int businessId, IList<String> externalReferenceIds, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyEmployeeRecurringDeductionModel>,IList<String>>($"/business/{businessId}/employee/deduction", externalReferenceIds, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -457,6 +853,50 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
+        /// Delete Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's additional earning with the specified ID.
+        /// </remarks>
+        public void DeleteEmployeeAdditionalEarning(int businessId, int employeeId, long id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Additional Earning
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's additional earning with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeAdditionalEarningAsync(int businessId, int employeeId, long id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/additional-earnings/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employee Benefits In Kind Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's recurring benefits in kind adjustment with the specified ID.
+        /// </remarks>
+        public void DeleteEmployeeBenefitsInKindAdjustment(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employee Benefits In Kind Adjustment
+        /// </summary>
+        /// <remarks>
+        /// Deletes the employee's recurring benefits in kind adjustment with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployeeBenefitsInKindAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/benefitsinkindadjustment/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
         /// Delete Employee Deduction
         /// </summary>
         /// <remarks>
@@ -476,204 +916,6 @@ namespace KeyPayV2.My.Functions
         public Task DeleteEmployeeDeductionAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/deduction/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employer liabilities
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employer liabilities for the employee
-        /// </remarks>
-        public List<EmployerRecurringLiabilityModel> ListEmployerLiabilities(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employer liabilities
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employer liabilities for the employee
-        /// </remarks>
-        public Task<List<EmployerRecurringLiabilityModel>> ListEmployerLiabilitiesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployerRecurringLiabilityModel>>($"/business/{businessId}/employee/{employeeId}/employerliability", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employer liability
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring employer liability for the employee.
-        /// </remarks>
-        public EmployerRecurringLiabilityModel CreateEmployerLiability(int businessId, int employeeId, EmployerRecurringLiabilityModel model)
-        {
-            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employer liability
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring employer liability for the employee.
-        /// </remarks>
-        public Task<EmployerRecurringLiabilityModel> CreateEmployerLiabilityAsync(int businessId, int employeeId, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employer liability by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring employer liabilities with the specified ID.
-        /// </remarks>
-        public EmployerRecurringLiabilityModel GetEmployerLiabilityById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employer liability by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring employer liabilities with the specified ID.
-        /// </remarks>
-        public Task<EmployerRecurringLiabilityModel> GetEmployerLiabilityByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employer liability
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring employer liability with the specified ID.
-        /// </remarks>
-        public EmployerRecurringLiabilityModel UpdateEmployerLiability(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model)
-        {
-            return ApiRequest<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employer liability
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring employer liability with the specified ID.
-        /// </remarks>
-        public Task<EmployerRecurringLiabilityModel> UpdateEmployerLiabilityAsync(int businessId, int employeeId, int id, EmployerRecurringLiabilityModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployerRecurringLiabilityModel,EmployerRecurringLiabilityModel>($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employer liability
-        /// </summary>
-        /// <remarks>
-        /// Deletes the recurring employer liability with the specified ID.
-        /// </remarks>
-        public void DeleteEmployerLiability(int businessId, int employeeId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employer liability
-        /// </summary>
-        /// <remarks>
-        /// Deletes the recurring employer liability with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployerLiabilityAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Expenses
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee expenses for the employee
-        /// </remarks>
-        public List<EmployeeRecurringExpenseModel> ListEmployeeExpenses(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Expenses
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee expenses for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringExpenseModel>> ListEmployeeExpensesAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringExpenseModel>>($"/business/{businessId}/employee/{employeeId}/expense", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employee Expense
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring expense for the employee.
-        /// </remarks>
-        public EmployeeRecurringExpenseModel CreateEmployeeExpense(int businessId, int employeeId, EmployeeRecurringExpenseModel model)
-        {
-            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Expense
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring expense for the employee.
-        /// </remarks>
-        public Task<EmployeeRecurringExpenseModel> CreateEmployeeExpenseAsync(int businessId, int employeeId, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Expense by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring expense with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringExpenseModel GetEmployeeExpenseById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Expense by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring expense with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringExpenseModel> GetEmployeeExpenseByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Expense
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring expense with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringExpenseModel UpdateEmployeeExpense(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model)
-        {
-            return ApiRequest<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Expense
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring expense with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringExpenseModel> UpdateEmployeeExpenseAsync(int businessId, int employeeId, int id, EmployeeRecurringExpenseModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringExpenseModel,EmployeeRecurringExpenseModel>($"/business/{businessId}/employee/{employeeId}/expense/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -699,94 +941,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// List Employee Statutory Contribution Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee statutory contribution adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringStatutoryContributionAdjustmentModel> ListEmployeeStatutoryContributionAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Statutory Contribution Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee statutory contribution adjustments for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringStatutoryContributionAdjustmentModel>> ListEmployeeStatutoryContributionAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringStatutoryContributionAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employee Statutory Contribution Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring statutory contribution adjustment for the employee.
-        /// </remarks>
-        public EmployeeRecurringStatutoryContributionAdjustmentModel CreateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Statutory Contribution Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring statutory contribution adjustment for the employee.
-        /// </remarks>
-        public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> CreateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Statutory Contribution Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring statutory contribution adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringStatutoryContributionAdjustmentModel GetEmployeeStatutoryContributionAdjustmentById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Statutory Contribution Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring statutory contribution adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> GetEmployeeStatutoryContributionAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Statutory Contribution Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring statutory contribution adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringStatutoryContributionAdjustmentModel UpdateEmployeeStatutoryContributionAdjustment(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Statutory Contribution Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring statutory contribution adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringStatutoryContributionAdjustmentModel> UpdateEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringStatutoryContributionAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringStatutoryContributionAdjustmentModel,EmployeeRecurringStatutoryContributionAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Delete Employee Statutory Contribution Adjustment
         /// </summary>
         /// <remarks>
@@ -806,94 +960,6 @@ namespace KeyPayV2.My.Functions
         public Task DeleteEmployeeStatutoryContributionAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutorycontributionadjustment/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employee Tax Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee tax adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringTaxAdjustmentModel> ListEmployeeTaxAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Tax Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee tax adjustments for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringTaxAdjustmentModel>> ListEmployeeTaxAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringTaxAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxadjustment", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employee Tax Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring tax adjustment for the employee.
-        /// </remarks>
-        public EmployeeRecurringTaxAdjustmentModel CreateEmployeeTaxAdjustment(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Tax Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring tax adjustment for the employee.
-        /// </remarks>
-        public Task<EmployeeRecurringTaxAdjustmentModel> CreateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Tax Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring tax adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringTaxAdjustmentModel GetEmployeeTaxAdjustmentById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Tax Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring tax adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringTaxAdjustmentModel> GetEmployeeTaxAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Tax Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring tax adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringTaxAdjustmentModel UpdateEmployeeTaxAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Tax Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring tax adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringTaxAdjustmentModel> UpdateEmployeeTaxAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringTaxAdjustmentModel,EmployeeRecurringTaxAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxadjustment/{id}", model, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -919,94 +985,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// List Employee Tax Relief Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee tax relief adjustments for the employee
-        /// </remarks>
-        public List<EmployeeRecurringTaxReliefAdjustmentModel> ListEmployeeTaxReliefAdjustments(int businessId, int employeeId)
-        {
-            return ApiRequest<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employee Tax Relief Adjustments
-        /// </summary>
-        /// <remarks>
-        /// Lists all the recurring employee tax relief adjustments for the employee
-        /// </remarks>
-        public Task<List<EmployeeRecurringTaxReliefAdjustmentModel>> ListEmployeeTaxReliefAdjustmentsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<EmployeeRecurringTaxReliefAdjustmentModel>>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Employee Tax Relief Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring tax relief adjustment for the employee.
-        /// </remarks>
-        public EmployeeRecurringTaxReliefAdjustmentModel CreateEmployeeTaxReliefAdjustment(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Tax Relief Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Creates a new recurring tax relief adjustment for the employee.
-        /// </remarks>
-        public Task<EmployeeRecurringTaxReliefAdjustmentModel> CreateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Employee Tax Relief Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring tax relief adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringTaxReliefAdjustmentModel GetEmployeeTaxReliefAdjustmentById(int businessId, int employeeId, int id)
-        {
-            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Tax Relief Adjustment by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee's recurring tax relief adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringTaxReliefAdjustmentModel> GetEmployeeTaxReliefAdjustmentByIdAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Tax Relief Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring tax relief adjustment with the specified ID.
-        /// </remarks>
-        public EmployeeRecurringTaxReliefAdjustmentModel UpdateEmployeeTaxReliefAdjustment(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model)
-        {
-            return ApiRequest<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Tax Relief Adjustment
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee's recurring tax relief adjustment with the specified ID.
-        /// </remarks>
-        public Task<EmployeeRecurringTaxReliefAdjustmentModel> UpdateEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, EmployeeRecurringTaxReliefAdjustmentModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<EmployeeRecurringTaxReliefAdjustmentModel,EmployeeRecurringTaxReliefAdjustmentModel>($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Delete Employee Tax Relief Adjustment
         /// </summary>
         /// <remarks>
@@ -1026,6 +1004,28 @@ namespace KeyPayV2.My.Functions
         public Task DeleteEmployeeTaxReliefAdjustmentAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/taxreliefadjustment/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Delete Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Deletes the recurring employer liability with the specified ID.
+        /// </remarks>
+        public void DeleteEmployerLiability(int businessId, int employeeId, int id)
+        {
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Delete Employer liability
+        /// </summary>
+        /// <remarks>
+        /// Deletes the recurring employer liability with the specified ID.
+        /// </remarks>
+        public Task DeleteEmployerLiabilityAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/employerliability/{id}", Method.Delete, cancellationToken);
         }
     }
 }

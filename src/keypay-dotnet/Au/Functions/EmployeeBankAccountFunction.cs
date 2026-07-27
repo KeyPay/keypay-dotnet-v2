@@ -15,41 +15,41 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeBankAccountFunction
     {
-        List<AuBankAccountModel> ListBankAccounts(int businessId, int employeeId);
-        Task<List<AuBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        AuSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, AuBankAccountModel model);
-        Task<AuSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, AuBankAccountModel model, CancellationToken cancellationToken = default);
         AuBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId);
         Task<AuBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
-        AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model);
-        Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model, CancellationToken cancellationToken = default);
+        AuSaveBankAccountResponseModel CreateBankAccount(int businessId, int employeeId, AuBankAccountModel model);
+        Task<AuSaveBankAccountResponseModel> CreateBankAccountAsync(int businessId, int employeeId, AuBankAccountModel model, CancellationToken cancellationToken = default);
         AuSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId);
         Task<AuSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default);
+        AuSaveBankAccountResponseModel UpdateBankAccount(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model);
+        Task<AuSaveBankAccountResponseModel> UpdateBankAccountAsync(int businessId, int employeeId, int bankAccountId, AuBankAccountModel model, CancellationToken cancellationToken = default);
+        List<AuBankAccountModel> ListBankAccounts(int businessId, int employeeId);
+        Task<List<AuBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
     }
     public class EmployeeBankAccountFunction : BaseFunction, IEmployeeBankAccountFunction
     {
         public EmployeeBankAccountFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// List Bank Accounts
+        /// Get Bank Account by ID
         /// </summary>
         /// <remarks>
-        /// Lists all of the bank accounts for this employee.
+        /// Gets the bank account for this employee with the specified ID.
         /// </remarks>
-        public List<AuBankAccountModel> ListBankAccounts(int businessId, int employeeId)
+        public AuBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId)
         {
-            return ApiRequest<List<AuBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.Get);
+            return ApiRequest<AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Get);
         }
 
         /// <summary>
-        /// List Bank Accounts
+        /// Get Bank Account by ID
         /// </summary>
         /// <remarks>
-        /// Lists all of the bank accounts for this employee.
+        /// Gets the bank account for this employee with the specified ID.
         /// </remarks>
-        public Task<List<AuBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task<AuBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -75,25 +75,25 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get Bank Account by ID
+        /// Delete Bank Account
         /// </summary>
         /// <remarks>
-        /// Gets the bank account for this employee with the specified ID.
+        /// Deletes the employee's bank account with the specified ID.
         /// </remarks>
-        public AuBankAccountModel GetBankAccountById(int businessId, int employeeId, int bankAccountId)
+        public AuSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId)
         {
-            return ApiRequest<AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Get);
+            return ApiRequest<AuSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete);
         }
 
         /// <summary>
-        /// Get Bank Account by ID
+        /// Delete Bank Account
         /// </summary>
         /// <remarks>
-        /// Gets the bank account for this employee with the specified ID.
+        /// Deletes the employee's bank account with the specified ID.
         /// </remarks>
-        public Task<AuBankAccountModel> GetBankAccountByIdAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
+        public Task<AuSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuBankAccountModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -119,25 +119,25 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Delete Bank Account
+        /// List Bank Accounts
         /// </summary>
         /// <remarks>
-        /// Deletes the employee's bank account with the specified ID.
+        /// Lists all of the bank accounts for this employee.
         /// </remarks>
-        public AuSaveBankAccountResponseModel DeleteBankAccount(int businessId, int employeeId, int bankAccountId)
+        public List<AuBankAccountModel> ListBankAccounts(int businessId, int employeeId)
         {
-            return ApiRequest<AuSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete);
+            return ApiRequest<List<AuBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.Get);
         }
 
         /// <summary>
-        /// Delete Bank Account
+        /// List Bank Accounts
         /// </summary>
         /// <remarks>
-        /// Deletes the employee's bank account with the specified ID.
+        /// Lists all of the bank accounts for this employee.
         /// </remarks>
-        public Task<AuSaveBankAccountResponseModel> DeleteBankAccountAsync(int businessId, int employeeId, int bankAccountId, CancellationToken cancellationToken = default)
+        public Task<List<AuBankAccountModel>> ListBankAccountsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuSaveBankAccountResponseModel>($"/business/{businessId}/employee/{employeeId}/bankaccount/{bankAccountId}", Method.Delete, cancellationToken);
+            return ApiRequestAsync<List<AuBankAccountModel>>($"/business/{businessId}/employee/{employeeId}/bankaccount", Method.Get, cancellationToken);
         }
     }
 }

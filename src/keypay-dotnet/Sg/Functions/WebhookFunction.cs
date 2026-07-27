@@ -17,20 +17,20 @@ namespace KeyPayV2.Sg.Functions
     {
         List<WebHook> ListWebHookRegistrations(int businessId);
         Task<List<WebHook>> ListWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
-        void RegisterWebHook(int businessId, WebHook webHook);
-        Task RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default);
-        void DeleteAllWebHookRegistrations(int businessId);
-        Task DeleteAllWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
         WebHook GetWebHookRegistrationById(int businessId, string id);
         Task<WebHook> GetWebHookRegistrationByIdAsync(int businessId, string id, CancellationToken cancellationToken = default);
-        void UpdateWebHookRegistration(int businessId, string id, WebHook webHook);
-        Task UpdateWebHookRegistrationAsync(int businessId, string id, WebHook webHook, CancellationToken cancellationToken = default);
+        void DeleteAllWebHookRegistrations(int businessId);
+        Task DeleteAllWebHookRegistrationsAsync(int businessId, CancellationToken cancellationToken = default);
         void DeleteWebHookRegistration(int businessId, string id);
         Task DeleteWebHookRegistrationAsync(int businessId, string id, CancellationToken cancellationToken = default);
+        void RegisterWebHook(int businessId, WebHook webHook);
+        Task RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default);
         void TestWebHook(int businessId, string id);
         Task TestWebHookAsync(int businessId, string id, CancellationToken cancellationToken = default);
         void TestWebHook(int businessId, string id, TestWebHookQueryModel request);
         Task TestWebHookAsync(int businessId, string id, TestWebHookQueryModel request, CancellationToken cancellationToken = default);
+        void UpdateWebHookRegistration(int businessId, string id, WebHook webHook);
+        Task UpdateWebHookRegistrationAsync(int businessId, string id, WebHook webHook, CancellationToken cancellationToken = default);
     }
     public class WebhookFunction : BaseFunction, IWebhookFunction
     {
@@ -59,25 +59,25 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Register Web Hook
+        /// Get Web Hook Registration by ID
         /// </summary>
         /// <remarks>
-        /// Registers a new web hook.
+        /// Gets the registered web hook instance with the specified ID.
         /// </remarks>
-        public void RegisterWebHook(int businessId, WebHook webHook)
+        public WebHook GetWebHookRegistrationById(int businessId, string id)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations", webHook, Method.Post);
+            return ApiRequest<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.Get);
         }
 
         /// <summary>
-        /// Register Web Hook
+        /// Get Web Hook Registration by ID
         /// </summary>
         /// <remarks>
-        /// Registers a new web hook.
+        /// Gets the registered web hook instance with the specified ID.
         /// </remarks>
-        public Task RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default)
+        public Task<WebHook> GetWebHookRegistrationByIdAsync(int businessId, string id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations", webHook, Method.Post, cancellationToken);
+            return ApiRequestAsync<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -103,50 +103,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Web Hook Registration by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the registered web hook instance with the specified ID.
-        /// </remarks>
-        public WebHook GetWebHookRegistrationById(int businessId, string id)
-        {
-            return ApiRequest<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Web Hook Registration by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the registered web hook instance with the specified ID.
-        /// </remarks>
-        public Task<WebHook> GetWebHookRegistrationByIdAsync(int businessId, string id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<WebHook>($"/business/{businessId}/webhookregistrations/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Web Hook Registration
-        /// </summary>
-        /// <remarks>
-        /// Updates the web hook registration with the specified ID.
-        /// </remarks>
-        public void UpdateWebHookRegistration(int businessId, string id, WebHook webHook)
-        {
-            ApiRequest($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Web Hook Registration
-        /// </summary>
-        /// <remarks>
-        /// Updates the web hook registration with the specified ID.
-        /// </remarks>
-        public Task UpdateWebHookRegistrationAsync(int businessId, string id, WebHook webHook, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Delete Web Hook Registration
         /// </summary>
         /// <remarks>
@@ -166,6 +122,28 @@ namespace KeyPayV2.Sg.Functions
         public Task DeleteWebHookRegistrationAsync(int businessId, string id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Register Web Hook
+        /// </summary>
+        /// <remarks>
+        /// Registers a new web hook.
+        /// </remarks>
+        public void RegisterWebHook(int businessId, WebHook webHook)
+        {
+            ApiRequest($"/business/{businessId}/webhookregistrations", webHook, Method.Post);
+        }
+
+        /// <summary>
+        /// Register Web Hook
+        /// </summary>
+        /// <remarks>
+        /// Registers a new web hook.
+        /// </remarks>
+        public Task RegisterWebHookAsync(int businessId, WebHook webHook, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations", webHook, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -210,6 +188,28 @@ namespace KeyPayV2.Sg.Functions
         public Task TestWebHookAsync(int businessId, string id, TestWebHookQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update Web Hook Registration
+        /// </summary>
+        /// <remarks>
+        /// Updates the web hook registration with the specified ID.
+        /// </remarks>
+        public void UpdateWebHookRegistration(int businessId, string id, WebHook webHook)
+        {
+            ApiRequest($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.Put);
+        }
+
+        /// <summary>
+        /// Update Web Hook Registration
+        /// </summary>
+        /// <remarks>
+        /// Updates the web hook registration with the specified ID.
+        /// </remarks>
+        public Task UpdateWebHookRegistrationAsync(int businessId, string id, WebHook webHook, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}", webHook, Method.Put, cancellationToken);
         }
     }
 }

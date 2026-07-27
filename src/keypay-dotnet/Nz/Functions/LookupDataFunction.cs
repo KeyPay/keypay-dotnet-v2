@@ -15,46 +15,24 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface ILookupDataFunction
     {
-        List<NameIdPair> ListTimeZoneTypes(int businessId);
-        Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default);
         List<NameIdPair> ListCountries();
         Task<List<NameIdPair>> ListCountriesAsync(CancellationToken cancellationToken = default);
         List<NameIdPair> ListEmployeeGroupPermissionTypes();
         Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default);
-        List<string> ListGenderOptions();
-        Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default);
-        List<string> ListIndustryOptions();
-        Task<List<string>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default);
         List<NameIdPair> ListReportTypes();
         Task<List<NameIdPair>> ListReportTypesAsync(CancellationToken cancellationToken = default);
         List<NameIdPair> ListTimeZoneTypes();
         Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default);
+        List<NameIdPair> ListTimeZoneTypes(int businessId);
+        Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<string> ListGenderOptions();
+        Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default);
+        List<string> ListIndustryOptions();
+        Task<List<string>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default);
     }
     public class LookupDataFunction : BaseFunction, ILookupDataFunction
     {
         public LookupDataFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Time Zone Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the time zone types.
-        /// </remarks>
-        public List<NameIdPair> ListTimeZoneTypes(int businessId)
-        {
-            return ApiRequest<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.Get);
-        }
-
-        /// <summary>
-        /// List Time Zone Types
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the time zone types.
-        /// </remarks>
-        public Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// List countries
@@ -92,38 +70,6 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<NameIdPair>> ListEmployeeGroupPermissionTypesAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/employeegrouppermissions", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List gender options
-        /// </summary>
-        public List<string> ListGenderOptions()
-        {
-            return ApiRequest<List<string>>($"/lookupdata/genders", Method.Get);
-        }
-
-        /// <summary>
-        /// List gender options
-        /// </summary>
-        public Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<string>>($"/lookupdata/genders", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List industry options
-        /// </summary>
-        public List<string> ListIndustryOptions()
-        {
-            return ApiRequest<List<string>>($"/lookupdata/industries", Method.Get);
-        }
-
-        /// <summary>
-        /// List industry options
-        /// </summary>
-        public Task<List<string>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<string>>($"/lookupdata/industries", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -168,6 +114,60 @@ namespace KeyPayV2.Nz.Functions
         public Task<List<NameIdPair>> ListTimeZoneTypesAsync(CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<NameIdPair>>($"/lookupdata/timezones", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Time Zone Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the time zone types.
+        /// </remarks>
+        public List<NameIdPair> ListTimeZoneTypes(int businessId)
+        {
+            return ApiRequest<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.Get);
+        }
+
+        /// <summary>
+        /// List Time Zone Types
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the time zone types.
+        /// </remarks>
+        public Task<List<NameIdPair>> ListTimeZoneTypesAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<NameIdPair>>($"/business/{businessId}/lookupdata/timezones", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List gender options
+        /// </summary>
+        public List<string> ListGenderOptions()
+        {
+            return ApiRequest<List<string>>($"/lookupdata/genders", Method.Get);
+        }
+
+        /// <summary>
+        /// List gender options
+        /// </summary>
+        public Task<List<string>> ListGenderOptionsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<string>>($"/lookupdata/genders", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List industry options
+        /// </summary>
+        public List<string> ListIndustryOptions()
+        {
+            return ApiRequest<List<string>>($"/lookupdata/industries", Method.Get);
+        }
+
+        /// <summary>
+        /// List industry options
+        /// </summary>
+        public Task<List<string>> ListIndustryOptionsAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<string>>($"/lookupdata/industries", Method.Get, cancellationToken);
         }
     }
 }

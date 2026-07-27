@@ -15,373 +15,123 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IBusinessFunction
     {
-        List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
-        Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model);
-        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default);
-        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request);
-        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
-        SgBusinessExportModel GetBusinessDetailsByExternalId();
-        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default);
-        SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
-        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
-        SgBusinessExportModel GetBusinessDetails(int businessId);
-        Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
-        Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel);
-        Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default);
-        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel);
-        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, CancellationToken cancellationToken = default);
-        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request);
-        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default);
-        void RevokeBusinessAccess(int businessId);
-        Task RevokeBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default);
-        void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request);
-        Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        BillingPlanResponseModel GetBusinessBillingPlan(int businessId);
+        Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
         BusinessAccessModel GetUserBusinessAccess(int businessId);
         Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default);
         BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request);
         Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
-        List<BusinessAction> ListBusinessNotifications(int businessId);
-        Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
-        void DismissBusinessNotifications(int businessId, int id);
-        Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        List<DocumentModel> ListBusinessDocumentDetails(int businessId);
-        Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default);
-        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file);
-        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default);
-        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request);
-        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default);
+        DateTime GetTheInitialTaxYear(int businessId);
+        Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
+        DocumentFile GetBusinessDocumentContent(int businessId, int id);
+        Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default);
         DocumentModel GetBusinessDocumentDetails(int businessId, int id);
         Task<DocumentModel> GetBusinessDocumentDetailsAsync(int businessId, int id, CancellationToken cancellationToken = default);
         DocumentModel UpdateBusinessDocumentPermissions(int businessId, int id, UpdateDocumentPermissionsModel model);
         Task<DocumentModel> UpdateBusinessDocumentPermissionsAsync(int businessId, int id, UpdateDocumentPermissionsModel model, CancellationToken cancellationToken = default);
-        void DeleteBusinessDocument(int businessId, int id);
-        Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        DocumentFile GetBusinessDocumentContent(int businessId, int id);
-        Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default);
         EmployeePortalSettingsModel GetEmployeePortalSettings(int businessId);
         Task<EmployeePortalSettingsModel> GetEmployeePortalSettingsAsync(int businessId, CancellationToken cancellationToken = default);
         EmployeePortalSettingsModel UpdateEmployeePortalSettings(int businessId, EmployeePortalSettingsModel model);
         Task<EmployeePortalSettingsModel> UpdateEmployeePortalSettingsAsync(int businessId, EmployeePortalSettingsModel model, CancellationToken cancellationToken = default);
         EntitlementsModel ListEntitlements(int businessId);
         Task<EntitlementsModel> ListEntitlementsAsync(int businessId, CancellationToken cancellationToken = default);
-        void ChangeTheTaxYear(int businessId);
-        Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
-        void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
-        Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
-        DateTime GetTheInitialTaxYear(int businessId);
-        Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
-        List<SgGiroBankModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
-        Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        SgGiroBankModel CreateNewPaymentFileRecord(int businessId, SgGiroBankModel model);
-        Task<SgGiroBankModel> CreateNewPaymentFileRecordAsync(int businessId, SgGiroBankModel model, CancellationToken cancellationToken = default);
-        SgGiroBankModel GetPaymentFileById(int businessId, int id);
-        Task<SgGiroBankModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel model);
-        Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default);
-        void DeletePaymentFileRecord(int businessId, int id);
-        Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        SgEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
-        Task<SgEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
-        void CreatePayslipConfiguration(int businessId, SgEditBusinessPaySlipApiModel model);
-        Task CreatePayslipConfigurationAsync(int businessId, SgEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default);
-        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
-        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
-        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
-        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
         List<BillingPlanResponseModel> ListBillingPlans(int businessId);
         Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default);
-        BillingPlanResponseModel GetBusinessBillingPlan(int businessId);
-        Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default);
-        void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
-        Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
+        List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null);
+        Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<BusinessAction> ListBusinessNotifications(int businessId);
+        Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file);
+        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default);
+        List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request);
+        Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default);
+        List<DocumentModel> ListBusinessDocumentDetails(int businessId);
+        Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null);
+        Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<SgGiroBankModel> ListPaymentFiles(int businessId, ODataQuery oDataQuery = null);
+        Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default);
         List<TagViewModel> ListTheBusinessTags(int businessId, ListTheBusinessTagsQueryModel request);
         Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, ListTheBusinessTagsQueryModel request, CancellationToken cancellationToken = default);
+        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model);
+        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default);
+        SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request);
+        Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetails(int businessId);
+        Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetailsByExternalId();
+        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default);
+        SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request);
+        Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default);
         SgBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId);
         Task<SgBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default);
         SgBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, SgBusinessTimesheetSettingsModel model);
         Task<SgBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, SgBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default);
+        SgEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId);
+        Task<SgEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default);
+        SgGiroBankModel CreateNewPaymentFileRecord(int businessId, SgGiroBankModel model);
+        Task<SgGiroBankModel> CreateNewPaymentFileRecordAsync(int businessId, SgGiroBankModel model, CancellationToken cancellationToken = default);
+        SgGiroBankModel GetPaymentFileById(int businessId, int id);
+        Task<SgGiroBankModel> GetPaymentFileByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        TimesheetRoundingRulesModel GetRoundingRules(int businessId);
+        Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default);
+        void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel);
+        Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default);
+        void ChangeTheTaxYear(int businessId);
+        Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default);
+        void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request);
+        Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default);
         void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId);
         Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default);
+        void CreatePayslipConfiguration(int businessId, SgEditBusinessPaySlipApiModel model);
+        Task CreatePayslipConfigurationAsync(int businessId, SgEditBusinessPaySlipApiModel model, CancellationToken cancellationToken = default);
+        void DeleteBusinessDocument(int businessId, int id);
+        Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void DeletePaymentFileRecord(int businessId, int id);
+        Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void DismissBusinessNotifications(int businessId, int id);
+        Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void RevokeBusinessAccess(int businessId);
+        Task RevokeBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default);
+        void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request);
+        Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default);
+        void SetBusinessBillingPlan(int businessId, SetBillingPlanRequestModel model);
+        Task SetBusinessBillingPlanAsync(int businessId, SetBillingPlanRequestModel model, CancellationToken cancellationToken = default);
+        void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules);
+        Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default);
+        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel);
+        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, CancellationToken cancellationToken = default);
+        void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request);
+        Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default);
+        void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel model);
+        Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default);
     }
     public class BusinessFunction : BaseFunction, IBusinessFunction
     {
         public BusinessFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// List Businesses
+        /// Get Business Billing Plan
         /// </summary>
         /// <remarks>
-        /// Lists all the businesses associated with the current user.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// Get the current billing plan for the business.
         /// </remarks>
-        public List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
+        public BillingPlanResponseModel GetBusinessBillingPlan(int businessId)
         {
-            return ApiRequest<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
         }
 
         /// <summary>
-        /// List Businesses
+        /// Get Business Billing Plan
         /// </summary>
         /// <remarks>
-        /// Lists all the businesses associated with the current user.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// Get the current billing plan for the business.
         /// </remarks>
-        public Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model)
-        {
-            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request)
-        {
-            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
-        }
-
-        /// <summary>
-        /// Create New Business
-        /// </summary>
-        /// <remarks>
-        /// Creates a new business.
-        /// </remarks>
-        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public SgBusinessExportModel GetBusinessDetailsByExternalId()
-        {
-            return ApiRequest<SgBusinessExportModel>($"/business/externalid", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
-        {
-            return ApiRequest<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details by External ID
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified external ID.
-        /// </remarks>
-        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public SgBusinessExportModel GetBusinessDetails(int businessId)
-        {
-            return ApiRequest<SgBusinessExportModel>($"/business/{businessId}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Details
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of the business with the specified ID.
-        /// </remarks>
-        public Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List All Business Access Users
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the users with access to this business, as well as the types of access they each have.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List All Business Access Users
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the users with access to this business, as well as the types of access they each have.
-        /// This operation supports OData queries.
-        /// </remarks>
-        public Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Assign Business Access
-        /// </summary>
-        /// <remarks>
-        /// Assigns business access to a name/email.
-        /// </remarks>
-        public void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel)
-        {
-            ApiRequest($"/business/{businessId}/access", viewModel, Method.Post);
-        }
-
-        /// <summary>
-        /// Assign Business Access
-        /// </summary>
-        /// <remarks>
-        /// Assigns business access to a name/email.
-        /// </remarks>
-        public Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update details of an associated user
-        /// </summary>
-        /// <remarks>
-        /// Updates the user details (name / email) of a user that is associated with the business.
-        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
-        /// </remarks>
-        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel)
-        {
-            ApiRequest($"/business/{businessId}/access", viewModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update details of an associated user
-        /// </summary>
-        /// <remarks>
-        /// Updates the user details (name / email) of a user that is associated with the business.
-        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
-        /// </remarks>
-        public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update details of an associated user
-        /// </summary>
-        /// <remarks>
-        /// Updates the user details (name / email) of a user that is associated with the business.
-        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
-        /// </remarks>
-        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update details of an associated user
-        /// </summary>
-        /// <remarks>
-        /// Updates the user details (name / email) of a user that is associated with the business.
-        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
-        /// </remarks>
-        public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Revoke Business Access
-        /// </summary>
-        /// <remarks>
-        /// Revokes a user's access to the business.
-        /// </remarks>
-        public void RevokeBusinessAccess(int businessId)
-        {
-            ApiRequest($"/business/{businessId}/access", Method.Delete);
-        }
-
-        /// <summary>
-        /// Revoke Business Access
-        /// </summary>
-        /// <remarks>
-        /// Revokes a user's access to the business.
-        /// </remarks>
-        public Task RevokeBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/access", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Revoke Business Access
-        /// </summary>
-        /// <remarks>
-        /// Revokes a user's access to the business.
-        /// </remarks>
-        public void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/access?email={request.Email}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Revoke Business Access
-        /// </summary>
-        /// <remarks>
-        /// Revokes a user's access to the business.
-        /// </remarks>
-        public Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", Method.Delete, cancellationToken);
+            return ApiRequestAsync<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -429,113 +179,47 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// List Business Notifications
+        /// Get the initial tax year
         /// </summary>
         /// <remarks>
-        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// Retrieves the initial tax year for the business.
         /// </remarks>
-        public List<BusinessAction> ListBusinessNotifications(int businessId)
+        public DateTime GetTheInitialTaxYear(int businessId)
         {
-            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get);
+            return ApiRequest<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get);
         }
 
         /// <summary>
-        /// List Business Notifications
+        /// Get the initial tax year
         /// </summary>
         /// <remarks>
-        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
+        /// Retrieves the initial tax year for the business.
         /// </remarks>
-        public Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get, cancellationToken);
+            return ApiRequestAsync<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Dismiss Business Notifications
+        /// Get Business Document Content
         /// </summary>
         /// <remarks>
-        /// Dismisses a business notification, so that it won't be shown again.
+        /// Gets the file content for the business document with the specified ID.
         /// </remarks>
-        public void DismissBusinessNotifications(int businessId, int id)
+        public DocumentFile GetBusinessDocumentContent(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete);
+            return ApiRequest<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get);
         }
 
         /// <summary>
-        /// Dismiss Business Notifications
+        /// Get Business Document Content
         /// </summary>
         /// <remarks>
-        /// Dismisses a business notification, so that it won't be shown again.
+        /// Gets the file content for the business document with the specified ID.
         /// </remarks>
-        public Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        public Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Business Document Details
-        /// </summary>
-        /// <remarks>
-        /// Lists the details for all of the documents in the business.
-        /// </remarks>
-        public List<DocumentModel> ListBusinessDocumentDetails(int businessId)
-        {
-            return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document", Method.Get);
-        }
-
-        /// <summary>
-        /// List Business Document Details
-        /// </summary>
-        /// <remarks>
-        /// Lists the details for all of the documents in the business.
-        /// </remarks>
-        public Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<DocumentModel>>($"/business/{businessId}/document", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Business Document
-        /// </summary>
-        /// <remarks>
-        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file)
-        {
-            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Business Document
-        /// </summary>
-        /// <remarks>
-        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
-        /// Create Business Document
-        /// </summary>
-        /// <remarks>
-        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request)
-        {
-            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Business Document
-        /// </summary>
-        /// <remarks>
-        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
-        /// </remarks>
-        public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post, cancellationToken);
+            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -580,50 +264,6 @@ namespace KeyPayV2.Sg.Functions
         public Task<DocumentModel> UpdateBusinessDocumentPermissionsAsync(int businessId, int id, UpdateDocumentPermissionsModel model, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<DocumentModel,UpdateDocumentPermissionsModel>($"/business/{businessId}/document/{id}", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Business Document
-        /// </summary>
-        /// <remarks>
-        /// Deletes the business document with the specified ID.
-        /// </remarks>
-        public void DeleteBusinessDocument(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/document/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Business Document
-        /// </summary>
-        /// <remarks>
-        /// Deletes the business document with the specified ID.
-        /// </remarks>
-        public Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/document/{id}", Method.Delete, cancellationToken);
-        }
-
-        /// <summary>
-        /// Get Business Document Content
-        /// </summary>
-        /// <remarks>
-        /// Gets the file content for the business document with the specified ID.
-        /// </remarks>
-        public DocumentFile GetBusinessDocumentContent(int businessId, int id)
-        {
-            return ApiRequest<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Business Document Content
-        /// </summary>
-        /// <remarks>
-        /// Gets the file content for the business document with the specified ID.
-        /// </remarks>
-        public Task<DocumentFile> GetBusinessDocumentContentAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<DocumentFile>($"/business/{businessId}/document/{id}/content", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -693,69 +333,161 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Change the tax year
+        /// List Billing Plans
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Lists all the billing plans for the business.
         /// </remarks>
-        public void ChangeTheTaxYear(int businessId)
+        public List<BillingPlanResponseModel> ListBillingPlans(int businessId)
         {
-            ApiRequest($"/business/{businessId}/initialfinancialyear", Method.Post);
+            return ApiRequest<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
         }
 
         /// <summary>
-        /// Change the tax year
+        /// List Billing Plans
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Lists all the billing plans for the business.
         /// </remarks>
-        public Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear", Method.Post, cancellationToken);
+            return ApiRequestAsync<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Change the tax year
+        /// List All Business Access Users
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Lists all of the users with access to this business, as well as the types of access they each have.
+        /// This operation supports OData queries.
         /// </remarks>
-        public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
+        public List<BusinessAccessModel> ListAllBusinessAccessUsers(int businessId, ODataQuery oDataQuery = null)
         {
-            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post);
+            return ApiRequest<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
         }
 
         /// <summary>
-        /// Change the tax year
+        /// List All Business Access Users
         /// </summary>
         /// <remarks>
-        /// Changes the initial tax year for the current business.
+        /// Lists all of the users with access to this business, as well as the types of access they each have.
+        /// This operation supports OData queries.
         /// </remarks>
-        public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
+        public Task<List<BusinessAccessModel>> ListAllBusinessAccessUsersAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+            return ApiRequestAsync<List<BusinessAccessModel>>($"/business/{businessId}/access{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Get the initial tax year
+        /// List Business Notifications
         /// </summary>
         /// <remarks>
-        /// Retrieves the initial tax year for the business.
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
         /// </remarks>
-        public DateTime GetTheInitialTaxYear(int businessId)
+        public List<BusinessAction> ListBusinessNotifications(int businessId)
         {
-            return ApiRequest<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get);
+            return ApiRequest<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get);
         }
 
         /// <summary>
-        /// Get the initial tax year
+        /// List Business Notifications
         /// </summary>
         /// <remarks>
-        /// Retrieves the initial tax year for the business.
+        /// Lists the notifications, that appear on the Dashboard in the application, for the business.
         /// </remarks>
-        public Task<DateTime> GetTheInitialTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<List<BusinessAction>> ListBusinessNotificationsAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<DateTime>($"/business/{businessId}/initialfinancialyear", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<BusinessAction>>($"/business/{businessId}/actionitems/businessnotifications", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file)
+        {
+            return ApiRequest<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<DocumentModel>,FileUploadModel>($"/business/{businessId}/document", file, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request)
+        {
+            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Business Document
+        /// </summary>
+        /// <remarks>
+        /// Uploads new document(s) for business. The request should be a MIME multipart file upload request.
+        /// </remarks>
+        public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Business Document Details
+        /// </summary>
+        /// <remarks>
+        /// Lists the details for all of the documents in the business.
+        /// </remarks>
+        public List<DocumentModel> ListBusinessDocumentDetails(int businessId)
+        {
+            return ApiRequest<List<DocumentModel>>($"/business/{businessId}/document", Method.Get);
+        }
+
+        /// <summary>
+        /// List Business Document Details
+        /// </summary>
+        /// <remarks>
+        /// Lists the details for all of the documents in the business.
+        /// </remarks>
+        public Task<List<DocumentModel>> ListBusinessDocumentDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<DocumentModel>>($"/business/{businessId}/document", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the businesses associated with the current user.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<SgBusinessExportModel> ListBusinesses(ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Businesses
+        /// </summary>
+        /// <remarks>
+        /// Lists all the businesses associated with the current user.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<SgBusinessExportModel>> ListBusinessesAsync(ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgBusinessExportModel>>($"/business{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -780,6 +512,202 @@ namespace KeyPayV2.Sg.Functions
         public Task<List<SgGiroBankModel>> ListPaymentFilesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<List<SgGiroBankModel>>($"/business/{businessId}/paymentfiles{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public List<TagViewModel> ListTheBusinessTags(int businessId)
+        {
+            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public List<TagViewModel> ListTheBusinessTags(int businessId, ListTheBusinessTagsQueryModel request)
+        {
+            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get);
+        }
+
+        /// <summary>
+        /// List the Business tags
+        /// </summary>
+        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, ListTheBusinessTagsQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model)
+        {
+            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public SgBusinessExportModel CreateNewBusiness(SgBusinessExportModel model, CreateNewBusinessQueryModel request)
+        {
+            return ApiRequest<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
+        }
+
+        /// <summary>
+        /// Create New Business
+        /// </summary>
+        /// <remarks>
+        /// Creates a new business.
+        /// </remarks>
+        public Task<SgBusinessExportModel> CreateNewBusinessAsync(SgBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel,SgBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified ID.
+        /// </remarks>
+        public SgBusinessExportModel GetBusinessDetails(int businessId)
+        {
+            return ApiRequest<SgBusinessExportModel>($"/business/{businessId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified ID.
+        /// </remarks>
+        public Task<SgBusinessExportModel> GetBusinessDetailsAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel>($"/business/{businessId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public SgBusinessExportModel GetBusinessDetailsByExternalId()
+        {
+            return ApiRequest<SgBusinessExportModel>($"/business/externalid", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public SgBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
+        {
+            return ApiRequest<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Business Details by External ID
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of the business with the specified external ID.
+        /// </remarks>
+        public Task<SgBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get the timesheet settings for the business
+        /// </summary>
+        public SgBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId)
+        {
+            return ApiRequest<SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get);
+        }
+
+        /// <summary>
+        /// Get the timesheet settings for the business
+        /// </summary>
+        public Task<SgBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Update the timesheet settings for the business
+        /// </summary>
+        public SgBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, SgBusinessTimesheetSettingsModel model)
+        {
+            return ApiRequest<SgBusinessTimesheetSettingsModel,SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put);
+        }
+
+        /// <summary>
+        /// Update the timesheet settings for the business
+        /// </summary>
+        public Task<SgBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, SgBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgBusinessTimesheetSettingsModel,SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public SgEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
+        {
+            return ApiRequest<SgEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get);
+        }
+
+        /// <summary>
+        /// Get payslip configuration
+        /// </summary>
+        /// <remarks>
+        /// Gets the payslip configuration for the specified business ID.
+        /// </remarks>
+        public Task<SgEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -827,69 +755,107 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Update payment file record
+        /// Get Rounding Rules
         /// </summary>
         /// <remarks>
-        /// Updates the payment file record with the specified ID.
+        /// Gets the rounding rules for the business.
         /// </remarks>
-        public void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel model)
+        public TimesheetRoundingRulesModel GetRoundingRules(int businessId)
         {
-            ApiRequest($"/business/{businessId}/paymentfiles/{id}", model, Method.Put);
+            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get);
         }
 
         /// <summary>
-        /// Update payment file record
+        /// Get Rounding Rules
         /// </summary>
         /// <remarks>
-        /// Updates the payment file record with the specified ID.
+        /// Gets the rounding rules for the business.
         /// </remarks>
-        public Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default)
+        public Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", model, Method.Put, cancellationToken);
+            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get, cancellationToken);
         }
 
         /// <summary>
-        /// Delete payment file record
+        /// Assign Business Access
         /// </summary>
         /// <remarks>
-        /// Deletes the payment file record with the specified ID.
+        /// Assigns business access to a name/email.
         /// </remarks>
-        public void DeletePaymentFileRecord(int businessId, int id)
+        public void AssignBusinessAccess(int businessId, CreateBusinessAccessModel viewModel)
         {
-            ApiRequest($"/business/{businessId}/paymentfiles/{id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/access", viewModel, Method.Post);
         }
 
         /// <summary>
-        /// Delete payment file record
+        /// Assign Business Access
         /// </summary>
         /// <remarks>
-        /// Deletes the payment file record with the specified ID.
+        /// Assigns business access to a name/email.
         /// </remarks>
-        public Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        public Task AssignBusinessAccessAsync(int businessId, CreateBusinessAccessModel viewModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Post, cancellationToken);
         }
 
         /// <summary>
-        /// Get payslip configuration
+        /// Change the tax year
         /// </summary>
         /// <remarks>
-        /// Gets the payslip configuration for the specified business ID.
+        /// Changes the initial tax year for the current business.
         /// </remarks>
-        public SgEditBusinessPaySlipApiModel GetPayslipConfiguration(int businessId)
+        public void ChangeTheTaxYear(int businessId)
         {
-            return ApiRequest<SgEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get);
+            ApiRequest($"/business/{businessId}/initialfinancialyear", Method.Post);
         }
 
         /// <summary>
-        /// Get payslip configuration
+        /// Change the tax year
         /// </summary>
         /// <remarks>
-        /// Gets the payslip configuration for the specified business ID.
+        /// Changes the initial tax year for the current business.
         /// </remarks>
-        public Task<SgEditBusinessPaySlipApiModel> GetPayslipConfigurationAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task ChangeTheTaxYearAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgEditBusinessPaySlipApiModel>($"/business/{businessId}/payslip", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business.
+        /// </remarks>
+        public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post);
+        }
+
+        /// <summary>
+        /// Change the tax year
+        /// </summary>
+        /// <remarks>
+        /// Changes the initial tax year for the current business.
+        /// </remarks>
+        public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
+        {
+            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
+        }
+
+        /// <summary>
+        /// Copy Business Settings From Template
+        /// </summary>
+        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -921,91 +887,113 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Get Rounding Rules
+        /// Delete Business Document
         /// </summary>
         /// <remarks>
-        /// Gets the rounding rules for the business.
+        /// Deletes the business document with the specified ID.
         /// </remarks>
-        public TimesheetRoundingRulesModel GetRoundingRules(int businessId)
+        public void DeleteBusinessDocument(int businessId, int id)
         {
-            return ApiRequest<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get);
+            ApiRequest($"/business/{businessId}/document/{id}", Method.Delete);
         }
 
         /// <summary>
-        /// Get Rounding Rules
+        /// Delete Business Document
         /// </summary>
         /// <remarks>
-        /// Gets the rounding rules for the business.
+        /// Deletes the business document with the specified ID.
         /// </remarks>
-        public Task<TimesheetRoundingRulesModel> GetRoundingRulesAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task DeleteBusinessDocumentAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<TimesheetRoundingRulesModel>($"/business/{businessId}/roundingrules", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/document/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
-        /// Set Rounding Rules
+        /// Delete payment file record
         /// </summary>
         /// <remarks>
-        /// Sets the rounding rules for the business.
+        /// Deletes the payment file record with the specified ID.
         /// </remarks>
-        public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
+        public void DeletePaymentFileRecord(int businessId, int id)
         {
-            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.Post);
+            ApiRequest($"/business/{businessId}/paymentfiles/{id}", Method.Delete);
         }
 
         /// <summary>
-        /// Set Rounding Rules
+        /// Delete payment file record
         /// </summary>
         /// <remarks>
-        /// Sets the rounding rules for the business.
+        /// Deletes the payment file record with the specified ID.
         /// </remarks>
-        public Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default)
+        public Task DeletePaymentFileRecordAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.Post, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
-        /// List Billing Plans
+        /// Dismiss Business Notifications
         /// </summary>
         /// <remarks>
-        /// Lists all the billing plans for the business.
+        /// Dismisses a business notification, so that it won't be shown again.
         /// </remarks>
-        public List<BillingPlanResponseModel> ListBillingPlans(int businessId)
+        public void DismissBusinessNotifications(int businessId, int id)
         {
-            return ApiRequest<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get);
+            ApiRequest($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete);
         }
 
         /// <summary>
-        /// List Billing Plans
+        /// Dismiss Business Notifications
         /// </summary>
         /// <remarks>
-        /// Lists all the billing plans for the business.
+        /// Dismisses a business notification, so that it won't be shown again.
         /// </remarks>
-        public Task<List<BillingPlanResponseModel>> ListBillingPlansAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task DismissBusinessNotificationsAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BillingPlanResponseModel>>($"/business/{businessId}/subscription/billingplans", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/actionitems/businessnotifications/{id}/dismiss", Method.Delete, cancellationToken);
         }
 
         /// <summary>
-        /// Get Business Billing Plan
+        /// Revoke Business Access
         /// </summary>
         /// <remarks>
-        /// Get the current billing plan for the business.
+        /// Revokes a user's access to the business.
         /// </remarks>
-        public BillingPlanResponseModel GetBusinessBillingPlan(int businessId)
+        public void RevokeBusinessAccess(int businessId)
         {
-            return ApiRequest<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get);
+            ApiRequest($"/business/{businessId}/access", Method.Delete);
         }
 
         /// <summary>
-        /// Get Business Billing Plan
+        /// Revoke Business Access
         /// </summary>
         /// <remarks>
-        /// Get the current billing plan for the business.
+        /// Revokes a user's access to the business.
         /// </remarks>
-        public Task<BillingPlanResponseModel> GetBusinessBillingPlanAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task RevokeBusinessAccessAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<BillingPlanResponseModel>($"/business/{businessId}/subscription/currentbillingplan", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access", Method.Delete, cancellationToken);
+        }
+
+        /// <summary>
+        /// Revoke Business Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes a user's access to the business.
+        /// </remarks>
+        public void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request)
+        {
+            ApiRequest($"/business/{businessId}/access?email={request.Email}", Method.Delete);
+        }
+
+        /// <summary>
+        /// Revoke Business Access
+        /// </summary>
+        /// <remarks>
+        /// Revokes a user's access to the business.
+        /// </remarks>
+        public Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1031,83 +1019,95 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// List the Business tags
+        /// Set Rounding Rules
         /// </summary>
-        public List<TagViewModel> ListTheBusinessTags(int businessId)
+        /// <remarks>
+        /// Sets the rounding rules for the business.
+        /// </remarks>
+        public void SetRoundingRules(int businessId, TimesheetRoundingRulesModel roundingRules)
         {
-            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get);
+            ApiRequest($"/business/{businessId}/roundingrules", roundingRules, Method.Post);
         }
 
         /// <summary>
-        /// List the Business tags
+        /// Set Rounding Rules
         /// </summary>
-        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, CancellationToken cancellationToken = default)
+        /// <remarks>
+        /// Sets the rounding rules for the business.
+        /// </remarks>
+        public Task SetRoundingRulesAsync(int businessId, TimesheetRoundingRulesModel roundingRules, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/roundingrules", roundingRules, Method.Post, cancellationToken);
         }
 
         /// <summary>
-        /// List the Business tags
+        /// Update details of an associated user
         /// </summary>
-        public List<TagViewModel> ListTheBusinessTags(int businessId, ListTheBusinessTagsQueryModel request)
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel)
         {
-            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get);
+            ApiRequest($"/business/{businessId}/access", viewModel, Method.Put);
         }
 
         /// <summary>
-        /// List the Business tags
+        /// Update details of an associated user
         /// </summary>
-        public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, ListTheBusinessTagsQueryModel request, CancellationToken cancellationToken = default)
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access", viewModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
-        /// Get the timesheet settings for the business
+        /// Update details of an associated user
         /// </summary>
-        public SgBusinessTimesheetSettingsModel GetTheTimesheetSettingsForTheBusiness(int businessId)
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
         {
-            return ApiRequest<SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get);
+            ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put);
         }
 
         /// <summary>
-        /// Get the timesheet settings for the business
+        /// Update details of an associated user
         /// </summary>
-        public Task<SgBusinessTimesheetSettingsModel> GetTheTimesheetSettingsForTheBusinessAsync(int businessId, CancellationToken cancellationToken = default)
+        /// <remarks>
+        /// Updates the user details (name / email) of a user that is associated with the business.
+        /// This endpoint will only work if the user is already associated with the business and is not associated with any other business
+        /// </remarks>
+        public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
-        /// Update the timesheet settings for the business
+        /// Update payment file record
         /// </summary>
-        public SgBusinessTimesheetSettingsModel UpdateTheTimesheetSettingsForTheBusiness(int businessId, SgBusinessTimesheetSettingsModel model)
+        /// <remarks>
+        /// Updates the payment file record with the specified ID.
+        /// </remarks>
+        public void UpdatePaymentFileRecord(int businessId, int id, SgGiroBankModel model)
         {
-            return ApiRequest<SgBusinessTimesheetSettingsModel,SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put);
+            ApiRequest($"/business/{businessId}/paymentfiles/{id}", model, Method.Put);
         }
 
         /// <summary>
-        /// Update the timesheet settings for the business
+        /// Update payment file record
         /// </summary>
-        public Task<SgBusinessTimesheetSettingsModel> UpdateTheTimesheetSettingsForTheBusinessAsync(int businessId, SgBusinessTimesheetSettingsModel model, CancellationToken cancellationToken = default)
+        /// <remarks>
+        /// Updates the payment file record with the specified ID.
+        /// </remarks>
+        public Task UpdatePaymentFileRecordAsync(int businessId, int id, SgGiroBankModel model, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgBusinessTimesheetSettingsModel,SgBusinessTimesheetSettingsModel>($"/business/{businessId}/timesheetsettings", model, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public void CopyBusinessSettingsFromTemplate(int businessId, int businessTemplateId)
-        {
-            ApiRequest($"/business/{businessId}/{businessTemplateId}", Method.Post);
-        }
-
-        /// <summary>
-        /// Copy Business Settings From Template
-        /// </summary>
-        public Task CopyBusinessSettingsFromTemplateAsync(int businessId, int businessTemplateId, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/{businessTemplateId}", Method.Post, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/paymentfiles/{id}", model, Method.Put, cancellationToken);
         }
     }
 }

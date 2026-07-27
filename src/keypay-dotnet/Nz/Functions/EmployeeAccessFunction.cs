@@ -15,26 +15,70 @@ namespace KeyPayV2.Nz.Functions
 {
     public interface IEmployeeAccessFunction
     {
-        List<EmployeeAccessModel> GetUsersWithAccessToEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
-        Task<List<EmployeeAccessModel>> GetUsersWithAccessToEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        void GrantEmployeeAccess(int businessId, int employeeId, CreateEmployeeAccessModel viewModel);
-        Task GrantEmployeeAccessAsync(int businessId, int employeeId, CreateEmployeeAccessModel viewModel, CancellationToken cancellationToken = default);
-        void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel);
-        Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, CancellationToken cancellationToken = default);
-        void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request);
-        Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request, CancellationToken cancellationToken = default);
-        void RevokeEmployeeAccess(int businessId, int employeeId);
-        Task RevokeEmployeeAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        void RevokeEmployeeAccess(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request);
-        Task RevokeEmployeeAccessAsync(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request, CancellationToken cancellationToken = default);
         EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId);
         Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request);
         Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request, CancellationToken cancellationToken = default);
+        List<EmployeeAccessModel> GetUsersWithAccessToEmployee(int businessId, int employeeId, ODataQuery oDataQuery = null);
+        Task<List<EmployeeAccessModel>> GetUsersWithAccessToEmployeeAsync(int businessId, int employeeId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        void GrantEmployeeAccess(int businessId, int employeeId, CreateEmployeeAccessModel viewModel);
+        Task GrantEmployeeAccessAsync(int businessId, int employeeId, CreateEmployeeAccessModel viewModel, CancellationToken cancellationToken = default);
+        void RevokeEmployeeAccess(int businessId, int employeeId);
+        Task RevokeEmployeeAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
+        void RevokeEmployeeAccess(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request);
+        Task RevokeEmployeeAccessAsync(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request, CancellationToken cancellationToken = default);
+        void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel);
+        Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, CancellationToken cancellationToken = default);
+        void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request);
+        Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request, CancellationToken cancellationToken = default);
     }
     public class EmployeeAccessFunction : BaseFunction, IEmployeeAccessFunction
     {
         public EmployeeAccessFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Employee Access for User
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// </remarks>
+        public EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId)
+        {
+            return ApiRequest<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Access for User
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// </remarks>
+        public Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Get Employee Access for User
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// </remarks>
+        public EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request)
+        {
+            return ApiRequest<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email?email={request.Email}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employee Access for User
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// </remarks>
+        public Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email?email={request.Email}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// Get Users With Access to Employee
@@ -83,50 +127,6 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Update Employee Access Record
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee access record for the specified user.
-        /// </remarks>
-        public void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/access", viewModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Access Record
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee access record for the specified user.
-        /// </remarks>
-        public Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access", viewModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Update Employee Access Record
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee access record for the specified user.
-        /// </remarks>
-        public void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request)
-        {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", viewModel, Method.Put);
-        }
-
-        /// <summary>
-        /// Update Employee Access Record
-        /// </summary>
-        /// <remarks>
-        /// Updates the employee access record for the specified user.
-        /// </remarks>
-        public Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
         /// Revoke Employee Access
         /// </summary>
         /// <remarks>
@@ -171,47 +171,47 @@ namespace KeyPayV2.Nz.Functions
         }
 
         /// <summary>
-        /// Get Employee Access for User
+        /// Update Employee Access Record
         /// </summary>
         /// <remarks>
-        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// Updates the employee access record for the specified user.
         /// </remarks>
-        public EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId)
+        public void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel)
         {
-            return ApiRequest<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email", Method.Get);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/access", viewModel, Method.Put);
         }
 
         /// <summary>
-        /// Get Employee Access for User
+        /// Update Employee Access Record
         /// </summary>
         /// <remarks>
-        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// Updates the employee access record for the specified user.
         /// </remarks>
-        public Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, CancellationToken cancellationToken = default)
+        public Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access", viewModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
-        /// Get Employee Access for User
+        /// Update Employee Access Record
         /// </summary>
         /// <remarks>
-        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// Updates the employee access record for the specified user.
         /// </remarks>
-        public EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request)
+        public void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request)
         {
-            return ApiRequest<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email?email={request.Email}", Method.Get);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", viewModel, Method.Put);
         }
 
         /// <summary>
-        /// Get Employee Access for User
+        /// Update Employee Access Record
         /// </summary>
         /// <remarks>
-        /// Gets a list of all employees to which the user (specified by email) has access.
+        /// Updates the employee access record for the specified user.
         /// </remarks>
-        public Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request, CancellationToken cancellationToken = default)
+        public Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email?email={request.Email}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
         }
     }
 }

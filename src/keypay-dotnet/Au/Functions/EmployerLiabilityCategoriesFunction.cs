@@ -15,20 +15,42 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployerLiabilityCategoriesFunction
     {
+        EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id);
+        Task<EmployerLiabilityCategoryModel> GetEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
         List<EmployerLiabilityCategoryModel> ListEmployerLiabilityCategories(int businessId, ODataQuery oDataQuery = null);
         Task<List<EmployerLiabilityCategoryModel>> ListEmployerLiabilityCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void CreateEmployerLiabilityCategory(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory);
         Task CreateEmployerLiabilityCategoryAsync(int businessId, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default);
-        EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id);
-        Task<EmployerLiabilityCategoryModel> GetEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        void UpdateEmployerLiabilityCategory(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory);
-        Task UpdateEmployerLiabilityCategoryAsync(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default);
         void DeleteEmployerLiabilityCategory(int businessId, int id);
         Task DeleteEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        void UpdateEmployerLiabilityCategory(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory);
+        Task UpdateEmployerLiabilityCategoryAsync(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default);
     }
     public class EmployerLiabilityCategoriesFunction : BaseFunction, IEmployerLiabilityCategoriesFunction
     {
         public EmployerLiabilityCategoriesFunction(ApiRequestExecutor api) : base(api) {}
+
+        /// <summary>
+        /// Get Employer Liability Category
+        /// </summary>
+        /// <remarks>
+        /// Gets the employer liability category with the specified ID.
+        /// </remarks>
+        public EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id)
+        {
+            return ApiRequest<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.Get);
+        }
+
+        /// <summary>
+        /// Get Employer Liability Category
+        /// </summary>
+        /// <remarks>
+        /// Gets the employer liability category with the specified ID.
+        /// </remarks>
+        public Task<EmployerLiabilityCategoryModel> GetEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.Get, cancellationToken);
+        }
 
         /// <summary>
         /// List Employer Liability Categories
@@ -77,25 +99,25 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get Employer Liability Category
+        /// Delete Employer Liability Category
         /// </summary>
         /// <remarks>
-        /// Gets the employer liability category with the specified ID.
+        /// Deletes the employer liability category with the specified ID.
         /// </remarks>
-        public EmployerLiabilityCategoryModel GetEmployerLiabilityCategory(int businessId, int id)
+        public void DeleteEmployerLiabilityCategory(int businessId, int id)
         {
-            return ApiRequest<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.Get);
+            ApiRequest($"/business/{businessId}/employerliabilitycategory/{id}", Method.Delete);
         }
 
         /// <summary>
-        /// Get Employer Liability Category
+        /// Delete Employer Liability Category
         /// </summary>
         /// <remarks>
-        /// Gets the employer liability category with the specified ID.
+        /// Deletes the employer liability category with the specified ID.
         /// </remarks>
-        public Task<EmployerLiabilityCategoryModel> GetEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
+        public Task DeleteEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployerLiabilityCategoryModel>($"/business/{businessId}/employerliabilitycategory/{id}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -118,28 +140,6 @@ namespace KeyPayV2.Au.Functions
         public Task UpdateEmployerLiabilityCategoryAsync(int businessId, int id, EmployerLiabilityCategoryModel employerLiabilityCategory, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", employerLiabilityCategory, Method.Put, cancellationToken);
-        }
-
-        /// <summary>
-        /// Delete Employer Liability Category
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employer liability category with the specified ID.
-        /// </remarks>
-        public void DeleteEmployerLiabilityCategory(int businessId, int id)
-        {
-            ApiRequest($"/business/{businessId}/employerliabilitycategory/{id}", Method.Delete);
-        }
-
-        /// <summary>
-        /// Delete Employer Liability Category
-        /// </summary>
-        /// <remarks>
-        /// Deletes the employer liability category with the specified ID.
-        /// </remarks>
-        public Task DeleteEmployerLiabilityCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync($"/business/{businessId}/employerliabilitycategory/{id}", Method.Delete, cancellationToken);
         }
     }
 }

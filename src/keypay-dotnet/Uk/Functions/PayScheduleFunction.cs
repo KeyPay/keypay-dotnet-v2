@@ -15,77 +15,49 @@ namespace KeyPayV2.Uk.Functions
 {
     public interface IPayScheduleFunction
     {
-        void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel);
-        Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default);
-        List<UkPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null);
-        Task<List<UkPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        UkPayScheduleModel CreatePaySchedule(int businessId, UkPayScheduleModel paySchedule);
-        Task<UkPayScheduleModel> CreatePayScheduleAsync(int businessId, UkPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
-        PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId);
-        Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default);
         List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId);
         Task<List<PayScheduleDateForecastResultApiModel>> ListNextPayDatesAsync(int businessId, CancellationToken cancellationToken = default);
+        List<UkPayScheduleModel> ListPaySchedules(int businessId, ODataQuery oDataQuery = null);
+        Task<List<UkPayScheduleModel>> ListPaySchedulesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId);
+        Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default);
+        PayScheduleMetaDataModel GetPayScheduleMetadata(int businessId);
+        Task<PayScheduleMetaDataModel> GetPayScheduleMetadataAsync(int businessId, CancellationToken cancellationToken = default);
+        UkPayScheduleModel CreatePaySchedule(int businessId, UkPayScheduleModel paySchedule);
+        Task<UkPayScheduleModel> CreatePayScheduleAsync(int businessId, UkPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
         UkPayScheduleModel GetPayScheduleById(int businessId, int id);
         Task<UkPayScheduleModel> GetPayScheduleByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         UkPayScheduleModel UpdatePaySchedule(int businessId, int id, UkPayScheduleModel paySchedule);
         Task<UkPayScheduleModel> UpdatePayScheduleAsync(int businessId, int id, UkPayScheduleModel paySchedule, CancellationToken cancellationToken = default);
         void DeletePaySchedule(int businessId, int id);
         Task DeletePayScheduleAsync(int businessId, int id, CancellationToken cancellationToken = default);
-        PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId);
-        Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default);
+        void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel);
+        Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default);
     }
     public class PayScheduleFunction : BaseFunction, IPayScheduleFunction
     {
         public PayScheduleFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// Import a new pay schedule.
+        /// List Next Pay Dates
         /// </summary>
         /// <remarks>
-        /// Creates a new pay schedule for the business by importing from external data.
-        /// The pay schedule defines how frequently employees are paid and related configuration.
-        /// Example request body:
-        /// {
-        ///   "name": "Weekly Pay Schedule",
-        ///   "frequency": "Weekly",
-        ///   "includedEmployees": "All",
-        ///   "monthlyPaymentMode": false,
-        ///   "proRataCalculations": true,
-        ///   "unitType": "Days per year",
-        ///   "unit": 260,
-        ///   "qualifyingDays": "Working days",
-        ///   "locations": [1, 2, 3],
-        ///   "paySlipMessage": "Custom message for pay slips"
-        /// }
+        /// Gets the list of all next pay dates for each pay schedule.
         /// </remarks>
-        public void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel)
+        public List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId)
         {
-            ApiRequest($"/business/{businessId}/import/pay-schedule", importModel, Method.Post);
+            return ApiRequest<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.Get);
         }
 
         /// <summary>
-        /// Import a new pay schedule.
+        /// List Next Pay Dates
         /// </summary>
         /// <remarks>
-        /// Creates a new pay schedule for the business by importing from external data.
-        /// The pay schedule defines how frequently employees are paid and related configuration.
-        /// Example request body:
-        /// {
-        ///   "name": "Weekly Pay Schedule",
-        ///   "frequency": "Weekly",
-        ///   "includedEmployees": "All",
-        ///   "monthlyPaymentMode": false,
-        ///   "proRataCalculations": true,
-        ///   "unitType": "Days per year",
-        ///   "unit": 260,
-        ///   "qualifyingDays": "Working days",
-        ///   "locations": [1, 2, 3],
-        ///   "paySlipMessage": "Custom message for pay slips"
-        /// }
+        /// Gets the list of all next pay dates for each pay schedule.
         /// </remarks>
-        public Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default)
+        public Task<List<PayScheduleDateForecastResultApiModel>> ListNextPayDatesAsync(int businessId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/import/pay-schedule", importModel, Method.Post, cancellationToken);
+            return ApiRequestAsync<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -113,25 +85,25 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Create Pay Schedule
+        /// Get Next Pay Date
         /// </summary>
         /// <remarks>
-        /// Creates a new pay schedule for the business.
+        /// Gets the next pay dates for the pay schedule with the specified ID.
         /// </remarks>
-        public UkPayScheduleModel CreatePaySchedule(int businessId, UkPayScheduleModel paySchedule)
+        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId)
         {
-            return ApiRequest<UkPayScheduleModel,UkPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.Post);
+            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get);
         }
 
         /// <summary>
-        /// Create Pay Schedule
+        /// Get Next Pay Date
         /// </summary>
         /// <remarks>
-        /// Creates a new pay schedule for the business.
+        /// Gets the next pay dates for the pay schedule with the specified ID.
         /// </remarks>
-        public Task<UkPayScheduleModel> CreatePayScheduleAsync(int businessId, UkPayScheduleModel paySchedule, CancellationToken cancellationToken = default)
+        public Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkPayScheduleModel,UkPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.Post, cancellationToken);
+            return ApiRequestAsync<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -157,25 +129,25 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// List Next Pay Dates
+        /// Create Pay Schedule
         /// </summary>
         /// <remarks>
-        /// Gets the list of all next pay dates for each pay schedule.
+        /// Creates a new pay schedule for the business.
         /// </remarks>
-        public List<PayScheduleDateForecastResultApiModel> ListNextPayDates(int businessId)
+        public UkPayScheduleModel CreatePaySchedule(int businessId, UkPayScheduleModel paySchedule)
         {
-            return ApiRequest<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.Get);
+            return ApiRequest<UkPayScheduleModel,UkPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.Post);
         }
 
         /// <summary>
-        /// List Next Pay Dates
+        /// Create Pay Schedule
         /// </summary>
         /// <remarks>
-        /// Gets the list of all next pay dates for each pay schedule.
+        /// Creates a new pay schedule for the business.
         /// </remarks>
-        public Task<List<PayScheduleDateForecastResultApiModel>> ListNextPayDatesAsync(int businessId, CancellationToken cancellationToken = default)
+        public Task<UkPayScheduleModel> CreatePayScheduleAsync(int businessId, UkPayScheduleModel paySchedule, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PayScheduleDateForecastResultApiModel>>($"/business/{businessId}/payschedule/nextpaydates", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkPayScheduleModel,UkPayScheduleModel>($"/business/{businessId}/payschedule", paySchedule, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -245,25 +217,53 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Get Next Pay Date
+        /// Import a new pay schedule.
         /// </summary>
         /// <remarks>
-        /// Gets the next pay dates for the pay schedule with the specified ID.
+        /// Creates a new pay schedule for the business by importing from external data.
+        /// The pay schedule defines how frequently employees are paid and related configuration.
+        /// Example request body:
+        /// {
+        ///   "name": "Weekly Pay Schedule",
+        ///   "frequency": "Weekly",
+        ///   "includedEmployees": "All",
+        ///   "monthlyPaymentMode": false,
+        ///   "proRataCalculations": true,
+        ///   "unitType": "Days per year",
+        ///   "unit": 260,
+        ///   "qualifyingDays": "Working days",
+        ///   "locations": [1, 2, 3],
+        ///   "paySlipMessage": "Custom message for pay slips"
+        /// }
         /// </remarks>
-        public PayScheduleDateForecastResultApiModel GetNextPayDate(int businessId, int payScheduleId)
+        public void ImportANewPaySchedule(int businessId, PayScheduleImportModel importModel)
         {
-            return ApiRequest<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get);
+            ApiRequest($"/business/{businessId}/import/pay-schedule", importModel, Method.Post);
         }
 
         /// <summary>
-        /// Get Next Pay Date
+        /// Import a new pay schedule.
         /// </summary>
         /// <remarks>
-        /// Gets the next pay dates for the pay schedule with the specified ID.
+        /// Creates a new pay schedule for the business by importing from external data.
+        /// The pay schedule defines how frequently employees are paid and related configuration.
+        /// Example request body:
+        /// {
+        ///   "name": "Weekly Pay Schedule",
+        ///   "frequency": "Weekly",
+        ///   "includedEmployees": "All",
+        ///   "monthlyPaymentMode": false,
+        ///   "proRataCalculations": true,
+        ///   "unitType": "Days per year",
+        ///   "unit": 260,
+        ///   "qualifyingDays": "Working days",
+        ///   "locations": [1, 2, 3],
+        ///   "paySlipMessage": "Custom message for pay slips"
+        /// }
         /// </remarks>
-        public Task<PayScheduleDateForecastResultApiModel> GetNextPayDateAsync(int businessId, int payScheduleId, CancellationToken cancellationToken = default)
+        public Task ImportANewPayScheduleAsync(int businessId, PayScheduleImportModel importModel, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PayScheduleDateForecastResultApiModel>($"/business/{businessId}/payschedule/{payScheduleId}/nextpaydate", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/import/pay-schedule", importModel, Method.Post, cancellationToken);
         }
     }
 }

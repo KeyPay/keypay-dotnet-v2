@@ -17,10 +17,10 @@ namespace KeyPayV2.Sg.Functions
     {
         List<SgPayConditionRuleSetApiModel> ListPayConditionRuleSets(int businessId, ODataQuery oDataQuery = null);
         Task<List<SgPayConditionRuleSetApiModel>> ListPayConditionRuleSetsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        SgPayConditionRuleSetApiModel CreatePayConditionRuleSet(int businessId, CreateUpdatePayConditionRuleSetRequest request);
-        Task<SgPayConditionRuleSetApiModel> CreatePayConditionRuleSetAsync(int businessId, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
         SgPayConditionRuleSetApiModel ClonePayConditionRuleSet(int businessId, ClonePayConditionRuleSetRequest request);
         Task<SgPayConditionRuleSetApiModel> ClonePayConditionRuleSetAsync(int businessId, ClonePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
+        SgPayConditionRuleSetApiModel CreatePayConditionRuleSet(int businessId, CreateUpdatePayConditionRuleSetRequest request);
+        Task<SgPayConditionRuleSetApiModel> CreatePayConditionRuleSetAsync(int businessId, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default);
         SgPayConditionRuleSetApiModel GetPayConditionRuleSetById(int businessId, int id);
         Task<SgPayConditionRuleSetApiModel> GetPayConditionRuleSetByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         SgPayConditionRuleSetApiModel UpdatePayConditionRuleSet(int businessId, int id, CreateUpdatePayConditionRuleSetRequest request);
@@ -55,28 +55,6 @@ namespace KeyPayV2.Sg.Functions
         }
 
         /// <summary>
-        /// Create Pay Condition Rule Set
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay condition rule set. Note: Cannot create award-based rule sets via API.
-        /// </remarks>
-        public SgPayConditionRuleSetApiModel CreatePayConditionRuleSet(int businessId, CreateUpdatePayConditionRuleSetRequest request)
-        {
-            return ApiRequest<SgPayConditionRuleSetApiModel,CreateUpdatePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset", request, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Pay Condition Rule Set
-        /// </summary>
-        /// <remarks>
-        /// Creates a new pay condition rule set. Note: Cannot create award-based rule sets via API.
-        /// </remarks>
-        public Task<SgPayConditionRuleSetApiModel> CreatePayConditionRuleSetAsync(int businessId, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<SgPayConditionRuleSetApiModel,CreateUpdatePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset", request, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Clone Pay Condition Rule Set
         /// </summary>
         /// <remarks>
@@ -98,6 +76,28 @@ namespace KeyPayV2.Sg.Functions
         public Task<SgPayConditionRuleSetApiModel> ClonePayConditionRuleSetAsync(int businessId, ClonePayConditionRuleSetRequest request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<SgPayConditionRuleSetApiModel,ClonePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset/clone", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Pay Condition Rule Set
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay condition rule set. Note: Cannot create award-based rule sets via API.
+        /// </remarks>
+        public SgPayConditionRuleSetApiModel CreatePayConditionRuleSet(int businessId, CreateUpdatePayConditionRuleSetRequest request)
+        {
+            return ApiRequest<SgPayConditionRuleSetApiModel,CreateUpdatePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset", request, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Pay Condition Rule Set
+        /// </summary>
+        /// <remarks>
+        /// Creates a new pay condition rule set. Note: Cannot create award-based rule sets via API.
+        /// </remarks>
+        public Task<SgPayConditionRuleSetApiModel> CreatePayConditionRuleSetAsync(int businessId, CreateUpdatePayConditionRuleSetRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<SgPayConditionRuleSetApiModel,CreateUpdatePayConditionRuleSetRequest>($"/business/{businessId}/payconditionruleset", request, Method.Post, cancellationToken);
         }
 
         /// <summary>

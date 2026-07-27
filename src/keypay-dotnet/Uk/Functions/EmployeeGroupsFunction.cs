@@ -17,10 +17,10 @@ namespace KeyPayV2.Uk.Functions
     {
         List<UkEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
         Task<List<UkEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        UkEmployeeGroupModel CreateEmployeeGroup(int businessId, UkEmployeeGroupModel employeeGroup);
-        Task<UkEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, UkEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         UkDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
         Task<UkDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        UkEmployeeGroupModel CreateEmployeeGroup(int businessId, UkEmployeeGroupModel employeeGroup);
+        Task<UkEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, UkEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         UkEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, UkEmployeeGroupModel employeeGroup);
         Task<UkEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, UkEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         void DeleteEmployeeGroup(int businessId, int id);
@@ -55,28 +55,6 @@ namespace KeyPayV2.Uk.Functions
         }
 
         /// <summary>
-        /// Create Employee Group
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee group for the business.
-        /// </remarks>
-        public UkEmployeeGroupModel CreateEmployeeGroup(int businessId, UkEmployeeGroupModel employeeGroup)
-        {
-            return ApiRequest<UkEmployeeGroupModel,UkEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
-        }
-
-        /// <summary>
-        /// Create Employee Group
-        /// </summary>
-        /// <remarks>
-        /// Creates a new employee group for the business.
-        /// </remarks>
-        public Task<UkEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, UkEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<UkEmployeeGroupModel,UkEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
-        }
-
-        /// <summary>
         /// Get Employee Group by ID
         /// </summary>
         /// <remarks>
@@ -96,6 +74,28 @@ namespace KeyPayV2.Uk.Functions
         public Task<UkDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<UkDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// Create Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee group for the business.
+        /// </remarks>
+        public UkEmployeeGroupModel CreateEmployeeGroup(int businessId, UkEmployeeGroupModel employeeGroup)
+        {
+            return ApiRequest<UkEmployeeGroupModel,UkEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post);
+        }
+
+        /// <summary>
+        /// Create Employee Group
+        /// </summary>
+        /// <remarks>
+        /// Creates a new employee group for the business.
+        /// </remarks>
+        public Task<UkEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, UkEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<UkEmployeeGroupModel,UkEmployeeGroupModel>($"/business/{businessId}/employeegroup", employeeGroup, Method.Post, cancellationToken);
         }
 
         /// <summary>

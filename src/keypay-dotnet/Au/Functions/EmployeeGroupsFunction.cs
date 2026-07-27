@@ -15,14 +15,14 @@ namespace KeyPayV2.Au.Functions
 {
     public interface IEmployeeGroupsFunction
     {
-        List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        AuEmployeeGroupModel CreateEmployeeGroup(int businessId, AuEmployeeGroupModel employeeGroup);
-        Task<AuEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         AuDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id);
         Task<AuDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
+        AuEmployeeGroupModel CreateEmployeeGroup(int businessId, AuEmployeeGroupModel employeeGroup);
+        Task<AuEmployeeGroupModel> CreateEmployeeGroupAsync(int businessId, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
         AuEmployeeGroupModel UpdateEmployeeGroup(int businessId, int id, AuEmployeeGroupModel employeeGroup);
         Task<AuEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default);
+        List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void DeleteEmployeeGroup(int businessId, int id);
         Task DeleteEmployeeGroupAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
@@ -31,27 +31,25 @@ namespace KeyPayV2.Au.Functions
         public EmployeeGroupsFunction(ApiRequestExecutor api) : base(api) {}
 
         /// <summary>
-        /// List Employee Groups
+        /// Get Employee Group by ID
         /// </summary>
         /// <remarks>
-        /// Lists all the employee groups for the business.
-        /// This operation supports OData queries.
+        /// Gets the employee group with the specified ID.
         /// </remarks>
-        public List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
+        public AuDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
         {
-            return ApiRequest<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+            return ApiRequest<AuDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get);
         }
 
         /// <summary>
-        /// List Employee Groups
+        /// Get Employee Group by ID
         /// </summary>
         /// <remarks>
-        /// Lists all the employee groups for the business.
-        /// This operation supports OData queries.
+        /// Gets the employee group with the specified ID.
         /// </remarks>
-        public Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        public Task<AuDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -77,28 +75,6 @@ namespace KeyPayV2.Au.Functions
         }
 
         /// <summary>
-        /// Get Employee Group by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee group with the specified ID.
-        /// </remarks>
-        public AuDetailedEmployeeGroupModel GetEmployeeGroupById(int businessId, int id)
-        {
-            return ApiRequest<AuDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get);
-        }
-
-        /// <summary>
-        /// Get Employee Group by ID
-        /// </summary>
-        /// <remarks>
-        /// Gets the employee group with the specified ID.
-        /// </remarks>
-        public Task<AuDetailedEmployeeGroupModel> GetEmployeeGroupByIdAsync(int businessId, int id, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<AuDetailedEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Update Employee Group
         /// </summary>
         /// <remarks>
@@ -118,6 +94,30 @@ namespace KeyPayV2.Au.Functions
         public Task<AuEmployeeGroupModel> UpdateEmployeeGroupAsync(int businessId, int id, AuEmployeeGroupModel employeeGroup, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuEmployeeGroupModel,AuEmployeeGroupModel>($"/business/{businessId}/employeegroup/{id}", employeeGroup, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employee Groups
+        /// </summary>
+        /// <remarks>
+        /// Lists all the employee groups for the business.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public List<AuEmployeeGroupModel> ListEmployeeGroups(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employee Groups
+        /// </summary>
+        /// <remarks>
+        /// Lists all the employee groups for the business.
+        /// This operation supports OData queries.
+        /// </remarks>
+        public Task<List<AuEmployeeGroupModel>> ListEmployeeGroupsAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuEmployeeGroupModel>>($"/business/{businessId}/employeegroup{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

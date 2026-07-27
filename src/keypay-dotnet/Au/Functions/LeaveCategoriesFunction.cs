@@ -15,44 +15,20 @@ namespace KeyPayV2.Au.Functions
 {
     public interface ILeaveCategoriesFunction
     {
-        List<AuLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
-        Task<List<AuLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         AuLeaveCategoryModel CreateLeaveCategory(int businessId, AuLeaveCategoryModel leaveCategory);
         Task<AuLeaveCategoryModel> CreateLeaveCategoryAsync(int businessId, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
         AuLeaveCategoryModel GetLeaveCategoryById(int businessId, int id);
         Task<AuLeaveCategoryModel> GetLeaveCategoryByIdAsync(int businessId, int id, CancellationToken cancellationToken = default);
         AuLeaveCategoryModel UpdateLeaveCategory(int businessId, int id, AuLeaveCategoryModel leaveCategory);
         Task<AuLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default);
+        List<AuLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null);
+        Task<List<AuLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         void DeleteLeaveCategory(int businessId, int id);
         Task DeleteLeaveCategoryAsync(int businessId, int id, CancellationToken cancellationToken = default);
     }
     public class LeaveCategoriesFunction : BaseFunction, ILeaveCategoriesFunction
     {
         public LeaveCategoriesFunction(ApiRequestExecutor api) : base(api) {}
-
-        /// <summary>
-        /// List Leave Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the leave categories for the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<AuLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Leave Categories
-        /// </summary>
-        /// <remarks>
-        /// Lists all of the leave categories for the business.
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<AuLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
 
         /// <summary>
         /// Create Leave Category
@@ -118,6 +94,30 @@ namespace KeyPayV2.Au.Functions
         public Task<AuLeaveCategoryModel> UpdateLeaveCategoryAsync(int businessId, int id, AuLeaveCategoryModel leaveCategory, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<AuLeaveCategoryModel,AuLeaveCategoryModel>($"/business/{businessId}/leavecategory/{id}", leaveCategory, Method.Put, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Leave Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the leave categories for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<AuLeaveCategoryModel> ListLeaveCategories(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Leave Categories
+        /// </summary>
+        /// <remarks>
+        /// Lists all of the leave categories for the business.
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<AuLeaveCategoryModel>> ListLeaveCategoriesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<AuLeaveCategoryModel>>($"/business/{businessId}/leavecategory{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
