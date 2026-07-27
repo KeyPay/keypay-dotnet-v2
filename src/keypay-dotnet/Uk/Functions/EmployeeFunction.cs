@@ -387,9 +387,8 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         /// <remarks>
         /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null)
@@ -402,9 +401,8 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         /// <remarks>
         /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
@@ -417,9 +415,8 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         /// <remarks>
         /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
@@ -432,9 +429,8 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         /// <remarks>
         /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)

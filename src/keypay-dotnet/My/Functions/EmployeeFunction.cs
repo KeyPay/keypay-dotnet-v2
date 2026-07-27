@@ -23,14 +23,14 @@ namespace KeyPayV2.My.Functions
         Task GrantKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         void RevokeKioskAccess(int businessId, int employeeId);
         Task RevokeKioskAccessAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
-        List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
-        Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
-        List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
-        Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, MyUnstructuredEmployeeModel model);
         Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, MyUnstructuredEmployeeModel model, CancellationToken cancellationToken = default);
         EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request);
         Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default);
+        List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null);
+        Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
+        List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null);
+        Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         MyUnstructuredEmployeeModel GetEmployeeByExternalId(int businessId, string externalId);
         Task<MyUnstructuredEmployeeModel> GetEmployeeByExternalIdAsync(int businessId, string externalId, CancellationToken cancellationToken = default);
         MyUnstructuredEmployeeModel GetEmployeeByExternalReferenceId(int businessId, string externalReferenceId, ExternalService source);
@@ -169,66 +169,6 @@ namespace KeyPayV2.My.Functions
         }
 
         /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
-        {
-            return ApiRequest<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
-        }
-
-        /// <summary>
-        /// List Employees
-        /// </summary>
-        /// <remarks>
-        /// This endpoint returns the unstructured employee details for all matching employees.
-        /// <p>
-        /// See also: List basic details for employees (which is much more efficient if that is all the information that is required)
-        /// </p>
-        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
-        /// </remarks>
-        public Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
-        {
-            return ApiRequestAsync<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
-        }
-
-        /// <summary>
         /// Create or Update Employee
         /// </summary>
         /// <remarks>
@@ -318,6 +258,62 @@ namespace KeyPayV2.My.Functions
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<EmployeeUpdateResponseModel,MyUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ODataQuery.ToQueryString(oDataQuery, "?")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employees
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the unstructured employee details for all matching employees.
+        /// <p>See also: List basic details for employees (which is much more efficient if that is all the information that is required)</p><p><b>Pagination:</b> This endpoint enforces a maximum of 100 records per request.</p><ul><li>If `$top` is not specified, it defaults to 100.</li><li>If `$top` exceeds 100, the API returns a 400 Bad Request error.</li><li>To retrieve more than 100 employees, paginate using OData query parameters:
+        ///     <ul><li>`$skip` — number of records to skip</li><li>`$top` — number of records to return (max 100)</li></ul></li></ul><p>Example: Page 1: `?$skip=0&$top=100`, Page 2: `?$skip=100&$top=100`, etc.</p>
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
