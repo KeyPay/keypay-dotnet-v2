@@ -6,6 +6,7 @@ namespace KeyPayV2.Uk.Enums
     public enum SGCCalculationImpactEnum
     {
         None,
-        ReducesOTE
+        ReducesOTE,
+        ReducesQeOnly
     }
 }
