@@ -11,6 +11,7 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal Paye { get; set; }
         public bool IsNetAndTaxableEarningsFixFeatureFlagEnabled { get; set; }
         public decimal NetEarnings { get; set; }
+        public decimal ReportedTaxableEarnings { get; set; }
         public decimal TaxableEarnings { get; set; }
         public decimal NIableEarnings { get; set; }
         public decimal StudentLoan { get; set; }
@@ -23,6 +24,8 @@ namespace KeyPayV2.Uk.Models.Reporting
         public decimal TotalTerminationPayment { get; set; }
         public decimal TerminationPayment { get; set; }
         public decimal TerminationPaymentExemptions { get; set; }
+        public decimal TerminationPaymentEmployerNI { get; set; }
+        public decimal EmployerNics { get; set; }
         public decimal TotalGrossPlusPensionsAndNic { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }

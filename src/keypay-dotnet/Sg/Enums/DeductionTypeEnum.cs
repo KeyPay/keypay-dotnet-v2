@@ -14,6 +14,7 @@ namespace KeyPayV2.Sg.Enums
         Tiered,
         Custom,
         PercentageSuperannuation,
-        PercentageCompensation
+        PercentageCompensation,
+        PercentagePensionable
     }
 }

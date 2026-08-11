@@ -17,6 +17,7 @@ namespace KeyPayV2.Au.Models.PayConditionComparison
         [JsonConverter(typeof(StringEnumConverter))]
         public ComparisonStartDateType ComparisonStartDateType { get; set; }
         public DateTime? ComparisonStartDate { get; set; }
+        public DateTime? ComparisonEndDate { get; set; }
         public List<AwardTagDto> Tags { get; set; }
     }
 }

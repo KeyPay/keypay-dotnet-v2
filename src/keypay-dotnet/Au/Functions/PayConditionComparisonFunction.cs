@@ -21,6 +21,8 @@ namespace KeyPayV2.Au.Functions
         Task<List<PayConditionComparisonApiModel>> GetEmployeePayConditionComparisonsAsync(int businessId, int employeeId, CancellationToken cancellationToken = default);
         PayConditionComparisonApiModel CreatePayConditionComparison(int businessId, int employeeId, CreatePayConditionComparisonRequest request);
         Task<PayConditionComparisonApiModel> CreatePayConditionComparisonAsync(int businessId, int employeeId, CreatePayConditionComparisonRequest request, CancellationToken cancellationToken = default);
+        PayConditionComparisonApiModel SetPayConditionComparisonEndDate(int businessId, int employeeId, int id, EndPayConditionComparisonRequest request);
+        Task<PayConditionComparisonApiModel> SetPayConditionComparisonEndDateAsync(int businessId, int employeeId, int id, EndPayConditionComparisonRequest request, CancellationToken cancellationToken = default);
         void DeletePayConditionComparison(int businessId, int employeeId, int id);
         Task DeletePayConditionComparisonAsync(int businessId, int employeeId, int id, CancellationToken cancellationToken = default);
         void UpdateInitialServiceDate(int businessId, int employeeId, UpdateServiceStartDateRequest request);
@@ -94,6 +96,28 @@ namespace KeyPayV2.Au.Functions
         public Task<PayConditionComparisonApiModel> CreatePayConditionComparisonAsync(int businessId, int employeeId, CreatePayConditionComparisonRequest request, CancellationToken cancellationToken = default)
         {
             return ApiRequestAsync<PayConditionComparisonApiModel,CreatePayConditionComparisonRequest>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison", request, Method.Post, cancellationToken);
+        }
+
+        /// <summary>
+        /// Set Pay Condition Comparison End Date
+        /// </summary>
+        /// <remarks>
+        /// Sets, corrects, or clears the end date on the pay condition comparison with the specified ID for the specified employee.
+        /// </remarks>
+        public PayConditionComparisonApiModel SetPayConditionComparisonEndDate(int businessId, int employeeId, int id, EndPayConditionComparisonRequest request)
+        {
+            return ApiRequest<PayConditionComparisonApiModel,EndPayConditionComparisonRequest>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/{id}/enddate", request, Method.Put);
+        }
+
+        /// <summary>
+        /// Set Pay Condition Comparison End Date
+        /// </summary>
+        /// <remarks>
+        /// Sets, corrects, or clears the end date on the pay condition comparison with the specified ID for the specified employee.
+        /// </remarks>
+        public Task<PayConditionComparisonApiModel> SetPayConditionComparisonEndDateAsync(int businessId, int employeeId, int id, EndPayConditionComparisonRequest request, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<PayConditionComparisonApiModel,EndPayConditionComparisonRequest>($"/business/{businessId}/employee/{employeeId}/payconditionscomparison/{id}/enddate", request, Method.Put, cancellationToken);
         }
 
         /// <summary>
