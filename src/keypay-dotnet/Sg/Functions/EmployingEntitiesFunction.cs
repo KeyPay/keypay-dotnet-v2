@@ -15,6 +15,8 @@ namespace KeyPayV2.Sg.Functions
 {
     public interface IEmployingEntitiesFunction
     {
+        List<SgEmployingEntityModel> ListEmployingEntities(int businessId, ListEmployingEntitiesQueryModel request, ODataQuery oDataQuery = null);
+        Task<List<SgEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ListEmployingEntitiesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         List<SgEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null);
         Task<List<SgEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default);
         SgEmployingEntityModel CreateEmployingEntity(int businessId, SgEmployingEntityModel employingEntity);
@@ -34,7 +36,31 @@ namespace KeyPayV2.Sg.Functions
         /// List Employing Entities
         /// </summary>
         /// <remarks>
-        /// Lists all the employing entities for the business.
+        /// Lists the employing entities for the business (all entities by default; pass includeInactive=false to exclude inactive).
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public List<SgEmployingEntityModel> ListEmployingEntities(int businessId, ListEmployingEntitiesQueryModel request, ODataQuery oDataQuery = null)
+        {
+            return ApiRequest<List<SgEmployingEntityModel>>($"/business/{businessId}/employingentity{ToQueryString("query=" + request.Query, "includeInactive=" + request.IncludeInactive)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+        }
+
+        /// <summary>
+        /// List Employing Entities
+        /// </summary>
+        /// <remarks>
+        /// Lists the employing entities for the business (all entities by default; pass includeInactive=false to exclude inactive).
+        /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
+        /// </remarks>
+        public Task<List<SgEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ListEmployingEntitiesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
+        {
+            return ApiRequestAsync<List<SgEmployingEntityModel>>($"/business/{businessId}/employingentity{ToQueryString("query=" + request.Query, "includeInactive=" + request.IncludeInactive)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
+        }
+
+        /// <summary>
+        /// List Employing Entities
+        /// </summary>
+        /// <remarks>
+        /// Lists the employing entities for the business (all entities by default; pass includeInactive=false to exclude inactive).
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public List<SgEmployingEntityModel> ListEmployingEntities(int businessId, ODataQuery oDataQuery = null)
@@ -46,7 +72,7 @@ namespace KeyPayV2.Sg.Functions
         /// List Employing Entities
         /// </summary>
         /// <remarks>
-        /// Lists all the employing entities for the business.
+        /// Lists the employing entities for the business (all entities by default; pass includeInactive=false to exclude inactive).
         /// This operation supports OData queries (only $filter, $orderby, $top, $skip).
         /// </remarks>
         public Task<List<SgEmployingEntityModel>> ListEmployingEntitiesAsync(int businessId, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)

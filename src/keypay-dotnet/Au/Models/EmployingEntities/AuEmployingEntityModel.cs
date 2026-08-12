@@ -32,5 +32,6 @@ namespace KeyPayV2.Au.Models.EmployingEntities
         public string Postcode { get; set; }
         public string ExternalReferenceId { get; set; }
         public string PaySlipFromEmailAddress { get; set; }
+        public bool? IsDeactivated { get; set; }
     }
 }
