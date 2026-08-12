@@ -93,7 +93,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzIndividualTimesheetLineModel CreateTimesheetLine(int businessId, NzIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query)
         {
-            return ApiRequest<NzIndividualTimesheetLineModel,NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post);
+            return ApiRequest<NzIndividualTimesheetLineModel,NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet{ToQueryString("enforceUniqueExternalId=" + query.EnforceUniqueExternalId)}", request, Method.Post);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, NzIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzIndividualTimesheetLineModel,NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<NzIndividualTimesheetLineModel,NzIndividualTimesheetLineModel>($"/business/{businessId}/timesheet{ToQueryString("enforceUniqueExternalId=" + query.EnforceUniqueExternalId)}", request, Method.Post, cancellationToken);
         }
 
         /// <summary>

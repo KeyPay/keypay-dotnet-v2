@@ -98,7 +98,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<UnitLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request)
         {
-            return ApiRequest<List<UnitLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get);
+            return ApiRequest<List<UnitLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest{ToQueryString("Status=" + request.Status, "FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "LeaveCategoryId=" + request.LeaveCategoryId, "LocationId=" + request.LocationId, "EmployeeId=" + request.EmployeeId, "GroupBy=" + request.GroupBy, "RestrictOverlappingLeave=" + request.RestrictOverlappingLeave)}", Method.Get);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<UnitLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UnitLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UnitLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest{ToQueryString("Status=" + request.Status, "FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "LeaveCategoryId=" + request.LeaveCategoryId, "LocationId=" + request.LocationId, "EmployeeId=" + request.EmployeeId, "GroupBy=" + request.GroupBy, "RestrictOverlappingLeave=" + request.RestrictOverlappingLeave)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public UnitLeaveEstimateModel EstimateLeaveUnits(int businessId, int employeeId, EstimateLeaveUnitsQueryModel request)
         {
-            return ApiRequest<UnitLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get);
+            return ApiRequest<UnitLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate{ToQueryString("fromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "toDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "leaveCategoryId=" + request.LeaveCategoryId)}", Method.Get);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<UnitLeaveEstimateModel> EstimateLeaveUnitsAsync(int businessId, int employeeId, EstimateLeaveUnitsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UnitLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UnitLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate{ToQueryString("fromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "toDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "leaveCategoryId=" + request.LeaveCategoryId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

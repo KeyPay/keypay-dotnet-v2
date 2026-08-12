@@ -529,7 +529,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public EssEmployeeQualificationModel UploadAttachmentToQualification(int employeeId, int employeeQualificationId, UploadAttachmentToQualificationQueryModel request)
         {
-            return ApiRequest<EssEmployeeQualificationModel>($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment?fileName={request.FileName}", Method.Put);
+            return ApiRequest<EssEmployeeQualificationModel>($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment{ToQueryString("fileName=" + request.FileName)}", Method.Put);
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<EssEmployeeQualificationModel> UploadAttachmentToQualificationAsync(int employeeId, int employeeQualificationId, UploadAttachmentToQualificationQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssEmployeeQualificationModel>($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment?fileName={request.FileName}", Method.Put, cancellationToken);
+            return ApiRequestAsync<EssEmployeeQualificationModel>($"/ess/{employeeId}/qualification/{employeeQualificationId}/attachment{ToQueryString("fileName=" + request.FileName)}", Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public EssLeaveEstimate EstimateLeaveHours(int employeeId, EstimateLeaveHoursQueryModel request)
         {
-            return ApiRequest<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate?LeaveCategoryId={request.LeaveCategoryId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate{ToQueryString("LeaveCategoryId=" + request.LeaveCategoryId, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -651,7 +651,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<EssLeaveEstimate> EstimateLeaveHoursAsync(int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate?LeaveCategoryId={request.LeaveCategoryId}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<EssLeaveEstimate>($"/ess/{employeeId}/leave/estimate{ToQueryString("LeaveCategoryId=" + request.LeaveCategoryId, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1154,7 +1154,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<EssExpenseRequestResponseModel> GetExpenseRequests(int employeeId, GetExpenseRequestsQueryModel request)
         {
-            return ApiRequest<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense?currentPage={request.CurrentPage}&pageSize={request.PageSize}", Method.Get);
+            return ApiRequest<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense{ToQueryString("currentPage=" + request.CurrentPage, "pageSize=" + request.PageSize)}", Method.Get);
         }
 
         /// <summary>
@@ -1165,7 +1165,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<EssExpenseRequestResponseModel>> GetExpenseRequestsAsync(int employeeId, GetExpenseRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense?currentPage={request.CurrentPage}&pageSize={request.PageSize}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EssExpenseRequestResponseModel>>($"/ess/{employeeId}/expense{ToQueryString("currentPage=" + request.CurrentPage, "pageSize=" + request.PageSize)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1220,7 +1220,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<EssLeaveRequestModel> ListLeaveRequests(int employeeId, ListLeaveRequestsQueryModel request)
         {
-            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?ShowOtherEmployees={request.ShowOtherEmployees}&ApprovedOnly={request.ApprovedOnly}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave{ToQueryString("ShowOtherEmployees=" + request.ShowOtherEmployees, "ApprovedOnly=" + request.ApprovedOnly, "FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -1231,7 +1231,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<EssLeaveRequestModel>> ListLeaveRequestsAsync(int employeeId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave?ShowOtherEmployees={request.ShowOtherEmployees}&ApprovedOnly={request.ApprovedOnly}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EssLeaveRequestModel>>($"/ess/{employeeId}/leave{ToQueryString("ShowOtherEmployees=" + request.ShowOtherEmployees, "ApprovedOnly=" + request.ApprovedOnly, "FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1286,7 +1286,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<EssSatisfactionSurvey> GetSatisfactionSurveyResults(int employeeId, GetSatisfactionSurveyResultsQueryModel request)
         {
-            return ApiRequest<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction{ToQueryString("fromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "toDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -1297,7 +1297,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<EssSatisfactionSurvey>> GetSatisfactionSurveyResultsAsync(int employeeId, GetSatisfactionSurveyResultsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction?fromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&toDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EssSatisfactionSurvey>>($"/ess/{employeeId}/satisfaction{ToQueryString("fromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "toDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1330,7 +1330,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<EssTimesheetModel> ListTimesheets(int employeeId, ListTimesheetsQueryModel request)
         {
-            return ApiRequest<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1341,7 +1341,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<EssTimesheetModel>> ListTimesheetsAsync(int employeeId, ListTimesheetsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EssTimesheetModel>>($"/ess/{employeeId}/timesheet{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1374,7 +1374,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<EssUnavailabilityModel> ListUnavailabilities(int employeeId, ListUnavailabilitiesQueryModel request)
         {
-            return ApiRequest<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability{ToQueryString("FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -1385,7 +1385,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<EssUnavailabilityModel>> ListUnavailabilitiesAsync(int employeeId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<EssUnavailabilityModel>>($"/ess/{employeeId}/unavailability{ToQueryString("FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1484,7 +1484,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<LeaveBalanceModel> GetLeaveBalances(int employeeId, GetLeaveBalancesQueryModel request)
         {
-            return ApiRequest<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -1495,7 +1495,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/ess/{employeeId}/leave/balances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1572,7 +1572,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NzEssRosterShiftModel> FindNearbyRosterShifts(int employeeId, FindNearbyRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1583,7 +1583,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NzEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift/nearby{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1616,7 +1616,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NzEssRosterShiftModel> ListRosterShifts(int employeeId, ListRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift{ToQueryString("fromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "toDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1627,7 +1627,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NzEssRosterShiftModel>> ListRosterShiftsAsync(int employeeId, ListRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzEssRosterShiftModel>>($"/ess/{employeeId}/shift{ToQueryString("fromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "toDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1704,7 +1704,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<PublicHolidayModel> GetPublicHolidays(int employeeId, GetPublicHolidaysQueryModel request)
         {
-            return ApiRequest<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1715,7 +1715,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<PublicHolidayModel>> GetPublicHolidaysAsync(int employeeId, GetPublicHolidaysQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<PublicHolidayModel>>($"/ess/{employeeId}/publicHolidays{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1748,7 +1748,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<ShiftNoteViewModel> GetShiftNotes(int employeeId, int shiftId, GetShiftNotesQueryModel request)
         {
-            return ApiRequest<List<ShiftNoteViewModel>>($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes?EmployeeId={request.EmployeeId}&IsAdminInitiated={request.IsAdminInitiated}&Type={request.Type}&Visibility={request.Visibility}", Method.Get);
+            return ApiRequest<List<ShiftNoteViewModel>>($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes{ToQueryString("EmployeeId=" + request.EmployeeId, "IsAdminInitiated=" + request.IsAdminInitiated, "Type=" + request.Type, "Visibility=" + request.Visibility)}", Method.Get);
         }
 
         /// <summary>
@@ -1759,7 +1759,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<ShiftNoteViewModel>> GetShiftNotesAsync(int employeeId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ShiftNoteViewModel>>($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes?EmployeeId={request.EmployeeId}&IsAdminInitiated={request.IsAdminInitiated}&Type={request.Type}&Visibility={request.Visibility}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<ShiftNoteViewModel>>($"/ess/{employeeId}/timeandattendance/shift/{shiftId}/notes{ToQueryString("EmployeeId=" + request.EmployeeId, "IsAdminInitiated=" + request.IsAdminInitiated, "Type=" + request.Type, "Visibility=" + request.Visibility)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2166,7 +2166,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzEssTimesheetDataModel GetTimesheetCreationData(int employeeId, GetTimesheetCreationDataQueryModel request)
         {
-            return ApiRequest<NzEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<NzEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -2177,7 +2177,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzEssTimesheetDataModel> GetTimesheetCreationDataAsync(int employeeId, GetTimesheetCreationDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<NzEssTimesheetDataModel>($"/ess/{employeeId}/timesheet/data{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2241,7 +2241,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
         {
-            return ApiRequest<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -2255,7 +2255,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockoff{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2300,7 +2300,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
         {
-            return ApiRequest<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}&allowNotEnded={request.AllowNotEnded}", Method.Get);
+            return ApiRequest<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"), "allowNotEnded=" + request.AllowNotEnded)}", Method.Get);
         }
 
         /// <summary>
@@ -2315,7 +2315,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}&allowNotEnded={request.AllowNotEnded}", Method.Get, cancellationToken);
+            return ApiRequestAsync<NzRosterShiftMatchingResultModel>($"/ess/{employeeId}/shift/matchingclockon{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"), "allowNotEnded=" + request.AllowNotEnded)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2392,7 +2392,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public PagedResultModel<SuburbModel> SearchSuburbs(int employeeId, SearchSuburbsQueryModel request)
         {
-            return ApiRequest<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}", Method.Get);
+            return ApiRequest<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs{ToQueryString("term=" + request.Term, "pageNum=" + request.PageNum, "pageSize=" + request.PageSize, "countryId=" + request.CountryId)}", Method.Get);
         }
 
         /// <summary>
@@ -2403,7 +2403,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<PagedResultModel<SuburbModel>> SearchSuburbsAsync(int employeeId, SearchSuburbsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs?term={request.Term}&pageNum={request.PageNum}&pageSize={request.PageSize}&countryId={request.CountryId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<PagedResultModel<SuburbModel>>($"/ess/{employeeId}/lookup/suburbs{ToQueryString("term=" + request.Term, "pageNum=" + request.PageNum, "pageSize=" + request.PageSize, "countryId=" + request.CountryId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2502,7 +2502,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public SuburbResult GetSuburb(int employeeId, GetSuburbQueryModel request)
         {
-            return ApiRequest<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}", Method.Get);
+            return ApiRequest<SuburbResult>($"/ess/{employeeId}/lookup/suburb{ToQueryString("suburb=" + request.Suburb, "state=" + request.State, "postCode=" + request.PostCode, "countryId=" + request.CountryId)}", Method.Get);
         }
 
         /// <summary>
@@ -2513,7 +2513,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<SuburbResult> GetSuburbAsync(int employeeId, GetSuburbQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SuburbResult>($"/ess/{employeeId}/lookup/suburb?suburb={request.Suburb}&state={request.State}&postCode={request.PostCode}&countryId={request.CountryId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<SuburbResult>($"/ess/{employeeId}/lookup/suburb{ToQueryString("suburb=" + request.Suburb, "state=" + request.State, "postCode=" + request.PostCode, "countryId=" + request.CountryId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2835,7 +2835,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void UploadAttachmentToExpenseRequest(int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request)
         {
-            ApiRequest($"/ess/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.Put);
+            ApiRequest($"/ess/{employeeId}/expense/{expenseRequestId}/attachment{ToQueryString("fileName=" + request.FileName)}", Method.Put);
         }
 
         /// <summary>
@@ -2847,7 +2847,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task UploadAttachmentToExpenseRequestAsync(int employeeId, int expenseRequestId, UploadAttachmentToExpenseRequestQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/ess/{employeeId}/expense/{expenseRequestId}/attachment?fileName={request.FileName}", Method.Put, cancellationToken);
+            return ApiRequestAsync($"/ess/{employeeId}/expense/{expenseRequestId}/attachment{ToQueryString("fileName=" + request.FileName)}", Method.Put, cancellationToken);
         }
 
         /// <summary>

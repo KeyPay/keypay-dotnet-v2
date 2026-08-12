@@ -114,7 +114,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get);
+            ApiRequest($"/business/{businessId}/report/paymentfile{ToQueryString("PayRunId=" + request.PayRunId, "PaymentFileId=" + request.PaymentFileId)}", Method.Get);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/report/paymentfile{ToQueryString("PayRunId=" + request.PayRunId, "PaymentFileId=" + request.PaymentFileId)}", Method.Get, cancellationToken);
         }
     }
 }

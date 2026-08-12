@@ -350,7 +350,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<BasicKioskEmployeeModel> ListKioskStaff(int businessId, int kioskId, ListKioskStaffQueryModel request)
         {
-            return ApiRequest<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff?restrictCurrentShiftsToCurrentKioskLocation={request.RestrictCurrentShiftsToCurrentKioskLocation}", Method.Get);
+            return ApiRequest<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff{ToQueryString("restrictCurrentShiftsToCurrentKioskLocation=" + request.RestrictCurrentShiftsToCurrentKioskLocation)}", Method.Get);
         }
 
         /// <summary>
@@ -361,7 +361,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<BasicKioskEmployeeModel>> ListKioskStaffAsync(int businessId, int kioskId, ListKioskStaffQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff?restrictCurrentShiftsToCurrentKioskLocation={request.RestrictCurrentShiftsToCurrentKioskLocation}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<BasicKioskEmployeeModel>>($"/business/{businessId}/kiosk/{kioskId}/staff{ToQueryString("restrictCurrentShiftsToCurrentKioskLocation=" + request.RestrictCurrentShiftsToCurrentKioskLocation)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -416,7 +416,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<ShiftNoteViewModel> GetShiftNotes(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request)
         {
-            return ApiRequest<List<ShiftNoteViewModel>>($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes?EmployeeId={request.EmployeeId}&IsAdminInitiated={request.IsAdminInitiated}&Type={request.Type}&Visibility={request.Visibility}", Method.Get);
+            return ApiRequest<List<ShiftNoteViewModel>>($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes{ToQueryString("EmployeeId=" + request.EmployeeId, "IsAdminInitiated=" + request.IsAdminInitiated, "Type=" + request.Type, "Visibility=" + request.Visibility)}", Method.Get);
         }
 
         /// <summary>
@@ -427,7 +427,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<ShiftNoteViewModel>> GetShiftNotesAsync(int businessId, int kioskId, int shiftId, GetShiftNotesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<ShiftNoteViewModel>>($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes?EmployeeId={request.EmployeeId}&IsAdminInitiated={request.IsAdminInitiated}&Type={request.Type}&Visibility={request.Visibility}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<ShiftNoteViewModel>>($"/business/{businessId}/kiosk/{kioskId}/shift/{shiftId}/notes{ToQueryString("EmployeeId=" + request.EmployeeId, "IsAdminInitiated=" + request.IsAdminInitiated, "Type=" + request.Type, "Visibility=" + request.Visibility)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

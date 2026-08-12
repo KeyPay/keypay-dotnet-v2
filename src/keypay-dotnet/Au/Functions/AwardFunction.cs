@@ -83,7 +83,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AwardStatusModel> ListAwards(int businessId, ListAwardsQueryModel request)
         {
-            return ApiRequest<List<AwardStatusModel>>($"/business/{businessId}/award?status={request.Status}", Method.Get);
+            return ApiRequest<List<AwardStatusModel>>($"/business/{businessId}/award{ToQueryString("status=" + request.Status)}", Method.Get);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AwardStatusModel>> ListAwardsAsync(int businessId, ListAwardsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AwardStatusModel>>($"/business/{businessId}/award?status={request.Status}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<AwardStatusModel>>($"/business/{businessId}/award{ToQueryString("status=" + request.Status)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

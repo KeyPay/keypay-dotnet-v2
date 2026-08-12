@@ -142,7 +142,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<EmployeeDocumentModel> CreateEmployeeDocument(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request)
         {
-            return ApiFileRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", file, Method.Post);
+            return ApiFileRequest<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document{ToQueryString("visible=" + request.Visible)}", file, Method.Post);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<EmployeeDocumentModel>> CreateEmployeeDocumentAsync(int businessId, int employeeId, FileUploadModel file, CreateEmployeeDocumentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiFileRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document?visible={request.Visible}", file, Method.Post, cancellationToken);
+            return ApiFileRequestAsync<List<EmployeeDocumentModel>>($"/business/{businessId}/employee/{employeeId}/document{ToQueryString("visible=" + request.Visible)}", file, Method.Post, cancellationToken);
         }
 
         /// <summary>

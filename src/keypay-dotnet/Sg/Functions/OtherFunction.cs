@@ -42,7 +42,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public GiroBankBranchModel GetSpecificBankBranchDetails(GetSpecificBankBranchDetailsQueryModel request)
         {
-            return ApiRequest<GiroBankBranchModel>($"/bank/branch?BankSwift={request.BankSwift}&BranchCode={request.BranchCode}&AccountNumber={request.AccountNumber}", Method.Get);
+            return ApiRequest<GiroBankBranchModel>($"/bank/branch{ToQueryString("BankSwift=" + request.BankSwift, "BranchCode=" + request.BranchCode, "AccountNumber=" + request.AccountNumber)}", Method.Get);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<GiroBankBranchModel> GetSpecificBankBranchDetailsAsync(GetSpecificBankBranchDetailsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<GiroBankBranchModel>($"/bank/branch?BankSwift={request.BankSwift}&BranchCode={request.BranchCode}&AccountNumber={request.AccountNumber}", Method.Get, cancellationToken);
+            return ApiRequestAsync<GiroBankBranchModel>($"/bank/branch{ToQueryString("BankSwift=" + request.BankSwift, "BranchCode=" + request.BranchCode, "AccountNumber=" + request.AccountNumber)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public GiroBankModel GetSpecificBankDetails(GetSpecificBankDetailsQueryModel request)
         {
-            return ApiRequest<GiroBankModel>($"/bank/details?BankSwift={request.BankSwift}", Method.Get);
+            return ApiRequest<GiroBankModel>($"/bank/details{ToQueryString("BankSwift=" + request.BankSwift)}", Method.Get);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<GiroBankModel> GetSpecificBankDetailsAsync(GetSpecificBankDetailsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<GiroBankModel>($"/bank/details?BankSwift={request.BankSwift}", Method.Get, cancellationToken);
+            return ApiRequestAsync<GiroBankModel>($"/bank/details{ToQueryString("BankSwift=" + request.BankSwift)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<GiroBankBranchModel> ListBankBranches(ListBankBranchesQueryModel request)
         {
-            return ApiRequest<List<GiroBankBranchModel>>($"/bank/branches?BankSwift={request.BankSwift}&AccountNumber={request.AccountNumber}", Method.Get);
+            return ApiRequest<List<GiroBankBranchModel>>($"/bank/branches{ToQueryString("BankSwift=" + request.BankSwift, "AccountNumber=" + request.AccountNumber)}", Method.Get);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<GiroBankBranchModel>> ListBankBranchesAsync(ListBankBranchesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<GiroBankBranchModel>>($"/bank/branches?BankSwift={request.BankSwift}&AccountNumber={request.AccountNumber}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<GiroBankBranchModel>>($"/bank/branches{ToQueryString("BankSwift=" + request.BankSwift, "AccountNumber=" + request.AccountNumber)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void GetPaymentFilesByFinalisedPayRunId(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get);
+            ApiRequest($"/business/{businessId}/report/paymentfile{ToQueryString("PayRunId=" + request.PayRunId, "PaymentFileId=" + request.PaymentFileId)}", Method.Get);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task GetPaymentFilesByFinalisedPayRunIdAsync(int businessId, GetPaymentFilesByFinalisedPayRunIdQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/report/paymentfile?PayRunId={request.PayRunId}&PaymentFileId={request.PaymentFileId}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/report/paymentfile{ToQueryString("PayRunId=" + request.PayRunId, "PaymentFileId=" + request.PaymentFileId)}", Method.Get, cancellationToken);
         }
     }
 }

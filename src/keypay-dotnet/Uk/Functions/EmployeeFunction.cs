@@ -589,7 +589,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
-            return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post);
+            return ApiRequest<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured{ToQueryString("matchType=" + request.MatchType)}", model, Method.Post);
         }
 
         /// <summary>
@@ -625,7 +625,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, UkUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<EmployeeUpdateResponseModel,UkUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured{ToQueryString("matchType=" + request.MatchType)}", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -868,7 +868,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request)
         {
-            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -879,7 +879,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -903,7 +903,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public List<PeriodOfLeaveModel> GetOccupationalAbsence(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request)
         {
-            return ApiRequest<List<PeriodOfLeaveModel>>($"/business/{businessId}/employee/{employeeId}/occupationalabsence?earliestStartDate={request.EarliestStartDate.ToString("yyyy-MM-ddTHH:mm:ss")}&latestStartDate={request.LatestStartDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<PeriodOfLeaveModel>>($"/business/{businessId}/employee/{employeeId}/occupationalabsence{ToQueryString("earliestStartDate=" + request.EarliestStartDate.ToString("yyyy-MM-ddTHH:mm:ss"), "latestStartDate=" + request.LatestStartDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -911,7 +911,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task<List<PeriodOfLeaveModel>> GetOccupationalAbsenceAsync(int businessId, int employeeId, GetOccupationalAbsenceQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PeriodOfLeaveModel>>($"/business/{businessId}/employee/{employeeId}/occupationalabsence?earliestStartDate={request.EarliestStartDate.ToString("yyyy-MM-ddTHH:mm:ss")}&latestStartDate={request.LatestStartDate.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<PeriodOfLeaveModel>>($"/business/{businessId}/employee/{employeeId}/occupationalabsence{ToQueryString("earliestStartDate=" + request.EarliestStartDate.ToString("yyyy-MM-ddTHH:mm:ss"), "latestStartDate=" + request.LatestStartDate.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -944,7 +944,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkSspApiModel> GetStatutorySickPayByEmployee(int businessId, int employeeId, GetStatutorySickPayByEmployeeQueryModel request)
         {
-            return ApiRequest<List<UkSspApiModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<UkSspApiModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"), "periodEnd=" + request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -955,7 +955,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkSspApiModel>> GetStatutorySickPayByEmployeeAsync(int businessId, int employeeId, GetStatutorySickPayByEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkSspApiModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UkSspApiModel>>($"/business/{businessId}/employee/{employeeId}/statutoryleave/ssp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"), "periodEnd=" + request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -969,7 +969,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+            return ApiRequest<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ToQueryString("PayScheduleId=" + request.PayScheduleId, "LocationId=" + request.LocationId, "options=" + request.Options)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
         }
 
         /// <summary>
@@ -983,7 +983,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UkUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ToQueryString("PayScheduleId=" + request.PayScheduleId, "LocationId=" + request.LocationId, "options=" + request.Options)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1365,7 +1365,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public UkNationalInsuranceBackCalculationModel BackCalculateNationalInsurance(int businessId, int employeeId, BackCalculateNationalInsuranceQueryModel request)
         {
-            return ApiRequest<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation/calculation?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&NewCategory={request.NewCategory}", Method.Get);
+            return ApiRequest<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation/calculation{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "NewCategory=" + request.NewCategory)}", Method.Get);
         }
 
         /// <summary>
@@ -1373,7 +1373,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task<UkNationalInsuranceBackCalculationModel> BackCalculateNationalInsuranceAsync(int businessId, int employeeId, BackCalculateNationalInsuranceQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation/calculation?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&NewCategory={request.NewCategory}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation/calculation{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "NewCategory=" + request.NewCategory)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1397,7 +1397,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public UkNationalInsuranceBackCalculationModel GetNationalInsuranceBackCalculationOfEmployee(int businessId, int employeeId, GetNationalInsuranceBackCalculationOfEmployeeQueryModel request)
         {
-            return ApiRequest<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation?includeComplete={request.IncludeComplete}", Method.Get);
+            return ApiRequest<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation{ToQueryString("includeComplete=" + request.IncludeComplete)}", Method.Get);
         }
 
         /// <summary>
@@ -1405,7 +1405,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task<UkNationalInsuranceBackCalculationModel> GetNationalInsuranceBackCalculationOfEmployeeAsync(int businessId, int employeeId, GetNationalInsuranceBackCalculationOfEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation?includeComplete={request.IncludeComplete}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkNationalInsuranceBackCalculationModel>($"/business/{businessId}/employee/{employeeId}/nationalinsurancebackcalculation{ToQueryString("includeComplete=" + request.IncludeComplete)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1460,7 +1460,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSapCalcApiModel CalculateStatutoryAdoptionLeavePeriodData(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSapCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sapcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSapCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sapcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1471,7 +1471,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSapCalcApiModel> CalculateStatutoryAdoptionLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryAdoptionLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSapCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sapcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSapCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sapcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1526,7 +1526,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkShppDataApiModel GetStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, GetStatutorySharedParentalLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1537,7 +1537,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkShppDataApiModel> GetStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutorySharedParentalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkShppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shpp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1592,7 +1592,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSmpCalcApiModel CalculateStatutoryMaternityLeavePeriodData(int businessId, int employeeId, CalculateStatutoryMaternityLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smpcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1603,7 +1603,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSmpCalcApiModel> CalculateStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryMaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smpcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1636,7 +1636,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSmpCalcApiModel CalculateStatutorySharedParentalLeavePeriodData(int businessId, int employeeId, CalculateStatutorySharedParentalLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shppcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1647,7 +1647,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSmpCalcApiModel> CalculateStatutorySharedParentalLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutorySharedParentalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSmpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/shppcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1680,7 +1680,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSmpDataApiModel GetStatutoryMaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1691,7 +1691,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSmpDataApiModel> GetStatutoryMaternityLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryMaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSmpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/smp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1878,7 +1878,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSncpCalcApiModel CalculateStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, CalculateStatutoryNeonatalLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSncpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSncpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncpcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1889,7 +1889,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSncpCalcApiModel> CalculateStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSncpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSncpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncpcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1922,7 +1922,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSncpDataApiModel GetStatutoryNeonatalLeavePeriodData(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1933,7 +1933,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSncpDataApiModel> GetStatutoryNeonatalLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryNeonatalLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSncpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1988,7 +1988,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSpbpCalcApiModel CalculateStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, CalculateStatutoryParentalBereavementLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSpbpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSpbpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbpcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -1999,7 +1999,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSpbpCalcApiModel> CalculateStatutoryParentalBereavementLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryParentalBereavementLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSpbpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbpcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSpbpCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbpcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2032,7 +2032,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSpbpDataApiModel GetStatutoryParentalBereavementLeavePeriodData(int businessId, int employeeId, GetStatutoryParentalBereavementLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"), "periodEnd=" + request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -2043,7 +2043,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSpbpDataApiModel> GetStatutoryParentalBereavementLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryParentalBereavementLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}&periodEnd={request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSpbpDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spbp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"), "periodEnd=" + request.PeriodEnd.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2142,7 +2142,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSppCalcApiModel CalculateStatutoryPaternityLeavePeriodData(int businessId, int employeeId, CalculateStatutoryPaternityLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSppCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSppCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sppcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -2153,7 +2153,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSppCalcApiModel> CalculateStatutoryPaternityLeavePeriodDataAsync(int businessId, int employeeId, CalculateStatutoryPaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSppCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sppcalc?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSppCalcApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/sppcalc{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2186,7 +2186,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkSppDataApiModel GetStatutoryPaternityLeavePeriodData(int businessId, int employeeId, GetStatutoryPaternityLeavePeriodDataQueryModel request)
         {
-            return ApiRequest<UkSppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkSppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -2197,7 +2197,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkSppDataApiModel> GetStatutoryPaternityLeavePeriodDataAsync(int businessId, int employeeId, GetStatutoryPaternityLeavePeriodDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkSppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spp?periodStart={request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkSppDataApiModel>($"/business/{businessId}/employee/{employeeId}/statutoryleave/spp{ToQueryString("periodStart=" + request.PeriodStart.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2397,7 +2397,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public YearToDateModel GetYearToDate(int businessId, int employeeId, GetYearToDateQueryModel request)
         {
-            return ApiRequest<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate{ToQueryString("referenceDate=" + (request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -2405,7 +2405,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task<YearToDateModel> GetYearToDateAsync(int businessId, int employeeId, GetYearToDateQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate?referenceDate={(request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<YearToDateModel>($"/business/{businessId}/employee/{employeeId}/yeartodate{ToQueryString("referenceDate=" + (request.ReferenceDate.HasValue ? request.ReferenceDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2438,7 +2438,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public byte[] DownloadAutoEnrolmentNotice(int businessId, int employeeId, DownloadAutoEnrolmentNoticeQueryModel request)
         {
-            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice?id={request.Id}", Method.Get);
+            return ApiByteArrayRequest($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice{ToQueryString("id=" + request.Id)}", Method.Get);
         }
 
         /// <summary>
@@ -2449,7 +2449,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<byte[]> DownloadAutoEnrolmentNoticeAsync(int businessId, int employeeId, DownloadAutoEnrolmentNoticeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice?id={request.Id}", Method.Get, cancellationToken);
+            return ApiByteArrayRequestAsync($"/business/{businessId}/employee/{employeeId}/hmrcforms/downloadautoenrolmentnotice{ToQueryString("id=" + request.Id)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -2691,7 +2691,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public void PauseStatutoryNeonatalCareLeave(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, PauseStatutoryNeonatalCareLeaveQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused?isPaused={request.IsPaused}", Method.Put);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused{ToQueryString("isPaused=" + request.IsPaused)}", Method.Put);
         }
 
         /// <summary>
@@ -2699,7 +2699,7 @@ namespace KeyPayV2.Uk.Functions
         /// </summary>
         public Task PauseStatutoryNeonatalCareLeaveAsync(int businessId, int employeeId, int ukStatutoryMaternityLeaveDataId, PauseStatutoryNeonatalCareLeaveQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused?isPaused={request.IsPaused}", Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/statutoryleave/sncp/{ukStatutoryMaternityLeaveDataId}/paused{ToQueryString("isPaused=" + request.IsPaused)}", Method.Put, cancellationToken);
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<CommonActiveEmployeesModel> ActiveEmployeesReport(int whiteLabelId, ActiveEmployeesReportQueryModel request)
         {
-            return ApiRequest<List<CommonActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiRequest<List<CommonActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees{ToQueryString("EmailAddresses=" + request.EmailAddresses, "IncludeInactiveBusinesses=" + request.IncludeInactiveBusinesses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<CommonActiveEmployeesModel>> ActiveEmployeesReportAsync(int whiteLabelId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<CommonActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<CommonActiveEmployeesModel>>($"/whitelabel/{whiteLabelId}/reports/activeemployees{ToQueryString("EmailAddresses=" + request.EmailAddresses, "IncludeInactiveBusinesses=" + request.IncludeInactiveBusinesses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<SignupModel> SignupReport(int whitelabelId, SignupReportQueryModel request)
         {
-            return ApiRequest<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiRequest<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups{ToQueryString("EmailAddresses=" + request.EmailAddresses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<SignupModel>> SignupReportAsync(int whitelabelId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SignupModel>>($"/whitelabel/{whitelabelId}/reports/signups{ToQueryString("EmailAddresses=" + request.EmailAddresses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

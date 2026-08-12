@@ -66,7 +66,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<PublicHolidayModel> GetPublicHolidaysForYear(int businessId, GetPublicHolidaysForYearQueryModel request)
         {
-            return ApiRequest<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday?year={request.Year}", Method.Get);
+            return ApiRequest<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday{ToQueryString("year=" + request.Year)}", Method.Get);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<PublicHolidayModel>> GetPublicHolidaysForYearAsync(int businessId, GetPublicHolidaysForYearQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday?year={request.Year}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<PublicHolidayModel>>($"/business/{businessId}/publicholiday{ToQueryString("year=" + request.Year)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public void DeletePublicHolidayByDate(int businessId, DeletePublicHolidayByDateQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/publicholiday?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Delete);
+            ApiRequest($"/business/{businessId}/publicholiday{ToQueryString("date=" + request.Date.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Delete);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task DeletePublicHolidayByDateAsync(int businessId, DeletePublicHolidayByDateQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/publicholiday?date={request.Date.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/publicholiday{ToQueryString("date=" + request.Date.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

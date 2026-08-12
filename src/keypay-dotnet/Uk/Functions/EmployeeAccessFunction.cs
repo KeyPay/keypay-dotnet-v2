@@ -66,7 +66,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public EmployeeAccessModel GetEmployeeAccessForUser(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request)
         {
-            return ApiRequest<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email?email={request.Email}", Method.Get);
+            return ApiRequest<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email{ToQueryString("email=" + request.Email)}", Method.Get);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<EmployeeAccessModel> GetEmployeeAccessForUserAsync(int businessId, int employeeId, GetEmployeeAccessForUserQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email?email={request.Email}", Method.Get, cancellationToken);
+            return ApiRequestAsync<EmployeeAccessModel>($"/business/{businessId}/employee/{employeeId}/access/email{ToQueryString("email=" + request.Email)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void RevokeEmployeeAccess(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", Method.Delete);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/access{ToQueryString("email=" + request.Email)}", Method.Delete);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task RevokeEmployeeAccessAsync(int businessId, int employeeId, RevokeEmployeeAccessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access{ToQueryString("email=" + request.Email)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void UpdateEmployeeAccessRecord(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", viewModel, Method.Put);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/access{ToQueryString("email=" + request.Email)}", viewModel, Method.Put);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task UpdateEmployeeAccessRecordAsync(int businessId, int employeeId, AccessModel viewModel, UpdateEmployeeAccessRecordQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/access{ToQueryString("email=" + request.Email)}", viewModel, Method.Put, cancellationToken);
         }
     }
 }

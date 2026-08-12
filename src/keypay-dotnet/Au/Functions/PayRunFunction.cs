@@ -216,7 +216,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuApiPaySlipModel GetPaySlipDataByEmployeeId(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request)
         {
-            return ApiRequest<AuApiPaySlipModel>($"/business/{businessId}/payrun/{payRunId}/payslips/{employeeId}?showAllData={request.ShowAllData}", Method.Get);
+            return ApiRequest<AuApiPaySlipModel>($"/business/{businessId}/payrun/{payRunId}/payslips/{employeeId}{ToQueryString("showAllData=" + request.ShowAllData)}", Method.Get);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuApiPaySlipModel> GetPaySlipDataByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetPaySlipDataByEmployeeIdQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuApiPaySlipModel>($"/business/{businessId}/payrun/{payRunId}/payslips/{employeeId}?showAllData={request.ShowAllData}", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuApiPaySlipModel>($"/business/{businessId}/payrun/{payRunId}/payslips/{employeeId}{ToQueryString("showAllData=" + request.ShowAllData)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayRunEarningsLineResponseModel GetEarningsLinesByEmployeeId(int businessId, int employeeId, int payRunId, GetEarningsLinesByEmployeeIdQueryModel request, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+            return ApiRequest<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}{ToQueryString("queryOptions=" + request.QueryOptions)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayRunEarningsLineResponseModel> GetEarningsLinesByEmployeeIdAsync(int businessId, int employeeId, int payRunId, GetEarningsLinesByEmployeeIdQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines/{employeeId}{ToQueryString("queryOptions=" + request.QueryOptions)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public AuPayRunEarningsLineResponseModel ListEarningsLines(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+            return ApiRequest<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines{ToQueryString("queryOptions=" + request.QueryOptions)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<AuPayRunEarningsLineResponseModel> ListEarningsLinesAsync(int businessId, int payRunId, ListEarningsLinesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines?queryOptions={request.QueryOptions}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<AuPayRunEarningsLineResponseModel>($"/business/{businessId}/payrun/{payRunId}/earningslines{ToQueryString("queryOptions=" + request.QueryOptions)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -466,7 +466,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Dictionary<String,AuApiPaySlipModel> ListPaySlipData(int businessId, int payRunId, ListPaySlipDataQueryModel request)
         {
-            return ApiRequest<Dictionary<String,AuApiPaySlipModel>>($"/business/{businessId}/payrun/{payRunId}/payslips?showAllData={request.ShowAllData}", Method.Get);
+            return ApiRequest<Dictionary<String,AuApiPaySlipModel>>($"/business/{businessId}/payrun/{payRunId}/payslips{ToQueryString("showAllData=" + request.ShowAllData)}", Method.Get);
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<Dictionary<String,AuApiPaySlipModel>> ListPaySlipDataAsync(int businessId, int payRunId, ListPaySlipDataQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<Dictionary<String,AuApiPaySlipModel>>($"/business/{businessId}/payrun/{payRunId}/payslips?showAllData={request.ShowAllData}", Method.Get, cancellationToken);
+            return ApiRequestAsync<Dictionary<String,AuApiPaySlipModel>>($"/business/{businessId}/payrun/{payRunId}/payslips{ToQueryString("showAllData=" + request.ShowAllData)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public LeaveAccrualResponse GetLeaveAccruals(int businessId, int payRunId, GetLeaveAccrualsQueryModel request)
         {
-            return ApiRequest<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued?includeLeaveTaken={request.IncludeLeaveTaken}", Method.Get);
+            return ApiRequest<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued{ToQueryString("includeLeaveTaken=" + request.IncludeLeaveTaken)}", Method.Get);
         }
 
         /// <summary>
@@ -559,7 +559,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<LeaveAccrualResponse> GetLeaveAccrualsAsync(int businessId, int payRunId, GetLeaveAccrualsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued?includeLeaveTaken={request.IncludeLeaveTaken}", Method.Get, cancellationToken);
+            return ApiRequestAsync<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued{ToQueryString("includeLeaveTaken=" + request.IncludeLeaveTaken)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -592,7 +592,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public LeaveAccrualResponse GetLeaveAccrualsForEmployee(int businessId, int employeeId, int payRunId, GetLeaveAccrualsForEmployeeQueryModel request)
         {
-            return ApiRequest<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued/{employeeId}?includeLeaveTaken={request.IncludeLeaveTaken}", Method.Get);
+            return ApiRequest<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued/{employeeId}{ToQueryString("includeLeaveTaken=" + request.IncludeLeaveTaken)}", Method.Get);
         }
 
         /// <summary>
@@ -603,7 +603,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<LeaveAccrualResponse> GetLeaveAccrualsForEmployeeAsync(int businessId, int employeeId, int payRunId, GetLeaveAccrualsForEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued/{employeeId}?includeLeaveTaken={request.IncludeLeaveTaken}", Method.Get, cancellationToken);
+            return ApiRequestAsync<LeaveAccrualResponse>($"/business/{businessId}/payrun/{payRunId}/leaveaccrued/{employeeId}{ToQueryString("includeLeaveTaken=" + request.IncludeLeaveTaken)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -1322,7 +1322,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteDeduction(int businessId, int payRunId, DeleteDeductionQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/deductions?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/deductions{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1333,7 +1333,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteDeductionAsync(int businessId, int payRunId, DeleteDeductionQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/deductions?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/deductions{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1344,7 +1344,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteEarningsLine(int businessId, int payRunId, DeleteEarningsLineQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/earningslines?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/earningslines{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1355,7 +1355,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteEarningsLineAsync(int businessId, int payRunId, DeleteEarningsLineQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/earningslines?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/earningslines{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1366,7 +1366,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteEmployeeExpense(int businessId, int payRunId, DeleteEmployeeExpenseQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/EmployeeExpenses?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/EmployeeExpenses{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1377,7 +1377,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteEmployeeExpenseAsync(int businessId, int payRunId, DeleteEmployeeExpenseQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/EmployeeExpenses?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/EmployeeExpenses{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1388,7 +1388,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteEmployerLiability(int businessId, int payRunId, DeleteEmployerLiabilityQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/employerliabilities?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/employerliabilities{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1399,7 +1399,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteEmployerLiabilityAsync(int businessId, int payRunId, DeleteEmployerLiabilityQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/employerliabilities?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/employerliabilities{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1410,7 +1410,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteLeaveAccrual(int businessId, int payRunId, DeleteLeaveAccrualQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/leaveaccrued?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/leaveaccrued{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1421,7 +1421,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteLeaveAccrualAsync(int businessId, int payRunId, DeleteLeaveAccrualQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/leaveaccrued?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/leaveaccrued{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1498,7 +1498,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeletePaygAdjustment(int businessId, int payRunId, DeletePaygAdjustmentQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/paygadjustments?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/paygadjustments{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1509,7 +1509,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeletePaygAdjustmentAsync(int businessId, int payRunId, DeletePaygAdjustmentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/paygadjustments?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/paygadjustments{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -1520,7 +1520,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public void DeleteSuperAdjustment(int businessId, int payRunId, DeleteSuperAdjustmentQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/payrun/{payRunId}/superadjustments?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/payrun/{payRunId}/superadjustments{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -1531,7 +1531,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task DeleteSuperAdjustmentAsync(int businessId, int payRunId, DeleteSuperAdjustmentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/superadjustments?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/payrun/{payRunId}/superadjustments{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

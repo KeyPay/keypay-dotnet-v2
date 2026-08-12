@@ -74,7 +74,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public HourLeaveEstimateModel EstimateLeaveHours(int businessId, int employeeId, EstimateLeaveHoursQueryModel request)
         {
-            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get);
+            return ApiRequest<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate{ToQueryString("fromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "toDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "leaveCategoryId=" + request.LeaveCategoryId)}", Method.Get);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<HourLeaveEstimateModel> EstimateLeaveHoursAsync(int businessId, int employeeId, EstimateLeaveHoursQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate?fromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&toDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&leaveCategoryId={request.LeaveCategoryId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<HourLeaveEstimateModel>($"/business/{businessId}/employee/{employeeId}/leaverequest/estimate{ToQueryString("fromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "toDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "leaveCategoryId=" + request.LeaveCategoryId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<HourLeaveRequestResponseModel> ListLeaveRequests(int businessId, ListLeaveRequestsQueryModel request)
         {
-            return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get);
+            return ApiRequest<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest{ToQueryString("Status=" + request.Status, "FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "LeaveCategoryId=" + request.LeaveCategoryId, "LocationId=" + request.LocationId, "EmployeeId=" + request.EmployeeId, "GroupBy=" + request.GroupBy, "RestrictOverlappingLeave=" + request.RestrictOverlappingLeave)}", Method.Get);
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<HourLeaveRequestResponseModel>> ListLeaveRequestsAsync(int businessId, ListLeaveRequestsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest?Status={request.Status}&FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&LeaveCategoryId={request.LeaveCategoryId}&LocationId={request.LocationId}&EmployeeId={request.EmployeeId}&GroupBy={request.GroupBy}&RestrictOverlappingLeave={request.RestrictOverlappingLeave}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<HourLeaveRequestResponseModel>>($"/business/{businessId}/leaverequest{ToQueryString("Status=" + request.Status, "FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "LeaveCategoryId=" + request.LeaveCategoryId, "LocationId=" + request.LocationId, "EmployeeId=" + request.EmployeeId, "GroupBy=" + request.GroupBy, "RestrictOverlappingLeave=" + request.RestrictOverlappingLeave)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

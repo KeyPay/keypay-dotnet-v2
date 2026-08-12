@@ -164,7 +164,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
-            return ApiRequest<EmployeeUpdateResponseModel,MyUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post);
+            return ApiRequest<EmployeeUpdateResponseModel,MyUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured{ToQueryString("matchType=" + request.MatchType)}", model, Method.Post);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, MyUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,MyUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<EmployeeUpdateResponseModel,MyUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured{ToQueryString("matchType=" + request.MatchType)}", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request)
         {
-            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get);
+            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public List<MyUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+            return ApiRequest<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ToQueryString("PayScheduleId=" + request.PayScheduleId, "LocationId=" + request.LocationId, "options=" + request.Options)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace KeyPayV2.My.Functions
         /// </remarks>
         public Task<List<MyUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<MyUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ToQueryString("PayScheduleId=" + request.PayScheduleId, "LocationId=" + request.LocationId, "options=" + request.Options)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

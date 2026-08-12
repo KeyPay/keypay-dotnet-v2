@@ -110,7 +110,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<SuperProductEditModel> SearchSuperFunds(int businessId, SearchSuperFundsQueryModel request)
         {
-            return ApiRequest<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get);
+            return ApiRequest<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch{ToQueryString("term=" + request.Term, "searchBy=" + request.SearchBy)}", Method.Get);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<SuperProductEditModel>> SearchSuperFundsAsync(int businessId, SearchSuperFundsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch?term={request.Term}&searchBy={request.SearchBy}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SuperProductEditModel>>($"/business/{businessId}/superfund/productsearch{ToQueryString("term=" + request.Term, "searchBy=" + request.SearchBy)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

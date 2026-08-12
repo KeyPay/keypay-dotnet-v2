@@ -93,7 +93,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public SgIndividualTimesheetLineModel CreateTimesheetLine(int businessId, SgIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query)
         {
-            return ApiRequest<SgIndividualTimesheetLineModel,SgIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post);
+            return ApiRequest<SgIndividualTimesheetLineModel,SgIndividualTimesheetLineModel>($"/business/{businessId}/timesheet{ToQueryString("enforceUniqueExternalId=" + query.EnforceUniqueExternalId)}", request, Method.Post);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<SgIndividualTimesheetLineModel> CreateTimesheetLineAsync(int businessId, SgIndividualTimesheetLineModel request, CreateTimesheetLineQueryModel query, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<SgIndividualTimesheetLineModel,SgIndividualTimesheetLineModel>($"/business/{businessId}/timesheet?enforceUniqueExternalId={query.EnforceUniqueExternalId}", request, Method.Post, cancellationToken);
+            return ApiRequestAsync<SgIndividualTimesheetLineModel,SgIndividualTimesheetLineModel>($"/business/{businessId}/timesheet{ToQueryString("enforceUniqueExternalId=" + query.EnforceUniqueExternalId)}", request, Method.Post, cancellationToken);
         }
 
         /// <summary>

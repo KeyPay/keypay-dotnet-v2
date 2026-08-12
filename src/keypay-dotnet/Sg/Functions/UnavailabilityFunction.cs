@@ -62,7 +62,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public List<UnavailabilityModel> ListUnavailabilities(int businessId, ListUnavailabilitiesQueryModel request)
         {
-            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&EmployeeId={request.EmployeeId}&DefaultLocationId={request.DefaultLocationId}", Method.Get);
+            return ApiRequest<List<UnavailabilityModel>>($"/business/{businessId}/unavailability{ToQueryString("FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "EmployeeId=" + request.EmployeeId, "DefaultLocationId=" + request.DefaultLocationId)}", Method.Get);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace KeyPayV2.Sg.Functions
         /// </remarks>
         public Task<List<UnavailabilityModel>> ListUnavailabilitiesAsync(int businessId, ListUnavailabilitiesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability?FromDate={(request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&ToDate={(request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&EmployeeId={request.EmployeeId}&DefaultLocationId={request.DefaultLocationId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UnavailabilityModel>>($"/business/{businessId}/unavailability{ToQueryString("FromDate=" + (request.FromDate.HasValue ? request.FromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "ToDate=" + (request.ToDate.HasValue ? request.ToDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "EmployeeId=" + request.EmployeeId, "DefaultLocationId=" + request.DefaultLocationId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

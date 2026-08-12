@@ -176,7 +176,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void TestWebHook(int businessId, string id, TestWebHookQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.Get);
+            ApiRequest($"/business/{businessId}/webhookregistrations/{id}/test{ToQueryString("filter=" + request.Filter)}", Method.Get);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task TestWebHookAsync(int businessId, string id, TestWebHookQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}/test?filter={request.Filter}", Method.Get, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/webhookregistrations/{id}/test{ToQueryString("filter=" + request.Filter)}", Method.Get, cancellationToken);
         }
 
         /// <summary>

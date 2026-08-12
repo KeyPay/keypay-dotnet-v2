@@ -160,7 +160,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<EmployeeQualificationDocumentModel> CreateEmployeeQualificationDocument(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request)
         {
-            return ApiFileRequest<List<EmployeeQualificationDocumentModel>>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document?visible={request.Visible}", file, Method.Post);
+            return ApiFileRequest<List<EmployeeQualificationDocumentModel>>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document{ToQueryString("visible=" + request.Visible)}", file, Method.Post);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<EmployeeQualificationDocumentModel>> CreateEmployeeQualificationDocumentAsync(int businessId, int employeeId, FileUploadModel file, int qualificationId, CreateEmployeeQualificationDocumentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiFileRequestAsync<List<EmployeeQualificationDocumentModel>>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document?visible={request.Visible}", file, Method.Post, cancellationToken);
+            return ApiFileRequestAsync<List<EmployeeQualificationDocumentModel>>($"/business/{businessId}/employee/{employeeId}/qualification/{qualificationId}/document{ToQueryString("visible=" + request.Visible)}", file, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public void DeleteEmployeeQualification(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification?id={request.Id}", Method.Delete);
+            ApiRequest($"/business/{businessId}/employee/{employeeId}/qualification{ToQueryString("id=" + request.Id)}", Method.Delete);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task DeleteEmployeeQualificationAsync(int businessId, int employeeId, DeleteEmployeeQualificationQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification?id={request.Id}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/employee/{employeeId}/qualification{ToQueryString("id=" + request.Id)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>

@@ -176,7 +176,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public EmployeeUpdateResponseModel CreateOrUpdateEmployee(int businessId, NzUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request)
         {
-            return ApiRequest<EmployeeUpdateResponseModel,NzUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post);
+            return ApiRequest<EmployeeUpdateResponseModel,NzUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured{ToQueryString("matchType=" + request.MatchType)}", model, Method.Post);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<EmployeeUpdateResponseModel> CreateOrUpdateEmployeeAsync(int businessId, NzUnstructuredEmployeeModel model, CreateOrUpdateEmployeeQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<EmployeeUpdateResponseModel,NzUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured?matchType={request.MatchType}", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<EmployeeUpdateResponseModel,NzUnstructuredEmployeeModel>($"/business/{businessId}/employee/unstructured{ToQueryString("matchType=" + request.MatchType)}", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<LeaveBalanceModel> GetLeaveBalances(int businessId, int employeeId, GetLeaveBalancesQueryModel request)
         {
-            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&amalgamateCalculatedAccruals={request.AmalgamateCalculatedAccruals}", Method.Get);
+            return ApiRequest<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "amalgamateCalculatedAccruals=" + request.AmalgamateCalculatedAccruals)}", Method.Get);
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<LeaveBalanceModel>> GetLeaveBalancesAsync(int businessId, int employeeId, GetLeaveBalancesQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances?asAtDate={(request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty)}&amalgamateCalculatedAccruals={request.AmalgamateCalculatedAccruals}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<LeaveBalanceModel>>($"/business/{businessId}/employee/{employeeId}/leavebalances{ToQueryString("asAtDate=" + (request.AsAtDate.HasValue ? request.AsAtDate.Value.ToString("yyyy-MM-ddTHH:mm:ss") : String.Empty), "amalgamateCalculatedAccruals=" + request.AmalgamateCalculatedAccruals)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<NzUnstructuredEmployeeModel> ListEmployees(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null)
         {
-            return ApiRequest<List<NzUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
+            return ApiRequest<List<NzUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ToQueryString("PayScheduleId=" + request.PayScheduleId, "LocationId=" + request.LocationId, "options=" + request.Options)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get);
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<NzUnstructuredEmployeeModel>> ListEmployeesAsync(int businessId, ListEmployeesQueryModel request, ODataQuery oDataQuery = null, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<NzUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured?PayScheduleId={request.PayScheduleId}&LocationId={request.LocationId}&options={request.Options}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<NzUnstructuredEmployeeModel>>($"/business/{businessId}/employee/unstructured{ToQueryString("PayScheduleId=" + request.PayScheduleId, "LocationId=" + request.LocationId, "options=" + request.Options)}{ODataQuery.ToQueryString(oDataQuery, "&")}", Method.Get, cancellationToken);
         }
 
         /// <summary>

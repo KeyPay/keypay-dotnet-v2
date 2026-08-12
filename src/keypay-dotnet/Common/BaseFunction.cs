@@ -144,9 +144,28 @@ namespace KeyPayV2.Common
             var result = JsonConvert.DeserializeObject<T>(response);
             return result;
         }
+        // Legacy overload — kept for backward compatibility with previously-generated clients.
         protected string ConvertEnumerableToQueryString(string parameterName, IEnumerable<string> listOfStrings)
         {
             return listOfStrings != null && listOfStrings.Count() > 0 ? $"&{parameterName}=" + string.Join($"&{parameterName}=", listOfStrings) : "";
+        }
+
+        // Builds a complete query string from an ordered set of segments, handling nulls and
+        // empty arrays safely. Segments that are null or empty are skipped; the "?" prefix is
+        // only emitted when at least one non-empty segment exists.
+        protected static string ToQueryString(params string[] segments)
+        {
+            var nonEmpty = segments.Where(s => !string.IsNullOrEmpty(s)).ToList();
+            return nonEmpty.Count > 0 ? "?" + string.Join("&", nonEmpty) : "";
+        }
+
+        // Formats an array query parameter as "name=v1&name=v2&...". Returns an empty string
+        // when the collection is null or empty so ToQueryString can skip it safely.
+        protected static string QsArr(string name, IEnumerable<string> values)
+        {
+            if (values == null) return "";
+            var list = values.ToList();
+            return list.Count > 0 ? string.Join("&", list.Select(v => $"{name}={v}")) : "";
         }
     }
 }

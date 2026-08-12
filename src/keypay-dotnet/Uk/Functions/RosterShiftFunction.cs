@@ -76,7 +76,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkEssRosterShiftModel> FindNearbyRosterShifts(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkEssRosterShiftModel>> FindNearbyRosterShiftsAsync(int businessId, int employeeId, FindNearbyRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby?localTime={request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UkEssRosterShiftModel>>($"/business/{businessId}/rostershift/{employeeId}/nearby{ToQueryString("localTime=" + request.LocalTime.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public List<UkRosterShiftGenerateTimesheetModel> GetRosterShifts(int businessId, GetRosterShiftsQueryModel request)
         {
-            return ApiRequest<List<UkRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ShiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployeeGroupId={request.EmployeeGroupId}&UnassignedShiftsOnly={request.UnassignedShiftsOnly}&SelectAllRoles={request.SelectAllRoles}&ExcludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&PageSize={request.PageSize}&CurrentPage={request.CurrentPage}&IncludeWarnings={request.IncludeWarnings}", Method.Get);
+            return ApiRequest<List<UkRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ShiftStatus=" + request.ShiftStatus, QsArr("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString())), QsArr("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString())), QsArr("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString())), QsArr("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString())), "EmployeeId=" + request.EmployeeId, "LocationId=" + request.LocationId, "EmployeeGroupId=" + request.EmployeeGroupId, "UnassignedShiftsOnly=" + request.UnassignedShiftsOnly, "SelectAllRoles=" + request.SelectAllRoles, "ExcludeShiftsOverlappingFromDate=" + request.ExcludeShiftsOverlappingFromDate, "PageSize=" + request.PageSize, "CurrentPage=" + request.CurrentPage, "IncludeWarnings=" + request.IncludeWarnings)}", Method.Get);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<List<UkRosterShiftGenerateTimesheetModel>> GetRosterShiftsAsync(int businessId, GetRosterShiftsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<UkRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift?FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ShiftStatus={request.ShiftStatus}{ConvertEnumerableToQueryString("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString()))}{ConvertEnumerableToQueryString("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString()))}&EmployeeId={request.EmployeeId}&LocationId={request.LocationId}&EmployeeGroupId={request.EmployeeGroupId}&UnassignedShiftsOnly={request.UnassignedShiftsOnly}&SelectAllRoles={request.SelectAllRoles}&ExcludeShiftsOverlappingFromDate={request.ExcludeShiftsOverlappingFromDate}&PageSize={request.PageSize}&CurrentPage={request.CurrentPage}&IncludeWarnings={request.IncludeWarnings}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<UkRosterShiftGenerateTimesheetModel>>($"/business/{businessId}/rostershift{ToQueryString("FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ShiftStatus=" + request.ShiftStatus, QsArr("ShiftStatuses", request.ShiftStatuses?.Select(x => x.ToString())), QsArr("SelectedLocations", request.SelectedLocations?.Select(x => x.ToString())), QsArr("SelectedEmployees", request.SelectedEmployees?.Select(x => x.ToString())), QsArr("SelectedRoles", request.SelectedRoles?.Select(x => x.ToString())), "EmployeeId=" + request.EmployeeId, "LocationId=" + request.LocationId, "EmployeeGroupId=" + request.EmployeeGroupId, "UnassignedShiftsOnly=" + request.UnassignedShiftsOnly, "SelectAllRoles=" + request.SelectAllRoles, "ExcludeShiftsOverlappingFromDate=" + request.ExcludeShiftsOverlappingFromDate, "PageSize=" + request.PageSize, "CurrentPage=" + request.CurrentPage, "IncludeWarnings=" + request.IncludeWarnings)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEssRosterShiftModel CreateRosterShift(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request)
         {
-            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift?publish={request.Publish}", shiftModel, Method.Post);
+            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift{ToQueryString("publish=" + request.Publish)}", shiftModel, Method.Post);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkEssRosterShiftModel> CreateRosterShiftAsync(int businessId, RosterShiftEditModel shiftModel, CreateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift?publish={request.Publish}", shiftModel, Method.Post, cancellationToken);
+            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift{ToQueryString("publish=" + request.Publish)}", shiftModel, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkEssRosterShiftModel UpdateRosterShift(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request)
         {
-            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put);
+            return ApiRequest<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}{ToQueryString("publish=" + request.Publish, "clearBreaks=" + request.ClearBreaks)}", shiftModel, Method.Put);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkEssRosterShiftModel> UpdateRosterShiftAsync(int businessId, int rosterShiftId, RosterShiftEditModel shiftModel, UpdateRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}?publish={request.Publish}&clearBreaks={request.ClearBreaks}", shiftModel, Method.Put, cancellationToken);
+            return ApiRequestAsync<UkEssRosterShiftModel,RosterShiftEditModel>($"/business/{businessId}/rostershift/{rosterShiftId}{ToQueryString("publish=" + request.Publish, "clearBreaks=" + request.ClearBreaks)}", shiftModel, Method.Put, cancellationToken);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkRosterShiftMatchingResultModel FindMatchingClockOffRosterShift(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request)
         {
-            return ApiRequest<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff{ToQueryString("kioskId=" + request.KioskId, "dateUtc=" + request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkRosterShiftMatchingResultModel> FindMatchingClockOffRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOffRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockoff{ToQueryString("kioskId=" + request.KioskId, "dateUtc=" + request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public UkRosterShiftMatchingResultModel FindMatchingClockOnRosterShift(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request)
         {
-            return ApiRequest<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockon?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get);
+            return ApiRequest<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockon{ToQueryString("kioskId=" + request.KioskId, "dateUtc=" + request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace KeyPayV2.Uk.Functions
         /// </remarks>
         public Task<UkRosterShiftMatchingResultModel> FindMatchingClockOnRosterShiftAsync(int businessId, int employeeId, FindMatchingClockOnRosterShiftQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockon?kioskId={request.KioskId}&dateUtc={request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss")}", Method.Get, cancellationToken);
+            return ApiRequestAsync<UkRosterShiftMatchingResultModel>($"/business/{businessId}/rostershift/{employeeId}/matchingclockon{ToQueryString("kioskId=" + request.KioskId, "dateUtc=" + request.DateUtc.ToString("yyyy-MM-ddTHH:mm:ss"))}", Method.Get, cancellationToken);
         }
 
         /// <summary>

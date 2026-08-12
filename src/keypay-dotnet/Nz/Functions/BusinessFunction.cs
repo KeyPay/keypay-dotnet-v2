@@ -154,7 +154,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public BusinessAccessModel GetUserBusinessAccess(int businessId, GetUserBusinessAccessQueryModel request)
         {
-            return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.Get);
+            return ApiRequest<BusinessAccessModel>($"/business/{businessId}/access/user{ToQueryString("email=" + request.Email)}", Method.Get);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<BusinessAccessModel> GetUserBusinessAccessAsync(int businessId, GetUserBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<BusinessAccessModel>($"/business/{businessId}/access/user?email={request.Email}", Method.Get, cancellationToken);
+            return ApiRequestAsync<BusinessAccessModel>($"/business/{businessId}/access/user{ToQueryString("email=" + request.Email)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public List<DocumentModel> CreateBusinessDocument(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request)
         {
-            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post);
+            return ApiFileRequest<List<DocumentModel>>($"/business/{businessId}/document{ToQueryString("visibleToAll=" + request.VisibleToAll)}", file, Method.Post);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<List<DocumentModel>> CreateBusinessDocumentAsync(int businessId, FileUploadModel file, CreateBusinessDocumentQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document?visibleToAll={request.VisibleToAll}", file, Method.Post, cancellationToken);
+            return ApiFileRequestAsync<List<DocumentModel>>($"/business/{businessId}/document{ToQueryString("visibleToAll=" + request.VisibleToAll)}", file, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -457,7 +457,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         public List<TagViewModel> ListTheBusinessTags(int businessId, ListTheBusinessTagsQueryModel request)
         {
-            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get);
+            return ApiRequest<List<TagViewModel>>($"/business/{businessId}/tags{ToQueryString("awardName=" + request.AwardName)}", Method.Get);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace KeyPayV2.Nz.Functions
         /// </summary>
         public Task<List<TagViewModel>> ListTheBusinessTagsAsync(int businessId, ListTheBusinessTagsQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags?awardName={request.AwardName}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<TagViewModel>>($"/business/{businessId}/tags{ToQueryString("awardName=" + request.AwardName)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -498,7 +498,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzBusinessExportModel CreateNewBusiness(NzBusinessExportModel model, CreateNewBusinessQueryModel request)
         {
-            return ApiRequest<NzBusinessExportModel,NzBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post);
+            return ApiRequest<NzBusinessExportModel,NzBusinessExportModel>($"/business{ToQueryString("setupDefaultData=" + request.SetupDefaultData)}", model, Method.Post);
         }
 
         /// <summary>
@@ -509,7 +509,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzBusinessExportModel> CreateNewBusinessAsync(NzBusinessExportModel model, CreateNewBusinessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzBusinessExportModel,NzBusinessExportModel>($"/business?setupDefaultData={request.SetupDefaultData}", model, Method.Post, cancellationToken);
+            return ApiRequestAsync<NzBusinessExportModel,NzBusinessExportModel>($"/business{ToQueryString("setupDefaultData=" + request.SetupDefaultData)}", model, Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -564,7 +564,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public NzBusinessExportModel GetBusinessDetailsByExternalId(GetBusinessDetailsByExternalIdQueryModel request)
         {
-            return ApiRequest<NzBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get);
+            return ApiRequest<NzBusinessExportModel>($"/business/externalid{ToQueryString("externalId=" + request.ExternalId)}", Method.Get);
         }
 
         /// <summary>
@@ -575,7 +575,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task<NzBusinessExportModel> GetBusinessDetailsByExternalIdAsync(GetBusinessDetailsByExternalIdQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<NzBusinessExportModel>($"/business/externalid?externalId={request.ExternalId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<NzBusinessExportModel>($"/business/externalid{ToQueryString("externalId=" + request.ExternalId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -750,7 +750,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void ChangeTheTaxYear(int businessId, ChangeTheTaxYearQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post);
+            ApiRequest($"/business/{businessId}/initialfinancialyear{ToQueryString("year=" + request.Year)}", Method.Post);
         }
 
         /// <summary>
@@ -761,7 +761,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task ChangeTheTaxYearAsync(int businessId, ChangeTheTaxYearQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear?year={request.Year}", Method.Post, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/initialfinancialyear{ToQueryString("year=" + request.Year)}", Method.Post, cancellationToken);
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void RevokeBusinessAccess(int businessId, RevokeBusinessAccessQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/access?email={request.Email}", Method.Delete);
+            ApiRequest($"/business/{businessId}/access{ToQueryString("email=" + request.Email)}", Method.Delete);
         }
 
         /// <summary>
@@ -893,7 +893,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task RevokeBusinessAccessAsync(int businessId, RevokeBusinessAccessQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", Method.Delete, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access{ToQueryString("email=" + request.Email)}", Method.Delete, cancellationToken);
         }
 
         /// <summary>
@@ -973,7 +973,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public void UpdateDetailsOfAnAssociatedUser(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request)
         {
-            ApiRequest($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put);
+            ApiRequest($"/business/{businessId}/access{ToQueryString("email=" + request.Email)}", viewModel, Method.Put);
         }
 
         /// <summary>
@@ -985,7 +985,7 @@ namespace KeyPayV2.Nz.Functions
         /// </remarks>
         public Task UpdateDetailsOfAnAssociatedUserAsync(int businessId, AccessModel viewModel, UpdateDetailsOfAnAssociatedUserQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync($"/business/{businessId}/access?email={request.Email}", viewModel, Method.Put, cancellationToken);
+            return ApiRequestAsync($"/business/{businessId}/access{ToQueryString("email=" + request.Email)}", viewModel, Method.Put, cancellationToken);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<AuActiveEmployeesModel> ActiveEmployeesReport(int brandId, ActiveEmployeesReportQueryModel request)
         {
-            return ApiRequest<List<AuActiveEmployeesModel>>($"/brand/{brandId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiRequest<List<AuActiveEmployeesModel>>($"/brand/{brandId}/reports/activeemployees{ToQueryString("EmailAddresses=" + request.EmailAddresses, "IncludeInactiveBusinesses=" + request.IncludeInactiveBusinesses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<AuActiveEmployeesModel>> ActiveEmployeesReportAsync(int brandId, ActiveEmployeesReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/brand/{brandId}/reports/activeemployees?EmailAddresses={request.EmailAddresses}&IncludeInactiveBusinesses={request.IncludeInactiveBusinesses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<AuActiveEmployeesModel>>($"/brand/{brandId}/reports/activeemployees{ToQueryString("EmailAddresses=" + request.EmailAddresses, "IncludeInactiveBusinesses=" + request.IncludeInactiveBusinesses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public List<SignupModel> SignupReport(int brandId, SignupReportQueryModel request)
         {
-            return ApiRequest<List<SignupModel>>($"/brand/{brandId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get);
+            return ApiRequest<List<SignupModel>>($"/brand/{brandId}/reports/signups{ToQueryString("EmailAddresses=" + request.EmailAddresses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace KeyPayV2.Au.Functions
         /// </remarks>
         public Task<List<SignupModel>> SignupReportAsync(int brandId, SignupReportQueryModel request, CancellationToken cancellationToken = default)
         {
-            return ApiRequestAsync<List<SignupModel>>($"/brand/{brandId}/reports/signups?EmailAddresses={request.EmailAddresses}&FromDate={request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss")}&ToDate={request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss")}&LocationId={request.LocationId}&EmployingEntityId={request.EmployingEntityId}", Method.Get, cancellationToken);
+            return ApiRequestAsync<List<SignupModel>>($"/brand/{brandId}/reports/signups{ToQueryString("EmailAddresses=" + request.EmailAddresses, "FromDate=" + request.FromDate.ToString("yyyy-MM-ddTHH:mm:ss"), "ToDate=" + request.ToDate.ToString("yyyy-MM-ddTHH:mm:ss"), "LocationId=" + request.LocationId, "EmployingEntityId=" + request.EmployingEntityId)}", Method.Get, cancellationToken);
         }
 
         /// <summary>
