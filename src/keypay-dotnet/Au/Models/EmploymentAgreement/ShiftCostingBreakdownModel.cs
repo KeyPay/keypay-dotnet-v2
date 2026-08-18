@@ -16,6 +16,7 @@ namespace KeyPayV2.Au.Models.EmploymentAgreement
         public decimal Rate { get; set; }
         public decimal Cost { get; set; }
         public string Type { get; set; }
+        public bool IsPaidBreak { get; set; }
         public int? LiabilityCategoryId { get; set; }
         public string LiabilityCategoryName { get; set; }
         public int? LocationId { get; set; }
