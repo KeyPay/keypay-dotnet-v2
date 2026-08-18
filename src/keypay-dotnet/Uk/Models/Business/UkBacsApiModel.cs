@@ -25,5 +25,6 @@ namespace KeyPayV2.Uk.Models.Business
         public bool MergeMultipleAccountPayments { get; set; }
         public bool PayHmrc { get; set; }
         public int? PaymentDate { get; set; }
+        public string UniqueReference { get; set; }
     }
 }

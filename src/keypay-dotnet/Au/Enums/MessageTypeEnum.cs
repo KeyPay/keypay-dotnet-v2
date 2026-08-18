@@ -180,6 +180,9 @@ namespace KeyPayV2.Au.Enums
         SapInactivityWarningStaff,
         SapInactivityWarningManager,
         SapInactivityRevocationStaff,
-        SapInactivityRevocationManager
+        SapInactivityRevocationManager,
+        SapWriteAccessExpired,
+        SapInactivityLockStaff,
+        SapInactivityLockManager
     }
 }
