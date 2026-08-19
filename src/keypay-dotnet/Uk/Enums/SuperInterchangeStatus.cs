@@ -36,6 +36,7 @@ namespace KeyPayV2.Uk.Enums
         HeroClearPaymentRejected,
         HeroClearPayoutCompleted,
         HeroClearPayoutPartiallyCompleted,
-        HeroClearPayoutFailed
+        HeroClearPayoutFailed,
+        HeroClearApproverUnavailable
     }
 }
