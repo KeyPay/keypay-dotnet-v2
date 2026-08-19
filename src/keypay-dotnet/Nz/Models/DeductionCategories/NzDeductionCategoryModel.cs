@@ -10,6 +10,7 @@ namespace KeyPayV2.Nz.Models.DeductionCategories
 {
     public class NzDeductionCategoryModel
     {
+        public bool TaxExempt { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public DeductionCategoryPaymentSummaryClassification PaymentSummaryClassification { get; set; }
         public int Id { get; set; }
