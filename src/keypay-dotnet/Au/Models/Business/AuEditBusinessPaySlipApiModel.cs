@@ -2,16 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using KeyPayV2.Au.Models.Common;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json;
 using KeyPayV2.Au.Enums;
 
 namespace KeyPayV2.Au.Models.Business
 {
     public class AuEditBusinessPaySlipApiModel
     {
-        [JsonConverter(typeof(StringEnumConverter))]
-        public PaySlipSuperContributionProcessingFrequencyTextOption? SuperContributionProcessingFrequencyTextOption { get; set; }
         public bool ShowClassification { get; set; }
         public bool ShowBasePayRate { get; set; }
         public bool ShowEmployeeId { get; set; }
