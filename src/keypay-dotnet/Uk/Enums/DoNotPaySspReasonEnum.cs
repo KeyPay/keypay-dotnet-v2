@@ -15,6 +15,10 @@ namespace KeyPayV2.Uk.Enums
         TradeDispute,
         InLegalCustody,
         WorkingOutsideUk,
-        NotStarted
+        NotStarted,
+        GotEmploymentAndSupportAllowance,
+        ContractEndedOrEnding,
+        BecameSickAfterContractEnded,
+        DidNotTellEmployer
     }
 }
