@@ -181,6 +181,7 @@ namespace KeyPayV2.My.Enums
         SapInactivityWarningManager,
         SapInactivityRevocationStaff,
         SapInactivityRevocationManager,
+        SsoPasswordSetupInvite,
         SapWriteAccessExpired,
         SapInactivityLockStaff,
         SapInactivityLockManager
