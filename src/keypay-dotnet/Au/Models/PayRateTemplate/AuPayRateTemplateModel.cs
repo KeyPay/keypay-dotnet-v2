@@ -11,6 +11,8 @@ namespace KeyPayV2.Au.Models.PayRateTemplate
         public decimal? SuperThresholdAmount { get; set; }
         public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
         public decimal? MaximumAnnualSuperContributionsBase { get; set; }
+        public bool? HigherOfSuperEnabled { get; set; }
+        public decimal? HigherOfSuperWeeklyAmount { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int PrimaryPayCategoryId { get; set; }

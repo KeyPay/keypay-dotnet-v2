@@ -59,6 +59,8 @@ namespace KeyPayV2.Au.Models.Common
         public decimal? SuperThresholdAmount { get; set; }
         public decimal? MaximumQuarterlySuperContributionsBase { get; set; }
         public decimal? MaximumAnnualSuperContributionsBase { get; set; }
+        public bool? HigherOfSuperEnabled { get; set; }
+        public decimal? HigherOfSuperWeeklyAmount { get; set; }
         public string MedicareLevyExemption { get; set; }
         public bool? CloselyHeldEmployee { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

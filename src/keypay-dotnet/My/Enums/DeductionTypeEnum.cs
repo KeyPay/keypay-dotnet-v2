@@ -15,6 +15,7 @@ namespace KeyPayV2.My.Enums
         Custom,
         PercentageSuperannuation,
         PercentageCompensation,
-        PercentagePensionable
+        PercentagePensionable,
+        PercentageCustomBasis
     }
 }

@@ -35,5 +35,10 @@ namespace KeyPayV2.Uk.Models.DeductionCategories
         [JsonConverter(typeof(StringEnumConverter))]
         public DeductionCategoryCisType CisType { get; set; }
         public List<Int32> T4Boxes { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DeductionTypeEnum? CalculationBasis { get; set; }
+        public List<PayCategoryType> IncludedPayCategoryTypes { get; set; }
+        public List<Int32> ExcludedPayCategoryIds { get; set; }
+        public decimal? DefaultPercentageRate { get; set; }
     }
 }
