@@ -123,6 +123,11 @@ namespace KeyPayV2.Sg.Enums
         CaContractorPension,
         EtpSuperableLumpSumD,
         EtpSuperableTypeRTaxable,
-        EtpSuperableTypeRTaxFree
+        EtpSuperableTypeRTaxFree,
+        CaContractorFeesForServicesHourly,
+        CaContractorSelfEmployedCommissionsHourly,
+        CaContractorLumpSumPaymentsHourly,
+        CaContractorOtherIncomeHourly,
+        CaContractorPensionHourly
     }
 }
