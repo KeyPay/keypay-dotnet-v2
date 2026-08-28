@@ -10,6 +10,9 @@ namespace KeyPayV2.Nz.Models.LeaveRequests
     {
         public decimal TotalUnits { get; set; }
         public decimal UnitsApplied { get; set; }
+        public decimal TotalHours { get; set; }
+        public DateTime? RequestedDate { get; set; }
+        public bool IsStuck { get; set; }
         public int Id { get; set; }
         public int EmployeeId { get; set; }
         public int LeaveCategoryId { get; set; }
