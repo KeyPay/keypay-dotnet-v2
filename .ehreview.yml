@@ -1,0 +1,52 @@
+AllCops:
+  TargetBranches: &target_branches
+    - master
+
+# Require reviews for pull requests
+# Params:
+# + PeerCount : number of required peer approvals
+# + Branches : only requires approvals on pull request on these branches as base.
+Review::RequireApprovals:
+  Enabled: true
+  Required: true
+  PeerCount: 2
+  Branches: *target_branches
+
+# Require some checkboxes to be tick in pull request body
+# Params:
+# + Checkboxes : array of hash describing each checkbox
+#
+# A checkbox is described by hash with keys:
+# + Content : the text following the checkbox
+# + Message : the message to comment in PR if the checkbox is not checked
+# + Paths : list of filename blobbing strings. Only require this checkbox if changed files match this list.
+Review::RequireCheckboxes:
+  Enabled: false
+  Required: true
+  Branches: *target_branches
+  Checkboxes: []
+
+# Warning when updating models using methods that don't trigger callbacks,
+#  resulting in not sending Kafka message if model is hooked.
+Kafka::UpdateModelWithoutCallbacks:
+  Enabled: false
+
+# Warning when changing a Kafka message format to ensure not affecting other services
+Kafka::MessageChanged:
+  Enabled: false
+
+Thinkei::ReviewCrossTeam:
+  Enabled: true
+  Required: true
+
+Security::TextMatchWarning:
+  Enabled: false
+  Rules:
+    - Name: SensitiveData
+      FileTypesRegex: !ruby/regexp /.*_serializer\.(rb|rake)/i
+      IgnoredFileRegex: !ruby/regexp /^(config|test|spec|features)\/.*/i
+      RegexPattern: !ruby/regexp /.*(mobile_number|email|address).*/i
+      Title: "Doing something with sensitive data"
+      Summary: "Please be careful with sensitive data and review this security checklist. https://github.com/Thinkei/employment-hero/wiki/Application-Security-Checklist#preventing-sensitive-logging"
+      Message: "Beware of security when exposed sensitive data"
+
